@@ -3,7 +3,15 @@ class MapMenu extends Phaser.Scene{
       super("MapMenu");
   }
 
+  preload(){
+    this.load.image('backgroundMpM', './ASSETS/MapMenu/MapMenuBackground.jpg');
+  }
+
   create(){
-    this.add.text(20, 50, 'Map Menu');
+    var wid = this.cameras.main.width; //ancho del canvas en el dispositivo
+    var heig = this.cameras.main.height;
+
+    var fondo = this.add.image(0, 0, 'backgroundMpM');
+    fondo.setPosition(wid/2, heig/2);
   }
 }
