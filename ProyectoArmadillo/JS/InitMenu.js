@@ -12,7 +12,20 @@ class InitMenu extends Phaser.Scene{
     var wid = this.cameras.main.width; //ancho del canvas en el dispositivo
     var heig = this.cameras.main.height;
 
-    var fondo = this.add.image(0, 0, 'backgroundIM');
-    fondo.setPosition(wid/2, heig/2);
+    var background = this.add.image(0, 0, 'backgroundIM');
+    background.setPosition(wid/2, heig/2);
+
+    var text = this.add.text(wid*3/7, heig*3/4, 'Pulse para Iniciar', {fill: "black"});
+
+//el start funciona sólo fuera de esta funcion, buscar alternativa
+    this.input.on('pointerdown', function (pointer){
+        console.log('Hola');
+        //this.scene.start("MainMenu");
+    });
+
+  }
+
+  update(){
+
   }
 }

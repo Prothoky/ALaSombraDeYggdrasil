@@ -11,7 +11,7 @@ class MapMenu extends Phaser.Scene{
     var wid = this.cameras.main.width; //ancho del canvas en el dispositivo
     var heig = this.cameras.main.height;
 
-    var fondo = this.add.image(0, 0, 'backgroundMpM');
-    fondo.setPosition(wid/2, heig/2);
+    var background = this.add.image(0, 0, 'backgroundMpM');
+    background.setPosition(wid/2, heig/2);
   }
 }
