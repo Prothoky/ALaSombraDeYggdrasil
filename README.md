@@ -6,7 +6,7 @@ Aún por definir
 #### Género 
 Endless runner en 2D con scroll lateral 
 #### Audiencia
-Pensado para todo jugador interesado en la cultura vikinga [seguir].
+Pensado para todo jugador interesado en la cultura vikinga y todos aquellos que les guste los plataformas [seguir].
 #### Plataformas
 El proyecto estará desarrollado para web y para dispositivos móviles.
 #### Modos de Juego
@@ -35,6 +35,14 @@ Durante el transcurso del juego el protagonista irá narrando su experiencia por
 [Contar sobre la experiencia de jugador, estilo visual y jugabilidad]
 
 ## Personaje
+
+Por el momento estamos trabajando en el diseño del personaje. Están por definir aún las habilidades de este, aunque sabemos que el hacha será el arma principal del juego.
+
+![diseño vikingo](https://user-images.githubusercontent.com/55508821/95829995-4bbd6d80-0d37-11eb-871d-834920725f60.jpeg)
+
+
+
+
 
 ## Mecánicas de juego
 
