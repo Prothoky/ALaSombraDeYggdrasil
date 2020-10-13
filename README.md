@@ -36,6 +36,11 @@ Durante el transcurso del juego el protagonista irá narrando su experiencia por
 
 ## Personaje
 
+Por el momento estamos trabajando en el diseño del personaje. Están por definir aún las habilidades de este, aunque sabemos que el hacha será el arma principal del juego.
+
+![diseño vikingo](https://user-images.githubusercontent.com/55508821/95829995-4bbd6d80-0d37-11eb-871d-834920725f60.jpeg)
+
+
 
 
 
