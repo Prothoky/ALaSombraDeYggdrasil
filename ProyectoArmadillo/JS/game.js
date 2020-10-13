@@ -1,8 +1,15 @@
 window.onload = function(){
 
   var config = {
-    width: 1905, //Comprobar si en el escalado funciona bien
-    height: 916,
+    type: Phaser.AUTO,
+    width: 1270, //Comprobar si en el escalado funciona bien
+    height: 610,
+    scale:{
+      parent:'CanvasDiv', //no se q es
+      //mode: Phaser.Scale.FIT, //hace que se adapte a cambios de tamaño
+      autoCenter: Phaser.Scale.CENTER_BOTH,
+      isPortrait: true
+    },
     backgroundColor: 0x000000,
     //nombre que se muestra en la ventana del navegador
     //title:"Proyecto Armadillo",

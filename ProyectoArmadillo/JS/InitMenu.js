@@ -19,9 +19,8 @@ class InitMenu extends Phaser.Scene{
 
 //el start funciona sólo fuera de esta funcion, buscar alternativa
     this.input.on('pointerdown', function (pointer){
-        console.log('Hola');
-        //this.scene.start("MainMenu");
-    });
+        this.scene.start('MainMenu');
+    }, this);
 
   }
 
