@@ -46,11 +46,19 @@ Por el momento estamos trabajando en el diseño del personaje. Están por defini
 
 ## Mecánicas de juego
 
+
 ## Interfaz y modos de juego
 
 ## Flujo de juego
 
+
 ## Historia
+
+Magnus es el vikingo protagonista de esta historia. Fue bendecido con el don de la inmortalidad como regalo de los dioses para que guiara a su pueblo a un lugar próspero. El problema de este regalo es que juega como arma de doble filo, su pueblo acabó siendo arrastrado por el tiempo y el olvido. De ese legado apenas quedan unos poemas y unos cuentos de niños. Magnus ya sin familia ni destino sufre el exilio de la muerte en vida por eso, decide ir a ver a Odín a su propia casa, para reclamar su merecido sitio en el Valhalla para poder reunirse con su familia después de siglos de soliloquio. 
+[Podría ser odín el que le diga que alcanzará el valhalla cuando atraviese los 9 mundos]
+
+Para ello Magnus irá recorriendo los nueve mundos que sostiene Yggdrasil teniendo a Asgard como meta. Esta aventura comienza en su planeta natal Midgard.
+
 
 ## Estilo artístico y música
 
