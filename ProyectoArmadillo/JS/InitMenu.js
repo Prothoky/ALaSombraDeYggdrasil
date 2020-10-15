@@ -14,6 +14,7 @@ class InitMenu extends Phaser.Scene{
 
     var background = this.add.image(0, 0, 'backgroundIM');
     background.setPosition(wid/2, heig/2);
+    background.setScale(2/3);
 
     var text = this.add.text(wid*3/7, heig*3/4, 'Pulse para Iniciar', {fill: "black"});
 

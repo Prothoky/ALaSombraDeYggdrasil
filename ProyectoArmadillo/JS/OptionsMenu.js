@@ -12,6 +12,7 @@ class OptionsMenu extends Phaser.Scene{
     var heig = this.cameras.main.height;
 
     var background = this.add.image(0, 0, 'backgroundOM');
+    background.setScale(2/3);
     background.setPosition(wid/2, heig/2);
   }
 }
