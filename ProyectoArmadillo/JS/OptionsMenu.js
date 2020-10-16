@@ -25,7 +25,8 @@ class OptionsMenu extends Phaser.Scene{
   }
 
   BackMainMenu(){
-    this.scene.pause('OptionsMenu');
-    this.scene.start('MainMenu');
+    this.scene.stop('OptionsMenu');
+    this.scene.sendToBack('OptionsMenu');
+    this.scene.start('MainMenu'); //Ver como hacer para que lleve a la anterior real
   }
 }
