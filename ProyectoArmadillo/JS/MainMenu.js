@@ -47,7 +47,7 @@ class MainMenu extends Phaser.Scene{
 
   InitGame(){
     this.scene.pause('MainMenu');
-    this.scene.start('MapMenu');
+    this.scene.start('MapSelectionMenu');
   }
 
   OptionsGame(){
@@ -55,7 +55,7 @@ class MainMenu extends Phaser.Scene{
     this.scene.start('OptionsMenu');
   }
 
-  GameCredits(){ //AUN HAY QUE CREARLO
+  GameCredits(){
     this.scene.pause('MainMenu');
     this.scene.start('CreditsMenu');
   }
