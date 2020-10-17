@@ -57,6 +57,7 @@ class LevelManager extends Phaser.Scene
         this.physics.world.setBounds(0, 0, this.levelWidth, this.levelHeight);  // Tamaño del nivel
         this.platforms = this.physics.add.staticGroup();    // Grupo de plataformas colisionables
         this.platforms.create(400, 568, 'ground').setScale(2).refreshBody();    // Suelo
+        this.platforms.create(700, 568, 'ground').setScale(2).refreshBody();
 
         // Jugador
         this.player = this.physics.add.sprite(100, 450, 'dude');
@@ -64,9 +65,9 @@ class LevelManager extends Phaser.Scene
         this.physics.add.collider(this.player, this.platforms); // Permitimos colisiones entre grupo de plataformas y jugador
 
         // Cámara
-        this.cameras.main.setBounds(0, 0, this.levelHeight, this.levelWidth);   // Límites cámara
+        this.cameras.main.setBounds(0, 0, this.levelWidth, this.levelHeight);   // Límites cámara
         this.cameras.main.startFollow(this.player);
-        this.cameras.main.followOffset.set(-300, 0);
+        //this.cameras.main.followOffset.set(-300, 0);
 
         // Creamos los controles del teclado (no ejecutar si es en móvil)
         this.jumpButton = this.input.keyboard.addKey(controls.up);
