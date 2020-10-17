@@ -11,8 +11,9 @@ class LevelManager extends Phaser.Scene
         this.movementSpeed = 300;
         this.jumpSpeed = -500;
 
-        // Referncias
+        // Referencias
         this.platforms; // Grupo de plataformas colisionables
+        this.spikesTraps;   // Grupos de trampas
         this.player;    // Personaje
 
         // Teclas (no ejecutar si es en móvil)
@@ -56,18 +57,23 @@ class LevelManager extends Phaser.Scene
         // Físicas
         this.physics.world.setBounds(0, 0, this.levelWidth, this.levelHeight);  // Tamaño del nivel
         this.platforms = this.physics.add.staticGroup();    // Grupo de plataformas colisionables
-        this.platforms.create(400, 568, 'ground').setScale(2).refreshBody();    // Suelo
-        this.platforms.create(700, 568, 'ground').setScale(2).refreshBody();
+        this.spikesTraps = this.physics.add.staticGroup();
+        this.platforms.create(0, 568, 'ground').setOrigin(0, 0).setScale(2).refreshBody();    // Suelo
+        this.platforms.create(400, 568, 'ground').setOrigin(0, 0).setScale(2).refreshBody();    // Suelo
 
         // Jugador
         this.player = this.physics.add.sprite(100, 450, 'dude');
         this.player.setCollideWorldBounds(true);
         this.physics.add.collider(this.player, this.platforms); // Permitimos colisiones entre grupo de plataformas y jugador
+        this.physics.add.collider(this.player, this.spikesTraps, () => this.playerDeath()); // Función que se ejecuta al colisionar con spikes
 
         // Cámara
         this.cameras.main.setBounds(0, 0, this.levelWidth, this.levelHeight);   // Límites cámara
         this.cameras.main.startFollow(this.player);
         //this.cameras.main.followOffset.set(-300, 0);
+
+        // Generamos obstáculos de testeo
+        this.generateSpikesTrap(400, 567);
 
         // Creamos los controles del teclado (no ejecutar si es en móvil)
         this.jumpButton = this.input.keyboard.addKey(controls.up);
@@ -75,6 +81,12 @@ class LevelManager extends Phaser.Scene
         this.rightButton = this.input.keyboard.addKey(controls.right);
     }
 
+    // Funciones de creación de trampas
+    generateSpikesTrap(xPos, yPos) {
+        this.spikesTraps.create(xPos, yPos, 'ground').setScale(0.5).setOrigin(0, 0).setTint(0xe62272).refreshBody();
+    }
+
+    // Funciones de control del personaje
     playerJump() {
         this.player.setVelocityY(this.jumpSpeed);
     }
@@ -92,6 +104,10 @@ class LevelManager extends Phaser.Scene
     playerStop() {
         this.player.setVelocityX(0);
         this.player.anims.stop();
+    }
+
+    playerDeath() {
+        this.add.text(400, 400, 'Moristes wey', { color: '#ff0', fontSize: '40px' });
     }
 
     update () {
