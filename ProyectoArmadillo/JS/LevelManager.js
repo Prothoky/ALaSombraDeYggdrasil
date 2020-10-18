@@ -4,16 +4,21 @@ class LevelManager extends Phaser.Scene
     {
         super({key:"LevelManager"});
 
-        // Settings
+        // SETTINGS
+        // General
         this.lengthMultiplier = 4; // Multiplicador de amaño de ancho del mapa
         this.levelHeight = gameHeight;
         this.levelWidth = gameWidth * this.lengthMultiplier;
-        this.levelGroundHeight = 568;
+        this.levelGroundHeight = 568;   // Altura del suelo
+        this.platformScaleFactor = 0.4; // Factor de escalado de las plataformas. 1 para no hacer escalado
+        // Settings personaje
         this.movementSpeed = 300;
         this.jumpSpeed = -500;
         this.jumpDuration = 400;    // Duración máxima de la anulación de gravedad del salto en ms
+        this.playerAttackWidth = 50;
+        //this.playerAttackHeight = 50;
+        // Settings enemigos
         this.enemySpeed = -200; // Velocidad de movimiento de los enemigos
-        this.platformScaleFactor = 0.4; // Factor de escalado de las plataformas. 1 para no hacer escalado
 
         // REFERENCIAS
         // Grupos
@@ -27,10 +32,12 @@ class LevelManager extends Phaser.Scene
         this.player;    // Personaje
         this.jumpTimer; // Callback para salto progresivo
 
-        // Información de la partida
+        // VARIABLES DE INFORMACIÓN
         this.isPlayerDead = false;
         this.isPlayerJumping = false;
+        this.isPlayerTouchingGround = false;
 
+        // INPUT
         // Teclas (no ejecutar si es en móvil)
         this.jumpButton;
         this.leftButton;
@@ -73,8 +80,6 @@ class LevelManager extends Phaser.Scene
 
         // Jugador
         this.player = this.physics.add.sprite(100, 450, 'dude').setOrigin(1);   // setOrigin(1) IMPORTANTE (calcular colisiones)
-        this.player.attackHitbox = this.physics.add.sprite(100, 450, 'dot').setOrigin(0, 1);    // setOrigin(0, 1) IMPORTANTE
-        this.player.attackHitbox.body.setSize(this.hitboxWidth, this.hitboxHeight);
 
         // Físicas
         this.physics.world.setBounds(0, 0, this.levelWidth, this.levelHeight);  // Tamaño del nivel
@@ -176,9 +181,10 @@ class LevelManager extends Phaser.Scene
     // Comienza el salto si está tocando el suelo y programa un timer para que no suba infinito.
     // Si termina el timer o se suelta el botón de salto se llamará a playerStopJump()
     playerStartJump() {
-        if (this.player.body.touching.down) {
+        if (this.isPlayerTouchingGround && this.player.body.velocity.y == 0) {
             this.player.setVelocityY(this.jumpSpeed);
             this.isPlayerJumping = true;
+            this.isPlayerTouchingGround = false;
             this.player.body.setAllowGravity(false);
             this.jumpTimer = this.time.addEvent( { delay: this.jumpDuration, callback: this.playerStopJump, callbackScope: this, loop: false } );
         }
@@ -194,6 +200,7 @@ class LevelManager extends Phaser.Scene
     // DEBE LLAMARSE SIEMPRE QUE TOQUE UN SUELO (ya lo hacen grupos platforms y ground)
     grounded() {
         this.isPlayerJumping = false;
+        this.isPlayerTouchingGround = true;
     }
 
     // moverse a la izquierda
