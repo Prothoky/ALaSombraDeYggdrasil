@@ -2,7 +2,7 @@
 
 
 #### Título -->   
-Aún por definir
+A la sombra de yggdrasil
 #### Género 
 Endless runner en 2D con scroll lateral 
 #### Audiencia
@@ -49,15 +49,16 @@ Por el momento estamos trabajando en el diseño del personaje. Están por defini
 
 ## Interfaz y modos de juego
 
+
 ## Flujo de juego
 
 
 ## Historia
 
-Magnus es el vikingo protagonista de esta historia. Fue bendecido con el don de la inmortalidad como regalo de los dioses para que guiara a su pueblo a un lugar próspero. El problema de este regalo es que juega como arma de doble filo, su pueblo acabó siendo arrastrado por el tiempo y el olvido. De ese legado apenas quedan unos poemas y unos cuentos de niños. Magnus ya sin familia ni destino sufre el exilio de la muerte en vida por eso, decide ir a ver a Odín a su propia casa, para reclamar su merecido sitio en el Valhalla para poder reunirse con su familia después de siglos de soliloquio. 
+Einar es el vikingo protagonista de esta historia. Fue bendecido con el don de la inmortalidad como regalo de los dioses para que guiara a su pueblo a un lugar próspero. El problema de este regalo es que juega como arma de doble filo, su pueblo acabó siendo arrastrado por el tiempo y el olvido. De ese legado apenas quedan unos poemas y unos cuentos de niños. Einar, ya sin familia ni destino sufre el exilio de la muerte en vida por eso, decide ir a ver a Odín a su propia casa, para reclamar su merecido sitio en el Valhalla para poder reunirse con su familia después de siglos de soliloquio. 
 [Podría ser odín el que le diga que alcanzará el valhalla cuando atraviese los 9 mundos]
 
-Para ello Magnus irá recorriendo los nueve mundos que sostiene Yggdrasil teniendo a Asgard como meta. Esta aventura comienza en su planeta natal Midgard.
+Para ello Einar irá recorriendo los nueve mundos que sostiene Yggdrasil teniendo a Asgard como meta. Esta aventura comienza en su planeta natal Midgard.
 
 
 ## Estilo artístico y música
@@ -65,5 +66,23 @@ Para ello Magnus irá recorriendo los nueve mundos que sostiene Yggdrasil tenien
 ## Experiencia de usuario
 
 ## Modelo de negocio
+Para sostener este proyecto a dos años vista tenemos desarrollado un sistema de lanzamiento periódico del contenido del juego, de este modo conseguiremos extender el pulso del juego y rentabilizar el trabajo con un mayor beneficio económico.
+
+[El jugador que quiera jugar a todos los mundos sin pasarse todo al 100% deberá apoquinar por cada mundo, pero se la da opción al usuario de que no tenga que pagar si este echa un determinado tiempo sacando desafíos y coleccionables, así sacamos por publicidad lo que no quiera pagar]
+
+Al constar de 9 mundos el juego, vamos a sacar el primer mundo nada más empezar y el segundo a las 2/3 semanas del lanzamiento. El resto de mundo se irán lanzando cada mes y medio, así diversificamos el contenido y damos un descanso a los jugadores para que no consuman su interés por el juego de una manera tan rápida.
+
+En nuestro juego no queremos que el jugador se vea obligado a pagar para completar el juego, pero si que este complete el 100% del juego para poder seguir desbloqueando diferentes planetas. De este modo el sistema de publicidad que incluya el juego dará un mayor beneficio a largo plazo, con el que compensaremos ese ahorro monetario por parte del jugador. 
+Para los jugadores que si quieran tener una experiencia más rápida sin tener que obtener el 100% de los desafíos, implantaremos un sistema de compra para los nuevos mundos y las diferentes skins que implementemos. En ningún momento el usuario que ingrese dinero tendrá ninguna ventaja de jugabilidad frente a los otros usuarios.
+
+[Definir cuando implementaríamos los anuncios]
+
+Por lo que a la tienda se refiere, se irá subiendo contenido con cierta frecuencia de pago como gratuito. Se implantará una moneda virtual con la que poder hacer compras de las distintas skins y objetos coleccionables. De momento no hay intención de meterle compra de habilidades, en todo caso de escudos para poder tener un pequeño sistema de vidas en la partida.
+La tienda se dividirá en tres bloques:
+- Skins para nuestro protagonista, basados en dioses y personajes mitológicos vikingos que se vayan introduciendo en la historia(Contenido Actualizable y de pago )
+
+- Collecionables 
+
+- Escudos
 
 ## Controles
