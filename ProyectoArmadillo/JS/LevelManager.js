@@ -12,6 +12,7 @@ class LevelManager extends Phaser.Scene
         this.movementSpeed = 300;
         this.jumpSpeed = -500;
         this.jumpDuration = 400;    // Duración máxima de la anulación de gravedad del salto en ms
+        this.enemySpeed = -200; // Velocidad de movimiento de los enemigos
         this.platformScaleFactor = 0.4; // Factor de escalado de las plataformas. 1 para no hacer escalado
 
         // REFERENCIAS
@@ -21,6 +22,7 @@ class LevelManager extends Phaser.Scene
         this.platforms;    // Grupos de plataformas
         this.solidPlatforms;    // Grupos de plataformas con las que se ha hecho contacto
         this.enemies;   // Grupos de enemigos
+        this.triggers;  // Grupos de triggers (colisiones que disparan eventos)
         // Otros
         this.player;    // Personaje
         this.jumpTimer; // Callback para salto progresivo
@@ -33,12 +35,14 @@ class LevelManager extends Phaser.Scene
         this.jumpButton;
         this.leftButton;
         this.rightButton;
+        this.attackButton;
     }
 
     preload () {
         // PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
         this.load.spritesheet('dude', 'ASSETS/Placeholders/dude.png', { frameWidth: 32, frameHeight: 48 });    
         this.load.image('ground', 'ASSETS/Placeholders/platform.png');
+        this.load.image('dot', 'ASSETS/Gameplay/dot.png');
         // FIN DE PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
     }
 
@@ -69,6 +73,8 @@ class LevelManager extends Phaser.Scene
 
         // Jugador
         this.player = this.physics.add.sprite(100, 450, 'dude').setOrigin(1);   // setOrigin(1) IMPORTANTE (calcular colisiones)
+        this.player.attackHitbox = this.physics.add.sprite(100, 450, 'dot').setOrigin(0, 1);    // setOrigin(0, 1) IMPORTANTE
+        this.player.attackHitbox.body.setSize(this.hitboxWidth, this.hitboxHeight);
 
         // Físicas
         this.physics.world.setBounds(0, 0, this.levelWidth, this.levelHeight);  // Tamaño del nivel
@@ -77,6 +83,7 @@ class LevelManager extends Phaser.Scene
         this.platforms = this.physics.add.staticGroup();    // Grupo de plataformas
         this.solidPlatforms = this.physics.add.staticGroup();   // Grupo de plataformas con las que se ha hecho contacto
         this.enemies = this.physics.add.group();  // Grupo de enemigos
+        this.triggers = this.physics.add.staticGroup();   // Grupo de triggers
         this.generateGround(200, 'ground'); // Genera suelo para todo el nivel
         this.player.setCollideWorldBounds(true);    // No puede salir de los límites del mapa
         this.physics.add.collider(this.player, this.ground, this.grounded, null, this); // Permitimos colisiones entre grupo de plataformas y jugador
@@ -86,6 +93,7 @@ class LevelManager extends Phaser.Scene
         this.physics.add.overlap(this.player, this.enemies, () => this.playerDeath()); // Llama a playerDeath si colisiona con enemigo
         this.physics.add.collider(this.enemies, this.platforms);    // Enemigos colisionan con el suelo
         this.physics.add.collider(this.enemies, this.ground);   // Enemigos colisionan con plataformas
+        this.physics.add.overlap(this.player, this.triggers, this.enemyStartMotion, null, this);    // Función que se llama al entrar el jugador en el área de visión del enemigo
 
         // Cámara
         this.cameras.main.setBounds(0, 0, this.levelWidth, this.levelHeight);   // Límites cámara
@@ -96,18 +104,22 @@ class LevelManager extends Phaser.Scene
         // Generamos plataforma de testeo
         this.generatePlatform(390, 480);
         // Generamos enemigo de testeo
-        this.generateEnemy(900, 500, 40, 60);
+        this.generateStillEnemy(900, 500, 40, 60);
+        // Generamos enemogio con movimiento de testeo
+        this.generateMovingEnemy(1000, 500, 40, 60);
 
         // Creamos los controles del teclado (no ejecutar si es en móvil)
         this.jumpButton = this.input.keyboard.addKey(controls.up);
         this.leftButton = this.input.keyboard.addKey(controls.left);
         this.rightButton = this.input.keyboard.addKey(controls.right);
+        this.attackButton = this.input.keyboard.addKey(controls.attack);
 
         // Asignamos eventos a los botones (independiente del controlador)
         this.jumpButton.on('down', this.playerStartJump, this);
         this.jumpButton.on('up', this.playerStopJump, this);
         this.leftButton.on('down', this.playerLeft, this);
         this.rightButton.on('down', this.playerRight, this);
+        this.attackButton.on('down', this.playerAttack, this);
     }
 
     // Genera suelo para todo el nivel
@@ -120,11 +132,29 @@ class LevelManager extends Phaser.Scene
         }
     }
 
-    // Función de creación de enemigos
-    generateEnemy(xPos, yPos, collisionWidth, collisionHeight) {
-        console.log("hola");
+    // Función de creación de enemigos sin movimiento
+    // xPos, yPos: posición en el mapa
+    // collisionWidth, collisionHeight: tamaño de la hitbox
+    generateStillEnemy(xPos, yPos, collisionWidth, collisionHeight) {
         let newEnemy = this.enemies.create(xPos, yPos, 'dude').setOrigin(1).setTint(0xe62272).refreshBody();
         newEnemy.body.setSize(collisionWidth, collisionHeight);
+    }
+
+    // Función de creación de enemigos con movimiento al acercarse el jugador
+    // xPos, yPos: posición en el mapa
+    // collisionWidth, collisionHeight: tamaño de la hitbox
+    // triggerWidth, triggerHeight: tamaño del trigger de movimiento. Si no se pasa toma valor por defecto
+    generateMovingEnemy(xPos, yPos, collisionWidth, collisionHeight, triggerWidth = 500, triggerHeight = 500) {
+        let newEnemy = this.enemies.create(xPos, yPos, 'dude').setOrigin(1).setTint(0xe62272).refreshBody();
+        newEnemy.body.setSize(collisionWidth, collisionHeight);
+        let newTrigger = this.triggers.create(xPos, yPos, 'dot').setVisible(false).refreshBody();
+        newTrigger.body.setSize(triggerWidth, triggerHeight);
+        newTrigger.associatedEnemy = newEnemy;
+    }
+
+    // Función que ordena al enemigo moverse cuando se encuentra con el jugador
+    enemyStartMotion(player, triggers) {
+        triggers.associatedEnemy.setVelocityX(this.enemySpeed);
     }
 
     // Funcion de creación de plataformas
@@ -182,6 +212,11 @@ class LevelManager extends Phaser.Scene
     playerStop() {
         this.player.setVelocityX(0);
         this.player.anims.stop();
+    }
+
+    // atacar
+    playerAttack() {
+        
     }
 
     // Comprueba si se ha colisionado con la plataforma por arriba (y se convierte en sólida)
