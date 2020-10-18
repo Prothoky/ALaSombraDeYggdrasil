@@ -14,11 +14,14 @@ class LevelManager extends Phaser.Scene
         this.jumpDuration = 400;    // Duración máxima de la anulación de gravedad del salto en ms
         this.platformScaleFactor = 0.4; // Factor de escalado de las plataformas. 1 para no hacer escalado
 
-        // Referencias
+        // REFERENCIAS
+        // Grupos
         this.ground; // Grupo de plataformas colisionables
         this.spikesTraps;   // Grupos de trampas
         this.platforms;    // Grupos de plataformas
         this.solidPlatforms;    // Grupos de plataformas con las que se ha hecho contacto
+        this.enemies;   // Grupos de enemigos
+        // Otros
         this.player;    // Personaje
         this.jumpTimer; // Callback para salto progresivo
 
@@ -64,21 +67,25 @@ class LevelManager extends Phaser.Scene
         });
         // FIN DE PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
 
+        // Jugador
+        this.player = this.physics.add.sprite(100, 450, 'dude').setOrigin(1);   // setOrigin(1) IMPORTANTE (calcular colisiones)
+
         // Físicas
         this.physics.world.setBounds(0, 0, this.levelWidth, this.levelHeight);  // Tamaño del nivel
         this.ground = this.physics.add.staticGroup();    // Grupo de plataformas colisionables
         this.spikesTraps = this.physics.add.staticGroup();  // Grupo de trampas de pinchos
         this.platforms = this.physics.add.staticGroup();    // Grupo de plataformas
         this.solidPlatforms = this.physics.add.staticGroup();   // Grupo de plataformas con las que se ha hecho contacto
+        this.enemies = this.physics.add.group();  // Grupo de enemigos
         this.generateGround(200, 'ground'); // Genera suelo para todo el nivel
-
-        // Jugador
-        this.player = this.physics.add.sprite(100, 450, 'dude').setOrigin(1);   // setOrigin(1) IMPORTANTE (calcular colisiones)
         this.player.setCollideWorldBounds(true);    // No puede salir de los límites del mapa
         this.physics.add.collider(this.player, this.ground, this.grounded, null, this); // Permitimos colisiones entre grupo de plataformas y jugador
         this.physics.add.collider(this.player, this.spikesTraps, () => this.playerDeath()); // Función que se ejecuta al colisionar con spikes
         this.physics.add.overlap(this.player, this.platforms, this.platformOverlap, null, this);    // Función que calcula si ha chocado desde arriba o desde abajo
         this.physics.add.collider(this.player, this.solidPlatforms, this.grounded, null, this);    // Una vez colisionado la plataforma desde arriba, volverla sólida
+        this.physics.add.overlap(this.player, this.enemies, () => this.playerDeath()); // Llama a playerDeath si colisiona con enemigo
+        this.physics.add.collider(this.enemies, this.platforms);    // Enemigos colisionan con el suelo
+        this.physics.add.collider(this.enemies, this.ground);   // Enemigos colisionan con plataformas
 
         // Cámara
         this.cameras.main.setBounds(0, 0, this.levelWidth, this.levelHeight);   // Límites cámara
@@ -88,6 +95,8 @@ class LevelManager extends Phaser.Scene
         this.generateSpikesTrap(400, 567);
         // Generamos plataforma de testeo
         this.generatePlatform(390, 480);
+        // Generamos enemigo de testeo
+        this.generateEnemy(900, 500, 40, 60);
 
         // Creamos los controles del teclado (no ejecutar si es en móvil)
         this.jumpButton = this.input.keyboard.addKey(controls.up);
@@ -109,6 +118,13 @@ class LevelManager extends Phaser.Scene
             this.ground.create(i, this.levelGroundHeight, spriteName).setOrigin(0, 0).refreshBody();
             //this.ground.create(i, this.levelGroundHeight, spriteName).setOrigin(0, 0).setVisible(false).refreshBody();
         }
+    }
+
+    // Función de creación de enemigos
+    generateEnemy(xPos, yPos, collisionWidth, collisionHeight) {
+        console.log("hola");
+        let newEnemy = this.enemies.create(xPos, yPos, 'dude').setOrigin(1).setTint(0xe62272).refreshBody();
+        newEnemy.body.setSize(collisionWidth, collisionHeight);
     }
 
     // Funcion de creación de plataformas
