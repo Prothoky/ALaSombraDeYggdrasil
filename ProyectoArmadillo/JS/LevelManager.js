@@ -127,56 +127,9 @@ class LevelManager extends Phaser.Scene
         this.attackButton.on('down', this.playerAttack, this);
     }
 
-    // Genera suelo para todo el nivel
-    // cambiar a la línea comentada para hacerlo invisible
-    generateGround(spriteWidth, spriteName) {
-        let i = 0;
-        for(i = 0; i < this.levelWidth; i += spriteWidth) {
-            this.ground.create(i, this.levelGroundHeight, spriteName).setOrigin(0, 0).refreshBody();
-            //this.ground.create(i, this.levelGroundHeight, spriteName).setOrigin(0, 0).setVisible(false).refreshBody();
-        }
-    }
 
-    // Función de creación de enemigos sin movimiento
-    // xPos, yPos: posición en el mapa
-    // collisionWidth, collisionHeight: tamaño de la hitbox
-    generateStillEnemy(xPos, yPos, collisionWidth, collisionHeight) {
-        let newEnemy = this.enemies.create(xPos, yPos, 'dude').setOrigin(1).setTint(0xe62272).refreshBody();
-        newEnemy.body.setSize(collisionWidth, collisionHeight);
-    }
+    // FUNCIONES DE CONTROL DEL PERSONAJE -------------------------------
 
-    // Función de creación de enemigos con movimiento al acercarse el jugador
-    // xPos, yPos: posición en el mapa
-    // collisionWidth, collisionHeight: tamaño de la hitbox
-    // triggerWidth, triggerHeight: tamaño del trigger de movimiento. Si no se pasa toma valor por defecto
-    generateMovingEnemy(xPos, yPos, collisionWidth, collisionHeight, triggerWidth = 500, triggerHeight = 500) {
-        let newEnemy = this.enemies.create(xPos, yPos, 'dude').setOrigin(1).setTint(0xe62272).refreshBody();
-        newEnemy.body.setSize(collisionWidth, collisionHeight);
-        let newTrigger = this.triggers.create(xPos, yPos, 'dot').setVisible(false).refreshBody();
-        newTrigger.body.setSize(triggerWidth, triggerHeight);
-        newTrigger.associatedEnemy = newEnemy;
-    }
-
-    // Función que ordena al enemigo moverse cuando se encuentra con el jugador
-    enemyStartMotion(player, triggers) {
-        triggers.associatedEnemy.setVelocityX(this.enemySpeed);
-    }
-
-    // Funcion de creación de plataformas
-    // xPos, yPos = posiciones x e y. Origen del sprite en el límite inferior derecho.
-    // Únicamente cambiar el sprite y el valor de setScale()
-    generatePlatform(xPos, yPos) {
-        this.platforms.create(xPos, yPos, 'ground').setScale(this.platformScaleFactor).setOrigin(0, 0).setTint(0x00ff38).refreshBody();
-    }
-
-    // Funciones de creación de trampa de pinchos
-    // xPos, yPos = posiciones x e y. Origen del sprite en el límite inferior derecho.
-    // Únicamente cambiar el sprite y el valor de setScale()
-    generateSpikesTrap(xPos, yPos) {
-        this.spikesTraps.create(xPos, yPos, 'ground').setScale(0.5).setOrigin(0, 0).setTint(0xe62272).refreshBody();
-    }
-
-    // Funciones de control del personaje
     // Salto
     // Comienza el salto si está tocando el suelo y programa un timer para que no suba infinito.
     // Si termina el timer o se suelta el botón de salto se llamará a playerStopJump()
@@ -226,6 +179,49 @@ class LevelManager extends Phaser.Scene
         
     }
 
+    // Pinta un texto de muerte
+    playerDeath() {
+        if (this.isPlayerDead == false) {
+            this.add.text(400, 400, 'Moristes wey', { color: '#ff0', fontSize: '40px' });    
+            this.isPlayerDead = true;
+        }        
+    }
+    // FIN DE FUNCIONES DE CONTROL DEL PERSONAJE ------------------------
+
+
+    // FUNCIONES DE GENERACIÓN DE ENEMIGOS/OBSTÁCULOS -------------------    
+    // Función de creación de enemigos sin movimiento
+    // xPos, yPos: posición en el mapa
+    // collisionWidth, collisionHeight: tamaño de la hitbox
+    generateStillEnemy(xPos, yPos, collisionWidth, collisionHeight) {
+        let newEnemy = this.enemies.create(xPos, yPos, 'dude').setOrigin(1).setTint(0xe62272).refreshBody();
+        newEnemy.body.setSize(collisionWidth, collisionHeight);
+    }
+
+    // Función de creación de enemigos con movimiento al acercarse el jugador
+    // xPos, yPos: posición en el mapa
+    // collisionWidth, collisionHeight: tamaño de la hitbox
+    // triggerWidth, triggerHeight: tamaño del trigger de movimiento. Si no se pasa toma valor por defecto
+    generateMovingEnemy(xPos, yPos, collisionWidth, collisionHeight, triggerWidth = 500, triggerHeight = 500) {
+        let newEnemy = this.enemies.create(xPos, yPos, 'dude').setOrigin(1).setTint(0xe62272).refreshBody();
+        newEnemy.body.setSize(collisionWidth, collisionHeight);
+        let newTrigger = this.triggers.create(xPos, yPos, 'dot').setVisible(false).refreshBody();
+        newTrigger.body.setSize(triggerWidth, triggerHeight);
+        newTrigger.associatedEnemy = newEnemy;
+    }
+
+    // Función que ordena al enemigo moverse cuando se encuentra con el jugador
+    enemyStartMotion(player, triggers) {
+        triggers.associatedEnemy.setVelocityX(this.enemySpeed);
+    }
+
+    // Funcion de creación de plataformas
+    // xPos, yPos = posiciones x e y. Origen del sprite en el límite inferior derecho.
+    // Únicamente cambiar el sprite y el valor de setScale()
+    generatePlatform(xPos, yPos) {
+        this.platforms.create(xPos, yPos, 'ground').setScale(this.platformScaleFactor).setOrigin(0, 0).setTint(0x00ff38).refreshBody();
+    }
+
     // Comprueba si se ha colisionado con la plataforma por arriba (y se convierte en sólida)
     // o por abajo (y permite pasar).
     platformOverlap(player, platforms) {
@@ -234,13 +230,27 @@ class LevelManager extends Phaser.Scene
         }
     }
 
-    // Pinta un texto de muerte
-    playerDeath() {
-        if (this.isPlayerDead == false) {
-            this.add.text(400, 400, 'Moristes wey', { color: '#ff0', fontSize: '40px' });    
-            this.isPlayerDead = true;
-        }        
+    // Funciones de creación de trampa de pinchos
+    // xPos, yPos = posiciones x e y. Origen del sprite en el límite inferior derecho.
+    // Únicamente cambiar el sprite y el valor de setScale()
+    generateSpikesTrap(xPos, yPos) {
+        this.spikesTraps.create(xPos, yPos, 'ground').setScale(0.5).setOrigin(0, 0).setTint(0xe62272).refreshBody();
     }
+    // FIN DE FUNCIONES DE GENERACIÓN DE ENEMIGOS/OBSTÁCULOS ------------
+
+
+    // OTRAS FUNCIONES --------------------------------------------------
+    // Genera suelo para todo el nivel
+    // cambiar a la línea comentada para hacerlo invisible
+    generateGround(spriteWidth, spriteName) {
+        let i = 0;
+        for(i = 0; i < this.levelWidth; i += spriteWidth) {
+            this.ground.create(i, this.levelGroundHeight, spriteName).setOrigin(0, 0).refreshBody();
+            //this.ground.create(i, this.levelGroundHeight, spriteName).setOrigin(0, 0).setVisible(false).refreshBody();
+        }
+    }
+    // FIN DE OTRAS FUNCIONES -------------------------------------------
+
 
     update () {
         // Fix para controles de movimiento izq. der. (eliminar cuando sea endless runner)
