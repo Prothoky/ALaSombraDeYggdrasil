@@ -9,7 +9,8 @@ class LevelManager extends Phaser.Scene
         this.levelHeight = gameHeight;
         this.levelWidth = gameWidth * this.lengthMultiplier;
         this.movementSpeed = 300;
-        this.jumpSpeed = -700;
+        this.jumpSpeed = -500;
+        this.jumpDuration = 400;    // Duración máxima de la anulación de gravedad del salto en ms
         this.platformScaleFactor = 0.4; // Factor de escalado de las plataformas. 1 para no hacer escalado
 
         // Referencias
@@ -18,9 +19,11 @@ class LevelManager extends Phaser.Scene
         this.platforms;    // Grupos de plataformas
         this.solidPlatforms;    // Grupos de plataformas con las que se ha hecho contacto
         this.player;    // Personaje
+        this.jumpTimer; // Callback para salto progresivo
 
         // Información de la partida
         this.isPlayerDead = false;
+        this.isPlayerJumping = false;
 
         // Teclas (no ejecutar si es en móvil)
         this.jumpButton;
@@ -72,10 +75,10 @@ class LevelManager extends Phaser.Scene
         // Jugador
         this.player = this.physics.add.sprite(100, 450, 'dude').setOrigin(1);   // setOrigin(1) IMPORTANTE (calcular colisiones)
         this.player.setCollideWorldBounds(true);    // No puede salir de los límites del mapa
-        this.physics.add.collider(this.player, this.ground); // Permitimos colisiones entre grupo de plataformas y jugador
+        this.physics.add.collider(this.player, this.ground, this.grounded, null, this); // Permitimos colisiones entre grupo de plataformas y jugador
         this.physics.add.collider(this.player, this.spikesTraps, () => this.playerDeath()); // Función que se ejecuta al colisionar con spikes
         this.physics.add.overlap(this.player, this.platforms, this.platformOverlap, null, this);    // Función que calcula si ha chocado desde arriba o desde abajo
-        this.physics.add.collider(this.player, this.solidPlatforms);    // Una vez colisionado la plataforma desde arriba, volverla sólida
+        this.physics.add.collider(this.player, this.solidPlatforms, this.grounded, null, this);    // Una vez colisionado la plataforma desde arriba, volverla sólida
 
         // Cámara
         this.cameras.main.setBounds(0, 0, this.levelWidth, this.levelHeight);   // Límites cámara
@@ -90,6 +93,12 @@ class LevelManager extends Phaser.Scene
         this.jumpButton = this.input.keyboard.addKey(controls.up);
         this.leftButton = this.input.keyboard.addKey(controls.left);
         this.rightButton = this.input.keyboard.addKey(controls.right);
+
+        // Asignamos eventos a los botones (independiente del controlador)
+        this.jumpButton.on('down', this.playerStartJump, this);
+        this.jumpButton.on('up', this.playerStopJump, this);
+        this.leftButton.on('down', this.playerLeft, this);
+        this.rightButton.on('down', this.playerRight, this);
     }
 
     // Funcion de creación de plataformas
@@ -107,9 +116,28 @@ class LevelManager extends Phaser.Scene
     }
 
     // Funciones de control del personaje
-    // salto
-    playerJump() {
-        this.player.setVelocityY(this.jumpSpeed);
+    // Salto
+    // Comienza el salto si está tocando el suelo y programa un timer para que no suba infinito.
+    // Si termina el timer o se suelta el botón de salto se llamará a playerStopJump()
+    playerStartJump() {
+        if (this.player.body.touching.down) {
+            this.player.setVelocityY(this.jumpSpeed);
+            this.isPlayerJumping = true;
+            this.player.body.setAllowGravity(false);
+            this.jumpTimer = this.time.addEvent( { delay: this.jumpDuration, callback: this.playerStopJump, callbackScope: this, loop: false } );
+        }
+    }
+
+    // Detiene la subida del salto y elimina el timer
+    playerStopJump() {
+        this.player.body.setAllowGravity(true);
+        this.jumpTimer.remove();
+    }
+
+    // Cambia la variable que almacena si el personaje está saltando.
+    // DEBE LLAMARSE SIEMPRE QUE TOQUE UN SUELO (ya lo hacen grupos platforms y ground)
+    grounded() {
+        this.isPlayerJumping = false;
     }
 
     // moverse a la izquierda
@@ -147,20 +175,10 @@ class LevelManager extends Phaser.Scene
     }
 
     update () {
-        // Controlador de teclado (no ejecutar si es móvil)
-        if (this.jumpButton.isDown && this.player.body.touching.down) {
-            this.playerJump();
-        }
-        if (this.leftButton.isDown && this.rightButton.isUp) {
-            this.playerLeft();
-        }
-        else if (this.rightButton.isDown && this.leftButton.isUp) {
-            this.playerRight();
-        }
-        else {
+        // Fix para controles de movimiento izq. der. (eliminar cuando sea endless runner)
+        if (this.rightButton.isUp && this.leftButton.isUp) {
             this.playerStop();
-        }
-        
+        }        
     }
 
 }
