@@ -8,6 +8,7 @@ class LevelManager extends Phaser.Scene
         this.lengthMultiplier = 4; // Multiplicador de amaño de ancho del mapa
         this.levelHeight = gameHeight;
         this.levelWidth = gameWidth * this.lengthMultiplier;
+        this.levelGroundHeight = 568;
         this.movementSpeed = 300;
         this.jumpSpeed = -500;
         this.jumpDuration = 400;    // Duración máxima de la anulación de gravedad del salto en ms
@@ -69,8 +70,7 @@ class LevelManager extends Phaser.Scene
         this.spikesTraps = this.physics.add.staticGroup();  // Grupo de trampas de pinchos
         this.platforms = this.physics.add.staticGroup();    // Grupo de plataformas
         this.solidPlatforms = this.physics.add.staticGroup();   // Grupo de plataformas con las que se ha hecho contacto
-        this.ground.create(0, 568, 'ground').setOrigin(0, 0).setScale(2).refreshBody();    // Suelo
-        this.ground.create(400, 568, 'ground').setOrigin(0, 0).setScale(2).refreshBody();    // Suelo
+        this.generateGround(200, 'ground'); // Genera suelo para todo el nivel
 
         // Jugador
         this.player = this.physics.add.sprite(100, 450, 'dude').setOrigin(1);   // setOrigin(1) IMPORTANTE (calcular colisiones)
@@ -99,6 +99,16 @@ class LevelManager extends Phaser.Scene
         this.jumpButton.on('up', this.playerStopJump, this);
         this.leftButton.on('down', this.playerLeft, this);
         this.rightButton.on('down', this.playerRight, this);
+    }
+
+    // Genera suelo para todo el nivel
+    // cambiar a la línea comentada para hacerlo invisible
+    generateGround(spriteWidth, spriteName) {
+        let i = 0;
+        for(i = 0; i < this.levelWidth; i += spriteWidth) {
+            this.ground.create(i, this.levelGroundHeight, spriteName).setOrigin(0, 0).refreshBody();
+            //this.ground.create(i, this.levelGroundHeight, spriteName).setOrigin(0, 0).setVisible(false).refreshBody();
+        }
     }
 
     // Funcion de creación de plataformas
