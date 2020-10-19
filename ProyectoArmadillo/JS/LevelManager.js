@@ -15,8 +15,12 @@ class LevelManager extends Phaser.Scene
         this.movementSpeed = 300;
         this.jumpSpeed = -500;
         this.jumpDuration = 400;    // Duración máxima de la anulación de gravedad del salto en ms
-        this.playerAttackWidth = 50;
-        //this.playerAttackHeight = 50;
+        this.playerAttackDuration = 1000;   // ´Duración del ataque
+        this.playerAttackRefreshRate = 35;  // Tasa de refresco de posición de la hitbox del ataque
+        this.playerAttackCounter = 0;   // Contador de tiempo del ataque
+        this.playerAttackCooldown = 1000;   // Cooldown del ataque
+        this.playerAttackWidth = 50;    // Ancho de hitbox del ataque
+        this.playerAttackHeight = 50;   // Alto de hitbox del ataque
         // Settings enemigos
         this.enemySpeed = -200; // Velocidad de movimiento de los enemigos
 
@@ -31,11 +35,14 @@ class LevelManager extends Phaser.Scene
         // Otros
         this.player;    // Personaje
         this.jumpTimer; // Callback para salto progresivo
+        this.playerAttackTimer;   // Temporizador de fin de ataque
+        this.attackHitbox;  // Hitbox del ataque
 
         // VARIABLES DE INFORMACIÓN
         this.isPlayerDead = false;
         this.isPlayerJumping = false;
         this.isPlayerTouchingGround = false;
+        this.playerAttackAvaliable = true;
 
         // INPUT
         // Teclas (no ejecutar si es en móvil)
@@ -183,34 +190,6 @@ class LevelManager extends Phaser.Scene
         */
     }
 
-    // Funcion de creación de plataformas
-    // xPos, yPos = posiciones x e y. Origen del sprite en el límite inferior derecho.
-    // Únicamente cambiar el sprite y el valor de setScale()
-    generatePlatform(xPos, yPos) {
-        this.platforms.create(xPos, yPos, 'ground').setScale(this.platformScaleFactor).setOrigin(0, 0).setTint(0x00ff38).refreshBody();
-    }
-
-    // Funciones de creación de trampa de pinchos
-    // xPos, yPos = posiciones x e y. Origen del sprite en el límite inferior derecho.
-    // Únicamente cambiar el sprite y el valor de setScale()
-    generateSpikesTrap(xPos, yPos) {
-        this.spikesTraps.create(xPos, yPos, 'ground').setScale(0.5).setOrigin(0, 0).setTint(0xe62272).refreshBody();
-    }
-
-    // Funciones de control del personaje
-    // Salto
-    // Comienza el salto si está tocando el suelo y programa un timer para que no suba infinito.
-    // Si termina el timer o se suelta el botón de salto se llamará a playerStopJump()
-    playerStartJump() {
-        if (this.player.body.touching.down) {
-            this.player.setVelocityY(this.jumpSpeed);
-            this.isPlayerJumping = true;
-            this.player.body.setAllowGravity(false);
-            this.jumpTimer = this.time.addEvent( { delay: this.jumpDuration, callback: this.playerStopJump, callbackScope: this, loop: false } );
-        }
-    }
-
-
     // FUNCIONES DE CONTROL DEL PERSONAJE -------------------------------
 
     // Salto
@@ -259,8 +238,35 @@ class LevelManager extends Phaser.Scene
     }
 
     // atacar
+    // Crea una hitbox de ataque (si está disponible el ataque) y crea los timers para su actualizado)
     playerAttack() {
-        
+        if (this.playerAttackAvaliable == true) {   // Si está disponible el ataque
+            this.playerAttackAvaliable = false;
+            // Crea la hitbox
+            this.attackHitbox = this.physics.add.sprite(this.player.x, this.player.y - this.player.height, 'dot');
+            this.attackHitbox.setOrigin(0);
+            this.attackHitbox.setSize(this.playerAttackWidth, this.playerAttackHeight, false);
+            this.attackHitbox.body.setAllowGravity(false);
+            this.attackHitbox.setVisible(false);
+            this.attackHitbox.refreshBody();
+            // Crea el timer de actualziación
+            this.playerAttackTimer = this.time.addEvent( { delay: this.playerAttackRefreshRate, callback: this.playerAttackRefresh, callbackScope: this, loop: true } );
+        }        
+    }
+
+    // Función de actualizado del ataque.
+    // A cada this.playerAttackRefreshRate actualiza la posición de la hitbox (ajustándola al personaje) y lo destruye pasado el tiempo this.playerAttackDuration
+    playerAttackRefresh() {
+        this.playerAttackCounter += this.playerAttackRefreshRate;
+        if (this.playerAttackCounter > this.playerAttackDuration) { // Si ha pasado el tiempo máximo destruye el ataque y crea timer para el cooldown.
+            this.attackHitbox.destroy();
+            this.playerAttackCounter = 0;
+            this.playerAttackTimer.remove();
+            this.playerAttackCooldownTimer = this.time.addEvent( { delay: this.playerAttackCooldown, callback: function () { this.playerAttackAvaliable = true }, callbackScope: this, loop: false } );
+        } else {    // Actualiza la posición de la hitbox
+            this.attackHitbox.x = this.player.x;
+            this.attackHitbox.y = this.player.y - this.player.height;
+        }
     }
 
     // Pinta un texto de muerte
@@ -301,24 +307,11 @@ class LevelManager extends Phaser.Scene
         newTrigger.associatedEnemy = newEnemy;
     }
 
-    // Función que ordena al enemigo moverse cuando se encuentra con el jugador
-    enemyStartMotion(player, triggers) {
-        triggers.associatedEnemy.setVelocityX(this.enemySpeed);
-    }
-
     // Funcion de creación de plataformas
     // xPos, yPos = posiciones x e y. Origen del sprite en el límite inferior derecho.
     // Únicamente cambiar el sprite y el valor de setScale()
     generatePlatform(xPos, yPos) {
         this.platforms.create(xPos, yPos, 'ground').setScale(this.platformScaleFactor).setOrigin(0, 0).setTint(0x00ff38).refreshBody();
-    }
-
-    // Comprueba si se ha colisionado con la plataforma por arriba (y se convierte en sólida)
-    // o por abajo (y permite pasar).
-    platformOverlap(player, platforms) {
-        if (player.y < platforms.y) {
-            this.solidPlatforms.create(platforms.x, platforms.y, 'ground').setScale(this.platformScaleFactor).setOrigin(0, 0).setTint(0x00ff38).refreshBody();
-        }
     }
 
     // Funciones de creación de trampa de pinchos
@@ -338,6 +331,19 @@ class LevelManager extends Phaser.Scene
         for(i = 0; i < this.levelWidth; i += spriteWidth) {
             this.ground.create(i, this.levelGroundHeight, spriteName).setOrigin(0, 0).refreshBody();
             //this.ground.create(i, this.levelGroundHeight, spriteName).setOrigin(0, 0).setVisible(false).refreshBody();
+        }
+    }
+
+    // Función que ordena al enemigo moverse cuando se encuentra con el jugador
+    enemyStartMotion(player, triggers) {
+        triggers.associatedEnemy.setVelocityX(this.enemySpeed);
+    }
+
+    // Comprueba si se ha colisionado con la plataforma por arriba (y se convierte en sólida)
+    // o por abajo (y permite pasar).
+    platformOverlap(player, platforms) {
+        if (player.y < platforms.y) {
+            this.solidPlatforms.create(platforms.x, platforms.y, 'ground').setScale(this.platformScaleFactor).setOrigin(0, 0).setTint(0x00ff38).refreshBody();
         }
     }
     // FIN DE OTRAS FUNCIONES -------------------------------------------

@@ -8,7 +8,7 @@ window.onload = function(){
       default: 'arcade',
       arcade: {
          debug: true,
-        gravity: { y: 2000 }
+         gravity: { y: 2000 }
       }
     },
     scale:{
@@ -35,6 +35,7 @@ var controls = {  // Controles del jugador (teclado)
   up: Phaser.Input.Keyboard.KeyCodes.SPACE,
   left: Phaser.Input.Keyboard.KeyCodes.LEFT,
   right: Phaser.Input.Keyboard.KeyCodes.RIGHT,
+  attack: Phaser.Input.Keyboard.KeyCodes.CTRL,
 };
 
 var user = { //Mapas desbloqueados y dinero del jugador
