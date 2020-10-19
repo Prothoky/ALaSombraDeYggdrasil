@@ -168,6 +168,9 @@ class LevelManager extends Phaser.Scene
 
     // Pinta un texto de muerte
     playerDeath() {
+        this.user = user
+        this.user += { nodo = 1 }
+        localStorage.setItem("Usuario", this.user)
         if (this.isPlayerDead == false) {
             this.add.text(400, 400, 'Moristes wey', { color: '#ff0', fontSize: '40px' });    
             this.isPlayerDead = true;
