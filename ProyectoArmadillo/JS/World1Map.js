@@ -16,8 +16,6 @@ class World1Map extends Phaser.Scene{
     //background.setScale(2/3)
     background.setPosition(wid/2, heig/2);
 
-/*
-//PRUEBAS BOTON PAUSE
     //BOTON Nivel 1
     this.ButtonNode1 = this.add.image(wid*14/16, heig*14/16, 'ButtonNode1');
     this.ButtonNode1.setScale(1.5/3);
@@ -28,11 +26,5 @@ class World1Map extends Phaser.Scene{
   GoWorld1_1(){
     this.scene.pause('World1Map');
     this.scene.start('MapOne');
-*/
-    // (TESTEO) botón de iniciar partida
-    this.botonJugar = this.add.image(wid*8.44/16, heig*14.05/16, 'World1Button');
-    this.botonJugar.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => this.scene.start('LevelManager'));
-
   }
 }
