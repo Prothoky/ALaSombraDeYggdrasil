@@ -7,8 +7,7 @@ window.onload = function(){
     physics: {
       default: 'arcade',
       arcade: {
-        gravity: { y: 2000 },
-        debug: true
+        gravity: { y: 2000 }
       }
     },
     scale:{
@@ -33,7 +32,6 @@ var controls = {  // Controles del jugador (teclado)
   up: Phaser.Input.Keyboard.KeyCodes.SPACE,
   left: Phaser.Input.Keyboard.KeyCodes.LEFT,
   right: Phaser.Input.Keyboard.KeyCodes.RIGHT,
-  attack: Phaser.Input.Keyboard.KeyCodes.CTRL,
 };
 
 // Tamaño pantalla
