@@ -120,6 +120,7 @@ class LevelManager extends Phaser.Scene
         if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
             console.log('Esto es un dispositivo móvil');
         }
+        
         //Para movil:
         this.input.addPointer(2);
         
@@ -174,6 +175,12 @@ class LevelManager extends Phaser.Scene
         this.rightButton.on('down', this.playerRight, this);
         this.rightButton.on('up',  this.playerStop,this);
 
+        //Fondo dinámico (Parallax Scrolling)
+        /*
+        this.bg_1 = this.add.tileSprite(0,0,game.config.width, game.config.height, "bg_1");
+        this.bg_1.setOrigin(0,0);
+        this.bg_1.setScrollFactor(0);
+        */
     }
 
     // Funcion de creación de plataformas
@@ -337,6 +344,7 @@ class LevelManager extends Phaser.Scene
     
 
     update () {
-        
+        //Fondo dinámico
+        //this.bg_1.tilePositionX = this.myCam.scrollX * .3;
     }
 }
