@@ -35,7 +35,9 @@ var controls = {  // Controles del jugador (teclado)
   left: Phaser.Input.Keyboard.KeyCodes.LEFT,
   right: Phaser.Input.Keyboard.KeyCodes.RIGHT,
 };
+var user = { //Variables a guardar en "caché"?
 
+};
 // Tamaño pantalla
 var gameWidth = 1270;
 var gameHeight = 610;
