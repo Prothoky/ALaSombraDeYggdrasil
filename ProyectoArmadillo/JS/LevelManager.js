@@ -57,6 +57,7 @@ class LevelManager extends Phaser.Scene
         this.load.spritesheet('dude', 'ASSETS/Placeholders/dude.png', { frameWidth: 32, frameHeight: 48 });
         this.load.image('ground', 'ASSETS/Placeholders/platform.png');
         this.load.image('dot', 'ASSETS/Gameplay/dot.png');
+        this.load.image('bomb', 'ASSETS/Placeholders/bomb.png');
         // FIN DE PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
     }
 
@@ -245,11 +246,11 @@ class LevelManager extends Phaser.Scene
         if (this.playerAttackAvaliable == true) {   // Si está disponible el ataque
             this.playerAttackAvaliable = false;
             // Crea la hitbox
-            let localAttackHitbox = this.attackHitbox.create(this.player.x, this.player.y - this.player.height, 'dot');
+            let localAttackHitbox = this.attackHitbox.create(this.player.x, this.player.y - this.player.height, 'bomb');    // Cambiar sprite por 'dot' al importar animacion definitiva
             localAttackHitbox.setOrigin(0);
             localAttackHitbox.setSize(this.playerAttackWidth, this.playerAttackHeight, false);
             localAttackHitbox.body.setAllowGravity(false);
-            localAttackHitbox.setVisible(false);
+            //localAttackHitbox.setVisible(false);  // Volver invisible al importar animacion definitiva
             localAttackHitbox.refreshBody();
             // Crea el timer de actualziación
             this.playerAttackTimer = this.time.addEvent( { delay: this.playerAttackRefreshRate, callback: this.playerAttackRefresh, callbackScope: this, loop: true } );
