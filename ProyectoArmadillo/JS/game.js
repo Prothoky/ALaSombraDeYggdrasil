@@ -15,7 +15,7 @@ window.onload = function(){
     //title:"Proyecto Armadillo",
     //URL del JUEGO
     //utl: "http://proyectoArmadillo.es",
-    scene: [InitMenu, MainMenu, MapSelectionMenu, OptionsMenu, PauseMenu, CreditsMenu, World1Map]
+    scene: [InitMenu, MainMenu, MapSelectionMenu, OptionsMenu, PauseMenu, CreditsMenu, World1Map, MapOne]
   }
 
   var game = new Phaser.Game(config);
