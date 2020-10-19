@@ -35,6 +35,7 @@ var controls = {  // Controles del jugador (teclado)
   left: Phaser.Input.Keyboard.KeyCodes.LEFT,
   right: Phaser.Input.Keyboard.KeyCodes.RIGHT,
 };
+
 var user = localStorage.getItem("Usuario"); //Variables a guardar en local
 
 // Tamaño pantalla

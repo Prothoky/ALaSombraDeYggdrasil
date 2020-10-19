@@ -33,7 +33,7 @@ class LevelManager extends Phaser.Scene
 
     preload () {
         // PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
-        this.load.spritesheet('dude', 'ASSETS/Placeholders/dude.png', { frameWidth: 32, frameHeight: 48 });    
+        this.load.spritesheet('dude', 'ASSETS/Placeholders/dude.png', { frameWidth: 32, frameHeight: 48 });
         this.load.image('ground', 'ASSETS/Placeholders/platform.png');
         // FIN DE PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
     }
@@ -168,20 +168,20 @@ class LevelManager extends Phaser.Scene
 
     // Pinta un texto de muerte
     playerDeath() {
-        this.user = user
-        this.user += { nodo = 1 }
-        localStorage.setItem("Usuario", this.user)
+        /* ALGO FALLA
+        this.user = user;
+        this.user += { nodo = 1 };
+        localStorage.setItem("Usuario", this.user);*/
         if (this.isPlayerDead == false) {
-            this.add.text(400, 400, 'Moristes wey', { color: '#ff0', fontSize: '40px' });    
+            this.add.text(400, 400, 'Moristes wey', { color: '#ff0', fontSize: '40px' });
             this.isPlayerDead = true;
-        }        
+        }
     }
 
     update () {
         // Fix para controles de movimiento izq. der. (eliminar cuando sea endless runner)
         if (this.rightButton.isUp && this.leftButton.isUp) {
             this.playerStop();
-        }        
+        }
     }
-
 }
