@@ -23,6 +23,8 @@ class LevelManager extends Phaser.Scene
         this.playerAttackHeight = 50;   // Alto de hitbox del ataque
         // Settings enemigos
         this.enemySpeed = -200; // Velocidad de movimiento de los enemigos
+        // Settings del generador procedural
+        this.levelIntroWidth = 400; // Longitud al principio del mapa asegurado sin trampas
 
         // REFERENCIAS
         // Grupos
@@ -37,6 +39,7 @@ class LevelManager extends Phaser.Scene
         this.jumpTimer; // Callback para salto progresivo
         this.playerAttackTimer;   // Temporizador de fin de ataque
         this.attackHitbox;  // Hitbox del ataque
+        this.trapFunctionsArray = new Array();  // Array que guarda las funciones de las trampas a generar
 
         // VARIABLES DE INFORMACIÓN
         this.isPlayerDead = false;
@@ -114,6 +117,7 @@ class LevelManager extends Phaser.Scene
         this.cameras.main.setBounds(0, 0, this.levelWidth, this.levelHeight);   // Límites cámara
         this.cameras.main.startFollow(this.player); // Cámar sigue al personaje
 
+        /*  TESTEO
         // Generamos obstáculos de testeo
         this.generateSpikesTrap(400, 567);
         // Generamos plataforma de testeo
@@ -122,6 +126,11 @@ class LevelManager extends Phaser.Scene
         this.generateStillEnemy(900, 500, 40, 60);
         // Generamos enemogio con movimiento de testeo
         this.generateMovingEnemy(1000, 500, 40, 60);
+        */
+
+        // GENERACIÓN PROCEDURAL
+        this.generateTrapArray();   // Genera el array de las trampas disponibles en este mapa
+        this.proceduralGenerator(); // Genera el mapa
 
         // Creamos los controles del teclado (no ejecutar si es en móvil)
         this.jumpButton = this.input.keyboard.addKey(controls.up);
@@ -192,6 +201,48 @@ class LevelManager extends Phaser.Scene
         this.bg_1.setScrollFactor(0);
         */
     }
+
+    // FUNCIÓN DE CREADO PROCEDURAL DEL MAPA ----------------------------
+    /*
+    * Crea un cursor (xPointer) que va apuntando a una posición en x del nivel, desde 0 (comienzo) hasta
+    * this.levelWidth (fin). Ejecuta el siguiente bucle mientras quede espacio:
+    * 1) Coloca una trampa aleatoria en la posición x de la pool de trampas del escenario
+    * 2) Deja un espacio libre que permita al jugador sortear la trampa
+    * 3) Deja un espacio aleatorio hasta la siguiente trampa
+    */
+    proceduralGenerator() {
+        let xPointer = 0;   // Cursor de ancho de mapa
+        xPointer += this.levelIntroWidth;   // Avanzamos el cursor una distancia inicial sin trampas
+        let rand;   // Auxiliar de números aleatorios
+        while (xPointer < this.levelWidth) {
+            // Primero genera una trampa aleatoria del pool de trampas
+            this.generateRandomTrap(xPointer, 490);
+            // Aumenta espacio  (ESPACIO DERIVADO DE LA TRAMPA + RANDOM AJUSTABLE POR IMPLEMENTAR)
+            xPointer += 300;
+        }
+    }
+
+    // Llama a una función aleatoria del array de trampas disponibles y le pasa x e y como parámetros
+    generateRandomTrap(xPos, yPos) {
+        eval(this.trapFunctionsArray[this.randomTrapIndex()] + '(' + xPos + ', ' + yPos + ')');
+    }
+
+    // Devuelve un índice válido del array de funciones de generación de trampas
+    randomTrapIndex() {
+        let ret = Math.floor(Math.random() * this.trapFunctionsArray.length);
+        //console.log(ret);
+        return ret;
+    }
+
+    // Genera el array con las trampas disponibles del mapa
+    // TRAMPAS DISPONIBLES DEPENDIENTES DEL NIVEL POR IMPLEMENTAR
+    generateTrapArray() {
+        this.trapFunctionsArray[0] = 'this.generateStillEnemy';
+        this.trapFunctionsArray[1] = 'this.generateMovingEnemy';
+        this.trapFunctionsArray[2] = 'this.generateSpikesTrap';
+        this.trapFunctionsArray[3] = 'this.generatePlatform';
+    }
+    // FIN DE FUNCIÓN DE CREADO PROCEDURAL DEL MAPA ---------------------
 
     // FUNCIONES DE CONTROL DEL PERSONAJE -------------------------------
 
@@ -282,7 +333,7 @@ class LevelManager extends Phaser.Scene
         localStorage.setItem("UserMoney", user.money);
 
         if (this.isPlayerDead == false) {
-            this.add.text(400, 400, 'Moristes wey', { color: '#ff0', fontSize: '40px' });
+            this.player.setTint(0xe62272);
             this.isPlayerDead = true;
         }
     }
@@ -293,7 +344,7 @@ class LevelManager extends Phaser.Scene
     // Función de creación de enemigos sin movimiento
     // xPos, yPos: posición en el mapa
     // collisionWidth, collisionHeight: tamaño de la hitbox
-    generateStillEnemy(xPos, yPos, collisionWidth, collisionHeight) {
+    generateStillEnemy(xPos, yPos, collisionWidth = 40, collisionHeight = 60) {
         let newEnemy = this.enemies.create(xPos, yPos, 'dude').setOrigin(1).setTint(0xe62272).refreshBody();
         newEnemy.body.setSize(collisionWidth, collisionHeight);
     }
@@ -302,7 +353,7 @@ class LevelManager extends Phaser.Scene
     // xPos, yPos: posición en el mapa
     // collisionWidth, collisionHeight: tamaño de la hitbox
     // triggerWidth, triggerHeight: tamaño del trigger de movimiento. Si no se pasa toma valor por defecto
-    generateMovingEnemy(xPos, yPos, collisionWidth, collisionHeight, triggerWidth = 500, triggerHeight = 500) {
+    generateMovingEnemy(xPos, yPos, collisionWidth = 40, collisionHeight = 60, triggerWidth = 500, triggerHeight = 500) {
         let newEnemy = this.enemies.create(xPos, yPos, 'dude').setOrigin(1).setTint(0xe62272).refreshBody();
         newEnemy.body.setSize(collisionWidth, collisionHeight);
         let newTrigger = this.triggers.create(xPos, yPos, 'dot').setVisible(false).refreshBody();
