@@ -96,6 +96,7 @@ class LevelManager extends Phaser.Scene
         this.solidPlatforms = this.physics.add.staticGroup();   // Grupo de plataformas con las que se ha hecho contacto
         this.enemies = this.physics.add.group();  // Grupo de enemigos
         this.triggers = this.physics.add.staticGroup();   // Grupo de triggers
+        this.attackHitbox = this.physics.add.group(); // Grupo de hitbox del personaje
         this.generateGround(200, 'ground'); // Genera suelo para todo el nivel
         this.player.setCollideWorldBounds(true);    // No puede salir de los límites del mapa
         this.physics.add.collider(this.player, this.ground, this.grounded, null, this); // Permitimos colisiones entre grupo de plataformas y jugador
@@ -103,6 +104,7 @@ class LevelManager extends Phaser.Scene
         this.physics.add.overlap(this.player, this.platforms, this.platformOverlap, null, this);    // Función que calcula si ha chocado desde arriba o desde abajo
         this.physics.add.collider(this.player, this.solidPlatforms, this.grounded, null, this);    // Una vez colisionado la plataforma desde arriba, volverla sólida
         this.physics.add.overlap(this.player, this.enemies, () => this.playerDeath()); // Llama a playerDeath si colisiona con enemigo
+        this.physics.add.overlap(this.attackHitbox, this.enemies, this.killEnemy, null, this);  // LLama a killEnemy cuando la hitbox impacte con un enemigo
         this.physics.add.collider(this.enemies, this.platforms);    // Enemigos colisionan con el suelo
         this.physics.add.collider(this.enemies, this.ground);   // Enemigos colisionan con plataformas
         this.physics.add.overlap(this.player, this.triggers, this.enemyStartMotion, null, this);    // Función que se llama al entrar el jugador en el área de visión del enemigo
@@ -243,12 +245,12 @@ class LevelManager extends Phaser.Scene
         if (this.playerAttackAvaliable == true) {   // Si está disponible el ataque
             this.playerAttackAvaliable = false;
             // Crea la hitbox
-            this.attackHitbox = this.physics.add.sprite(this.player.x, this.player.y - this.player.height, 'dot');
-            this.attackHitbox.setOrigin(0);
-            this.attackHitbox.setSize(this.playerAttackWidth, this.playerAttackHeight, false);
-            this.attackHitbox.body.setAllowGravity(false);
-            this.attackHitbox.setVisible(false);
-            this.attackHitbox.refreshBody();
+            let localAttackHitbox = this.attackHitbox.create(this.player.x, this.player.y - this.player.height, 'dot');
+            localAttackHitbox.setOrigin(0);
+            localAttackHitbox.setSize(this.playerAttackWidth, this.playerAttackHeight, false);
+            localAttackHitbox.body.setAllowGravity(false);
+            localAttackHitbox.setVisible(false);
+            localAttackHitbox.refreshBody();
             // Crea el timer de actualziación
             this.playerAttackTimer = this.time.addEvent( { delay: this.playerAttackRefreshRate, callback: this.playerAttackRefresh, callbackScope: this, loop: true } );
         }        
@@ -259,13 +261,13 @@ class LevelManager extends Phaser.Scene
     playerAttackRefresh() {
         this.playerAttackCounter += this.playerAttackRefreshRate;
         if (this.playerAttackCounter > this.playerAttackDuration) { // Si ha pasado el tiempo máximo destruye el ataque y crea timer para el cooldown.
-            this.attackHitbox.destroy();
+            this.attackHitbox.clear(true, true);
             this.playerAttackCounter = 0;
             this.playerAttackTimer.remove();
             this.playerAttackCooldownTimer = this.time.addEvent( { delay: this.playerAttackCooldown, callback: function () { this.playerAttackAvaliable = true }, callbackScope: this, loop: false } );
         } else {    // Actualiza la posición de la hitbox
-            this.attackHitbox.x = this.player.x;
-            this.attackHitbox.y = this.player.y - this.player.height;
+            this.attackHitbox.getChildren()[0].x = this.player.x;
+            this.attackHitbox.getChildren()[0].y = this.player.y - this.player.height;
         }
     }
 
@@ -337,6 +339,11 @@ class LevelManager extends Phaser.Scene
     // Función que ordena al enemigo moverse cuando se encuentra con el jugador
     enemyStartMotion(player, triggers) {
         triggers.associatedEnemy.setVelocityX(this.enemySpeed);
+    }
+
+    // Destruye al enemigo
+    killEnemy(attackHitbox, enemies) {
+        this.enemies.remove(enemies, true); // Elimina el enemigo de la lista y del juego
     }
 
     // Comprueba si se ha colisionado con la plataforma por arriba (y se convierte en sólida)
