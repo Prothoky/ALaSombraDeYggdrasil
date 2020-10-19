@@ -78,8 +78,6 @@ Para ello Einar irá recorriendo los nueve mundos que sostiene Yggdrasil teniend
 ## Modelo de negocio
 Para sostener este proyecto a dos años vista tenemos desarrollado un sistema de lanzamiento periódico del contenido del juego, de este modo conseguiremos extender el pulso del juego y rentabilizar el trabajo con un mayor beneficio económico.
 
-[El jugador que quiera jugar a todos los mundos sin pasarse todo al 100% deberá apoquinar por cada mundo, pero se la da opción al usuario de que no tenga que pagar si este echa un determinado tiempo sacando desafíos y coleccionables, así sacamos por publicidad lo que no quiera pagar]
-
 Al constar de 9 mundos el juego, vamos a sacar el primer mundo nada más empezar y el segundo a las 2/3 semanas del lanzamiento. El resto de mundo se irán lanzando cada mes y medio, así diversificamos el contenido y damos un descanso a los jugadores para que no consuman su interés por el juego de una manera tan rápida.
 
 En nuestro juego no queremos que el jugador se vea obligado a pagar para completar el juego, pero si que este complete el 100% del juego para poder seguir desbloqueando diferentes planetas. De este modo el sistema de publicidad que incluya el juego dará un mayor beneficio a largo plazo, con el que compensaremos ese ahorro monetario por parte del jugador. 
