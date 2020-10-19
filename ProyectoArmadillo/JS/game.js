@@ -7,6 +7,7 @@ window.onload = function(){
     physics: {
       default: 'arcade',
       arcade: {
+         debug: true,
         gravity: { y: 2000 }
       }
     },
@@ -36,7 +37,13 @@ var controls = {  // Controles del jugador (teclado)
   right: Phaser.Input.Keyboard.KeyCodes.RIGHT,
 };
 
-var user = localStorage.getItem("Usuario"); //Variables a guardar en local
+var user = { //Mapas desbloqueados y dinero del jugador
+  map: [false, false, false] ,
+  money: 0,
+};
+
+//Movil o PC
+PC = true;
 
 // Tamaño pantalla
 var gameWidth = 1270;

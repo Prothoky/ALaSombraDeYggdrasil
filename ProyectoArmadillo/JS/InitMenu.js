@@ -5,6 +5,19 @@ class InitMenu extends Phaser.Scene{
   }
 
   preload(){
+
+    //Cargamos mapas desbloqueados y dinero del jugador
+    var user_map = localStorage.getItem("UserMap"); //Variables a guardar en local
+    var user_money = localStorage.getItem("UserMoney"); //Variables a guardar en local
+    if(user_map!=null && user_money != null) {
+      this.stringToArray(user_map);
+      user.money = user_money;
+    }
+
+    //Checkeamos que estemos en movil o PC
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+      PC=false;
+    }
     this.load.image('backgroundIM', './ASSETS/InitMenu/InitMenuBackground.jpg');
   }
 
@@ -28,4 +41,14 @@ class InitMenu extends Phaser.Scene{
   update(){
 
   }
+
+  stringToArray(user_map) {
+    var separador = ",";
+    var mapas = user_map.split(separador);
+    
+    for (var i=0; i < mapas.length; i++) {
+      user.map[i] =mapas[i];
+    }
+  }
+ 
 }

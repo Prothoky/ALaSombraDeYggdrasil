@@ -116,6 +116,52 @@ class LevelManager extends Phaser.Scene
         // Creamos los controles del teclado (no ejecutar si es en móvil)
         this.jumpButton = this.input.keyboard.addKey(controls.up);
         this.leftButton = this.input.keyboard.addKey(controls.left);
+
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            console.log('Esto es un dispositivo móvil');
+        }
+        //Para movil:
+        this.input.addPointer(2);
+        
+        var pointerJump = this.add.image(10, 10, 'dude').setInteractive();
+        var pointerRight = this.add.image(500, 10, 'dude').setInteractive();
+
+        this.input.on('gameobjectdown',function (pointer) {
+
+            if(pointerJump.getBounds().contains(pointer.downX, pointer.downY)){
+                this.playerStartJump();
+            }
+            else if(pointerRight.getBounds().contains(pointer.downX, pointer.downY)){
+                this.playerRight();
+            }
+
+            else{
+                console.log(pointer);
+            }
+        }, this);
+        
+        this.input.on('gameobjectup',function (pointer) {
+
+            if(pointerJump.getBounds().contains(pointer.downX, pointer.downY)){
+                this.playerStopJump();
+            }
+            else if(pointerRight.getBounds().contains(pointer.downX, pointer.downY)){
+                this.playerStop();
+            }
+
+            else{
+                console.log(pointer);
+            }
+        }, this);
+
+        if(PC) {
+            pointerJump.setInteractive(false);
+            pointerJump.destroy();
+            pointerRight.setInteractive(false);
+            pointerRight.destroy();
+        } 
+        
+        //
         this.rightButton = this.input.keyboard.addKey(controls.right);
         this.attackButton = this.input.keyboard.addKey(controls.attack);
 
@@ -123,8 +169,11 @@ class LevelManager extends Phaser.Scene
         this.jumpButton.on('down', this.playerStartJump, this);
         this.jumpButton.on('up', this.playerStopJump, this);
         this.leftButton.on('down', this.playerLeft, this);
-        this.rightButton.on('down', this.playerRight, this);
+        this.leftButton.on('up', this.playerStop,this);
         this.attackButton.on('down', this.playerAttack, this);
+        this.rightButton.on('down', this.playerRight, this);
+        this.rightButton.on('up',  this.playerStop,this);
+
     }
 
     // Funcion de creación de plataformas
@@ -193,6 +242,7 @@ class LevelManager extends Phaser.Scene
     playerRight() {
         this.player.setVelocityX(this.movementSpeed);
         this.player.anims.play('right', true);
+                    
     }
 
     // quedarse quieto
@@ -208,10 +258,13 @@ class LevelManager extends Phaser.Scene
 
     // Pinta un texto de muerte
     playerDeath() {
-        /* ALGO FALLA
-        this.user = user;
-        this.user += { nodo = 1 };
-        localStorage.setItem("Usuario", this.user);*/
+        
+        //Guardar información del jugador
+        user.map[0] = true;
+        user.money=0;
+        localStorage.setItem("UserMap", user.map);
+        localStorage.setItem("UserMoney", user.money);
+
         if (this.isPlayerDead == false) {
             this.add.text(400, 400, 'Moristes wey', { color: '#ff0', fontSize: '40px' });
             this.isPlayerDead = true;
@@ -284,9 +337,6 @@ class LevelManager extends Phaser.Scene
     
 
     update () {
-        // Fix para controles de movimiento izq. der. (eliminar cuando sea endless runner)
-        if (this.rightButton.isUp && this.leftButton.isUp) {
-            this.playerStop();
-        }
+        
     }
 }
