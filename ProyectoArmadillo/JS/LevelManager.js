@@ -348,7 +348,7 @@ class LevelManager extends Phaser.Scene
         }
     }
 
-    // Pinta un texto de muerte
+    // Reinicia el nivel
     playerDeath() {
         
         //Guardar información del jugador
@@ -360,6 +360,7 @@ class LevelManager extends Phaser.Scene
         if (this.isPlayerDead == false) {
             this.player.setTint(0xe62272);
             this.isPlayerDead = true;
+            this.restartLevel();
         }
     }
     // FIN DE FUNCIONES DE CONTROL DEL PERSONAJE ------------------------
@@ -434,10 +435,20 @@ class LevelManager extends Phaser.Scene
             this.solidPlatforms.create(platforms.x, platforms.y, 'ground').setScale(this.platformScaleFactor).setOrigin(0, 0).setTint(0x00ff38).refreshBody();
         }
     }
+
+    // Reinicia el nivel
+    // Resetea las variables del create necesarias ya que no se resetean con this.scene.restart();
+    restartLevel() {
+        this.isPlayerDead = false;
+        this.isPlayerJumping = false;
+        this.isPlayerTouchingGround = false;
+        this.playerAttackAvaliable = true;
+        this.scene.restart();
+    }
     // FIN DE OTRAS FUNCIONES -------------------------------------------
     
 
-    update () {
+    update () {        
         //Fondo dinámico
         //this.bg_1.tilePositionX = this.myCam.scrollX * .3;
     }
