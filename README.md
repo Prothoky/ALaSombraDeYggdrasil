@@ -37,6 +37,7 @@ Durante el transcurso del juego el protagonista irá narrando su experiencia por
 ## Personaje
 
 Por el momento estamos trabajando en el diseño del personaje. Están por definir aún las habilidades de este, aunque sabemos que el hacha será el arma principal del juego.
+El mayor debate que surgió con este fue el movimiento que tendría en función de cómo sujetaría el hacha, pero hemos decidido que el personaje llevará el hacha con dos manos, aunque afecte mucho al ciclo de pasos y a su realización.
 
 ![diseño vikingo](https://user-images.githubusercontent.com/55508821/95829995-4bbd6d80-0d37-11eb-871d-834920725f60.jpeg)
 
@@ -45,9 +46,13 @@ Por el momento estamos trabajando en el diseño del personaje. Están por defini
 ## Mecánicas de juego
 El juego tiene un sistema de movimiento limitado, el jugado irá por defecto de izquierda a derecha con la única opción de saltar y atacar.
 La principal característica de este juego es la creación de niveles de manera procedural, así el factor sorpresa es constante y podemos crear un mayor número de niveles para extender el tiempo de vida del juego mucho más.
+Hay diferentes obstáculos en función del mapa en el que se encuentre el jugador, el contenido será temático para sumergir de una mejor manera al jugador y así también dotarlo con una mayor variedad de referencias.
 
 Boceto de mapa del bosque "tileable"
 ![boceto mapa bosque](https://user-images.githubusercontent.com/55508821/96410498-4b195100-11e7-11eb-9289-1263f45bc08c.jpeg)
+
+Aquí se muestra la continuación del mapa del bosque con un enemigo y un obstáculo
+![mapa fase 2](https://user-images.githubusercontent.com/55508821/96566275-a7eb3900-12c5-11eb-8953-51e343277f71.jpg)
 
 La escena de selección de mapa es en un tablero inspirado en paisajes de Noruega y Suecia donde el jugador va avanzando por los diferentes niveles del mundo.
 ![boceto mapa de niveles](https://user-images.githubusercontent.com/55508821/96410879-e4486780-11e7-11eb-986e-956eb7e3723b.jpeg)
@@ -58,7 +63,8 @@ El diseño de interfaz de usuario debe de ser muy sencilla y ligera para el usua
 
 ![boceto menu principal](https://user-images.githubusercontent.com/55508821/96411648-160dfe00-11e9-11eb-88f5-9fe2edd62911.jpeg)
 
-La interfaz de juego...
+La interfaz de juego está mayormente limitada por el lanzamiento del juego en los dispositivos móviles, en la pantalla de juego, una vez el jugador ya haya empuñado el hacha, aparecerá en la esquina superior izquierda a modo de vidas, unos escudos vikingos que te indicarán el número de escudos restantes que restan. Por la esquina superior derecha encontraremos un botón de pausa, ahí el jugador accederá al menú de pausa, donde tendrá las opciones de modificar el volumen, salir del juego o reiniciar la partida.
+
 
 ## Flujo de juego
 
@@ -69,6 +75,10 @@ Einar es el vikingo protagonista de esta historia. Fue bendecido con el don de l
 [Podría ser odín el que le diga que alcanzará el valhalla cuando atraviese los 9 mundos]
 
 Para ello Einar irá recorriendo los nueve mundos que sostiene Yggdrasil teniendo a Asgard como meta. Esta aventura comienza en su planeta natal Midgard.
+
+Cada mundo se dividirá en unos cuantos subniveles principales con sus respectivos niveles extras, extendiendose a modo de árbol por las fases principales. En estos niveles adicionales el jugador encontraría cuentos y leyendas de dioses y del propio Einar, progagando así la narrativa por varias direcciones.
+
+
 
 
 ## Estilo artístico y música
@@ -87,7 +97,7 @@ Para los jugadores que si quieran tener una experiencia más rápida sin tener q
 
 Por lo que a la tienda se refiere, se irá subiendo contenido con cierta frecuencia de pago como gratuito. Se implantará una moneda virtual con la que poder hacer compras de las distintas skins y objetos coleccionables. De momento no hay intención de meterle compra de habilidades, en todo caso de escudos para poder tener un pequeño sistema de vidas en la partida.
 La tienda se dividirá en tres bloques:
-- Skins para nuestro protagonista, basados en dioses y personajes mitológicos vikingos que se vayan introduciendo en la historia(Contenido Actualizable y de pago )
+- Skins para nuestro protagonista, basados en dioses y personajes mitológicos vikingos que se vayan introduciendo en la historia
 
 - Collecionables 
 
