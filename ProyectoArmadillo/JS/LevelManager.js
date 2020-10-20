@@ -3,19 +3,12 @@ class LevelManager extends Phaser.Scene
     constructor ()
     {
         super({key:"LevelManager"});
-
         // SETTINGS
-        // General
-        this.runnerMode = true; // Controles de runner (salto y ataque)
-        this.lengthMultiplier = 4; // Multiplicador de amaño de ancho del mapa
-        this.levelHeight = gameHeight;
-        this.levelWidth = gameWidth * this.lengthMultiplier;
-        this.levelGroundHeight = 568;   // Altura del suelo
-        this.platformScaleFactor = 0.4; // Factor de escalado de las plataformas. 1 para no hacer escalado
+        // 1) Configuración para JSON
         // Settings personaje
-        this.movementSpeed = 300;
-        this.jumpSpeed = -500;
-        this.jumpDuration = 400;    // Duración máxima de la anulación de gravedad del salto en ms
+        this.playerMovementSpeed = 300;   // Velocidad de movimiento del personaje
+        this.playerJumpSpeed = -500;  // Fuerza de salto del personaje
+        this.playerJumpDuration = 400;    // Duración máxima de la anulación de gravedad del salto en ms
         this.playerAttackDuration = 1000;   // ´Duración del ataque
         this.playerAttackRefreshRate = 35;  // Tasa de refresco de posición de la hitbox del ataque
         this.playerAttackCounter = 0;   // Contador de tiempo del ataque
@@ -24,8 +17,26 @@ class LevelManager extends Phaser.Scene
         this.playerAttackHeight = 50;   // Alto de hitbox del ataque
         // Settings enemigos
         this.enemySpeed = -200; // Velocidad de movimiento de los enemigos
-        // Settings del generador procedural
-        this.levelIntroWidth = 400; // Longitud al principio del mapa asegurado sin trampas
+        // Settings del generador aleatorio
+        this.maxRandTrapDistance = 250; // Máximo de distancia entre trampas añadido
+        this.minDistStillEnemy = 200;   // Mínimo de distancia tras un enemigo quieto
+        this.minDistMovingEnemy = 50;   // Mínimo de distancia tras un enemigo que se mueve
+        this.minDistPlatform = 0;   // Mínimo de distancia tras una plataforma
+        this.minDistSpikes = 100;   // Mínimo de distancia tras una trampa de pinchos
+        // La distancia entre trampas final será maxRandTrapDistance(rand) + trapDistance + minDistance
+
+        // 2) CONFIGURACIÓN DEL NIVEL (dependiendo del nivel escogido en el minimapa)
+        this.lengthMultiplier = 5; // Multiplicador de amaño de ancho del mapa
+        this.minTrapDistance = 200;    // Distancia mínima entre cada trampa
+
+        // 2) GENERAL
+        this.runnerMode = true; // Controles de runner (salto y ataque) 
+        this.levelGroundHeight = 568;   // Altura del suelo
+        // Temporales (testeo)
+        this.platformScaleFactor = 0.4; // Factor de escalado de las plataformas. 1 para no hacer escalado
+        // Settings enerador procedural
+        this.levelIntroWidth = 600; // Longitud al principio del mapa asegurado sin trampas
+        this.levelEndWidth = 400;
 
         // REFERENCIAS
         // Grupos
@@ -43,6 +54,8 @@ class LevelManager extends Phaser.Scene
         this.trapFunctionsArray = new Array();  // Array que guarda las funciones de las trampas a generar
 
         // VARIABLES DE INFORMACIÓN
+        this.levelHeight = gameHeight;
+        this.levelWidth = gameWidth * this.lengthMultiplier;
         this.isPlayerDead = false;
         this.isPlayerJumping = false;
         this.isPlayerTouchingGround = false;
@@ -90,10 +103,10 @@ class LevelManager extends Phaser.Scene
         });
         // FIN DE PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
 
-        // Jugador
+        // PERSONAJE
         this.player = this.physics.add.sprite(100, 450, 'dude').setOrigin(1);   // setOrigin(1) IMPORTANTE (calcular colisiones)
 
-        // Físicas
+        // FÍSICAS
         this.physics.world.setBounds(0, 0, this.levelWidth, this.levelHeight);  // Tamaño del nivel
         this.ground = this.physics.add.staticGroup();    // Grupo de plataformas colisionables
         this.spikesTraps = this.physics.add.staticGroup();  // Grupo de trampas de pinchos
@@ -114,7 +127,7 @@ class LevelManager extends Phaser.Scene
         this.physics.add.collider(this.enemies, this.ground);   // Enemigos colisionan con plataformas
         this.physics.add.overlap(this.player, this.triggers, this.enemyStartMotion, null, this);    // Función que se llama al entrar el jugador en el área de visión del enemigo
 
-        // Cámara
+        // CÁMARA
         this.cameras.main.setBounds(0, 0, this.levelWidth, this.levelHeight);   // Límites cámara
         this.cameras.main.startFollow(this.player); // Cámar sigue al personaje
 
@@ -133,10 +146,31 @@ class LevelManager extends Phaser.Scene
         this.generateTrapArray();   // Genera el array de las trampas disponibles en este mapa
         this.proceduralGenerator(); // Genera el mapa
 
-        // Creamos los controles del teclado (no ejecutar si es en móvil)
+
+        // CONTROLES
+        // PC
         this.jumpButton = this.input.keyboard.addKey(controls.up);
         this.leftButton = this.input.keyboard.addKey(controls.left);
+        this.rightButton = this.input.keyboard.addKey(controls.right);
+        this.attackButton = this.input.keyboard.addKey(controls.attack);
 
+        // Modo endless runner
+        if (this.runnerMode == true) {
+            this.jumpButton.on('down', this.playerStartJump, this);
+            this.jumpButton.on('up', this.playerStopJump, this);
+            this.attackButton.on('down', this.playerAttack, this);
+            this.playerRight();
+        } else {    // Modo control izq/der
+            this.jumpButton.on('down', this.playerStartJump, this);
+            this.jumpButton.on('up', this.playerStopJump, this);
+            this.leftButton.on('down', this.playerLeft, this);
+            this.leftButton.on('up', this.playerStop,this);
+            this.attackButton.on('down', this.playerAttack, this);
+            this.rightButton.on('down', this.playerRight, this);
+            this.rightButton.on('up',  this.playerStop,this);
+        }
+
+        // Móvil
         if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
             console.log('Esto es un dispositivo móvil');
         }
@@ -181,26 +215,6 @@ class LevelManager extends Phaser.Scene
             pointerRight.setInteractive(false);
             pointerRight.destroy();
         } 
-        
-        //
-        this.rightButton = this.input.keyboard.addKey(controls.right);
-        this.attackButton = this.input.keyboard.addKey(controls.attack);
-
-        // Asignamos eventos a los botones (independiente del controlador)
-        if (this.runnerMode == true) {
-            this.jumpButton.on('down', this.playerStartJump, this);
-            this.jumpButton.on('up', this.playerStopJump, this);
-            this.attackButton.on('down', this.playerAttack, this);
-            this.playerRight();
-        } else {
-            this.jumpButton.on('down', this.playerStartJump, this);
-            this.jumpButton.on('up', this.playerStopJump, this);
-            this.leftButton.on('down', this.playerLeft, this);
-            this.leftButton.on('up', this.playerStop,this);
-            this.attackButton.on('down', this.playerAttack, this);
-            this.rightButton.on('down', this.playerRight, this);
-            this.rightButton.on('up',  this.playerStop,this);
-        }
 
         //Fondo dinámico (Parallax Scrolling)
         /*
@@ -221,18 +235,21 @@ class LevelManager extends Phaser.Scene
     proceduralGenerator() {
         let xPointer = 0;   // Cursor de ancho de mapa
         xPointer += this.levelIntroWidth;   // Avanzamos el cursor una distancia inicial sin trampas
-        let rand;   // Auxiliar de números aleatorios
-        while (xPointer < this.levelWidth) {
-            // Primero genera una trampa aleatoria del pool de trampas
-            this.generateRandomTrap(xPointer, 490);
-            // Aumenta espacio  (ESPACIO DERIVADO DE LA TRAMPA + RANDOM AJUSTABLE POR IMPLEMENTAR)
-            xPointer += 300;
+        let addedDistance;  // Almacena la distancia entre trampas a añadir en cada iter
+        // Mientras quede espacio de mapa
+        while (xPointer < this.levelWidth - this.levelEndWidth) {
+            // Genera una trampa aleatoria del pool de trampas y almacena su distancia mínima entre trampas
+            addedDistance = this.generateRandomTrap(xPointer);
+            // Aumenta espacio (derivado de la configuració ndel mapa y del random)
+            addedDistance += this.minTrapDistance + Math.floor(Math.random() * this.maxRandTrapDistance);
+            xPointer += addedDistance;
         }
     }
 
     // Llama a una función aleatoria del array de trampas disponibles y le pasa x e y como parámetros
-    generateRandomTrap(xPos, yPos) {
-        eval(this.trapFunctionsArray[this.randomTrapIndex()] + '(' + xPos + ', ' + yPos + ')');
+    generateRandomTrap(xPos) {
+        
+        return eval(this.trapFunctionsArray[this.randomTrapIndex()] + '(' + xPos + ')');
     }
 
     // Devuelve un índice válido del array de funciones de generación de trampas
@@ -259,11 +276,11 @@ class LevelManager extends Phaser.Scene
     // Si termina el timer o se suelta el botón de salto se llamará a playerStopJump()
     playerStartJump() {
         if (this.isPlayerTouchingGround && this.player.body.velocity.y == 0) {
-            this.player.setVelocityY(this.jumpSpeed);
+            this.player.setVelocityY(this.playerJumpSpeed);
             this.isPlayerJumping = true;
             this.isPlayerTouchingGround = false;
             this.player.body.setAllowGravity(false);
-            this.jumpTimer = this.time.addEvent( { delay: this.jumpDuration, callback: this.playerStopJump, callbackScope: this, loop: false } );
+            this.jumpTimer = this.time.addEvent( { delay: this.playerJumpDuration, callback: this.playerStopJump, callbackScope: this, loop: false } );
         }
     }
 
@@ -282,13 +299,13 @@ class LevelManager extends Phaser.Scene
 
     // moverse a la izquierda
     playerLeft() {
-        this.player.setVelocityX(-this.movementSpeed);
+        this.player.setVelocityX(-this.playerMovementSpeed);
         this.player.anims.play('left', true);
     }
 
     // moverse a la derecha
     playerRight() {
-        this.player.setVelocityX(this.movementSpeed);
+        this.player.setVelocityX(this.playerMovementSpeed);
         this.player.anims.play('right', true);
                     
     }
@@ -352,35 +369,39 @@ class LevelManager extends Phaser.Scene
     // Función de creación de enemigos sin movimiento
     // xPos, yPos: posición en el mapa
     // collisionWidth, collisionHeight: tamaño de la hitbox
-    generateStillEnemy(xPos, yPos, collisionWidth = 40, collisionHeight = 60) {
+    generateStillEnemy(xPos, yPos = this.levelGroundHeight - 60, collisionWidth = 40, collisionHeight = 60) {
         let newEnemy = this.enemies.create(xPos, yPos, 'dude').setOrigin(1).setTint(0xe62272).refreshBody();
         newEnemy.body.setSize(collisionWidth, collisionHeight);
+        return this.minDistStillEnemy;
     }
 
     // Función de creación de enemigos con movimiento al acercarse el jugador
     // xPos, yPos: posición en el mapa
     // collisionWidth, collisionHeight: tamaño de la hitbox
     // triggerWidth, triggerHeight: tamaño del trigger de movimiento. Si no se pasa toma valor por defecto
-    generateMovingEnemy(xPos, yPos, collisionWidth = 40, collisionHeight = 60, triggerWidth = 500, triggerHeight = 500) {
+    generateMovingEnemy(xPos, yPos = this.levelGroundHeight - 60, collisionWidth = 40, collisionHeight = 60, triggerWidth = 500, triggerHeight = 500) {
         let newEnemy = this.enemies.create(xPos, yPos, 'dude').setOrigin(1).setTint(0xe62272).refreshBody();
         newEnemy.body.setSize(collisionWidth, collisionHeight);
         let newTrigger = this.triggers.create(xPos, yPos, 'dot').setVisible(false).refreshBody();
         newTrigger.body.setSize(triggerWidth, triggerHeight);
         newTrigger.associatedEnemy = newEnemy;
+        return this.minDistMovingEnemy;
     }
 
     // Funcion de creación de plataformas
     // xPos, yPos = posiciones x e y. Origen del sprite en el límite inferior derecho.
     // Únicamente cambiar el sprite y el valor de setScale()
-    generatePlatform(xPos, yPos) {
+    generatePlatform(xPos, yPos = this.levelGroundHeight - 1) {
         this.platforms.create(xPos, yPos, 'ground').setScale(this.platformScaleFactor).setOrigin(0, 0).setTint(0x00ff38).refreshBody();
+        return this.minDistPlatform;
     }
 
     // Funciones de creación de trampa de pinchos
     // xPos, yPos = posiciones x e y. Origen del sprite en el límite inferior derecho.
     // Únicamente cambiar el sprite y el valor de setScale()
-    generateSpikesTrap(xPos, yPos) {
+    generateSpikesTrap(xPos, yPos = this.levelGroundHeight - 1) {
         this.spikesTraps.create(xPos, yPos, 'ground').setScale(0.5).setOrigin(0, 0).setTint(0xe62272).refreshBody();
+        return this.minDistSpikes;
     }
     // FIN DE FUNCIONES DE GENERACIÓN DE ENEMIGOS/OBSTÁCULOS ------------
 
