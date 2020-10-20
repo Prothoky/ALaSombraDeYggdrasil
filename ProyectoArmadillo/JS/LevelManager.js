@@ -6,6 +6,7 @@ class LevelManager extends Phaser.Scene
 
         // SETTINGS
         // General
+        this.runnerMode = true; // Controles de runner (salto y ataque)
         this.lengthMultiplier = 4; // Multiplicador de amaño de ancho del mapa
         this.levelHeight = gameHeight;
         this.levelWidth = gameWidth * this.lengthMultiplier;
@@ -186,13 +187,20 @@ class LevelManager extends Phaser.Scene
         this.attackButton = this.input.keyboard.addKey(controls.attack);
 
         // Asignamos eventos a los botones (independiente del controlador)
-        this.jumpButton.on('down', this.playerStartJump, this);
-        this.jumpButton.on('up', this.playerStopJump, this);
-        this.leftButton.on('down', this.playerLeft, this);
-        this.leftButton.on('up', this.playerStop,this);
-        this.attackButton.on('down', this.playerAttack, this);
-        this.rightButton.on('down', this.playerRight, this);
-        this.rightButton.on('up',  this.playerStop,this);
+        if (this.runnerMode == true) {
+            this.jumpButton.on('down', this.playerStartJump, this);
+            this.jumpButton.on('up', this.playerStopJump, this);
+            this.attackButton.on('down', this.playerAttack, this);
+            this.playerRight();
+        } else {
+            this.jumpButton.on('down', this.playerStartJump, this);
+            this.jumpButton.on('up', this.playerStopJump, this);
+            this.leftButton.on('down', this.playerLeft, this);
+            this.leftButton.on('up', this.playerStop,this);
+            this.attackButton.on('down', this.playerAttack, this);
+            this.rightButton.on('down', this.playerRight, this);
+            this.rightButton.on('up',  this.playerStop,this);
+        }
 
         //Fondo dinámico (Parallax Scrolling)
         /*
