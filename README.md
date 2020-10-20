@@ -37,7 +37,7 @@ Durante el transcurso del juego el protagonista irá narrando su experiencia por
 ## Personaje
 
 Por el momento estamos trabajando en el diseño del personaje. Están por definir aún las habilidades de este, aunque sabemos que el hacha será el arma principal del juego.
-El mayor debate que surgió con este fue el movimiento que tendría en función de cómo sujetaría el hacha, pero hemos decidido que el personaje llevará el hacha con dos manos, aunque afecte mucho al ciclo de pasos y a su realización.
+El mayor debate que surgió con este fue el movimiento que tendría en función de cómo sujetaría el hacha, pero hemos decidido que el personaje llevará el hacha en una única mano, pensando que sería una animación más lógica para este tipo de juegos tan rápidos.
 
 ![diseño vikingo](https://user-images.githubusercontent.com/55508821/95829995-4bbd6d80-0d37-11eb-871d-834920725f60.jpeg)
 
@@ -45,7 +45,7 @@ El mayor debate que surgió con este fue el movimiento que tendría en función 
 
 ## Mecánicas de juego
 El juego tiene un sistema de movimiento limitado, el jugado irá por defecto de izquierda a derecha con la única opción de saltar y atacar.
-La principal característica de este juego es la creación de niveles de manera procedural, así el factor sorpresa es constante y podemos crear un mayor número de niveles para extender el tiempo de vida del juego mucho más.
+La principal característica de este juego es la creación de niveles de manera procedimental, así el factor sorpresa es constante y podemos crear un mayor número de niveles para extender el tiempo de vida del juego mucho más.
 Hay diferentes obstáculos en función del mapa en el que se encuentre el jugador, el contenido será temático para sumergir de una mejor manera al jugador y así también dotarlo con una mayor variedad de referencias.
 
 Boceto de mapa del bosque "tileable"
@@ -91,16 +91,22 @@ Para sostener este proyecto a dos años vista tenemos desarrollado un sistema de
 Al constar de 9 mundos el juego, vamos a sacar el primer mundo nada más empezar y el segundo a las 2/3 semanas del lanzamiento. El resto de mundo se irán lanzando cada mes y medio, así diversificamos el contenido y damos un descanso a los jugadores para que no consuman su interés por el juego de una manera tan rápida.
 
 En nuestro juego no queremos que el jugador se vea obligado a pagar para completar el juego, pero si que este complete el 100% del juego para poder seguir desbloqueando diferentes planetas. De este modo el sistema de publicidad que incluya el juego dará un mayor beneficio a largo plazo, con el que compensaremos ese ahorro monetario por parte del jugador. 
-Para los jugadores que si quieran tener una experiencia más rápida sin tener que obtener el 100% de los desafíos, implantaremos un sistema de compra para los nuevos mundos y las diferentes skins que implementemos. En ningún momento el usuario que ingrese dinero tendrá ninguna ventaja de jugabilidad frente a los otros usuarios.
+
+
+
+Por lo que a la tienda se refiere, se irá subiendo contenido con cierta frecuencia gratuito. Se implantará una moneda virtual con la que poder hacer compras de las distintas skins y objetos coleccionables. De momento no hay intención de meterle compra de habilidades, en todo caso de escudos para poder tener un pequeño sistema de vidas en la partida.
+En nuestro modelo de negocio no contemplamos que el usuario tenga que gastar dinero para alcanzar una mayor experiencia. Incentivaremos al jugador a repetir los niveles para ir obteniendo monedas a través de distintos desafíos que irán surgiendo de manera constante y aleatoria.
 
 [Definir cuando implementaríamos los anuncios]
 
-Por lo que a la tienda se refiere, se irá subiendo contenido con cierta frecuencia de pago como gratuito. Se implantará una moneda virtual con la que poder hacer compras de las distintas skins y objetos coleccionables. De momento no hay intención de meterle compra de habilidades, en todo caso de escudos para poder tener un pequeño sistema de vidas en la partida.
 La tienda se dividirá en tres bloques:
 - Skins para nuestro protagonista, basados en dioses y personajes mitológicos vikingos que se vayan introduciendo en la historia
 
-- Collecionables 
+- Colecionables como papeles con los poemas que narran las grandes batallas y aventuras de los dioses y Einar. 
 
-- Escudos
+- Escudos para seguir avanzando en las partidas, el jugador tendrá que acudir a esta opción cuando contemple que la curva de dificultad le va haciendo sufrir más y más.
 
 ## Controles
+Los controles los vamos a definir en dos bloques, cada uno en función al entorno de juego en el que el usuario se encuentra:
+
+
