@@ -48,6 +48,12 @@ El juego tiene un sistema de movimiento limitado, el jugado irá por defecto de 
 La principal característica de este juego es la creación de niveles de manera procedimental, así el factor sorpresa es constante y podemos crear un mayor número de niveles para extender el tiempo de vida del juego mucho más.
 Hay diferentes obstáculos en función del mapa en el que se encuentre el jugador, el contenido será temático para sumergir de una mejor manera al jugador y así también dotarlo con una mayor variedad de referencias.
 
+Diseño de estructura de niveles de bosque con subniveles 
+
+![diseño niveles boceto](https://user-images.githubusercontent.com/55508821/96767365-b9733480-13dc-11eb-9d04-d8fc0f07de11.jpg)
+
+
+
 Boceto de mapa del bosque "tileable"
 ![boceto mapa bosque](https://user-images.githubusercontent.com/55508821/96410498-4b195100-11e7-11eb-9289-1263f45bc08c.jpeg)
 
