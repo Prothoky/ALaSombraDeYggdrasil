@@ -43,6 +43,8 @@ var user = { //Mapas desbloqueados y dinero del jugador
   money: 0,
 };
 
+var levelIndex = 0; // Indica el nivel a generar para LevelManager (CAMBIAR A PASO DE OBJETO DE ESCENA A ESCENA)
+
 //Movil o PC
 PC = true;
 

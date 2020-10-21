@@ -153,6 +153,7 @@ class LevelManager extends Phaser.Scene
         this.leftButton = this.input.keyboard.addKey(controls.left);
         this.rightButton = this.input.keyboard.addKey(controls.right);
         this.attackButton = this.input.keyboard.addKey(controls.attack);
+        this.testButton = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F); // Eliminar en versión final
 
         // Modo endless runner
         if (this.runnerMode == true) {
@@ -160,6 +161,7 @@ class LevelManager extends Phaser.Scene
             this.jumpButton.on('up', this.playerStopJump, this);
             this.attackButton.on('down', this.playerAttack, this);
             this.playerRight();
+            this.testButton.on('down', this.levelCompletedFunc, this);
         } else {    // Modo control izq/der
             this.jumpButton.on('down', this.playerStartJump, this);
             this.jumpButton.on('up', this.playerStopJump, this);
@@ -407,7 +409,25 @@ class LevelManager extends Phaser.Scene
     // FIN DE FUNCIONES DE GENERACIÓN DE ENEMIGOS/OBSTÁCULOS ------------
 
 
-    // OTRAS FUNCIONES --------------------------------------------------
+    // FUNCIONES DE FLUJO DEL JUEGO -------------------------------------
+    // Devuelve el jugador al mapa del mundo (al completar el nivel)
+    levelCompletedFunc() {
+        this.actualizeSavedata();
+        this.returnToWorldMap();
+    }
+
+    // Actualiza la variable global de mapas pasados
+    actualizeSavedata() {
+        user.map[levelIndex] = true;
+    }
+
+    // Vuelve al menú de mundo
+    returnToWorldMap() {
+        this.scene.start('World1Map');
+    }
+    // FIN DE FUNCIONES DE FLUJO DEL JUEGO ------------------------------
+
+    // OTRAS FUNCIONES --------------------------------------------------    
     // Genera suelo para todo el nivel
     // cambiar a la línea comentada para hacerlo invisible
     generateGround(spriteWidth, spriteName) {
