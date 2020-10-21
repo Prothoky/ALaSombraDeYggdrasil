@@ -412,13 +412,19 @@ class LevelManager extends Phaser.Scene
     // FUNCIONES DE FLUJO DEL JUEGO -------------------------------------
     // Devuelve el jugador al mapa del mundo (al completar el nivel)
     levelCompletedFunc() {
-        this.actualizeSavedata();
+        this.actualizeMapsCompleted();
+        this.saveGame();
         this.returnToWorldMap();
     }
 
     // Actualiza la variable global de mapas pasados
-    actualizeSavedata() {
+    actualizeMapsCompleted() {
         user.map[levelIndex] = true;
+    }
+
+    saveGame() {
+        localStorage.setItem("UserMap", user.map);
+        localStorage.setItem("UserMoney", user.money);
     }
 
     // Vuelve al menú de mundo
