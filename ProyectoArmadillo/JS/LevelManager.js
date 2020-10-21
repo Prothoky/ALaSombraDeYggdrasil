@@ -75,7 +75,7 @@ class LevelManager extends Phaser.Scene
         // PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
         this.load.spritesheet('dude', 'ASSETS/Placeholders/dude.png', { frameWidth: 32, frameHeight: 48 });
         this.load.image('ground', 'ASSETS/Placeholders/platform.png');
-        this.load.image('dot', 'ASSETS/Gameplay/dot.png');
+        this.load.image('dot', 'ASSETS/Placeholders/star.png');
         this.load.image('bomb', 'ASSETS/Placeholders/bomb.png');
         this.load.image('bg_far', 'ASSETS/Secciones/Zona lejana.png');
         this.load.image('bg_medium' , 'ASSETS/Secciones/Zona media.png');
