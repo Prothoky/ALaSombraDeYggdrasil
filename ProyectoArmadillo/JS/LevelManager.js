@@ -186,15 +186,20 @@ class LevelManager extends Phaser.Scene
         this.input.addPointer(2);
         
         var pointerJump = this.add.image(10, 10, 'dude').setInteractive();
-        var pointerRight = this.add.image(500, 10, 'dude').setInteractive();
+        var pointerAttack = this.add.image(500, 10, 'dude').setInteractive();
+        // setSize() cambia el tamaño de la hitbox
+        // setScrollFactor(0) creo que lo para siempre en frente a la camara
+        // setVisible(false) lo hace invisible pero no se si lo hace también inactivo, si no probar a cambiar alpha
+        //var pointerJump = this.add.image(gameWidth/4, gameHeight/2, 'dude').setInteractive().setSize(gameWidth/2, gameHeight/2).setScrollFactor(0);
+        //var pointerAttack = this.add.image(gameWidth*3/4, gameHeight/2, 'dude').setInteractive().setSize(gameWidth/2, gameHeight/2).setScrollFactor(0);
 
         this.input.on('gameobjectdown',function (pointer) {
 
             if(pointerJump.getBounds().contains(pointer.downX, pointer.downY)){
                 this.playerStartJump();
             }
-            else if(pointerRight.getBounds().contains(pointer.downX, pointer.downY)){
-                this.playerRight();
+            else if(pointerAttack.getBounds().contains(pointer.downX, pointer.downY)){
+                this.playerAttack();
             }
 
             else{
@@ -207,7 +212,7 @@ class LevelManager extends Phaser.Scene
             if(pointerJump.getBounds().contains(pointer.downX, pointer.downY)){
                 this.playerStopJump();
             }
-            else if(pointerRight.getBounds().contains(pointer.downX, pointer.downY)){
+            else if(pointerAttack.getBounds().contains(pointer.downX, pointer.downY)){
                 this.playerStop();
             }
 
@@ -219,8 +224,8 @@ class LevelManager extends Phaser.Scene
         if(PC) {
             pointerJump.setInteractive(false);
             pointerJump.destroy();
-            pointerRight.setInteractive(false);
-            pointerRight.destroy();
+            pointerAttack.setInteractive(false);
+            pointerAttack.destroy();
         } 
 
         //Fondo dinámico (Parallax Scrolling)
