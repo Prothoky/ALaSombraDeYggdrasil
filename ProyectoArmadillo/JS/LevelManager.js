@@ -68,6 +68,7 @@ class LevelManager extends Phaser.Scene
         this.leftButton;
         this.rightButton;
         this.attackButton;
+
     }
 
     preload () {
@@ -76,7 +77,18 @@ class LevelManager extends Phaser.Scene
         this.load.image('ground', 'ASSETS/Placeholders/platform.png');
         this.load.image('dot', 'ASSETS/Gameplay/dot.png');
         this.load.image('bomb', 'ASSETS/Placeholders/bomb.png');
+        this.load.image('bg_far', 'ASSETS/Secciones/Zona lejana.png');
+        this.load.image('bg_medium' , 'ASSETS/Secciones/Zona media.png');
+        this.load.image('bg_near' , 'ASSETS/Secciones/Zona delantera.png');
+        this.load.image('bg_background', 'ASSETS/Secciones/Fondo.png')
+
         // FIN DE PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
+        //BACKGROUND
+        this.bg_backgorund = this.add.tileSprite(0,0, this.game.config.width, this.game.config.height, 'bg_background');
+        this.bg_far = this.add.tileSprite(0,0, this.game.config.width, this.game.config.height, "bg_far");
+        this.bg_medium = this.add.tileSprite(0,0, this.game.config.width, this.game.config.height, "bg_medium");
+        this.bg_near = this.add.tileSprite(0,0, this.game.config.width, this.game.config.height, "bg_near");
+
     }
 
     create ()
@@ -228,12 +240,15 @@ class LevelManager extends Phaser.Scene
             pointerAttack.destroy();
         } 
 
-        //Fondo dinámico (Parallax Scrolling)
-        /*
-        this.bg_1 = this.add.tileSprite(0,0,game.config.width, game.config.height, "bg_1");
-        this.bg_1.setOrigin(0,0);
-        this.bg_1.setScrollFactor(0);
-        */
+        this.bg_backgorund.setOrigin(0,0);
+        this.bg_far.setOrigin(0,0);
+        this.bg_medium.setOrigin(0,0);
+        this.bg_near.setOrigin(0,0);
+        this.bg_backgorund.setScrollFactor(0);
+        this.bg_far.setScrollFactor(0);
+        this.bg_medium.setScrollFactor(0);
+        this.bg_near.setScrollFactor(0);
+        
     }
 
     // FUNCIÓN DE CREADO PROCEDURAL DEL MAPA ----------------------------
@@ -494,6 +509,9 @@ class LevelManager extends Phaser.Scene
 
     update () {        
         //Fondo dinámico
-        //this.bg_1.tilePositionX = this.myCam.scrollX * .3;
+        this.bg_backgorund.tilePositionX = this.cameras.main.scrollX * .1;
+        this.bg_far.tilePositionX = this.cameras.main.scrollX *.1;
+        this.bg_medium.tilePositionX = this.cameras.main.scrollX * .5;
+        this.bg_near.tilePositionX = this.cameras.main.scrollX ;
     }
 }
