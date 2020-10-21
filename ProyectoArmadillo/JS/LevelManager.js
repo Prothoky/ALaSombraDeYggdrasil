@@ -84,15 +84,16 @@ class LevelManager extends Phaser.Scene
 
         // FIN DE PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
         //BACKGROUND
-        this.bg_backgorund = this.add.tileSprite(0,0, this.game.config.width, this.game.config.height, 'bg_background');
-        this.bg_far = this.add.tileSprite(0,0, this.game.config.width, this.game.config.height, "bg_far");
-        this.bg_medium = this.add.tileSprite(0,0, this.game.config.width, this.game.config.height, "bg_medium");
-        this.bg_near = this.add.tileSprite(0,0, this.game.config.width, this.game.config.height, "bg_near");
 
     }
 
     create ()
     {
+        this.bg_backgorund = this.add.tileSprite(0,0, this.game.config.width, this.game.config.height, 'bg_background');
+        this.bg_far = this.add.tileSprite(0,0, this.game.config.width, this.game.config.height, "bg_far");
+        this.bg_medium = this.add.tileSprite(0,0, this.game.config.width, this.game.config.height, "bg_medium");
+        this.bg_near = this.add.tileSprite(0,0, this.game.config.width, this.game.config.height, "bg_near");
+
         // PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
         // Animaciones globales
         this.anims.create({
