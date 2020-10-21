@@ -36,7 +36,7 @@ class LevelManager extends Phaser.Scene
         this.platformScaleFactor = 0.4; // Factor de escalado de las plataformas. 1 para no hacer escalado
         // Settings enerador procedural
         this.levelIntroWidth = 600; // Longitud al principio del mapa asegurado sin trampas
-        this.levelEndWidth = 400;
+        this.levelEndWidth = 600;   // Longitud al final del mapa asegurado sin trampas
 
         // REFERENCIAS
         // Grupos
@@ -52,6 +52,7 @@ class LevelManager extends Phaser.Scene
         this.playerAttackTimer;   // Temporizador de fin de ataque
         this.attackHitbox;  // Hitbox del ataque
         this.trapFunctionsArray = new Array();  // Array que guarda las funciones de las trampas a generar
+        this.endTrigger;    // Trigger del fin del nivel
 
         // VARIABLES DE INFORMACIÓN
         this.levelHeight = gameHeight;
@@ -105,6 +106,8 @@ class LevelManager extends Phaser.Scene
 
         // PERSONAJE
         this.player = this.physics.add.sprite(100, 450, 'dude').setOrigin(1);   // setOrigin(1) IMPORTANTE (calcular colisiones)
+        this.endTrigger = this.physics.add.sprite(this.levelWidth - this.levelEndWidth/2, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight);
+        this.endTrigger.body.setAllowGravity(false);
 
         // FÍSICAS
         this.physics.world.setBounds(0, 0, this.levelWidth, this.levelHeight);  // Tamaño del nivel
@@ -114,6 +117,7 @@ class LevelManager extends Phaser.Scene
         this.solidPlatforms = this.physics.add.staticGroup();   // Grupo de plataformas con las que se ha hecho contacto
         this.enemies = this.physics.add.group();  // Grupo de enemigos
         this.triggers = this.physics.add.staticGroup();   // Grupo de triggers
+        
         this.attackHitbox = this.physics.add.group(); // Grupo de hitbox del personaje
         this.generateGround(200, 'ground'); // Genera suelo para todo el nivel
         this.player.setCollideWorldBounds(true);    // No puede salir de los límites del mapa
@@ -126,6 +130,7 @@ class LevelManager extends Phaser.Scene
         this.physics.add.collider(this.enemies, this.platforms);    // Enemigos colisionan con el suelo
         this.physics.add.collider(this.enemies, this.ground);   // Enemigos colisionan con plataformas
         this.physics.add.overlap(this.player, this.triggers, this.enemyStartMotion, null, this);    // Función que se llama al entrar el jugador en el área de visión del enemigo
+        this.physics.add.collider(this.player, this.endTrigger, this.endText, null, this);   // Genera el texto de fin del nivel
 
         // CÁMARA
         this.cameras.main.setBounds(0, 0, this.levelWidth, this.levelHeight);   // Límites cámara
@@ -239,7 +244,7 @@ class LevelManager extends Phaser.Scene
         xPointer += this.levelIntroWidth;   // Avanzamos el cursor una distancia inicial sin trampas
         let addedDistance;  // Almacena la distancia entre trampas a añadir en cada iter
         // Mientras quede espacio de mapa
-        while (xPointer < this.levelWidth - this.levelEndWidth) {
+        while (xPointer < this.levelWidth - this.levelEndWidth - 200) { // 200 extra por si un enemigo cae justo en el límite
             // Genera una trampa aleatoria del pool de trampas y almacena su distancia mínima entre trampas
             addedDistance = this.generateRandomTrap(xPointer);
             // Aumenta espacio (derivado de la configuració ndel mapa y del random)
@@ -411,6 +416,14 @@ class LevelManager extends Phaser.Scene
 
     // FUNCIONES DE FLUJO DEL JUEGO -------------------------------------
     // Devuelve el jugador al mapa del mundo (al completar el nivel)
+    endText() {
+        /*
+        Aquí va el código e parar el personaje, imprimir el texto (derivado de levelIndex e importado de un JSON), pasarlo con buttonJump o buttonAttack
+        */
+        console.log("te pasaste el level");
+        this.levelCompletedFunc();
+    }
+
     levelCompletedFunc() {
         this.actualizeMapsCompleted();
         this.saveGame();
