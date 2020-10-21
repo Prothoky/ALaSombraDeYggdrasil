@@ -10,7 +10,7 @@ class InitMenu extends Phaser.Scene{
     var user_map = localStorage.getItem("UserMap"); //Variables a guardar en local
     var user_money = localStorage.getItem("UserMoney"); //Variables a guardar en local
     if(user_map!=null && user_money != null) {
-      this.stringToArray(user_map);
+    //  this.stringToArray(user_map);
       user.money = user_money;
     }
 
@@ -45,10 +45,10 @@ class InitMenu extends Phaser.Scene{
   stringToArray(user_map) {
     var separador = ",";
     var mapas = user_map.split(separador);
-    
+
     for (var i=0; i < mapas.length; i++) {
       user.map[i] =mapas[i];
     }
   }
- 
+
 }

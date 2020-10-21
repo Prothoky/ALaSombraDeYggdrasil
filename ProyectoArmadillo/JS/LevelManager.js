@@ -30,7 +30,7 @@ class LevelManager extends Phaser.Scene
         this.minTrapDistance = 200;    // Distancia mínima entre cada trampa
 
         // 2) GENERAL
-        this.runnerMode = true; // Controles de runner (salto y ataque) 
+        this.runnerMode = true; // Controles de runner (salto y ataque)
         this.levelGroundHeight = 568;   // Altura del suelo
         // Temporales (testeo)
         this.platformScaleFactor = 0.4; // Factor de escalado de las plataformas. 1 para no hacer escalado
@@ -130,7 +130,7 @@ class LevelManager extends Phaser.Scene
         this.solidPlatforms = this.physics.add.staticGroup();   // Grupo de plataformas con las que se ha hecho contacto
         this.enemies = this.physics.add.group();  // Grupo de enemigos
         this.triggers = this.physics.add.staticGroup();   // Grupo de triggers
-        
+
         this.attackHitbox = this.physics.add.group(); // Grupo de hitbox del personaje
         this.generateGround(200, 'ground'); // Genera suelo para todo el nivel
         this.player.setCollideWorldBounds(true);    // No puede salir de los límites del mapa
@@ -194,10 +194,10 @@ class LevelManager extends Phaser.Scene
         if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
             console.log('Esto es un dispositivo móvil');
         }
-        
+
         //Para movil:
         this.input.addPointer(2);
-        
+
         var pointerJump = this.add.image(10, 10, 'dude').setInteractive();
         var pointerAttack = this.add.image(500, 10, 'dude').setInteractive();
         // setSize() cambia el tamaño de la hitbox
@@ -219,7 +219,7 @@ class LevelManager extends Phaser.Scene
                 console.log(pointer);
             }
         }, this);
-        
+
         this.input.on('gameobjectup',function (pointer) {
 
             if(pointerJump.getBounds().contains(pointer.downX, pointer.downY)){
@@ -239,7 +239,7 @@ class LevelManager extends Phaser.Scene
             pointerJump.destroy();
             pointerAttack.setInteractive(false);
             pointerAttack.destroy();
-        } 
+        }
 
         this.bg_backgorund.setOrigin(0,0);
         this.bg_far.setOrigin(0,0);
@@ -253,7 +253,7 @@ class LevelManager extends Phaser.Scene
         this.bg_far.setScale(0.66);
         this.bg_medium.setScale(0.66);
         this.bg_near.setScale(0.7);
-        
+
     }
 
     // FUNCIÓN DE CREADO PROCEDURAL DEL MAPA ----------------------------
@@ -280,7 +280,7 @@ class LevelManager extends Phaser.Scene
 
     // Llama a una función aleatoria del array de trampas disponibles y le pasa x e y como parámetros
     generateRandomTrap(xPos) {
-        
+
         return eval(this.trapFunctionsArray[this.randomTrapIndex()] + '(' + xPos + ')');
     }
 
@@ -339,7 +339,7 @@ class LevelManager extends Phaser.Scene
     playerRight() {
         this.player.setVelocityX(this.playerMovementSpeed);
         this.player.anims.play('right', true);
-                    
+
     }
 
     // quedarse quieto
@@ -362,7 +362,7 @@ class LevelManager extends Phaser.Scene
             localAttackHitbox.refreshBody();
             // Crea el timer de actualziación
             this.playerAttackTimer = this.time.addEvent( { delay: this.playerAttackRefreshRate, callback: this.playerAttackRefresh, callbackScope: this, loop: true } );
-        }        
+        }
     }
 
     // Función de actualizado del ataque.
@@ -382,7 +382,7 @@ class LevelManager extends Phaser.Scene
 
     // Reinicia el nivel
     playerDeath() {
-        
+
         //Guardar información del jugador
         user.map[0] = true;
         user.money=0;
@@ -398,7 +398,7 @@ class LevelManager extends Phaser.Scene
     // FIN DE FUNCIONES DE CONTROL DEL PERSONAJE ------------------------
 
 
-    // FUNCIONES DE GENERACIÓN DE ENEMIGOS/OBSTÁCULOS -------------------    
+    // FUNCIONES DE GENERACIÓN DE ENEMIGOS/OBSTÁCULOS -------------------
     // Función de creación de enemigos sin movimiento
     // xPos, yPos: posición en el mapa
     // collisionWidth, collisionHeight: tamaño de la hitbox
@@ -443,7 +443,7 @@ class LevelManager extends Phaser.Scene
     // Devuelve el jugador al mapa del mundo (al completar el nivel)
     endText() {
         /*
-        Aquí va el código e parar el personaje, imprimir el texto (derivado de levelIndex e importado de un JSON), pasarlo con buttonJump o buttonAttack
+        Aquí va el código de parar el personaje, imprimir el texto (derivado de levelIndex e importado de un JSON), pasarlo con buttonJump o buttonAttack
         */
         console.log("te pasaste el level");
         this.levelCompletedFunc();
@@ -453,6 +453,7 @@ class LevelManager extends Phaser.Scene
         this.actualizeMapsCompleted();
         this.saveGame();
         this.returnToWorldMap();
+        console.log("Pasaste el nivel" + levelIndex)
     }
 
     // Actualiza la variable global de mapas pasados
@@ -471,7 +472,7 @@ class LevelManager extends Phaser.Scene
     }
     // FIN DE FUNCIONES DE FLUJO DEL JUEGO ------------------------------
 
-    // OTRAS FUNCIONES --------------------------------------------------    
+    // OTRAS FUNCIONES --------------------------------------------------
     // Genera suelo para todo el nivel
     // cambiar a la línea comentada para hacerlo invisible
     generateGround(spriteWidth, spriteName) {
@@ -511,9 +512,9 @@ class LevelManager extends Phaser.Scene
         this.scene.restart();
     }
     // FIN DE OTRAS FUNCIONES -------------------------------------------
-    
 
-    update () {        
+
+    update () {
         //Fondo dinámico
         this.bg_backgorund.tilePositionX = this.cameras.main.scrollX * .1;
         this.bg_far.tilePositionX = this.cameras.main.scrollX *.1;
