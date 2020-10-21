@@ -89,10 +89,10 @@ class LevelManager extends Phaser.Scene
 
     create ()
     {
-        this.bg_backgorund = this.add.tileSprite(0,0, this.game.config.width, this.game.config.height, 'bg_background');
-        this.bg_far = this.add.tileSprite(0,0, this.game.config.width, this.game.config.height, "bg_far");
-        this.bg_medium = this.add.tileSprite(0,0, this.game.config.width, this.game.config.height, "bg_medium");
-        this.bg_near = this.add.tileSprite(0,0, this.game.config.width, this.game.config.height, "bg_near");
+        this.bg_backgorund = this.add.tileSprite(0,0, 5715, 916, 'bg_background');
+        this.bg_far = this.add.tileSprite(0,0, 5715, 916, "bg_far");
+        this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium");
+        this.bg_near = this.add.tileSprite(0,0, 5715, 916, "bg_near");
 
         // PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
         // Animaciones globales
@@ -249,6 +249,10 @@ class LevelManager extends Phaser.Scene
         this.bg_far.setScrollFactor(0);
         this.bg_medium.setScrollFactor(0);
         this.bg_near.setScrollFactor(0);
+        this.bg_backgorund.setScale(0.66);
+        this.bg_far.setScale(0.66);
+        this.bg_medium.setScale(0.66);
+        this.bg_near.setScale(0.7);
         
     }
 
@@ -503,6 +507,7 @@ class LevelManager extends Phaser.Scene
         this.isPlayerJumping = false;
         this.isPlayerTouchingGround = false;
         this.playerAttackAvaliable = true;
+        this.scene.stop();
         this.scene.restart();
     }
     // FIN DE OTRAS FUNCIONES -------------------------------------------
