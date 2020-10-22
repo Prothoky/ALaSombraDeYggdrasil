@@ -36,6 +36,7 @@ class LevelManager extends Phaser.Scene
         this.minTrapDistance = 200;    // Distancia mínima entre cada trampa
 
         // 2) GENERAL
+        this.playerResizeFactor = 0.7;
         this.runnerMode = true; // Controles de runner (salto y ataque)
         this.levelGroundHeight = 470;   // Altura del suelo
         // Temporales (testeo)
@@ -124,8 +125,8 @@ class LevelManager extends Phaser.Scene
         // FIN DE PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
 
         // PERSONAJE
-        //this.player = this.physics.add.sprite(400, 200, 'einar').setOrigin(1).setScale(0.7).setSize(this.playerHitboxWidth, this.playerHitboxHeight);   // setOrigin(1) IMPORTANTE (calcular colisiones)
-        this.player = this.physics.add.sprite(400, 200, 'einar').setOrigin(1);   // setOrigin(1) IMPORTANTE (calcular colisiones)
+        this.player = this.physics.add.sprite(400, 200, 'einar').setOrigin(1).setScale(this.playerResizeFactor).setSize(this.playerHitboxWidth, this.playerHitboxHeight);   // setOrigin(1) IMPORTANTE (calcular colisiones)
+        //this.player = this.physics.add.sprite(400, 200, 'einar').setOrigin(1);   // setOrigin(1) IMPORTANTE (calcular colisiones)
         this.endTrigger = this.physics.add.sprite(this.levelWidth - this.levelEndWidth/2, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight);
         this.endTrigger.body.setAllowGravity(false);
 
@@ -511,8 +512,11 @@ class LevelManager extends Phaser.Scene
     // Comprueba si se ha colisionado con la plataforma por arriba (y se convierte en sólida)
     // o por abajo (y permite pasar).
     platformOverlap(player, platforms) {
-        if (player.y < platforms.y) {
-            this.solidPlatforms.create(platforms.x, platforms.y, 'ground').setScale(this.platformScaleFactor).setOrigin(0, 0).setTint(0x00ff38).refreshBody();
+        if (player.body.y < platforms.y) {
+            let localSolidPlatform = this.solidPlatforms.create(platforms.x, platforms.y, 'ground').setScale(this.platformScaleFactor).setOrigin(0, 0).setTint(0x00ff38).refreshBody();
+            localSolidPlatform.body.checkCollision.left = false;
+            localSolidPlatform.body.checkCollision.right = false;
+            localSolidPlatform.body.checkCollision.down = false;
         }
     }
 
