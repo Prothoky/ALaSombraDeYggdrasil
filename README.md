@@ -73,6 +73,7 @@ La interfaz de juego está mayormente limitada por el lanzamiento del juego en l
 
 
 ## Flujo de juego
+![A la sombra de Yggdrasil](https://user-images.githubusercontent.com/55508821/96869494-d3118c00-146f-11eb-983f-405292a00031.png)
 
 
 ## Historia
@@ -83,6 +84,10 @@ Einar es el vikingo protagonista de esta historia. Fue bendecido con el don de l
 Para ello Einar irá recorriendo los nueve mundos que sostiene Yggdrasil teniendo a Asgard como meta. Esta aventura comienza en su planeta natal Midgard.
 
 Cada mundo se dividirá en unos cuantos subniveles principales con sus respectivos niveles extras, extendiendose a modo de árbol por las fases principales. En estos niveles adicionales el jugador encontraría cuentos y leyendas de dioses y del propio Einar, progagando así la narrativa por varias direcciones.
+
+Habrá 10 niveles principales, 5 en el bosque y los otros 5 en el hielo. Algunos de estos niveles tendrán ramas que contendrán niveles extras con historias adicionales sobre la cultura nórdica. 
+
+El avance de los niveles irá reflejando el pensamiento del personaje y hará una transición desde la soledad hasta la ira de su situación, exigiendo a Odín con violencia que acabe con su sufrimiento. Einar en el último capítulo amenazará de muerte al mismísimo dios.
 
 
 
