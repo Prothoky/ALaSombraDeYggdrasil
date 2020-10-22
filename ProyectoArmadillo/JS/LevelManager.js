@@ -3,6 +3,7 @@ class LevelManager extends Phaser.Scene
     constructor ()
     {
         super({key:"LevelManager"});
+
         // SETTINGS
         // 1) Configuración para JSON
         // Settings personaje
@@ -72,7 +73,7 @@ class LevelManager extends Phaser.Scene
         this.leftButton;
         this.rightButton;
         this.attackButton;
-
+        this.testButton;
     }
 
     preload () {
@@ -168,14 +169,19 @@ class LevelManager extends Phaser.Scene
         this.generateTrapArray();   // Genera el array de las trampas disponibles en este mapa
         this.proceduralGenerator(); // Genera el mapa
 
-
         // CONTROLES
         // PC
         this.jumpButton = this.input.keyboard.addKey(controls.up);
         this.leftButton = this.input.keyboard.addKey(controls.left);
         this.rightButton = this.input.keyboard.addKey(controls.right);
         this.attackButton = this.input.keyboard.addKey(controls.attack);
-        this.testButton = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F); // Eliminar en versión final
+        this.testButton = this.input.keyboard.addKey(controls.test); // Eliminar en versión final
+
+        // Reiniciamos eventos
+        this.jumpButton.off('down');
+        this.jumpButton.off('up');
+        this.attackButton.off('down');
+        this.testButton.off('down');  // Eliminar en versión final
 
         // Modo endless runner
         if (this.runnerMode == true) {
@@ -183,7 +189,7 @@ class LevelManager extends Phaser.Scene
             this.jumpButton.on('up', this.playerStopJump, this);
             this.attackButton.on('down', this.playerAttack, this);
             this.playerRight();
-            this.testButton.on('down', this.levelCompletedFunc, this);
+            this.testButton.on('down', this.levelCompletedFunc, this);  // Eliminar en versión final
         } else {    // Modo control izq/der
             this.jumpButton.on('down', this.playerStartJump, this);
             this.jumpButton.on('up', this.playerStopJump, this);
@@ -259,7 +265,7 @@ class LevelManager extends Phaser.Scene
         this.bg_near.setScale(0.7);
 
     }
-
+    
     // FUNCIÓN DE CREADO PROCEDURAL DEL MAPA ----------------------------
     /*
     * Crea un cursor (xPointer) que va apuntando a una posición en x del nivel, desde 0 (comienzo) hasta
@@ -456,8 +462,8 @@ class LevelManager extends Phaser.Scene
     levelCompletedFunc() {
         this.actualizeMapsCompleted();
         this.saveGame();
+        console.log("Pasaste el nivel" + levelIndex);
         this.returnToWorldMap();
-        console.log("Pasaste el nivel" + levelIndex)
     }
 
     // Actualiza la variable global de mapas pasados
@@ -472,6 +478,7 @@ class LevelManager extends Phaser.Scene
 
     // Vuelve al menú de mundo
     returnToWorldMap() {
+        this.scene.stop();
         this.scene.start('World1Map');
     }
     // FIN DE FUNCIONES DE FLUJO DEL JUEGO ------------------------------

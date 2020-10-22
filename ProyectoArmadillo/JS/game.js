@@ -36,6 +36,7 @@ var controls = {  // Controles del jugador (teclado)
   left: Phaser.Input.Keyboard.KeyCodes.LEFT,
   right: Phaser.Input.Keyboard.KeyCodes.RIGHT,
   attack: Phaser.Input.Keyboard.KeyCodes.CTRL,
+  test: Phaser.Input.Keyboard.KeyCodes.F,
 };
 
 var user = { //Mapas desbloqueados y dinero del jugador
