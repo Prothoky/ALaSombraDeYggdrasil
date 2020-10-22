@@ -23,6 +23,7 @@ class LevelManager extends Phaser.Scene
         // Settings enemigos
         this.enemySpeed = -200; // Velocidad de movimiento de los enemigos
         // Settings del generador aleatorio
+        this.platformPositionY = 300;
         this.maxRandTrapDistance = 250; // Máximo de distancia entre trampas añadido
         this.minDistStillEnemy = 200;   // Mínimo de distancia tras un enemigo quieto
         this.minDistMovingEnemy = 50;   // Mínimo de distancia tras un enemigo que se mueve
@@ -123,7 +124,8 @@ class LevelManager extends Phaser.Scene
         // FIN DE PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
 
         // PERSONAJE
-        this.player = this.physics.add.sprite(200, 200, 'einar').setOrigin(1).setScale(0.7).setSize(this.playerHitboxWidth, this.playerHitboxHeight);   // setOrigin(1) IMPORTANTE (calcular colisiones)
+        //this.player = this.physics.add.sprite(400, 200, 'einar').setOrigin(1).setScale(0.7).setSize(this.playerHitboxWidth, this.playerHitboxHeight);   // setOrigin(1) IMPORTANTE (calcular colisiones)
+        this.player = this.physics.add.sprite(400, 200, 'einar').setOrigin(1);   // setOrigin(1) IMPORTANTE (calcular colisiones)
         this.endTrigger = this.physics.add.sprite(this.levelWidth - this.levelEndWidth/2, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight);
         this.endTrigger.body.setAllowGravity(false);
 
@@ -304,10 +306,10 @@ class LevelManager extends Phaser.Scene
     // Genera el array con las trampas disponibles del mapa
     // TRAMPAS DISPONIBLES DEPENDIENTES DEL NIVEL POR IMPLEMENTAR
     generateTrapArray() {
-        this.trapFunctionsArray[0] = 'this.generateStillEnemy';
-        this.trapFunctionsArray[1] = 'this.generateMovingEnemy';
-        this.trapFunctionsArray[2] = 'this.generateSpikesTrap';
-        this.trapFunctionsArray[3] = 'this.generatePlatform';
+        //this.trapFunctionsArray[0] = 'this.generateStillEnemy';
+        //this.trapFunctionsArray[1] = 'this.generateMovingEnemy';
+        //this.trapFunctionsArray[2] = 'this.generateSpikesTrap';
+        this.trapFunctionsArray[0] = 'this.generatePlatform';
     }
     // FIN DE FUNCIÓN DE CREADO PROCEDURAL DEL MAPA ---------------------
 
@@ -436,7 +438,7 @@ class LevelManager extends Phaser.Scene
     // Funcion de creación de plataformas
     // xPos, yPos = posiciones x e y. Origen del sprite en el límite inferior derecho.
     // Únicamente cambiar el sprite y el valor de setScale()
-    generatePlatform(xPos, yPos = this.levelGroundHeight - 1) {
+    generatePlatform(xPos, yPos = this.platformPositionY) {
         this.platforms.create(xPos, yPos, 'ground').setScale(this.platformScaleFactor).setOrigin(0, 0).setTint(0x00ff38).refreshBody();
         return this.minDistPlatform;
     }
