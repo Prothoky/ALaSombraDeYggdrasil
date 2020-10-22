@@ -7,6 +7,8 @@ class LevelManager extends Phaser.Scene
         // 1) Configuración para JSON
         // Settings personaje
         this.playerMovementSpeed = 300;   // Velocidad de movimiento del personaje
+        this.playerHitboxWidth = 95;    // Ancho de la hitbox del personaje
+        this.playerHitboxHeight = 210;   // Alto de la hitbox del personaje
         this.playerJumpSpeed = -500;  // Fuerza de salto del personaje
         this.playerJumpDuration = 400;    // Duración máxima de la anulación de gravedad del salto en ms
         this.playerAttackDuration = 1000;   // ´Duración del ataque
@@ -15,6 +17,8 @@ class LevelManager extends Phaser.Scene
         this.playerAttackCooldown = 1000;   // Cooldown del ataque
         this.playerAttackWidth = 50;    // Ancho de hitbox del ataque
         this.playerAttackHeight = 50;   // Alto de hitbox del ataque
+        // Settings cámara
+        this.cameraOffsetX = -250;  // Offset del seguido del personaje en el eje X
         // Settings enemigos
         this.enemySpeed = -200; // Velocidad de movimiento de los enemigos
         // Settings del generador aleatorio
@@ -31,11 +35,11 @@ class LevelManager extends Phaser.Scene
 
         // 2) GENERAL
         this.runnerMode = true; // Controles de runner (salto y ataque)
-        this.levelGroundHeight = 568;   // Altura del suelo
+        this.levelGroundHeight = 470;   // Altura del suelo
         // Temporales (testeo)
         this.platformScaleFactor = 0.4; // Factor de escalado de las plataformas. 1 para no hacer escalado
         // Settings enerador procedural
-        this.levelIntroWidth = 600; // Longitud al principio del mapa asegurado sin trampas
+        this.levelIntroWidth = 1000; // Longitud al principio del mapa asegurado sin trampas
         this.levelEndWidth = 600;   // Longitud al final del mapa asegurado sin trampas
 
         // REFERENCIAS
@@ -80,8 +84,8 @@ class LevelManager extends Phaser.Scene
         this.load.image('bg_far', 'ASSETS/Secciones/Zona lejana.png');
         this.load.image('bg_medium' , 'ASSETS/Secciones/Zona media.png');
         this.load.image('bg_near' , 'ASSETS/Secciones/Zona delantera.png');
-        this.load.image('bg_background', 'ASSETS/Secciones/Fondo.png')
-
+        this.load.image('bg_background', 'ASSETS/Secciones/Fondo.png');
+        this.load.image('einar', 'ASSETS/Gameplay/einar_provisional.png');
         // FIN DE PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
         //BACKGROUND
 
@@ -118,7 +122,7 @@ class LevelManager extends Phaser.Scene
         // FIN DE PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
 
         // PERSONAJE
-        this.player = this.physics.add.sprite(100, 450, 'dude').setOrigin(1);   // setOrigin(1) IMPORTANTE (calcular colisiones)
+        this.player = this.physics.add.sprite(200, 200, 'einar').setOrigin(1).setScale(0.7).setSize(this.playerHitboxWidth, this.playerHitboxHeight);   // setOrigin(1) IMPORTANTE (calcular colisiones)
         this.endTrigger = this.physics.add.sprite(this.levelWidth - this.levelEndWidth/2, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight);
         this.endTrigger.body.setAllowGravity(false);
 
@@ -147,7 +151,7 @@ class LevelManager extends Phaser.Scene
 
         // CÁMARA
         this.cameras.main.setBounds(0, 0, this.levelWidth, this.levelHeight);   // Límites cámara
-        this.cameras.main.startFollow(this.player); // Cámar sigue al personaje
+        this.cameras.main.startFollow(this.player, false, 1, 1, this.cameraOffsetX, 0); // Cámar sigue al personaje
 
         /*  TESTEO
         // Generamos obstáculos de testeo
@@ -332,20 +336,20 @@ class LevelManager extends Phaser.Scene
     // moverse a la izquierda
     playerLeft() {
         this.player.setVelocityX(-this.playerMovementSpeed);
-        this.player.anims.play('left', true);
+        //this.player.anims.play('left', true);
     }
 
     // moverse a la derecha
     playerRight() {
         this.player.setVelocityX(this.playerMovementSpeed);
-        this.player.anims.play('right', true);
+        //this.player.anims.play('right', true);
 
     }
 
     // quedarse quieto
     playerStop() {
         this.player.setVelocityX(0);
-        this.player.anims.stop();
+        //this.player.anims.stop();
     }
 
     // atacar
@@ -478,7 +482,7 @@ class LevelManager extends Phaser.Scene
     generateGround(spriteWidth, spriteName) {
         let i = 0;
         for(i = 0; i < this.levelWidth; i += spriteWidth) {
-            this.ground.create(i, this.levelGroundHeight, spriteName).setOrigin(0, 0).refreshBody();
+            this.ground.create(i, this.levelGroundHeight, spriteName).setOrigin(0, 0).setVisible(false).refreshBody();
             //this.ground.create(i, this.levelGroundHeight, spriteName).setOrigin(0, 0).setVisible(false).refreshBody();
         }
     }
