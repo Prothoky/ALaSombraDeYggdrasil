@@ -50,7 +50,8 @@ Hay diferentes obstáculos en función del mapa en el que se encuentre el jugado
 
 Diseño de estructura de niveles de bosque con subniveles 
 
-![diseño niveles boceto](https://user-images.githubusercontent.com/55508821/96767365-b9733480-13dc-11eb-9d04-d8fc0f07de11.jpg)
+![diseño niveles boceto](https://user-images.githubusercontent.com/55508821/96874064-00613880-1476-11eb-9242-3d6ee32c792d.jpg)
+
 
 
 
