@@ -265,7 +265,7 @@ class LevelManager extends Phaser.Scene
         this.bg_near.setScale(0.7);
 
     }
-    
+
     // FUNCIÓN DE CREADO PROCEDURAL DEL MAPA ----------------------------
     /*
     * Crea un cursor (xPointer) que va apuntando a una posición en x del nivel, desde 0 (comienzo) hasta
@@ -393,11 +393,13 @@ class LevelManager extends Phaser.Scene
     // Reinicia el nivel
     playerDeath() {
 
+        /*
         //Guardar información del jugador
         user.map[0] = true;
         user.money=0;
         localStorage.setItem("UserMap", user.map);
         localStorage.setItem("UserMoney", user.money);
+        */
 
         if (this.isPlayerDead == false) {
             this.player.setTint(0xe62272);
@@ -519,6 +521,15 @@ class LevelManager extends Phaser.Scene
         this.isPlayerJumping = false;
         this.isPlayerTouchingGround = false;
         this.playerAttackAvaliable = true;
+        if (this.jumpTimer != null) {
+            this.jumpTimer.remove();            
+        }
+        if (this.playerAttackTimer != null) {
+            this.playerAttackTimer.remove();            
+        }
+        if (this.playerAttackCooldownTimer != null) {
+            this.playerAttackCooldownTimer.remove();
+        }        
         this.scene.stop();
         this.scene.restart();
     }
