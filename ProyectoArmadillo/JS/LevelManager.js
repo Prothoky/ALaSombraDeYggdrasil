@@ -7,7 +7,7 @@ class LevelManager extends Phaser.Scene
         // SETTINGS
         // 1) Configuración para JSON
         // Settings personaje
-        this.playerMovementSpeed = 300;   // Velocidad de movimiento del personaje
+        this.playerMovementSpeed = 600;   // Velocidad de movimiento del personaje
         this.playerHitboxWidth = 95;    // Ancho de la hitbox del personaje
         this.playerHitboxHeight = 210;   // Alto de la hitbox del personaje
         this.playerJumpSpeed = -500;  // Fuerza de salto del personaje
@@ -32,11 +32,11 @@ class LevelManager extends Phaser.Scene
         // La distancia entre trampas final será maxRandTrapDistance(rand) + trapDistance + minDistance
 
         // 2) CONFIGURACIÓN DEL NIVEL (dependiendo del nivel escogido en el minimapa)
-        this.lengthMultiplier = 5; // Multiplicador de amaño de ancho del mapa
+        this.lengthMultiplier = 10; // Multiplicador de amaño de ancho del mapa
         this.minTrapDistance = 200;    // Distancia mínima entre cada trampa
 
         // 2) GENERAL
-        this.playerResizeFactor = 0.7;
+        this.playerResizeFactor = 0.4;
         this.runnerMode = true; // Controles de runner (salto y ataque)
         this.levelGroundHeight = 470;   // Altura del suelo
         // Temporales (testeo)
@@ -307,9 +307,9 @@ class LevelManager extends Phaser.Scene
     // Genera el array con las trampas disponibles del mapa
     // TRAMPAS DISPONIBLES DEPENDIENTES DEL NIVEL POR IMPLEMENTAR
     generateTrapArray() {
-        //this.trapFunctionsArray[0] = 'this.generateStillEnemy';
-        //this.trapFunctionsArray[1] = 'this.generateMovingEnemy';
-        //this.trapFunctionsArray[2] = 'this.generateSpikesTrap';
+        this.trapFunctionsArray[0] = 'this.generateStillEnemy';
+        this.trapFunctionsArray[1] = 'this.generateMovingEnemy';
+        this.trapFunctionsArray[2] = 'this.generateSpikesTrap';
         this.trapFunctionsArray[0] = 'this.generatePlatform';
     }
     // FIN DE FUNCIÓN DE CREADO PROCEDURAL DEL MAPA ---------------------

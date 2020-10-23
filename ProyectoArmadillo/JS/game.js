@@ -8,7 +8,7 @@ window.onload = function(){
       default: 'arcade',
       arcade: {
          debug: true,
-         gravity: { y: 2000 }
+         gravity: { y: 3500 }
       }
     },
     scale:{
