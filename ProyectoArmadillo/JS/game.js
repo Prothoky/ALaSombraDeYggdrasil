@@ -39,42 +39,53 @@ var controls = {  // Controles del jugador (teclado)
   test: Phaser.Input.Keyboard.KeyCodes.F,
 };
 
-var user = { //Mapas desbloqueados y dinero del jugador
-  world: [true,false,false,false,false,false,false,false,false],
-  map: [true, false, false] ,
-  money: 0,
-};
-
 var levelIndex = 0; // Indica el nivel a generar para LevelManager (CAMBIAR A PASO DE OBJETO DE ESCENA A ESCENA)
 
 //Movil o PC
 PC = true;
 
-//Fecha de desbloqueo de nuevo mundo
-unlockDate=new Date(2021 ,9 ,22); 
-
 // Tamaño pantalla
 var gameWidth = 1270;
 var gameHeight = 610;
+
+//Fecha de desbloqueo de nuevo mundo
+unlockDate=new Date(2021 ,2 ,1); 
+
+var user = { //Mapas desbloqueados y dinero del jugador
+  world: [true,false,false,false,false,false,false,false,false],
+  map: [true, false, false, false],
+  money: 0,
+};
 
 function saveUserData(){
   localStorage.setItem("UserWorld", user.world)
   localStorage.setItem("UserMap", user.map);
   localStorage.setItem("UserMoney", user.money);
 }
+
 function loadUserData(){
   var user_world = localStorage.getItem("UserWorld");
   var user_map = localStorage.getItem("UserMap");
   var user_money = localStorage.getItem("UserMoney"); 
-  if(user_map!=null && user_money != null) {
-    user.world = user_world;
-    user.map = user_map;
+  if(user_world!=null && user_map!=null && user_money != null) {
+    user.world = stringToArray(user_world);
+    user.map = stringToArray(user_map);
     user.money = user_money;
   }
 }
 
 function resetUserData(){
   user.world= [true,false,false,false,false,false,false,false,false],
-  user.map= [true, false, false] ,
-  user.money= 0,
+  user.map= [true, false, false],
+  user.money= 0
+}
+
+function stringToArray(user_data) {
+  var separador = ",";
+  var data = user_data.split(separador);
+  var user_date_updated
+  for (var i=0; i < data.length; i++) {
+    user_date_updated[i] = data[i];
+  }
+  return user_date_updated;
 }

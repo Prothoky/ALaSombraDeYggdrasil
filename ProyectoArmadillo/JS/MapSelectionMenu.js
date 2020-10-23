@@ -31,8 +31,8 @@ class MapSelectionMenu extends Phaser.Scene{
     this.timeText = this.add.text(0,0, "TEXTO" , {fill: "white"});
     this.timeText.setPosition(wid/2, heig/2);
 
-    this.events.on("Update Date", this.updateTimeText, this);
-    this.events.on("Unlock World", this.unlockWorld, this);
+    this.events.once("Update Date", this.updateTimeText, this);
+    this.events.once("Unlock World", this.unlockWorld, this);
   }
 
   update(){
@@ -53,7 +53,8 @@ class MapSelectionMenu extends Phaser.Scene{
     var dias = Math.round((unlockDate -  new Date()) / 86400000);
     var horas =  Math.round((unlockDate -  new Date()) / 3600000)-(dias*24);
     this.timeText.setText("Quedan " + dias + " días y \n" + horas +" horas para desbloquear el siguiente Mundo");
-    if(unlockDate -  new Date()<0 || unlockDate == new Date()){
+    if(unlockDate -  new Date() < 0 || unlockDate == new Date()){
+      this.timeText.setText("NUEVO MUNDO DESBLOQUEADO");
       this.events.emit("Unlock World",);
     }
   }
