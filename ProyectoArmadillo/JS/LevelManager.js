@@ -467,7 +467,6 @@ class LevelManager extends Phaser.Scene
 
     levelCompletedFunc() {
         this.actualizeMapsCompleted();
-        this.saveGame();
         console.log("Pasaste el nivel" + levelIndex);
         this.returnToWorldMap();
     }
@@ -475,11 +474,6 @@ class LevelManager extends Phaser.Scene
     // Actualiza la variable global de mapas pasados
     actualizeMapsCompleted() {
         user.map[levelIndex] = true;
-    }
-
-    saveGame() {
-        localStorage.setItem("UserMap", user.map);
-        localStorage.setItem("UserMoney", user.money);
     }
 
     // Vuelve al menú de mundo

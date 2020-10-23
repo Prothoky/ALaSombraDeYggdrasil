@@ -40,7 +40,8 @@ var controls = {  // Controles del jugador (teclado)
 };
 
 var user = { //Mapas desbloqueados y dinero del jugador
-  map: [false, false, false] ,
+  world: [true,false,false,false,false,false,false,false,false],
+  map: [true, false, false] ,
   money: 0,
 };
 
@@ -55,3 +56,25 @@ unlockDate=new Date(2021 ,9 ,22);
 // Tamaño pantalla
 var gameWidth = 1270;
 var gameHeight = 610;
+
+function saveUserData(){
+  localStorage.setItem("UserWorld", user.world)
+  localStorage.setItem("UserMap", user.map);
+  localStorage.setItem("UserMoney", user.money);
+}
+function loadUserData(){
+  var user_world = localStorage.getItem("UserWorld");
+  var user_map = localStorage.getItem("UserMap");
+  var user_money = localStorage.getItem("UserMoney"); 
+  if(user_map!=null && user_money != null) {
+    user.world = user_world;
+    user.map = user_map;
+    user.money = user_money;
+  }
+}
+
+function resetUserData(){
+  user.world= [true,false,false,false,false,false,false,false,false],
+  user.map= [true, false, false] ,
+  user.money= 0,
+}
