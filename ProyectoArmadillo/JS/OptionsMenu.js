@@ -4,8 +4,8 @@ class OptionsMenu extends Phaser.Scene{
   }
 
   preload(){
-    this.load.image('backgroundOM', './ASSETS/OptionsMenu/OptionsMenuBackground.jpg');
-    this.load.image('backButtonOM', './ASSETS/OptionsMenu/BotonSalir.png');
+
+
 
   }
 

@@ -2,6 +2,7 @@ window.onload = function(){
 
   var config = {
     type: Phaser.AUTO,
+    parent:'game',
     width: 1270, //Comprobar si en el escalado funciona bien
     height: 610,
     physics: {
@@ -12,10 +13,12 @@ window.onload = function(){
       }
     },
     scale:{
-      parent:'CanvasDiv', //no se q es
+      //no se q es
       //mode: Phaser.Scale.FIT, //hace que se adapte a cambios de tamaño
-      autoCenter: Phaser.Scale.CENTER_BOTH,
-      isPortrait: true
+      autoCenter: Phaser.Scale.CENTER_HORIZONTALLY,
+      isPortrait: true,
+      //width: 1270, //Comprobar si en el escalado funciona bien
+      //height: 610,
     },
     backgroundColor: 0x000000,
     //nombre que se muestra en la ventana del navegador
@@ -23,7 +26,7 @@ window.onload = function(){
     //URL del JUEGO
     //utl: "http://proyectoArmadillo.es",
 
-    scene: [InitMenu, MainMenu, MapSelectionMenu, OptionsMenu, PauseMenu, CreditsMenu, World1Map, LevelManager, MapOne]
+    scene: [PreloadMenu, MainMenu, MapSelectionMenu, OptionsMenu, PauseMenu, CreditsMenu, World1Map, LevelManager, MapOne]
 
   }
 
@@ -49,7 +52,7 @@ var gameWidth = 1270;
 var gameHeight = 610;
 
 //Fecha de desbloqueo de nuevo mundo
-unlockDate=new Date(2021 ,2 ,1); 
+unlockDate=new Date(2021 ,2 ,1);
 
 var user = { //Mapas desbloqueados y dinero del jugador
   world: [true,false,false,false,false,false,false,false,false],
@@ -66,7 +69,8 @@ function saveUserData(){
 function loadUserData(){
   var user_world = localStorage.getItem("UserWorld");
   var user_map = localStorage.getItem("UserMap");
-  var user_money = localStorage.getItem("UserMoney"); 
+
+  var user_money = localStorage.getItem("UserMoney");
   if(user_world!=null && user_map!=null && user_money != null) {
     user.world = stringToArray(user_world);
     user.map = stringToArray(user_map);

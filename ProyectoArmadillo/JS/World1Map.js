@@ -4,12 +4,6 @@ class World1Map extends Phaser.Scene{
   }
 
   preload(){
-    this.load.image('backgroundWM1M', './ASSETS/World1Menu/FondoMapaMundo1.jpeg'); //CAMBIAR
-    this.load.image('ButtonNode1', './ASSETS/World1Menu/NodoPrincipal.png'); //CAMBIAR
-    this.load.image('ButtonSubode1', './ASSETS/World1Menu/NodoSecundario.png'); //CAMBIAR
-    this.load.image('ButtonPlayLevel', './ASSETS/World1Menu/BotonJugar.png'); //CAMBIAR
-    this.load.image('BackgrAcessToLevel1_1', './ASSETS/World1Menu/FondoAccesoANivel.png'); //CAMBIAR
-    this.load.image('BackgrAcessToLevel1_2', './ASSETS/World1Menu/FondoAccesoANivel_1_2.png'); //CAMBIAR
   }
 
   create(){
@@ -128,7 +122,7 @@ class World1Map extends Phaser.Scene{
   }
 
   unlockButtons(){
-    
+
   }
 
 }

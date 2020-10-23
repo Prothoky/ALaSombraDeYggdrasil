@@ -4,10 +4,7 @@ class PauseMenu extends Phaser.Scene{
   }
 
   preload(){
-    this.load.image('backgroundPM', './ASSETS/PauseMenu/PauseMenuBackground.jpg');
-    this.load.image('backButtonPM', './ASSETS/PauseMenu/BotonAtras.png');
-    this.load.image('quitButtonPM', './ASSETS/PauseMenu/BotonAbandonar.png');
-    this.load.image('optionsButtonPM', './ASSETS/PauseMenu/BotonOpciones.png');
+  
   }
 
   create(){

@@ -4,11 +4,7 @@ class MainMenu extends Phaser.Scene{
   }
 
   preload(){
-    this.load.image('backgroundMM', './ASSETS/MainMenu/MainMenuBackground.jpg');
-    this.load.image('playButton', './ASSETS/MainMenu/BotonJugar.png');
-    this.load.image('optionsButton', './ASSETS/MainMenu/BotonOpciones.png');
-    this.load.image('creditsButton', './ASSETS/MainMenu/BotonCreditos.png');
-    this.load.image('quitButton', './ASSETS/MainMenu/BotonSalir.png');
+
   }
 
   create(){
@@ -16,7 +12,8 @@ class MainMenu extends Phaser.Scene{
     var heig = this.cameras.main.height;
 
     var background = this.add.image(0, 0, 'backgroundMM');
-    background.setPosition(wid/2, heig/2);
+    background.setOrigin(0, 0);
+    //background.setPosition(wid/2, heig/2);
     background.setScale(2/3);
 
     //JUGAR
@@ -43,6 +40,23 @@ class MainMenu extends Phaser.Scene{
     this.quitButton.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.QuitGame());
 
+    this.fullScreen = this.add.image(wid*12/14, heig*12/14, 'ButtonNode1');
+    this.fullScreen.setScale(2/3);
+    this.fullScreen.setInteractive({ useHandCursor: true})
+		.on('pointerdown', function() {
+    if (this.scene.scale.isFullscreen) {
+        this.scene.scale.stopFullscreen();
+        // On stop fulll screen
+    } else {
+        //this.game.setAspectMode( [FIT]);
+        //this.game.ScaleManager.EXACT_FIT = 0;
+        this.scene.scale.startFullscreen();
+
+        // On start fulll screen
+    }
+
+});
+
   }
 
   InitGame(){
@@ -61,6 +75,12 @@ class MainMenu extends Phaser.Scene{
     this.scene.pause('MainMenu');
     this.scene.start('CreditsMenu');
   }
+
+/*  SetFullScreen(){
+    console.log ("Hola");
+    //this.game.config.Phaser.scale.FIT;
+    scene.scale.on('enterfullscreen', function() {});
+  }*/
 
   QuitGame(){
     //VER como cerrar la app

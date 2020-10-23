@@ -4,8 +4,7 @@ class CreditsMenu extends Phaser.Scene{
   }
 
   preload(){
-    this.load.image('backgroundCM', './ASSETS/MapSelectionMenu/MapMenuBackground.jpeg'); //CAMBIAR
-    this.load.image('backButtonCM', './ASSETS/MapSelectionMenu/BotonSalir.png');
+
   }
 
   create(){

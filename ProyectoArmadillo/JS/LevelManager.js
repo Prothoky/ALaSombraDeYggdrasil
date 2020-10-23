@@ -80,15 +80,7 @@ class LevelManager extends Phaser.Scene
 
     preload () {
         // PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
-        this.load.spritesheet('dude', 'ASSETS/Placeholders/dude.png', { frameWidth: 32, frameHeight: 48 });
-        this.load.image('ground', 'ASSETS/Placeholders/platform.png');
-        this.load.image('dot', 'ASSETS/Placeholders/star.png');
-        this.load.image('bomb', 'ASSETS/Placeholders/bomb.png');
-        this.load.image('bg_far', 'ASSETS/Secciones/Zona lejana.png');
-        this.load.image('bg_medium' , 'ASSETS/Secciones/Zona media.png');
-        this.load.image('bg_near' , 'ASSETS/Secciones/Zona delantera.png');
-        this.load.image('bg_background', 'ASSETS/Secciones/Fondo.png');
-        this.load.image('einar', 'ASSETS/Gameplay/einar_provisional.png');
+      
         // FIN DE PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
         //BACKGROUND
 
@@ -523,14 +515,14 @@ class LevelManager extends Phaser.Scene
         this.isPlayerTouchingGround = false;
         this.playerAttackAvaliable = true;
         if (this.jumpTimer != null) {
-            this.jumpTimer.remove();            
+            this.jumpTimer.remove();
         }
         if (this.playerAttackTimer != null) {
-            this.playerAttackTimer.remove();            
+            this.playerAttackTimer.remove();
         }
         if (this.playerAttackCooldownTimer != null) {
             this.playerAttackCooldownTimer.remove();
-        }        
+        }
         this.scene.stop();
         this.scene.restart();
     }

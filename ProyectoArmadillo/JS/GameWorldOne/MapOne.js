@@ -4,8 +4,7 @@ class MapOne extends Phaser.Scene{
   }
 
   preload(){
-    //this.load.image('backgroundMO', './ASSETS/MapSelectionMenu/MapMenuBackground.jpeg'); //CAMBIAR
-    this.load.image('pauseButtonMO', './ASSETS/MapSelectionMenu/BotonSalir.png');
+
   }
 
   create(){

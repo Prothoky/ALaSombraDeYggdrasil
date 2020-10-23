@@ -4,9 +4,7 @@ class MapSelectionMenu extends Phaser.Scene{
   }
 
   preload(){
-    this.load.image('backgroundMSM', './ASSETS/MapSelectionMenu/MapMenuBackground.jpeg');
-    this.load.image('World1Button', './ASSETS/MapSelectionMenu/BotonMundo1.png');
-    this.load.image('backButtonMSM', './ASSETS/MapSelectionMenu/BotonSalir.png');
+    
   }
 
   create(){
@@ -62,5 +60,5 @@ class MapSelectionMenu extends Phaser.Scene{
   unlockWorld(){
     this.events.emit("Update Date");
   }
-  
+
 }
