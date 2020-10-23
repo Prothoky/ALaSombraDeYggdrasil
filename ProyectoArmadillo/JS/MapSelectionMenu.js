@@ -28,6 +28,15 @@ class MapSelectionMenu extends Phaser.Scene{
     this.botonMundo1.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.World1Menu());
 
+    this.timeText = this.add.text(0,0, "TEXTO" , {fill: "white"});
+    this.timeText.setPosition(wid/2, heig/2);
+
+    this.events.on("Update Date", this.updateTimeText, this);
+    this.events.on("Unlock World", this.unlockWorld, this);
+  }
+
+  update(){
+    this.events.emit("Update Date",this.timeText);
   }
 
   BackMainMenu(){
@@ -40,4 +49,17 @@ class MapSelectionMenu extends Phaser.Scene{
     this.scene.start('World1Map');
     this.scene.bringToTop('World1Map');
   }
+  updateTimeText() {
+    var dias = Math.round((unlockDate -  new Date()) / 86400000);
+    var horas =  Math.round((unlockDate -  new Date()) / 3600000)-(dias*24);
+    this.timeText.setText("Quedan " + dias + " días y \n" + horas +" horas para desbloquear el siguiente Mundo");
+    if(unlockDate -  new Date()<0 || unlockDate == new Date()){
+      this.events.emit("Unlock World",);
+    }
+  }
+
+  unlockWorld(){
+    this.events.emit("Update Date");
+  }
+  
 }

@@ -49,6 +49,9 @@ var levelIndex = 0; // Indica el nivel a generar para LevelManager (CAMBIAR A PA
 //Movil o PC
 PC = true;
 
+//Fecha de desbloqueo de nuevo mundo
+unlockDate=new Date(2021 ,9 ,22); 
+
 // Tamaño pantalla
 var gameWidth = 1270;
 var gameHeight = 610;

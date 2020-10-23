@@ -78,6 +78,8 @@ class World1Map extends Phaser.Scene{
     .on('pointerdown', () => this.scene.start('LevelManager'));
     this.botonNivel4.setVisible(false);*/
 
+
+    //this.events.on("Unlock buttons", this.unlockButtons, this);
   }
 
   update(){
@@ -125,5 +127,8 @@ class World1Map extends Phaser.Scene{
 
   }
 
+  unlockButtons(){
+    
+  }
 
 }
