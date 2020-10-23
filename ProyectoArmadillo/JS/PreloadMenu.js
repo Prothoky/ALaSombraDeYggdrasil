@@ -19,6 +19,38 @@ class PreloadMenu extends Phaser.Scene{
       PC=false;
     }
 
+    //BARRA DE CARGA DE PROGRESO
+
+      var progressBar = this.add.graphics();
+
+      var progressBox = this.add.graphics();
+      progressBox.fillStyle(0xffffff, 0.2);
+      progressBox.fillRect(100, 500, 1000, 50);
+
+      var percentText = this.make.text({
+          x: 600,
+          y: 525,
+          text: "0 %",
+          style: {
+              fontSize: '25px',
+              fontFamily: 'Berlin Sans FB',
+              fontStyle: 'bold',
+              fill: '#ffffff'
+          }
+      });
+
+      percentText.setOrigin(0.5, 0.5);
+      this.load.on("progress", function(value){
+          console.log(value);
+          percentText.setText(parseInt(value * 100) + ' %');
+          progressBar.clear();
+          progressBar.fillStyle(0xCB2821, 1);
+          progressBar.fillRect(110, 510, 980 * value, 30);
+      });
+
+
+
+
     //CARGA DE ASSETS
 
     //Init Menu
@@ -70,9 +102,14 @@ class PreloadMenu extends Phaser.Scene{
         this.load.image('BackgrAcessToLevel1_2', './ASSETS/World1Menu/FondoAccesoANivel_1_2.png'); //CAMBIAR
 
       //Carga automáticamente main menu cuando los assets están cargados
-        this.load.on('complete', () => {
+        /*this.load.on('complete', () => {
           this.scene.start('MainMenu')
-        })
+        })*/
+
+        this.load.on("complete", () => {
+            console.log("Complete");
+            this.scene.start('MainMenu');
+        });
 
   }
 
