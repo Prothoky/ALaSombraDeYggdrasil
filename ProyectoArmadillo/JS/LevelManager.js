@@ -12,12 +12,14 @@ class LevelManager extends Phaser.Scene
         this.playerHitboxHeight = 210;   // Alto de la hitbox del personaje
         this.playerJumpSpeed = -500;  // Fuerza de salto del personaje
         this.playerJumpDuration = 400;    // Duración máxima de la anulación de gravedad del salto en ms
+        this.playerInvulnerabilityDuration = 1000;  // Tiempo de invulnerabilidiad después de recibir un ataque
         this.playerAttackDuration = 300;   // ´Duración del ataque
         this.playerAttackRefreshRate = 30;  // Tasa de refresco de posición de la hitbox del ataque
         this.playerAttackCounter = 0;   // Contador de tiempo del ataque
         this.playerAttackCooldown = 450;   // Cooldown del ataque
         this.playerAttackWidth = 70;    // Ancho de hitbox del ataque
         this.playerAttackHeight = this.playerHitboxHeight * 0.5;   // Alto de hitbox del ataque 0.4 = this.playerResizeFactor
+        this.playerHealth = 0;  // Puntos de vida del jugador
         // Settings cámara
         this.cameraOffsetX = -250;  // Offset del seguido del personaje en el eje X
         // Settings enemigos
@@ -53,6 +55,8 @@ class LevelManager extends Phaser.Scene
         this.solidPlatforms;    // Grupos de plataformas con las que se ha hecho contacto
         this.enemies;   // Grupos de enemigos
         this.triggers;  // Grupos de triggers (colisiones que disparan eventos)
+        // HUD
+this.healthPointsDisplay = new Array();
         // Otros
         this.player;    // Personaje
         this.jumpTimer; // Callback para salto progresivo
@@ -68,6 +72,7 @@ class LevelManager extends Phaser.Scene
         this.isPlayerJumping = false;
         this.isPlayerTouchingGround = false;
         this.playerAttackAvaliable = true;
+        this.isPlayerInvulnerable = false;  // Indica si el jugador es invulnerable
 
         // INPUT
         // Teclas (no ejecutar si es en móvil)
@@ -121,6 +126,18 @@ class LevelManager extends Phaser.Scene
         //this.player = this.physics.add.sprite(400, 200, 'einar').setOrigin(1);   // setOrigin(1) IMPORTANTE (calcular colisiones)
         this.endTrigger = this.physics.add.sprite(this.levelWidth - this.levelEndWidth/2, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight);
         this.endTrigger.body.setAllowGravity(false);
+        // Dependiendo de la dificultad escogida asignamos nº vidas
+        switch (difficulty) {
+            case 0:
+                this.playerHealth = 1;
+                break;
+            case 1:
+                this.playerHealth = 3;
+                break;
+            case 2:
+                this.playerHealth = 5;
+                break;
+        }
 
         // FÍSICAS
         this.physics.world.setBounds(0, 0, this.levelWidth, this.levelHeight);  // Tamaño del nivel
@@ -135,10 +152,10 @@ class LevelManager extends Phaser.Scene
         this.generateGround(200, 'ground'); // Genera suelo para todo el nivel
         this.player.setCollideWorldBounds(true);    // No puede salir de los límites del mapa
         this.physics.add.collider(this.player, this.ground, this.grounded, null, this); // Permitimos colisiones entre grupo de plataformas y jugador
-        this.physics.add.collider(this.player, this.spikesTraps, () => this.playerDeath()); // Función que se ejecuta al colisionar con spikes
+        this.physics.add.collider(this.player, this.spikesTraps, () => this.playerHit()); // Función que se ejecuta al colisionar con spikes
         this.physics.add.overlap(this.player, this.platforms, this.platformOverlap, null, this);    // Función que calcula si ha chocado desde arriba o desde abajo
         this.physics.add.collider(this.player, this.solidPlatforms, this.grounded, null, this);    // Una vez colisionado la plataforma desde arriba, volverla sólida
-        this.physics.add.overlap(this.player, this.enemies, () => this.playerDeath()); // Llama a playerDeath si colisiona con enemigo
+        this.physics.add.overlap(this.player, this.enemies, () => this.playerHit()); // Llama a playerDeath si colisiona con enemigo
         this.physics.add.overlap(this.attackHitbox, this.enemies, this.killEnemy, null, this);  // LLama a killEnemy cuando la hitbox impacte con un enemigo
         this.physics.add.collider(this.enemies, this.platforms);    // Enemigos colisionan con el suelo
         this.physics.add.collider(this.enemies, this.ground);   // Enemigos colisionan con plataformas
@@ -148,6 +165,14 @@ class LevelManager extends Phaser.Scene
         // CÁMARA
         this.cameras.main.setBounds(0, 0, this.levelWidth, this.levelHeight);   // Límites cámara
         this.cameras.main.startFollow(this.player, false, 1, 1, this.cameraOffsetX, 0); // Cámar sigue al personaje
+
+        // HUD
+        this.healthIconOffset = 30;
+        for(let i = 0; i < this.playerHealth; i++) {
+            this.healthPointsDisplay[i] = this.add.image(1270 - this.healthIconOffset * (1 + i), + this.healthIconOffset, 'bomb');
+            this.healthPointsDisplay[i].setScrollFactor(0);
+            this.healthPointsDisplay[i].depth = 900;
+        }
 
         /*  TESTEO
         // Generamos obstáculos de testeo
@@ -384,6 +409,24 @@ class LevelManager extends Phaser.Scene
             this.attackHitbox.getChildren()[0].x = this.player.body.x + this.playerHitboxWidth * this.playerResizeFactor;
             this.attackHitbox.getChildren()[0].y = this.player.body.y;
         }
+    }
+
+    // El jugador recibe un golpe.
+    // Mira si le quedan vidas restantes.
+    // En caso afirmativo lo vuelve invulnerable unos segundos y le resta vida
+    // En caso contrario game over
+    playerHit() {
+        if (this.isPlayerInvulnerable == false) {   // si el jugador no es invulnerable
+            this.playerHealth--;
+            if (this.playerHealth <= 0) {   // Si no le quedan vidas muere
+                this.playerDeath();
+            } else {
+                this.isPlayerInvulnerable = true;   // lo vuelve invulnerable durante un tiempo
+                this.player.setTint(0xe62272);
+                this.invulnerabilityTimer = this.time.addEvent( { delay: this.playerInvulnerabilityDuration, callback: function () { this.isPlayerInvulnerable = false; this.player.clearTint() }, callbackScope: this, loop: false } );
+                this.healthPointsDisplay[this.playerHealth].destroy();
+            }
+        }        
     }
 
     // Reinicia el nivel
