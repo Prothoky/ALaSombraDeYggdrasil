@@ -106,9 +106,9 @@ class World1Map extends Phaser.Scene{
 
   AccessToLevel(width_, height_, level){
     if (level== 0){
-      //this.FondoAccesoNivel1 = this.add.image(width_, height_, 'BackgrAcessToLevel1_1');
-      this.BotonAccesoNivel1 = this.add.image(width_, height_, 'ButtonPlayLevel');
-      this.BotonAccesoNivel1.setInteractive({ useHandCursor: true  } )
+      this.FondoAccesoNivel0 = this.add.image(width_, height_, 'BackgrAcessToLevel');
+      this.BotonAccesoNivel0 = this.add.image(width_, height_, 'ButtonPlayLevel');
+      this.BotonAccesoNivel0.setInteractive({ useHandCursor: true  } )
       .on('pointerdown', () => this.scene.start('LevelManager'));
 
       levelIndex = 0;
@@ -116,27 +116,27 @@ class World1Map extends Phaser.Scene{
     }
 
     if (level== 1){
-      //this.FondoAccesoNivel2 = this.add.image(width_, height_, 'BackgrAcessToLevel1_2');
-      this.BotonAccesoNivel2 = this.add.image(width_, height_, 'ButtonPlayLevel');
-      this.BotonAccesoNivel2.setInteractive({ useHandCursor: true  } )
+      this.FondoAccesoNivel1 = this.add.image(width_, height_, 'BackgrAcessToLevel');
+      this.BotonAccesoNivel1 = this.add.image(width_, height_, 'ButtonPlayLevel');
+      this.BotonAccesoNivel1.setInteractive({ useHandCursor: true  } )
       .on('pointerdown', () => this.scene.start('LevelManager'));
       levelIndex = 1;
       console.log("a jugar el " + level);
     }
 
     if (level == 2){
-      //this.FondoAccesoNivel1 = this.add.image(width_, height_, 'BackgrAcessToLevel1_1');
-      this.BotonAccesoNivel1 = this.add.image(width_, height_, 'ButtonPlayLevel');
-      this.BotonAccesoNivel1.setInteractive({ useHandCursor: true  } )
+      this.FondoAccesoNivel2 = this.add.image(width_, height_, 'BackgrAcessToLevel');
+      this.BotonAccesoNivel2 = this.add.image(width_, height_, 'ButtonPlayLevel');
+      this.BotonAccesoNivel2.setInteractive({ useHandCursor: true  } )
       .on('pointerdown', () => this.scene.start('LevelManager'));
       levelIndex = 2;
       console.log("a jugar el " + level);
     }
 
     if (level == 3){
-      //this.FondoAccesoNivel1 = this.add.image(width_, height_, 'BackgrAcessToLevel1_1');
-      this.BotonAccesoNivel1 = this.add.image(width_, height_, 'ButtonPlayLevel');
-      this.BotonAccesoNivel1.setInteractive({ useHandCursor: true  } )
+      this.FondoAccesoNivel3 = this.add.image(width_, height_, 'BackgrAcessToLevel');
+      this.BotonAccesoNivel3 = this.add.image(width_, height_, 'ButtonPlayLevel');
+      this.BotonAccesoNivel3.setInteractive({ useHandCursor: true  } )
       .on('pointerdown', () => this.scene.start('LevelManager'));
       levelIndex = 3;
       console.log("a jugar el " + level);
