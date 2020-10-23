@@ -85,7 +85,7 @@ this.healthPointsDisplay = new Array();
 
     preload () {
         // PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
-      
+
         // FIN DE PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
         //BACKGROUND
 
@@ -426,7 +426,7 @@ this.healthPointsDisplay = new Array();
                 this.invulnerabilityTimer = this.time.addEvent( { delay: this.playerInvulnerabilityDuration, callback: function () { this.isPlayerInvulnerable = false; this.player.clearTint() }, callbackScope: this, loop: false } );
                 this.healthPointsDisplay[this.playerHealth].destroy();
             }
-        }        
+        }
     }
 
     // Reinicia el nivel
@@ -503,6 +503,7 @@ this.healthPointsDisplay = new Array();
     levelCompletedFunc() {
         this.actualizeMapsCompleted();
         console.log("Pasaste el nivel" + levelIndex);
+        //levelIndex ++;
         this.returnToWorldMap();
     }
 

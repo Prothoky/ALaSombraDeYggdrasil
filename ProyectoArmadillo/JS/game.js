@@ -57,7 +57,7 @@ unlockDate=new Date(2021 ,2 ,1);
 
 var user = { //Mapas desbloqueados y dinero del jugador
   world: [true,false,false,false,false,false,false,false,false],
-  map: [true, false, false, false],
+  map: [false, false, false, false],
   money: 0,
 };
 
