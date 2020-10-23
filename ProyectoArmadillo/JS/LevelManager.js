@@ -12,12 +12,12 @@ class LevelManager extends Phaser.Scene
         this.playerHitboxHeight = 210;   // Alto de la hitbox del personaje
         this.playerJumpSpeed = -500;  // Fuerza de salto del personaje
         this.playerJumpDuration = 400;    // Duración máxima de la anulación de gravedad del salto en ms
-        this.playerAttackDuration = 1000;   // ´Duración del ataque
-        this.playerAttackRefreshRate = 35;  // Tasa de refresco de posición de la hitbox del ataque
+        this.playerAttackDuration = 300;   // ´Duración del ataque
+        this.playerAttackRefreshRate = 30;  // Tasa de refresco de posición de la hitbox del ataque
         this.playerAttackCounter = 0;   // Contador de tiempo del ataque
-        this.playerAttackCooldown = 1000;   // Cooldown del ataque
-        this.playerAttackWidth = 50;    // Ancho de hitbox del ataque
-        this.playerAttackHeight = 50;   // Alto de hitbox del ataque
+        this.playerAttackCooldown = 450;   // Cooldown del ataque
+        this.playerAttackWidth = 70;    // Ancho de hitbox del ataque
+        this.playerAttackHeight = this.playerHitboxHeight * 0.5;   // Alto de hitbox del ataque 0.4 = this.playerResizeFactor
         // Settings cámara
         this.cameraOffsetX = -250;  // Offset del seguido del personaje en el eje X
         // Settings enemigos
@@ -367,10 +367,11 @@ class LevelManager extends Phaser.Scene
         if (this.playerAttackAvaliable == true) {   // Si está disponible el ataque
             this.playerAttackAvaliable = false;
             // Crea la hitbox
-            let localAttackHitbox = this.attackHitbox.create(this.player.x, this.player.y - this.player.height, 'bomb');    // Cambiar sprite por 'dot' al importar animacion definitiva
+            let localAttackHitbox = this.attackHitbox.create(this.player.body.x, this.player.body.y, 'bomb');    // Cambiar sprite por 'dot' al importar animacion definitiva
             localAttackHitbox.setOrigin(0);
             localAttackHitbox.setSize(this.playerAttackWidth, this.playerAttackHeight, false);
             localAttackHitbox.body.setAllowGravity(false);
+            localAttackHitbox.body.velocity.x = this.player.body.velocity.x;
             //localAttackHitbox.setVisible(false);  // Volver invisible al importar animacion definitiva
             localAttackHitbox.refreshBody();
             // Crea el timer de actualziación
@@ -388,8 +389,8 @@ class LevelManager extends Phaser.Scene
             this.playerAttackTimer.remove();
             this.playerAttackCooldownTimer = this.time.addEvent( { delay: this.playerAttackCooldown, callback: function () { this.playerAttackAvaliable = true }, callbackScope: this, loop: false } );
         } else {    // Actualiza la posición de la hitbox
-            this.attackHitbox.getChildren()[0].x = this.player.x;
-            this.attackHitbox.getChildren()[0].y = this.player.y - this.player.height;
+            this.attackHitbox.getChildren()[0].x = this.player.body.x + this.playerHitboxWidth * this.playerResizeFactor;
+            this.attackHitbox.getChildren()[0].y = this.player.body.y;
         }
     }
 
