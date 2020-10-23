@@ -4,6 +4,8 @@ class World1Map extends Phaser.Scene{
   }
 
   preload(){
+
+
   }
 
   create(){
@@ -13,6 +15,8 @@ class World1Map extends Phaser.Scene{
     var background = this.add.image(0, 0, 'backgroundWM1M');
     //background.setScale(2/3)
     background.setPosition(wid/2, heig/2);
+
+
 
 /*
 //PRUEBAS BOTON PAUSE
@@ -102,6 +106,11 @@ class World1Map extends Phaser.Scene{
       //this.botonNivel4.setVisible(true);
        console.log("oleeee ");
     }
+
+  /*  if (botonActivo == 0){
+      this.BotonAccesoNivel1.setVisible(false);
+      this.BotonAccesoNivel2.setVisible(false);
+    }*/
   }
 
   AccessToLevel(width_, height_, level){
@@ -110,7 +119,7 @@ class World1Map extends Phaser.Scene{
       this.BotonAccesoNivel0 = this.add.image(width_, height_, 'ButtonPlayLevel');
       this.BotonAccesoNivel0.setInteractive({ useHandCursor: true  } )
       .on('pointerdown', () => this.scene.start('LevelManager'));
-
+    //  botonActivo = 0;
       levelIndex = 0;
       console.log("a jugar el " + level);
     }
