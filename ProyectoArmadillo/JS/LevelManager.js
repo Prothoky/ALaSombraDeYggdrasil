@@ -47,7 +47,8 @@ class LevelManager extends Phaser.Scene
         this.platformScaleFactor = 0.4; // Factor de escalado de las plataformas. 1 para no hacer escalado
         // Settings enerador procedural
         this.levelIntroWidth = 1000; // Longitud al principio del mapa asegurado sin trampas
-        this.levelEndWidth = 600;   // Longitud al final del mapa asegurado sin trampas
+        this.endEventOffset = 500;  // Distancia desde la última trampa hasta el evento de fin de nivel.
+        this.levelEndWidth = 3500;   // Longitud al final del mapa asegurado sin trampas. Debe ser muy grande.
 
         // REFERENCIAS
         // Grupos
@@ -58,7 +59,7 @@ class LevelManager extends Phaser.Scene
         this.enemies;   // Grupos de enemigos
         this.triggers;  // Grupos de triggers (colisiones que disparan eventos)
         // HUD
-this.healthPointsDisplay = new Array();
+        this.healthPointsDisplay = new Array();
         // Otros
         this.player;    // Personaje
         this.jumpTimer; // Callback para salto progresivo
@@ -95,6 +96,10 @@ this.healthPointsDisplay = new Array();
 
     create ()
     {
+        // Fix reseteo escena
+        this.playerAttackAvaliable = true;
+        this.isPlayerInvulnerable = false;
+
         this.bg_backgorund = this.add.tileSprite(0,0, 5715, 916, 'bg_background');
         this.bg_far = this.add.tileSprite(0,0, 5715, 916, "bg_far");
         this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium");
@@ -125,9 +130,9 @@ this.healthPointsDisplay = new Array();
 
         // PERSONAJE
         this.player = this.physics.add.sprite(400, 200, 'einar').setOrigin(1).setScale(this.playerResizeFactor).setSize(this.playerHitboxWidth, this.playerHitboxHeight);   // setOrigin(1) IMPORTANTE (calcular colisiones)
-        //this.player = this.physics.add.sprite(400, 200, 'einar').setOrigin(1);   // setOrigin(1) IMPORTANTE (calcular colisiones)
-        this.endTrigger = this.physics.add.sprite(this.levelWidth - this.levelEndWidth/2, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight);
+        this.endTrigger = this.physics.add.sprite(0, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight);
         this.endTrigger.body.setAllowGravity(false);
+        //this.player = this.physics.add.sprite(400, 200, 'einar').setOrigin(1);   // setOrigin(1) IMPORTANTE (calcular colisiones)
         // Dependiendo de la dificultad escogida asignamos nº vidas
         switch (difficulty) {
             case 0:
@@ -153,10 +158,9 @@ this.healthPointsDisplay = new Array();
         this.attackHitbox = this.physics.add.group(); // Grupo de hitbox del personaje
         this.generateGround(200, 'ground'); // Genera suelo para todo el nivel
         this.player.setCollideWorldBounds(false);    // No puede salir de los límites del mapa
-        this.physics.add.collider(this.player, this.ground, this.grounded, null, this); // Permitimos colisiones entre grupo de plataformas y jugador
+        this.physics.add.collider(this.player, this.ground, this.grounded, null, this); // Permitimos colisiones entre suelo y jugador y cuenta como grounded (puede saltar)
         this.physics.add.collider(this.player, this.spikesTraps, () => this.playerHit()); // Función que se ejecuta al colisionar con spikes
-        this.physics.add.overlap(this.player, this.platforms, this.platformOverlap, null, this);    // Función que calcula si ha chocado desde arriba o desde abajo
-        this.physics.add.collider(this.player, this.solidPlatforms, this.grounded, null, this);    // Una vez colisionado la plataforma desde arriba, volverla sólida
+        this.physics.add.collider(this.player, this.platforms, this.grounded, null, this);  // Permitimos colision es entre plataforms y jugador y cuenta como grounded (puede saltar)
         this.physics.add.overlap(this.player, this.enemies, () => this.playerHit()); // Llama a playerDeath si colisiona con enemigo
         this.physics.add.overlap(this.attackHitbox, this.enemies, this.killEnemy, null, this);  // LLama a killEnemy cuando la hitbox impacte con un enemigo
         this.physics.add.collider(this.enemies, this.platforms);    // Enemigos colisionan con el suelo
@@ -175,17 +179,6 @@ this.healthPointsDisplay = new Array();
             this.healthPointsDisplay[i].setScrollFactor(0);
             this.healthPointsDisplay[i].depth = 900;
         }
-
-        /*  TESTEO
-        // Generamos obstáculos de testeo
-        this.generateSpikesTrap(400, 567);
-        // Generamos plataforma de testeo
-        this.generatePlatform(390, 480);
-        // Generamos enemigo de testeo
-        this.generateStillEnemy(900, 500, 40, 60);
-        // Generamos enemogio con movimiento de testeo
-        this.generateMovingEnemy(1000, 500, 40, 60);
-        */
 
         // GENERACIÓN PROCEDURAL
         this.generateTrapArray();   // Genera el array de las trampas disponibles en este mapa
@@ -308,6 +301,7 @@ this.healthPointsDisplay = new Array();
             addedDistance += this.minTrapDistance + Math.floor(Math.random() * this.maxRandTrapDistance);
             xPointer += addedDistance;
         }
+        this.endTrigger.x = xPointer + this.endEventOffset;
     }
 
     // Llama a una función aleatoria del array de trampas disponibles y le pasa x e y como parámetros
@@ -326,11 +320,11 @@ this.healthPointsDisplay = new Array();
     // Genera el array con las trampas disponibles del mapa
     // TRAMPAS DISPONIBLES DEPENDIENTES DEL NIVEL POR IMPLEMENTAR
     generateTrapArray() {
-        this.trapFunctionsArray[0] = 'this.generateStillEnemy';
-        this.trapFunctionsArray[1] = 'this.generateMovingEnemy';
-        this.trapFunctionsArray[2] = 'this.generateSpikesTrap';
-        this.trapFunctionsArray[3] = 'this.generatePlatform';
-        this.trapFunctionsArray[4] = 'this.generatePlatformToSpikes';
+        let trapFunctionsNames = [ 'this.generateSmallSpikes', 'this.generateStillEnemy', 'this.generateMovingEnemy', 
+                                'this.generateSpikesTrap', 'this.generatePlatform', 'this.generatePlatformToSpikes' ];
+        for (let i = 0; i < 6; i++) {
+            this.trapFunctionsArray[i] = trapFunctionsNames[i];
+        }
     }
     // FIN DE FUNCIÓN DE CREADO PROCEDURAL DEL MAPA ---------------------
 
@@ -352,7 +346,9 @@ this.healthPointsDisplay = new Array();
     // Detiene la subida del salto y elimina el timer
     playerStopJump() {
         this.player.body.setAllowGravity(true);
-        this.jumpTimer.remove();
+        if (this.jumpTimer != null) {
+            this.jumpTimer.remove();            
+        }
     }
 
     // Cambia la variable que almacena si el personaje está saltando.
@@ -483,6 +479,9 @@ this.healthPointsDisplay = new Array();
     // Únicamente cambiar el sprite y el valor de setScale()
     generatePlatform(xPos, yPos = this.platformPositionY + Math.floor(Math.random() * this.platformPositionOffset) - this.platformPositionOffset/2, enemy = true) {
         let localPlatform = this.platforms.create(xPos, yPos, 'ground').setScale(this.platformScaleFactor).setOrigin(0, 0).setTint(0x00ff38).refreshBody();
+        localPlatform.body.checkCollision.left = false;
+        localPlatform.body.checkCollision.right = false;
+        localPlatform.body.checkCollision.down = false;
         let enemyYOffset = 200; // Offset vertical del enemigo (para que caiga en la plataforma debido a los orígenes de las imágenes)
         if (Math.random() > 0.5) {    // Generamos enemigo?
             this.generateStillEnemy(xPos + localPlatform.width*this.platformScaleFactor/2, yPos - enemyYOffset);
@@ -493,18 +492,40 @@ this.healthPointsDisplay = new Array();
     // Funciones de creación de trampa de pinchos
     // xPos, yPos = posiciones x e y. Origen del sprite en el límite inferior derecho.
     // Únicamente cambiar el sprite y el valor de setScale()
-    generateSpikesTrap(xPos, yPos = this.levelGroundHeight - 1) {
-        this.spikesTraps.create(xPos, yPos, 'ground').setScale(0.5).setOrigin(0, 0).setTint(0xe62272).refreshBody();
+    generateSpikesTrap(xPos, yPos = this.levelGroundHeight - 1, scaleFactor = 0.5) {
+        this.spikesTraps.create(xPos, yPos, 'ground').setScale(scaleFactor).setOrigin(0, 0).setTint(0xe62272).refreshBody();
         return this.minDistSpikes;
     }
 
     // FUNCIONES COMPLEJAS (valores hardcodeados)
+    // Plataforma + pinchos (necesario saltar desde la plataforma para no recibir hit)
     generatePlatformToSpikes(xPos, enemy = true) {
         this.generatePlatform(xPos, this.platformPositionY - this.platformPositionOffset/2, enemy);
         this.generateSpikesTrap(xPos);
         this.generateSpikesTrap(xPos + 200);
         this.generateSpikesTrap(xPos + 300);
         return 500;
+    }
+
+    // Genera trampas de pinchos pequeñas y seguidas
+    generateSmallSpikes(xPos, enemy = true) {
+        let spikesLength = 250;
+        let enemyOffset = 175;
+        this.generateSpikesTrap(xPos, undefined, 0.2);
+        let randomAdd = 0;
+        let iteration = 1;
+        while (randomAdd < 1) {
+            this.generateSpikesTrap(xPos + spikesLength * iteration, undefined, 0.2);
+            randomAdd += Math.random() * 0.65;
+            if (enemy == true && iteration%2 != 0) {
+                this.generateStillEnemy(xPos + spikesLength * iteration + enemyOffset);
+            }
+            iteration++;
+        }
+        if (enemy == true) {
+            return iteration * spikesLength + spikesLength + 150;
+        }
+        return iteration * spikesLength + spikesLength;
     }
 
     // FIN DE FUNCIONES DE GENERACIÓN DE ENEMIGOS/OBSTÁCULOS ------------
@@ -558,17 +579,6 @@ this.healthPointsDisplay = new Array();
     // Destruye al enemigo
     killEnemy(attackHitbox, enemies) {
         this.enemies.remove(enemies, true); // Elimina el enemigo de la lista y del juego
-    }
-
-    // Comprueba si se ha colisionado con la plataforma por arriba (y se convierte en sólida)
-    // o por abajo (y permite pasar).
-    platformOverlap(player, platforms) {
-        if (player.body.y < platforms.y) {
-            let localSolidPlatform = this.solidPlatforms.create(platforms.x, platforms.y, 'ground').setScale(this.platformScaleFactor).setOrigin(0, 0).setTint(0x00ff38).refreshBody();
-            localSolidPlatform.body.checkCollision.left = false;
-            localSolidPlatform.body.checkCollision.right = false;
-            localSolidPlatform.body.checkCollision.down = false;
-        }
     }
 
     // Reinicia el nivel
