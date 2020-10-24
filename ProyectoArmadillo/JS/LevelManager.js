@@ -223,17 +223,18 @@ class LevelManager extends Phaser.Scene
         //Para movil:
         this.input.addPointer(2);
 
-        var pointerJump = this.add.image(10, 10, 'dude').setInteractive();
+        var pointerJump = this.add.image(10, 10, 'dude').setInteractive(); //Hace la imagen interactuable
         var pointerAttack = this.add.image(500, 10, 'dude').setInteractive();
+        pointerJump.setScrollFactor(0); //Los botones siempre quedan en pantalla
+        pointerAttack.setScrollFactor(0);
         // setSize() cambia el tamaño de la hitbox
-        // setScrollFactor(0) creo que lo para siempre en frente a la camara
         // setVisible(false) lo hace invisible pero no se si lo hace también inactivo, si no probar a cambiar alpha
         //var pointerJump = this.add.image(gameWidth/4, gameHeight/2, 'dude').setInteractive().setSize(gameWidth/2, gameHeight/2).setScrollFactor(0);
         //var pointerAttack = this.add.image(gameWidth*3/4, gameHeight/2, 'dude').setInteractive().setSize(gameWidth/2, gameHeight/2).setScrollFactor(0);
 
         this.input.on('gameobjectdown',function (pointer) {
 
-            if(pointerJump.getBounds().contains(pointer.downX, pointer.downY)){
+            if( pointerJump.getBounds().contains(pointer.downX, pointer.downY)){
                 this.playerStartJump();
             }
             else if(pointerAttack.getBounds().contains(pointer.downX, pointer.downY)){
@@ -251,7 +252,7 @@ class LevelManager extends Phaser.Scene
                 this.playerStopJump();
             }
             else if(pointerAttack.getBounds().contains(pointer.downX, pointer.downY)){
-                this.playerStop();
+                //this.playerStop();
             }
 
             else{
@@ -608,6 +609,6 @@ class LevelManager extends Phaser.Scene
         this.bg_backgorund.tilePositionX = this.cameras.main.scrollX * .1;
         this.bg_far.tilePositionX = this.cameras.main.scrollX *.1;
         this.bg_medium.tilePositionX = this.cameras.main.scrollX * .5;
-        this.bg_near.tilePositionX = this.cameras.main.scrollX ;
+        this.bg_near.tilePositionX = this.cameras.main.scrollX;
     }
 }
