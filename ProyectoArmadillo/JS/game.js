@@ -13,9 +13,9 @@ window.onload = function(){
       }
     },
     scale:{
-      //no se q es
-      //mode: Phaser.Scale.FIT, //hace que se adapte a cambios de tamaño
-      autoCenter: Phaser.Scale.CENTER_HORIZONTALLY,
+      
+      mode: Phaser.Scale.FIT, //hace que se adapte a cambios de tamaño
+      autoCenter: Phaser.Scale.CENTER_BOTH,
       isPortrait: true,
       //width: 1270, //Comprobar si en el escalado funciona bien
       //height: 610,
@@ -31,6 +31,7 @@ window.onload = function(){
   }
 
   var game = new Phaser.Game(config);
+  
 }
 
 // Variables globales
@@ -46,7 +47,7 @@ var levelIndex = 0; // Indica el nivel a generar para LevelManager (CAMBIAR A PA
 var difficulty = 1; // Indica la dificultad escogida: 0 difícil - 1 normal - 2 fácil (aún sin implementar)
 
 //Movil o PC
-PC = true;
+var PC = true;
 
 // Tamaño pantalla
 var gameWidth = 1270;
