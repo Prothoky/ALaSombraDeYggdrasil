@@ -329,7 +329,8 @@ this.healthPointsDisplay = new Array();
         this.trapFunctionsArray[0] = 'this.generateStillEnemy';
         this.trapFunctionsArray[1] = 'this.generateMovingEnemy';
         this.trapFunctionsArray[2] = 'this.generateSpikesTrap';
-        this.trapFunctionsArray[0] = 'this.generatePlatform';
+        this.trapFunctionsArray[3] = 'this.generatePlatform';
+        this.trapFunctionsArray[4] = 'this.generatePlatformToSpikes';
     }
     // FIN DE FUNCIÓN DE CREADO PROCEDURAL DEL MAPA ---------------------
 
@@ -452,6 +453,7 @@ this.healthPointsDisplay = new Array();
 
 
     // FUNCIONES DE GENERACIÓN DE ENEMIGOS/OBSTÁCULOS -------------------
+    // FUNCIONES BASE
     // Función de creación de enemigos sin movimiento
     // xPos, yPos: posición en el mapa
     // collisionWidth, collisionHeight: tamaño de la hitbox
@@ -495,6 +497,16 @@ this.healthPointsDisplay = new Array();
         this.spikesTraps.create(xPos, yPos, 'ground').setScale(0.5).setOrigin(0, 0).setTint(0xe62272).refreshBody();
         return this.minDistSpikes;
     }
+
+    // FUNCIONES COMPLEJAS (valores hardcodeados)
+    generatePlatformToSpikes(xPos, enemy = true) {
+        this.generatePlatform(xPos, this.platformPositionY - this.platformPositionOffset/2, enemy);
+        this.generateSpikesTrap(xPos);
+        this.generateSpikesTrap(xPos + 200);
+        this.generateSpikesTrap(xPos + 300);
+        return 500;
+    }
+
     // FIN DE FUNCIONES DE GENERACIÓN DE ENEMIGOS/OBSTÁCULOS ------------
 
 
