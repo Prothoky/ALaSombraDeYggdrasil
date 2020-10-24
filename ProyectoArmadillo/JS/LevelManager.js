@@ -10,8 +10,9 @@ class LevelManager extends Phaser.Scene
         this.playerMovementSpeed = 550;   // Velocidad de movimiento del personaje
         this.playerHitboxWidth = 95;    // Ancho de la hitbox del personaje
         this.playerHitboxHeight = 210;   // Alto de la hitbox del personaje
-        this.playerJumpSpeed = -450;  // Fuerza de salto del personaje
+        this.playerJumpSpeed = -550;  // Fuerza de salto del personaje
         this.playerJumpDuration = 350;    // Duración máxima de la anulación de gravedad del salto en ms
+        this.playerJumpSpeedDecrement = 50; // Efecto de la gravedad sobre los saltos
         this.playerInvulnerabilityDuration = 1000;  // Tiempo de invulnerabilidiad después de recibir un ataque
         this.playerAttackDuration = 300;   // ´Duración del ataque
         this.playerAttackRefreshRate = 30;  // Tasa de refresco de posición de la hitbox del ataque
@@ -66,6 +67,7 @@ class LevelManager extends Phaser.Scene
         this.player;    // Personaje
         this.jumpTimer; // Callback para salto progresivo
         this.playerAttackTimer;   // Temporizador de fin de ataque
+        this.jumpSpeedDecrementTimer;   // Temporizador de disminución velocidad salto
         this.attackHitbox;  // Hitbox del ataque
         this.trapFunctionsArray = new Array();  // Array que guarda las funciones de las trampas a generar
         this.endTrigger;    // Trigger del fin del nivel
@@ -353,13 +355,20 @@ class LevelManager extends Phaser.Scene
             this.player.body.setAllowGravity(false);
             this.jumpTimer = this.time.addEvent( { delay: this.playerJumpDuration, callback: this.playerStopJump, callbackScope: this, loop: false } );
         }
+        this.jumpSpeedDecrementTimer = this.time.addEvent( { delay: 60, callback: this.playerDecrementJumpSpeed, callbackScope: this, loop: true } );
+    }
+
+    // Disminuye la velocidad del salto progresivamente para hacerlo más realista
+    playerDecrementJumpSpeed() {
+        this.player.setVelocityY(this.player.body.velocity.y + this.playerJumpSpeedDecrement);
     }
 
     // Detiene la subida del salto y elimina el timer
     playerStopJump() {
         this.player.body.setAllowGravity(true);
         if (this.jumpTimer != null) {
-            this.jumpTimer.remove();            
+            this.jumpTimer.remove();
+            this.jumpSpeedDecrementTimer.remove();            
         }
     }
 
@@ -601,6 +610,7 @@ class LevelManager extends Phaser.Scene
         this.isPlayerJumping = false;
         this.isPlayerTouchingGround = false;
         this.playerAttackAvaliable = true;
+        this.doubleJumpAvaliable = true;
         if (this.jumpTimer != null) {
             this.jumpTimer.remove();
         }
@@ -609,6 +619,9 @@ class LevelManager extends Phaser.Scene
         }
         if (this.playerAttackCooldownTimer != null) {
             this.playerAttackCooldownTimer.remove();
+        }
+        if (this.jumpSpeedDecrementTimer != null) {
+            this.jumpSpeedDecrementTimer.remove();
         }
         this.scene.stop();
         this.scene.restart();
