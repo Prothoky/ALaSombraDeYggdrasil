@@ -10,8 +10,8 @@ class LevelManager extends Phaser.Scene
         this.playerMovementSpeed = 600;   // Velocidad de movimiento del personaje
         this.playerHitboxWidth = 95;    // Ancho de la hitbox del personaje
         this.playerHitboxHeight = 210;   // Alto de la hitbox del personaje
-        this.playerJumpSpeed = -500;  // Fuerza de salto del personaje
-        this.playerJumpDuration = 400;    // Duración máxima de la anulación de gravedad del salto en ms
+        this.playerJumpSpeed = -450;  // Fuerza de salto del personaje
+        this.playerJumpDuration = 350;    // Duración máxima de la anulación de gravedad del salto en ms
         this.playerInvulnerabilityDuration = 1000;  // Tiempo de invulnerabilidiad después de recibir un ataque
         this.playerAttackDuration = 300;   // ´Duración del ataque
         this.playerAttackRefreshRate = 30;  // Tasa de refresco de posición de la hitbox del ataque
@@ -25,10 +25,12 @@ class LevelManager extends Phaser.Scene
         // Settings enemigos
         this.enemySpeed = -200; // Velocidad de movimiento de los enemigos
         // Settings del generador aleatorio
-        this.platformPositionY = 300;
+        this.platformPositionY = 385;   // Posición base en Y de las plataformas
+        this.platformPositionOffset = 75;  // Distancia que puede variar la posición de la plataforma
+        this.platformMaxHeight = 285;   // Altura máxima de las plataformas
         this.maxRandTrapDistance = 250; // Máximo de distancia entre trampas añadido
-        this.minDistStillEnemy = 200;   // Mínimo de distancia tras un enemigo quieto
-        this.minDistMovingEnemy = 50;   // Mínimo de distancia tras un enemigo que se mueve
+        this.minDistStillEnemy = 0;   // Mínimo de distancia tras un enemigo quieto
+        this.minDistMovingEnemy = 0;   // Mínimo de distancia tras un enemigo que se mueve
         this.minDistPlatform = 0;   // Mínimo de distancia tras una plataforma
         this.minDistSpikes = 100;   // Mínimo de distancia tras una trampa de pinchos
         // La distancia entre trampas final será maxRandTrapDistance(rand) + trapDistance + minDistance
@@ -150,7 +152,7 @@ this.healthPointsDisplay = new Array();
 
         this.attackHitbox = this.physics.add.group(); // Grupo de hitbox del personaje
         this.generateGround(200, 'ground'); // Genera suelo para todo el nivel
-        this.player.setCollideWorldBounds(true);    // No puede salir de los límites del mapa
+        this.player.setCollideWorldBounds(false);    // No puede salir de los límites del mapa
         this.physics.add.collider(this.player, this.ground, this.grounded, null, this); // Permitimos colisiones entre grupo de plataformas y jugador
         this.physics.add.collider(this.player, this.spikesTraps, () => this.playerHit()); // Función que se ejecuta al colisionar con spikes
         this.physics.add.overlap(this.player, this.platforms, this.platformOverlap, null, this);    // Función que calcula si ha chocado desde arriba o desde abajo
@@ -474,9 +476,15 @@ this.healthPointsDisplay = new Array();
 
     // Funcion de creación de plataformas
     // xPos, yPos = posiciones x e y. Origen del sprite en el límite inferior derecho.
+    // enemy = puede haber un enemigo encima?
+    // Si no se otorgan valores se asignan solos. Enemy true y posición aleatoria (dentro de límites)
     // Únicamente cambiar el sprite y el valor de setScale()
-    generatePlatform(xPos, yPos = this.platformPositionY) {
-        this.platforms.create(xPos, yPos, 'ground').setScale(this.platformScaleFactor).setOrigin(0, 0).setTint(0x00ff38).refreshBody();
+    generatePlatform(xPos, yPos = this.platformPositionY + Math.floor(Math.random() * this.platformPositionOffset) - this.platformPositionOffset/2, enemy = true) {
+        let localPlatform = this.platforms.create(xPos, yPos, 'ground').setScale(this.platformScaleFactor).setOrigin(0, 0).setTint(0x00ff38).refreshBody();
+        let enemyYOffset = 200; // Offset vertical del enemigo (para que caiga en la plataforma debido a los orígenes de las imágenes)
+        if (Math.random() > 0.5) {    // Generamos enemigo?
+            this.generateStillEnemy(xPos + localPlatform.width*this.platformScaleFactor/2, yPos - enemyYOffset);
+        }
         return this.minDistPlatform;
     }
 
