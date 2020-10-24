@@ -7,7 +7,7 @@ class LevelManager extends Phaser.Scene
         // SETTINGS
         // 1) Configuración para JSON
         // Settings personaje
-        this.playerMovementSpeed = 600;   // Velocidad de movimiento del personaje
+        this.playerMovementSpeed = 550;   // Velocidad de movimiento del personaje
         this.playerHitboxWidth = 95;    // Ancho de la hitbox del personaje
         this.playerHitboxHeight = 210;   // Alto de la hitbox del personaje
         this.playerJumpSpeed = -450;  // Fuerza de salto del personaje
