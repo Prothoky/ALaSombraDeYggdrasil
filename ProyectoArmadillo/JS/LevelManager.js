@@ -49,6 +49,8 @@ class LevelManager extends Phaser.Scene
         this.levelIntroWidth = 1000; // Longitud al principio del mapa asegurado sin trampas
         this.endEventOffset = 500;  // Distancia desde la última trampa hasta el evento de fin de nivel.
         this.levelEndWidth = 3500;   // Longitud al final del mapa asegurado sin trampas. Debe ser muy grande.
+        // PowerUps
+        this.doubleJumpEnabled = false;
 
         // REFERENCIAS
         // Grupos
@@ -74,6 +76,7 @@ class LevelManager extends Phaser.Scene
         this.isPlayerDead = false;
         this.isPlayerJumping = false;
         this.isPlayerTouchingGround = false;
+        this.doubleJumpAvaliable = true;
         this.playerAttackAvaliable = true;
         this.isPlayerInvulnerable = false;  // Indica si el jugador es invulnerable
 
@@ -99,6 +102,7 @@ class LevelManager extends Phaser.Scene
         // Fix reseteo escena
         this.playerAttackAvaliable = true;
         this.isPlayerInvulnerable = false;
+        this.doubleJumpAvaliable = true;
 
         this.bg_backgorund = this.add.tileSprite(0,0, 5715, 916, 'bg_background');
         this.bg_far = this.add.tileSprite(0,0, 5715, 916, "bg_far");
@@ -341,6 +345,13 @@ class LevelManager extends Phaser.Scene
             this.isPlayerTouchingGround = false;
             this.player.body.setAllowGravity(false);
             this.jumpTimer = this.time.addEvent( { delay: this.playerJumpDuration, callback: this.playerStopJump, callbackScope: this, loop: false } );
+        } else if (this.doubleJumpAvaliable == true && this.doubleJumpEnabled == true) {
+            this.player.setVelocityY(this.playerJumpSpeed);
+            this.doubleJumpAvaliable = false;
+            this.isPlayerJumping = true;
+            this.isPlayerTouchingGround = false;
+            this.player.body.setAllowGravity(false);
+            this.jumpTimer = this.time.addEvent( { delay: this.playerJumpDuration, callback: this.playerStopJump, callbackScope: this, loop: false } );
         }
     }
 
@@ -357,6 +368,7 @@ class LevelManager extends Phaser.Scene
     grounded() {
         this.isPlayerJumping = false;
         this.isPlayerTouchingGround = true;
+        this.doubleJumpAvaliable = true;
     }
 
     // moverse a la izquierda
