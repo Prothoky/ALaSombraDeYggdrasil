@@ -13,7 +13,7 @@ class World1Map extends Phaser.Scene{
     var heig = this.cameras.main.height;
 
     var background = this.add.image(0, 0, 'backgroundWM1M');
-    //background.setScale(2/3)
+    background.setScale(5/6.2);
     background.setPosition(wid/2, heig/2);
 
 
@@ -32,7 +32,7 @@ class World1Map extends Phaser.Scene{
     this.scene.start('MapOne');
 */
     // (TESTEO) botón de iniciar partida
-    this.botonNivel0 = this.add.image(wid*8.44/16, heig*14.05/16, 'ButtonNode1');
+    this.botonNivel0 = this.add.image(wid*15.4/16, heig*13.05/16, 'ButtonNode1');
     this.botonNivel0.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.AccessToLevel(wid*8.44/16, heig*14.05/16, 0));
 
