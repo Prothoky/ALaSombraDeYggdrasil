@@ -94,8 +94,11 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('optionsButtonPM', './ASSETS/PauseMenu/BotonOpciones.png');
 
       //World 1 Map
-        this.load.image('backgroundWM1M', './ASSETS/World1Menu/FondoMapaMundo1.jpeg'); //CAMBIAR
-        this.load.image('ButtonNode1', './ASSETS/World1Menu/NodoPrincipal.png'); //CAMBIAR
+        this.load.image('backgroundWM1M', './ASSETS/World1Menu/FondoMapaMundo1.jpg');
+        this.load.image('ButtonNodePrinc', './ASSETS/World1Menu/IconosNodos/NodoPrincipalDesbloq.png');
+        this.load.image('ButtonNodePrincSnow', './ASSETS/World1Menu/IconosNodos/NodoPrincipalNieveDesbloq.png');
+        this.load.image('ButtonNodePrincSel', './ASSETS/World1Menu/IconosNodos/NodoPrincipalSel.png');
+        this.load.image('ButtonNodePrincSnowSel', './ASSETS/World1Menu/IconosNodos/NodoPrincipalNieveSel.png'); 
         this.load.image('ButtonSubode1', './ASSETS/World1Menu/NodoSecundario.png'); //CAMBIAR
         this.load.image('ButtonPlayLevel', './ASSETS/World1Menu/BotonJugar.png'); //CAMBIAR
         this.load.image('BackgrAcessToLevel', './ASSETS/World1Menu/FondoAccesoANivel.png'); //CAMBIAR

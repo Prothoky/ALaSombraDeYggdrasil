@@ -13,8 +13,8 @@ window.onload = function(){
       }
     },
     scale:{
-      
-      mode: Phaser.Scale.FIT, //hace que se adapte a cambios de tamaño
+
+      //mode: Phaser.Scale.FIT, //hace que se adapte a cambios de tamaño
       autoCenter: Phaser.Scale.CENTER_BOTH,
       isPortrait: true,
       //width: 1270, //Comprobar si en el escalado funciona bien
@@ -31,7 +31,7 @@ window.onload = function(){
   }
 
   var game = new Phaser.Game(config);
-  
+
 }
 
 // Variables globales
