@@ -318,18 +318,28 @@ class LevelManager extends Phaser.Scene
     }
 
     // Devuelve un índice válido del array de funciones de generación de trampas
+    // Depende del nivel y del archivo LeveLConfiguration.js
     randomTrapIndex() {
-        let ret = Math.floor(Math.random() * this.trapFunctionsArray.length);
-        //console.log(ret);
-        return ret;
+        let maxValue = 0;
+        for (let i = 0; i < levelTrapValues[levelIndex].length; i++) {
+            maxValue += levelTrapValues[levelIndex][i][1];
+        }
+        let trapIndex = Math.floor(Math.random() * maxValue);
+        let pointer = levelTrapValues[levelIndex].length;
+        while (trapIndex >= 0 && pointer > 0) {
+            pointer--;
+            trapIndex -= levelTrapValues[levelIndex][pointer][1];
+        }
+        return levelTrapValues[levelIndex][pointer][0];
     }
 
     // Genera el array con las trampas disponibles del mapa
     // TRAMPAS DISPONIBLES DEPENDIENTES DEL NIVEL POR IMPLEMENTAR
     generateTrapArray() {
-        let trapFunctionsNames = [ 'this.generateSmallSpikes', 'this.generateStillEnemy', 'this.generateMovingEnemy', 
-                                'this.generateSpikesTrap', 'this.generatePlatform', 'this.generatePlatformToSpikes' ];
-        for (let i = 0; i < 6; i++) {
+        let trapFunctionsNames = [ 'this.generateSpikesTrap', 'this.generatePlatformNoEnemy', 'this.generateStillEnemy', 
+                                'this.generatePlatform', 'this.generateMovingEnemy', 'this.generatePlatformToSpikes', 
+                                'this.generateSmallSpikesNoEnemy', 'this.generateSmallSpikes' ];
+        for (let i = 0; i < trapFunctionsNames.length; i++) {
             this.trapFunctionsArray[i] = trapFunctionsNames[i];
         }
     }
@@ -511,6 +521,11 @@ class LevelManager extends Phaser.Scene
         return this.minDistPlatform;
     }
 
+    // Variante de la anterior, con ningún enemigo
+    generatePlatformNoEnemy(xPos) {
+        return this.generatePlatform(xPos, undefined, false);
+    }
+
     // Funciones de creación de trampa de pinchos
     // xPos, yPos = posiciones x e y. Origen del sprite en el límite inferior derecho.
     // Únicamente cambiar el sprite y el valor de setScale()
@@ -522,7 +537,7 @@ class LevelManager extends Phaser.Scene
     // FUNCIONES COMPLEJAS (valores hardcodeados)
     // Plataforma + pinchos (necesario saltar desde la plataforma para no recibir hit)
     generatePlatformToSpikes(xPos, enemy = true) {
-        this.generatePlatform(xPos, this.platformPositionY - this.platformPositionOffset/2, enemy);
+        this.generatePlatform(xPos + 170, this.platformPositionY - this.platformPositionOffset/2, enemy);
         this.generateSpikesTrap(xPos);
         this.generateSpikesTrap(xPos + 200);
         this.generateSpikesTrap(xPos + 300);
@@ -548,6 +563,11 @@ class LevelManager extends Phaser.Scene
             return iteration * spikesLength + spikesLength + 150;
         }
         return iteration * spikesLength + spikesLength;
+    }
+
+    // Variante de la anterior sin enemigos
+    generateSmallSpikesNoEnemy(xPos) {
+        return this.generateSmallSpikes(xPos, false);
     }
 
     // FIN DE FUNCIONES DE GENERACIÓN DE ENEMIGOS/OBSTÁCULOS ------------
