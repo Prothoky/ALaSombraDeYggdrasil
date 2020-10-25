@@ -18,6 +18,7 @@ class World1Map extends Phaser.Scene{
     this.nodoActivo;
     this.nombreNodoActivo;
     this.nodosActivos = 0;
+    this.backgroundW1;
 
   }
 
@@ -27,9 +28,9 @@ class World1Map extends Phaser.Scene{
     var wid = this.cameras.main.width; //ancho del canvas en el dispositivo
     var heig = this.cameras.main.height;
 
-    var background = this.add.image(0, 0, 'backgroundWM1M');
-    background.setScale(2/3);
-    background.setPosition(wid/2, heig/2);
+    this.backgroundW1 = this.add.image(0, 0, 'backgroundWM1M');
+    this.backgroundW1.setScale(2/3);
+    this.backgroundW1.setPosition(wid/2, heig/2);
 
     //var nodosActivos = 0;
 
@@ -495,6 +496,10 @@ class World1Map extends Phaser.Scene{
       break;
 
      }
+
+     this.backgroundW1.setInteractive({ useHandCursor: true  } )
+     .on('pointerdown', () => (this.nombreNodoActivo.setVisible(false), this.nodoActivo.setVisible(false), this.nodosActivos = 0));
+
    }
 
 }
