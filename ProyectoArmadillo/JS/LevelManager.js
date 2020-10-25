@@ -89,6 +89,14 @@ class LevelManager extends Phaser.Scene
         this.rightButton;
         this.attackButton;
         this.testButton;
+
+        // DEBUG
+        /*
+        this.percentagesTest = new Array();
+        for (let i = 0; i < 8; i++) {
+            this.percentagesTest[i] = 0;
+        }
+        */
     }
 
     preload () {
@@ -309,6 +317,7 @@ class LevelManager extends Phaser.Scene
             xPointer += addedDistance;
         }
         this.endTrigger.x = xPointer + this.endEventOffset;
+        //console.log(this.percentagesTest);
     }
 
     // Llama a una función aleatoria del array de trampas disponibles y le pasa x e y como parámetros
@@ -319,6 +328,8 @@ class LevelManager extends Phaser.Scene
 
     // Devuelve un índice válido del array de funciones de generación de trampas
     // Depende del nivel y del archivo LeveLConfiguration.js
+    // Devuelve un índice de trampa de los almacenados en la variable que representa
+    // al nivel y con los porcentajes de aparición indicados.
     randomTrapIndex() {
         let maxValue = 0;
         for (let i = 0; i < levelTrapValues[levelIndex].length; i++) {
@@ -330,6 +341,7 @@ class LevelManager extends Phaser.Scene
             pointer--;
             trapIndex -= levelTrapValues[levelIndex][pointer][1];
         }
+        //this.percentagesTest[pointer]++;
         return levelTrapValues[levelIndex][pointer][0];
     }
 
