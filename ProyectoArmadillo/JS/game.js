@@ -46,6 +46,7 @@ var controls = {  // Controles del jugador (teclado)
 var levelIndex = 0; // Indica el nivel a generar para LevelManager (CAMBIAR A PASO DE OBJETO DE ESCENA A ESCENA)
 var difficulty = 1; // Indica la dificultad escogida: 0 difícil - 1 normal - 2 fácil (aún sin implementar)
 
+
 //Movil o PC
 var PC = true;
 

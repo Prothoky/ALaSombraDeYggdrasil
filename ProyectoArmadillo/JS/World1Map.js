@@ -5,8 +5,22 @@ class World1Map extends Phaser.Scene{
 
   preload(){
 
+    this.BotonNodo0Sel;
+    this.BotonNodo1Sel;
+    this.BotonNodo2Sel;
+    this.BotonNodo3Sel;
+    this.BotonNodo4Sel;
+    this.BotonNodo5Sel;
+    this.BotonNodo6Sel;
+    this.BotonNodo7Sel;
+    this.BotonNodo8Sel;
+    this.BotonNodo9Sel;
+    this.nodoActivo;
+    this.nodosActivos = 0;
 
   }
+
+
 
   create(){
     var wid = this.cameras.main.width; //ancho del canvas en el dispositivo
@@ -16,7 +30,7 @@ class World1Map extends Phaser.Scene{
     background.setScale(2/3);
     background.setPosition(wid/2, heig/2);
 
-
+    //var nodosActivos = 0;
 
 /*
 //PRUEBAS BOTON PAUSE
@@ -32,10 +46,16 @@ class World1Map extends Phaser.Scene{
     this.scene.start('MapOne');
 */
     // (TESTEO) botón de iniciar partida
+
+    //Boton Desbloqueado
     this.botonNivel0 = this.add.image(wid*14.6/16, heig*10.05/16, 'ButtonNodePrinc');
     this.botonNivel0.setScale(2/3);
     this.botonNivel0.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.AccessToLevel(wid*14.6/16, heig*10.05/16, 0));
+    //Boton Seleccionado
+    this.BotonNodo0Sel = this.add.image(wid*14.6/16, heig*10.05/16, 'ButtonNodePrincSel');
+    this.BotonNodo0Sel.setScale(2/3);
+    this.BotonNodo0Sel.setVisible(false);
 
   /*  this.botonNivel0_1 = this.add.image(wid*6.44/16, heig*14.05/16, 'ButtonSubode1');
     this.botonNivel0_1.setInteractive({ useHandCursor: true  } )
@@ -48,13 +68,18 @@ class World1Map extends Phaser.Scene{
     //.on('pointerdown', () => this.AccessToLevel(wid*10.44/16, heig*14.05/16, 0));
     this.botonNivel0_2.setVisible(false);*/
 
+    //Boton Desbloqueado
     this.botonNivel1 = this.add.image(wid*11.41/16, heig*13.15/16, 'ButtonNodePrinc');
     this.botonNivel1.setScale(2/3);
     this.botonNivel1.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.AccessToLevel(wid*11.41/16, heig*13.15/16, 1));
     this.botonNivel1.setVisible(false);
+    //Botón Seleccionado
+    this.BotonNodo1Sel = this.add.image(wid*11.41/16, heig*13.15/16, 'ButtonNodePrincSel');
+    this.BotonNodo1Sel.setScale(2/3);
+    this.BotonNodo1Sel.setVisible(false);
 
-/*    this.botonNivel1_1 = this.add.image(wid*6.44/16, heig*10.05/16, 'ButtonSubode1');
+/*  this.botonNivel1_1 = this.add.image(wid*6.44/16, heig*10.05/16, 'ButtonSubode1');
     this.botonNivel1_1.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.scene.start('LevelManager'));
     //.on('pointerdown', () => this.AccessToLevel(wid*6.44/16, heig*10.05/16, 1));
@@ -66,59 +91,102 @@ class World1Map extends Phaser.Scene{
     //.on('pointerdown', () => this.AccessToLevel(wid*10.44/16, heig*10.05/16, 1));
     this.botonNivel1_2.setVisible(false);
 */
+
+    //Botón Desbloqueado
     this.botonNivel2 = this.add.image(wid*10.18/16, heig*11.75/16, 'ButtonNodePrinc');
     this.botonNivel2.setScale(2/3);
     this.botonNivel2.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.AccessToLevel(wid*10.18/16, heig*11.75/16, 2));
     this.botonNivel2.setVisible(false);
+    //Botón Seleccionado
+    this.BotonNodo2Sel = this.add.image(wid*10.18/16, heig*11.75/16, 'ButtonNodePrincSel');
+    this.BotonNodo2Sel.setScale(2/3);
+    this.BotonNodo2Sel.setVisible(false);
 
+    //Botón Desbloqueado
     this.botonNivel3 = this.add.image(wid*7.4/16, heig*14.15/16, 'ButtonNodePrinc');
     this.botonNivel3.setScale(2/3);
     this.botonNivel3.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.AccessToLevel(wid*7.4/16, heig*14.15/16, 3));
     this.botonNivel3.setVisible(false);
+    //Botón Seleccionado
+    this.BotonNodo3Sel = this.add.image(wid*7.4/16, heig*14.15/16, 'ButtonNodePrincSel');
+    this.BotonNodo3Sel.setScale(2/3);
+    this.BotonNodo3Sel.setVisible(false);
 
+    //Botón Desbloqueado
     this.botonNivel4 = this.add.image(wid*3.025/16, heig*11.55/16, 'ButtonNodePrinc');
     this.botonNivel4.setScale(2/3);
     this.botonNivel4.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () =>  this.AccessToLevel(wid*3.025/16, heig*11.55/16, 4));
     this.botonNivel4.setVisible(false);
+    //Botón Seleccionado
+    this.BotonNodo4Sel = this.add.image(wid*3.025/16, heig*11.55/16, 'ButtonNodePrincSel');
+    this.BotonNodo4Sel.setScale(2/3);
+    this.BotonNodo4Sel.setVisible(false);
 
+    //Botón Desbloqueado
     this.botonNivel5 = this.add.image(wid*3.41/16, heig*4.525/16, 'ButtonNodePrincSnow');
     this.botonNivel5.setScale(2/3);
     this.botonNivel5.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () =>  this.AccessToLevel(wid*3.41/16, heig*4.525/16, 5));
     this.botonNivel5.setVisible(false);
+    //Botón Seleccionado
+    this.BotonNodo5Sel = this.add.image(wid*3.41/16, heig*4.525/16, 'ButtonNodePrincSnowSel');
+    this.BotonNodo5Sel.setScale(2/3);
+    this.BotonNodo5Sel.setVisible(false);
 
+    //Botón Desbloqueado
     this.botonNivel6 = this.add.image(wid*6.41/16, heig*1.5/16, 'ButtonNodePrincSnow');
     this.botonNivel6.setScale(2/3);
     this.botonNivel6.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () =>  this.AccessToLevel(wid*6.41/16, heig*1.5/16, 6));
     this.botonNivel6.setVisible(false);
+    //Botón Seleccionado
+    this.BotonNodo6Sel = this.add.image(wid*6.41/16, heig*1.5/16, 'ButtonNodePrincSnowSel');
+    this.BotonNodo6Sel.setScale(2/3);
+    this.BotonNodo6Sel.setVisible(false);
 
+
+    //Botón Desbloqueado
     this.botonNivel7 = this.add.image(wid*6.79/16, heig*5.61/16, 'ButtonNodePrincSnow');
     this.botonNivel7.setScale(2/3);
     this.botonNivel7.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () =>  this.AccessToLevel(wid*6.79/16, heig*5.61/16, 7));
     this.botonNivel7.setVisible(false);
+    //Botón Seleccionado
+    this.BotonNodo7Sel = this.add.image(wid*6.79/16, heig*5.61/16, 'ButtonNodePrincSnowSel');
+    this.BotonNodo7Sel.setScale(2/3);
+    this.BotonNodo7Sel.setVisible(false);
 
+    //Botón Desbloqueado
     this.botonNivel8 = this.add.image(wid*9.845/16, heig*4.75/16, 'ButtonNodePrincSnow');
     this.botonNivel8.setScale(2/3);
     this.botonNivel8.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () =>  this.AccessToLevel(wid*9.845/16, heig*4.75/16, 8));
     this.botonNivel8.setVisible(false);
+    //Botón Seleccionado
+    this.BotonNodo8Sel = this.add.image(wid*9.845/16, heig*4.75/16, 'ButtonNodePrincSnowSel');
+    this.BotonNodo8Sel.setScale(2/3);
+    this.BotonNodo8Sel.setVisible(false);
 
+    //Botón Desbloqueado
     this.botonNivel9 = this.add.image(wid*12.6/16, heig*5.1/16, 'ButtonNodePrincSnow');
     this.botonNivel9.setScale(2/3);
     this.botonNivel9.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () =>  this.AccessToLevel(wid*12.6/16, heig*5.1/16, 9));
     this.botonNivel9.setVisible(false);
+    //Botón Seleccionado
+    this.BotonNodo9Sel = this.add.image(wid*12.6/16, heig*5.1/16, 'ButtonNodePrincSnowSel');
+    this.BotonNodo9Sel.setScale(2/3);
+    this.BotonNodo9Sel.setVisible(false);
 
 
     //this.events.on("Unlock buttons", this.unlockButtons, this);
   }
 
   update(){
+
     if (user.map[0] == true){
       this.botonNivel1.setVisible(true);
     //  this.botonNivel0_1.setVisible(true);
@@ -135,34 +203,26 @@ class World1Map extends Phaser.Scene{
     }
     if (user.map[2] == true){
       this.botonNivel3.setVisible(true);
-      //console.log("has pasado el nivel " + (levelIndex - 1));
     }
     if (user.map[3] == true){
       this.botonNivel4.setVisible(true);
-      // console.log("oleeee ");
     }
     if (user.map[4] == true){
       this.botonNivel5.setVisible(true);
-      // console.log("oleeee ");
     }
     if (user.map[5] == true){
       this.botonNivel6.setVisible(true);
-      // console.log("oleeee ");
     }
     if (user.map[6] == true){
       this.botonNivel7.setVisible(true);
-      // console.log("oleeee ");
     }
     if (user.map[7] == true){
       this.botonNivel8.setVisible(true);
-      // console.log("oleeee ");
     }
     if (user.map[8] == true){
       this.botonNivel9.setVisible(true);
-      // console.log("oleeee ");
     }
     if (user.map[9] == true){
-      //this.botonNivel4.setVisible(true);
      console.log("Debloquear mundo 2");
     }
 
@@ -173,144 +233,193 @@ class World1Map extends Phaser.Scene{
   }
 
   AccessToLevel(width_, height_, level){
-    if (level== 0){
-      //this.FondoAccesoNivel0 = this.add.image(width_, height_, 'BackgrAcessToLevel');
-      this.BotonNodo0Sel = this.add.image(width_, height_, 'ButtonNodePrincSel');
-      this.BotonNodo0Sel.setScale(2/3);
-      /*this.BotonAccesoNivel0 = this.add.image(width_, height_, 'ButtonPlayLevel');
-      this.BotonAccesoNivel0.setInteractive({ useHandCursor: true  } )
-      .on('pointerdown', () => this.scene.start('LevelManager'));*/
-    //  botonActivo = 0;
-      this.BotonNodo0Sel.setInteractive({ useHandCursor: true  } )
-      .on('pointerdown', () => this.scene.start('LevelManager'));
 
-      levelIndex = 0;
-      console.log("a jugar el " + level);
-    }
+  //  var nodoActivo;
+  //  var nodosActivos;
 
-    if (level== 1){
-      //this.FondoAccesoNivel1 = this.add.image(width_, height_, 'BackgrAcessToLevel');
-      /*this.BotonAccesoNivel1 = this.add.image(width_, height_, 'ButtonPlayLevel');
-      this.BotonAccesoNivel1.setInteractive({ useHandCursor: true  } )
-      .on('pointerdown', () => this.scene.start('LevelManager'));*/
+    switch (level){
 
-      this.BotonNodo1Sel = this.add.image(width_, height_, 'ButtonNodePrincSel');
-      this.BotonNodo1Sel.setScale(2/3);
-      this.BotonNodo1Sel.setInteractive({ useHandCursor: true  } )
-      .on('pointerdown', () => this.scene.start('LevelManager'));
-      levelIndex = 1;
-      console.log("a jugar el " + level);
-    }
+       case 0:
 
-    if (level == 2){
-      /*this.FondoAccesoNivel2 = this.add.image(width_, height_, 'BackgrAcessToLevel');
-      this.BotonAccesoNivel2 = this.add.image(width_, height_, 'ButtonPlayLevel');
-      this.BotonAccesoNivel2.setInteractive({ useHandCursor: true  } )
-      .on('pointerdown', () => this.scene.start('LevelManager'));*/
-      this.BotonNodo2Sel = this.add.image(width_, height_, 'ButtonNodePrincSel');
-      this.BotonNodo2Sel.setScale(2/3);
-      this.BotonNodo2Sel.setInteractive({ useHandCursor: true  } )
-      .on('pointerdown', () => this.scene.start('LevelManager'));
-      levelIndex = 2;
-      console.log("a jugar el " + level);
-    }
+       if (this.nodosActivos == 0){
+         this.nodoActivo =  this.BotonNodo0Sel;
+         this.nodosActivos ++;
+         this.BotonNodo0Sel.setVisible(true);
+         this.BotonNodo0Sel.setInteractive({ useHandCursor: true  } )
+         .on('pointerdown', () => this.scene.start('LevelManager'));
+         levelIndex = level;
+         console.log("a jugar el " + level);
+       }
+       else {
+         console.log("nodos activos " + this.nodosActivos);
+         this.nodoActivo.setVisible(false);
+         this.nodosActivos = 0;
+       }
+       break;
 
-    if (level == 3){
-      /*this.FondoAccesoNivel3 = this.add.image(width_, height_, 'BackgrAcessToLevel');
-      this.BotonAccesoNivel3 = this.add.image(width_, height_, 'ButtonPlayLevel');
-      this.BotonAccesoNivel3.setInteractive({ useHandCursor: true  } )
-      .on('pointerdown', () => this.scene.start('LevelManager'));*/
-      this.BotonNodo3Sel = this.add.image(width_, height_, 'ButtonNodePrincSel');
-      this.BotonNodo3Sel.setScale(2/3);
-      this.BotonNodo3Sel.setInteractive({ useHandCursor: true  } )
-      .on('pointerdown', () => this.scene.start('LevelManager'));
-      levelIndex = 3;
-      console.log("a jugar el " + level);
-    }
+      case 1:
 
-    if (level == 4){
-      //this.FondoAccesoNivel3 = this.add.image(width_, height_, 'BackgrAcessToLevel');
-      /*this.ButtonNode3Active = this.add.image(width_, height_, 'ButtonPlayLevel');
-      this.BotonAccesoNivel3 = this.add.image(width_, height_, 'ButtonPlayLevel');
-      this.BotonAccesoNivel3.setInteractive({ useHandCursor: true  } )
-      .on('pointerdown', () => this.scene.start('LevelManager'));*/
-      this.BotonNodo4Sel = this.add.image(width_, height_, 'ButtonNodePrincSel');
-      this.BotonNodo4Sel.setScale(2/3);
-      this.BotonNodo4Sel.setInteractive({ useHandCursor: true  } )
-      .on('pointerdown', () => this.scene.start('LevelManager'));
-      levelIndex = 4;
-      console.log("a jugar el " + level);
-    }
+      if(this.nodosActivos == 0){
+        this.nodoActivo = this.BotonNodo1Sel;
+        this.nodosActivos ++;
+        this.BotonNodo1Sel.setVisible(true);
+        this.BotonNodo1Sel.setInteractive({ useHandCursor: true  } )
+        .on('pointerdown', () => this.scene.start('LevelManager'));
+        levelIndex = level;
+        console.log("a jugar el " + level);
+      }
+      else{
+        console.log("nodos activos " + this.nodosActivos);
+        this.nodoActivo.setVisible(false);
+        this.nodosActivos = 0;
+      }
+      break;
 
-    if (level == 5){
-      /*this.FondoAccesoNivel3 = this.add.image(width_, height_, 'BackgrAcessToLevel');
-      this.BotonAccesoNivel3 = this.add.image(width_, height_, 'ButtonPlayLevel');
-      this.BotonAccesoNivel3.setInteractive({ useHandCursor: true  } )
-      .on('pointerdown', () => this.scene.start('LevelManager'));*/
-      this.BotonNodo5Sel = this.add.image(width_, height_, 'ButtonNodePrincSnowSel');
-      this.BotonNodo5Sel.setScale(2/3);
-      this.BotonNodo5Sel.setInteractive({ useHandCursor: true  } )
-      .on('pointerdown', () => this.scene.start('LevelManager'));
-      levelIndex = 5;
-      console.log("a jugar el " + level);
-    }
+      case 2:
 
-    if (level == 6){
-      /*this.FondoAccesoNivel3 = this.add.image(width_, height_, 'BackgrAcessToLevel');
-      this.BotonAccesoNivel3 = this.add.image(width_, height_, 'ButtonPlayLevel');
-      this.BotonAccesoNivel3.setInteractive({ useHandCursor: true  } )
-      .on('pointerdown', () => this.scene.start('LevelManager'));*/
-      this.BotonNodo6Sel = this.add.image(width_, height_, 'ButtonNodePrincSnowSel');
-      this.BotonNodo6Sel.setScale(2/3);
-      this.BotonNodo6Sel.setInteractive({ useHandCursor: true  } )
-      .on('pointerdown', () => this.scene.start('LevelManager'));
-      levelIndex = 6;
-      console.log("a jugar el " + level);
-    }
+      if(this.nodosActivos == 0){
+        this.nodoActivo = this.BotonNodo2Sel;
+        this.nodosActivos ++;
+        this.BotonNodo2Sel.setVisible(true);
+        this.BotonNodo2Sel.setInteractive({ useHandCursor: true  } )
+        .on('pointerdown', () => this.scene.start('LevelManager'));
+        levelIndex = level;
+        console.log("a jugar el " + level);
+      }
+      else{
+        console.log("nodos activos " + this.nodosActivos);
+        this.nodoActivo.setVisible(false);
+        this.nodosActivos = 0;
+      }
+      break;
 
-    if (level == 7){
-      /*this.FondoAccesoNivel3 = this.add.image(width_, height_, 'BackgrAcessToLevel');
-      this.BotonAccesoNivel3 = this.add.image(width_, height_, 'ButtonPlayLevel');
-      this.BotonAccesoNivel3.setInteractive({ useHandCursor: true  } )
-      .on('pointerdown', () => this.scene.start('LevelManager'));*/
-      this.BotonNodo7Sel = this.add.image(width_, height_, 'ButtonNodePrincSnowSel');
-      this.BotonNodo7Sel.setScale(2/3);
-      this.BotonNodo7Sel.setInteractive({ useHandCursor: true  } )
-      .on('pointerdown', () => this.scene.start('LevelManager'));
-      levelIndex = 7;
-      console.log("a jugar el " + level);
-    }
+      case 3:
 
-    if (level == 8){
-      /*this.FondoAccesoNivel3 = this.add.image(width_, height_, 'BackgrAcessToLevel');
-      this.BotonAccesoNivel3 = this.add.image(width_, height_, 'ButtonPlayLevel');
-      this.BotonAccesoNivel3.setInteractive({ useHandCursor: true  } )
-      .on('pointerdown', () => this.scene.start('LevelManager'));*/
-      this.BotonNodo8Sel = this.add.image(width_, height_, 'ButtonNodePrincSnowSel');
-      this.BotonNodo8Sel.setScale(2/3);
-      this.BotonNodo8Sel.setInteractive({ useHandCursor: true  } )
-      .on('pointerdown', () => this.scene.start('LevelManager'));
-      levelIndex = 8;
-      console.log("a jugar el " + level);
-    }
+      if(this.nodosActivos == 0){
+        this.nodoActivo = this.BotonNodo3Sel;
+        this.nodosActivos ++;
+        this.BotonNodo3Sel.setVisible(true);
+        this.BotonNodo3Sel.setInteractive({ useHandCursor: true  } )
+        .on('pointerdown', () => this.scene.start('LevelManager'));
+        levelIndex = level;
+        console.log("a jugar el " + level);
+      }
+      else{
+        console.log("nodos activos " + this.nodosActivos);
+        this.nodoActivo.setVisible(false);
+        this.nodosActivos = 0;
+      }
+      break;
 
-    if (level == 9){
-      /*this.FondoAccesoNivel3 = this.add.image(width_, height_, 'BackgrAcessToLevel');
-      this.BotonAccesoNivel3 = this.add.image(width_, height_, 'ButtonPlayLevel');
-      this.BotonAccesoNivel3.setInteractive({ useHandCursor: true  } )
-      .on('pointerdown', () => this.scene.start('LevelManager'));*/
-      this.BotonNodo9Sel = this.add.image(width_, height_, 'ButtonNodePrincSnowSel');
-      this.BotonNodo9Sel.setScale(2/3);
-      this.BotonNodo9Sel.setInteractive({ useHandCursor: true  } )
-      .on('pointerdown', () => this.scene.start('LevelManager'));
-      levelIndex = 9;
-      console.log("a jugar el " + level);
-    }
+      case 4:
 
-  }
+      if(this.nodosActivos == 0){
+        this.nodoActivo = this.BotonNodo4Sel;
+        this.nodosActivos ++;
+        this.BotonNodo4Sel.setVisible(true);
+        this.BotonNodo4Sel.setInteractive({ useHandCursor: true  } )
+        .on('pointerdown', () => this.scene.start('LevelManager'));
+        levelIndex = level;
+        console.log("a jugar el " + level);
+      }
+      else{
+        console.log("nodos activos " + this.nodosActivos);
+        this.nodoActivo.setVisible(false);
+        this.nodosActivos = 0;
+      }
+      break;
 
-  unlockButtons(){
+      case 5:
 
-  }
+      if(this.nodosActivos == 0){
+        this.nodoActivo = this.BotonNodo5Sel;
+        this.nodosActivos ++;
+        this.BotonNodo5Sel.setVisible(true);
+        this.BotonNodo5Sel.setInteractive({ useHandCursor: true  } )
+        .on('pointerdown', () => this.scene.start('LevelManager'));
+        levelIndex = level;
+        console.log("a jugar el " + level);
+      }
+      else{
+        console.log("nodos activos " + this.nodosActivos);
+        this.nodoActivo.setVisible(false);
+        this.nodosActivos = 0;
+      }
+      break;
+
+      case 6:
+
+      if(this.nodosActivos == 0){
+        this.nodoActivo = this.BotonNodo6Sel;
+        this.nodosActivos ++;
+        this.BotonNodo6Sel.setVisible(true);
+        this.BotonNodo6Sel.setInteractive({ useHandCursor: true  } )
+        .on('pointerdown', () => this.scene.start('LevelManager'));
+        levelIndex = level;
+        console.log("a jugar el " + level);
+      }
+      else{
+        console.log("nodos activos " + this.nodosActivos);
+        this.nodoActivo.setVisible(false);
+        this.nodosActivos = 0;
+      }
+      break;
+
+      case 7:
+
+      if(this.nodosActivos == 0){
+        this.nodoActivo = this.BotonNodo7Sel;
+        this.nodosActivos ++;
+        this.BotonNodo7Sel.setVisible(true);
+        this.BotonNodo7Sel.setInteractive({ useHandCursor: true  } )
+        .on('pointerdown', () => this.scene.start('LevelManager'));
+        levelIndex = level;
+        console.log("a jugar el " + level);
+      }
+      else{
+        console.log("nodos activos " + this.nodosActivos);
+        this.nodoActivo.setVisible(false);
+        this.nodosActivos = 0;
+      }
+      break;
+
+      case 8:
+
+      if(this.nodosActivos == 0){
+        this.nodoActivo = this.BotonNodo8Sel;
+        this.nodosActivos ++;
+        this.BotonNodo8Sel.setVisible(true);
+        this.BotonNodo8Sel.setInteractive({ useHandCursor: true  } )
+        .on('pointerdown', () => this.scene.start('LevelManager'));
+        levelIndex = level;
+        console.log("a jugar el " + level);
+      }
+      else{
+        console.log("nodos activos " + this.nodosActivos);
+        this.nodoActivo.setVisible(false);
+        this.nodosActivos = 0;
+      }
+      break;
+
+      case 9:
+
+      if(this.nodosActivos == 0){
+        this.nodoActivo = this.BotonNodo9Sel;
+        this.nodosActivos ++;
+        this.BotonNodo9Sel.setVisible(true);
+        this.BotonNodo9Sel.setInteractive({ useHandCursor: true  } )
+        .on('pointerdown', () => this.scene.start('LevelManager'));
+        levelIndex = level;
+        console.log("a jugar el " + level);
+      }
+      else{
+        console.log("nodos activos " + this.nodosActivos);
+        this.nodoActivo.setVisible(false);
+        this.nodosActivos = 0;
+      }
+      break;
+
+     }
+   }
 
 }
