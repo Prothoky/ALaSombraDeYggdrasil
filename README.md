@@ -1,7 +1,7 @@
 # Ficha de juego
 
 
-#### Título -->   
+#### Título  
 A la sombra de yggdrasil
 #### Género 
 Es un runner en 2D con scroll lateral con narrativa vikinga.
@@ -71,7 +71,24 @@ El diseño de niveles está desarrollado con una curva de dificultad progresiva 
 
 ![dificultad](https://user-images.githubusercontent.com/55508821/97113804-f2691d00-16ec-11eb-9c7a-35e91484c141.JPG)
 
-
+Durante la partida saldrán varios elementos a esquivar, ya sean enemigos u obstáculos:
+[Ya implementados]
+ - Pinchos normales
+ - Plataformas
+ - Enemigos quietos
+ - Plataformas con enemigos
+ - Enemigos con movimiento
+ - Pinchos largos con plataforma para lograr el salto
+ - Pinchos pequeños seguidos
+ - Pinchos pequeños seguidos con enemigos
+[Aún por incluir]
+ - Casa vikinga
+ - Casa vikinga con obstáculo en el suelo
+ - Casa vikinga con obstáculo en el techo
+ - Casa vikinga con enemigo
+ - Enemigo con ataque a distancia
+ - Árbol
+ - ...
 
 
 ## Interfaz y modos de juego
@@ -99,6 +116,8 @@ Habrá 10 niveles principales, 5 en el bosque y los otros 5 en el hielo. Algunos
 
 El avance de los niveles irá reflejando el pensamiento del personaje y hará una transición desde la soledad hasta la ira de su situación, exigiendo a Odín con violencia que acabe con su sufrimiento. Einar en el último capítulo amenazará de muerte al mismísimo dios.
 
+
+[Incluir título de cada nivel y una breve descripción sobre este]
 
 
 
@@ -129,5 +148,9 @@ La tienda se dividirá en tres bloques:
 
 ## Controles
 Los controles los vamos a definir en dos bloques, cada uno en función al entorno de juego en el que el usuario se encuentra:
-
+ Ordenador:
+ [Incluir tabla]
+ 
+ Móvil:
+ [Incluir tabla]
 
