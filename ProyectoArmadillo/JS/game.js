@@ -67,13 +67,14 @@ function saveUserData(){
   localStorage.setItem("UserWorld", user.world)
   localStorage.setItem("UserMap", user.map);
   localStorage.setItem("UserMoney", user.money);
+
 }
 
 function loadUserData(){
   var user_world = localStorage.getItem("UserWorld");
   var user_map = localStorage.getItem("UserMap");
-
   var user_money = localStorage.getItem("UserMoney");
+
   if(user_world!=null && user_map!=null && user_money != null) {
     user.world = stringToArray(user_world);
     user.map = stringToArray(user_map);
@@ -85,6 +86,7 @@ function resetUserData(){
   user.world= [true,false,false,false,false,false,false,false,false],
   user.map= [true, false, false],
   user.money= 0
+  saveUserData();
 }
 
 function stringToArray(user_data) {
@@ -95,4 +97,16 @@ function stringToArray(user_data) {
     user_date_updated[i] = data[i];
   }
   return user_date_updated;
+}
+
+var strings;
+
+function checkLanguage(phaserJSON){
+  var userLang = navigator.language || navigator.userLanguage; 
+  if(userLang == "es-ES" || "es"){
+    strings = phaserJSON.esp;
+  }
+  else if(userLang == "en-US" || "en"){
+    strings = phaserJSON.eng;
+  }
 }

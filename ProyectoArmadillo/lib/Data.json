@@ -1,0 +1,92 @@
+{
+    "userData": { 
+        "world": [true,false,false,false,false,false,false,false,false],
+        "map": [false, false, false, false],
+        "money": 0
+    },
+
+    "unlockDate": {
+        "day" : 1,
+        "month" : 1,
+        "year" : 2021
+    },
+
+    "esp":{
+        "Loading": "Cargando",
+        "Main Menu": {
+            "title": "Menu Principal",
+            "play": "Jugar",
+            "options": "Opciones",
+            "credits" : "Créditos",
+            "fullscreen" : "Pantalla Completa"
+        },
+        "Options Menu": {
+            "back" : "Volver"
+        },
+        "World Menu":{
+            "world_1": "Helheim",
+            "world_2": "Muspellheim",
+            "world_3": "Nifelheim",
+            "world_4": "Midgard",
+            "world_5": "Asgard",
+            "world_6": "Bifröst",
+            "world_7": "Jötunheim",
+            "world_8": "Vanaheim",
+            "world_9": "Svartalheim",
+            "back" : "Volver"
+        },
+        "Map Menu":{
+            "map_1":"Map 1 Nombre",
+            "map_2":"Map 2 Nombre",
+            "map_3":"Map 3 Nombre",
+            "map_4":"Map 4 Nombre",
+            "map_5":"Map 5 Nombre",
+            "map_6":"Map 6 Nombre",
+            "map_7":"Map 7 Nombre",
+            "map_8":"Map 8 Nombre",
+            "map_9":"Map 9 Nombre",
+            "map_10":"Map 10 Nombre",
+            "back" : "Volver"
+        }
+    },
+    
+    "eng":{
+        "Loading": "Loading",
+        "Main Menu": {
+            "title": "Main Menu",
+            "play": "Play",
+            "options": "Options",
+            "credits" : "Credits",
+            "fullscreen" : "Fulll Screen"
+        },
+        "Options Menu": {
+            "back" : "Back"
+        },
+        "World Menu":{
+            "world_1": "Helheim",
+            "world_2": "Muspellheim",
+            "world_3": "Nifelheim",
+            "world_4": "Midgard",
+            "world_5": "Asgard",
+            "world_6": "Bifröst",
+            "world_7": "Jötunheim",
+            "world_8": "Vanaheim",
+            "world_9": "Svartalheim",
+            "back" : "Back"
+        },
+        "Map Menu":{
+            "map_1":"Map 1 Nombre",
+            "map_2":"Map 2 Nombre",
+            "map_3":"Map 3 Nombre",
+            "map_4":"Map 4 Nombre",
+            "map_5":"Map 5 Nombre",
+            "map_6":"Map 6 Nombre",
+            "map_7":"Map 7 Nombre",
+            "map_8":"Map 8 Nombre",
+            "map_9":"Map 9 Nombre",
+            "map_10":"Map 10 Nombre",
+            "back" : "Back"
+        }
+    }
+
+}
