@@ -13,17 +13,17 @@
 
     "esp":{
         "Loading": "Cargando",
-        "Main Menu": {
+        "Main_Menu": {
             "title": "Menu Principal",
             "play": "Jugar",
             "options": "Opciones",
             "credits" : "Créditos",
             "fullscreen" : "Pantalla Completa"
         },
-        "Options Menu": {
+        "Options_Menu": {
             "back" : "Volver"
         },
-        "World Menu":{
+        "World_Menu":{
             "world_1": "Helheim",
             "world_2": "Muspellheim",
             "world_3": "Nifelheim",
@@ -35,7 +35,7 @@
             "world_9": "Svartalheim",
             "back" : "Volver"
         },
-        "Map Menu":{
+        "Map_Menu":{
             "map_1":"Map 1 Nombre",
             "map_2":"Map 2 Nombre",
             "map_3":"Map 3 Nombre",
@@ -52,17 +52,17 @@
     
     "eng":{
         "Loading": "Loading",
-        "Main Menu": {
+        "Main_Menu": {
             "title": "Main Menu",
             "play": "Play",
             "options": "Options",
             "credits" : "Credits",
             "fullscreen" : "Fulll Screen"
         },
-        "Options Menu": {
+        "Options_Menu": {
             "back" : "Back"
         },
-        "World Menu":{
+        "World_Menu":{
             "world_1": "Helheim",
             "world_2": "Muspellheim",
             "world_3": "Nifelheim",
@@ -74,7 +74,7 @@
             "world_9": "Svartalheim",
             "back" : "Back"
         },
-        "Map Menu":{
+        "Map_Menu":{
             "map_1":"Map 1 Nombre",
             "map_2":"Map 2 Nombre",
             "map_3":"Map 3 Nombre",

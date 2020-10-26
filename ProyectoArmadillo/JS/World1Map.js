@@ -59,7 +59,7 @@ class World1Map extends Phaser.Scene{
     this.BotonNodo0Sel.setScale(2/3);
     this.BotonNodo0Sel.setVisible(false);
     //Fondo con nombre y boton JUGAR
-    this.NombreNivel0 = this.add.image(wid*14.6/16, heig*9.05/16, 'Level0Name');
+    this.NombreNivel0 = this.add.text(wid*14.6/16, heig*9.05/16, strings.Map_Menu.map_1, {fill: "white"});
     this.NombreNivel0.setScale(2/3);
     this.NombreNivel0.setVisible(false);
 
