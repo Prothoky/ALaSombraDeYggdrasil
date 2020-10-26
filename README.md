@@ -65,6 +65,15 @@ La escena de selección de mapa es en un tablero inspirado en paisajes de Norueg
 ![boceto mapa de niveles](https://user-images.githubusercontent.com/55508821/96410879-e4486780-11e7-11eb-986e-956eb7e3723b.jpeg)
 
 
+
+El diseño de niveles está desarrollado con una curva de dificultad progresiva y situacional en función al avance de los distintos niveles del mundo. Una vez se alcance el hielo en el mapa, la dificultad bajará para que el usuario se pueda adaptar a los nuevos elementos incorporados en estos.
+
+
+![dificultad](https://user-images.githubusercontent.com/55508821/97113804-f2691d00-16ec-11eb-9c7a-35e91484c141.JPG)
+
+
+
+
 ## Interfaz y modos de juego
 El diseño de interfaz de usuario debe de ser muy sencilla y ligera para el usuario, no pretendemos distraer con mucha carga de información para atraer a la mayor cantidad de público posible. El diseño del menú principal tiene como principal atención a Yggdrasil sujetando a los 9 mundos vikingos, estos estarán en gris hasta que se vayan desbloqueando, el jugador seleccionará el mundo y se adentrará en su respectivo tablero de niveles 
 
