@@ -81,7 +81,10 @@ Durante la partida saldrán varios elementos a esquivar, ya sean enemigos u obst
  - Pinchos largos con plataforma para lograr el salto
  - Pinchos pequeños seguidos
  - Pinchos pequeños seguidos con enemigos
-[Aún por incluir]
+ 
+  [Aún por incluir]
+  
+  
  - Casa vikinga
  - Casa vikinga con obstáculo en el suelo
  - Casa vikinga con obstáculo en el techo
