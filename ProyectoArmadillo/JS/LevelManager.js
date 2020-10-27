@@ -39,6 +39,7 @@ class LevelManager extends Phaser.Scene
         // 2) CONFIGURACIÓN DEL NIVEL (dependiendo del nivel escogido en el minimapa)
         this.lengthMultiplier = 10; // Multiplicador de amaño de ancho del mapa
         this.minTrapDistance = 200;    // Distancia mínima entre cada trampa
+        this.goldBase = 100;    // Oro base que se gana al superar el nivel
 
         // 2) GENERAL
         this.playerResizeFactor = 0.4;
@@ -109,6 +110,9 @@ class LevelManager extends Phaser.Scene
 
     create ()
     {
+        // Carga de settings de la escena del archivo de configuración
+        this.loadSettings();
+
         // Fix reseteo escena
         this.playerAttackAvaliable = true;
         this.isPlayerInvulnerable = false;
@@ -159,6 +163,8 @@ class LevelManager extends Phaser.Scene
                 this.playerHealth = 5;
                 break;
         }
+        // Aplica los efectos de las mejoras
+        this.applyBuffs();
 
         // FÍSICAS
         this.physics.world.setBounds(0, 0, this.levelWidth, this.levelHeight);  // Tamaño del nivel
@@ -461,6 +467,9 @@ class LevelManager extends Phaser.Scene
     playerHit() {
         if (this.isPlayerInvulnerable == false) {   // si el jugador no es invulnerable
             this.playerHealth--;
+            // si está con un escudo comprado, quitarlo
+            if (Number(user.buffs[0]) > 0)
+                user.buffs[0] = Number(user.buffs[0]) - 1;
             if (this.playerHealth <= 0) {   // Si no le quedan vidas muere
                 this.playerDeath();
             } else {
@@ -508,7 +517,7 @@ class LevelManager extends Phaser.Scene
     // collisionWidth, collisionHeight: tamaño de la hitbox
     // triggerWidth, triggerHeight: tamaño del trigger de movimiento. Si no se pasa toma valor por defecto
     generateMovingEnemy(xPos, yPos = this.levelGroundHeight - 60, collisionWidth = 40, collisionHeight = 60, triggerWidth = 500, triggerHeight = 500) {
-        let newEnemy = this.enemies.create(xPos, yPos, 'dude').setOrigin(1).setTint(0xe62272).refreshBody();
+        let newEnemy = this.enemies.create(xPos, yPos, 'dude').setOrigin(1).setTint(0x00ff38).refreshBody();
         newEnemy.body.setSize(collisionWidth, collisionHeight);
         let newTrigger = this.triggers.create(xPos, yPos, 'dot').setVisible(false).refreshBody();
         newTrigger.body.setSize(triggerWidth, triggerHeight);
@@ -549,7 +558,7 @@ class LevelManager extends Phaser.Scene
     // FUNCIONES COMPLEJAS (valores hardcodeados)
     // Plataforma + pinchos (necesario saltar desde la plataforma para no recibir hit)
     generatePlatformToSpikes(xPos, enemy = true) {
-        this.generatePlatform(xPos + 170, this.platformPositionY - this.platformPositionOffset/2, enemy);
+        this.generatePlatform(xPos + Math.floor(Math.random() * 170), this.platformPositionY - this.platformPositionOffset/2, enemy);
         this.generateSpikesTrap(xPos);
         this.generateSpikesTrap(xPos + 200);
         this.generateSpikesTrap(xPos + 300);
@@ -599,6 +608,8 @@ class LevelManager extends Phaser.Scene
         this.actualizeMapsCompleted();
         console.log("Pasaste el nivel" + levelIndex);
         //levelIndex ++;
+        user.map[levelIndex] = true;
+        saveUserData();
         this.returnToWorldMap();
     }
 
@@ -611,6 +622,32 @@ class LevelManager extends Phaser.Scene
     returnToWorldMap() {
         this.scene.stop();
         this.scene.start('World1Map');
+    }
+
+    // Carga los datos del fichero de configuración
+    loadSettings() {
+        let i = levelIndex;
+        let l = difficulty;
+        this.lengthMultiplier = levelSettings[i][l][0];
+        this.levelWidth = gameWidth * this.lengthMultiplier;
+        this.playerMovementSpeed = levelSettings[i][l][1];
+        this.minTrapDistance = levelSettings[i][l][2];
+        this.goldBase = levelSettings[i][l][3];
+    }
+
+    // Aplica los efectos de las mejoras
+    applyBuffs() {
+        // Añade escudos
+        console.log(user.buffs);
+        this.playerHealth += Number(user.buffs[0]);
+        if (Number(user.buffs[1]) == 1)
+            this.doubleJumpEnabled = true;
+        if (Number(user.buffs[2]) == 1) {
+            this.playerInvulnerabilityDuration = 2000;
+        } else {
+            this.playerInvulnerabilityDuration = 1000;
+        }
+
     }
     // FIN DE FUNCIONES DE FLUJO DEL JUEGO ------------------------------
 

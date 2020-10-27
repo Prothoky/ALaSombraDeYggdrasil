@@ -60,12 +60,14 @@ unlockDate=new Date(2021 ,2 ,1);
 var user = { //Mapas desbloqueados y dinero del jugador
   world: [true,false,false,false,false,false,false,false,false],
   map: [false, false, false, false],
+  buffs: [0, 0, 0],
   money: 0,
 };
 
 function saveUserData(){
-  localStorage.setItem("UserWorld", user.world)
+  localStorage.setItem("UserWorld", user.world);
   localStorage.setItem("UserMap", user.map);
+  localStorage.setItem("UserBuffs", user.buffs)
   localStorage.setItem("UserMoney", user.money);
 
 }
@@ -73,11 +75,13 @@ function saveUserData(){
 function loadUserData(){
   var user_world = localStorage.getItem("UserWorld");
   var user_map = localStorage.getItem("UserMap");
+  var user_buffs = localStorage.getItem("UserBuffs");
   var user_money = localStorage.getItem("UserMoney");
 
   if(user_world!=null && user_map!=null && user_money != null) {
     user.world = stringToArray(user_world);
     user.map = stringToArray(user_map);
+    user.buffs = user_buffs;
     user.money = user_money;
   }
 }
@@ -92,7 +96,8 @@ function resetUserData(){
 function stringToArray(user_data) {
   var separador = ",";
   var data = user_data.split(separador);
-  var user_date_updated
+  //var user_date_updated
+  var user_date_updated = new Array();
   for (var i=0; i < data.length; i++) {
     user_date_updated[i] = data[i];
   }
