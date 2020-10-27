@@ -81,7 +81,7 @@ function loadUserData(){
   if(user_world!=null && user_map!=null && user_money != null) {
     user.world = stringToArray(user_world);
     user.map = stringToArray(user_map);
-    user.buffs = user_buffs;
+    user.buffs = stringToArray(user_buffs);
     user.money = user_money;
   }
 }
