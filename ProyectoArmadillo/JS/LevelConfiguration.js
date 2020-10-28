@@ -13,10 +13,12 @@ Leyenda de trampas
 5 - pinchos largos con plataforma para lograr el salto
 6 - pinchos pequeñitos seguidos
 7 - pinchos pequeñitos seguidos con enemigos
+8 - barricada
+9 - tronco tirado
 */
 
 var levelTrapValues = new Array();
-levelTrapValues[0] = [ [0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1] ];
+levelTrapValues[0] = [ [0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1], [8, 4], [9, 4] ];
 levelTrapValues[1] = [ [0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1] ];
 levelTrapValues[2] = [ [0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1] ];
 levelTrapValues[3] = [ [0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1] ];

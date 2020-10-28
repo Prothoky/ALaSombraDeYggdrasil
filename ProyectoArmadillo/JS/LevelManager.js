@@ -33,7 +33,8 @@ class LevelManager extends Phaser.Scene
         this.minDistStillEnemy = 0;   // Mínimo de distancia tras un enemigo quieto
         this.minDistMovingEnemy = 0;   // Mínimo de distancia tras un enemigo que se mueve
         this.minDistPlatform = 0;   // Mínimo de distancia tras una plataforma
-        this.minDistSpikes = 100;   // Mínimo de distancia tras una trampa de pinchos
+        this.minDistSpikes = 200;   // Mínimo de distancia tras una trampa de pinchos
+        this.minDistBarricade = 250;
         // La distancia entre trampas final será maxRandTrapDistance(rand) + trapDistance + minDistance
 
         // 2) CONFIGURACIÓN DEL NIVEL (dependiendo del nivel escogido en el minimapa)
@@ -62,6 +63,7 @@ class LevelManager extends Phaser.Scene
         this.solidPlatforms;    // Grupos de plataformas con las que se ha hecho contacto
         this.enemies;   // Grupos de enemigos
         this.triggers;  // Grupos de triggers (colisiones que disparan eventos)
+        this.barricades;    // Grupo de barricadas
         // HUD
         this.healthPointsDisplay = new Array();
         // Otros
@@ -122,6 +124,7 @@ class LevelManager extends Phaser.Scene
         this.bg_far = this.add.tileSprite(0,0, 5715, 916, "bg_far");
         this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium");
         this.bg_near = this.add.tileSprite(0,0, 5715, 916, "bg_near");
+        this.bg_near.depth = 2;
 
         // PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
         // Animaciones globales
@@ -148,6 +151,7 @@ class LevelManager extends Phaser.Scene
 
         // PERSONAJE
         this.player = this.physics.add.sprite(400, 200, 'einar').setOrigin(1).setScale(this.playerResizeFactor).setSize(this.playerHitboxWidth, this.playerHitboxHeight);   // setOrigin(1) IMPORTANTE (calcular colisiones)
+        this.player.depth = 1;
         this.endTrigger = this.physics.add.sprite(0, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight);
         this.endTrigger.body.setAllowGravity(false);
         //this.player = this.physics.add.sprite(400, 200, 'einar').setOrigin(1);   // setOrigin(1) IMPORTANTE (calcular colisiones)
@@ -174,12 +178,15 @@ class LevelManager extends Phaser.Scene
         this.solidPlatforms = this.physics.add.staticGroup();   // Grupo de plataformas con las que se ha hecho contacto
         this.enemies = this.physics.add.group();  // Grupo de enemigos
         this.triggers = this.physics.add.staticGroup();   // Grupo de triggers
+        this.barricades = this.physics.add.group(); // Grupo de barricadas
 
         this.attackHitbox = this.physics.add.group(); // Grupo de hitbox del personaje
         this.generateGround(200, 'ground'); // Genera suelo para todo el nivel
         this.player.setCollideWorldBounds(false);    // No puede salir de los límites del mapa
         this.physics.add.collider(this.player, this.ground, this.grounded, null, this); // Permitimos colisiones entre suelo y jugador y cuenta como grounded (puede saltar)
         this.physics.add.collider(this.player, this.spikesTraps, () => this.playerHit()); // Función que se ejecuta al colisionar con spikes
+        this.physics.add.overlap(this.player, this.barricades, () => this.playerHit());    // Al hacer overlap con barricadas
+        this.physics.add.collider(this.barricades, this.ground);    // barricadas chocan con el suelo
         this.physics.add.collider(this.player, this.platforms, this.grounded, null, this);  // Permitimos colision es entre plataforms y jugador y cuenta como grounded (puede saltar)
         this.physics.add.overlap(this.player, this.enemies, () => this.playerHit()); // Llama a playerDeath si colisiona con enemigo
         this.physics.add.overlap(this.attackHitbox, this.enemies, this.killEnemy, null, this);  // LLama a killEnemy cuando la hitbox impacte con un enemigo
@@ -300,6 +307,7 @@ class LevelManager extends Phaser.Scene
         this.bg_medium.setScale(0.66);
         this.bg_near.setScale(0.7);
 
+        // TESTEO
     }
 
     // FUNCIÓN DE CREADO PROCEDURAL DEL MAPA ----------------------------
@@ -356,7 +364,8 @@ class LevelManager extends Phaser.Scene
     generateTrapArray() {
         let trapFunctionsNames = [ 'this.generateSpikesTrap', 'this.generatePlatformNoEnemy', 'this.generateStillEnemy', 
                                 'this.generatePlatform', 'this.generateMovingEnemy', 'this.generatePlatformToSpikes', 
-                                'this.generateSmallSpikesNoEnemy', 'this.generateSmallSpikes' ];
+                                'this.generateSmallSpikesNoEnemy', 'this.generateSmallSpikes', 'this.generateBarricade',
+                                'this.generateTrunk' ];
         for (let i = 0; i < trapFunctionsNames.length; i++) {
             this.trapFunctionsArray[i] = trapFunctionsNames[i];
         }
@@ -536,7 +545,7 @@ class LevelManager extends Phaser.Scene
         localPlatform.body.checkCollision.right = false;
         localPlatform.body.checkCollision.down = false;
         let enemyYOffset = 200; // Offset vertical del enemigo (para que caiga en la plataforma debido a los orígenes de las imágenes)
-        if (Math.random() > 0.5) {    // Generamos enemigo?
+        if (Math.random() < 0.5) {    // Generamos enemigo?
             this.generateStillEnemy(xPos + localPlatform.width*this.platformScaleFactor/2, yPos - enemyYOffset);
         }
         return this.minDistPlatform;
@@ -554,6 +563,23 @@ class LevelManager extends Phaser.Scene
         this.spikesTraps.create(xPos, yPos, 'ground').setScale(scaleFactor).setOrigin(0, 0).setTint(0xe62272).refreshBody();
         return this.minDistSpikes;
     }
+
+    // Pinchos de barricada
+    generateBarricade(xPos, yPos = this.levelGroundHeight, scaleFactor = 0.3) {
+        let localBarricade = this.barricades.create(xPos, yPos, 'barricade').setScale(scaleFactor).setOrigin(1, 1).refreshBody();
+        localBarricade.body.setSize(180, 180);
+        localBarricade.setOffset(40, 150);
+        return this.minDistBarricade;
+    }
+
+    // Tronco de arbol
+    generateTrunk(xPos, yPos = this.levelGroundHeight, scaleFactor = 0.5) {
+        let localBarricade = this.barricades.create(xPos, yPos, 'trunk').setScale(scaleFactor).setOrigin(0, 1).refreshBody();
+        localBarricade.body.setSize(230, 80);
+        localBarricade.setOffset(90, 240);
+        localBarricade.depth = 0;
+        return this.minDistBarricade;
+    }    
 
     // FUNCIONES COMPLEJAS (valores hardcodeados)
     // Plataforma + pinchos (necesario saltar desde la plataforma para no recibir hit)
