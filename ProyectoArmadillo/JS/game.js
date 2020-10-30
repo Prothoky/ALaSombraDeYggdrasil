@@ -115,3 +115,7 @@ function checkLanguage(phaserJSON){
     strings = phaserJSON.eng;
   }
 }
+
+// Variable música entre escenas
+var musicMenu;
+var musicGameplay;

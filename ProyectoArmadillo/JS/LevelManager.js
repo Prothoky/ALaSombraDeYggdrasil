@@ -102,16 +102,21 @@ class LevelManager extends Phaser.Scene
         */
     }
 
-    preload () {
-        // PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
-
-        // FIN DE PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
-        //BACKGROUND
-
-    }
+    preload () {}
 
     create ()
     {
+        // Controlador de audio
+        // Paramos música menú
+        if (musicMenu.isPlaying) {
+            musicMenu.stop();
+        }
+        // Ponemos música gameplay si no está ya
+        if (!musicGameplay.isPlaying) {
+          musicGameplay.play();
+        }
+
+
         // Carga de settings de la escena del archivo de configuración
         this.loadSettings();
 

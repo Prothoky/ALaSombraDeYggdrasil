@@ -25,6 +25,16 @@ class World1Map extends Phaser.Scene{
 
 
   create(){
+    // Controlador de audio
+    // Paramos música gameplay
+    if (musicGameplay != null && musicGameplay.isPlaying) {
+      musicGameplay.stop();
+    }
+    // Ponemos música menú
+    if (!musicMenu.isPlaying) {
+      musicMenu.play();
+    }
+
     var wid = this.cameras.main.width; //ancho del canvas en el dispositivo
     var heig = this.cameras.main.height;
 

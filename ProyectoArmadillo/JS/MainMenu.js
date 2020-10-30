@@ -8,6 +8,16 @@ class MainMenu extends Phaser.Scene{
   }
 
   create(){
+    // Controlador de audio
+    if (musicMenu == null) {
+      musicMenu = this.sound.add('test');
+      musicMenu.play();
+    }
+    if (musicGameplay == null) {
+      musicGameplay = this.sound.add('test2');
+    }
+
+
     var wid = this.cameras.main.width; //ancho del canvas en el dispositivo
     var heig = this.cameras.main.height;
 

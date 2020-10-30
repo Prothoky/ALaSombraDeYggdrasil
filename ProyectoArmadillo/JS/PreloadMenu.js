@@ -106,6 +106,11 @@ class PreloadMenu extends Phaser.Scene{
         this.load.image('BackgrAcessToLevel', './ASSETS/World1Menu/FondoAccesoANivel.png'); //CAMBIAR
         this.load.image('Level0Name', './ASSETS/World1Menu/NombreNivel0.png'); //CAMBIAR
 
+        // Música
+        this.load.audio('test', './ASSETS/Music/test.mp3');
+        this.load.audio('test2', './ASSETS/Music/test2.mp3');
+        this.load.audio('a', './ASSETS/Sounds/a.mp3');
+        this.load.audio('e', './ASSETS/Sounds/e.mp3');
 
       //Carga automáticamente main menu cuando los assets están cargados
         /*this.load.on('complete', () => {
