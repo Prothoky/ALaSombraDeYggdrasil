@@ -29,12 +29,14 @@ class LevelManager extends Phaser.Scene
         this.platformPositionY = 385;   // Posición base en Y de las plataformas
         this.platformPositionOffset = 75;  // Distancia que puede variar la posición de la plataforma
         this.platformMaxHeight = 285;   // Altura máxima de las plataformas
-        this.maxRandTrapDistance = 250; // Máximo de distancia entre trampas añadido
-        this.minDistStillEnemy = 0;   // Mínimo de distancia tras un enemigo quieto
-        this.minDistMovingEnemy = 0;   // Mínimo de distancia tras un enemigo que se mueve
-        this.minDistPlatform = 0;   // Mínimo de distancia tras una plataforma
-        this.minDistSpikes = 200;   // Mínimo de distancia tras una trampa de pinchos
+        this.maxRandTrapDistance = 200; // Máximo de distancia entre trampas añadido (250)
+        this.minDistStillEnemy = 30;   // Mínimo de distancia tras un enemigo quieto
+        this.minDistMovingEnemy = 30;   // Mínimo de distancia tras un enemigo que se mueve
+        this.minDistPlatform = 200;   // Mínimo de distancia tras una plataforma
+        this.minDistSpikes = 400;   // Mínimo de distancia tras una trampa de pinchos
         this.minDistBarricade = 250;
+        this.minDistPlatformToSpikes = 550;
+        this.minDistCabin = 1100;
         // La distancia entre trampas final será maxRandTrapDistance(rand) + trapDistance + minDistance
 
         // 2) CONFIGURACIÓN DEL NIVEL (dependiendo del nivel escogido en el minimapa)
@@ -46,8 +48,6 @@ class LevelManager extends Phaser.Scene
         this.playerResizeFactor = 0.4;
         this.runnerMode = true; // Controles de runner (salto y ataque)
         this.levelGroundHeight = 470;   // Altura del suelo
-        // Temporales (testeo)
-        this.platformScaleFactor = 0.4; // Factor de escalado de las plataformas. 1 para no hacer escalado
         // Settings enerador procedural
         this.levelIntroWidth = 1000; // Longitud al principio del mapa asegurado sin trampas
         this.endEventOffset = 500;  // Distancia desde la última trampa hasta el evento de fin de nivel.
@@ -204,7 +204,7 @@ class LevelManager extends Phaser.Scene
         for(let i = 0; i < this.playerHealth; i++) {
             this.healthPointsDisplay[i] = this.add.image(1270 - this.healthIconOffset * (1 + i), + this.healthIconOffset, 'bomb');
             this.healthPointsDisplay[i].setScrollFactor(0);
-            this.healthPointsDisplay[i].depth = 900;
+            this.healthPointsDisplay[i].depth = 10;
         }
 
         // GENERACIÓN PROCEDURAL
@@ -240,6 +240,7 @@ class LevelManager extends Phaser.Scene
             this.attackButton.on('down', this.playerAttack, this);
             this.rightButton.on('down', this.playerRight, this);
             this.rightButton.on('up',  this.playerStop,this);
+            this.testButton.on('down', this.levelCompletedFunc, this);  // Eliminar en versión final
         }
 
         // Móvil
@@ -308,6 +309,7 @@ class LevelManager extends Phaser.Scene
         this.bg_near.setScale(0.7);
 
         // TESTEO
+        
     }
 
     // FUNCIÓN DE CREADO PROCEDURAL DEL MAPA ----------------------------
@@ -365,7 +367,7 @@ class LevelManager extends Phaser.Scene
         let trapFunctionsNames = [ 'this.generateSpikesTrap', 'this.generatePlatformNoEnemy', 'this.generateStillEnemy', 
                                 'this.generatePlatform', 'this.generateMovingEnemy', 'this.generatePlatformToSpikes', 
                                 'this.generateSmallSpikesNoEnemy', 'this.generateSmallSpikes', 'this.generateBarricade',
-                                'this.generateTrunk' ];
+                                'this.generateTrunk', 'this.generateCabinUp' ];
         for (let i = 0; i < trapFunctionsNames.length; i++) {
             this.trapFunctionsArray[i] = trapFunctionsNames[i];
         }
@@ -539,14 +541,14 @@ class LevelManager extends Phaser.Scene
     // enemy = puede haber un enemigo encima?
     // Si no se otorgan valores se asignan solos. Enemy true y posición aleatoria (dentro de límites)
     // Únicamente cambiar el sprite y el valor de setScale()
-    generatePlatform(xPos, yPos = this.platformPositionY + Math.floor(Math.random() * this.platformPositionOffset) - this.platformPositionOffset/2, enemy = true) {
-        let localPlatform = this.platforms.create(xPos, yPos, 'ground').setScale(this.platformScaleFactor).setOrigin(0, 0).setTint(0x00ff38).refreshBody();
+    generatePlatform(xPos, yPos = this.platformPositionY + Math.floor(Math.random() * this.platformPositionOffset) - this.platformPositionOffset/2, enemy = true, scaleFactor = 0.4, visible = true) {
+        let localPlatform = this.platforms.create(xPos, yPos, 'ground').setScale(scaleFactor).setOrigin(0, 0).setTint(0x00ff38).setVisible(visible).refreshBody();
         localPlatform.body.checkCollision.left = false;
         localPlatform.body.checkCollision.right = false;
         localPlatform.body.checkCollision.down = false;
         let enemyYOffset = 200; // Offset vertical del enemigo (para que caiga en la plataforma debido a los orígenes de las imágenes)
-        if (Math.random() < 0.5) {    // Generamos enemigo?
-            this.generateStillEnemy(xPos + localPlatform.width*this.platformScaleFactor/2, yPos - enemyYOffset);
+        if (Math.random() < 0.5 && enemy == true) {    // Generamos enemigo?
+            this.generateStillEnemy(xPos + localPlatform.width*scaleFactor/2, yPos - enemyYOffset);
         }
         return this.minDistPlatform;
     }
@@ -565,8 +567,8 @@ class LevelManager extends Phaser.Scene
     }
 
     // Pinchos de barricada
-    generateBarricade(xPos, yPos = this.levelGroundHeight, scaleFactor = 0.3) {
-        let localBarricade = this.barricades.create(xPos, yPos, 'barricade').setScale(scaleFactor).setOrigin(1, 1).refreshBody();
+    generateBarricade(xPos, yPos = this.levelGroundHeight, scaleFactor = 0.3, visible = true) {
+        let localBarricade = this.barricades.create(xPos, yPos, 'barricade').setScale(scaleFactor).setOrigin(1, 1).setVisible(visible).refreshBody();
         localBarricade.body.setSize(180, 180);
         localBarricade.setOffset(40, 150);
         return this.minDistBarricade;
@@ -580,6 +582,19 @@ class LevelManager extends Phaser.Scene
         localBarricade.depth = 0;
         return this.minDistBarricade;
     }    
+    
+    // Cabaña
+    generateCabinUp(xPos, yPos = this.levelGroundHeight + 145, scaleFactor = 0.7) {
+        xPos += 300;
+        let localCabin = this.physics.add.image(xPos, yPos, 'cabin_up').setScale(scaleFactor).setOrigin(0, 1);
+        localCabin.body.setAllowGravity(false);
+        this.generatePlatform(xPos - 250, 360, false);
+        this.generatePlatform(xPos + 165, 317, true, 0.35, false);
+        this.generatePlatform(xPos + 395, 317, true, 0.35, false);
+        this.generateBarricade(xPos + 290, undefined, 0.7, false);
+        return this.minDistCabin;
+    }
+      
 
     // FUNCIONES COMPLEJAS (valores hardcodeados)
     // Plataforma + pinchos (necesario saltar desde la plataforma para no recibir hit)
@@ -588,12 +603,12 @@ class LevelManager extends Phaser.Scene
         this.generateSpikesTrap(xPos);
         this.generateSpikesTrap(xPos + 200);
         this.generateSpikesTrap(xPos + 300);
-        return 500;
+        return this.minDistPlatformToSpikes;
     }
 
     // Genera trampas de pinchos pequeñas y seguidas
     generateSmallSpikes(xPos, enemy = true) {
-        let spikesLength = 250;
+        let spikesLength = 220;
         let enemyOffset = 175;
         this.generateSpikesTrap(xPos, undefined, 0.2);
         let randomAdd = 0;
@@ -664,7 +679,6 @@ class LevelManager extends Phaser.Scene
     // Aplica los efectos de las mejoras
     applyBuffs() {
         // Añade escudos
-        console.log(user.buffs);
         this.playerHealth += Number(user.buffs[0]);
         if (Number(user.buffs[1]) == 1)
             this.doubleJumpEnabled = true;

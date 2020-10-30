@@ -82,6 +82,7 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('einar', 'ASSETS/Gameplay/einar_provisional.png');
       this.load.image('barricade', 'ASSETS/Gameplay/barricade.png');
       this.load.image('trunk', 'ASSETS/Gameplay/trunk.png');
+      this.load.image('cabin_up', 'ASSETS/Gameplay/cabin_up.png');
 
     //Pause Menu
       this.load.image('backgroundPM', './ASSETS/PauseMenu/PauseMenuBackground.jpg');
