@@ -109,8 +109,11 @@ class PreloadMenu extends Phaser.Scene{
         // Música
         this.load.audio('test', './ASSETS/Music/test.mp3');
         this.load.audio('test2', './ASSETS/Music/test2.mp3');
-        this.load.audio('a', './ASSETS/Sounds/a.mp3');
-        this.load.audio('e', './ASSETS/Sounds/e.mp3');
+        this.load.audio('player_death', './ASSETS/Sounds/449702__digestcontent__female-scream.wav');
+        this.load.audio('player_attack', './ASSETS/Sounds/487643__phonosupf__electronic-attack.wav');
+        this.load.audio('player_jump', './ASSETS/Sounds/341247__sharesynth__jump01.wav');
+        this.load.audio('enemy_1', './ASSETS/Sounds/166036__vinrax__monster-pain8.wav');
+        this.load.audio('player_running', './ASSETS/Sounds/107624__stintx__running-02.wav');
 
       //Carga automáticamente main menu cuando los assets están cargados
         /*this.load.on('complete', () => {
