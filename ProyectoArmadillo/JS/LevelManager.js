@@ -128,10 +128,11 @@ class LevelManager extends Phaser.Scene
 
         //Creación boton de pausa
         this.pauseButton = this.add.image(60, 40, 'pauseButton');
+          this.pauseButton.setScrollFactor(0);
         //this.pauseButton.setDepth(1);
         //this.pauseButton.setScale(2/3);
-        /*this.pauseButton.setInteractive({ useHandCursor: true  } )
-    		.on('pointerdown', () => this.InitGame());*/
+        this.pauseButton.setInteractive({ useHandCursor: true  } )
+    		.on('pointerdown', () => this.PauseGame());
 
 
         // PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
@@ -754,5 +755,11 @@ class LevelManager extends Phaser.Scene
         this.bg_far.tilePositionX = this.cameras.main.scrollX *.1;
         this.bg_medium.tilePositionX = this.cameras.main.scrollX * .5;
         this.bg_near.tilePositionX = this.cameras.main.scrollX;
+    }
+
+    PauseGame(){
+      this.scene.pause('MainMenu');
+      this.scene.sendToBack('MainMenu');
+      this.scene.start('PauseMenu');
     }
 }
