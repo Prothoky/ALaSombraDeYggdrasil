@@ -126,6 +126,14 @@ class LevelManager extends Phaser.Scene
         this.bg_near = this.add.tileSprite(0,0, 5715, 916, "bg_near");
         this.bg_near.depth = 2;
 
+        //Creación boton de pausa
+        this.pauseButton = this.add.image(60, 40, 'pauseButton');
+        //this.pauseButton.setDepth(1);
+        //this.pauseButton.setScale(2/3);
+        /*this.pauseButton.setInteractive({ useHandCursor: true  } )
+    		.on('pointerdown', () => this.InitGame());*/
+
+
         // PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
         // Animaciones globales
         this.anims.create({
@@ -309,7 +317,7 @@ class LevelManager extends Phaser.Scene
         this.bg_near.setScale(0.7);
 
         // TESTEO
-        
+
     }
 
     // FUNCIÓN DE CREADO PROCEDURAL DEL MAPA ----------------------------
@@ -364,8 +372,8 @@ class LevelManager extends Phaser.Scene
     // Genera el array con las trampas disponibles del mapa
     // TRAMPAS DISPONIBLES DEPENDIENTES DEL NIVEL POR IMPLEMENTAR
     generateTrapArray() {
-        let trapFunctionsNames = [ 'this.generateSpikesTrap', 'this.generatePlatformNoEnemy', 'this.generateStillEnemy', 
-                                'this.generatePlatform', 'this.generateMovingEnemy', 'this.generatePlatformToSpikes', 
+        let trapFunctionsNames = [ 'this.generateSpikesTrap', 'this.generatePlatformNoEnemy', 'this.generateStillEnemy',
+                                'this.generatePlatform', 'this.generateMovingEnemy', 'this.generatePlatformToSpikes',
                                 'this.generateSmallSpikesNoEnemy', 'this.generateSmallSpikes', 'this.generateBarricade',
                                 'this.generateTrunk', 'this.generateCabinUp' ];
         for (let i = 0; i < trapFunctionsNames.length; i++) {
@@ -407,7 +415,7 @@ class LevelManager extends Phaser.Scene
         this.player.body.setAllowGravity(true);
         if (this.jumpTimer != null) {
             this.jumpTimer.remove();
-            this.jumpSpeedDecrementTimer.remove();            
+            this.jumpSpeedDecrementTimer.remove();
         }
     }
 
@@ -581,8 +589,9 @@ class LevelManager extends Phaser.Scene
         localBarricade.setOffset(90, 240);
         localBarricade.depth = 0;
         return this.minDistBarricade;
-    }    
-    
+
+    }
+
     // Cabaña
     generateCabinUp(xPos, yPos = this.levelGroundHeight + 145, scaleFactor = 0.7) {
         xPos += 300;
@@ -594,7 +603,8 @@ class LevelManager extends Phaser.Scene
         this.generateBarricade(xPos + 290, undefined, 0.7, false);
         return this.minDistCabin;
     }
-      
+
+
 
     // FUNCIONES COMPLEJAS (valores hardcodeados)
     // Plataforma + pinchos (necesario saltar desde la plataforma para no recibir hit)

@@ -4,7 +4,7 @@ class MapSelectionMenu extends Phaser.Scene{
   }
 
   preload(){
-    
+
   }
 
   create(){
@@ -22,9 +22,15 @@ class MapSelectionMenu extends Phaser.Scene{
     .on('pointerdown', () => this.BackMainMenu());
 
     //BOTON JUGAR MUNDO 1
-    this.botonMundo1 = this.add.image(wid*8.44/16, heig*14.05/16, 'World1Button');
+    this.botonMundo1 = this.add.image(wid*5.5/16, heig*5.45/16, 'World1Button');
     this.botonMundo1.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.World1Menu());
+
+    //BOTON JUGAR MUNDO 4
+    this.botonMundo4 = this.add.image(wid*8.44/16, heig*14.05/16, 'World4Button');
+    this.botonMundo4.setInteractive({ useHandCursor: true  } )
+    .on('pointerdown', () => this.World4Menu());
+    this.botonMundo4.setVisible(false);
 
     this.timeText = this.add.text(0,0, "TEXTO" , {fill: "white"});
     this.timeText.setPosition(wid/2, heig/2);
@@ -47,6 +53,13 @@ class MapSelectionMenu extends Phaser.Scene{
     this.scene.start('World1Map');
     this.scene.bringToTop('World1Map');
   }
+
+  World4Menu(){
+    /*this.scene.pause('MapSelectionMenu');
+    this.scene.start('World1Map');
+    this.scene.bringToTop('World1Map');*/
+  }
+
   updateTimeText() {
     var dias = Math.round((unlockDate -  new Date()) / 86400000);
     var horas =  Math.round((unlockDate -  new Date()) / 3600000)-(dias*24);

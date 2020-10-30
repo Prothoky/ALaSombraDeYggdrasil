@@ -34,6 +34,7 @@ class World1Map extends Phaser.Scene{
 
     //var nodosActivos = 0;
 
+
 /*
 //PRUEBAS BOTON PAUSE
     //BOTON Nivel 1
@@ -59,8 +60,9 @@ class World1Map extends Phaser.Scene{
     this.BotonNodo0Sel.setScale(2/3);
     this.BotonNodo0Sel.setVisible(false);
     //Fondo con nombre y boton JUGAR
-    this.NombreNivel0 = this.add.text(wid*14.6/16, heig*9.05/16, strings.Map_Menu.map_1, {fill: "white"});
-    this.NombreNivel0.setScale(2/3);
+    //this.NombreNivel0 = this.add.text(wid*14.6/16, heig*9.05/16, strings.Map_Menu.map_1, {fill: "white"});
+    this.NombreNivel0 = this.add.text(wid*13.9/16, heig*8.6/16, 'Nombre Nivel 0', {fill: "white"});
+    //this.NombreNivel0.setScale(2/3);
     this.NombreNivel0.setVisible(false);
 
   /*  this.botonNivel0_1 = this.add.image(wid*6.44/16, heig*14.05/16, 'ButtonSubode1');
@@ -85,7 +87,7 @@ class World1Map extends Phaser.Scene{
     this.BotonNodo1Sel.setScale(2/3);
     this.BotonNodo1Sel.setVisible(false);
     //Fondo con nombre y boton JUGAR
-    this.NombreNivel1 = this.add.image(wid*11.41/16, heig*12.15/16, 'Level0Name');
+    this.NombreNivel1 = this.add.image(wid*11.41/16, heig*11.8/16, 'Level0Name');
     this.NombreNivel1.setScale(2/3);
     this.NombreNivel1.setVisible(false);
 
@@ -269,7 +271,7 @@ class World1Map extends Phaser.Scene{
       this.botonNivel9.setVisible(true);
     }
     if (user.map[9] == true){
-     console.log("Debloquear mundo 2");
+     console.log("Desbloquear mundo 2");
     }
 
   /*  if (botonActivo == 0){

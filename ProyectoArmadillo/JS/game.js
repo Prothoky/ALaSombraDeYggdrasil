@@ -26,7 +26,7 @@ window.onload = function(){
     //URL del JUEGO
     //utl: "http://proyectoArmadillo.es",
 
-    scene: [PreloadMenu, MainMenu, MapSelectionMenu, OptionsMenu, PauseMenu, CreditsMenu, World1Map, LevelManager, MapOne]
+    scene: [PreloadMenu, MainMenu, MapSelectionMenu, OptionsMenu, PauseMenu, CreditsMenu, World1Map, LevelManager]
 
   }
 
@@ -107,7 +107,7 @@ function stringToArray(user_data) {
 var strings;
 
 function checkLanguage(phaserJSON){
-  var userLang = navigator.language || navigator.userLanguage; 
+  var userLang = navigator.language || navigator.userLanguage;
   if(userLang == "es-ES" || "es"){
     strings = phaserJSON.esp;
   }

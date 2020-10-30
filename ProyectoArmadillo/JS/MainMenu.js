@@ -16,6 +16,10 @@ class MainMenu extends Phaser.Scene{
     //background.setPosition(wid/2, heig/2);
     background.setScale(2/3);
 
+
+    /*this.pauseButton = this.add.image(60, 40, 'pauseButton');
+     this.pauseButton.setDepth(1);*/
+
     //JUGAR
     this.playButton = this.add.image(wid/2, heig*6/16, 'playButton');
     this.playButton.setScale(2/3);
@@ -43,7 +47,7 @@ class MainMenu extends Phaser.Scene{
     this.fullScreen = this.add.image(wid*12/14, heig*12/14, 'ButtonNode1');
     this.fullScreen.setScale(2/3);
 
-    this.fullScreen.setInteractive({ useHandCursor: true})   
+    this.fullScreen.setInteractive({ useHandCursor: true})
 		.on('pointerdown', function() {
       this.scene.scale.toggleFullscreen();
     });

@@ -15,7 +15,7 @@ class PreloadMenu extends Phaser.Scene{
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
       PC=false;
     }
-      
+
     //BARRA DE CARGA DE PROGRESO
 
       var progressBar = this.add.graphics();
@@ -68,6 +68,9 @@ class PreloadMenu extends Phaser.Scene{
     //Map Selection Menu
       this.load.image('backgroundMSM', './ASSETS/MapSelectionMenu/MapMenuBackground.jpeg');
       this.load.image('World1Button', './ASSETS/MapSelectionMenu/BotonMundo1.png');
+      this.load.image('World2Button', './ASSETS/MapSelectionMenu/BotonMundo2.png');
+      this.load.image('World3Button', './ASSETS/MapSelectionMenu/BotonMundo3.png');
+      this.load.image('World4Button', './ASSETS/MapSelectionMenu/BotonMundo4.png');
       this.load.image('backButtonMSM', './ASSETS/MapSelectionMenu/BotonSalir.png');
 
     //Level Manager
@@ -83,6 +86,8 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('barricade', 'ASSETS/Gameplay/barricade.png');
       this.load.image('trunk', 'ASSETS/Gameplay/trunk.png');
       this.load.image('cabin_up', 'ASSETS/Gameplay/cabin_up.png');
+      this.load.image('pauseButton', 'ASSETS/Gameplay/ButtonPause.png');
+
 
     //Pause Menu
       this.load.image('backgroundPM', './ASSETS/PauseMenu/PauseMenuBackground.jpg');
@@ -111,16 +116,15 @@ class PreloadMenu extends Phaser.Scene{
             console.log("Complete");
             this.scene.start('MainMenu');
         });
-        
-        
+
 
   }
 
   create(){
-    
+
     var phaserJSON = this.cache.json.get('Data');
-    
-    checkLanguage(phaserJSON);   
+
+    checkLanguage(phaserJSON);
 
     var wid = this.cameras.main.width;
     var heig = this.cameras.main.height;
@@ -129,7 +133,7 @@ class PreloadMenu extends Phaser.Scene{
     background.setPosition(wid/2, heig/2);
     background.setScale(2/3);
 
-    var text = this.add.text(wid*3/7, heig*3/4, strings.Loading , {fill: "white"}); 
+    var text = this.add.text(wid*3/7, heig*3/4, strings.Loading , {fill: "white"});
   }
 
   update(){
