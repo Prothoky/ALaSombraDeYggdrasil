@@ -44,6 +44,11 @@ class World1Map extends Phaser.Scene{
 
     //var nodosActivos = 0;
 
+    //BOTON ATRAS
+    this.backButtonW1M = this.add.image(wid*14/16, heig*14/16, 'BackButtonW1M');
+    this.backButtonW1M.setScale(1.5/3);
+    this.backButtonW1M.setInteractive({ useHandCursor: true  } )
+    .on('pointerdown', () => this.BackMapSelectionMenu());
 
 /*
 //PRUEBAS BOTON PAUSE
@@ -512,6 +517,11 @@ class World1Map extends Phaser.Scene{
      this.backgroundW1.setInteractive({ useHandCursor: true  } )
      .on('pointerdown', () => (this.nombreNodoActivo.setVisible(false), this.nodoActivo.setVisible(false), this.nodosActivos = 0));
 
+   }
+
+   BackMapSelectionMenu(){
+     this.scene.pause('World1Map');
+     this.scene.start('MapSelectionMenu');
    }
 
 }
