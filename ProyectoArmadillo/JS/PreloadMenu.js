@@ -60,6 +60,8 @@ class PreloadMenu extends Phaser.Scene{
     //Options Menu
       this.load.image('backgroundOM', './ASSETS/OptionsMenu/OptionsMenuBackground.jpg');
       this.load.image('backButtonOM', './ASSETS/OptionsMenu/BotonSalir.png');
+      this.load.image('VolumeUpButtonOM', './ASSETS/OptionsMenu/BotonSubirVolumen.png');
+      this.load.image('VolumeDownButtonOM', './ASSETS/OptionsMenu/BotonBajarVolumen.png');
 
     //Credits Menu
       this.load.image('backgroundCM', './ASSETS/MapSelectionMenu/MapMenuBackground.jpeg'); //CAMBIAR
