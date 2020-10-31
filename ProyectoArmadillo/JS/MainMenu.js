@@ -48,11 +48,11 @@ class MainMenu extends Phaser.Scene{
     this.creditsButton.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.GameCredits());
 
-    //QUIT
-    this.quitButton = this.add.image(wid/2, heig*12/16, 'quitButton');
-    this.quitButton.setScale(2/3);
-    this.quitButton.setInteractive({ useHandCursor: true  } )
-		.on('pointerdown', () => this.QuitGame());
+    //SHOP MENU
+    this.shopButton = this.add.image(wid/2, heig*12/16, 'shopButtonMM');
+    this.shopButton.setScale(2/3);
+    this.shopButton.setInteractive({ useHandCursor: true  } )
+		.on('pointerdown', () => this.ShopMenu());
 
     this.fullScreen = this.add.image(wid*12/14, heig*12/14, 'ButtonNode1');
     this.fullScreen.setScale(2/3);
@@ -87,7 +87,10 @@ class MainMenu extends Phaser.Scene{
     scene.scale.on('enterfullscreen', function() {});
   }*/
 
-  QuitGame(){
-    //VER como cerrar la app
+  ShopMenu(){
+
+    this.scene.sendToBack('MainMenu');
+    this.scene.start('ShopMenu');
   }
+
 }

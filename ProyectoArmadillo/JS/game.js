@@ -26,7 +26,7 @@ window.onload = function(){
     //URL del JUEGO
     //utl: "http://proyectoArmadillo.es",
 
-    scene: [PreloadMenu, MainMenu, MapSelectionMenu, OptionsMenu, PauseMenu, CreditsMenu, World1Map, LevelManager]
+    scene: [PreloadMenu, MainMenu, MapSelectionMenu, OptionsMenu, PauseMenu, ShopMenu, CreditsMenu, World1Map, LevelManager]
 
   }
 

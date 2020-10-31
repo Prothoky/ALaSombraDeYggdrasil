@@ -52,6 +52,7 @@ class PreloadMenu extends Phaser.Scene{
 
     //Main MENU
         this.load.image('backgroundMM', './ASSETS/MainMenu/MainMenuBackground.jpg');
+        this.load.image('shopButtonMM', './ASSETS/MainMenu/BotonTienda.jpg');
         this.load.image('playButton', './ASSETS/MainMenu/BotonJugar.png');
         this.load.image('optionsButton', './ASSETS/MainMenu/BotonOpciones.png');
         this.load.image('creditsButton', './ASSETS/MainMenu/BotonCreditos.png');
@@ -90,33 +91,40 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('cabin_up', 'ASSETS/Gameplay/cabin_up.png');
       this.load.image('pauseButton', 'ASSETS/Gameplay/ButtonPause.png');
 
-
     //Pause Menu
       this.load.image('backgroundPM', './ASSETS/PauseMenu/PauseMenuBackground.jpg');
       this.load.image('backButtonPM', './ASSETS/PauseMenu/BotonAtras.png');
       this.load.image('quitButtonPM', './ASSETS/PauseMenu/BotonAbandonar.png');
       this.load.image('optionsButtonPM', './ASSETS/PauseMenu/BotonOpciones.png');
 
-      //World 1 Map
-        this.load.image('backgroundWM1M', './ASSETS/World1Menu/FondoMapaMundo1.jpg');
-        this.load.image('ButtonNodePrinc', './ASSETS/World1Menu/IconosNodos/NodoPrincipalDesbloq.png');
-        this.load.image('ButtonNodePrincSnow', './ASSETS/World1Menu/IconosNodos/NodoPrincipalNieveDesbloq.png');
-        this.load.image('ButtonNodePrincSel', './ASSETS/World1Menu/IconosNodos/NodoPrincipalSel.png');
-        this.load.image('ButtonNodePrincSnowSel', './ASSETS/World1Menu/IconosNodos/NodoPrincipalNieveSel.png');
-        this.load.image('ButtonSubode1', './ASSETS/World1Menu/NodoSecundario.png'); //CAMBIAR
-        this.load.image('ButtonPlayLevel', './ASSETS/World1Menu/BotonJugar.png'); //CAMBIAR
-        this.load.image('BackgrAcessToLevel', './ASSETS/World1Menu/FondoAccesoANivel.png'); //CAMBIAR
-        this.load.image('Level0Name', './ASSETS/World1Menu/NombreNivel0.png'); //CAMBIAR
-        this.load.image('BackButtonW1M', './ASSETS/World1Menu/BotonSalir.png'); //CAMBIAR
+    //SHOP MEMU
+    this.load.image('backgroundSM', './ASSETS/Tienda/FondoTienda.jpg');
+    this.load.image('backButtonSM', './ASSETS/PauseMenu/BotonAtras.png');
+    this.load.image('object1Button', './ASSETS/Tienda/BotonObjeto1.png');
+    this.load.image('object2Button', './ASSETS/Tienda/BotonObjeto2.png');
+    this.load.image('object3Button', './ASSETS/Tienda/BotonObjeto3.png');
+    this.load.image('object4Button', './ASSETS/Tienda/BotonObjeto4.png');
 
-        // Música
-        this.load.audio('test', './ASSETS/Music/test.mp3');
-        this.load.audio('test2', './ASSETS/Music/test2.mp3');
-        this.load.audio('player_death', './ASSETS/Sounds/449702__digestcontent__female-scream.wav');
-        this.load.audio('player_attack', './ASSETS/Sounds/487643__phonosupf__electronic-attack.wav');
-        this.load.audio('player_jump', './ASSETS/Sounds/341247__sharesynth__jump01.wav');
-        this.load.audio('enemy_1', './ASSETS/Sounds/166036__vinrax__monster-pain8.wav');
-        this.load.audio('player_running', './ASSETS/Sounds/107624__stintx__running-02.wav');
+    //World 1 Map
+      this.load.image('backgroundWM1M', './ASSETS/World1Menu/FondoMapaMundo1.jpg');
+      this.load.image('ButtonNodePrinc', './ASSETS/World1Menu/IconosNodos/NodoPrincipalDesbloq.png');
+      this.load.image('ButtonNodePrincSnow', './ASSETS/World1Menu/IconosNodos/NodoPrincipalNieveDesbloq.png');
+      this.load.image('ButtonNodePrincSel', './ASSETS/World1Menu/IconosNodos/NodoPrincipalSel.png');
+      this.load.image('ButtonNodePrincSnowSel', './ASSETS/World1Menu/IconosNodos/NodoPrincipalNieveSel.png');
+      this.load.image('ButtonSubode1', './ASSETS/World1Menu/NodoSecundario.png'); //CAMBIAR
+      this.load.image('ButtonPlayLevel', './ASSETS/World1Menu/BotonJugar.png'); //CAMBIAR
+      this.load.image('BackgrAcessToLevel', './ASSETS/World1Menu/FondoAccesoANivel.png'); //CAMBIAR
+      this.load.image('Level0Name', './ASSETS/World1Menu/NombreNivel0.png'); //CAMBIAR
+      this.load.image('BackButtonW1M', './ASSETS/World1Menu/BotonSalir.png'); //CAMBIAR
+
+      // Música
+      this.load.audio('test', './ASSETS/Music/test.mp3');
+      this.load.audio('test2', './ASSETS/Music/test2.mp3');
+      this.load.audio('player_death', './ASSETS/Sounds/449702__digestcontent__female-scream.wav');
+      this.load.audio('player_attack', './ASSETS/Sounds/487643__phonosupf__electronic-attack.wav');
+      this.load.audio('player_jump', './ASSETS/Sounds/341247__sharesynth__jump01.wav');
+      this.load.audio('enemy_1', './ASSETS/Sounds/166036__vinrax__monster-pain8.wav');
+      this.load.audio('player_running', './ASSETS/Sounds/107624__stintx__running-02.wav');
 
       //Carga automáticamente main menu cuando los assets están cargados
         /*this.load.on('complete', () => {
