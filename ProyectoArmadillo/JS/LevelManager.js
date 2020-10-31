@@ -115,13 +115,13 @@ class LevelManager extends Phaser.Scene
         if (!musicGameplay.isPlaying) {
           musicGameplay.play();
         }
+
         // Sonidos
         this.soundDeath = this.sound.add('player_death');
         this.soundRunning = this.sound.add('player_running');
         this.soundJump = this.sound.add('player_jump');
         this.soundAttack = this.sound.add('player_attack');
         this.soundEnemy = this.sound.add('enemy_1');
-
 
         // Carga de settings de la escena del archivo de configuración
         this.loadSettings();
@@ -139,7 +139,7 @@ class LevelManager extends Phaser.Scene
 
         //Creación boton de pausa
         this.pauseButton = this.add.image(60, 40, 'pauseButton');
-          this.pauseButton.setScrollFactor(0);
+        this.pauseButton.setScrollFactor(0);
         //this.pauseButton.setDepth(1);
         //this.pauseButton.setScale(2/3);
         this.pauseButton.setInteractive({ useHandCursor: true  } )
@@ -238,6 +238,8 @@ class LevelManager extends Phaser.Scene
         this.rightButton = this.input.keyboard.addKey(controls.right);
         this.attackButton = this.input.keyboard.addKey(controls.attack);
         this.testButton = this.input.keyboard.addKey(controls.test); // Eliminar en versión final
+        this.ESC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
+
 
         // Reiniciamos eventos
         this.jumpButton.off('down');
@@ -774,11 +776,25 @@ class LevelManager extends Phaser.Scene
         this.bg_far.tilePositionX = this.cameras.main.scrollX *.1;
         this.bg_medium.tilePositionX = this.cameras.main.scrollX * .5;
         this.bg_near.tilePositionX = this.cameras.main.scrollX;
+
+
+
+    }
+
+    update (time, delta){
+      if(this.ESC.isDown){
+        console.log('xd');
+        this.scene.run('PauseMenu');
+        this.scene.bringToTop('PauseMenu');
+        this.scene.pause('Levelmanager');
+        //game.paused = true;
+      }
     }
 
     PauseGame(){
-      this.scene.pause('MainMenu');
-      this.scene.sendToBack('MainMenu');
-      this.scene.start('PauseMenu');
+      console.log('HOLA');
+      this.scene.run('PauseMenu');
+      this.scene.bringToTop('PauseMenu');
+      this.scene.pause();
     }
 }

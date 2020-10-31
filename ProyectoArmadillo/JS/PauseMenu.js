@@ -4,7 +4,7 @@ class PauseMenu extends Phaser.Scene{
   }
 
   preload(){
-  
+
   }
 
   create(){
@@ -42,16 +42,9 @@ class PauseMenu extends Phaser.Scene{
     this.scene.bringToTop('OptionsMenu');
   }
 
-/*  BackGame(){
-    this.scene.pause('PauseMenu');
-    this.scene.sendToBack('PauseMenu');
-    this.scene.run('MapOne');
-  }*/
-
   BackGame(){
     this.scene.pause('PauseMenu');
     this.scene.sendToBack('PauseMenu');
-    this.scene.run('MapOne');
-    this.scene.bringToTop('MapOne');
+    this.scene.run('LevelManager');
   }
 }
