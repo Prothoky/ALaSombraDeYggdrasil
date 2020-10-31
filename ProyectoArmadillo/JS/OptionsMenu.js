@@ -50,6 +50,32 @@ class OptionsMenu extends Phaser.Scene{
     .on('pointerdown', () => this.BackMainMenu());
   }
 
+  SubirMusica() {
+    if (volumeMusic < 10) {
+      volumeMusic += 1;
+      musicMenu.setVolume(volumeMusic/10);
+    }
+  }
+
+  BajarMusica() {
+    if (volumeMusic > 0) {
+      volumeMusic -= 1;
+      musicMenu.setVolume(volumeMusic/10);
+    }
+  }
+
+  SubirEfectos() {
+    if (volumeEffects < 10) {
+      volumeEffects += 1;
+    }
+  }
+
+  BajarEfectos() {
+    if (volumeEffects > 0) {
+      volumeEffects -= 1;
+    }
+  }
+
   BackMainMenu(){
     this.scene.stop('OptionsMenu');
     this.scene.sendToBack('OptionsMenu');

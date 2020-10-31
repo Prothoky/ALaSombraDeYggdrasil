@@ -117,5 +117,7 @@ function checkLanguage(phaserJSON){
 }
 
 // Variable música entre escenas
-var musicMenu;
-var musicGameplay;
+var musicMenu;  // Controlador de música de menú
+var musicGameplay;  // Controlador de música de gamplay
+var volumeMusic = 10;  // Volumen de música (0-10)
+var volumeEffects = 10;  // Volumen de efectos de sonido (0-10)

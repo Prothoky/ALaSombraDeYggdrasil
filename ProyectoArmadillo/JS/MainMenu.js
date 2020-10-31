@@ -9,12 +9,21 @@ class MainMenu extends Phaser.Scene{
 
   create(){
     // Controlador de audio
+    let config = {
+      mute: false,
+      volume: volumeMusic/10,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: true,
+      delay: 0
+    };
     if (musicMenu == null) {
-      musicMenu = this.sound.add('test');
+      musicMenu = this.sound.add('test', config);
       musicMenu.play();
     }
     if (musicGameplay == null) {
-      musicGameplay = this.sound.add('test2');
+      musicGameplay = this.sound.add('test2', config);
     }
 
 

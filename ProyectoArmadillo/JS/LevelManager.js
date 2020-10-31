@@ -117,11 +117,20 @@ class LevelManager extends Phaser.Scene
         }
 
         // Sonidos
-        this.soundDeath = this.sound.add('player_death');
-        this.soundRunning = this.sound.add('player_running');
-        this.soundJump = this.sound.add('player_jump');
-        this.soundAttack = this.sound.add('player_attack');
-        this.soundEnemy = this.sound.add('enemy_1');
+        let config = {
+          mute: false,
+          volume: volumeEffects/10,
+          rate: 1,
+          detune: 0,
+          seek: 0,
+          loop: false,
+          delay: 0
+        };
+        this.soundDeath = this.sound.add('player_death', config);
+        this.soundRunning = this.sound.add('player_running', config);
+        this.soundJump = this.sound.add('player_jump', config);
+        this.soundAttack = this.sound.add('player_attack', config);
+        this.soundEnemy = this.sound.add('enemy_1', config);
 
         // Carga de settings de la escena del archivo de configuración
         this.loadSettings();
