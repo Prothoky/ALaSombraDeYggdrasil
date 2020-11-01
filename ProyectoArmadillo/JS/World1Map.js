@@ -4,7 +4,6 @@ class World1Map extends Phaser.Scene{
   }
 
   preload(){
-
     this.BotonNodo0Sel;   this.NombreNivel0;
     this.BotonNodo1Sel;   this.NombreNivel1;
     this.BotonNodo2Sel;   this.NombreNivel2;
@@ -21,8 +20,6 @@ class World1Map extends Phaser.Scene{
     this.backgroundW1;
 
   }
-
-
 
   create(){
     // Controlador de audio
@@ -49,6 +46,12 @@ class World1Map extends Phaser.Scene{
     this.backButtonW1M.setScale(1.5/3);
     this.backButtonW1M.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.BackMapSelectionMenu());
+
+    //BOTON TIENDA
+    this.shopButtonW1M = this.add.image(wid*14/16, heig*1/16, 'shopButtonMM');
+    this.shopButtonW1M.setScale(1.5/3);
+    this.shopButtonW1M.setInteractive({ useHandCursor: true  } )
+    .on('pointerdown', () => this.ShopMenuW1M());
 
 /*
 //PRUEBAS BOTON PAUSE
@@ -522,6 +525,12 @@ class World1Map extends Phaser.Scene{
    BackMapSelectionMenu(){
      this.scene.pause('World1Map');
      this.scene.start('MapSelectionMenu');
+   }
+
+   ShopMenuW1M(){
+     prevScene = 'World1Map';
+     this.scene.stop('World1Map');
+     this.scene.start('ShopMenu');
    }
 
 }

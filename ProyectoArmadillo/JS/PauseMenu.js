@@ -37,8 +37,8 @@ class PauseMenu extends Phaser.Scene{
 
   GoOptionsMenu(){
     this.scene.stop('PauseMenu');
-    this.scene.start('OptionsMenu');
-    this.scene.bringToTop('OptionsMenu');
+    this.scene.start('OptionsPauseMenu');
+    this.scene.bringToTop('OptionsPauseMenu');
   }
 
   BackGame(){

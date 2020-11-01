@@ -81,7 +81,7 @@ class MainMenu extends Phaser.Scene{
 
   OptionsGame(){
     this.scene.pause('MainMenu');
-    this.scene.start('OptionsMenu');
+    this.scene.start('OptionsMainMenu');
     //this.scene.bringToTop('OptionsMenu');
   }
 
@@ -97,9 +97,12 @@ class MainMenu extends Phaser.Scene{
   }*/
 
   ShopMenu(){
-
-    this.scene.sendToBack('MainMenu');
+    //this.scene.sendToBack('MainMenu');
+    //this.scene.switch('ShopMenu');
+    this.scene.pause('MainMenu');
     this.scene.start('ShopMenu');
+    //this.scene.bringToTop('ShopMenu');
+    prevScene = 'MainMenu';
   }
 
 }

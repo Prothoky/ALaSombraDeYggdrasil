@@ -21,6 +21,12 @@ class MapSelectionMenu extends Phaser.Scene{
     this.backButtonMSM.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.BackMainMenu());
 
+    //BOTON TIENDA
+    this.shopButtonW1M = this.add.image(wid*14/16, heig*1/16, 'shopButtonMM');
+    this.shopButtonW1M.setScale(1.5/3);
+    this.shopButtonW1M.setInteractive({ useHandCursor: true  } )
+    .on('pointerdown', () => this.ShopMenuMSM());
+
     //BOTON JUGAR MUNDO 1
     this.botonMundo1 = this.add.image(wid*5.5/16, heig*5.45/16, 'World1Button');
     this.botonMundo1.setInteractive({ useHandCursor: true  } )
@@ -46,6 +52,12 @@ class MapSelectionMenu extends Phaser.Scene{
   BackMainMenu(){
     this.scene.pause('MapSelectionMenu');
     this.scene.start('MainMenu');
+  }
+
+  ShopMenuMSM(){
+    prevScene = 'MapSelectionMenu';
+    this.scene.stop('World1Map');
+    this.scene.start('ShopMenu');
   }
 
   World1Menu(){

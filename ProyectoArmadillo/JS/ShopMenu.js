@@ -46,10 +46,38 @@ class ShopMenu extends Phaser.Scene{
     .on('pointerdown', () => this.BackMainMenu());
   }
 
+  AddObject1(){
+
+  }
+
+  AddObject2(){
+
+  }
+
+  AddObject3(){
+
+  }
+
+  AddObject4(){
+
+  }
 
   BackMainMenu(){
-    this.scene.pause('ShopMenu');
-    this.scene.start('MainMenu');
+    console.log(prevScene);
+    //this.scene.pause('ShopMenu');
+    //this.scene.setVisible(false);
+    //this.scene.sendToBack();
+    //this.scene.start('MainMenu');
+    if (prevScene == 'MainMenu'){
+      this.scene.pause('ShopMenu');
+      this.scene.start('MainMenu');
+    } else if (prevScene == 'World1Map') {
+      this.scene.pause('ShopMenu');
+      this.scene.start('World1Map');
+    }else if (prevScene == 'MapSelectionMenu') {
+      this.scene.pause('ShopMenu');
+      this.scene.start('MapSelectionMenu');
+    }
   }
 
 }

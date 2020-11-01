@@ -93,6 +93,8 @@ class LevelManager extends Phaser.Scene
         this.attackButton;
         this.testButton;
 
+        this.gamePaused = false;
+
         // DEBUG
         /*
         this.percentagesTest = new Array();
@@ -761,6 +763,7 @@ class LevelManager extends Phaser.Scene
         this.isPlayerTouchingGround = false;
         this.playerAttackAvaliable = true;
         this.doubleJumpAvaliable = true;
+        
         if (this.jumpTimer != null) {
             this.jumpTimer.remove();
         }
@@ -785,19 +788,23 @@ class LevelManager extends Phaser.Scene
         this.bg_far.tilePositionX = this.cameras.main.scrollX *.1;
         this.bg_medium.tilePositionX = this.cameras.main.scrollX * .5;
         this.bg_near.tilePositionX = this.cameras.main.scrollX;
-
-
-
     }
 
     update (time, delta){
-      if(this.ESC.isDown){
-        console.log('xd');
-        this.scene.run('PauseMenu');
-        this.scene.bringToTop('PauseMenu');
-        this.scene.pause('Levelmanager');
-        //game.paused = true;
+      if (this.ESC.isDown){
+        if(this.gamePaused == false){
+          console.log('xd');
+          this.scene.run('PauseMenu');
+          this.scene.bringToTop('PauseMenu');
+          this.scene.pause();
+          this.gamePaused = true;
+        }/*else{
+          this.scene.bringToTop('Levelmanager');
+          this.scene.run('Levelmanager');
+          this.gamePaused = false;
+        }*/
       }
+
     }
 
     PauseGame(){
@@ -805,5 +812,6 @@ class LevelManager extends Phaser.Scene
       this.scene.run('PauseMenu');
       this.scene.bringToTop('PauseMenu');
       this.scene.pause();
+      this.gamePaused = true;
     }
 }
