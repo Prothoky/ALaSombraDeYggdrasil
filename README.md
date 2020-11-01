@@ -2,7 +2,7 @@
 
 
 #### Título  
-A la sombra de yggdrasil
+A la sombra de Yggdrasil
 #### Género 
 Es un runner en 2D con scroll lateral con narrativa vikinga.
 #### Audiencia
@@ -12,7 +12,7 @@ El proyecto estará desarrollado para web y para dispositivos móviles.
 #### Modos de Juego
 El juego constará de un único modo individual con 2 dificultades.
 #### Temática
-La cultura vikinga es el punto de interés del juego, estará basado en los pueblos vikingos del siglo IX y X [].
+La cultura vikinga es el punto de interés del juego, estará basado en los pueblos vikingos del siglo IX y X.
 #### Estética  
 []
 
@@ -23,7 +23,7 @@ El juego está inspirado en los clásicos endless runner, pero a diferencia de e
 
 Respecto a la historia, el personaje es un vikingo ya vivido que tiene como único deseo morir en la guerra para poder alcanzar el Valhalla y poder reunirse con su familia y amigos más allá. Para ello vikingo irá recorriendo los 9 mundos que describen la mitología nórdica los cuales conforman el universo vikingo.
 
-El protagonista iniciará su periplo en el planeta Midgar, que es el planeta tierra, el cual se encuentra en el centro del árbol yggdrasil(árbol que sostiene los planetas).
+El protagonista iniciará su periplo en el planeta Midgar, que es el planeta tierra, el cual se encuentra en el centro del árbol yggdrasil (árbol que sostiene los planetas).
 
 
 Para dotar al juego de personalidad, el recorrido de este estará repleto de referencia a los dioses y a la cultura nórdica, ilustrando de una manera amena sobre diferentes historias ya olvidadas. Se usa la Edda poética como instrumento para describir los mundos y a los dioses siguiendo de una manera fiel el método de transmisión de conocimiento de esa época, la poesía épica.
@@ -39,7 +39,10 @@ Durante el transcurso del juego el protagonista irá narrando su experiencia por
 Por el momento estamos trabajando en el diseño del personaje. Están por definir aún las habilidades de este, aunque sabemos que el hacha será el arma principal del juego.
 El mayor debate que surgió con este fue el movimiento que tendría en función de cómo sujetaría el hacha, pero hemos decidido que el personaje llevará el hacha en una única mano, pensando que sería una animación más lógica para este tipo de juegos tan rápidos.
 
-![diseño vikingo](https://user-images.githubusercontent.com/55508821/95829995-4bbd6d80-0d37-11eb-871d-834920725f60.jpeg)
+![Einar](https://user-images.githubusercontent.com/55508821/97813399-3b3e4a00-1c88-11eb-80d3-1dbf2db12bf5.jpg)
+
+
+
 
 
 
@@ -51,8 +54,6 @@ Hay diferentes obstáculos en función del mapa en el que se encuentre el jugado
 Diseño de estructura de niveles de bosque con subniveles 
 
 ![diseño niveles boceto](https://user-images.githubusercontent.com/55508821/96874064-00613880-1476-11eb-9242-3d6ee32c792d.jpg)
-
-
 
 
 Boceto de mapa del bosque "tileable"
@@ -122,6 +123,8 @@ El avance de los niveles irá reflejando el pensamiento del personaje y hará un
 
 [Incluir título de cada nivel y una breve descripción sobre este]
 
+A la hora de acabar el nivel, el jugador recibirá un dinero por el recorrido, dependiendo este del número de muerte y el número de enemigos establecidos. Este dinero también se repartirá de manera distinta en función del nivel de dificultad que se encuentre el jugador, estableceremos una economía de juego pensada para que el jugador pueda comprar habilidades antes de llegar a determinados niveles, así podrá ver su utilidad. Si este avanzara a niveles donde su falta de habilidades especiales le impide continuar, tendrá que volver a niveles pasados o completar todos los subniveles extra para poder obtener el dinero suficiente.
+
 
 
 ## Estilo artístico y música
@@ -135,19 +138,13 @@ Al constar de 9 mundos el juego, vamos a sacar el primer mundo nada más empezar
 
 En nuestro juego no queremos que el jugador se vea obligado a pagar para completar el juego, pero si que este complete el 100% del juego para poder seguir desbloqueando diferentes planetas. De este modo el sistema de publicidad que incluya el juego dará un mayor beneficio a largo plazo, con el que compensaremos ese ahorro monetario por parte del jugador. 
 
+Al sacar los nuevos capítulos, estos tendrán un precio de 2 euros, un precio significativo pero que multiplicado con los 8 mundos, se convierte en un beneficio muy amplio. Para captar la atención del cliente en estos nuevos planetas, implementaremos también nuevas habilidades, mapas, skins y personajes jugables.
 
 
-Por lo que a la tienda se refiere, se irá subiendo contenido con cierta frecuencia gratuito. Se implantará una moneda virtual con la que poder hacer compras de las distintas skins y objetos coleccionables. De momento no hay intención de meterle compra de habilidades, en todo caso de escudos para poder tener un pequeño sistema de vidas en la partida.
+Por lo que a la tienda se refiere, se irá subiendo contenido con cierta frecuencia gratuito. Se implantará una moneda virtual con la que poder hacer compras de las distintas skins y objetos coleccionables.
 En nuestro modelo de negocio no contemplamos que el usuario tenga que gastar dinero para alcanzar una mayor experiencia. Incentivaremos al jugador a repetir los niveles para ir obteniendo monedas a través de distintos desafíos que irán surgiendo de manera constante y aleatoria.
 
-[Definir cuando implementaríamos los anuncios]
-
-La tienda se dividirá en tres bloques:
-- Skins para nuestro protagonista, basados en dioses y personajes mitológicos vikingos que se vayan introduciendo en la historia
-
-- Colecionables como papeles con los poemas que narran las grandes batallas y aventuras de los dioses y Einar. 
-
-- Escudos para seguir avanzando en las partidas, el jugador tendrá que acudir a esta opción cuando contemple que la curva de dificultad le va haciendo sufrir más y más.
+En la tienda se podrán adquirir escudos para las vidas, y nuevas habilidades para facilitar el avance del jugador, sobre todo para su recorrido por el modo difícil. 
 
 ## Controles
 Los controles los vamos a definir en dos bloques, cada uno en función al entorno de juego en el que el usuario se encuentra:
