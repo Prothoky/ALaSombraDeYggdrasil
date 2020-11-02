@@ -548,6 +548,9 @@ class LevelManager extends Phaser.Scene
         if (this.isPlayerDead == false) {
             this.player.setTint(0xe62272);
             this.isPlayerDead = true;
+
+            this.scene.pause();
+            this.scene.start('GameOverMenu');
             this.restartLevel();
         }
     }
@@ -695,7 +698,9 @@ class LevelManager extends Phaser.Scene
         //levelIndex ++;
         user.map[levelIndex] = true;
         saveUserData();
-        this.returnToWorldMap();
+        //this.returnToWorldMap();
+        this.scene.stop('LevelManager');
+        this.scene.start('WinnerMenu');
     }
 
     // Actualiza la variable global de mapas pasados
@@ -779,8 +784,8 @@ class LevelManager extends Phaser.Scene
         if (this.jumpSpeedDecrementTimer != null) {
             this.jumpSpeedDecrementTimer.remove();
         }
-        this.scene.stop();
-        this.scene.restart();
+        //this.scene.stop();
+        //this.scene.restart();
     }
     // FIN DE OTRAS FUNCIONES -------------------------------------------
 

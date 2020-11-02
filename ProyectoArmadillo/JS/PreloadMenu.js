@@ -129,6 +129,16 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('Level0Name', './ASSETS/World1Menu/NombreNivel0.png'); //CAMBIAR
       this.load.image('BackButtonW1M', './ASSETS/World1Menu/BotonSalir.png'); //CAMBIAR
 
+      //Game Over Menu
+        this.load.image('backgroundGOM', './ASSETS/GameOverMenu/FondoGameOver.jpg');
+        this.load.image('ButtonRetryGOM', './ASSETS/GameOverMenu/BotonReintentar.png');
+        this.load.image('ButtonQuitGOM', './ASSETS/GameOverMenu/BotonSalir.png');
+
+      //Winner Menu
+        this.load.image('backgroundWM', './ASSETS/WinnerMenu/FondoWinner.jpg');
+        this.load.image('ButtonContinueWM', './ASSETS/WinnerMenu/BotonContinuar.png');
+
+
       // Música
       this.load.audio('test', './ASSETS/Music/test.mp3');
       this.load.audio('test2', './ASSETS/Music/test2.mp3');
