@@ -11,9 +11,9 @@ class PauseMenu extends Phaser.Scene{
     var wid = this.cameras.main.width; //ancho del canvas en el dispositivo
     var heig = this.cameras.main.height;
 
-    var background = this.add.image(0, 0, 'backgroundPM');
-    background.setScale(1/3);
-    background.setPosition(wid/2, heig/2);
+    var backgroundPM = this.add.image(0, 0, 'backgroundPM');
+    backgroundPM.setScale(1/3);
+    backgroundPM.setPosition(wid/2, heig/2);
 
     //BOTON OPCIONES
     this.optionsButtonPM = this.add.image(wid*8/16, heig*7/16, 'optionsButtonPM');
@@ -42,6 +42,7 @@ class PauseMenu extends Phaser.Scene{
   }
 
   BackGame(){
+    gamePaused = false;
     this.scene.pause('PauseMenu');
     this.scene.sendToBack('PauseMenu');
     this.scene.resume('LevelManager');

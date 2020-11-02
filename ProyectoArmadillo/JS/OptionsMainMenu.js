@@ -17,75 +17,47 @@ class OptionsMainMenu extends Phaser.Scene{
     background.setScale(2/3);
     background.setPosition(wid/2, heig/2);
 
+    //BOTON VOLUMEN
+    this.VolumeButtonOM = this.add.image(wid*8/16, heig*6/16, 'VolumeButton');
+    this.VolumeButtonOM.setScale(2/3);
+    this.VolumeButtonOM.setInteractive({ useHandCursor: true  } )
+    .on('pointerdown', () => this.VolumeMenu());
 
-    //BOTON SUBIR VOLUMEN
-    //MUSICA
-    this.musicUpButton = this.add.image(wid*4.8/16, heig*6.8/16, 'VolumeUpButtonOM');
-    this.musicUpButton.setScale(2/3);
-    this.musicUpButton.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => this.SubirMusica());
-    //EFECTOS
-    this.effectsUpButton = this.add.image(wid*4.8/16, heig*9.7/16, 'VolumeUpButtonOM');
-    this.effectsUpButton.setScale(2/3);
-    this.effectsUpButton.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => this.SubirEfectos());
+    //BOTON AJUSTES
+    this.SettingsButtonOM = this.add.image(wid*8/16, heig*8/16, 'SettingsButton');
+    this.SettingsButtonOM.setScale(2/3);
+    this.SettingsButtonOM.setInteractive({ useHandCursor: true  } )
+    .on('pointerdown', () => this.SettingsMenu());
 
-    //BOTON BAJAR VOLUMEN
-    //MUSICA
-    this.musicDownButton = this.add.image(wid*12.9/16, heig*6.85/16, 'VolumeDownButtonOM');
-    this.musicDownButton.setScale(2/3);
-    this.musicDownButton.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => this.BajarMusica());
-    //EFECTOS
-    this.effectsDownButton = this.add.image(wid*12.9/16, heig*9.7/16, 'VolumeDownButtonOM');
-    this.effectsDownButton.setScale(2/3);
-    this.effectsDownButton.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => this.BajarEfectos());
-
-    this.VolumenMusica = this.add.text(wid*8.9/16, heig*6.85/16, volumeMusic, {fill: "black"});
-    this.VolumenEfectos = this.add.text(wid*8.9/16, heig*9.7/16, volumeEffects, {fill: "black"});
+    //BOTON BORRAR DATOS
+    this.DeleteButtonOM = this.add.image(wid*8/16, heig*10/16, 'DeleteButton');
+    this.DeleteButtonOM.setScale(2/3);
+    this.DeleteButtonOM.setInteractive({ useHandCursor: true  } )
+    .on('pointerdown', () => this.DeleteData());
 
     //BOTON ATRAS
-    this.backButtonOM = this.add.image(wid*14/16, heig*14/16, 'backButtonOM');
-    this.backButtonOM.setScale(1.5/3);
+    this.backButtonOM = this.add.image(wid*8/16, heig*12/16, 'backButtonOM');
+    this.backButtonOM.setScale(2/3);
     this.backButtonOM.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.BackMainMenu());
   }
 
-  SubirMusica() {
-    if (volumeMusic < 10) {
-      volumeMusic += 1;
-      musicMenu.setVolume(volumeMusic/10);
-    }
-    this.VolumenMusica.setText(volumeMusic);
+  VolumeMenu(){
+    this.scene.pause('OptionsMainMenu');
+    this.scene.start('VolumeMenu'); //Ver como hacer para que lleve a la anterior real
   }
 
-  BajarMusica() {
-    if (volumeMusic > 0) {
-      volumeMusic -= 1;
-      musicMenu.setVolume(volumeMusic/10);
-    }
-    this.VolumenMusica.setText(volumeMusic);
+  SettingsMenu(){
+    this.scene.pause('OptionsMainMenu');
+    this.scene.start('SettingsMenu'); //Ver como hacer para que lleve a la anterior real
   }
 
-  SubirEfectos() {
-    if (volumeEffects < 10) {
-      volumeEffects += 1;
-    }
-
-    this.VolumenEfectos.setText(volumeEffects);
-  }
-
-  BajarEfectos() {
-    if (volumeEffects > 0) {
-      volumeEffects -= 1;
-    }
-    this.VolumenEfectos.setText(volumeEffects);
+  DeleteData(){
+    console.log("Borrar datos");
   }
 
   BackMainMenu(){
-    this.scene.stop('OptionsMainMenu');
-    this.scene.sendToBack('OptionsMainMenu');
+    this.scene.pause('OptionsMainMenu');
     this.scene.start('MainMenu'); //Ver como hacer para que lleve a la anterior real
   }
 }

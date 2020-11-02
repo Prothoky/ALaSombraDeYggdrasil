@@ -26,7 +26,7 @@ window.onload = function(){
     //URL del JUEGO
     //utl: "http://proyectoArmadillo.es",
 
-    scene: [PreloadMenu, MainMenu, MapSelectionMenu, OptionsPauseMenu, OptionsMainMenu, PauseMenu, ShopMenu, CreditsMenu, World1Map, LevelManager]
+    scene: [PreloadMenu, MainMenu, MapSelectionMenu, OptionsPauseMenu, OptionsMainMenu, VolumeMenu, SettingsMenu, PauseMenu, ShopMenu, CreditsMenu, World1Map, LevelManager]
 
   }
 
@@ -47,6 +47,7 @@ var levelIndex = 0; // Indica el nivel a generar para LevelManager (CAMBIAR A PA
 var difficulty = 1; // Indica la dificultad escogida: 0 difícil - 1 normal - 2 fácil (aún sin implementar)
 
 var prevScene = 'MainMenu';
+var gamePaused = false;
 
 //Movil o PC
 var PC = true;

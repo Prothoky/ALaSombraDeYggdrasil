@@ -27,8 +27,8 @@ class MainMenu extends Phaser.Scene{
     }
 
 
-    var wid = this.cameras.main.width; //ancho del canvas en el dispositivo
-    var heig = this.cameras.main.height;
+    //var wid = this.cameras.main.width; //ancho del canvas en el dispositivo
+    //var heig = this.cameras.main.height;
 
     var background = this.add.image(0, 0, 'backgroundMM');
     background.setOrigin(0, 0);
@@ -40,30 +40,30 @@ class MainMenu extends Phaser.Scene{
      this.pauseButton.setDepth(1);*/
 
     //JUGAR
-    this.playButton = this.add.image(wid/2, heig*6/16, 'playButton');
+    this.playButton = this.add.image(gameWidth/2, gameHeight*6/16, 'playButton');
     this.playButton.setScale(2/3);
     this.playButton.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.InitGame());
 
     //OPTIONS MENU
-    this.optionsButton = this.add.image(wid/2, heig*8/16, 'optionsButton');
+    this.optionsButton = this.add.image(gameWidth/2, gameHeight*8/16, 'optionsButton');
     this.optionsButton.setScale(2/3);
     this.optionsButton.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.OptionsGame());
 
     //CREDITS MENU
-    this.creditsButton = this.add.image(wid/2, heig*10/16, 'creditsButton');
+    this.creditsButton = this.add.image(gameWidth/2, gameHeight*10/16, 'creditsButton');
     this.creditsButton.setScale(2/3);
     this.creditsButton.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.GameCredits());
 
     //SHOP MENU
-    this.shopButton = this.add.image(wid/2, heig*12/16, 'shopButtonMM');
+    this.shopButton = this.add.image(gameWidth/2, gameHeight*12/16, 'shopButtonMM');
     this.shopButton.setScale(2/3);
     this.shopButton.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.ShopMenu());
 
-    this.fullScreen = this.add.image(wid*12/14, heig*12/14, 'ButtonNode1');
+    this.fullScreen = this.add.image(gameWidth*12/14, gameHeight*12/14, 'ButtonNode1');
     this.fullScreen.setScale(2/3);
 
     this.fullScreen.setInteractive({ useHandCursor: true})
@@ -75,14 +75,12 @@ class MainMenu extends Phaser.Scene{
 
   InitGame(){
     this.scene.pause('MainMenu');
-    this.scene.sendToBack('MainMenu');
     this.scene.start('MapSelectionMenu');
   }
 
   OptionsGame(){
     this.scene.pause('MainMenu');
     this.scene.start('OptionsMainMenu');
-    //this.scene.bringToTop('OptionsMenu');
   }
 
   GameCredits(){
@@ -97,11 +95,8 @@ class MainMenu extends Phaser.Scene{
   }*/
 
   ShopMenu(){
-    //this.scene.sendToBack('MainMenu');
-    //this.scene.switch('ShopMenu');
     this.scene.pause('MainMenu');
     this.scene.start('ShopMenu');
-    //this.scene.bringToTop('ShopMenu');
     prevScene = 'MainMenu';
   }
 
