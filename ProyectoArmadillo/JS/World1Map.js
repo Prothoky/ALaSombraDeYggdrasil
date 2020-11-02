@@ -32,23 +32,20 @@ class World1Map extends Phaser.Scene{
       musicMenu.play();
     }
 
-    var wid = this.cameras.main.width; //ancho del canvas en el dispositivo
-    var heig = this.cameras.main.height;
-
     this.backgroundW1 = this.add.image(0, 0, 'backgroundWM1M');
     this.backgroundW1.setScale(2/3);
-    this.backgroundW1.setPosition(wid/2, heig/2);
+    this.backgroundW1.setPosition(gameWidth/2, gameHeight/2);
 
     //var nodosActivos = 0;
 
     //BOTON ATRAS
-    this.backButtonW1M = this.add.image(wid*14/16, heig*14/16, 'BackButtonW1M');
+    this.backButtonW1M = this.add.image(gameWidth*14/16, gameHeight*14/16, 'BackButtonW1M');
     this.backButtonW1M.setScale(1.5/3);
     this.backButtonW1M.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.BackMapSelectionMenu());
 
     //BOTON TIENDA
-    this.shopButtonW1M = this.add.image(wid*14/16, heig*1/16, 'shopButtonMM');
+    this.shopButtonW1M = this.add.image(gameWidth*14/16, gameHeight*1/16, 'shopButtonMM');
     this.shopButtonW1M.setScale(1.5/3);
     this.shopButtonW1M.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.ShopMenuW1M());
@@ -69,17 +66,17 @@ class World1Map extends Phaser.Scene{
     // (TESTEO) botón de iniciar partida
 
     //Boton Desbloqueado
-    this.botonNivel0 = this.add.image(wid*14.6/16, heig*10.05/16, 'ButtonNodePrinc');
+    this.botonNivel0 = this.add.image(gameWidth*14.6/16, gameHeight*10.05/16, 'ButtonNodePrinc');
     this.botonNivel0.setScale(2/3);
     this.botonNivel0.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => this.AccessToLevel(wid*14.6/16, heig*10.05/16, 0));
+    .on('pointerdown', () => this.AccessToLevel(gameWidth*14.6/16, gameHeight*10.05/16, 0));
     //Boton Seleccionado
-    this.BotonNodo0Sel = this.add.image(wid*14.6/16, heig*10.05/16, 'ButtonNodePrincSel');
+    this.BotonNodo0Sel = this.add.image(gameWidth*14.6/16, gameHeight*10.05/16, 'ButtonNodePrincSel');
     this.BotonNodo0Sel.setScale(2/3);
     this.BotonNodo0Sel.setVisible(false);
     //Fondo con nombre y boton JUGAR
     //this.NombreNivel0 = this.add.text(wid*14.6/16, heig*9.05/16, strings.Map_Menu.map_1, {fill: "white"});
-    this.NombreNivel0 = this.add.text(wid*13.9/16, heig*8.6/16, 'Nombre Nivel 0', {fill: "white"});
+    this.NombreNivel0 = this.add.text(gameWidth*13.9/16, gameHeight*8.6/16, 'Nombre Nivel 0', {fill: "white"});
     //this.NombreNivel0.setScale(2/3);
     this.NombreNivel0.setVisible(false);
 
@@ -95,17 +92,17 @@ class World1Map extends Phaser.Scene{
     this.botonNivel0_2.setVisible(false);*/
 
     //Boton Desbloqueado
-    this.botonNivel1 = this.add.image(wid*11.41/16, heig*13.15/16, 'ButtonNodePrinc');
+    this.botonNivel1 = this.add.image(gameWidth*11.41/16, gameHeight*13.15/16, 'ButtonNodePrinc');
     this.botonNivel1.setScale(2/3);
     this.botonNivel1.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => this.AccessToLevel(wid*11.41/16, heig*13.15/16, 1));
+    .on('pointerdown', () => this.AccessToLevel(gameWidth*11.41/16, gameHeight*13.15/16, 1));
     this.botonNivel1.setVisible(false);
     //Botón Seleccionado
-    this.BotonNodo1Sel = this.add.image(wid*11.41/16, heig*13.15/16, 'ButtonNodePrincSel');
+    this.BotonNodo1Sel = this.add.image(gameWidth*11.41/16, gameHeight*13.15/16, 'ButtonNodePrincSel');
     this.BotonNodo1Sel.setScale(2/3);
     this.BotonNodo1Sel.setVisible(false);
     //Fondo con nombre y boton JUGAR
-    this.NombreNivel1 = this.add.image(wid*11.41/16, heig*11.8/16, 'Level0Name');
+    this.NombreNivel1 = this.add.image(gameWidth*11.41/16, gameHeight*11.8/16, 'Level0Name');
     this.NombreNivel1.setScale(2/3);
     this.NombreNivel1.setVisible(false);
 
@@ -123,17 +120,17 @@ class World1Map extends Phaser.Scene{
 */
 
     //Botón Desbloqueado
-    this.botonNivel2 = this.add.image(wid*10.18/16, heig*11.75/16, 'ButtonNodePrinc');
+    this.botonNivel2 = this.add.image(gameWidth*10.18/16, gameHeight*11.75/16, 'ButtonNodePrinc');
     this.botonNivel2.setScale(2/3);
     this.botonNivel2.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => this.AccessToLevel(wid*10.18/16, heig*11.75/16, 2));
+    .on('pointerdown', () => this.AccessToLevel(gameWidth*10.18/16, gameHeight*11.75/16, 2));
     this.botonNivel2.setVisible(false);
     //Botón Seleccionado
-    this.BotonNodo2Sel = this.add.image(wid*10.18/16, heig*11.75/16, 'ButtonNodePrincSel');
+    this.BotonNodo2Sel = this.add.image(gameWidth*10.18/16, gameHeight*11.75/16, 'ButtonNodePrincSel');
     this.BotonNodo2Sel.setScale(2/3);
     this.BotonNodo2Sel.setVisible(false);
     //Fondo con nombre y boton JUGAR
-    this.NombreNivel2 = this.add.image(wid*10.18/16, heig*10.75/16, 'Level0Name');
+    this.NombreNivel2 = this.add.image(gameWidth*10.18/16, gameHeight*10.75/16, 'Level0Name');
     this.NombreNivel2.setScale(2/3);
     this.NombreNivel2.setVisible(false);
 
@@ -142,108 +139,108 @@ class World1Map extends Phaser.Scene{
       .on('pointerdown', () => this.scene.start('LevelManager'));*/
 
     //Botón Desbloqueado
-    this.botonNivel3 = this.add.image(wid*7.4/16, heig*14.15/16, 'ButtonNodePrinc');
+    this.botonNivel3 = this.add.image(gameWidth*7.4/16, gameHeight*14.15/16, 'ButtonNodePrinc');
     this.botonNivel3.setScale(2/3);
     this.botonNivel3.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => this.AccessToLevel(wid*7.4/16, heig*14.15/16, 3));
+    .on('pointerdown', () => this.AccessToLevel(gameWidth*7.4/16, gameHeight*14.15/16, 3));
     this.botonNivel3.setVisible(false);
     //Botón Seleccionado
-    this.BotonNodo3Sel = this.add.image(wid*7.4/16, heig*14.15/16, 'ButtonNodePrincSel');
+    this.BotonNodo3Sel = this.add.image(gameWidth*7.4/16, gameHeight*14.15/16, 'ButtonNodePrincSel');
     this.BotonNodo3Sel.setScale(2/3);
     this.BotonNodo3Sel.setVisible(false);
     //Fondo con nombre y boton JUGAR
-    this.NombreNivel3 = this.add.image(wid*7.4/16, heig*13.15/16, 'Level0Name');
+    this.NombreNivel3 = this.add.image(gameWidth*7.4/16, gameHeight*13.15/16, 'Level0Name');
     this.NombreNivel3.setScale(2/3);
     this.NombreNivel3.setVisible(false);
 
     //Botón Desbloqueado
-    this.botonNivel4 = this.add.image(wid*3.025/16, heig*11.55/16, 'ButtonNodePrinc');
+    this.botonNivel4 = this.add.image(gameWidth*3.025/16, gameHeight*11.55/16, 'ButtonNodePrinc');
     this.botonNivel4.setScale(2/3);
     this.botonNivel4.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () =>  this.AccessToLevel(wid*3.025/16, heig*11.55/16, 4));
+    .on('pointerdown', () =>  this.AccessToLevel(gameWidth*3.025/16, gameHeight*11.55/16, 4));
     this.botonNivel4.setVisible(false);
     //Botón Seleccionado
-    this.BotonNodo4Sel = this.add.image(wid*3.025/16, heig*11.55/16, 'ButtonNodePrincSel');
+    this.BotonNodo4Sel = this.add.image(gameWidth*3.025/16, gameHeight*11.55/16, 'ButtonNodePrincSel');
     this.BotonNodo4Sel.setScale(2/3);
     this.BotonNodo4Sel.setVisible(false);
     //Fondo con nombre y boton JUGAR
-    this.NombreNivel4 = this.add.image(wid*3.025/16, heig*10.55/16, 'Level0Name');
+    this.NombreNivel4 = this.add.image(gameWidth*3.025/16, gameHeight*10.55/16, 'Level0Name');
     this.NombreNivel4.setScale(2/3);
     this.NombreNivel4.setVisible(false);
 
     //Botón Desbloqueado
-    this.botonNivel5 = this.add.image(wid*3.41/16, heig*4.525/16, 'ButtonNodePrincSnow');
+    this.botonNivel5 = this.add.image(gameWidth*3.41/16, gameHeight*4.525/16, 'ButtonNodePrincSnow');
     this.botonNivel5.setScale(2/3);
     this.botonNivel5.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () =>  this.AccessToLevel(wid*3.41/16, heig*4.525/16, 5));
+    .on('pointerdown', () =>  this.AccessToLevel(gameWidth*3.41/16, gameHeight*4.525/16, 5));
     this.botonNivel5.setVisible(false);
     //Botón Seleccionado
-    this.BotonNodo5Sel = this.add.image(wid*3.41/16, heig*4.525/16, 'ButtonNodePrincSnowSel');
+    this.BotonNodo5Sel = this.add.image(gameWidth*3.41/16, gameHeight*4.525/16, 'ButtonNodePrincSnowSel');
     this.BotonNodo5Sel.setScale(2/3);
     this.BotonNodo5Sel.setVisible(false);
     //Fondo con nombre y boton JUGAR
-    this.NombreNivel5 = this.add.image(wid*3.41/16, heig*3.525/16, 'Level0Name');
+    this.NombreNivel5 = this.add.image(gameWidth*3.41/16, gameHeight*3.525/16, 'Level0Name');
     this.NombreNivel5.setScale(2/3);
     this.NombreNivel5.setVisible(false);
 
     //Botón Desbloqueado
-    this.botonNivel6 = this.add.image(wid*6.41/16, heig*1.5/16, 'ButtonNodePrincSnow');
+    this.botonNivel6 = this.add.image(gameWidth*6.41/16, gameHeight*1.5/16, 'ButtonNodePrincSnow');
     this.botonNivel6.setScale(2/3);
     this.botonNivel6.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () =>  this.AccessToLevel(wid*6.41/16, heig*1.5/16, 6));
+    .on('pointerdown', () =>  this.AccessToLevel(gameWidth*6.41/16, gameHeight*1.5/16, 6));
     this.botonNivel6.setVisible(false);
     //Botón Seleccionado
-    this.BotonNodo6Sel = this.add.image(wid*6.41/16, heig*1.5/16, 'ButtonNodePrincSnowSel');
+    this.BotonNodo6Sel = this.add.image(gameWidth*6.41/16, gameHeight*1.5/16, 'ButtonNodePrincSnowSel');
     this.BotonNodo6Sel.setScale(2/3);
     this.BotonNodo6Sel.setVisible(false);
     //Fondo con nombre y boton JUGAR
-    this.NombreNivel6 = this.add.image(wid*7.41/16, heig*1.5/16, 'Level0Name');
+    this.NombreNivel6 = this.add.image(gameWidth*7.41/16, gameHeight*1.5/16, 'Level0Name');
     this.NombreNivel6.setScale(2/3);
     this.NombreNivel6.setVisible(false);
 
 
     //Botón Desbloqueado
-    this.botonNivel7 = this.add.image(wid*6.79/16, heig*5.61/16, 'ButtonNodePrincSnow');
+    this.botonNivel7 = this.add.image(gameWidth*6.79/16, gameHeight*5.61/16, 'ButtonNodePrincSnow');
     this.botonNivel7.setScale(2/3);
     this.botonNivel7.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () =>  this.AccessToLevel(wid*6.79/16, heig*5.61/16, 7));
+    .on('pointerdown', () =>  this.AccessToLevel(gameWidth*6.79/16, gameHeight*5.61/16, 7));
     this.botonNivel7.setVisible(false);
     //Botón Seleccionado
-    this.BotonNodo7Sel = this.add.image(wid*6.79/16, heig*5.61/16, 'ButtonNodePrincSnowSel');
+    this.BotonNodo7Sel = this.add.image(gameWidth*6.79/16, gameHeight*5.61/16, 'ButtonNodePrincSnowSel');
     this.BotonNodo7Sel.setScale(2/3);
     this.BotonNodo7Sel.setVisible(false);
     //Fondo con nombre y boton JUGAR
-    this.NombreNivel7 = this.add.image(wid*6.79/16, heig*4.61/16, 'Level0Name');
+    this.NombreNivel7 = this.add.image(gameWidth*6.79/16, gameHeight*4.61/16, 'Level0Name');
     this.NombreNivel7.setScale(2/3);
     this.NombreNivel7.setVisible(false);
 
     //Botón Desbloqueado
-    this.botonNivel8 = this.add.image(wid*9.845/16, heig*4.75/16, 'ButtonNodePrincSnow');
+    this.botonNivel8 = this.add.image(gameWidth*9.845/16, gameHeight*4.75/16, 'ButtonNodePrincSnow');
     this.botonNivel8.setScale(2/3);
     this.botonNivel8.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () =>  this.AccessToLevel(wid*9.845/16, heig*4.75/16, 8));
+    .on('pointerdown', () =>  this.AccessToLevel(gameWidth*9.845/16, gameHeight*4.75/16, 8));
     this.botonNivel8.setVisible(false);
     //Botón Seleccionado
-    this.BotonNodo8Sel = this.add.image(wid*9.845/16, heig*4.75/16, 'ButtonNodePrincSnowSel');
+    this.BotonNodo8Sel = this.add.image(gameWidth*9.845/16, gameHeight*4.75/16, 'ButtonNodePrincSnowSel');
     this.BotonNodo8Sel.setScale(2/3);
     this.BotonNodo8Sel.setVisible(false);
     //Fondo con nombre y boton JUGAR
-    this.NombreNivel8 = this.add.image(wid*9.845/16, heig*3.75/16, 'Level0Name');
+    this.NombreNivel8 = this.add.image(gameWidth*9.845/16, gameHeight*3.75/16, 'Level0Name');
     this.NombreNivel8.setScale(2/3);
     this.NombreNivel8.setVisible(false);
 
     //Botón Desbloqueado
-    this.botonNivel9 = this.add.image(wid*12.6/16, heig*5.1/16, 'ButtonNodePrincSnow');
+    this.botonNivel9 = this.add.image(gameWidth*12.6/16, gameHeight*5.1/16, 'ButtonNodePrincSnow');
     this.botonNivel9.setScale(2/3);
     this.botonNivel9.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () =>  this.AccessToLevel(wid*12.6/16, heig*5.1/16, 9));
+    .on('pointerdown', () =>  this.AccessToLevel(gameWidth*12.6/16, gameHeight*5.1/16, 9));
     this.botonNivel9.setVisible(false);
     //Botón Seleccionado
-    this.BotonNodo9Sel = this.add.image(wid*12.6/16, heig*5.1/16, 'ButtonNodePrincSnowSel');
+    this.BotonNodo9Sel = this.add.image(gameWidth*12.6/16, gameHeight*5.1/16, 'ButtonNodePrincSnowSel');
     this.BotonNodo9Sel.setScale(2/3);
     this.BotonNodo9Sel.setVisible(false);
     //Fondo con nombre y boton JUGAR
-    this.NombreNivel9 = this.add.image(wid*12.6/16, heig*4.1/16, 'Level0Name');
+    this.NombreNivel9 = this.add.image(gameWidth*12.6/16, gameHeight*4.1/16, 'Level0Name');
     this.NombreNivel9.setScale(2/3);
     this.NombreNivel9.setVisible(false);
 

@@ -66,10 +66,15 @@ class PreloadMenu extends Phaser.Scene{
 
       //Options Main Menu
       this.load.image('backgroundVM', './ASSETS/OptionsMenu/MusicMenuBackground.jpg'); //Fondo Volume Menu
-      this.load.image('backgroundSM', './ASSETS/OptionsMenu/OptionsMainMenu/SettingsMenuBackgr.jpg'); //Fondo Settings Menu
-      this.load.image('DeleteButton', './ASSETS/OptionsMenu/OptionsMainMenu/BotonBorrar.png');
+      this.load.image('backgroundSetM', './ASSETS/OptionsMenu/OptionsMainMenu/SettingsMenuBackgr.jpg'); //Fondo Settings Menu
       this.load.image('SettingsButton', './ASSETS/OptionsMenu/OptionsMainMenu/BotonAjustes.jpg');
       this.load.image('VolumeButton', './ASSETS/OptionsMenu/OptionsMainMenu/BotonVolumen.png');
+
+      //Settings Menu
+      this.load.image('DeleteButton', './ASSETS/OptionsMenu/OptionsMainMenu/BotonBorrar.png');
+      this.load.image('EasyButton', './ASSETS/OptionsMenu/OptionsMainMenu/BotonFacil.png');
+      this.load.image('MediumButton', './ASSETS/OptionsMenu/OptionsMainMenu/BotonMedio.png');
+      this.load.image('DifficultButton', './ASSETS/OptionsMenu/OptionsMainMenu/BotonDificil.png');
 
     //Credits Menu
       this.load.image('backgroundCM', './ASSETS/MapSelectionMenu/MapMenuBackground.jpeg'); //CAMBIAR

@@ -3,9 +3,6 @@ class MainMenu extends Phaser.Scene{
       super("MainMenu");
   }
 
-  preload(){
-
-  }
 
   create(){
     // Controlador de audio
@@ -27,17 +24,9 @@ class MainMenu extends Phaser.Scene{
     }
 
 
-    //var wid = this.cameras.main.width; //ancho del canvas en el dispositivo
-    //var heig = this.cameras.main.height;
-
-    var background = this.add.image(0, 0, 'backgroundMM');
-    background.setOrigin(0, 0);
-    //background.setPosition(wid/2, heig/2);
-    background.setScale(2/3);
-
-
-    /*this.pauseButton = this.add.image(60, 40, 'pauseButton');
-     this.pauseButton.setDepth(1);*/
+    var backgroundMM = this.add.image(0, 0, 'backgroundMM');
+    backgroundMM.setOrigin(0, 0);
+    backgroundMM.setScale(2/3);
 
     //JUGAR
     this.playButton = this.add.image(gameWidth/2, gameHeight*6/16, 'playButton');
