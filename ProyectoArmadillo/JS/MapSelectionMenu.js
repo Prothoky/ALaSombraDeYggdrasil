@@ -9,8 +9,10 @@ class MapSelectionMenu extends Phaser.Scene{
 
   create(){
 
-    var backgroundMSM = this.add.image(0, 0, 'backgroundMSM');
-    backgroundMSM.setPosition(gameWidth/2, gameHeight/2);
+    this.backgroundMSM = this.add.image(0, 0, 'backgroundMSM');
+    this.backgroundMSM.setPosition(gameWidth/2, gameHeight/2);
+    this.backgroundMSM.setInteractive({ useHandCursor: true  } )
+    .on('pointerdown', () => this.DesactivatePaper());
 
     //BOTON ATRAS
     this.backButtonMSM = this.add.image(gameWidth*14/16, gameHeight*14/16, 'backButtonMSM');
@@ -24,17 +26,29 @@ class MapSelectionMenu extends Phaser.Scene{
     this.shopButtonW1M.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.ShopMenuMSM());
 
-    //BOTON JUGAR MUNDO 1
+    //BOTON MUNDO 1
     this.botonMundo1 = this.add.image(gameWidth*5.5/16, gameHeight*5.45/16, 'World1Button');
     this.botonMundo1.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => this.World1Menu());
+    .on('pointerdown', () => this.ActivatePaper());
 
-    //BOTON JUGAR MUNDO 4
-    this.botonMundo4 = this.add.image(gameWidth*8.44/16, gameHeight*14.05/16, 'World4Button');
+    //BOTON MUNDO 4
+    /*this.botonMundo4 = this.add.image(gameWidth*8.44/16, gameHeight*14.05/16, 'World4Button');
     this.botonMundo4.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.World4Menu());
-    this.botonMundo4.setVisible(false);
+    this.botonMundo4.setVisible(false);*/
 
+    //PERGAMINO
+    this.paperDescription1 = this.add.image(gameWidth*13/16, gameHeight*7/16, 'paperDesciptionMSM');
+    this.paperDescription1.setVisible(false);
+
+    //BOTON JUGAR
+    this.playButtonMSM = this.add.image(gameWidth*13/16, gameHeight*11/16, 'playButtonMSM');
+    this.playButtonMSM.setScale(2/3);
+    this.playButtonMSM.setInteractive({ useHandCursor: true  } )
+    .on('pointerdown', () => this.World1Menu());
+    this.playButtonMSM.setVisible(false);
+
+    //Texto tiempo
     this.timeText = this.add.text(0,0, "TEXTO" , {fill: "white"});
     this.timeText.setPosition(gameWidth/2, gameHeight/2);
 
@@ -44,6 +58,22 @@ class MapSelectionMenu extends Phaser.Scene{
 
   update(){
     this.events.emit("Update Date",this.timeText);
+  }
+
+  ActivatePaper(){
+    this.paperDescription1.setVisible(true);
+    this.playButtonMSM.setVisible(true);
+    this.shopButtonW1M.setVisible(false);
+    this.backButtonMSM.setVisible(false);
+    this.timeText.setVisible(false);
+  }
+
+  DesactivatePaper(){
+    this.paperDescription1.setVisible(false);
+    this.playButtonMSM.setVisible(false);
+    this.shopButtonW1M.setVisible(true);
+    this.backButtonMSM.setVisible(true);
+    this.timeText.setVisible(true);
   }
 
   BackMainMenu(){

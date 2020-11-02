@@ -87,6 +87,8 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('World3Button', './ASSETS/MapSelectionMenu/BotonMundo3.png');
       this.load.image('World4Button', './ASSETS/MapSelectionMenu/BotonMundo4.png');
       this.load.image('backButtonMSM', './ASSETS/MapSelectionMenu/BotonSalir.png');
+      this.load.image('paperDesciptionMSM', './ASSETS/MapSelectionMenu/Pergamino.png');
+      this.load.image('playButtonMSM', './ASSETS/MapSelectionMenu/BotonJugar.png');
 
     //Level Manager
       this.load.spritesheet('dude', 'ASSETS/Placeholders/dude.png', { frameWidth: 32, frameHeight: 48 });
