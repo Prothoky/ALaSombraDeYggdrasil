@@ -92,6 +92,7 @@ class LevelManager extends Phaser.Scene
         this.rightButton;
         this.attackButton;
         this.testButton;
+        this.pauseButton;
 
         //this.gamePaused = false;
 
@@ -251,7 +252,7 @@ class LevelManager extends Phaser.Scene
         this.rightButton = this.input.keyboard.addKey(controls.right);
         this.attackButton = this.input.keyboard.addKey(controls.attack);
         this.testButton = this.input.keyboard.addKey(controls.test); // Eliminar en versión final
-        this.ESC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
+        this.pauseButton = this.input.keyboard.addKey(controls.pause);
 
 
         // Reiniciamos eventos
@@ -793,22 +794,21 @@ class LevelManager extends Phaser.Scene
     }
 
     update (time, delta){
-     /*if ((this.ESC.isDown)&&(gamePaused == false)){
+  /*   if (this.pauseButton.isDown && !gamePaused){
           console.log('xd');
           this.scene.run('PauseMenu');
           this.scene.bringToTop('PauseMenu');
           this.scene.pause();
           gamePaused = true;
-        }*/
-
-
       }
+*/
+    }
 
     PauseGame(){
       console.log('HOLA');
       this.scene.run('PauseMenu');
       this.scene.bringToTop('PauseMenu');
       this.scene.pause();
-      gamePaused = true;
+      //gamePaused = true;
     }
 }

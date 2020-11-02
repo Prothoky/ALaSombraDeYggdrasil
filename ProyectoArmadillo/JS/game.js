@@ -41,6 +41,7 @@ var controls = {  // Controles del jugador (teclado)
   right: Phaser.Input.Keyboard.KeyCodes.RIGHT,
   attack: Phaser.Input.Keyboard.KeyCodes.CTRL,
   test: Phaser.Input.Keyboard.KeyCodes.F,
+  pause: Phaser.Input.Keyboard.KeyCodes.ESC
 };
 
 var levelIndex = 0; // Indica el nivel a generar para LevelManager (CAMBIAR A PASO DE OBJETO DE ESCENA A ESCENA)
