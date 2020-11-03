@@ -19,6 +19,8 @@ class World1Map extends Phaser.Scene{
     this.nodosActivos = 0;
     this.backgroundW1;
 
+    this.load.image('FONDOGUIA', './ASSETS/World1Menu/FondoGuia.jpg');
+
   }
 
   create(){
@@ -32,11 +34,10 @@ class World1Map extends Phaser.Scene{
       musicMenu.play();
     }
 
-    this.backgroundW1 = this.add.image(0, 0, 'backgroundWM1M');
+    this.backgroundW1 = this.add.image(0, 0, 'FONDOGUIA');
+    //this.backgroundW1 = this.add.image(0, 0, 'backgroundWM1M');
     this.backgroundW1.setScale(2/3);
     this.backgroundW1.setPosition(gameWidth/2, gameHeight/2);
-
-    //var nodosActivos = 0;
 
     //BOTON ATRAS
     this.backButtonW1M = this.add.image(gameWidth*14/16, gameHeight*14/16, 'BackButtonW1M');
@@ -50,21 +51,10 @@ class World1Map extends Phaser.Scene{
     this.shopButtonW1M.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.ShopMenuW1M());
 
-/*
-//PRUEBAS BOTON PAUSE
-    //BOTON Nivel 1
-    this.ButtonNode1 = this.add.image(wid*14/16, heig*14/16, 'ButtonNode1');
-    this.ButtonNode1.setScale(1.5/3);
-    this.ButtonNode1.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => this.GoWorld1_1());
-  }
 
-  GoWorld1_1(){
-    this.scene.pause('World1Map');
-    this.scene.start('MapOne');
-*/
     // (TESTEO) botón de iniciar partida
 
+    //NIVEL 0
     //Boton Desbloqueado
     this.botonNivel0 = this.add.image(gameWidth*14.6/16, gameHeight*10.05/16, 'ButtonNodePrinc');
     this.botonNivel0.setScale(2/3);
@@ -80,31 +70,39 @@ class World1Map extends Phaser.Scene{
     //this.NombreNivel0.setScale(2/3);
     this.NombreNivel0.setVisible(false);
 
-  /*  this.botonNivel0_1 = this.add.image(wid*6.44/16, heig*14.05/16, 'ButtonSubode1');
-    this.botonNivel0_1.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => this.AccessToLevel(wid*6.44/16, heig*14.05/16));
-    this.botonNivel0_1.setVisible(false);
-
-    this.botonNivel0_2 = this.add.image(wid*10.44/16, heig*14.05/16, 'ButtonSubode1');
-    this.botonNivel0_2.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => this.scene.start('LevelManager'));
-    //.on('pointerdown', () => this.AccessToLevel(wid*10.44/16, heig*14.05/16, 0));
-    this.botonNivel0_2.setVisible(false);*/
-
+    //NIVEL 1
     //Boton Desbloqueado
     this.botonNivel1 = this.add.image(gameWidth*11.41/16, gameHeight*13.15/16, 'ButtonNodePrinc');
     this.botonNivel1.setScale(2/3);
+    this.botonNivel1.setDepth(1);
     this.botonNivel1.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.AccessToLevel(gameWidth*11.41/16, gameHeight*13.15/16, 1));
     this.botonNivel1.setVisible(false);
     //Botón Seleccionado
     this.BotonNodo1Sel = this.add.image(gameWidth*11.41/16, gameHeight*13.15/16, 'ButtonNodePrincSel');
     this.BotonNodo1Sel.setScale(2/3);
+    this.BotonNodo1Sel.setDepth(2);
     this.BotonNodo1Sel.setVisible(false);
-    //Fondo con nombre y boton JUGAR
+    //Fondo con nombre
     this.NombreNivel1 = this.add.image(gameWidth*11.41/16, gameHeight*11.8/16, 'Level0Name');
     this.NombreNivel1.setScale(2/3);
     this.NombreNivel1.setVisible(false);
+
+    //SUBNIVEL 1.1
+    //Boton Desbloqueado
+    this.buttonSubnode1 = this.add.image(gameWidth*12.55/16, gameHeight*14.22/16, 'ButtonSubNode1');
+    this.buttonSubnode1.setScale(2/3);
+    this.buttonSubnode1.setInteractive({ useHandCursor: true  } )
+    .on('pointerdown', () => this.AccessToLevel(gameWidth*12.55/16, gameHeight*14.22/16, 1));
+    //this.buttonSubnode1.setVisible(false);
+    //Botón Seleccionado
+    /*this.buttonSubnode1Sel = this.add.image(gameWidth*13.6/16, gameHeight*13.15/16, 'ButtonSubNodeSel');
+    this.buttonSubnode1Sel.setScale(2/3);
+    this.buttonSubnode1Sel.setVisible(false);
+    //Fondo con nombre
+    this.nameSubnode1 = this.add.image(gameWidth*11.41/16, gameHeight*11.8/16, 'Level0Name');
+    this.nameSubnode1.setScale(2/3);
+    this.nameSubnode1.setVisible(false);*/
 
 /*  this.botonNivel1_1 = this.add.image(wid*6.44/16, heig*10.05/16, 'ButtonSubode1');
     this.botonNivel1_1.setInteractive({ useHandCursor: true  } )

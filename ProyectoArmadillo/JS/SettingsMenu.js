@@ -1,36 +1,54 @@
 class SettingsMenu extends Phaser.Scene{
   constructor(){
       super("SettingsMenu");
+
+      this.easyButtonSelSM;
+      this.mediumButtonSelSM;
+      this.diffButtonSelSM;
   }
 
   create(){
 
-    var backgroundSM = this.add.image(0, 0, 'backgroundSetM');
-    backgroundSM.setScale(2/3);
-    backgroundSM.setPosition(gameWidth/2, gameHeight/2);
+    this.backgroundSM = this.add.image(0, 0, 'backgroundSetM');
+    this.backgroundSM.setScale(2/3);
+    this.backgroundSM.setPosition(gameWidth/2, gameHeight/2);
 
     //BOTON FACIL
-    this.EasyButtonSM = this.add.image(gameWidth*6/16, gameHeight*7/16, 'EasyButton');
-    this.EasyButtonSM.setScale(2/3);
-    this.EasyButtonSM.setInteractive({ useHandCursor: true  } )
+    this.easyButtonSM = this.add.image(gameWidth*4/16, gameHeight*7/16, 'EasyButton');
+    this.easyButtonSM.setScale(2/3);
+    this.easyButtonSM.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.EasyLevel());
+      //Seleccionado
+    this.easyButtonSelSM = this.add.image(gameWidth*4/16, gameHeight*7/16, 'EasyButtonSelected');
+    this.easyButtonSelSM.setScale(2/3);
+    this.easyButtonSelSM.setVisible(false);
+
 
     //BOTON MEDIO
-    this.MediumButtonSM = this.add.image(gameWidth*8/16, gameHeight*7/16, 'MediumButton');
-    this.MediumButtonSM.setScale(2/3);
-    this.MediumButtonSM.setInteractive({ useHandCursor: true  } )
+    this.mediumButtonSM = this.add.image(gameWidth*8/16, gameHeight*7/16, 'MediumButton');
+    this.mediumButtonSM.setScale(2/3);
+    this.mediumButtonSM.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.MediumLevel());
+      //Seleccionado
+    this.mediumButtonSelSM = this.add.image(gameWidth*8/16, gameHeight*7/16, 'MediumButtonSelected');
+    this.mediumButtonSelSM.setScale(2/3);
+    this.mediumButtonSelSM.setVisible(false);
+
 
     //BOTON DIFICIL
-    this.DiffButtonSM = this.add.image(gameWidth*10/16, gameHeight*7/16, 'DifficultButton');
-    this.DiffButtonSM.setScale(2/3);
-    this.DiffButtonSM.setInteractive({ useHandCursor: true  } )
+    this.diffButtonSM = this.add.image(gameWidth*12/16, gameHeight*7/16, 'DifficultButton');
+    this.diffButtonSM.setScale(2/3);
+    this.diffButtonSM.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.DifficultLevel());
+      //Seleccionado
+    this.diffButtonSelSM = this.add.image(gameWidth*12/16, gameHeight*7/16, 'DifficultButtonSelected');
+    this.diffButtonSelSM.setScale(2/3);
+    this.diffButtonSelSM.setVisible(false);
 
     //BOTON BORRAR DATOS
-    this.DeleteButtonSM = this.add.image(gameWidth*8/16, gameHeight*10/16, 'DeleteButton');
-    this.DeleteButtonSM.setScale(2/3);
-    this.DeleteButtonSM.setInteractive({ useHandCursor: true  } )
+    this.deleteButtonSM = this.add.image(gameWidth*8/16, gameHeight*10/16, 'DeleteButton');
+    this.deleteButtonSM.setScale(2/3);
+    this.deleteButtonSM.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.DeleteData());
 
     //BOTON ATRAS
@@ -48,14 +66,29 @@ class SettingsMenu extends Phaser.Scene{
 
   EasyLevel(){
     console.log ("Nivel fácil");
+    this.easyButtonSelSM.setVisible(true);
+    this.mediumButtonSelSM.setVisible(false);
+    this.diffButtonSelSM.setVisible(false);
+    difficulty = 0;
+    console.log (difficulty);
   }
 
   MediumLevel(){
     console.log ("Nivel medio");
+    this.easyButtonSelSM.setVisible(false);
+    this.mediumButtonSelSM.setVisible(true);
+    this.diffButtonSelSM.setVisible(false);
+    difficulty = 1;
+    console.log (difficulty);
   }
 
   DifficultLevel(){
     console.log ("Nivel dificil");
+    this.easyButtonSelSM.setVisible(false);
+    this.mediumButtonSelSM.setVisible(false);
+    this.diffButtonSelSM.setVisible(true);
+    difficulty = 2;
+    console.log (difficulty);
   }
 
   DeleteData(){

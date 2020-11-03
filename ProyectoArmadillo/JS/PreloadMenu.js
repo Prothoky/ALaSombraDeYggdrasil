@@ -73,8 +73,11 @@ class PreloadMenu extends Phaser.Scene{
       //Settings Menu
       this.load.image('DeleteButton', './ASSETS/OptionsMenu/OptionsMainMenu/BotonBorrar.png');
       this.load.image('EasyButton', './ASSETS/OptionsMenu/OptionsMainMenu/BotonFacil.png');
+      this.load.image('EasyButtonSelected', './ASSETS/OptionsMenu/OptionsMainMenu/BotonFacilSeleccionado.png');
       this.load.image('MediumButton', './ASSETS/OptionsMenu/OptionsMainMenu/BotonMedio.png');
+      this.load.image('MediumButtonSelected', './ASSETS/OptionsMenu/OptionsMainMenu/BotonMedioSeleccionado.png');
       this.load.image('DifficultButton', './ASSETS/OptionsMenu/OptionsMainMenu/BotonDificil.png');
+      this.load.image('DifficultButtonSelected', './ASSETS/OptionsMenu/OptionsMainMenu/BotonDificilSeleccionado.png');
 
     //Credits Menu
       this.load.image('backgroundCM', './ASSETS/MapSelectionMenu/MapMenuBackground.jpeg'); //CAMBIAR
@@ -123,6 +126,7 @@ class PreloadMenu extends Phaser.Scene{
 
     //World 1 Map
       this.load.image('backgroundWM1M', './ASSETS/World1Menu/FondoMapaMundo1.jpg');
+      this.load.image('NodoBlocked', './ASSETS/World1Menu/IconosNodos/NivelBloqueado.png');
       this.load.image('ButtonNodePrinc', './ASSETS/World1Menu/IconosNodos/NodoPrincipalDesbloq.png');
       this.load.image('ButtonNodePrincSnow', './ASSETS/World1Menu/IconosNodos/NodoPrincipalNieveDesbloq.png');
       this.load.image('ButtonNodePrincSel', './ASSETS/World1Menu/IconosNodos/NodoPrincipalSel.png');
@@ -132,6 +136,18 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('BackgrAcessToLevel', './ASSETS/World1Menu/FondoAccesoANivel.png'); //CAMBIAR
       this.load.image('Level0Name', './ASSETS/World1Menu/NombreNivel0.png'); //CAMBIAR
       this.load.image('BackButtonW1M', './ASSETS/World1Menu/BotonSalir.png'); //CAMBIAR
+
+      //Subnodos
+      this.load.image('ButtonSubNodeSel', './ASSETS/World1Menu/IconosSubniveles/SubnivelSeleccionado.png');
+      this.load.image('ButtonSubNode1', './ASSETS/World1Menu/IconosSubniveles/Subnivel2.png');
+      this.load.image('ButtonSubNode2', './ASSETS/World1Menu/IconosSubniveles/Subnivel3.png');
+      this.load.image('ButtonSubNode4_1', './ASSETS/World1Menu/IconosSubniveles/Subnivel5_1.png');
+      this.load.image('ButtonSubNode4_2', './ASSETS/World1Menu/IconosSubniveles/Subnivel5_2.png');
+      this.load.image('ButtonSubNode5_1', './ASSETS/World1Menu/IconosSubniveles/Subnivel6_2.png');
+      this.load.image('ButtonSubNode5_2', './ASSETS/World1Menu/IconosSubniveles/Subnivel6_2.png');
+      this.load.image('ButtonSubNode7_1', './ASSETS/World1Menu/IconosSubniveles/Subnivel8_1.png');
+      this.load.image('ButtonSubNode7_2', './ASSETS/World1Menu/IconosSubniveles/Subnivel8_2.png');
+
 
       //Game Over Menu
         this.load.image('backgroundGOM', './ASSETS/GameOverMenu/FondoGameOver.jpg');

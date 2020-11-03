@@ -65,6 +65,7 @@ class MainMenu extends Phaser.Scene{
   InitGame(){
     this.scene.pause('MainMenu');
     this.scene.start('MapSelectionMenu');
+    console.log ("Nivel elegido: " + difficulty);
   }
 
   OptionsGame(){
