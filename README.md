@@ -45,6 +45,7 @@ El mayor debate que surgió con este fue el movimiento que tendría en función 
 
 
 
+## Modos de dificultad y posible modo arcade
 
 ## Mecánicas de juego
 El juego tiene un sistema de movimiento limitado, el jugado irá por defecto de izquierda a derecha con la única opción de saltar y atacar.
