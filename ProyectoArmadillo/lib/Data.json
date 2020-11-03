@@ -47,6 +47,19 @@
             "map_9":"Map 9 Nombre",
             "map_10":"Map 10 Nombre",
             "back" : "Volver"
+        },
+        "Dialogs":{
+            "Cap_1":{
+                "einar_1": "Hacia tiempo que no salía al combate, mis brazos ya no son lo que era, mis piernas están cansadas.",
+                "einar_2": "Los dioses me bendijeron hace mcuhos soles, soy Einar el inmortal, la calamidad de mis enemigos y el escudo de mi pueblo.",
+                "einar_3": "Pero llevo demasiado tiempo sin nada ni nadie a quien defender.",
+                "einar_4": "Dime tu Munin, cuervo de la memoria.",
+                "einar_5": "Qué hice para estar aquí?",
+                "einar_6": "¿Acaso alguien me recuerda?",
+                "munin_1": "... ... ..."
+            }
+            "Cap_2":{
+            }
         }
     },
     
