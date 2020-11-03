@@ -15,6 +15,7 @@ Leyenda de trampas
 7 - pinchos pequeñitos seguidos con enemigos
 8 - barricada
 9 - tronco tirado
+10 - cabaña
 */
 
 var levelTrapValues = new Array();

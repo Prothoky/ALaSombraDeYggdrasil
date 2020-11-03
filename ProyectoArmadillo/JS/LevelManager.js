@@ -145,9 +145,17 @@ class LevelManager extends Phaser.Scene
         this.isPlayerInvulnerable = false;
         this.doubleJumpAvaliable = true;
 
+        this.bg_medium = new Array();   // hotfix line
         this.bg_backgorund = this.add.tileSprite(0,0, 5715, 916, 'bg_background');
         this.bg_far = this.add.tileSprite(0,0, 5715, 916, "bg_far");
-        this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium");
+        //this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium");
+        // start hotfix
+        let iter = 0;
+        for (let i = 0; i < this.levelWidth; i = i + 5715 * 0.66) {
+            this.bg_medium[iter] = this.add.tileSprite(i, 0, 5715, 916, "bg_medium");
+            iter++;
+        }
+        // end hotfix
         this.bg_near = this.add.tileSprite(0,0, 5715, 916, "bg_near");
         this.bg_near.depth = 2;
 
@@ -333,16 +341,23 @@ class LevelManager extends Phaser.Scene
 
         this.bg_backgorund.setOrigin(0,0);
         this.bg_far.setOrigin(0,0);
-        this.bg_medium.setOrigin(0,0);
+        //this.bg_medium.setOrigin(0,0);
         this.bg_near.setOrigin(0,0);
         this.bg_backgorund.setScrollFactor(0);
         this.bg_far.setScrollFactor(0);
-        this.bg_medium.setScrollFactor(0);
+        //this.bg_medium.setScrollFactor(1);
         this.bg_near.setScrollFactor(0);
         this.bg_backgorund.setScale(0.66);
         this.bg_far.setScale(0.66);
-        this.bg_medium.setScale(0.66);
+        //this.bg_medium.setScale(0.66);
         this.bg_near.setScale(0.7);
+        // start hotfix
+        for (let i = 0; i < this.bg_medium.length; i++) {
+            this.bg_medium[i].setOrigin(0, 0);
+            this.bg_medium[i].setScrollFactor(1);
+            this.bg_medium[i].setScale(0.66);
+        }
+        // end hotfix
 
         // TESTEO
 
@@ -771,7 +786,6 @@ class LevelManager extends Phaser.Scene
         this.isPlayerTouchingGround = false;
         this.playerAttackAvaliable = true;
         this.doubleJumpAvaliable = true;
-
         if (this.jumpTimer != null) {
             this.jumpTimer.remove();
         }
@@ -789,24 +803,24 @@ class LevelManager extends Phaser.Scene
     }
     // FIN DE OTRAS FUNCIONES -------------------------------------------
 
-
-    update () {
+    update (time, delta){
         //Fondo dinámico
         this.bg_backgorund.tilePositionX = this.cameras.main.scrollX * .1;
         this.bg_far.tilePositionX = this.cameras.main.scrollX *.1;
-        this.bg_medium.tilePositionX = this.cameras.main.scrollX * .5;
+        //this.bg_medium.tilePositionX = this.cameras.main.scrollX * .5;
+        //this.bg_medium.tilePositionX = this.cameras.main.scrollX;
         this.bg_near.tilePositionX = this.cameras.main.scrollX;
-    }
-
-    update (time, delta){
-  /*   if (this.pauseButton.isDown && !gamePaused){
+        /*
+        if (this.pauseButton.isDown && !gamePaused) {
           console.log('xd');
           this.scene.run('PauseMenu');
           this.scene.bringToTop('PauseMenu');
           this.scene.pause();
           gamePaused = true;
-      }
-*/
+        }
+        */
+    }
+
     }
 
     PauseGame(){
