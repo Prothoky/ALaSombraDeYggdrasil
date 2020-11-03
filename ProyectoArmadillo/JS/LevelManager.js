@@ -40,20 +40,21 @@ class LevelManager extends Phaser.Scene
         // La distancia entre trampas final será maxRandTrapDistance(rand) + trapDistance + minDistance
 
         // 2) CONFIGURACIÓN DEL NIVEL (dependiendo del nivel escogido en el minimapa)
-        this.lengthMultiplier = 10; // Multiplicador de amaño de ancho del mapa
+        this.lengthMultiplier = 5; // Multiplicador de amaño de ancho del mapa
         this.minTrapDistance = 200;    // Distancia mínima entre cada trampa
         this.goldBase = 100;    // Oro base que se gana al superar el nivel
 
         // 2) GENERAL
         this.playerResizeFactor = 0.56;
         this.runnerMode = true; // Controles de runner (salto y ataque)
+        this.endlessMode = false;  // Modo arcade
         this.levelGroundHeight = 470;   // Altura del suelo
         // Settings enerador procedural
         this.levelIntroWidth = 1000; // Longitud al principio del mapa asegurado sin trampas
         this.endEventOffset = 500;  // Distancia desde la última trampa hasta el evento de fin de nivel.
         this.levelEndWidth = 3500;   // Longitud al final del mapa asegurado sin trampas. Debe ser muy grande.
         // PowerUps
-        this.doubleJumpEnabled = false;
+        this.doubleJumpEnabled = true;
 
         // REFERENCIAS
         // Grupos
@@ -64,6 +65,7 @@ class LevelManager extends Phaser.Scene
         this.enemies;   // Grupos de enemigos
         this.triggers;  // Grupos de triggers (colisiones que disparan eventos)
         this.barricades;    // Grupo de barricadas
+        this.cabins = new Array();
         // HUD
         this.healthPointsDisplay = new Array();
         // Otros
@@ -74,6 +76,8 @@ class LevelManager extends Phaser.Scene
         this.attackHitbox;  // Hitbox del ataque
         this.trapFunctionsArray = new Array();  // Array que guarda las funciones de las trampas a generar
         this.endTrigger;    // Trigger del fin del nivel
+        this.trashRecolector;
+        this.arcadeCicleCollision;
 
         // VARIABLES DE INFORMACIÓN
         this.levelHeight = gameHeight;
@@ -84,6 +88,7 @@ class LevelManager extends Phaser.Scene
         this.doubleJumpAvaliable = true;
         this.playerAttackAvaliable = true;
         this.isPlayerInvulnerable = false;  // Indica si el jugador es invulnerable
+        this.isCicling = false;
 
         // INPUT
         // Teclas (no ejecutar si es en móvil)
@@ -173,26 +178,6 @@ class LevelManager extends Phaser.Scene
         // PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
         // Animaciones globales
         this.anims.create({
-            key: 'left',
-            frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
-            frameRate: 10,
-            repeat: -1
-        });
-
-        this.anims.create({
-            key: 'turn',
-            frames: [ { key: 'dude', frame: 4 } ],
-            frameRate: 20
-        });
-
-        this.anims.create({
-            key: 'right',
-            frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
-            frameRate: 10,
-            repeat: -1
-        });
-
-        this.anims.create({
             key: 'einar_running',
             frames: this.anims.generateFrameNumbers('einar_running', { start: 0, end: 17}),
             frameRate: 24,
@@ -213,6 +198,8 @@ class LevelManager extends Phaser.Scene
         this.player.depth = 1;
         this.endTrigger = this.physics.add.sprite(0, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight);
         this.endTrigger.body.setAllowGravity(false);
+        this.trashRecolector = this.physics.add.sprite(-200, 300, 'dot').setOrigin(1).setSize(40, 610).setVisible(false);
+        this.trashRecolector.body.setAllowGravity(false);
         //this.player = this.physics.add.sprite(400, 200, 'einar').setOrigin(1);   // setOrigin(1) IMPORTANTE (calcular colisiones)
         // Dependiendo de la dificultad escogida asignamos nº vidas
         switch (difficulty) {
@@ -220,7 +207,7 @@ class LevelManager extends Phaser.Scene
                 this.playerHealth = 1;
                 break;
             case 1:
-                this.playerHealth = 3;
+                this.playerHealth = 10;
                 break;
             case 2:
                 this.playerHealth = 5;
@@ -252,7 +239,18 @@ class LevelManager extends Phaser.Scene
         this.physics.add.collider(this.enemies, this.platforms);    // Enemigos colisionan con el suelo
         this.physics.add.collider(this.enemies, this.ground);   // Enemigos colisionan con plataformas
         this.physics.add.overlap(this.player, this.triggers, this.enemyStartMotion, null, this);    // Función que se llama al entrar el jugador en el área de visión del enemigo
-        this.physics.add.collider(this.player, this.endTrigger, this.endText, null, this);   // Genera el texto de fin del nivel
+        if (this.endlessMode == false) {
+            this.physics.add.overlap(this.player, this.endTrigger, this.endText, null, this);   // Genera el texto de fin del nivel            
+        } else {
+            this.arcadeCicleCollision = this.physics.add.overlap(this.player, this.endTrigger, this.arcadeCicle, null, this);   // Genera el texto de fin del nivel            
+        }
+        // Recolector de basura
+        this.physics.add.overlap(this.trashRecolector, this.spikesTraps, this.deleteObject, null, this);
+        this.physics.add.overlap(this.trashRecolector, this.barricades, this.deleteObject, null, this);
+        this.physics.add.overlap(this.trashRecolector, this.platforms, this.deleteObject, null, this);
+        this.physics.add.overlap(this.trashRecolector, this.enemies, this.deleteObject, null, this);
+        this.physics.add.overlap(this.trashRecolector, this.triggers, this.deleteObject, null, this);
+
 
         // CÁMARA
         this.cameras.main.setBounds(0, 0, this.levelWidth, this.levelHeight);   // Límites cámara
@@ -382,6 +380,10 @@ class LevelManager extends Phaser.Scene
 
     }
 
+    deleteObject(trashrecolector, otherObject) {
+        otherObject.destroy();
+    }
+
     // FUNCIÓN DE CREADO PROCEDURAL DEL MAPA ----------------------------
     /*
     * Crea un cursor (xPointer) que va apuntando a una posición en x del nivel, desde 0 (comienzo) hasta
@@ -504,6 +506,7 @@ class LevelManager extends Phaser.Scene
         this.soundRunning.play();
         this.soundRunning.setLoop(true);
         this.player.setVelocityX(this.playerMovementSpeed);
+        this.trashRecolector.setVelocityX(this.playerMovementSpeed);
         this.player.anims.play('einar_running', true);
 
     }
@@ -648,6 +651,10 @@ class LevelManager extends Phaser.Scene
     }
 
     // Pinchos de barricada
+    /*
+    Como proceder para el endlessMode... -> como la primera pasada no se porque siempre se pone la hitbox un poco a la 
+    izquierda, pues ajustarlo para que en las sigu9ientes esté bien.
+    */
     generateBarricade(xPos, yPos = this.levelGroundHeight, scaleFactor = 0.3, visible = true) {
         let localBarricade = this.barricades.create(xPos, yPos, 'barricade').setScale(scaleFactor).setOrigin(1, 1).setVisible(visible).refreshBody();
         localBarricade.body.setSize(180, 180);
@@ -674,6 +681,7 @@ class LevelManager extends Phaser.Scene
         this.generatePlatform(xPos + 165, 317, true, 0.35, false);
         this.generatePlatform(xPos + 395, 317, true, 0.35, false);
         this.generateBarricade(xPos + 290, undefined, 0.7, false);
+        this.cabins[this.cabins.length] = localCabin;
         return this.minDistCabin;
     }
 
@@ -823,6 +831,23 @@ class LevelManager extends Phaser.Scene
         //this.scene.restart();
     }
     // FIN DE OTRAS FUNCIONES -------------------------------------------
+
+    arcadeCicle() {
+        console.log("ciclamos");
+        this.arcadeCicleCollision.active = false;
+        for (let i = 0; i < this.cabins.length; i++) {
+            this.cabins[i].destroy();
+        }
+        this.cabins.length = 0;
+        this.proceduralGenerator();
+        this.player.x = 400;
+        this.player.y = this.levelGroundHeight;
+        this.trashRecolector.x = -200;
+        this.playerMovementSpeed += 50;
+        this.player.setVelocityX(this.playerMovementSpeed);
+        this.trashRecolector.setVelocityX(this.playerMovementSpeed);
+        this.arcadeCicleCollision.active = true;
+    }
 
     update (time, delta){
         //Fondo dinámico
