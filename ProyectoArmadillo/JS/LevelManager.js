@@ -8,8 +8,8 @@ class LevelManager extends Phaser.Scene
         // 1) Configuración para JSON
         // Settings personaje
         this.playerMovementSpeed = 550;   // Velocidad de movimiento del personaje
-        this.playerHitboxWidth = 95;    // Ancho de la hitbox del personaje
-        this.playerHitboxHeight = 210;   // Alto de la hitbox del personaje
+        this.playerHitboxWidth = 70;    // Ancho de la hitbox del personaje
+        this.playerHitboxHeight = 145;   // Alto de la hitbox del personaje
         this.playerJumpSpeed = -550;  // Fuerza de salto del personaje
         this.playerJumpDuration = 350;    // Duración máxima de la anulación de gravedad del salto en ms
         this.playerJumpSpeedDecrement = 50; // Efecto de la gravedad sobre los saltos
@@ -19,7 +19,7 @@ class LevelManager extends Phaser.Scene
         this.playerAttackCounter = 0;   // Contador de tiempo del ataque
         this.playerAttackCooldown = 450;   // Cooldown del ataque
         this.playerAttackWidth = 70;    // Ancho de hitbox del ataque
-        this.playerAttackHeight = this.playerHitboxHeight * 0.5;   // Alto de hitbox del ataque 0.4 = this.playerResizeFactor
+        this.playerAttackHeight = this.playerHitboxHeight * 0.6;   // Alto de hitbox del ataque 0.4 = this.playerResizeFactor
         this.playerHealth = 0;  // Puntos de vida del jugador
         // Settings cámara
         this.cameraOffsetX = -250;  // Offset del seguido del personaje en el eje X
@@ -45,7 +45,7 @@ class LevelManager extends Phaser.Scene
         this.goldBase = 100;    // Oro base que se gana al superar el nivel
 
         // 2) GENERAL
-        this.playerResizeFactor = 0.4;
+        this.playerResizeFactor = 0.56;
         this.runnerMode = true; // Controles de runner (salto y ataque)
         this.levelGroundHeight = 470;   // Altura del suelo
         // Settings enerador procedural
@@ -189,10 +189,25 @@ class LevelManager extends Phaser.Scene
             frameRate: 10,
             repeat: -1
         });
+
+        this.anims.create({
+            key: 'einar_running',
+            frames: this.anims.generateFrameNumbers('einar_running', { start: 0, end: 17}),
+            frameRate: 24,
+            repeat: -1
+        })
+
+        this.anims.create({
+            key: 'einar_jumping',
+            frames: this.anims.generateFrameNumbers('einar_jumping', { start: 0, end: 29}),
+            frameRate: 24,
+            repeat: -1
+        })
         // FIN DE PASAR A GLOBAL PARA NO HACERLO DE CADA VEZ
 
         // PERSONAJE
-        this.player = this.physics.add.sprite(400, 200, 'einar').setOrigin(1).setScale(this.playerResizeFactor).setSize(this.playerHitboxWidth, this.playerHitboxHeight);   // setOrigin(1) IMPORTANTE (calcular colisiones)
+        this.player = this.physics.add.sprite(400, 200, 'einar_running').setOrigin(1).setScale(this.playerResizeFactor).setSize(this.playerHitboxWidth, this.playerHitboxHeight);   // setOrigin(1) IMPORTANTE (calcular colisiones)
+        this.player.setOffset(110, 140);
         this.player.depth = 1;
         this.endTrigger = this.physics.add.sprite(0, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight);
         this.endTrigger.body.setAllowGravity(false);
@@ -432,6 +447,7 @@ class LevelManager extends Phaser.Scene
     // Si termina el timer o se suelta el botón de salto se llamará a playerStopJump()
     playerStartJump() {
         if (this.isPlayerTouchingGround && this.player.body.velocity.y == 0) {
+            this.player.anims.play('einar_jumping');
             this.soundJump.play();
             this.player.setVelocityY(this.playerJumpSpeed);
             this.isPlayerJumping = true;
@@ -470,6 +486,7 @@ class LevelManager extends Phaser.Scene
         this.isPlayerJumping = false;
         this.isPlayerTouchingGround = true;
         this.doubleJumpAvaliable = true;
+        this.player.anims.play('einar_running', true);
     }
 
     // moverse a la izquierda
@@ -483,7 +500,7 @@ class LevelManager extends Phaser.Scene
         this.soundRunning.play();
         this.soundRunning.setLoop(true);
         this.player.setVelocityX(this.playerMovementSpeed);
-        //this.player.anims.play('right', true);
+        this.player.anims.play('einar_running', true);
 
     }
 
