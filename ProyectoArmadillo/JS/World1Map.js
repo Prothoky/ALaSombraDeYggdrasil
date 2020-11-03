@@ -90,32 +90,35 @@ class World1Map extends Phaser.Scene{
 
     //SUBNIVEL 1.1
     //Boton Desbloqueado
-    this.buttonSubnode1 = this.add.image(gameWidth*12.55/16, gameHeight*14.22/16, 'ButtonSubNode1');
+    this.buttonSubnode1 = this.add.image(gameWidth*12.6/16, gameHeight*14.50/16, 'ButtonSubNode1');
     this.buttonSubnode1.setScale(2/3);
     this.buttonSubnode1.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => this.AccessToLevel(gameWidth*12.55/16, gameHeight*14.22/16, 1));
-    //this.buttonSubnode1.setVisible(false);
+    .on('pointerdown', () => this.AccessToLevel(gameWidth*12.6/16, gameHeight*14.50/16, 11));
+    this.buttonSubnode1.setVisible(false);
     //Botón Seleccionado
-    /*this.buttonSubnode1Sel = this.add.image(gameWidth*13.6/16, gameHeight*13.15/16, 'ButtonSubNodeSel');
+    this.buttonSubnode1Sel = this.add.image(gameWidth*13.45/16, gameHeight*13.65/16, 'ButtonSubNodeSel');
     this.buttonSubnode1Sel.setScale(2/3);
     this.buttonSubnode1Sel.setVisible(false);
     //Fondo con nombre
-    this.nameSubnode1 = this.add.image(gameWidth*11.41/16, gameHeight*11.8/16, 'Level0Name');
+    /*this.nameSubnode1 = this.add.image(gameWidth*11.41/16, gameHeight*11.8/16, 'Level0Name');
     this.nameSubnode1.setScale(2/3);
     this.nameSubnode1.setVisible(false);*/
 
-/*  this.botonNivel1_1 = this.add.image(wid*6.44/16, heig*10.05/16, 'ButtonSubode1');
-    this.botonNivel1_1.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => this.scene.start('LevelManager'));
-    //.on('pointerdown', () => this.AccessToLevel(wid*6.44/16, heig*10.05/16, 1));
-    this.botonNivel1_1.setVisible(false);
-
-    this.botonNivel1_2 = this.add.image(wid*10.44/16, heig*10.05/16, 'ButtonSubode1');
-    this.botonNivel1_2.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => this.scene.start('LevelManager'));
-    //.on('pointerdown', () => this.AccessToLevel(wid*10.44/16, heig*10.05/16, 1));
-    this.botonNivel1_2.setVisible(false);
-*/
+    //SUBNIVEL 1.2
+    //Boton Desbloqueado
+    this.buttonSubnode1_2 = this.add.image(gameWidth*8.97/16, gameHeight*12.32/16, 'ButtonSubNode2');
+    this.buttonSubnode1_2.setScale(2/3);
+    this.buttonSubnode1_2.setInteractive({ useHandCursor: true  } )
+    .on('pointerdown', () => this.AccessToLevel(gameWidth*8.97/16, gameHeight*12.32/16, 11));
+    this.buttonSubnode1_2.setVisible(false);
+    //Botón Seleccionado
+    this.buttonSubnode1_2Sel = this.add.image(gameWidth*8.33/16, gameHeight*11.89/16, 'ButtonSubNodeSel');
+    this.buttonSubnode1_2Sel.setScale(2/3);
+    this.buttonSubnode1_2Sel.setVisible(false);
+    //Fondo con nombre
+    /*this.nameSubnode1_2 = this.add.image(gameWidth*11.41/16, gameHeight*11.8/16, 'Level0Name');
+    this.nameSubnode1_2.setScale(2/3);
+    this.nameSubnode1_2.setVisible(false);*/
 
     //Botón Desbloqueado
     this.botonNivel2 = this.add.image(gameWidth*10.18/16, gameHeight*11.75/16, 'ButtonNodePrinc');
@@ -166,6 +169,39 @@ class World1Map extends Phaser.Scene{
     this.NombreNivel4.setScale(2/3);
     this.NombreNivel4.setVisible(false);
 
+    //SUBNIVEL 4.1
+    //Boton Desbloqueado
+    this.buttonSubnode4_1 = this.add.image(gameWidth*2.28/16, gameHeight*9.15/16, 'ButtonSubNode4_1');
+    this.buttonSubnode4_1.setScale(2/3);
+    this.buttonSubnode4_1.setInteractive({ useHandCursor: true  } )
+    .on('pointerdown', () => this.AccessToLevel(gameWidth*2.28/16, gameHeight*9.15/16, 11));
+    this.buttonSubnode4_1.setVisible(false);
+    //Botón Seleccionado
+    this.buttonSubnode4_1Sel = this.add.image(gameWidth*2.53/16, gameHeight*7.0/16, 'ButtonSubNodeSel');
+    this.buttonSubnode4_1Sel.setScale(2/3);
+    this.buttonSubnode4_1Sel.setVisible(false);
+    //Fondo con nombre
+    /*this.nameSubnode4_1 = this.add.image(gameWidth*11.41/16, gameHeight*11.8/16, 'Level0Name');
+    this.nameSubnode4_1.setScale(2/3);
+    this.nameSubnode4_1.setVisible(false);*/
+
+    //SUBNIVEL 4.2
+    //Boton Desbloqueado
+    this.buttonSubnode4_2 = this.add.image(gameWidth*4.05/16, gameHeight*8.55/16, 'ButtonSubNode4_2');
+    this.buttonSubnode4_2.setScale(2/3);
+    this.buttonSubnode4_2.setInteractive({ useHandCursor: true  } )
+    .on('pointerdown', () => this.AccessToLevel(gameWidth*4.05/16, gameHeight*8.55/16, 11));
+    this.buttonSubnode4_2.setVisible(false);
+    //Botón Seleccionado
+    this.buttonSubnode4_2Sel = this.add.image(gameWidth*4.98/16, gameHeight*8.6/16, 'ButtonSubNodeSel');
+    this.buttonSubnode4_2Sel.setScale(2/3);
+    this.buttonSubnode4_2Sel.setVisible(false);
+    //Fondo con nombre
+    /*this.nameSubnode4_2 = this.add.image(gameWidth*11.41/16, gameHeight*11.8/16, 'Level0Name');
+    this.nameSubnode4_2.setScale(2/3);
+    this.nameSubnode4_2.setVisible(false);*/
+
+    //NIVEL 5
     //Botón Desbloqueado
     this.botonNivel5 = this.add.image(gameWidth*3.41/16, gameHeight*4.525/16, 'ButtonNodePrincSnow');
     this.botonNivel5.setScale(2/3);
@@ -180,6 +216,22 @@ class World1Map extends Phaser.Scene{
     this.NombreNivel5 = this.add.image(gameWidth*3.41/16, gameHeight*3.525/16, 'Level0Name');
     this.NombreNivel5.setScale(2/3);
     this.NombreNivel5.setVisible(false);
+
+    //SUBNIVEL 5.1
+    //Boton Desbloqueado
+    this.buttonSubnode5_1 = this.add.image(gameWidth*2.05/16, gameHeight*2.05/16, 'ButtonSubNode5_1');
+    this.buttonSubnode5_1.setScale(2/3);
+    this.buttonSubnode5_1.setInteractive({ useHandCursor: true  } )
+    .on('pointerdown', () => this.AccessToLevel(gameWidth*2.05/16, gameHeight*2.05/16, 11));
+    //this.buttonSubnode5_1.setVisible(false);
+    //Botón Seleccionado
+    this.buttonSubnode5_1Sel = this.add.image(gameWidth*4.98/16, gameHeight*8.6/16, 'ButtonSubNodeSel');
+    this.buttonSubnode5_1Sel.setScale(2/3);
+    this.buttonSubnode5_1Sel.setVisible(false);
+    //Fondo con nombre
+    /*this.nameSubnode5_1 = this.add.image(gameWidth*11.41/16, gameHeight*11.8/16, 'Level0Name');
+    this.nameSubnode5_1.setScale(2/3);
+    this.nameSubnode5_1.setVisible(false);*/
 
     //Botón Desbloqueado
     this.botonNivel6 = this.add.image(gameWidth*6.41/16, gameHeight*1.5/16, 'ButtonNodePrincSnow');
