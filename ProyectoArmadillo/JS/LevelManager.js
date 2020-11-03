@@ -821,9 +821,7 @@ class LevelManager extends Phaser.Scene
         */
     }
 
-    }
-
-    PauseGame(){
+    PauseGame() {
       console.log('HOLA');
       this.scene.run('PauseMenu');
       this.scene.bringToTop('PauseMenu');
