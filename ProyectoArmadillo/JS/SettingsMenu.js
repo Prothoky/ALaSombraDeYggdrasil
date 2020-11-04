@@ -69,7 +69,7 @@ class SettingsMenu extends Phaser.Scene{
     this.easyButtonSelSM.setVisible(true);
     this.mediumButtonSelSM.setVisible(false);
     this.diffButtonSelSM.setVisible(false);
-    difficulty = 0;
+    difficulty = 2;
     console.log (difficulty);
   }
 
@@ -87,7 +87,7 @@ class SettingsMenu extends Phaser.Scene{
     this.easyButtonSelSM.setVisible(false);
     this.mediumButtonSelSM.setVisible(false);
     this.diffButtonSelSM.setVisible(true);
-    difficulty = 2;
+    difficulty = 0;
     console.log (difficulty);
   }
 
