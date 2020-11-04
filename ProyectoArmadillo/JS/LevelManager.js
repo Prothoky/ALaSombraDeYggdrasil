@@ -396,7 +396,7 @@ class LevelManager extends Phaser.Scene
             xPointer += addedDistance;
         }
         this.endTrigger.x = xPointer + this.endEventOffset;
-        //console.log(this.percentagesTest);
+        //console.log(this.percentagesTest);    // Debug
     }
 
     // Llama a una función aleatoria del array de trampas disponibles y le pasa x e y como parámetros
@@ -425,7 +425,6 @@ class LevelManager extends Phaser.Scene
     }
 
     // Genera el array con las trampas disponibles del mapa
-    // TRAMPAS DISPONIBLES DEPENDIENTES DEL NIVEL POR IMPLEMENTAR
     generateTrapArray() {
         let trapFunctionsNames = [ 'this.generateSpikesTrap', 'this.generatePlatformNoEnemy', 'this.generateStillEnemy',
                                 'this.generatePlatform', 'this.generateMovingEnemy', 'this.generatePlatformToSpikes',
@@ -437,8 +436,8 @@ class LevelManager extends Phaser.Scene
     }
     // FIN DE FUNCIÓN DE CREADO PROCEDURAL DEL MAPA ---------------------
 
-    // FUNCIONES DE CONTROL DEL PERSONAJE -------------------------------
 
+    // FUNCIONES DE CONTROL DEL PERSONAJE -------------------------------
     // Salto
     // Comienza el salto si está tocando el suelo y programa un timer para que no suba infinito.
     // Si termina el timer o se suelta el botón de salto se llamará a playerStopJump()
@@ -564,16 +563,8 @@ class LevelManager extends Phaser.Scene
         }
     }
 
-    // Reinicia el nivel
+    // Muere el personaje. Para los sonidos. Llama al menú Game Over. Reinicia el nivel
     playerDeath() {
-
-        /*
-        //Guardar información del jugador
-        user.map[0] = true;
-        user.money=0;
-        localStorage.setItem("UserMap", user.map);
-        localStorage.setItem("UserMoney", user.money);
-        */
         this.soundRunning.stop();
         if (this.isPlayerDead == false) {
             this.player.setTint(0xe62272);
@@ -606,7 +597,7 @@ class LevelManager extends Phaser.Scene
         let newEnemy = this.enemies.create(xPos, yPos, 'dude').setOrigin(1).setTint(0x00ff38).refreshBody();
         newEnemy.body.setSize(collisionWidth, collisionHeight);
         let newTrigger = this.triggers.create(xPos, yPos, 'dot').setVisible(false).refreshBody();
-        newTrigger.body.setSize(triggerWidth, triggerHeight);
+        newTrigger.body.setSize(triggerWidth, triggerHeight);   // Trigger que hará que el enemigo se mueva cuando entre el personaje en contacto
         newTrigger.associatedEnemy = newEnemy;
         return this.minDistMovingEnemy;
     }
@@ -653,7 +644,7 @@ class LevelManager extends Phaser.Scene
         return this.minDistBarricade;
     }
 
-    // Tronco de arbol
+    // Tronco de arbol, similar a barricada
     generateTrunk(xPos, yPos = this.levelGroundHeight, scaleFactor = 0.5) {
         let localBarricade = this.barricades.create(xPos, yPos, 'trunk').setScale(scaleFactor).setOrigin(0, 1).refreshBody();
         localBarricade.body.setSize(230, 80);
@@ -664,6 +655,7 @@ class LevelManager extends Phaser.Scene
     }
 
     // Cabaña
+    // Pinta imagen de cabaña y crea 3 plataformas y 1 barricada
     generateCabinUp(xPos, yPos = this.levelGroundHeight + 145, scaleFactor = 0.7) {
         xPos += 300;
         let localCabin = this.physics.add.image(xPos, yPos, 'cabin_up').setScale(scaleFactor).setOrigin(0, 1);
@@ -672,10 +664,9 @@ class LevelManager extends Phaser.Scene
         this.generatePlatform(xPos + 165, 317, true, 0.35, false);
         this.generatePlatform(xPos + 395, 317, true, 0.35, false);
         this.generateBarricade(xPos + 290, undefined, 0.7, false);
-        this.cabins[this.cabins.length] = localCabin;
+        this.cabins[this.cabins.length] = localCabin;   // Almacena referencia para su eliminación
         return this.minDistCabin;
     }
-
 
 
     // FUNCIONES COMPLEJAS (valores hardcodeados)
@@ -695,10 +686,10 @@ class LevelManager extends Phaser.Scene
         this.generateSpikesTrap(xPos, undefined, 0.2);
         let randomAdd = 0;
         let iteration = 1;
-        while (randomAdd < 1) {
+        while (randomAdd < 1) { // Aleatoriamente sigue añadiendo pinchos(cada vez menos probable)
             this.generateSpikesTrap(xPos + spikesLength * iteration, undefined, 0.2);
             randomAdd += Math.random() * 0.65;
-            if (enemy == true && iteration%2 != 0) {
+            if (enemy == true && iteration%2 != 0) {    // Sie es con enemigo añade enemigo
                 this.generateStillEnemy(xPos + spikesLength * iteration + enemyOffset);
             }
             iteration++;
@@ -713,7 +704,6 @@ class LevelManager extends Phaser.Scene
     generateSmallSpikesNoEnemy(xPos) {
         return this.generateSmallSpikes(xPos, false);
     }
-
     // FIN DE FUNCIONES DE GENERACIÓN DE ENEMIGOS/OBSTÁCULOS ------------
 
 
@@ -727,6 +717,7 @@ class LevelManager extends Phaser.Scene
         this.levelCompletedFunc();
     }
 
+    // Actualiza los mapas completados y guarda los datos
     levelCompletedFunc() {
         this.actualizeMapsCompleted();
         console.log("Pasaste el nivel" + levelIndex);
@@ -761,43 +752,6 @@ class LevelManager extends Phaser.Scene
         this.goldBase = levelSettings[i][l][3];
     }
 
-    // Aplica los efectos de las mejoras
-    applyBuffs() {
-        // Añade escudos
-        this.playerHealth += Number(user.buffs[0]);
-        if (Number(user.buffs[1]) == 1)
-            this.doubleJumpEnabled = true;
-        if (Number(user.buffs[2]) == 1) {
-            this.playerInvulnerabilityDuration = 2000;
-        } else {
-            this.playerInvulnerabilityDuration = 1000;
-        }
-
-    }
-    // FIN DE FUNCIONES DE FLUJO DEL JUEGO ------------------------------
-
-    // OTRAS FUNCIONES --------------------------------------------------
-    // Genera suelo para todo el nivel
-    // cambiar a la línea comentada para hacerlo invisible
-    generateGround(spriteWidth, spriteName) {
-        let i = 0;
-        for(i = 0; i < this.levelWidth; i += spriteWidth) {
-            this.ground.create(i, this.levelGroundHeight, spriteName).setOrigin(0, 0).setVisible(false).refreshBody();
-            //this.ground.create(i, this.levelGroundHeight, spriteName).setOrigin(0, 0).setVisible(false).refreshBody();
-        }
-    }
-
-    // Función que ordena al enemigo moverse cuando se encuentra con el jugador
-    enemyStartMotion(player, triggers) {
-        triggers.associatedEnemy.setVelocityX(this.enemySpeed);
-    }
-
-    // Destruye al enemigo
-    killEnemy(attackHitbox, enemies) {
-        this.soundEnemy.play();
-        this.enemies.remove(enemies, true); // Elimina el enemigo de la lista y del juego
-    }
-
     // Reinicia el nivel
     // Resetea las variables del create necesarias ya que no se resetean con this.scene.restart();
     restartLevel() {
@@ -822,7 +776,70 @@ class LevelManager extends Phaser.Scene
         //this.scene.restart();
     }
 
-        // Devuelve la configuración de la reproducción de sonidos
+    // Resetea la posición del jugador (para no crear mapa infinito) y crea nuevas trampas
+    arcadeCicle() {
+        this.arcadeCicleCollision.active = false;   // Se ejecuta una única vez
+
+        // Elimina las cabañas no recogidas por el recolector de basura
+        for (let i = 0; i < this.cabins.length; i++) {
+            this.cabins[i].destroy();
+        }
+        this.cabins.length = 0;
+
+        this.proceduralGenerator(); // Genera trampas de nuevo 
+
+        // Reposiciona al jugador y al recolector de basura y les da velocidad
+        this.player.x = 400;    
+        this.player.y = this.levelGroundHeight;
+        this.trashRecolector.x = -200;
+        this.playerMovementSpeed += 50;
+        this.player.setVelocityX(this.playerMovementSpeed);
+        this.trashRecolector.setVelocityX(this.playerMovementSpeed);
+
+        this.arcadeCicleCollision.active = true;    // Permite de nuevo las colision de reseteo
+    }
+    // FIN DE FUNCIONES DE FLUJO DEL JUEGO ------------------------------
+
+    // OTRAS FUNCIONES --------------------------------------------------
+    // Genera suelo para todo el nivel
+    // cambiar a la línea comentada para hacerlo invisible
+    generateGround(spriteWidth, spriteName) {
+        let i = 0;
+        for(i = 0; i < this.levelWidth; i += spriteWidth) {
+            this.ground.create(i, this.levelGroundHeight, spriteName).setOrigin(0, 0).setVisible(false).refreshBody();
+        }
+    }
+
+    // Función que ordena al enemigo moverse cuando se encuentra con el jugador
+    enemyStartMotion(player, triggers) {
+        triggers.associatedEnemy.setVelocityX(this.enemySpeed);
+    }
+
+    // Destruye al enemigo
+    killEnemy(attackHitbox, enemies) {
+        this.soundEnemy.play();
+        this.enemies.remove(enemies, true); // Elimina el enemigo de la lista y del juego
+    }
+
+    // Aplica los efectos de las mejoras
+    applyBuffs() {
+        // Añade escudos
+        this.playerHealth += Number(user.buffs[0]);
+        
+        // Permite doble salto
+        if (Number(user.buffs[1]) == 1)
+            this.doubleJumpEnabled = true;
+
+        // Aumenta la invulnerabilidad
+        if (Number(user.buffs[2]) == 1) {
+            this.playerInvulnerabilityDuration = 2000;
+        } else {
+            this.playerInvulnerabilityDuration = 1000;
+        }
+
+    }
+        
+    // Devuelve la configuración de la reproducción de sonidos
     getAudioConfig() {
         return {
           mute: false,
@@ -839,25 +856,8 @@ class LevelManager extends Phaser.Scene
     deleteObject(trashrecolector, otherObject) {
         otherObject.destroy();
     }
-
-    arcadeCicle() {
-        console.log("ciclamos");
-        this.arcadeCicleCollision.active = false;
-        for (let i = 0; i < this.cabins.length; i++) {
-            this.cabins[i].destroy();
-        }
-        this.cabins.length = 0;
-        this.proceduralGenerator();
-        this.player.x = 400;
-        this.player.y = this.levelGroundHeight;
-        this.trashRecolector.x = -200;
-        this.playerMovementSpeed += 50;
-        this.player.setVelocityX(this.playerMovementSpeed);
-        this.trashRecolector.setVelocityX(this.playerMovementSpeed);
-        this.arcadeCicleCollision.active = true;
-    }
     // FIN DE OTRAS FUNCIONES -------------------------------------------
-
+    // Da movimiento al fondo
     update (time, delta){
         //Fondo dinámico
         this.bg_backgorund.tilePositionX = this.cameras.main.scrollX * .1;
