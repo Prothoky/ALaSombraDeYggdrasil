@@ -21,6 +21,7 @@ class LevelManager extends Phaser.Scene
         this.playerResizeFactor = 0.56; // Escalado del personaje
         this.playerAttackHeight = this.playerHitboxHeight * this.playerResizeFactor;   // Alto de hitbox del ataque
         this.playerHealth = 0;  // Puntos de vida del jugador (ajustar en el switch del create)
+        this.playerStartPositionY = 510;    // Posición de inicio del personaje
         // 1.2) Ajustes cámara
         this.cameraOffsetX = -250;  // Offset del seguido del personaje en el eje X
         // 1.3) Ajustes enemigos
@@ -192,7 +193,7 @@ class LevelManager extends Phaser.Scene
 
         // 2) PERSONAJE
         // Creación personaje: setOrigin(1) IMPORTANTE (calcular colisiones)
-        this.player = this.physics.add.sprite(400, 200, 'einar_running').setOrigin(1).setScale(this.playerResizeFactor).setSize(this.playerHitboxWidth, this.playerHitboxHeight);
+        this.player = this.physics.add.sprite(400, this.playerStartPositionY, 'einar_running').setOrigin(1).setScale(this.playerResizeFactor).setSize(this.playerHitboxWidth, this.playerHitboxHeight);
         this.player.setOffset(110, 140);    // Offset respecto hitbox
         this.player.depth = 1;  // Profundidad del sprite
         // Dependiendo de la dificultad escogida asignamos nº vidas
@@ -444,14 +445,16 @@ class LevelManager extends Phaser.Scene
     playerStartJump() {
         if (this.isPlayerTouchingGround && this.player.body.velocity.y == 0) {
             this.player.anims.play('einar_jumping');
-            this.soundJump.play();
+            this.soundJump.play(this.getAudioConfig());
+            this.soundRunning.stop();
             this.player.setVelocityY(this.playerJumpSpeed);
             this.isPlayerJumping = true;
             this.isPlayerTouchingGround = false;
             this.player.body.setAllowGravity(false);
             this.jumpTimer = this.time.addEvent( { delay: this.playerJumpDuration, callback: this.playerStopJump, callbackScope: this, loop: false } );
         } else if (this.doubleJumpAvaliable == true && this.doubleJumpEnabled == true) {
-            this.soundJump.play();
+            this.soundJump.play(this.getAudioConfig());
+            this.soundRunning.stop();
             this.player.setVelocityY(this.playerJumpSpeed);
             this.doubleJumpAvaliable = false;
             this.isPlayerJumping = true;
@@ -479,6 +482,10 @@ class LevelManager extends Phaser.Scene
     // Cambia la variable que almacena si el personaje está saltando.
     // DEBE LLAMARSE SIEMPRE QUE TOQUE UN SUELO (ya lo hacen grupos platforms y ground)
     grounded() {
+        if (!this.soundRunning.isPlaying) {
+            this.soundRunning.play(this.getAudioConfig());
+            this.soundRunning.setLoop(true);
+        }
         this.isPlayerJumping = false;
         this.isPlayerTouchingGround = true;
         this.doubleJumpAvaliable = true;
@@ -493,8 +500,10 @@ class LevelManager extends Phaser.Scene
 
     // moverse a la derecha
     playerRight() {
-        this.soundRunning.play();
-        this.soundRunning.setLoop(true);
+        if (!this.soundRunning.isPlaying) {
+            this.soundRunning.play(this.getAudioConfig());
+            this.soundRunning.setLoop(true);
+        }
         this.player.setVelocityX(this.playerMovementSpeed);
         this.trashRecolector.setVelocityX(this.playerMovementSpeed);
         this.player.anims.play('einar_running', true);
@@ -511,7 +520,7 @@ class LevelManager extends Phaser.Scene
     // Crea una hitbox de ataque (si está disponible el ataque) y crea los timers para su actualizado)
     playerAttack() {
         if (this.playerAttackAvaliable == true) {   // Si está disponible el ataque
-            this.soundAttack.play();
+            this.soundAttack.play(this.getAudioConfig());
             this.playerAttackAvaliable = false;
             // Crea la hitbox
             let localAttackHitbox = this.attackHitbox.create(this.player.body.x, this.player.body.y, 'bomb');    // Cambiar sprite por 'dot' al importar animacion definitiva
@@ -549,7 +558,7 @@ class LevelManager extends Phaser.Scene
         if (this.isPlayerInvulnerable == false) {   // si el jugador no es invulnerable
             this.playerHealth--;
             // si está con un escudo comprado, quitarlo
-            this.soundDeath.play();
+            this.soundDeath.play(this.getAudioConfig());
             if (Number(user.buffs[0]) > 0)
                 user.buffs[0] = Number(user.buffs[0]) - 1;
             if (this.playerHealth <= 0) {   // Si no le quedan vidas muere
@@ -725,6 +734,7 @@ class LevelManager extends Phaser.Scene
         user.map[levelIndex] = true;
         saveUserData();
         //this.returnToWorldMap();
+        this.soundRunning.stop();   // Para el sonido de los pasos
         this.scene.stop('LevelManager');
         this.scene.start('WinnerMenu');
     }
@@ -790,7 +800,7 @@ class LevelManager extends Phaser.Scene
 
         // Reposiciona al jugador y al recolector de basura y les da velocidad
         this.player.x = 400;    
-        this.player.y = this.levelGroundHeight;
+        this.player.y = this.playerStartPositionY;
         this.trashRecolector.x = -200;
         this.playerMovementSpeed += 50;
         this.player.setVelocityX(this.playerMovementSpeed);
@@ -817,7 +827,7 @@ class LevelManager extends Phaser.Scene
 
     // Destruye al enemigo
     killEnemy(attackHitbox, enemies) {
-        this.soundEnemy.play();
+        this.soundEnemy.play(this.getAudioConfig());
         this.enemies.remove(enemies, true); // Elimina el enemigo de la lista y del juego
     }
 
@@ -877,10 +887,11 @@ class LevelManager extends Phaser.Scene
     }
 
     PauseGame() {
-      console.log('HOLA');
-      this.scene.run('PauseMenu');
-      this.scene.bringToTop('PauseMenu');
-      this.scene.pause();
-      //gamePaused = true;
+        this.soundRunning.stop();
+        console.log('HOLA');
+        this.scene.run('PauseMenu');
+        this.scene.bringToTop('PauseMenu');
+        this.scene.pause();
+        //gamePaused = true;
     }
 }

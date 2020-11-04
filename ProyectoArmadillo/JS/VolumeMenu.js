@@ -49,6 +49,7 @@ class VolumeMenu extends Phaser.Scene{
     if (volumeMusic < 10) {
       volumeMusic += 1;
       musicMenu.setVolume(volumeMusic/10);
+      musicGameplay.setVolume(volumeMusic/10);
     }
     this.VolumenMusica.setText(volumeMusic);
   }
@@ -57,6 +58,7 @@ class VolumeMenu extends Phaser.Scene{
     if (volumeMusic > 0) {
       volumeMusic -= 1;
       musicMenu.setVolume(volumeMusic/10);
+      musicGameplay.setVolume(volumeMusic/10);
     }
     this.VolumenMusica.setText(volumeMusic);
   }
