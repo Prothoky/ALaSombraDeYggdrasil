@@ -110,6 +110,7 @@ class PreloadMenu extends Phaser.Scene{
       this.load.spritesheet('einar_running', 'ASSETS/Gameplay/animacion_correr.png', { frameWidth: 400, frameHeight: 350 });
       this.load.spritesheet('einar_jumping', 'ASSETS/Gameplay/animacion_saltar.png', { frameWidth: 400, frameHeight: 350 });
 
+
     //Pause Menu
       this.load.image('backgroundPM', './ASSETS/PauseMenu/PauseMenuBackground.jpg');
       this.load.image('backButtonPM', './ASSETS/PauseMenu/BotonAtras.png');
@@ -195,6 +196,21 @@ class PreloadMenu extends Phaser.Scene{
     background.setScale(2/3);
 
     var text = this.add.text(wid*3/7, heig*3/4, strings.Loading , {fill: "white"});
+
+    // Animaciones
+    this.anims.create({
+        key: 'einar_running',
+        frames: this.anims.generateFrameNumbers('einar_running', { start: 0, end: 17}),
+        frameRate: 24,
+        repeat: -1
+    })
+
+    this.anims.create({
+        key: 'einar_jumping',
+        frames: this.anims.generateFrameNumbers('einar_jumping', { start: 0, end: 29}),
+        frameRate: 24,
+        repeat: -1
+    })
   }
 
   update(){
