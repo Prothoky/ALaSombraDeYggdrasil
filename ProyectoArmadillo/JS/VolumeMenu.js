@@ -11,24 +11,24 @@ class VolumeMenu extends Phaser.Scene{
 
     //BOTON SUBIR VOLUMEN
     //MUSICA
-    this.musicUpButton = this.add.image(gameWidth*12.9/16, gameHeight*6.85/16, 'VolumeUpButtonOM');
+    this.musicUpButton = this.add.image( gameWidth*4.8/16, gameHeight*6.8/16, 'VolumeUpButtonOM');
     this.musicUpButton.setScale(2/3);
     this.musicUpButton.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.SubirMusica());
     //EFECTOS
-    this.effectsUpButton = this.add.image( gameWidth*12.9/16, gameHeight*9.7/16, 'VolumeUpButtonOM');
+    this.effectsUpButton = this.add.image( gameWidth*4.8/16, gameHeight*9.7/16, 'VolumeUpButtonOM');
     this.effectsUpButton.setScale(2/3);
     this.effectsUpButton.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.SubirEfectos());
 
     //BOTON BAJAR VOLUMEN
     //MUSICA
-    this.musicDownButton = this.add.image(gameWidth*4.8/16, gameHeight*6.8/16, 'VolumeDownButtonOM');
+    this.musicDownButton = this.add.image(gameWidth*12.9/16, gameHeight*6.85/16, 'VolumeDownButtonOM');
     this.musicDownButton.setScale(2/3);
     this.musicDownButton.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.BajarMusica());
     //EFECTOS
-    this.effectsDownButton = this.add.image(gameWidth*4.8/16, gameHeight*9.7/16, 'VolumeDownButtonOM');
+    this.effectsDownButton = this.add.image(gameWidth*12.9/16, gameHeight*9.7/16, 'VolumeDownButtonOM');
     this.effectsDownButton.setScale(2/3);
     this.effectsDownButton.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.BajarEfectos());
