@@ -70,7 +70,7 @@ class ShopMenu extends Phaser.Scene{
   AddObject2(){
 
       if (user.money >= this.phaserJSON.Store.doublejump.price){
-        user.buffs[0]++;
+        user.buffs[1]++;
         user.money-= this.phaserJSON.Store.doublejump.price;
         this.Money.setText(user.money);
       }else{
@@ -82,7 +82,7 @@ class ShopMenu extends Phaser.Scene{
   AddObject3(){
 
     if (user.money >= this.phaserJSON.Store.invulnerability.price){
-      user.buffs[0]++;
+      user.buffs[2]++;
       user.money-= this.phaserJSON.Store.invulnerability.price;
       this.Money.setText(user.money);
     }else{
@@ -94,7 +94,7 @@ class ShopMenu extends Phaser.Scene{
   AddObject4(){
 
     if (user.money >= this.phaserJSON.Store.cooldown.price){
-      user.buffs[0]++;
+      user.buffs[3]++;
       user.money-= this.phaserJSON.Store.cooldown.price;
       this.Money.setText(user.money);
     }else{
