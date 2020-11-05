@@ -247,9 +247,9 @@ class LevelManager extends Phaser.Scene
         this.physics.add.collider(this.enemies, this.ground);   // Enemigos colisionan con plataformas
         this.physics.add.overlap(this.player, this.triggers, this.enemyStartMotion, null, this);    // Función que se llama al entrar el jugador en el área de visión del enemigo
         if (this.endlessMode == false) {    // Dependiendo de si es modo arcade
-            this.physics.add.overlap(this.player, this.endTrigger, this.endText, null, this);   // Genera el texto de fin del nivel            
+            this.physics.add.overlap(this.player, this.endTrigger, this.endText, null, this);   // Genera el texto de fin del nivel
         } else {
-            this.arcadeCicleCollision = this.physics.add.overlap(this.player, this.endTrigger, this.arcadeCicle, null, this);   // Resetea la posición del personaje y genera nuevas trampas            
+            this.arcadeCicleCollision = this.physics.add.overlap(this.player, this.endTrigger, this.arcadeCicle, null, this);   // Resetea la posición del personaje y genera nuevas trampas
         }
         // Recolector de basura, elimina los objetos que toca
         this.physics.add.overlap(this.trashRecolector, this.spikesTraps, this.deleteObject, null, this);
@@ -269,7 +269,7 @@ class LevelManager extends Phaser.Scene
         this.cameras.main.startFollow(this.player, false, 1, 1, this.cameraOffsetX, 0); // Cámar sigue al personaje
 
 
-        
+
         // ----HUD----
         // 1) Botón de pausa
         this.pauseButton = this.add.image(60, 40, 'pauseButton');
@@ -278,7 +278,7 @@ class LevelManager extends Phaser.Scene
         //this.pauseButton.setScale(2/3);
         this.pauseButton.setInteractive({ useHandCursor: true  } )
             .on('pointerdown', () => this.PauseGame());
-            
+
         // 2) Puntos de vida
         this.healthIconOffset = 30; // Offset de los iconos de vida
         for(let i = 0; i < this.playerHealth; i++) {    // Posiciona los puntos de vida en el HUD
@@ -323,7 +323,7 @@ class LevelManager extends Phaser.Scene
         if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
             console.log('Esto es un dispositivo móvil');
         }
-        
+
         this.input.addPointer(2);
 
         var pointerJump = this.add.image(10, 10, 'dude').setInteractive(); //Hace la imagen interactuable
@@ -412,17 +412,17 @@ class LevelManager extends Phaser.Scene
     // al nivel y con los porcentajes de aparición indicados.
     randomTrapIndex() {
         let maxValue = 0;
-        for (let i = 0; i < levelTrapValues[levelIndex].length; i++) {
-            maxValue += levelTrapValues[levelIndex][i][1];
+        for (let i = 0; i < levelTrapValues[DifficultyIndexSubnode(levelIndex)].length; i++) {
+            maxValue += levelTrapValues[DifficultyIndexSubnode(levelIndex)][i][1];
         }
         let trapIndex = Math.floor(Math.random() * maxValue);
-        let pointer = levelTrapValues[levelIndex].length;
+        let pointer = levelTrapValues[DifficultyIndexSubnode(levelIndex)].length;
         while (trapIndex >= 0 && pointer > 0) {
             pointer--;
-            trapIndex -= levelTrapValues[levelIndex][pointer][1];
+            trapIndex -= levelTrapValues[DifficultyIndexSubnode(levelIndex)][pointer][1];
         }
         //this.percentagesTest[pointer]++;
-        return levelTrapValues[levelIndex][pointer][0];
+        return levelTrapValues[DifficultyIndexSubnode(levelIndex)][pointer][0];
     }
 
     // Genera el array con las trampas disponibles del mapa
@@ -643,7 +643,7 @@ class LevelManager extends Phaser.Scene
 
     // Pinchos de barricada
     /*
-    Como proceder para el endlessMode... -> como la primera pasada no se porque siempre se pone la hitbox un poco a la 
+    Como proceder para el endlessMode... -> como la primera pasada no se porque siempre se pone la hitbox un poco a la
     izquierda, pues ajustarlo para que en las sigu9ientes esté bien.
     */
     generateBarricade(xPos, yPos = this.levelGroundHeight, scaleFactor = 0.3, visible = true) {
@@ -753,7 +753,7 @@ class LevelManager extends Phaser.Scene
 
     // Carga los datos del fichero de configuración
     loadSettings() {
-        let i = levelIndex;
+        let i = DifficultyIndexSubnode(levelIndex);
         let l = difficulty;
         this.lengthMultiplier = levelSettings[i][l][0];
         this.levelWidth = gameWidth * this.lengthMultiplier;
@@ -796,10 +796,10 @@ class LevelManager extends Phaser.Scene
         }
         this.cabins.length = 0;
 
-        this.proceduralGenerator(); // Genera trampas de nuevo 
+        this.proceduralGenerator(); // Genera trampas de nuevo
 
         // Reposiciona al jugador y al recolector de basura y les da velocidad
-        this.player.x = 400;    
+        this.player.x = 400;
         this.player.y = this.playerStartPositionY;
         this.trashRecolector.x = -200;
         this.playerMovementSpeed += 50;
@@ -835,7 +835,7 @@ class LevelManager extends Phaser.Scene
     applyBuffs() {
         // Añade escudos
         this.playerHealth += Number(user.buffs[0]);
-        
+
         // Permite doble salto
         if (Number(user.buffs[1]) == 1)
             this.doubleJumpEnabled = true;
@@ -848,7 +848,7 @@ class LevelManager extends Phaser.Scene
         }
 
     }
-        
+
     // Devuelve la configuración de la reproducción de sonidos
     getAudioConfig() {
         return {
@@ -894,4 +894,59 @@ class LevelManager extends Phaser.Scene
         this.scene.pause();
         //gamePaused = true;
     }
+
+
+}
+
+function DifficultyIndexSubnode(index){
+
+  let indexNode;
+
+  if(index > 9){
+
+
+
+  switch (index){
+
+    case 10:
+      indexNode = 1;
+      break;
+
+    case 11:
+      indexNode = 2;
+      break;
+
+    case 12:
+      indexNode = 4;
+      break;
+
+    case 13:
+      indexNode = 4;
+      break;
+
+    case 14:
+      indexNode = 5;
+      break;
+
+    case 15:
+      indexNode = 5;
+      break;
+
+    case 16:
+      indexNode = 7;
+      break;
+
+    case 17:
+      indexNode = 7;
+      break;
+
+  }
+}else{
+
+    indexNode = index;
+  }
+
+  return indexNode
+
+
 }
