@@ -54,7 +54,7 @@ class LevelManager extends Phaser.Scene
         this.endEventOffset = 500;  // Distancia desde la última trampa hasta el evento de fin de nivel.
         this.levelEndWidth = 3500;   // Longitud al final del mapa asegurado sin trampas. Debe ser muy grande.
         // 3.2) PowerUps
-        this.doubleJumpEnabled = true;
+        this.doubleJumpEnabled = false;
 
         // 4) REFERENCIAS
         // 4.1) Grupos
@@ -845,14 +845,24 @@ class LevelManager extends Phaser.Scene
         this.playerHealth += Number(user.buffs[0]);
 
         // Permite doble salto
-        if (Number(user.buffs[1]) == 1)
+        if (Number(user.buffs[1]) == 1) {
             this.doubleJumpEnabled = true;
+        } else {
+            this.doubleJumpEnabled = false;
+        }
 
         // Aumenta la invulnerabilidad
         if (Number(user.buffs[2]) == 1) {
             this.playerInvulnerabilityDuration = 2000;
         } else {
             this.playerInvulnerabilityDuration = 1000;
+        }
+
+        // Reduce el cooldown del ataque
+        if (Number(user.buffs[3]) == 1) {
+            this.playerAttackCooldown = 350;
+        } else {
+            this.playerAttackCooldown = 450;
         }
 
     }
