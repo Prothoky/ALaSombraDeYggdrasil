@@ -506,7 +506,7 @@ class LevelManager extends Phaser.Scene
         }
         this.player.setVelocityX(this.playerMovementSpeed);
         this.trashRecolector.setVelocityX(this.playerMovementSpeed);
-        this.player.anims.play('einar_running', true);
+        this.player.anims.play('einar_running', false);
 
     }
 
@@ -837,14 +837,24 @@ class LevelManager extends Phaser.Scene
         this.playerHealth += Number(user.buffs[0]);
 
         // Permite doble salto
-        if (Number(user.buffs[1]) == 1)
+        if (Number(user.buffs[1]) == 1) {
             this.doubleJumpEnabled = true;
+        } else {
+            this.doubleJumpEnabled = false;
+        }
 
         // Aumenta la invulnerabilidad
         if (Number(user.buffs[2]) == 1) {
             this.playerInvulnerabilityDuration = 2000;
         } else {
             this.playerInvulnerabilityDuration = 1000;
+        }
+
+        // Reduce el cooldown del ataque
+        if (Number(user.buffs[3]) == 1) {
+            this.playerAttackCooldown = 350;
+        } else {
+            this.playerAttackCooldown = 450;
         }
 
     }
