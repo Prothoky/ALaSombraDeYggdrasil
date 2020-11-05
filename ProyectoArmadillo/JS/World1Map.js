@@ -53,6 +53,13 @@ class World1Map extends Phaser.Scene{
     this.backgroundW1.setScale(2/3);
     this.backgroundW1.setPosition(gameWidth/2, gameHeight/2);
 
+    //MONEY
+    this.backgroundMoney = this.add.image(0, 0, 'backgroundMoney');
+    this.backgroundMoney.setScale(1/3);
+    this.backgroundMoney.setPosition(gameWidth*13/16, gameHeight*1/16);
+    this.Money = this.add.text(gameWidth*12.95/16, gameHeight*0.7/16,  user.money, {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "black", strokeThickness: 2});
+
+
     //BOTON ATRAS
     this.backButtonW1M = this.add.image(gameWidth*14/16, gameHeight*14/16, 'BackButtonW1M');
     this.backButtonW1M.setScale(1.5/3);
@@ -60,7 +67,7 @@ class World1Map extends Phaser.Scene{
     .on('pointerdown', () => this.BackMapSelectionMenu());
 
     //BOTON TIENDA
-    this.shopButtonW1M = this.add.image(gameWidth*14/16, gameHeight*1/16, 'shopButtonMM');
+    this.shopButtonW1M = this.add.image(gameWidth*15/16, gameHeight*1/16, 'shopButtonMM');
     this.shopButtonW1M.setScale(1.5/3);
     this.shopButtonW1M.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.ShopMenuW1M());
@@ -360,17 +367,12 @@ class World1Map extends Phaser.Scene{
     this.level9Name = this.add.image(gameWidth*12.6/16, gameHeight*4.1/16, 'Level0Name');
     this.level9Name.setScale(2/3);
     this.level9Name.setVisible(false);
-
-
-    //this.events.on("Unlock buttons", this.unlockButtons, this);
   }
 
   update(){
 
     if (user.map[0] == true){
       this.buttonNode1.setVisible(true);
-      //levelIndex = 1;
-      //console.log("has pasado el nivel " + (levelIndex - 1));
     }
     if (user.map[1] == true){
       this.buttonNode2.setVisible(true);

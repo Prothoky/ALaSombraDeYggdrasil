@@ -166,6 +166,8 @@ class PreloadMenu extends Phaser.Scene{
         this.load.image('backgroundWM', './ASSETS/WinnerMenu/FondoWinner.jpg');
         this.load.image('ButtonContinueWM', './ASSETS/WinnerMenu/BotonContinuar.png');
 
+      //Fondo Contenedor dinero
+        this.load.image('backgroundMoney', './ASSETS/World1Menu/FondoDinero.png');
 
       // Música
       this.load.audio('test', './ASSETS/Music/test.mp3');

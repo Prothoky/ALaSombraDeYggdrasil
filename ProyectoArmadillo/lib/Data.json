@@ -63,7 +63,7 @@
             }
         }
     },
-    
+
     "eng":{
         "Loading": "Loading",
         "Main_Menu": {
@@ -104,14 +104,14 @@
     },
     "Store":{
         "shields":{
-            "priece": 250
+            "price": 250
         },
         "doublejump":{
             "price": 500
         },
         "invulnerability":{
             "price": 1000
-        },    
+        },
         "cooldown":{
             "price": 750
         }

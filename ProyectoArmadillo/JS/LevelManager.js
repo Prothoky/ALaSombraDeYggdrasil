@@ -99,6 +99,8 @@ class LevelManager extends Phaser.Scene
         this.testButton;
         this.pauseButton;
 
+        this.Money
+
         // DEBUG
         // Comprueba empíricamente que los porcentajes de aparición de las trampas son los correctos
         /*
@@ -111,6 +113,7 @@ class LevelManager extends Phaser.Scene
 
     create ()
     {
+
         // ----FIX----
         // 1) ASIGNACIONES DE RESETEO
         // Vuelve a asignar los valores de determinadas variables al reintentar ya que no pasa correctamente por el constructor
@@ -280,6 +283,15 @@ class LevelManager extends Phaser.Scene
             this.healthPointsDisplay[i].setScrollFactor(0);
             this.healthPointsDisplay[i].depth = 10;
         }
+
+        //MONEY
+        this.backgroundMoney = this.add.image(0, 0, 'backgroundMoney');
+        this.backgroundMoney.setScale(1/3);
+        this.backgroundMoney.setScrollFactor(0);
+        this.backgroundMoney.setPosition(gameWidth*13/16, gameHeight*1/16);
+        this.Money = this.add.text(gameWidth*12.95/16, gameHeight*0.7/16,  user.money, {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "black", strokeThickness: 2});
+        this.Money.setScrollFactor(0);
+
 
         // ----CONTROLES----
         // 1) PC

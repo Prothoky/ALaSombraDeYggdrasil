@@ -33,8 +33,8 @@ class VolumeMenu extends Phaser.Scene{
     this.effectsDownButton.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.BajarEfectos());
 
-    this.VolumenMusica = this.add.text(gameWidth*8.9/16, gameHeight*6.85/16,  userConfig.volumeMusic, {fill: "black"});
-    this.VolumenEfectos = this.add.text(gameWidth*8.9/16, gameHeight*9.7/16,  userConfig.volumeEffects, {fill: "black"});
+    this.VolumenMusica = this.add.text(gameWidth*8.9/16, gameHeight*6.55/16,  userConfig.volumeMusic, {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "black", strokeThickness: 2});
+    this.VolumenEfectos = this.add.text(gameWidth*8.9/16, gameHeight*9.5/16,  userConfig.volumeEffects, {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "black", strokeThickness: 2});
 
     //BOTON ATRAS
     this.backButtonVM = this.add.image(gameWidth*14/16, gameHeight*14/16, 'backButtonOM');

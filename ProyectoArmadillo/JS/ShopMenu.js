@@ -1,6 +1,8 @@
 class ShopMenu extends Phaser.Scene{
   constructor(){
       super("ShopMenu");
+
+      this.phaserJSON;
   }
 
   preload(){
@@ -9,11 +11,17 @@ class ShopMenu extends Phaser.Scene{
 
   create(){
 
-    var phaserJSON = this.cache.json.get('Data');
+    this.phaserJSON = this.cache.json.get('Data');
 
     var backgroundSM = this.add.image(0, 0, 'backgroundSM');
     backgroundSM.setScale(2/3);
     backgroundSM.setPosition(gameWidth/2, gameHeight/2);
+
+    //MONEY
+    this.backgroundMoney = this.add.image(0, 0, 'backgroundMoney');
+    this.backgroundMoney.setScale(1/3);
+    this.backgroundMoney.setPosition(gameWidth*15/16, gameHeight*1/16);
+    this.Money = this.add.text(gameWidth*14.95/16, gameHeight*0.7/16,  user.money, {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "black", strokeThickness: 2});
 
     //BOTON OBJETO 1
     this.object1Button = this.add.image(gameWidth*2.6/16, gameHeight*8.64/16, 'object1Button');
@@ -44,46 +52,55 @@ class ShopMenu extends Phaser.Scene{
     this.backButtonSM.setScale(1.5/3);
     this.backButtonSM.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.BackMainMenu());
+
+
   }
 
   AddObject1(){
-    user.money-= phaserJSON.Store.shields.price;
-      if(user.money<0){
-        console.log("No tienes suficiente dinero");
-        user.money += phaserJSON.Store.shields.price;
-      }else{
+
+      if (user.money >= this.phaserJSON.Store.shields.price){
         user.buffs[0]++;
+        user.money-= this.phaserJSON.Store.shields.price;
+        this.Money.setText(user.money);
+      }else{
+        console.log("No tienes suficiente dinero");
       }
   }
 
   AddObject2(){
-    user.money-= phaserJSON.Store.doublejump.price;
-    if(user.money<0){
-      console.log("No tienes suficiente dinero");
-      user.money += phaserJSON.Store.doublejump.price;
-    }else{
-      user.buffs[1]++;
-    }
+
+      if (user.money >= this.phaserJSON.Store.doublejump.price){
+        user.buffs[0]++;
+        user.money-= this.phaserJSON.Store.doublejump.price;
+        this.Money.setText(user.money);
+      }else{
+        console.log("No tienes suficiente dinero");
+      }
+
   }
 
   AddObject3(){
-    user.money-= phaserJSON.Store.invulnerability.price;
-    if(user.money<0){
-      console.log("No tienes suficiente dinero");
-      user.money += phaserJSON.Store.invulnerability.price;
+
+    if (user.money >= this.phaserJSON.Store.invulnerability.price){
+      user.buffs[0]++;
+      user.money-= this.phaserJSON.Store.invulnerability.price;
+      this.Money.setText(user.money);
     }else{
-      user.buffs[2]++;
+      console.log("No tienes suficiente dinero");
     }
+
   }
 
   AddObject4(){
-    user.money-= phaserJSON.Store.cooldown.price;
-    if(user.money<0){
-      console.log("No tienes suficiente dinero");
-      user.money += phaserJSON.Store.cooldown.price;
+
+    if (user.money >= this.phaserJSON.Store.cooldown.price){
+      user.buffs[0]++;
+      user.money-= this.phaserJSON.Store.cooldown.price;
+      this.Money.setText(user.money);
     }else{
-      user.buffs[3]++;
+      console.log("No tienes suficiente dinero");
     }
+
   }
 
   BackMainMenu(){
