@@ -102,7 +102,7 @@ class LevelManager extends Phaser.Scene
         this.testButton;
         this.pauseButton;
 
-        this.Money
+        this.Money;
 
         // DEBUG
         // Comprueba empíricamente que los porcentajes de aparición de las trampas son los correctos
@@ -872,10 +872,10 @@ class LevelManager extends Phaser.Scene
     }
 
     // Recoge la moneda
-    collectCoin(player, coin) {
-        this.Money.setText(user.money);
+    collectCoin(player, coin) {        
         coin.destroy();
         user.money += 100;
+        this.Money.setText(user.money);
     }
 
     // Aplica los efectos de las mejoras
