@@ -54,7 +54,7 @@ class LevelManager extends Phaser.Scene
         this.endEventOffset = 500;  // Distancia desde la última trampa hasta el evento de fin de nivel.
         this.levelEndWidth = 3500;   // Longitud al final del mapa asegurado sin trampas. Debe ser muy grande.
         // 3.2) PowerUps
-        this.doubleJumpEnabled = true;
+        this.doubleJumpEnabled = false;
 
         // 4) REFERENCIAS
         // 4.1) Grupos
