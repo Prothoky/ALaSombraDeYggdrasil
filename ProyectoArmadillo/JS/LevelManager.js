@@ -439,7 +439,7 @@ class LevelManager extends Phaser.Scene
         let trapFunctionsNames = [ 'this.generateSpikesTrap', 'this.generatePlatformNoEnemy', 'this.generateStillEnemy',
                                 'this.generatePlatform', 'this.generateMovingEnemy', 'this.generatePlatformToSpikes',
                                 'this.generateSmallSpikesNoEnemy', 'this.generateSmallSpikes', 'this.generateBarricade',
-                                'this.generateTrunk', 'this.generateCabinUp', 'this.generateCoin' ];
+                                'this.generateTrunk', 'this.generateCabinUp', 'this.generatePlatformToCoin' ];
         for (let i = 0; i < trapFunctionsNames.length; i++) {
             this.trapFunctionsArray[i] = trapFunctionsNames[i];
         }
@@ -727,6 +727,16 @@ class LevelManager extends Phaser.Scene
     // Variante de la anterior sin enemigos
     generateSmallSpikesNoEnemy(xPos) {
         return this.generateSmallSpikes(xPos, false);
+    }
+
+    // Genera una plataforma y después una moneda a gran altura, sólo alcanzable desde la plataforma
+    generatePlatformToCoin(xPos) {
+        let ret = 0;
+        ret += this.generatePlatform(xPos);
+        ret += 200;
+        xPos += ret;
+        ret += this.generateCoin(xPos, 150);
+        return ret;
     }
     // FIN DE FUNCIONES DE GENERACIÓN DE ENEMIGOS/OBSTÁCULOS ------------
 
