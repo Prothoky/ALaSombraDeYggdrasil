@@ -39,6 +39,7 @@ class LevelManager extends Phaser.Scene
         this.minDistBarricade = 250;    // Mínimo de distancia tras una barricada o tronco
         this.minDistPlatformToSpikes = 550; // Mínimo de distancia tras una plataforma + pinchos largos
         this.minDistCabin = 1100;   // Mínimo de distancia tras una cabaña
+        this.minDistCoin = 0;   // Mínimo de distancia tras una moneda
 
         // 2) CONFIGURACIÓN DEL NIVEL (dependiente del nivel escogido en el minimapa, lectura en loadSettings)
         this.lengthMultiplier = 5; // Multiplicador de amaño de ancho del mapa
@@ -66,6 +67,7 @@ class LevelManager extends Phaser.Scene
         this.triggers;  // Grupos de triggers (colisiones que disparan eventos)
         this.barricades;    // Grupo de barricadas
         this.cabins = new Array();  // Grupo de cabañas
+        this.coins; // Grupo de monedas
         // 4.2) HUD
         this.healthPointsDisplay = new Array(); // HUD de puntos de vida
         //  4.3) Otros
@@ -229,6 +231,7 @@ class LevelManager extends Phaser.Scene
         this.triggers = this.physics.add.staticGroup();   // Grupo de triggers
         this.barricades = this.physics.add.group(); // Grupo de barricadas
         this.attackHitbox = this.physics.add.group(); // Grupo de hitbox del personaje
+        this.coins = this.physics.add.staticGroup();    // Grupo de monedas
 
         this.generateGround(200, 'ground'); // Genera suelo para todo el nivel
 
@@ -243,6 +246,7 @@ class LevelManager extends Phaser.Scene
         this.physics.add.collider(this.enemies, this.platforms);    // Enemigos colisionan con el suelo
         this.physics.add.collider(this.enemies, this.ground);   // Enemigos colisionan con plataformas
         this.physics.add.overlap(this.player, this.triggers, this.enemyStartMotion, null, this);    // Función que se llama al entrar el jugador en el área de visión del enemigo
+        this.physics.add.overlap(this.player, this.coins, this.collectCoin, null, this);    // Función de recoger moneda
         if (this.endlessMode == false) {    // Dependiendo de si es modo arcade
             this.physics.add.overlap(this.player, this.endTrigger, this.endText, null, this);   // Genera el texto de fin del nivel
         } else {
@@ -408,7 +412,6 @@ class LevelManager extends Phaser.Scene
 
     // Llama a una función aleatoria del array de trampas disponibles y le pasa x e y como parámetros
     generateRandomTrap(xPos) {
-
         return eval(this.trapFunctionsArray[this.randomTrapIndex()] + '(' + xPos + ')');
     }
 
@@ -436,7 +439,7 @@ class LevelManager extends Phaser.Scene
         let trapFunctionsNames = [ 'this.generateSpikesTrap', 'this.generatePlatformNoEnemy', 'this.generateStillEnemy',
                                 'this.generatePlatform', 'this.generateMovingEnemy', 'this.generatePlatformToSpikes',
                                 'this.generateSmallSpikesNoEnemy', 'this.generateSmallSpikes', 'this.generateBarricade',
-                                'this.generateTrunk', 'this.generateCabinUp' ];
+                                'this.generateTrunk', 'this.generateCabinUp', 'this.generateCoin' ];
         for (let i = 0; i < trapFunctionsNames.length; i++) {
             this.trapFunctionsArray[i] = trapFunctionsNames[i];
         }
@@ -604,7 +607,7 @@ class LevelManager extends Phaser.Scene
         return this.minDistStillEnemy;
     }
 
-    // Función de creación de enemigos con movimiento al acercarse el jugador
+    // Función de creación de enemigos con movimiento al acercarse el jugador EN DESUSO
     // xPos, yPos: posición en el mapa
     // collisionWidth, collisionHeight: tamaño de la hitbox
     // triggerWidth, triggerHeight: tamaño del trigger de movimiento. Si no se pasa toma valor por defecto
@@ -681,6 +684,12 @@ class LevelManager extends Phaser.Scene
         this.generateBarricade(xPos + 290, undefined, 0.7, false);
         this.cabins[this.cabins.length] = localCabin;   // Almacena referencia para su eliminación
         return this.minDistCabin;
+    }
+
+    // Moneda
+    generateCoin(xPos, yPos = this.levelGroundHeight - 150, scaleFactor = 2.5) {
+        this.coins.create(xPos, yPos, 'dot').setScale(scaleFactor).refreshBody();
+        return this.minDistCoin;
     }
 
 
@@ -839,6 +848,13 @@ class LevelManager extends Phaser.Scene
         this.enemies.remove(enemies, true); // Elimina el enemigo de la lista y del juego
     }
 
+    // Recoge la moneda
+    collectCoin(player, coin) {
+        this.Money.setText(user.money);
+        coin.destroy();
+        user.money += 100;
+    }
+
     // Aplica los efectos de las mejoras
     applyBuffs() {
         // Añade escudos
@@ -907,6 +923,8 @@ class LevelManager extends Phaser.Scene
 
 }
 
+// Traduce el nº de nodo con su dificultad para leer los settings en el archivo LevelConfiguration
+// Los niveles principales tienen su configuración propia, pero los niveles opcionales no
 function DifficultyIndexSubnode(index){
 
   let indexNode;
