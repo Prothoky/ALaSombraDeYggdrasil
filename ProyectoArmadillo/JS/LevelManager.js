@@ -40,6 +40,7 @@ class LevelManager extends Phaser.Scene
         this.minDistPlatformToSpikes = 550; // Mínimo de distancia tras una plataforma + pinchos largos
         this.minDistCabin = 1100;   // Mínimo de distancia tras una cabaña
         this.minDistCoin = 0;   // Mínimo de distancia tras una moneda
+        this.minDistDoubleBarricade = 300;  // Mínimo distancia tras una barricada doble
 
         // 2) CONFIGURACIÓN DEL NIVEL (dependiente del nivel escogido en el minimapa, lectura en loadSettings)
         this.lengthMultiplier = 5; // Multiplicador de amaño de ancho del mapa
@@ -240,6 +241,7 @@ class LevelManager extends Phaser.Scene
         this.physics.add.collider(this.player, this.spikesTraps, () => this.playerHit()); // Función que se ejecuta al colisionar con spikes
         this.physics.add.overlap(this.player, this.barricades, () => this.playerHit());    // Al hacer overlap con barricadas
         this.physics.add.collider(this.barricades, this.ground);    // barricadas chocan con el suelo
+        this.physics.add.collider(this.barricades, this.platforms);    // barricadas chocan con plataformas
         this.physics.add.collider(this.player, this.platforms, this.grounded, null, this);  // Permitimos colision es entre plataforms y jugador y cuenta como grounded (puede saltar)
         this.physics.add.overlap(this.player, this.enemies, () => this.playerHit()); // Llama a playerDeath si colisiona con enemigo
         this.physics.add.overlap(this.attackHitbox, this.enemies, this.killEnemy, null, this);  // LLama a killEnemy cuando la hitbox del ataque impacte con un enemigo
@@ -439,7 +441,8 @@ class LevelManager extends Phaser.Scene
         let trapFunctionsNames = [ 'this.generateSpikesTrap', 'this.generatePlatformNoEnemy', 'this.generateStillEnemy',
                                 'this.generatePlatform', 'this.generateMovingEnemy', 'this.generatePlatformToSpikes',
                                 'this.generateSmallSpikesNoEnemy', 'this.generateSmallSpikes', 'this.generateBarricade',
-                                'this.generateTrunk', 'this.generateCabinUp', 'this.generatePlatformToCoin' ];
+                                'this.generateTrunk', 'this.generateCabinUp', 'this.generatePlatformToCoin', 
+                                'this.generateDoubleBarricade' ];
         for (let i = 0; i < trapFunctionsNames.length; i++) {
             this.trapFunctionsArray[i] = trapFunctionsNames[i];
         }
@@ -638,8 +641,8 @@ class LevelManager extends Phaser.Scene
     }
 
     // Variante de la anterior, con ningún enemigo
-    generatePlatformNoEnemy(xPos) {
-        return this.generatePlatform(xPos, undefined, false);
+    generatePlatformNoEnemy(xPos, yPos) {
+        return this.generatePlatform(xPos, yPos, false);
     }
 
     // Funciones de creación de trampa de pinchos
@@ -738,6 +741,16 @@ class LevelManager extends Phaser.Scene
         ret += this.generateCoin(xPos, 150);
         return ret;
     }
+
+    // Genera una barricada + plataforma con barricada
+    generateDoubleBarricade(xPos) {
+        let platformY = this.levelGroundHeight - 200;
+        this.generateBarricade(xPos);
+        this.generatePlatformNoEnemy(xPos - 150, platformY);
+        this.generateBarricade(xPos, platformY);
+        return this.minDistDoubleBarricade;
+    }
+
     // FIN DE FUNCIONES DE GENERACIÓN DE ENEMIGOS/OBSTÁCULOS ------------
 
 
