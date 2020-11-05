@@ -40,8 +40,8 @@ class OptionsPauseMenu extends Phaser.Scene{
     this.effectsDownButton.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.BajarEfectos());
 
-    this.VolumenMusica = this.add.text(gameWidth*8/16, gameHeight*7.45/16, volumeMusic, {fill: "black"});
-    this.VolumenEfectos = this.add.text(gameWidth*8/16, gameHeight*8.8/16, volumeEffects, {fill: "black"});
+    this.VolumenMusica = this.add.text(gameWidth*8/16, gameHeight*7.45/16, userConfig.volumeMusic, {fill: "black"});
+    this.VolumenEfectos = this.add.text(gameWidth*8/16, gameHeight*8.8/16, userConfig.volumeEffects, {fill: "black"});
 
     //BOTON ATRAS
     this.backButtonOM = this.add.image(gameWidth*11/16, gameHeight*11/16, 'backButtonOM');
@@ -51,35 +51,35 @@ class OptionsPauseMenu extends Phaser.Scene{
   }
 
   SubirMusica() {
-    if (volumeMusic < 10) {
-      volumeMusic += 1;
-      musicMenu.setVolume(volumeMusic/10);
-      musicGameplay.setVolume(volumeMusic/10);
+    if (userConfig.volumeMusic < 10) {
+      userConfig.volumeMusic += 1;
+      musicMenu.setVolume(userConfig.volumeMusic/10);
+      musicGameplay.setVolume(userConfig.volumeMusic/10);
     }
-    this.VolumenMusica.setText(volumeMusic);
+    this.VolumenMusica.setText(userConfig.volumeMusic);
   }
 
   BajarMusica() {
-    if (volumeMusic > 0) {
-      volumeMusic -= 1;
-      musicMenu.setVolume(volumeMusic/10);
-      musicGameplay.setVolume(volumeMusic/10);
+    if (userConfig.volumeMusic > 0) {
+      userConfig.volumeMusic -= 1;
+      musicMenu.setVolume(userConfig.volumeMusic/10);
+      musicGameplay.setVolume(userConfig.volumeMusic/10);
     }
-    this.VolumenMusica.setText(volumeMusic);
+    this.VolumenMusica.setText(userConfig.volumeMusic);
   }
 
   SubirEfectos() {
-    if (volumeEffects < 10) {
-      volumeEffects += 1;
+    if ( userConfig.volumeEffects < 10) {
+       userConfig.volumeEffects += 1;
     }
-    this.VolumenEfectos.setText(volumeEffects);
+    this.VolumenEfectos.setText( userConfig.volumeEffects);
   }
 
   BajarEfectos() {
-    if (volumeEffects > 0) {
-      volumeEffects -= 1;
+    if ( userConfig.volumeEffects > 0) {
+       userConfig.volumeEffects -= 1;
     }
-    this.VolumenEfectos.setText(volumeEffects);
+    this.VolumenEfectos.setText( userConfig.volumeEffects);
   }
 
   BackPauseMenu(){

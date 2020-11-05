@@ -1,14 +1,15 @@
 {
-    "userData": { 
+    "user":  {
         "world": [true,false,false,false,false,false,false,false,false],
-        "map": [false, false, false, false],
+        "map": [true, false, false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        "buffs": [0, 0, 0, 0],
         "money": 0
     },
 
-    "unlockDate": {
-        "day" : 1,
-        "month" : 1,
-        "year" : 2021
+    "userConfig" : {
+        "volumeMusic": 5,
+        "volumeEffects": 5,
+        "difficulty": 0
     },
 
     "esp":{
@@ -99,6 +100,20 @@
             "map_9":"Map 9 Nombre",
             "map_10":"Map 10 Nombre",
             "back" : "Back"
+        }
+    },
+    "Store":{
+        "shields":{
+            "priece": 250
+        },
+        "doublejump":{
+            "price": 500
+        },
+        "invulnerability":{
+            "price": 1000
+        },    
+        "cooldown":{
+            "price": 750
         }
     }
 

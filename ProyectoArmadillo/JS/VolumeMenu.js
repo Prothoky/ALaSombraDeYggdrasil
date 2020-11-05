@@ -11,30 +11,30 @@ class VolumeMenu extends Phaser.Scene{
 
     //BOTON SUBIR VOLUMEN
     //MUSICA
-    this.musicUpButton = this.add.image(gameWidth*4.8/16, gameHeight*6.8/16, 'VolumeUpButtonOM');
+    this.musicUpButton = this.add.image(gameWidth*12.9/16, gameHeight*6.85/16, 'VolumeUpButtonOM');
     this.musicUpButton.setScale(2/3);
     this.musicUpButton.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.SubirMusica());
     //EFECTOS
-    this.effectsUpButton = this.add.image(gameWidth*4.8/16, gameHeight*9.7/16, 'VolumeUpButtonOM');
+    this.effectsUpButton = this.add.image( gameWidth*12.9/16, gameHeight*9.7/16, 'VolumeUpButtonOM');
     this.effectsUpButton.setScale(2/3);
     this.effectsUpButton.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.SubirEfectos());
 
     //BOTON BAJAR VOLUMEN
     //MUSICA
-    this.musicDownButton = this.add.image(gameWidth*12.9/16, gameHeight*6.85/16, 'VolumeDownButtonOM');
+    this.musicDownButton = this.add.image(gameWidth*4.8/16, gameHeight*6.8/16, 'VolumeDownButtonOM');
     this.musicDownButton.setScale(2/3);
     this.musicDownButton.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.BajarMusica());
     //EFECTOS
-    this.effectsDownButton = this.add.image(gameWidth*12.9/16, gameHeight*9.7/16, 'VolumeDownButtonOM');
+    this.effectsDownButton = this.add.image(gameWidth*4.8/16, gameHeight*9.7/16, 'VolumeDownButtonOM');
     this.effectsDownButton.setScale(2/3);
     this.effectsDownButton.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.BajarEfectos());
 
-    this.VolumenMusica = this.add.text(gameWidth*8.9/16, gameHeight*6.85/16, volumeMusic, {fill: "black"});
-    this.VolumenEfectos = this.add.text(gameWidth*8.9/16, gameHeight*9.7/16, volumeEffects, {fill: "black"});
+    this.VolumenMusica = this.add.text(gameWidth*8.9/16, gameHeight*6.85/16,  userConfig.volumeMusic, {fill: "black"});
+    this.VolumenEfectos = this.add.text(gameWidth*8.9/16, gameHeight*9.7/16,  userConfig.volumeEffects, {fill: "black"});
 
     //BOTON ATRAS
     this.backButtonVM = this.add.image(gameWidth*14/16, gameHeight*14/16, 'backButtonOM');
@@ -46,36 +46,36 @@ class VolumeMenu extends Phaser.Scene{
   }
 
   SubirMusica() {
-    if (volumeMusic < 10) {
-      volumeMusic += 1;
-      musicMenu.setVolume(volumeMusic/10);
-      musicGameplay.setVolume(volumeMusic/10);
+    if ( userConfig.volumeMusic < 10) {
+       userConfig.volumeMusic += 1;
+      musicMenu.setVolume( userConfig.volumeMusic/10);
+      musicGameplay.setVolume( userConfig.volumeMusic/10);
     }
-    this.VolumenMusica.setText(volumeMusic);
+    this.VolumenMusica.setText( userConfig.volumeMusic);
   }
 
   BajarMusica() {
-    if (volumeMusic > 0) {
-      volumeMusic -= 1;
-      musicMenu.setVolume(volumeMusic/10);
-      musicGameplay.setVolume(volumeMusic/10);
+    if ( userConfig.volumeMusic > 0) {
+       userConfig.volumeMusic -= 1;
+      musicMenu.setVolume( userConfig.volumeMusic/10);
+      musicGameplay.setVolume( userConfig.volumeMusic/10);
     }
-    this.VolumenMusica.setText(volumeMusic);
+    this.VolumenMusica.setText( userConfig.volumeMusic);
   }
 
   SubirEfectos() {
-    if (volumeEffects < 10) {
-      volumeEffects += 1;
+    if ( userConfig.volumeEffects < 10) {
+       userConfig.volumeEffects += 1;
     }
 
-    this.VolumenEfectos.setText(volumeEffects);
+    this.VolumenEfectos.setText( userConfig.volumeEffects);
   }
 
   BajarEfectos() {
-    if (volumeEffects > 0) {
-      volumeEffects -= 1;
+    if ( userConfig.volumeEffects > 0) {
+       userConfig.volumeEffects -= 1;
     }
-    this.VolumenEfectos.setText(volumeEffects);
+    this.VolumenEfectos.setText( userConfig.volumeEffects);
   }
 
   BackOptionsMenuVM(){

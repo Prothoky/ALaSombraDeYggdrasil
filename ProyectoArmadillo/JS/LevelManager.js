@@ -54,7 +54,7 @@ class LevelManager extends Phaser.Scene
         this.endEventOffset = 500;  // Distancia desde la última trampa hasta el evento de fin de nivel.
         this.levelEndWidth = 3500;   // Longitud al final del mapa asegurado sin trampas. Debe ser muy grande.
         // 3.2) PowerUps
-        this.doubleJumpEnabled = false;
+        this.doubleJumpEnabled = true;
 
         // 4) REFERENCIAS
         // 4.1) Grupos
@@ -99,8 +99,6 @@ class LevelManager extends Phaser.Scene
         this.testButton;
         this.pauseButton;
 
-        //this.gamePaused = false;
-
         // DEBUG
         // Comprueba empíricamente que los porcentajes de aparición de las trampas son los correctos
         /*
@@ -109,10 +107,6 @@ class LevelManager extends Phaser.Scene
             this.percentagesTest[i] = 0;
         }
         */
-    }
-
-    preload () {
-      gamePaused = false;
     }
 
     create ()
@@ -197,15 +191,15 @@ class LevelManager extends Phaser.Scene
         this.player.setOffset(110, 140);    // Offset respecto hitbox
         this.player.depth = 1;  // Profundidad del sprite
         // Dependiendo de la dificultad escogida asignamos nº vidas
-        switch (difficulty) {
+        switch (userConfig.difficulty) {
             case 0:
-                this.playerHealth = 1;
+                this.playerHealth = 5;
                 break;
             case 1:
-                this.playerHealth = 10;
+                this.playerHealth = 3;
                 break;
             case 2:
-                this.playerHealth = 5;
+                this.playerHealth = 1;
                 break;
         }
         // Aplica los efectos de las mejoras
@@ -506,7 +500,7 @@ class LevelManager extends Phaser.Scene
         }
         this.player.setVelocityX(this.playerMovementSpeed);
         this.trashRecolector.setVelocityX(this.playerMovementSpeed);
-        this.player.anims.play('einar_running', false);
+        this.player.anims.play('einar_running', true);
 
     }
 
@@ -731,6 +725,7 @@ class LevelManager extends Phaser.Scene
         this.actualizeMapsCompleted();
         console.log("Pasaste el nivel" + levelIndex);
         //levelIndex ++;
+        user.money+= levelSettings[DifficultyIndexSubnode(levelIndex)][userConfig.difficulty][3];
         user.map[levelIndex] = true;
         saveUserData();
         //this.returnToWorldMap();
@@ -754,7 +749,8 @@ class LevelManager extends Phaser.Scene
     // Carga los datos del fichero de configuración
     loadSettings() {
         let i = DifficultyIndexSubnode(levelIndex);
-        let l = difficulty;
+        let l = userConfig.difficulty;
+        console.log(levelSettings[1][0][0]);
         this.lengthMultiplier = levelSettings[i][l][0];
         this.levelWidth = gameWidth * this.lengthMultiplier;
         this.playerMovementSpeed = levelSettings[i][l][1];
@@ -837,11 +833,8 @@ class LevelManager extends Phaser.Scene
         this.playerHealth += Number(user.buffs[0]);
 
         // Permite doble salto
-        if (Number(user.buffs[1]) == 1) {
+        if (Number(user.buffs[1]) == 1)
             this.doubleJumpEnabled = true;
-        } else {
-            this.doubleJumpEnabled = false;
-        }
 
         // Aumenta la invulnerabilidad
         if (Number(user.buffs[2]) == 1) {
@@ -850,20 +843,13 @@ class LevelManager extends Phaser.Scene
             this.playerInvulnerabilityDuration = 1000;
         }
 
-        // Reduce el cooldown del ataque
-        if (Number(user.buffs[3]) == 1) {
-            this.playerAttackCooldown = 350;
-        } else {
-            this.playerAttackCooldown = 450;
-        }
-
     }
 
     // Devuelve la configuración de la reproducción de sonidos
     getAudioConfig() {
         return {
           mute: false,
-          volume: volumeEffects/10,
+          volume: userConfig.volumeEffects/10,
           rate: 1,
           detune: 0,
           seek: 0,
@@ -885,15 +871,7 @@ class LevelManager extends Phaser.Scene
         this.bg_medium.tilePositionX = this.cameras.main.scrollX * .5;
         //this.bg_medium.tilePositionX = this.cameras.main.scrollX;
         this.bg_near.tilePositionX = this.cameras.main.scrollX;
-        /*
-        if (this.pauseButton.isDown && !gamePaused) {
-          console.log('xd');
-          this.scene.run('PauseMenu');
-          this.scene.bringToTop('PauseMenu');
-          this.scene.pause();
-          gamePaused = true;
-        }
-        */
+
     }
 
     PauseGame() {
@@ -902,7 +880,6 @@ class LevelManager extends Phaser.Scene
         this.scene.run('PauseMenu');
         this.scene.bringToTop('PauseMenu');
         this.scene.pause();
-        //gamePaused = true;
     }
 
 

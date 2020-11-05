@@ -8,7 +8,7 @@ class PreloadMenu extends Phaser.Scene{
 
     this.load.json('Data',"./lib/Data.json");
 
-    loadUserData();
+    //loadUserData();
     //Cargamos mapas desbloqueados y dinero del jugador
 
     //Checkeamos que estemos en movil o PC
@@ -190,6 +190,8 @@ class PreloadMenu extends Phaser.Scene{
   }
 
   create(){
+
+    loadUserData();
 
     var phaserJSON = this.cache.json.get('Data');
 

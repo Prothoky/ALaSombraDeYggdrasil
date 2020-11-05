@@ -30,11 +30,12 @@ window.onload = function(){
 
   }
 
-  var game = new Phaser.Game(config);
+  game = new Phaser.Game(config);
 
 }
 
 // Variables globales
+
 var controls = {  // Controles del jugador (teclado)
   up: Phaser.Input.Keyboard.KeyCodes.SPACE,
   left: Phaser.Input.Keyboard.KeyCodes.LEFT,
@@ -45,10 +46,8 @@ var controls = {  // Controles del jugador (teclado)
 };
 
 var levelIndex = 0; // Indica el nivel a generar para LevelManager (CAMBIAR A PASO DE OBJETO DE ESCENA A ESCENA)
-var difficulty = 1; // Indica la dificultad escogida: 0 difícil - 1 normal - 2 fácil (aún sin implementar)
 
 var prevScene = 'MainMenu';
-var gamePaused = false;
 
 //Movil o PC
 var PC = true;
@@ -62,49 +61,37 @@ unlockDate=new Date(2021 ,2 ,1);
 
 var user = { //Mapas desbloqueados y dinero del jugador
   world: [true,false,false,false,false,false,false,false,false],
-  map: [false, false, false, false],
-  buffs: [0, 0, 0],
+  map: [false, false, false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+  buffs: [0, 0, 0, 0],
   money: 0,
-};
+}
+
+var userConfig = {
+  volumeMusic: 5,
+  volumeEffects: 5,
+  difficulty: 0, // Indica la dificultad escogida: 0 fácil - 1 normal - 2 dificil  (aún sin implementar)
+}
 
 function saveUserData(){
-  localStorage.setItem("UserWorld", user.world);
-  localStorage.setItem("UserMap", user.map);
-  localStorage.setItem("UserBuffs", user.buffs)
-  localStorage.setItem("UserMoney", user.money);
-
+  localStorage.setItem("UserData", JSON.stringify(user));
+  localStorage.setItem("UserConfig" ,JSON.stringify(userConfig));
 }
 
 function loadUserData(){
-  var user_world = localStorage.getItem("UserWorld");
-  var user_map = localStorage.getItem("UserMap");
-  var user_buffs = localStorage.getItem("UserBuffs");
-  var user_money = localStorage.getItem("UserMoney");
-
-  if(user_world!=null && user_map!=null && user_money != null) {
-    user.world = stringToArray(user_world);
-    user.map = stringToArray(user_map);
-    user.buffs = stringToArray(user_buffs);
-    user.money = user_money;
-  }
+  let data = localStorage.getItem("UserData");
+  if (data != null)
+    user = JSON.parse(data);
+  data = localStorage.getItem("UserConfig");
+  if(data!=null)
+    userConfig = JSON.parse(data);
 }
 
 function resetUserData(){
-  user.world= [true,false,false,false,false,false,false,false,false],
-  user.map= [true, false, false],
-  user.money= 0
+  user.world = [true,false,false,false,false,false,false,false,false];
+  user.map= [false, false, false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+  user.buffs = [0, 0, 0, 0];
+  user.money = 0;
   saveUserData();
-}
-
-function stringToArray(user_data) {
-  var separador = ",";
-  var data = user_data.split(separador);
-  //var user_date_updated
-  var user_date_updated = new Array();
-  for (var i=0; i < data.length; i++) {
-    user_date_updated[i] = data[i];
-  }
-  return user_date_updated;
 }
 
 var strings;
@@ -122,5 +109,3 @@ function checkLanguage(phaserJSON){
 // Variable música entre escenas
 var musicMenu;  // Controlador de música de menú
 var musicGameplay;  // Controlador de música de gamplay
-var volumeMusic = 10;  // Volumen de música (0-10)
-var volumeEffects = 10;  // Volumen de efectos de sonido (0-10)

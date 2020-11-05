@@ -4,10 +4,12 @@ class ShopMenu extends Phaser.Scene{
   }
 
   preload(){
-
+    this.load.json('Data',"./lib/Data.json");
   }
 
   create(){
+
+    var phaserJSON = this.cache.json.get('Data');
 
     var backgroundSM = this.add.image(0, 0, 'backgroundSM');
     backgroundSM.setScale(2/3);
@@ -45,37 +47,48 @@ class ShopMenu extends Phaser.Scene{
   }
 
   AddObject1(){
-
+    user.money-= phaserJSON.Store.shields.price;
+      if(user.money<0){
+        console.log("No tienes suficiente dinero");
+        user.money += phaserJSON.Store.shields.price;
+      }else{
+        user.buffs[0]++;
+      }
   }
 
   AddObject2(){
-
+    user.money-= phaserJSON.Store.doublejump.price;
+    if(user.money<0){
+      console.log("No tienes suficiente dinero");
+      user.money += phaserJSON.Store.doublejump.price;
+    }else{
+      user.buffs[1]++;
+    }
   }
 
   AddObject3(){
-
+    user.money-= phaserJSON.Store.invulnerability.price;
+    if(user.money<0){
+      console.log("No tienes suficiente dinero");
+      user.money += phaserJSON.Store.invulnerability.price;
+    }else{
+      user.buffs[2]++;
+    }
   }
 
   AddObject4(){
-
+    user.money-= phaserJSON.Store.cooldown.price;
+    if(user.money<0){
+      console.log("No tienes suficiente dinero");
+      user.money += phaserJSON.Store.cooldown.price;
+    }else{
+      user.buffs[3]++;
+    }
   }
 
   BackMainMenu(){
-    console.log(prevScene);
-    //this.scene.pause('ShopMenu');
-    //this.scene.setVisible(false);
-    //this.scene.sendToBack();
-    //this.scene.start('MainMenu');
-    if (prevScene == 'MainMenu'){
-      this.scene.pause('ShopMenu');
-      this.scene.start('MainMenu');
-    } else if (prevScene == 'World1Map') {
-      this.scene.pause('ShopMenu');
-      this.scene.start('World1Map');
-    }else if (prevScene == 'MapSelectionMenu') {
-      this.scene.pause('ShopMenu');
-      this.scene.start('MapSelectionMenu');
-    }
+    this.scene.pause('ShopMenu');
+    this.scene.start(prevScene);
   }
 
 }

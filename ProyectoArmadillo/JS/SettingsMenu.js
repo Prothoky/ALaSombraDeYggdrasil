@@ -49,7 +49,7 @@ class SettingsMenu extends Phaser.Scene{
     this.deleteButtonSM = this.add.image(gameWidth*8/16, gameHeight*10/16, 'DeleteButton');
     this.deleteButtonSM.setScale(2/3);
     this.deleteButtonSM.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => this.DeleteData());
+    .on('pointerdown', () => resetUserData());
 
     //BOTON ATRAS
     this.backButtonVM = this.add.image(gameWidth*14/16, gameHeight*14/16, 'backButtonOM');
@@ -69,8 +69,7 @@ class SettingsMenu extends Phaser.Scene{
     this.easyButtonSelSM.setVisible(true);
     this.mediumButtonSelSM.setVisible(false);
     this.diffButtonSelSM.setVisible(false);
-    difficulty = 2;
-    console.log (difficulty);
+    userConfig.difficulty = 0;
   }
 
   MediumLevel(){
@@ -78,8 +77,7 @@ class SettingsMenu extends Phaser.Scene{
     this.easyButtonSelSM.setVisible(false);
     this.mediumButtonSelSM.setVisible(true);
     this.diffButtonSelSM.setVisible(false);
-    difficulty = 1;
-    console.log (difficulty);
+    userConfig.difficulty = 1;
   }
 
   DifficultLevel(){
@@ -87,13 +85,7 @@ class SettingsMenu extends Phaser.Scene{
     this.easyButtonSelSM.setVisible(false);
     this.mediumButtonSelSM.setVisible(false);
     this.diffButtonSelSM.setVisible(true);
-    difficulty = 0;
-    console.log (difficulty);
+    userConfig.difficulty = 2;
   }
-
-  DeleteData(){
-    console.log("Borrar datos");
-  }
-
 
 }

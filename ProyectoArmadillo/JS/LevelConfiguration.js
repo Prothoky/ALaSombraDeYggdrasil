@@ -5,6 +5,14 @@ k indica el porcentaje de aparición de dicha trampa. Se suman todos los porcent
 aparición de LevelTrapValues[i] y ese es el total.
 (ej: [0, 3],[1, 3],[2, 3] aparecerían igual porcentaje de trampas 0, 1 y 2)
 Leyenda de trampas
+
+const seasons = {
+    SUMMER: 'summer',
+    WINTER: 'winter',
+    SPRING: 'spring',
+    AUTUMN: 'autumn'
+}
+
 0 - pinchos standar
 1 - plataformas
 2 - enemigos quietos
@@ -31,7 +39,7 @@ levelTrapValues[8] = [ [0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [
 levelTrapValues[9] = [ [0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1] ];
 
 /*
-LevelSetting[i][l] -> i indica el nivel, l la dificultad (0 = difícil, 1 = normal)
+LevelSetting[i][l] -> i indica el nivel, l la dificultad (0 = facil, 1 = normal , 2 dificil)
 LevelTrapvalues[i][l][j] -> j indica el valor de la setting.
 Leyenda de índices de settings:
 0 - longitud del mapa (en múltiplos de 1270, siendo 10 = 12700...(predeterminado))
@@ -40,15 +48,13 @@ Leyenda de índices de settings:
 3 - oro base recibido
 */
 var levelSettings = new Array();
-levelSettings[0] = [ [10, 550, 200, 100], [10, 550, 200, 100] ];
-levelSettings[1] = [ [10, 550, 200, 100], [10, 550, 200, 100] ];
-levelSettings[2] = [ [10, 550, 200, 100], [10, 550, 200, 100] ];
-levelSettings[3] = [ [10, 550, 200, 100], [10, 550, 200, 100] ];
-levelSettings[4] = [ [10, 550, 200, 100], [10, 550, 200, 100] ];
-levelSettings[5] = [ [10, 550, 200, 100], [10, 550, 200, 100] ];
-levelSettings[6] = [ [10, 550, 200, 100], [10, 550, 200, 100] ];
-levelSettings[7] = [ [10, 550, 200, 100], [10, 550, 200, 100] ];
-levelSettings[8] = [ [10, 550, 200, 100], [10, 550, 200, 100] ];
-levelSettings[9] = [ [10, 550, 200, 100], [10, 550, 200, 100] ];
-
-
+levelSettings[0] = [ [10, 550, 200, 100], [10, 550, 200, 100], [10, 550, 200, 100] ];
+levelSettings[1] = [ [10, 550, 200, 100], [10, 550, 200, 100], [10, 550, 200, 100] ];
+levelSettings[2] = [ [10, 550, 200, 100], [10, 550, 200, 100], [10, 550, 200, 100] ];
+levelSettings[3] = [ [10, 550, 200, 100], [10, 550, 200, 100], [10, 550, 200, 100] ];
+levelSettings[4] = [ [10, 550, 200, 100], [10, 550, 200, 100], [10, 550, 200, 100] ];
+levelSettings[5] = [ [10, 550, 200, 100], [10, 550, 200, 100], [10, 550, 200, 100] ];
+levelSettings[6] = [ [10, 550, 200, 100], [10, 550, 200, 100], [10, 550, 200, 100] ];
+levelSettings[7] = [ [10, 550, 200, 100], [10, 550, 200, 100], [10, 550, 200, 100] ];
+levelSettings[8] = [ [10, 550, 200, 100], [10, 550, 200, 100], [10, 550, 200, 100] ];
+levelSettings[9] = [ [10, 550, 200, 100], [10, 550, 200, 100], [10, 550, 200, 100] ];

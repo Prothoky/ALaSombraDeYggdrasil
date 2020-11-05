@@ -11,7 +11,7 @@ class MapSelectionMenu extends Phaser.Scene{
 
     this.backgroundMSM = this.add.image(0, 0, 'backgroundMSM');
     this.backgroundMSM.setPosition(gameWidth/2, gameHeight/2);
-    this.backgroundMSM.setInteractive({ useHandCursor: true  } )
+    this.backgroundMSM.setInteractive({ useHandCursor: false  } )
     .on('pointerdown', () => this.DesactivatePaper());
 
     //BOTON ATRAS

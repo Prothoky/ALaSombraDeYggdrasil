@@ -8,7 +8,7 @@ class MainMenu extends Phaser.Scene{
     // Controlador de audio
     let config = {
       mute: false,
-      volume: volumeMusic/10,
+      volume: userConfig.volumeMusic/10,
       rate: 1,
       detune: 0,
       seek: 0,
@@ -65,7 +65,6 @@ class MainMenu extends Phaser.Scene{
   InitGame(){
     this.scene.pause('MainMenu');
     this.scene.start('MapSelectionMenu');
-    console.log ("Nivel elegido: " + difficulty);
   }
 
   OptionsGame(){
