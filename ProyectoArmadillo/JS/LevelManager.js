@@ -978,10 +978,15 @@ class LevelManager extends Phaser.Scene
     update (time, delta){
         //Fondo dinámico
         this.bg_backgorund.tilePositionX = this.cameras.main.scrollX * .1;
+        /*
         this.bg_far.tilePositionX = this.cameras.main.scrollX *.1;
         this.bg_medium.tilePositionX = this.cameras.main.scrollX * .5;
-        //this.bg_medium.tilePositionX = this.cameras.main.scrollX;
         this.bg_near.tilePositionX = this.cameras.main.scrollX;
+        */
+        this.bg_far.tilePositionX = this.cameras.main.scrollX *.5;
+        this.bg_medium.tilePositionX = this.cameras.main.scrollX *1.5;
+        this.bg_near.tilePositionX = this.cameras.main.scrollX*2;
+
 
     }
 
