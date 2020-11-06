@@ -431,7 +431,7 @@ class LevelManager extends Phaser.Scene
             xPointer += addedDistance;
         }
         if (this.endlessMode == true) { // Si es modo endless fakear el reseteo con una cabaña
-            this.generateCabinUp(xPointer);
+            this.generateCabinUp(xPointer, undefined, undefined, false);
         }
         this.endTrigger.x = xPointer + this.endEventOffset;
         //console.log(this.percentagesTest);    // Debug
@@ -708,13 +708,13 @@ class LevelManager extends Phaser.Scene
 
     // Cabaña
     // Pinta imagen de cabaña y crea 3 plataformas y 1 barricada
-    generateCabinUp(xPos, yPos = this.levelGroundHeight + 145, scaleFactor = 0.7) {
+    generateCabinUp(xPos, yPos = this.levelGroundHeight + 145, scaleFactor = 0.7, enemies = true) {
         xPos += 300;
         let localCabin = this.physics.add.image(xPos, yPos, 'cabin_up').setScale(scaleFactor).setOrigin(0, 1);
         localCabin.body.setAllowGravity(false);
         this.generatePlatform(xPos - 250, 360, false);
-        this.generatePlatform(xPos + 165, 317, true, 0.35, false);
-        this.generatePlatform(xPos + 395, 317, true, 0.35, false);
+        this.generatePlatform(xPos + 165, 317, enemies, 0.35, false);
+        this.generatePlatform(xPos + 395, 317, enemies, 0.35, false);
         this.generateBarricade(xPos + 290, undefined, 0.7, false);
         this.cabins[this.cabins.length] = localCabin;   // Almacena referencia para su eliminación
         return this.minDistCabin;
@@ -888,7 +888,7 @@ class LevelManager extends Phaser.Scene
         this.cabins.length = 0;
 
         this.proceduralGenerator(); // Genera trampas de nuevo
-        this.generateCabinUp(0);    // Fakea el final con una cabaña
+        this.generateCabinUp(0, undefined, undefined, false);    // Fakea el final con una cabaña
 
         // Reposiciona al jugador y al recolector de basura y les da velocidad
         this.player.x = 595;
