@@ -46,7 +46,11 @@ El mayor debate que surgió con este fue el movimiento que tendría en función 
 
 
 ## Modos de dificultad y posible modo arcade
+A la hora de plantear la dificultad fuimos claro, tenemos que tener dificultades suficientes para todo el público posible, por eso hemos creado 3, fácil, normal y dificil con un nivelado ajuste de tiempo y aparición de enemigos en cada escenario siguiendo la curva de dificultad definida en el mundo.
+[Pensar nombres chulos para las dificultades     (expedición,..... y cólera,    o cosas así )]
+Cada nivel tiene un array donde especificamos el porcentaje de aparición de cada tipo de enemigo y de obstáculo. 
 
+Para aumentar el tiempo de juego hemos implementado un modo arcade, siendo este un endless runner clásico donde el jugador probará la destreza obtenida durante la historia. Este no constará de ningún tipo de dificuldad opcional, ya que al ir aumentando progresivamente la velocidad, el jugador necesitará de una destreza espectacular para poder llegar lejos. Al final de la partida se indicará al jugador la distancia recorrida y el número de enemigos aniquilados.
 ## Mecánicas de juego
 El juego tiene un sistema de movimiento limitado, el jugado irá por defecto de izquierda a derecha con la única opción de saltar y atacar.
 La principal característica de este juego es la creación de niveles de manera procedimental, así el factor sorpresa es constante y podemos crear un mayor número de niveles para extender el tiempo de vida del juego mucho más.
@@ -111,7 +115,6 @@ La interfaz de juego está mayormente limitada por el lanzamiento del juego en l
 ## Historia
 
 Einar es el vikingo protagonista de esta historia. Fue bendecido con el don de la inmortalidad como regalo de los dioses para que guiara a su pueblo a un lugar próspero. El problema de este regalo es que juega como arma de doble filo, su pueblo acabó siendo arrastrado por el tiempo y el olvido. De ese legado apenas quedan unos poemas y unos cuentos de niños. Einar, ya sin familia ni destino sufre el exilio de la muerte en vida por eso, decide ir a ver a Odín a su propia casa, para reclamar su merecido sitio en el Valhalla para poder reunirse con su familia después de siglos de soliloquio. 
-[Podría ser odín el que le diga que alcanzará el valhalla cuando atraviese los 9 mundos]
 
 Para ello Einar irá recorriendo los nueve mundos que sostiene Yggdrasil teniendo a Asgard como meta. Esta aventura comienza en su planeta natal Midgard.
 
@@ -119,7 +122,10 @@ Cada mundo se dividirá en unos cuantos subniveles principales con sus respectiv
 
 Habrá 10 niveles principales, 5 en el bosque y los otros 5 en el hielo. Algunos de estos niveles tendrán ramas que contendrán niveles extras con historias adicionales sobre la cultura nórdica. 
 
-El avance de los niveles irá reflejando el pensamiento del personaje y hará una transición desde la soledad hasta la ira de su situación, exigiendo a Odín con violencia que acabe con su sufrimiento. Einar en el último capítulo amenazará de muerte al mismísimo dios.
+La historia principal del primer mundo constará de dos fases a nivel narrativo, el jugador al llegar al final de cada nivel se encontrará un cuervo para hablar, serán dos, Hugin y Munin, cuervo del pensamiento y del recuerdo. Con el apoyo a nivel metafórico del concepto de estos, Einar irá al principio recordando quien era tras tantos siglos de soledad, se hará muchas preguntas acerca de su pasado, su causa y la familia que tenía. Conforme avance, irá redescubriendo su vida hasta llegar al punto de recordar que es inmortal por la gracia o desgracia de Odín, que es el que le ha causado tantas guerras y penas. 
+Durante la segunda mitad Einar se encontrará con el cuervo del pensamiento e irá reflexionando sobre diversos temas mientras atraviesa el lago Mälaren. Tratará la descreencia de lo divino, las incongruencias de la guerra y la ignorancia que ata a los hombres a estos dos eternos debates.
+
+
 
 
 [Incluir título de cada nivel y una breve descripción sobre este]
@@ -131,7 +137,8 @@ A la hora de acabar el nivel, el jugador recibirá un dinero por el recorrido, d
 ## Estilo artístico y música
 
 ## Experiencia de usuario
-
+Pensando en la experiencia de usuario, tendremos que dividirla  en función el tipo de jugador que tengamos.
+Casual, 
 ## Modelo de negocio
 Para sostener este proyecto a dos años vista tenemos desarrollado un sistema de lanzamiento periódico del contenido del juego, de este modo conseguiremos extender el pulso del juego y rentabilizar el trabajo con un mayor beneficio económico.
 
