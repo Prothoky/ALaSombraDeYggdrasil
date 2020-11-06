@@ -53,10 +53,12 @@ class PreloadMenu extends Phaser.Scene{
     //Main MENU
         this.load.image('backgroundMM', './ASSETS/MainMenu/MainMenuBackground.jpg');
         this.load.image('shopButtonMM', './ASSETS/MainMenu/BotonTienda.jpg');
-        this.load.image('playButton', './ASSETS/MainMenu/BotonJugar.png');
+        //this.load.image('playButton', './ASSETS/MainMenu/BotonJugar.png');
         this.load.image('optionsButton', './ASSETS/MainMenu/BotonOpciones.png');
         this.load.image('creditsButton', './ASSETS/MainMenu/BotonCreditos.png');
         this.load.image('quitButton', './ASSETS/MainMenu/BotonSalir.png');
+        this.load.image('historyButton', './ASSETS/MainMenu/BotonHistoria.png');
+        this.load.image('arcadeButton', './ASSETS/MainMenu/BotonArcade.png');
 
     //Options Menu General
       this.load.image('backgroundOM', './ASSETS/OptionsMenu/OptionsMenuBackground.jpg');

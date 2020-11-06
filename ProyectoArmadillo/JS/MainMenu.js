@@ -29,9 +29,20 @@ class MainMenu extends Phaser.Scene{
     backgroundMM.setScale(2/3);
 
     //JUGAR
-    this.playButton = this.add.image(gameWidth/2, gameHeight*6/16, 'playButton');
+  /*  this.playButton = this.add.image(gameWidth/2, gameHeight*6/16, 'playButton');
     this.playButton.setScale(2/3);
     this.playButton.setInteractive({ useHandCursor: true  } )
+		.on('pointerdown', () => this.InitGame());*/
+
+    //JUGAR
+    this.arcadeButton = this.add.image(gameWidth*6.5/16, gameHeight*6/16, 'arcadeButton');
+    this.arcadeButton.setScale(2/3);
+    this.arcadeButton.setInteractive({ useHandCursor: true  } )
+		.on('pointerdown', () => this.InitArcadeGame());
+
+    this.historyButton = this.add.image(gameWidth*9.5/16, gameHeight*6/16, 'historyButton');
+    this.historyButton.setScale(2/3);
+    this.historyButton.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.InitGame());
 
     //OPTIONS MENU
@@ -65,6 +76,13 @@ class MainMenu extends Phaser.Scene{
   InitGame(){
     this.scene.pause('MainMenu');
     this.scene.start('MapSelectionMenu');
+    arcadeMode = false;
+  }
+
+  InitArcadeGame(){
+    arcadeMode = true;
+    this.scene.pause('MainMenu');
+    this.scene.start('LevelManager');
   }
 
   OptionsGame(){
