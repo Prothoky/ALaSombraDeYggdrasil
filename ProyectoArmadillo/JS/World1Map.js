@@ -61,7 +61,7 @@ class World1Map extends Phaser.Scene{
 
 
     //BOTON ATRAS
-    this.backButtonW1M = this.add.image(gameWidth*15/16, gameHeight*14/16, 'BackButtonW1M');
+    this.backButtonW1M = this.add.image(gameWidth*14/16, gameHeight*15/16, 'BackButtonW1M');
     this.backButtonW1M.setScale(1/3);
     this.backButtonW1M.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.BackMapSelectionMenu());
