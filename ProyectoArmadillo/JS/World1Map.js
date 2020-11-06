@@ -57,7 +57,7 @@ class World1Map extends Phaser.Scene{
     this.backgroundMoney = this.add.image(0, 0, 'backgroundMoney');
     this.backgroundMoney.setScale(1/3);
     this.backgroundMoney.setPosition(gameWidth*13/16, gameHeight*1/16);
-    this.Money = this.add.text(gameWidth*12.95/16, gameHeight*0.7/16,  user.money, {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "black", strokeThickness: 2});
+    this.Money = this.add.text(gameWidth*12.85/16, gameHeight*0.7/16,  user.money, {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "black", strokeThickness: 2});
 
 
     //BOTON ATRAS
@@ -67,10 +67,18 @@ class World1Map extends Phaser.Scene{
     .on('pointerdown', () => this.BackMapSelectionMenu());
 
     //BOTON TIENDA
-    this.shopButtonW1M = this.add.image(gameWidth*15/16, gameHeight*1/16, 'shopButtonMM');
-    this.shopButtonW1M.setScale(1.5/3);
+    this.shopButtonW1M = this.add.image(gameWidth*14/16, gameHeight*1/16, 'shopButtonIG');
+    this.shopButtonW1M.setScale(1/3);
     this.shopButtonW1M.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.ShopMenuW1M());
+
+    //FULL SCREEN
+    this.fullScreenW1M = this.add.image(gameWidth*15.5/16, gameHeight*13/14, 'buttonFullScreen');
+    this.fullScreenW1M.setScale(2/60);
+    this.fullScreenW1M.setInteractive({ useHandCursor: true})
+		.on('pointerdown', function() {
+      this.scene.scale.toggleFullscreen();
+    });
 
 
     //NIVEL 0

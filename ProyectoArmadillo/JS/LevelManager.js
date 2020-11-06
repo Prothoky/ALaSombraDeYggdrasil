@@ -282,8 +282,6 @@ class LevelManager extends Phaser.Scene
         // 1) Botón de pausa
         this.pauseButton = this.add.image(60, 40, 'pauseButton');
         this.pauseButton.setScrollFactor(0);
-        //this.pauseButton.setDepth(1);
-        //this.pauseButton.setScale(2/3);
         this.pauseButton.setInteractive({ useHandCursor: true  } )
             .on('pointerdown', () => this.PauseGame());
 
@@ -300,8 +298,16 @@ class LevelManager extends Phaser.Scene
         this.backgroundMoney.setScale(1/3);
         this.backgroundMoney.setScrollFactor(0);
         this.backgroundMoney.setPosition(gameWidth*13/16, gameHeight*1/16);
-        this.Money = this.add.text(gameWidth*12.95/16, gameHeight*0.7/16,  user.money, {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "black", strokeThickness: 2});
+        this.Money = this.add.text(gameWidth*12.85/16, gameHeight*0.7/16,  user.money, {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "black", strokeThickness: 2});
         this.Money.setScrollFactor(0);
+
+        //FULL SCREEN
+        this.fullScreenLM = this.add.image(gameWidth*15.5/16, gameHeight*13/14, 'buttonFullScreen');
+        this.fullScreenLM.setScale(2/60);
+        this.fullScreenLM.setInteractive({ useHandCursor: true})
+    		.on('pointerdown', function() {
+          this.scene.scale.toggleFullscreen();
+        });
 
 
         // ----CONTROLES----
@@ -396,7 +402,7 @@ class LevelManager extends Phaser.Scene
 
     swapVelocity() {
         if (this.player.body.velocity.x == 10) {
-            this.player.setVelocityX(400);            
+            this.player.setVelocityX(400);
         } else {
             this.player.setVelocityX(10);
         }
@@ -466,7 +472,7 @@ class LevelManager extends Phaser.Scene
         let trapFunctionsNames = [ 'this.generateSpikesTrap', 'this.generatePlatformNoEnemy', 'this.generateStillEnemy',
                                     'this.generatePlatform', 'this.generateMovingEnemy', 'this.generatePlatformToSpikes',
                                     'this.generateSmallSpikesNoEnemy', 'this.generateSmallSpikes', 'this.generateBarricade',
-                                    'this.generateTrunk', 'this.generateCabinUp', 'this.generatePlatformToCoin', 
+                                    'this.generateTrunk', 'this.generateCabinUp', 'this.generatePlatformToCoin',
                                     'this.generateDoubleBarricade' ];
         for (let i = 0; i < trapFunctionsNames.length; i++) {
             this.trapFunctionsArray[i] = trapFunctionsNames[i];
@@ -916,7 +922,7 @@ class LevelManager extends Phaser.Scene
     }
 
     // Recoge la moneda
-    collectCoin(player, coin) {        
+    collectCoin(player, coin) {
         coin.destroy();
         user.money += 100;
         this.Money.setText(user.money);
