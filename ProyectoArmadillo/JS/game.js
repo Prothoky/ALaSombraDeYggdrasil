@@ -14,7 +14,7 @@ window.onload = function(){
     },
     scale:{
 
-      //mode: Phaser.Scale.FIT, //hace que se adapte a cambios de tamaño
+      mode: Phaser.Scale.FIT, //hace que se adapte a cambios de tamaño
       autoCenter: Phaser.Scale.CENTER_BOTH,
       isPortrait: true,
       //width: 1270, //Comprobar si en el escalado funciona bien
@@ -113,4 +113,3 @@ var musicGameplay;  // Controlador de música de gamplay
 // Modo arcade
 var arcadeMode = false; // Modo endless runner activado?
 var distanceAchieved = 0; // Distancia recorrida en el ultimo intento
-

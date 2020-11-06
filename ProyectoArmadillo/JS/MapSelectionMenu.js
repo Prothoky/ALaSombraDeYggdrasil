@@ -21,8 +21,8 @@ class MapSelectionMenu extends Phaser.Scene{
     .on('pointerdown', () => this.BackMainMenu());
 
     //BOTON TIENDA
-    this.shopButtonW1M = this.add.image(gameWidth*14/16, gameHeight*1/16, 'shopButtonMM');
-    this.shopButtonW1M.setScale(1.5/3);
+    this.shopButtonW1M = this.add.image(gameWidth*14/16, gameHeight*1/16, 'shopButtonIG');
+    this.shopButtonW1M.setScale(1/3);
     this.shopButtonW1M.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.ShopMenuMSM());
 
@@ -30,6 +30,14 @@ class MapSelectionMenu extends Phaser.Scene{
     this.botonMundo1 = this.add.image(gameWidth*5.5/16, gameHeight*5.45/16, 'World1Button');
     this.botonMundo1.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.ActivatePaper());
+
+    //FULL SCREEN
+    this.fullScreenMSM = this.add.image(gameWidth*15.5/16, gameHeight*13/14, 'buttonFullScreen');
+    this.fullScreenMSM.setScale(2/60);
+    this.fullScreenMSM.setInteractive({ useHandCursor: true})
+		.on('pointerdown', function() {
+      this.scene.scale.toggleFullscreen();
+    });
 
     //BOTON MUNDO 4
     /*this.botonMundo4 = this.add.image(gameWidth*8.44/16, gameHeight*14.05/16, 'World4Button');
@@ -49,8 +57,8 @@ class MapSelectionMenu extends Phaser.Scene{
     this.playButtonMSM.setVisible(false);
 
     //Texto tiempo
-    this.timeText = this.add.text(0,0, "TEXTO" , {fill: "white"});
-    this.timeText.setPosition(gameWidth/2, gameHeight/2);
+    this.timeText = this.add.text(gameWidth*8.2/16, gameHeight*7.5/16, "TEXTO" , {fontFamily: "Acadian_Runes", fill: "white", fontSize: 18});
+    //this.timeText.setPosition(gameWidth/2, gameHeight/2);
 
     this.events.once("Update Date", this.updateTimeText, this);
     this.events.once("Unlock World", this.unlockWorld, this);
@@ -103,7 +111,9 @@ class MapSelectionMenu extends Phaser.Scene{
   updateTimeText() {
     var dias = Math.round((unlockDate -  new Date()) / 86400000);
     var horas =  Math.round((unlockDate -  new Date()) / 3600000)-(dias*24);
-    this.timeText.setText("Quedan " + dias + " días y \n" + horas +" horas para desbloquear el siguiente Mundo");
+    //this.timeText.setText("Quedan " + dias + " días y \n" + horas +" horas para desbloquear el siguiente Mundo");
+    //poner If english = dias + days left
+    this.timeText.setText(dias + " días \n" + "restantes");
     if(unlockDate -  new Date() < 0 || unlockDate == new Date()){
       this.timeText.setText("NUEVO MUNDO DESBLOQUEADO");
       this.events.emit("Unlock World",);

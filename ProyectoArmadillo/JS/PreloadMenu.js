@@ -30,7 +30,7 @@ class PreloadMenu extends Phaser.Scene{
           text: "0 %",
           style: {
               fontSize: '25px',
-              fontFamily: 'Berlin Sans FB',
+              fontFamily: 'Acadian_Runes',
               fontStyle: 'bold',
               fill: '#ffffff'
           }
@@ -166,8 +166,10 @@ class PreloadMenu extends Phaser.Scene{
         this.load.image('backgroundWM', './ASSETS/WinnerMenu/FondoWinner.jpg');
         this.load.image('ButtonContinueWM', './ASSETS/WinnerMenu/BotonContinuar.png');
 
-      //Fondo Contenedor dinero
-        this.load.image('backgroundMoney', './ASSETS/World1Menu/FondoDinero.png');
+      //HUD
+        this.load.image('backgroundMoney', './ASSETS/HUDpantallas/FondoDinero.png');
+        this.load.image('shopButtonIG', './ASSETS/HUDpantallas/BotonTiendaInGame.png');
+        this.load.image('buttonFullScreen', './ASSETS/HUDpantallas/BotonFullScreen.jpg');
 
       // Música
       this.load.audio('test', './ASSETS/Music/test.mp3');
