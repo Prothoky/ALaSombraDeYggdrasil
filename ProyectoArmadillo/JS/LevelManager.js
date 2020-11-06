@@ -36,7 +36,8 @@ class LevelManager extends Phaser.Scene
         this.minDistMovingEnemy = 30;   // Mínimo de distancia tras un enemigo que se mueve
         this.minDistPlatform = 200;   // Mínimo de distancia tras una plataforma
         this.minDistSpikes = 400;   // Mínimo de distancia tras una trampa de pinchos
-        this.minDistBarricade = 250;    // Mínimo de distancia tras una barricada o tronco
+        this.minDistBarricade = 250;    // Mínimo de distancia tras una barricada
+        this.minDistTrunk = 375;    // Mínimo de distancia tras un tronco
         this.minDistPlatformToSpikes = 550; // Mínimo de distancia tras una plataforma + pinchos largos
         this.minDistCabin = 1100;   // Mínimo de distancia tras una cabaña
         this.minDistCoin = 0;   // Mínimo de distancia tras una moneda
@@ -711,7 +712,7 @@ class LevelManager extends Phaser.Scene
         localBarricade.body.setSize(230, 80);
         localBarricade.setOffset(90, 240);
         localBarricade.depth = 0;
-        return this.minDistBarricade;
+        return this.minDistTrunk;
 
     }
 
