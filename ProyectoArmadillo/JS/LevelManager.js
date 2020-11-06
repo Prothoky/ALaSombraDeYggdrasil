@@ -69,6 +69,7 @@ class LevelManager extends Phaser.Scene
         this.barricades;    // Grupo de barricadas
         this.cabins = new Array();  // Grupo de cabañas
         this.coins; // Grupo de monedas
+        this.trashRecolectors;   // Grupo de ecolector de basura (modo arcade)
         // 4.2) HUD
         this.healthPointsDisplay = new Array(); // HUD de puntos de vida
         //  4.3) Otros
@@ -80,7 +81,7 @@ class LevelManager extends Phaser.Scene
         this.attackHitbox;  // Hitbox del ataque
         this.trapFunctionsArray = new Array();  // Array que guarda las funciones de las trampas a generar
         this.endTrigger;    // Trigger del fin del nivel
-        this.trashRecolector;   // Recolector de basura (modo arcade)
+        this.halfLevelTrigger;  // Trigger de medio nivel
         this.arcadeCicleCollision;  // Punto de reset (modo arcade)
 
         // 5) VARIABLES DE INFORMACIÓN
@@ -93,6 +94,7 @@ class LevelManager extends Phaser.Scene
         this.playerAttackAvaliable = true;  // Está el ataque disponible?
         this.isPlayerInvulnerable = false;  // Es el jugador invulnerable?
         this.isCicling = false; // Está porocesando el reseteo el modo arcade?
+        this.xPointerFinalValue = 0;    // Almacena la posición donde se debe pintar la cabaña en endless mode
 
         // 6) INPUT
         // Teclas (no ejecutar si es en móvil)
@@ -218,11 +220,10 @@ class LevelManager extends Phaser.Scene
 
         // 3) OBJETOS DE CONTROL DE FLUJO
         this.arcadeIntervalTimer = this.time.addEvent( { delay: 200, callback: this.arcadeIntervalFunc, callbackScope: this, loop: true } );
-        this.endTrigger = this.physics.add.sprite(0, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight);  // Trigger de evento final de nivel
+        this.endTrigger = this.physics.add.sprite(0, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight + 200);  // Trigger de evento final de nivel
         this.endTrigger.body.setAllowGravity(false);    // Quitar gravedad
-        this.trashRecolector = this.physics.add.sprite(-200, 300, 'dot').setOrigin(1).setSize(40, 610).setVisible(false);   // Objeto que elimina trampas ya superadas
-        this.trashRecolector.body.setAllowGravity(false);   // Quita gravedad
-
+        this.halfLevelTrigger = this.physics.add.sprite(this.levelWidth / 2, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight + 200);  // Trigger de evento final de nivel
+        this.halfLevelTrigger.body.setAllowGravity(false);    // Quitar gravedad
 
         // 3) FÍSICAS
         this.physics.world.setBounds(0, 0, this.levelWidth, this.levelHeight);  // Tamaño del nivel
@@ -238,6 +239,7 @@ class LevelManager extends Phaser.Scene
         this.barricades = this.physics.add.group(); // Grupo de barricadas
         this.attackHitbox = this.physics.add.group(); // Grupo de hitbox del personaje
         this.coins = this.physics.add.staticGroup();    // Grupo de monedas
+        this.trashRecolectors = this.physics.add.group();   // Objetos que eliminan trampas ya superadas
 
         this.generateGround(200, 'ground'); // Genera suelo para todo el nivel
 
@@ -258,18 +260,24 @@ class LevelManager extends Phaser.Scene
             this.physics.add.overlap(this.player, this.endTrigger, this.endText, null, this);   // Genera el texto de fin del nivel
         } else {
             this.arcadeCicleCollision = this.physics.add.overlap(this.player, this.endTrigger, this.arcadeCicle, null, this);   // Resetea la posición del personaje y genera nuevas trampas
+            this.physics.add.overlap(this.player, this.halfLevelTrigger, this.generateEndCabin, null, this);    // Genera la cabaña de reseteo de nivel
         }
         // Recolector de basura, elimina los objetos que toca
-        this.physics.add.overlap(this.trashRecolector, this.spikesTraps, this.deleteObject, null, this);
-        this.physics.add.overlap(this.trashRecolector, this.barricades, this.deleteObject, null, this);
-        this.physics.add.overlap(this.trashRecolector, this.platforms, this.deleteObject, null, this);
-        this.physics.add.overlap(this.trashRecolector, this.enemies, this.deleteObject, null, this);
-        this.physics.add.overlap(this.trashRecolector, this.triggers, this.deleteObject, null, this);
+        this.physics.add.overlap(this.trashRecolectors, this.spikesTraps, this.deleteObject, null, this);
+        this.physics.add.overlap(this.trashRecolectors, this.barricades, this.deleteObject, null, this);
+        this.physics.add.overlap(this.trashRecolectors, this.platforms, this.deleteObject, null, this);
+        this.physics.add.overlap(this.trashRecolectors, this.enemies, this.deleteObject, null, this);
+        this.physics.add.overlap(this.trashRecolectors, this.triggers, this.deleteObject, null, this);
 
 
         // 4) GENERACIÓN PROCEDURAL
         this.generateTrapArray();   // Genera el array de las trampas disponibles en este mapa
         this.proceduralGenerator(); // Genera el mapa
+        if (this.endlessMode == true) {
+            let localTrashRecolector = this.trashRecolectors.create(-200, 300, 'dot').setOrigin(1).setSize(40, 610).setVisible(false);   // Objeto que elimina trampas ya superadas
+            localTrashRecolector.body.setAllowGravity(false);   // Quita gravedad
+            localTrashRecolector.setVelocityX(this.playerMovementSpeed);
+        }
 
 
         // 5) CÁMARA
@@ -431,9 +439,9 @@ class LevelManager extends Phaser.Scene
             xPointer += addedDistance;
         }
         if (this.endlessMode == true) { // Si es modo endless fakear el reseteo con una cabaña
-            this.generateCabinUp(xPointer, undefined, undefined, false);
         }
         this.endTrigger.x = xPointer + this.endEventOffset;
+        this.xPointerFinalValue = xPointer;
         //console.log(this.percentagesTest);    // Debug
     }
 
@@ -548,7 +556,6 @@ class LevelManager extends Phaser.Scene
             this.soundRunning.setLoop(true);
         }
         this.player.setVelocityX(this.playerMovementSpeed);
-        this.trashRecolector.setVelocityX(this.playerMovementSpeed);
         this.player.anims.play('einar_running', true);
 
     }
@@ -892,11 +899,16 @@ class LevelManager extends Phaser.Scene
 
         // Reposiciona al jugador y al recolector de basura y les da velocidad
         this.player.x = 595;
-        this.trashRecolector.x = -200;
+        let localTrashRecolector = this.trashRecolectors.create(-200, 300, 'dot').setOrigin(1).setSize(40, 610).setVisible(false);   // Objeto que elimina trampas ya superadas
+        localTrashRecolector.body.setAllowGravity(false);   // Quita gravedad)
         this.player.setVelocityX(this.playerMovementSpeed);
-        this.trashRecolector.setVelocityX(this.playerMovementSpeed);
+        localTrashRecolector.setVelocityX(this.playerMovementSpeed);
 
         this.arcadeCicleCollision.active = true;    // Permite de nuevo las colision de reseteo
+    }
+
+    generateEndCabin() {
+        this.generateCabinUp(this.xPointerFinalValue, undefined, undefined, false);
     }
     // FIN DE FUNCIONES DE FLUJO DEL JUEGO ------------------------------
 
