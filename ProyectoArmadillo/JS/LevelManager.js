@@ -76,7 +76,7 @@ class LevelManager extends Phaser.Scene
         this.jumpTimer; // Callback para salto progresivo
         this.playerAttackTimer;   // Temporizador de fin de ataque
         this.jumpSpeedDecrementTimer;   // Temporizador de disminución velocidad salto
-        this.distanceAchievedTimer; // Actualiza la distancia recorrida en el modo endless
+        this.arcadeIntervalTimer; // Actualiza la distancia recorrida en el modo endless
         this.attackHitbox;  // Hitbox del ataque
         this.trapFunctionsArray = new Array();  // Array que guarda las funciones de las trampas a generar
         this.endTrigger;    // Trigger del fin del nivel
@@ -209,12 +209,15 @@ class LevelManager extends Phaser.Scene
                 this.playerHealth = 1;
                 break;
         }
+        if (this.endlessMode == true) {
+            this.playerHealth = 30;
+        }
         // Aplica los efectos de las mejoras
         this.applyBuffs();
 
 
         // 3) OBJETOS DE CONTROL DE FLUJO
-        this.distanceAchievedTimer = this.time.addEvent( { delay: 200, callback: function() { distanceAchieved += 5; console.log(distanceAchieved); }, callbackScope: this, loop: true } );
+        this.arcadeIntervalTimer = this.time.addEvent( { delay: 200, callback: this.arcadeIntervalFunc, callbackScope: this, loop: true } );
         this.endTrigger = this.physics.add.sprite(0, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight);  // Trigger de evento final de nivel
         this.endTrigger.body.setAllowGravity(false);    // Quitar gravedad
         this.trashRecolector = this.physics.add.sprite(-200, 300, 'dot').setOrigin(1).setSize(40, 610).setVisible(false);   // Objeto que elimina trampas ya superadas
@@ -321,6 +324,7 @@ class LevelManager extends Phaser.Scene
             this.jumpButton.on('up', this.playerStopJump, this);
             this.attackButton.on('down', this.playerAttack, this);
             this.playerRight();
+            //this.testButton.on('down', this.swapVelocity, this);  // ELIMINAR VERSION FINAL
             this.testButton.on('down', this.levelCompletedFunc, this);  // ELIMINAR VERSION FINAL
         } else {    // 1.2) Modo control izq/der
             this.jumpButton.on('down', this.playerStartJump, this);
@@ -390,6 +394,16 @@ class LevelManager extends Phaser.Scene
 
     }
 
+    swapVelocity() {
+        if (this.player.body.velocity.x == 10) {
+            this.player.setVelocityX(400);            
+        } else {
+            this.player.setVelocityX(10);
+        }
+
+    }
+
+
     // FUNCIÓN DE CREADO PROCEDURAL DEL MAPA ----------------------------
     /*
     * Crea un cursor (xPointer) que va apuntando a una posición en x del nivel, desde 0 (comienzo) hasta
@@ -409,6 +423,9 @@ class LevelManager extends Phaser.Scene
             // Aumenta espacio (derivado de la configuració ndel mapa y del random)
             addedDistance += this.minTrapDistance + Math.floor(Math.random() * this.maxRandTrapDistance);
             xPointer += addedDistance;
+        }
+        if (this.endlessMode == true) { // Si es modo endless fakear el reseteo con una cabaña
+            this.generateCabinUp(xPointer);
         }
         this.endTrigger.x = xPointer + this.endEventOffset;
         //console.log(this.percentagesTest);    // Debug
@@ -841,11 +858,17 @@ class LevelManager extends Phaser.Scene
         if (this.jumpSpeedDecrementTimer != null) {
             this.jumpSpeedDecrementTimer.remove();
         }
-        if (this.distanceAchievedTimer != null) {
-            this.distanceAchievedTimer.remove();
+        if (this.arcadeIntervalTimer != null) {
+            this.arcadeIntervalTimer.remove();
         }
         //this.scene.stop();
         //this.scene.restart();
+    }
+
+    // Función que se ejecuta repetidamente en el modo arcade, actualiza posición y aumenta velocidad
+    arcadeIntervalFunc() {
+        distanceAchieved += 5;
+        this.playerMovementSpeed += 0.2;
     }
 
     // Resetea la posición del jugador (para no crear mapa infinito) y crea nuevas trampas
@@ -859,11 +882,11 @@ class LevelManager extends Phaser.Scene
         this.cabins.length = 0;
 
         this.proceduralGenerator(); // Genera trampas de nuevo
+        this.generateCabinUp(0);    // Fakea el final con una cabaña
 
         // Reposiciona al jugador y al recolector de basura y les da velocidad
-        this.player.x = 400;
+        this.player.x = 595;
         this.trashRecolector.x = -200;
-        this.playerMovementSpeed += 50;
         this.player.setVelocityX(this.playerMovementSpeed);
         this.trashRecolector.setVelocityX(this.playerMovementSpeed);
 
