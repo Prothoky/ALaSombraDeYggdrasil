@@ -37,7 +37,7 @@ class LevelManager extends Phaser.Scene
         this.minDistPlatform = 200;   // Mínimo de distancia tras una plataforma
         this.minDistSpikes = 400;   // Mínimo de distancia tras una trampa de pinchos
         this.minDistBarricade = 250;    // Mínimo de distancia tras una barricada
-        this.minDistTrunk = 375;    // Mínimo de distancia tras un tronco
+        this.minDistTrunk = 450;    // Mínimo de distancia tras un tronco
         this.minDistPlatformToSpikes = 550; // Mínimo de distancia tras una plataforma + pinchos largos
         this.minDistCabin = 1100;   // Mínimo de distancia tras una cabaña
         this.minDistCoin = 0;   // Mínimo de distancia tras una moneda
@@ -53,7 +53,7 @@ class LevelManager extends Phaser.Scene
         this.endlessMode = false;  // Modo arcade (endless)
         this.levelGroundHeight = 470;   // Altura del suelo
         // 3.1) Settings enerador procedural
-        this.levelIntroWidth = 1000; // Longitud al principio del mapa asegurado sin trampas
+        this.levelIntroWidth = 500; // Longitud al principio del mapa asegurado sin trampas
         this.endEventOffset = 500;  // Distancia desde la última trampa hasta el evento de fin de nivel.
         this.levelEndWidth = 3500;   // Longitud al final del mapa asegurado sin trampas. Debe ser muy grande.
         // 3.2) PowerUps
@@ -94,7 +94,7 @@ class LevelManager extends Phaser.Scene
         this.doubleJumpAvaliable = true;    // Está el doble salto disponible?
         this.playerAttackAvaliable = true;  // Está el ataque disponible?
         this.isPlayerInvulnerable = false;  // Es el jugador invulnerable?
-        this.isCicling = false; // Está porocesando el reseteo el modo arcade?
+        this.hasCicled = false; // Se ha completado una primera vuelta en el modo arcade?
         this.xPointerFinalValue = 0;    // Almacena la posición donde se debe pintar la cabaña en endless mode
 
         // 6) INPUT
@@ -645,7 +645,10 @@ class LevelManager extends Phaser.Scene
     // Función de creación de enemigos sin movimiento
     // xPos, yPos: posición en el mapa
     // collisionWidth, collisionHeight: tamaño de la hitbox
-    generateStillEnemy(xPos, yPos = this.levelGroundHeight - 60, collisionWidth = 40, collisionHeight = 60) {
+    generateStillEnemy(xPos, yPos = this.levelGroundHeight - 20, collisionWidth = 40, collisionHeight = 60) {
+        if (this.hasCicled) {
+            yPos += 40;
+        }
         let newEnemy = this.enemies.create(xPos, yPos, 'dude').setOrigin(1).setTint(0xe62272).refreshBody();
         newEnemy.body.setSize(collisionWidth, collisionHeight);
         return this.minDistStillEnemy;
@@ -674,7 +677,7 @@ class LevelManager extends Phaser.Scene
         localPlatform.body.checkCollision.left = false;
         localPlatform.body.checkCollision.right = false;
         localPlatform.body.checkCollision.down = false;
-        let enemyYOffset = 200; // Offset vertical del enemigo (para que caiga en la plataforma debido a los orígenes de las imágenes)
+        let enemyYOffset = 20; // Offset vertical del enemigo (para que caiga en la plataforma debido a los orígenes de las imágenes)
         if (Math.random() < 0.5 && enemy == true) {    // Generamos enemigo?
             this.generateStillEnemy(xPos + localPlatform.width*scaleFactor/2, yPos - enemyYOffset);
         }
@@ -700,6 +703,9 @@ class LevelManager extends Phaser.Scene
     izquierda, pues ajustarlo para que en las sigu9ientes esté bien.
     */
     generateBarricade(xPos, yPos = this.levelGroundHeight, scaleFactor = 0.3, visible = true) {
+        if (this.hasCicled == true) {   // fix modo arcade
+            yPos -= 60;
+        }
         let localBarricade = this.barricades.create(xPos, yPos, 'barricade').setScale(scaleFactor).setOrigin(1, 1).setVisible(visible).refreshBody();
         localBarricade.body.setSize(180, 180);
         localBarricade.setOffset(40, 150);
@@ -791,9 +797,14 @@ class LevelManager extends Phaser.Scene
     // Genera una barricada + plataforma con barricada
     generateDoubleBarricade(xPos) {
         let platformY = this.levelGroundHeight - 200;
-        this.generateBarricade(xPos);
         this.generatePlatformNoEnemy(xPos - 150, platformY);
-        this.generateBarricade(xPos, platformY);
+        if (this.hasCicled) {
+            this.generateBarricade(xPos - 90, this.levelGroundHeight - 60);
+            this.generateBarricade(xPos - 90, platformY - 60);
+        } else {
+            this.generateBarricade(xPos);
+            this.generateBarricade(xPos, platformY);
+        }
         return this.minDistDoubleBarricade;
     }
 
@@ -894,6 +905,10 @@ class LevelManager extends Phaser.Scene
 
     // Resetea la posición del jugador (para no crear mapa infinito) y crea nuevas trampas
     arcadeCicle() {
+        if (this.hasCicled != true) {   // Actualiza la variable hasCicled para un hotfix
+            this.hasCicled = true;
+        }
+
         this.arcadeCicleCollision.active = false;   // Se ejecuta una única vez
 
         // Elimina las cabañas no recogidas por el recolector de basura
