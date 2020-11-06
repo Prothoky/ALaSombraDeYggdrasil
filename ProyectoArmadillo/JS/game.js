@@ -109,3 +109,8 @@ function checkLanguage(phaserJSON){
 // Variable música entre escenas
 var musicMenu;  // Controlador de música de menú
 var musicGameplay;  // Controlador de música de gamplay
+
+// Modo arcade
+var arcadeMode = false; // Modo endless runner activado?
+var distanceAchieved = 0; // Distancia recorrida en el ultimo intento
+

@@ -76,6 +76,7 @@ class LevelManager extends Phaser.Scene
         this.jumpTimer; // Callback para salto progresivo
         this.playerAttackTimer;   // Temporizador de fin de ataque
         this.jumpSpeedDecrementTimer;   // Temporizador de disminución velocidad salto
+        this.distanceAchievedTimer; // Actualiza la distancia recorrida en el modo endless
         this.attackHitbox;  // Hitbox del ataque
         this.trapFunctionsArray = new Array();  // Array que guarda las funciones de las trampas a generar
         this.endTrigger;    // Trigger del fin del nivel
@@ -116,13 +117,13 @@ class LevelManager extends Phaser.Scene
 
     create ()
     {
-
         // ----FIX----
         // 1) ASIGNACIONES DE RESETEO
         // Vuelve a asignar los valores de determinadas variables al reintentar ya que no pasa correctamente por el constructor
         this.playerAttackAvaliable = true;
         this.isPlayerInvulnerable = false;
         this.doubleJumpAvaliable = true;
+        distanceAchieved = 0;  // Distancia modo endless a 0
 
 
         // ----ASSETS----
@@ -213,6 +214,7 @@ class LevelManager extends Phaser.Scene
 
 
         // 3) OBJETOS DE CONTROL DE FLUJO
+        this.distanceAchievedTimer = this.time.addEvent( { delay: 200, callback: function() { distanceAchieved += 5; console.log(distanceAchieved); }, callbackScope: this, loop: true } );
         this.endTrigger = this.physics.add.sprite(0, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight);  // Trigger de evento final de nivel
         this.endTrigger.body.setAllowGravity(false);    // Quitar gravedad
         this.trashRecolector = this.physics.add.sprite(-200, 300, 'dot').setOrigin(1).setSize(40, 610).setVisible(false);   // Objeto que elimina trampas ya superadas
@@ -423,26 +425,32 @@ class LevelManager extends Phaser.Scene
     // al nivel y con los porcentajes de aparición indicados.
     randomTrapIndex() {
         let maxValue = 0;
-        for (let i = 0; i < levelTrapValues[DifficultyIndexSubnode(levelIndex)].length; i++) {
-            maxValue += levelTrapValues[DifficultyIndexSubnode(levelIndex)][i][1];
+        let difficultyIndex = 0;
+        if (this.endlessMode == true) {
+            difficultyIndex = 10;
+        } else {
+            difficultyIndex = DifficultyIndexSubnode(levelIndex);
+        }
+        for (let i = 0; i < levelTrapValues[difficultyIndex].length; i++) {
+            maxValue += levelTrapValues[difficultyIndex][i][1];
         }
         let trapIndex = Math.floor(Math.random() * maxValue);
-        let pointer = levelTrapValues[DifficultyIndexSubnode(levelIndex)].length;
+        let pointer = levelTrapValues[difficultyIndex].length;
         while (trapIndex >= 0 && pointer > 0) {
             pointer--;
-            trapIndex -= levelTrapValues[DifficultyIndexSubnode(levelIndex)][pointer][1];
+            trapIndex -= levelTrapValues[difficultyIndex][pointer][1];
         }
         //this.percentagesTest[pointer]++;
-        return levelTrapValues[DifficultyIndexSubnode(levelIndex)][pointer][0];
+        return levelTrapValues[difficultyIndex][pointer][0];
     }
 
     // Genera el array con las trampas disponibles del mapa
     generateTrapArray() {
         let trapFunctionsNames = [ 'this.generateSpikesTrap', 'this.generatePlatformNoEnemy', 'this.generateStillEnemy',
-                                'this.generatePlatform', 'this.generateMovingEnemy', 'this.generatePlatformToSpikes',
-                                'this.generateSmallSpikesNoEnemy', 'this.generateSmallSpikes', 'this.generateBarricade',
-                                'this.generateTrunk', 'this.generateCabinUp', 'this.generatePlatformToCoin', 
-                                'this.generateDoubleBarricade' ];
+                                    'this.generatePlatform', 'this.generateMovingEnemy', 'this.generatePlatformToSpikes',
+                                    'this.generateSmallSpikesNoEnemy', 'this.generateSmallSpikes', 'this.generateBarricade',
+                                    'this.generateTrunk', 'this.generateCabinUp', 'this.generatePlatformToCoin', 
+                                    'this.generateDoubleBarricade' ];
         for (let i = 0; i < trapFunctionsNames.length; i++) {
             this.trapFunctionsArray[i] = trapFunctionsNames[i];
         }
@@ -555,7 +563,7 @@ class LevelManager extends Phaser.Scene
             this.attackHitbox.clear(true, true);
             this.playerAttackCounter = 0;
             this.playerAttackTimer.remove();
-            this.playerAttackCooldownTimer = this.time.addEvent( { delay: this.playerAttackCooldown, callback: function () { this.playerAttackAvaliable = true }, callbackScope: this, loop: false } );
+            this.playerAttackCooldownTimer = this.time.addEvent( { delay: this.playerAttackCooldown, callback: function () { this.playerAttackAvaliable = true; }, callbackScope: this, loop: false } );
         } else {    // Actualiza la posición de la hitbox
             this.attackHitbox.getChildren()[0].x = this.player.body.x + this.playerHitboxWidth * this.playerResizeFactor;
             this.attackHitbox.getChildren()[0].y = this.player.body.y;
@@ -792,14 +800,24 @@ class LevelManager extends Phaser.Scene
 
     // Carga los datos del fichero de configuración
     loadSettings() {
-        let i = DifficultyIndexSubnode(levelIndex);
-        let l = userConfig.difficulty;
-        console.log(levelSettings[1][0][0]);
-        this.lengthMultiplier = levelSettings[i][l][0];
-        this.levelWidth = gameWidth * this.lengthMultiplier;
-        this.playerMovementSpeed = levelSettings[i][l][1];
-        this.minTrapDistance = levelSettings[i][l][2];
-        this.goldBase = levelSettings[i][l][3];
+        if (arcadeMode == true) {
+            this.endlessMode = true;
+            let i = 10;
+            let l = 0;
+            this.lengthMultiplier = levelSettings[i][l][0];
+            this.levelWidth = gameWidth * this.lengthMultiplier;
+            this.playerMovementSpeed = levelSettings[i][l][1];
+            this.minTrapDistance = levelSettings[i][l][2];
+            this.goldBase = levelSettings[i][l][3];
+        } else {
+            let i = DifficultyIndexSubnode(levelIndex);
+            let l = userConfig.difficulty;
+            this.lengthMultiplier = levelSettings[i][l][0];
+            this.levelWidth = gameWidth * this.lengthMultiplier;
+            this.playerMovementSpeed = levelSettings[i][l][1];
+            this.minTrapDistance = levelSettings[i][l][2];
+            this.goldBase = levelSettings[i][l][3];
+        }
     }
 
     // Reinicia el nivel
@@ -810,6 +828,7 @@ class LevelManager extends Phaser.Scene
         this.isPlayerTouchingGround = false;
         this.playerAttackAvaliable = true;
         this.doubleJumpAvaliable = true;
+        distanceAchieved = 0;
         if (this.jumpTimer != null) {
             this.jumpTimer.remove();
         }
@@ -821,6 +840,9 @@ class LevelManager extends Phaser.Scene
         }
         if (this.jumpSpeedDecrementTimer != null) {
             this.jumpSpeedDecrementTimer.remove();
+        }
+        if (this.distanceAchievedTimer != null) {
+            this.distanceAchievedTimer.remove();
         }
         //this.scene.stop();
         //this.scene.restart();
@@ -840,7 +862,6 @@ class LevelManager extends Phaser.Scene
 
         // Reposiciona al jugador y al recolector de basura y les da velocidad
         this.player.x = 400;
-        this.player.y = this.playerStartPositionY;
         this.trashRecolector.x = -200;
         this.playerMovementSpeed += 50;
         this.player.setVelocityX(this.playerMovementSpeed);

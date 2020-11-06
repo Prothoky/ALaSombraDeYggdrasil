@@ -1,17 +1,17 @@
 /*
-LevelTrapValues[i] -> i indica el nivel
-LevelTrapValues[i][j, k] -> j indica la trampa a settear el porcentaje de aparición, 
-k indica el porcentaje de aparición de dicha trampa. Se suman todos los porcentajes de
-aparición de LevelTrapValues[i] y ese es el total.
-(ej: [0, 3],[1, 3],[2, 3] aparecerían igual porcentaje de trampas 0, 1 y 2)
-Leyenda de trampas
-
 const seasons = {
     SUMMER: 'summer',
     WINTER: 'winter',
     SPRING: 'spring',
     AUTUMN: 'autumn'
 }
+
+LevelTrapValues[i] -> i indica el nivel (10 modo endless)
+LevelTrapValues[i][j, k] -> j indica la trampa a settear el porcentaje de aparición, 
+k indica el porcentaje de aparición de dicha trampa. Se suman todos los porcentajes de
+aparición de LevelTrapValues[i] y ese es el total.
+(ej: [0, 3],[1, 3],[2, 3] aparecerían igual porcentaje de trampas 0, 1 y 2)
+Leyenda de trampas
 
 0 - pinchos standar
 1 - plataformas
@@ -39,9 +39,10 @@ levelTrapValues[6] = [ [0, 1], [1, 1], [2, 1], [3, 1], [5, 1], [6, 1], [7, 1] ];
 levelTrapValues[7] = [ [0, 1], [1, 1], [2, 1], [3, 1], [5, 1], [6, 1], [7, 1] ];
 levelTrapValues[8] = [ [0, 1], [1, 1], [2, 1], [3, 1], [5, 1], [6, 1], [7, 1] ];
 levelTrapValues[9] = [ [0, 1], [1, 1], [2, 1], [3, 1], [5, 1], [6, 1], [7, 1] ];
+levelTrapValues[10] = [ [0, 2], [1, 2], [2, 2], [3, 2], [5, 2], [6, 1], [7, 1], [8, 2], [9, 2], [10, 0], [12, 2] ];
 
 /*
-LevelSetting[i][l] -> i indica el nivel, l la dificultad (0 = facil, 1 = normal , 2 dificil)
+LevelSetting[i][l] -> i indica el nivel (10 modo endless), l la dificultad (0 = facil, 1 = normal , 2 dificil)
 LevelTrapvalues[i][l][j] -> j indica el valor de la setting.
 Leyenda de índices de settings:
 0 - longitud del mapa (en múltiplos de 1270, siendo 10 = 12700...(predeterminado))
@@ -60,3 +61,4 @@ levelSettings[6] = [ [10, 550, 200, 100], [10, 550, 200, 100], [10, 550, 200, 10
 levelSettings[7] = [ [10, 550, 200, 100], [10, 550, 200, 100], [10, 550, 200, 100] ];
 levelSettings[8] = [ [10, 550, 200, 100], [10, 550, 200, 100], [10, 550, 200, 100] ];
 levelSettings[9] = [ [10, 550, 200, 100], [10, 550, 200, 100], [10, 550, 200, 100] ];
+levelSettings[10] = [ [10, 550, 200, 100] ];
