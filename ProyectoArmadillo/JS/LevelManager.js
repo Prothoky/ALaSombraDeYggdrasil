@@ -273,10 +273,12 @@ class LevelManager extends Phaser.Scene
         // 4) GENERACIÓN PROCEDURAL
         this.generateTrapArray();   // Genera el array de las trampas disponibles en este mapa
         this.proceduralGenerator(); // Genera el mapa
+        // Especial para modo arcade
         if (this.endlessMode == true) {
             let localTrashRecolector = this.trashRecolectors.create(-200, 300, 'dot').setOrigin(1).setSize(40, 610).setVisible(false);   // Objeto que elimina trampas ya superadas
             localTrashRecolector.body.setAllowGravity(false);   // Quita gravedad
             localTrashRecolector.setVelocityX(this.playerMovementSpeed);
+            this.levelIntroWidth = 1500;
         }
 
 
@@ -722,7 +724,12 @@ class LevelManager extends Phaser.Scene
         this.generatePlatform(xPos - 250, 360, false);
         this.generatePlatform(xPos + 165, 317, enemies, 0.35, false);
         this.generatePlatform(xPos + 395, 317, enemies, 0.35, false);
-        this.generateBarricade(xPos + 290, undefined, 0.7, false);
+        // Fix modo arcade hitbox desplazada
+        if (this.endlessMode == true) {
+            this.generateBarricade(xPos + 370, undefined, 0.7, false);
+        } else {
+            this.generateBarricade(xPos + 290, undefined, 0.7, false);
+        }
         this.cabins[this.cabins.length] = localCabin;   // Almacena referencia para su eliminación
         return this.minDistCabin;
     }
