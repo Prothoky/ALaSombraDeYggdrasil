@@ -4,7 +4,7 @@
 #### Título  
 A la sombra de Yggdrasil
 #### Género 
-Es un runner en 2D con scroll lateral con narrativa vikinga.
+Es un runner en 2D scroll lateral con narrativa vikinga.
 #### Audiencia
 Pensado para todo jugador interesado en la cultura vikinga y todos aquellos que les guste los plataformas [seguir].
 #### Plataformas
@@ -137,8 +137,16 @@ A la hora de acabar el nivel, el jugador recibirá un dinero por el recorrido, d
 ## Estilo artístico y música
 
 ## Experiencia de usuario
-Pensando en la experiencia de usuario, tendremos que dividirla  en función el tipo de jugador que tengamos.
-Casual, 
+Pensando en la experiencia de usuario, tendremos que dividirla  en función el tipo de jugador que tengamos. 
+
+*Modificar y aumentar esto*
+
+**Casual:** ese jugador que no tiene un gusto muy especifico y juega con pocas pretensiones. Estos se alejan de las dificultades asfixiantes y disfrutan del juego a modo de travesia, no suelen tener un alto nivel de juego.
+
+**Explorador:** ese jugador va a indagar en todos los aspectos del juego, interesandose por la historia y los distintos cambios que van surgiendo conforme va progresando en el juego.
+
+**Arcade:** ese jugador interesado unicamente en el modo endless runner, este tipo de jugadores huye de todo tipo de historia o explicaciones posibles, va al grano y tiene un entretenimiento muy concreto. Suelen buscar un nivel de dificultad fuerte para poner a prueba su destreza.
+
 ## Modelo de negocio
 Para sostener este proyecto a dos años vista tenemos desarrollado un sistema de lanzamiento periódico del contenido del juego, de este modo conseguiremos extender el pulso del juego y rentabilizar el trabajo con un mayor beneficio económico.
 
@@ -158,6 +166,9 @@ En la tienda se podrán adquirir escudos para las vidas, y nuevas habilidades pa
 Los controles los vamos a definir en dos bloques, cada uno en función al entorno de juego en el que el usuario se encuentra:
  Ordenador:
  [Incluir tabla]
+ 
+ 
+ 
  
  Móvil:
  [Incluir tabla]
