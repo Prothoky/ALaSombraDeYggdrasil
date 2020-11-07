@@ -52,6 +52,8 @@ class World1Map extends Phaser.Scene{
     this.backgroundW1 = this.add.image(0, 0, 'backgroundWM1M');
     this.backgroundW1.setScale(2/3);
     this.backgroundW1.setPosition(gameWidth/2, gameHeight/2);
+    this.backgroundW1.setInteractive({ useHandCursor: false  } )
+    .on('pointerdown', () => (this.nameActiveNode.setVisible(false), this.activeNode.setVisible(false), this.numActiveNodes = 0));
 
     //MONEY
     this.backgroundMoney = this.add.image(0, 0, 'backgroundMoney');
@@ -116,7 +118,11 @@ class World1Map extends Phaser.Scene{
 
     //SUBNIVEL 1.1
     //Boton Desbloqueado
-    this.buttonSubnode1_1 = this.add.image(gameWidth*12.6/16, gameHeight*14.50/16, 'ButtonSubNode1');
+    this.subnode1_1 = this.add.image(gameWidth*12.6/16, gameHeight*14.50/16, 'ButtonSubNode1');
+    this.subnode1_1.setScale(2/3);
+    this.subnode1_1.setVisible(false);
+
+    this.buttonSubnode1_1 = this.add.image(gameWidth*13.5/16, gameHeight*13.65/16, 'NodeDeselected');
     this.buttonSubnode1_1.setScale(2/3);
     this.buttonSubnode1_1.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.AccessToLevel(10));
@@ -148,7 +154,11 @@ class World1Map extends Phaser.Scene{
 
     //SUBNIVEL 2.1
     //Boton Desbloqueado
-    this.buttonSubnode2_1 = this.add.image(gameWidth*8.97/16, gameHeight*12.32/16, 'ButtonSubNode2');
+    this.subnode2_1 = this.add.image(gameWidth*8.97/16, gameHeight*12.32/16, 'ButtonSubNode2');
+    this.subnode2_1.setScale(2/3);
+    this.subnode2_1.setVisible(false);
+
+    this.buttonSubnode2_1 = this.add.image(gameWidth*8.3/16, gameHeight*11.92/16, 'NodeDeselected');
     this.buttonSubnode2_1.setScale(2/3);
     this.buttonSubnode2_1.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.AccessToLevel(11));
@@ -197,7 +207,12 @@ class World1Map extends Phaser.Scene{
 
     //SUBNIVEL 4.1
     //Boton Desbloqueado
-    this.buttonSubnode4_1 = this.add.image(gameWidth*2.28/16, gameHeight*9.15/16, 'ButtonSubNode4_1');
+    this.subnode4_1 = this.add.image(gameWidth*2.28/16, gameHeight*9.15/16, 'ButtonSubNode4_1');
+    this.subnode4_1.setScale(2/3);
+    this.subnode4_1.setDepth(1);
+    this.subnode4_1.setVisible(false);
+
+    this.buttonSubnode4_1 = this.add.image(gameWidth*2.50/16, gameHeight*7.05/16, 'NodeDeselected');
     this.buttonSubnode4_1.setScale(2/3);
     this.buttonSubnode4_1.setDepth(1);
     this.buttonSubnode4_1.setInteractive({ useHandCursor: true  } )
@@ -206,6 +221,7 @@ class World1Map extends Phaser.Scene{
     //Botón Seleccionado
     this.buttonSubnode4_1Sel = this.add.image(gameWidth*2.53/16, gameHeight*7.0/16, 'ButtonSubNodeSel');
     this.buttonSubnode4_1Sel.setScale(2/3);
+    this.buttonSubnode4_1Sel.setDepth(1);
     this.buttonSubnode4_1Sel.setVisible(false);
     //Fondo con nombre
     /*this.nameSubnode4_1 = this.add.image(gameWidth*11.41/16, gameHeight*11.8/16, 'Level0Name');
@@ -214,13 +230,17 @@ class World1Map extends Phaser.Scene{
 
     //SUBNIVEL 4.2
     //Boton Desbloqueado
-    this.buttonSubnode4_2 = this.add.image(gameWidth*3.75/16, gameHeight*8.7/16, 'ButtonSubNode4_2');
+    this.subnode4_2 = this.add.image(gameWidth*3.75/16, gameHeight*8.7/16, 'ButtonSubNode4_2');
+    this.subnode4_2.setScale(2/3);
+    this.subnode4_2.setVisible(false);
+
+    this.buttonSubnode4_2 = this.add.image(gameWidth*4.65/16, gameHeight*8.75/16, 'NodeDeselected');
     this.buttonSubnode4_2.setScale(2/3);
     this.buttonSubnode4_2.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.AccessToLevel(13));
     this.buttonSubnode4_2.setVisible(false);
     //Botón Seleccionado
-    this.buttonSubnode4_2Sel = this.add.image(gameWidth*4.68/16, gameHeight*8.8/16, 'ButtonSubNodeSel');
+    this.buttonSubnode4_2Sel = this.add.image(gameWidth*4.68/16, gameHeight*8.78/16, 'ButtonSubNodeSel');
     this.buttonSubnode4_2Sel.setScale(2/3);
     this.buttonSubnode4_2Sel.setVisible(false);
     //Fondo con nombre
@@ -246,7 +266,12 @@ class World1Map extends Phaser.Scene{
 
     //SUBNIVEL 5.1
     //Boton Desbloqueado
-    this.buttonSubnode5_1 = this.add.image(gameWidth*3.05/16, gameHeight*3.3/16, 'ButtonSubNode5_1');
+    this.subnode5_1 = this.add.image(gameWidth*3.05/16, gameHeight*3.3/16, 'ButtonSubNode5_1');
+    this.subnode5_1.setScale(2/3);
+    this.subnode5_1.setDepth(2);
+    this.subnode5_1.setVisible(false);
+
+    this.buttonSubnode5_1 = this.add.image(gameWidth*3.2/16, gameHeight*1.9/16, 'NodeDeselected');
     this.buttonSubnode5_1.setScale(2/3);
     this.buttonSubnode5_1.setDepth(2);
     this.buttonSubnode5_1.setInteractive({ useHandCursor: true  } )
@@ -264,7 +289,11 @@ class World1Map extends Phaser.Scene{
 
     //SUBNIVEL 5.2
     //Boton Desbloqueado
-    this.buttonSubnode5_2 = this.add.image(gameWidth*1.95/16, gameHeight*1.95/16, 'ButtonSubNode5_2');
+    this.subnode5_2 = this.add.image(gameWidth*1.95/16, gameHeight*1.95/16, 'ButtonSubNode5_2');
+    this.subnode5_2.setScale(2/3);
+    this.subnode5_2.setVisible(false);
+
+    this.buttonSubnode5_2 = this.add.image(gameWidth*1/16, gameHeight*1.45/16, 'NodeDeselected');
     this.buttonSubnode5_2.setScale(2/3);
     this.buttonSubnode5_2.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.AccessToLevel(15));
@@ -312,7 +341,12 @@ class World1Map extends Phaser.Scene{
 
     //SUBNIVEL 7.1
     //Boton Desbloqueado
-    this.buttonSubnode7_1 = this.add.image(gameWidth*7.86/16, gameHeight*7.85/16, 'ButtonSubNode7_1');
+    this.subnode7_1 = this.add.image(gameWidth*7.86/16, gameHeight*7.85/16, 'ButtonSubNode7_1');
+    this.subnode7_1.setScale(2/3);
+    this.subnode7_1.setDepth(2);
+    this.subnode7_1.setVisible(false)
+
+    this.buttonSubnode7_1 = this.add.image(gameWidth*8.33/16, gameHeight*7.87/16, 'NodeDeselected');
     this.buttonSubnode7_1.setScale(2/3);
     this.buttonSubnode7_1.setDepth(2);
     this.buttonSubnode7_1.setInteractive({ useHandCursor: true  } )
@@ -330,7 +364,11 @@ class World1Map extends Phaser.Scene{
 
     //SUBNIVEL 7.2
     //Boton Desbloqueado
-    this.buttonSubnode7_2 = this.add.image(gameWidth*9.35/16, gameHeight*8.55/16, 'ButtonSubNode7_2');
+    this.subnode7_2 = this.add.image(gameWidth*9.35/16, gameHeight*8.55/16, 'ButtonSubNode7_2');
+    this.subnode7_2.setScale(2/3);
+    this.subnode7_2.setVisible(false);
+
+    this.buttonSubnode7_2 = this.add.image(gameWidth*9.95/16, gameHeight*8/16, 'NodeDeselected');
     this.buttonSubnode7_2.setScale(2/3);
     this.buttonSubnode7_2.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.AccessToLevel(17));
@@ -384,21 +422,25 @@ class World1Map extends Phaser.Scene{
     }
     if (user.map[1] == true){
       this.buttonNode2.setVisible(true);
+      this.subnode1_1.setVisible(true);
       this.buttonSubnode1_1.setVisible(true);
     }
     if (user.map[2] == true){
       this.buttonNode3.setVisible(true);
       this.buttonSubnode2_1.setVisible(true);
+      this.subnode2_1.setVisible(true);
     }
     if (user.map[3] == true){
       this.buttonNode4.setVisible(true);
     }
     if (user.map[4] == true){
       this.buttonNode5.setVisible(true);
+      this.subnode4_1.setVisible(true);
       this.buttonSubnode4_1.setVisible(true);
     }
     if (user.map[5] == true){
       this.buttonNode6.setVisible(true);
+      this.subnode5_1.setVisible(true);
       this.buttonSubnode5_1.setVisible(true);
     }
     if (user.map[6] == true){
@@ -406,6 +448,7 @@ class World1Map extends Phaser.Scene{
     }
     if (user.map[7] == true){
       this.buttonNode8.setVisible(true);
+      this.subnode7_1.setVisible(true);
       this.buttonSubnode7_1.setVisible(true);
     }
     if (user.map[8] == true){
@@ -417,13 +460,16 @@ class World1Map extends Phaser.Scene{
 
     if (user.map[12] == true){
      this.buttonSubnode4_2.setVisible(true);
+     this.subnode4_2.setVisible(true);
     }
 
     if (user.map[14] == true){
+     this.subnode5_2.setVisible(true);
      this.buttonSubnode5_2.setVisible(true);
     }
 
     if (user.map[16] == true){
+     this.subnode7_2.setVisible(true);
      this.buttonSubnode7_2.setVisible(true);
     }
 
@@ -812,9 +858,6 @@ class World1Map extends Phaser.Scene{
       break;
 
      }
-
-     this.backgroundW1.setInteractive({ useHandCursor: true  } )
-     .on('pointerdown', () => (this.nameActiveNode.setVisible(false), this.activeNode.setVisible(false), this.numActiveNodes = 0));
 
    }
 
