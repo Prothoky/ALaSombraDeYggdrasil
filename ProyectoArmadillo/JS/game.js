@@ -62,18 +62,9 @@ unlockDate=new Date(2021 ,2 ,1);
 
 var phaserJSON;
 
-var user = { //Mapas desbloqueados y dinero del jugador
-  world: [true,false,false,false,false,false,false,false,false],
-  map: [false, false, false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-  buffs: [0, 0, 0, 0],
-  money: 0,
-}
+var user; 
 
-var userConfig = {
-  volumeMusic: 5,
-  volumeEffects: 5,
-  difficulty: 0, // Indica la dificultad escogida: 0 fácil - 1 normal - 2 dificil  (aún sin implementar)
-}
+var userConfig;
 
 function saveUserData(){
   localStorage.setItem("UserData", JSON.stringify(user));
@@ -97,21 +88,15 @@ function resetUserData(){
 
 var stringsJSON;
 
-function checkLanguage(){
-  var userLang = navigator.language || navigator.userLanguage;
+function updateLanguage(userLang=null){
+  if(userLang==null)
+    userLang = navigator.language || navigator.userLanguage;
   if(userLang == "es-ES" || "es"){
     stringsJSON = phaserJSON.esp;
   }
   else if(userLang == "en-US" || "en"){
     stringsJSON = phaserJSON.eng;
   }
-}
-
-function updateLanguage(language){
-  if(language=="esp")
-    stringsJSON=phaserJSON.esp;
-  else if(language=="eng")
-    stringsJSON=phaserJSON.eng;
 }
 
 // Variable música entre escenas

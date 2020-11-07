@@ -200,7 +200,7 @@ class PreloadMenu extends Phaser.Scene{
 
     phaserJSON = this.cache.json.get('Data');
 
-    checkLanguage();
+    updateLanguage();
     var wid = this.cameras.main.width;
     var heig = this.cameras.main.height;
 
