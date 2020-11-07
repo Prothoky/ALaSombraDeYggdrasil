@@ -62,18 +62,18 @@ unlockDate=new Date(2021 ,2 ,1);
 
 var phaserJSON;
 
-var user ={
-   world: [true,false,false,false,false,false,false,false,false],
-   map: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-   buffs:[0, 0, 0, 0],
-   money: 0
-   },
+var user = { //Mapas desbloqueados y dinero del jugador
+  world: [true,false,false,false,false,false,false,false,false],
+  map: [false, false, false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+  buffs: [0, 0, 0, 0],
+  money: 0,
+}
 
- var userConfig = {
-    volumeMusic: 5,
-    volumeEffects: 5,
-    difficulty : 0
-    },
+var userConfig = {
+  volumeMusic: 5,
+  volumeEffects: 5,
+  difficulty: 0, // Indica la dificultad escogida: 0 fácil - 1 normal - 2 dificil  (aún sin implementar)
+}
 
 function saveUserData(){
   localStorage.setItem("UserData", JSON.stringify(user));
