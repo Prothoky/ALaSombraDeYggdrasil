@@ -36,8 +36,8 @@ class PreloadMenu extends Phaser.Scene{
       });
 
       percentText.setOrigin(0.5, 0.5);
+      console.log("Loading");
       this.load.on("progress", function(value){
-          console.log(value);
           percentText.setText(parseInt(value * 100) + ' %');
           progressBar.clear();
           progressBar.fillStyle(0xCB2821, 1);

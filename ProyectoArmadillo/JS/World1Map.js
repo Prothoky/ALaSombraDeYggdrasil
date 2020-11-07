@@ -37,7 +37,6 @@ class World1Map extends Phaser.Scene{
   }
 
   create(){
-
     // Controlador de audio
     // Paramos música gameplay
     if (musicGameplay != null && musicGameplay.isPlaying) {

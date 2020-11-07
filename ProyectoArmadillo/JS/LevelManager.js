@@ -119,6 +119,7 @@ class LevelManager extends Phaser.Scene
 
     create ()
     {
+        console.log(arcadeMode);
         // ----FIX----
         // 1) ASIGNACIONES DE RESETEO
         // Vuelve a asignar los valores de determinadas variables al reintentar ya que no pasa correctamente por el constructor
@@ -816,6 +817,7 @@ class LevelManager extends Phaser.Scene
     // Devuelve el jugador al mapa del mundo (al completar el nivel)
     finalDialog() {
         musicGameplay.stop();
+        this.soundRunning.stop();
         this.player.setVelocityX(0);
         this.trashRecolector.setVelocityX(0);
         this.DialogText.setVisible(true);
@@ -871,6 +873,7 @@ class LevelManager extends Phaser.Scene
             this.minTrapDistance = levelSettings[i][l][2];
             this.goldBase = levelSettings[i][l][3];
         } else {
+            this.endlessMode = false;
             let i = DifficultyIndexSubnode(levelIndex);
             let l = userConfig.difficulty;
             this.lengthMultiplier = levelSettings[i][l][0];
@@ -1039,7 +1042,6 @@ class LevelManager extends Phaser.Scene
 
     PauseGame() {
         this.soundRunning.stop();
-        console.log('HOLA');
         this.scene.run('PauseMenu');
         this.scene.bringToTop('PauseMenu');
         this.scene.pause();

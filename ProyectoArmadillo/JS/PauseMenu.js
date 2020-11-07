@@ -47,7 +47,13 @@ class PauseMenu extends Phaser.Scene{
 
   QuitGame(){
     this.scene.stop('LevelManager');
-    this.scene.start('World1Map');
-    this.scene.bringToTop('World1Map');
+    if(arcadeMode==true){
+      this.scene.start('MainMenu');
+      this.scene.bringToTop('MainMenu');
+    }
+    else{
+      this.scene.start('World1Map');
+      this.scene.bringToTop('World1Map');
+    }
   }
 }
