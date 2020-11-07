@@ -62,14 +62,14 @@ unlockDate=new Date(2021 ,2 ,1);
 
 var phaserJSON;
 
-var user {
+var user ={
    world: [true,false,false,false,false,false,false,false,false],
    map: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
    buffs:[0, 0, 0, 0],
    money: 0
    },
 
- var userConfig : {
+ var userConfig = {
     volumeMusic: 5,
     volumeEffects: 5,
     difficulty : 0
