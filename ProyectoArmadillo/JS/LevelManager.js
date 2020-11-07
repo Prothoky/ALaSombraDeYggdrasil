@@ -71,6 +71,7 @@ class LevelManager extends Phaser.Scene
         this.cabins = new Array();  // Grupo de cabañas
         this.coins; // Grupo de monedas
         this.trashRecolectors;   // Grupo de ecolector de basura (modo arcade)
+        this.trashRecolectorRemover;    // Eliminador de recolectores de basura
         // 4.2) HUD
         this.healthPointsDisplay = new Array(); // HUD de puntos de vida
         //  4.3) Otros
@@ -225,6 +226,8 @@ class LevelManager extends Phaser.Scene
         this.endTrigger.body.setAllowGravity(false);    // Quitar gravedad
         this.halfLevelTrigger = this.physics.add.sprite(this.levelWidth / 2, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight + 200);  // Trigger de evento final de nivel
         this.halfLevelTrigger.body.setAllowGravity(false);    // Quitar gravedad
+        this.trashRecolectorRemover = this.physics.add.sprite(this.levelWidth, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight + 200);  // Elimina los recolectores de basura
+        this.trashRecolectorRemover.body.setAllowGravity(false);
 
         // 3) FÍSICAS
         this.physics.world.setBounds(0, 0, this.levelWidth, this.levelHeight);  // Tamaño del nivel
@@ -269,6 +272,7 @@ class LevelManager extends Phaser.Scene
         this.physics.add.overlap(this.trashRecolectors, this.platforms, this.deleteObject, null, this);
         this.physics.add.overlap(this.trashRecolectors, this.enemies, this.deleteObject, null, this);
         this.physics.add.overlap(this.trashRecolectors, this.triggers, this.deleteObject, null, this);
+        this.physics.add.overlap(this.trashRecolectorRemover, this.trashRecolectors, this.deleteObject, null, this);
 
 
         // 4) GENERACIÓN PROCEDURAL
