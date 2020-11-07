@@ -819,7 +819,6 @@ class LevelManager extends Phaser.Scene
         musicGameplay.stop();
         this.soundRunning.stop();
         this.player.setVelocityX(0);
-        this.trashRecolector.setVelocityX(0);
         this.DialogText.setVisible(true);
         this.player.anims.play('einar_iddle', true);
         this.DialogText.setText(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)][this.indexText]);
