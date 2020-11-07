@@ -446,8 +446,6 @@ class LevelManager extends Phaser.Scene
             addedDistance += this.minTrapDistance + Math.floor(Math.random() * this.maxRandTrapDistance);
             xPointer += addedDistance;
         }
-        if (this.endlessMode == true) { // Si es modo endless fakear el reseteo con una cabaña
-        }
         this.endTrigger.x = xPointer + this.endEventOffset;
         this.xPointerFinalValue = xPointer;
         //console.log(this.percentagesTest);    // Debug
@@ -682,7 +680,12 @@ class LevelManager extends Phaser.Scene
         localPlatform.body.checkCollision.left = false;
         localPlatform.body.checkCollision.right = false;
         localPlatform.body.checkCollision.down = false;
-        let enemyYOffset = 20; // Offset vertical del enemigo (para que caiga en la plataforma debido a los orígenes de las imágenes)
+        let enemyYOffset; // Offset vertical del enemigo (para que caiga en la plataforma debido a los orígenes de las imágenes)
+        if (this.endlessMode == false) {
+            enemyYOffset = 40;
+        } else {
+            enemyYOffset = 20;
+        }
         if (Math.random() < 0.5 && enemy == true) {    // Generamos enemigo?
             this.generateStillEnemy(xPos + localPlatform.width*scaleFactor/2, yPos - enemyYOffset);
         }
@@ -803,7 +806,7 @@ class LevelManager extends Phaser.Scene
     generateDoubleBarricade(xPos) {
         let platformY = this.levelGroundHeight - 200;
         this.generatePlatformNoEnemy(xPos - 150, platformY);
-        if (this.hasCicled) {
+        if (this.endlessMode && this.hasCicled) {
             this.generateBarricade(xPos - 90, this.levelGroundHeight - 60);
             this.generateBarricade(xPos - 90, platformY - 60);
         } else {
