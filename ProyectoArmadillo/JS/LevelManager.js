@@ -213,8 +213,11 @@ class LevelManager extends Phaser.Scene
         this.arcadeIntervalTimer = this.time.addEvent( { delay: 200, callback: this.arcadeIntervalFunc, callbackScope: this, loop: true } );
         this.endTrigger = this.physics.add.sprite(0, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight + 200);  // Trigger de evento final de nivel
         this.endTrigger.body.setAllowGravity(false);    // Quitar gravedad
-        this.halfLevelTrigger = this.physics.add.sprite(this.levelWidth / 2, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight + 200);  // Trigger de evento final de nivel
-        this.halfLevelTrigger.body.setAllowGravity(false);    // Quitar gravedad
+        if (this.endlessMode == true) {
+            this.halfLevelTrigger = this.physics.add.sprite(this.levelWidth / 2, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight + 200);  // Trigger de evento final de nivel
+            this.halfLevelTrigger.body.setAllowGravity(false);    // Quitar gravedad
+            this.halfLevelTrigger.setVisible(false);
+        }
         this.trashRecolectorRemover = this.physics.add.sprite(this.levelWidth, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight + 200);  // Elimina los recolectores de basura
         this.trashRecolectorRemover.body.setAllowGravity(false);
 
