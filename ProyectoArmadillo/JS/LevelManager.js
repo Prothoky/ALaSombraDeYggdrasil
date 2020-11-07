@@ -310,6 +310,8 @@ class LevelManager extends Phaser.Scene
         //DIALOG End Level
         this.DialogBg = this.add.image(gameWidth*1/2, gameHeight*1/2, 'paperDesciptionMSM');
         this.DialogBg.setScrollFactor(0);
+        this.DialogBg.setInteractive({ useHandCursor: true  } )
+        .on('pointerdown', () => this.nextDialog());
         this.DialogBg.setVisible(false);
 
         this.DialogImage = this.add.image(gameWidth*1/2, gameHeight*1/2, 'buttonFullScreen');
@@ -320,12 +322,6 @@ class LevelManager extends Phaser.Scene
         this.DialogText = this.add.text(gameWidth*1/2, gameHeight*1/2,  stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)][0], {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "black", strokeThickness: 2});
         this.DialogText.setScrollFactor(0);
         this.DialogText.setVisible(false);
-
-        this.dialogButton = this.add.image(100, 100, 'pauseButton');
-        this.dialogButton.setInteractive({ useHandCursor: true  } )
-        .on('pointerdown', () => this.nextDialog());
-        this.dialogButton.setScale(1);
-        this.dialogButton.setVisible(false);
 
         //FULL SCREEN
         this.fullScreenLM = this.add.image(gameWidth*15.5/16, gameHeight*13/14, 'buttonFullScreen');
@@ -833,6 +829,13 @@ class LevelManager extends Phaser.Scene
     // FUNCIONES DE FLUJO DEL JUEGO -------------------------------------
     // Devuelve el jugador al mapa del mundo (al completar el nivel)
     finalDialog() {
+        this.actualizeMapsCompleted();
+        console.log("Pasaste el nivel" + levelIndex);
+        //levelIndex ++;
+        user.money+= levelSettings[DifficultyIndexSubnode(levelIndex)][userConfig.difficulty][3];
+        user.map[levelIndex] = true;
+        saveUserData();
+
         musicGameplay.stop();
         this.soundRunning.stop();
         this.player.setVelocityX(0);
@@ -841,12 +844,11 @@ class LevelManager extends Phaser.Scene
         this.DialogText.setVisible(true);
         this.player.anims.play('einar_iddle', true);
         this.DialogText.setText(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)][this.indexText]);
-        this.dialogButton.setDepth(1);
-        this.dialogButton.setVisible(true);
+        
     }
 
     nextDialog(){
-        if(tringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)][++this.indexText] != null){
+        if(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)][++this.indexText] != null){
             this.DialogText.setText(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)][this.indexText]);
         }
         else{
@@ -856,13 +858,6 @@ class LevelManager extends Phaser.Scene
 
     // Actualiza los mapas completados y guarda los datos
     levelCompletedFunc() {
-        this.actualizeMapsCompleted();
-        console.log("Pasaste el nivel" + levelIndex);
-        //levelIndex ++;
-        user.money+= levelSettings[DifficultyIndexSubnode(levelIndex)][userConfig.difficulty][3];
-        user.map[levelIndex] = true;
-        saveUserData();
-        //this.returnToWorldMap();
         this.soundRunning.stop();   // Para el sonido de los pasos
         this.scene.stop('LevelManager');
         this.scene.start('WinnerMenu');
