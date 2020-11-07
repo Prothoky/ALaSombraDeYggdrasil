@@ -8,7 +8,6 @@ class PreloadMenu extends Phaser.Scene{
 
     this.load.json('Data',"./lib/Data.json");
 
-    //loadUserData();
     //Cargamos mapas desbloqueados y dinero del jugador
 
     //Checkeamos que estemos en movil o PC
@@ -193,17 +192,15 @@ class PreloadMenu extends Phaser.Scene{
             this.scene.start('MainMenu');
         });
 
-
   }
 
   create(){
 
     loadUserData();
 
-    var phaserJSON = this.cache.json.get('Data');
+    phaserJSON = this.cache.json.get('Data');
 
-    checkLanguage(phaserJSON);
-
+    checkLanguage();
     var wid = this.cameras.main.width;
     var heig = this.cameras.main.height;
 
@@ -211,7 +208,7 @@ class PreloadMenu extends Phaser.Scene{
     background.setPosition(wid/2, heig/2);
     background.setScale(2/3);
 
-    var text = this.add.text(wid*3/7, heig*3/4, strings.Loading , {fill: "white"});
+    var text = this.add.text(wid*3/7, heig*3/4, stringsJSON.Loading , {fill: "white"});
 
     // Animaciones
     this.anims.create({
@@ -227,10 +224,6 @@ class PreloadMenu extends Phaser.Scene{
         frameRate: 24,
         repeat: -1
     })
-  }
-
-  update(){
-
   }
 
 }

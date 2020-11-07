@@ -1,8 +1,6 @@
 class ShopMenu extends Phaser.Scene{
   constructor(){
       super("ShopMenu");
-
-      this.phaserJSON;
   }
 
   preload(){
@@ -10,8 +8,6 @@ class ShopMenu extends Phaser.Scene{
   }
 
   create(){
-
-    this.phaserJSON = this.cache.json.get('Data');
 
     var backgroundSM = this.add.image(0, 0, 'backgroundSM');
     backgroundSM.setScale(2/3);
@@ -58,20 +54,21 @@ class ShopMenu extends Phaser.Scene{
 
   AddObject1(){
 
-      if (user.money >= this.phaserJSON.Store.shields.price){
-        user.buffs[0]++;
-        user.money-= this.phaserJSON.Store.shields.price;
-        this.Money.setText(user.money);
-      }else{
-        console.log("No tienes suficiente dinero");
-      }
+    if (user.money >= phaserJSON.Store.shields.price){
+      user.buffs[0]++;
+      user.money-= phaserJSON.Store.shields.price;
+      this.Money.setText(user.money);
+    }else{
+      console.log("No tienes suficiente dinero");
+    }
+    saveUserData();
   }
 
   AddObject2(){
 
-      if (user.money >= this.phaserJSON.Store.doublejump.price){
+      if (user.money >= phaserJSON.Store.doublejump.price){
         user.buffs[1]++;
-        user.money-= this.phaserJSON.Store.doublejump.price;
+        user.money-= phaserJSON.Store.doublejump.price;
         this.Money.setText(user.money);
       }else{
         console.log("No tienes suficiente dinero");
@@ -81,9 +78,9 @@ class ShopMenu extends Phaser.Scene{
 
   AddObject3(){
 
-    if (user.money >= this.phaserJSON.Store.invulnerability.price){
+    if (user.money >= phaserJSON.Store.invulnerability.price){
       user.buffs[2]++;
-      user.money-= this.phaserJSON.Store.invulnerability.price;
+      user.money-= phaserJSON.Store.invulnerability.price;
       this.Money.setText(user.money);
     }else{
       console.log("No tienes suficiente dinero");
@@ -93,9 +90,9 @@ class ShopMenu extends Phaser.Scene{
 
   AddObject4(){
 
-    if (user.money >= this.phaserJSON.Store.cooldown.price){
+    if (user.money >= phaserJSON.Store.cooldown.price){
       user.buffs[3]++;
-      user.money-= this.phaserJSON.Store.cooldown.price;
+      user.money-= phaserJSON.Store.cooldown.price;
       this.Money.setText(user.money);
     }else{
       console.log("No tienes suficiente dinero");

@@ -106,17 +106,15 @@ class LevelManager extends Phaser.Scene
         this.attackButton;
         this.testButton;
         this.pauseButton;
+        this.textButton;
 
+        //7) Textos
+        //Dinero en posesion
         this.Money;
+        //Dialogos finales
+        this.DialogText
+        this.indexText=0;
 
-        // DEBUG
-        // Comprueba empíricamente que los porcentajes de aparición de las trampas son los correctos
-        /*
-        this.percentagesTest = new Array();
-        for (let i = 0; i < 8; i++) {
-            this.percentagesTest[i] = 0;
-        }
-        */
     }
 
     create ()
@@ -180,17 +178,7 @@ class LevelManager extends Phaser.Scene
         this.bg_far.setScale(0.66);
         this.bg_medium.setScale(0.66);
         this.bg_near.setScale(0.7);
-        /*
-        // start hotfix
-        for (let i = 0; i < this.bg_medium.length; i++) {
-            this.bg_medium[i].setOrigin(0, 0);
-            this.bg_medium[i].setScrollFactor(1);
-            this.bg_medium[i].setScale(0.66);
-        }
-        // end hotfix
-        */
-
-
+    
         //  ----GAMEPLAY----
         // 1) CARGA DE DATOS
         this.loadSettings();    // Carga los datos del nivel del archivo LevelConfiguration
@@ -261,7 +249,7 @@ class LevelManager extends Phaser.Scene
         this.physics.add.overlap(this.player, this.triggers, this.enemyStartMotion, null, this);    // Función que se llama al entrar el jugador en el área de visión del enemigo
         this.physics.add.overlap(this.player, this.coins, this.collectCoin, null, this);    // Función de recoger moneda
         if (this.endlessMode == false) {    // Dependiendo de si es modo arcade
-            this.physics.add.overlap(this.player, this.endTrigger, this.endText, null, this);   // Genera el texto de fin del nivel
+            this.physics.add.overlap(this.player, this.endTrigger, this.finalDialog, null, this);   // Genera el texto de fin del nivel
         } else {
             this.arcadeCicleCollision = this.physics.add.overlap(this.player, this.endTrigger, this.arcadeCicle, null, this);   // Resetea la posición del personaje y genera nuevas trampas
             this.physics.add.overlap(this.player, this.halfLevelTrigger, this.generateEndCabin, null, this);    // Genera la cabaña de reseteo de nivel
@@ -315,6 +303,10 @@ class LevelManager extends Phaser.Scene
         this.backgroundMoney.setPosition(gameWidth*13/16, gameHeight*1/16);
         this.Money = this.add.text(gameWidth*12.85/16, gameHeight*0.7/16,  user.money, {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "black", strokeThickness: 2});
         this.Money.setScrollFactor(0);
+        
+        this.DialogText = this.add.text(gameWidth*1/2, gameHeight*1/2,  stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)][0], {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "black", strokeThickness: 2});
+        this.DialogText.setScrollFactor(0);
+        this.DialogText.setVisible(false);
 
         //FULL SCREEN
         this.fullScreenLM = this.add.image(gameWidth*15.5/16, gameHeight*13/14, 'buttonFullScreen');
@@ -333,6 +325,11 @@ class LevelManager extends Phaser.Scene
         this.attackButton = this.input.keyboard.addKey(controls.attack);
         this.testButton = this.input.keyboard.addKey(controls.test); // ELIMINAR VERSION FINAL
         this.pauseButton = this.input.keyboard.addKey(controls.pause);
+        this.textButton = this.add.image(gameWidth*1/2, gameHeight*1/4, 'shopButtonMM');
+        this.textButton.setInteractive({ useHandCursor: true  } )
+        .on('pointerdown', () => this.nextDialog());
+        this.textButton.setScale(5);
+        this.textButton.setVisible(false);
         // Reiniciamos eventos
         this.jumpButton.off('down');
         this.jumpButton.off('up');
@@ -817,12 +814,23 @@ class LevelManager extends Phaser.Scene
 
     // FUNCIONES DE FLUJO DEL JUEGO -------------------------------------
     // Devuelve el jugador al mapa del mundo (al completar el nivel)
-    endText() {
-        /*
-        Aquí va el código de parar el personaje, imprimir el texto (derivado de levelIndex e importado de un JSON), pasarlo con buttonJump o buttonAttack
-        */
-        console.log("te pasaste el level");
-        this.levelCompletedFunc();
+    finalDialog() {
+        musicGameplay.stop();
+        this.player.setVelocityX(0);
+        this.trashRecolector.setVelocityX(0);
+        this.DialogText.setVisible(true);
+        this.player.anims.play('einar_iddle', true);
+        this.DialogText.setText(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)][this.indexText]);
+        this.textButton.setVisible(true);
+    }
+
+    nextDialog(){
+        if(tringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)][++this.indexText] !=null){
+            this.DialogText.setText(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)][this.indexText]);
+        }
+        else{
+            this.levelCompletedFunc();
+        }
     }
 
     // Actualiza los mapas completados y guarda los datos
@@ -1037,7 +1045,6 @@ class LevelManager extends Phaser.Scene
         this.scene.pause();
     }
 
-
 }
 
 // Traduce el nº de nodo con su dificultad para leer los settings en el archivo LevelConfiguration
@@ -1047,8 +1054,6 @@ function DifficultyIndexSubnode(index){
   let indexNode;
 
   if(index > 9){
-
-
 
   switch (index){
 

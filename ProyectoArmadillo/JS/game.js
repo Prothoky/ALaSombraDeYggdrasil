@@ -1,3 +1,4 @@
+
 window.onload = function(){
 
   var config = {
@@ -30,7 +31,7 @@ window.onload = function(){
 
   }
 
-  game = new Phaser.Game(config);
+  var game = new Phaser.Game(config);
 
 }
 
@@ -58,6 +59,8 @@ var gameHeight = 610;
 
 //Fecha de desbloqueo de nuevo mundo
 unlockDate=new Date(2021 ,2 ,1);
+
+var phaserJSON;
 
 var user = { //Mapas desbloqueados y dinero del jugador
   world: [true,false,false,false,false,false,false,false,false],
@@ -87,23 +90,28 @@ function loadUserData(){
 }
 
 function resetUserData(){
-  user.world = [true,false,false,false,false,false,false,false,false];
-  user.map= [false, false, false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-  user.buffs = [0, 0, 0, 0];
-  user.money = 0;
+  user=phaserJSON.user;
+  userConfig=phaserJSON.userConfig;
   saveUserData();
 }
 
-var strings;
+var stringsJSON;
 
-function checkLanguage(phaserJSON){
+function checkLanguage(){
   var userLang = navigator.language || navigator.userLanguage;
   if(userLang == "es-ES" || "es"){
-    strings = phaserJSON.esp;
+    stringsJSON = phaserJSON.esp;
   }
   else if(userLang == "en-US" || "en"){
-    strings = phaserJSON.eng;
+    stringsJSON = phaserJSON.eng;
   }
+}
+
+function updateLanguage(language){
+  if(language=="esp")
+    stringsJSON=phaserJSON.esp;
+  else if(language=="eng")
+    stringsJSON=phaserJSON.eng;
 }
 
 // Variable música entre escenas

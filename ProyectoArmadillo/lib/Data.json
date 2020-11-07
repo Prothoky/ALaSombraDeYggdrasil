@@ -14,15 +14,24 @@
 
     "esp":{
         "Loading": "Cargando",
-        "Main_Menu": {
-            "title": "Menu Principal",
+        "Buttons":{
             "play": "Jugar",
             "options": "Opciones",
             "credits" : "Créditos",
-            "fullscreen" : "Pantalla Completa"
-        },
-        "Options_Menu": {
-            "back" : "Volver"
+            "shop":"Tienda",
+            "back" : "Volver",
+            "volume":"Volumen",
+            "adjust":"Ajustes",
+            "easy":"Facil",
+            "medium":"Medio",
+            "difficult":"Dificil",
+            "erase_Data":"Borrar datos",
+            "confirm":"Confirmar",
+            "cancel":"Cancelar",
+            "buy":"Comprar",
+            "languaje":"Idioma",
+            "esp": "Español",
+            "eng":"Inglés"
         },
         "World_Menu":{
             "world_1": "Helheim",
@@ -49,32 +58,42 @@
             "map_10":"Map 10 Nombre",
             "back" : "Volver"
         },
-        "Dialogs":{
-            "Cap_1":{
-                "einar_1": "Hacia tiempo que no salía al combate, mis brazos ya no son lo que era, mis piernas están cansadas.",
-                "einar_2": "Los dioses me bendijeron hace mcuhos soles, soy Einar el inmortal, la calamidad de mis enemigos y el escudo de mi pueblo.",
-                "einar_3": "Pero llevo demasiado tiempo sin nada ni nadie a quien defender.",
-                "einar_4": "Dime tu Munin, cuervo de la memoria.",
-                "einar_5": "Qué hice para estar aquí?",
-                "einar_6": "¿Acaso alguien me recuerda?",
-                "munin_1": "... ... ..."
-            },
-            "Cap_2":{
-            }
-        }
+        "Dialogs":[
+            [
+                "Einar: Hacia tiempo que no salía al combate, \n mis brazos ya no son lo que era, mis piernas están cansadas.",
+                "Einar: Los dioses me bendijeron hace mcuhos soles, soy Einar el inmortal, la calamidad de mis enemigos y el escudo de mi pueblo.",
+                "Einar: Pero llevo demasiado tiempo sin nada ni nadie a quien defender.",
+                "Einar: Dime tu Munin, cuervo de la memoria.",
+                "Einar: Qué hice para estar aquí?",
+                "Einar: ¿Acaso alguien me recuerda?",
+                "Munin: ... ... ..."
+            ],
+            [
+
+            ]
+        ]
     },
 
     "eng":{
         "Loading": "Loading",
-        "Main_Menu": {
-            "title": "Main Menu",
+        "Buttons":{
             "play": "Play",
             "options": "Options",
             "credits" : "Credits",
-            "fullscreen" : "Fulll Screen"
-        },
-        "Options_Menu": {
-            "back" : "Back"
+            "shop":"Shop",
+            "back" : "Baack",
+            "volume":"Volume",
+            "adjust":"Adjust",
+            "easy":"Easy",
+            "medium":"Medium",
+            "difficult":"Hard",
+            "erase_Data":"Erase Data",
+            "confirm":"Confirm",
+            "cancel":"Cancel",
+            "buy":"Buy",
+            "languaje":"Language",
+            "esp": "Spanish",
+            "eng":"English"
         },
         "World_Menu":{
             "world_1": "Helheim",
