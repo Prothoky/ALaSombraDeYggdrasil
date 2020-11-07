@@ -49,7 +49,7 @@ class SettingsMenu extends Phaser.Scene{
     this.deleteButtonSM = this.add.image(gameWidth*8/16, gameHeight*10/16, 'DeleteButton');
     this.deleteButtonSM.setScale(2/3);
     this.deleteButtonSM.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => resetUserData());
+    .on('pointerdown', () => this.ConfirmErase());
 
     //BOTON ATRAS
     this.backButtonVM = this.add.image(gameWidth*14/16, gameHeight*14/16, 'backButtonOM');
@@ -86,6 +86,16 @@ class SettingsMenu extends Phaser.Scene{
     this.mediumButtonSelSM.setVisible(false);
     this.diffButtonSelSM.setVisible(true);
     userConfig.difficulty = 2;
+  }
+
+  ConfirmErase(){
+    //Otra escena donde aparezcan dos botones?
+    if(true){
+      resetUserData()
+    }
+    else{
+
+    }
   }
 
 }

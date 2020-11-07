@@ -1,7 +1,7 @@
 {
     "user":  {
         "world": [true,false,false,false,false,false,false,false,false],
-        "map": [true, false, false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        "map": [false, false, false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
         "buffs": [0, 0, 0, 0],
         "money": 0
     },
@@ -118,8 +118,29 @@
             "map_8":"Map 8 Nombre",
             "map_9":"Map 9 Nombre",
             "map_10":"Map 10 Nombre",
+            "map_11":"Map 11 Nombre",
+            "map_12":"Map 12 Nombre",
+            "map_13":"Map 13 Nombre",
+            "map_14":"Map 14 Nombre",
+            "map_15":"Map 15 Nombre",
+            "map_16":"Map 16 Nombre",
+            "map_17":"Map 17 Nombre",
             "back" : "Back"
-        }
+        },
+        "Dialogs":[
+            [
+                "Einar: It was long time ago since last time fought, \n my arms are no longer what it used to be, my legs are tired.",
+                "Einar: All Gods blessed me much Suns ago, \n I'm Einar the inmortal, my enemie's calamity and the shield of my people.",
+                "Einar: But I've been enought time without \n nothing and nobody witch defend.",
+                "Einar: Tell me you Munin, memory raven.",
+                "Einar: What I have done to be here?",
+                "Einar: ¿Is it that someone remembers??",
+                "Munin: ... ... ..."
+            ],
+            [
+
+            ]
+        ]
     },
     "Store":{
         "shields":{
