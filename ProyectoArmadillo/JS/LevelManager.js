@@ -319,7 +319,7 @@ class LevelManager extends Phaser.Scene
         this.DialogImage.setScale(0.5);
         this.DialogImage.setVisible(false);
 
-        this.DialogText = this.add.text(gameWidth*1/2, gameHeight*1/2,  stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)][0], {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "black", strokeThickness: 2});
+        this.DialogText = this.add.text(gameWidth*1/2, gameHeight*1/2,  "", {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "black", strokeThickness: 2});
         this.DialogText.setScrollFactor(0);
         this.DialogText.setVisible(false);
 
@@ -843,8 +843,11 @@ class LevelManager extends Phaser.Scene
         this.DialogImage.setVisible(true);
         this.DialogText.setVisible(true);
         this.player.anims.play('einar_iddle', true);
-        this.DialogText.setText(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)][this.indexText]);
-        
+        if(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)]!=null)
+            this.DialogText.setText(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)][this.indexText]);
+        else{
+             this.levelCompletedFunc();
+        }
     }
 
     nextDialog(){
