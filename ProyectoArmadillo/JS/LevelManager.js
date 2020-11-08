@@ -868,10 +868,11 @@ class LevelManager extends Phaser.Scene
     }
 
     nextDialog(){
-        if(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)][++this.indexText] != null){
-            this.DialogText.setText(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)][this.indexText]);
+        if(stringsJSON.Dialogs[levelIndex][++this.indexText] != null){
+            this.DialogText.setText(stringsJSON.Dialogs[levelIndex][this.indexText]);
         }
         else{
+            this.indexText = 0;
             this.levelCompletedFunc();
         }
     }
@@ -906,7 +907,6 @@ class LevelManager extends Phaser.Scene
             this.playerMovementSpeed = levelSettings[i][l][1];
             this.minTrapDistance = levelSettings[i][l][2];
             this.goldBase = levelSettings[i][l][3];
-            this.indexText = 0;
         } else {
             this.endlessMode = false;
             let i = DifficultyIndexSubnode(levelIndex);
