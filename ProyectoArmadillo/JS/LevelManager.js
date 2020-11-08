@@ -835,7 +835,11 @@ class LevelManager extends Phaser.Scene
         user.money+= levelSettings[DifficultyIndexSubnode(levelIndex)][userConfig.difficulty][3];
         user.map[levelIndex] = true;
         saveUserData();
-
+        if(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)]!=null)
+            this.DialogText.setText(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)][this.indexText]);
+        else{
+             this.levelCompletedFunc();
+        }
         musicGameplay.stop();
         this.soundRunning.stop();
         this.player.setVelocityX(0);
@@ -843,11 +847,7 @@ class LevelManager extends Phaser.Scene
         this.DialogImage.setVisible(true);
         this.DialogText.setVisible(true);
         this.player.anims.play('einar_iddle', true);
-        if(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)]!=null)
-            this.DialogText.setText(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)][this.indexText]);
-        else{
-             this.levelCompletedFunc();
-        }
+    
     }
 
     nextDialog(){
