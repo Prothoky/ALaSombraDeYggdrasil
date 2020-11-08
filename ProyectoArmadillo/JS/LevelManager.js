@@ -178,7 +178,7 @@ class LevelManager extends Phaser.Scene
         this.bg_far.setScale(0.66);
         this.bg_medium.setScale(0.66);
         this.bg_near.setScale(0.7);
-    
+
         //  ----GAMEPLAY----
         // 1) CARGA DE DATOS
         this.loadSettings();    // Carga los datos del nivel del archivo LevelConfiguration
@@ -304,23 +304,29 @@ class LevelManager extends Phaser.Scene
         this.backgroundMoney.setScale(1/3);
         this.backgroundMoney.setScrollFactor(0);
         this.backgroundMoney.setPosition(gameWidth*13/16, gameHeight*1/16);
-        this.Money = this.add.text(gameWidth*12.85/16, gameHeight*0.7/16,  user.money, {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "black", strokeThickness: 2});
+        this.Money = this.add.text(gameWidth*12.85/16, gameHeight*0.7/16,  user.money, {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "white", strokeThickness: 2});
         this.Money.setScrollFactor(0);
-        
+
         //DIALOG End Level
-        this.DialogBg = this.add.image(gameWidth*1/2, gameHeight*1/2, 'paperDesciptionMSM');
+        this.DialogBg = this.add.image(gameWidth*7.5/16, gameHeight*6/16, 'backgroundDialog');
+        this.DialogBg.setScale(2/3);
+        this.DialogBg.setDepth(2);
         this.DialogBg.setScrollFactor(0);
-        this.DialogBg.setInteractive({ useHandCursor: true  } )
-        .on('pointerdown', () => this.nextDialog());
+        /*this.DialogBg.setInteractive({ useHandCursor: true  } )
+        .on('pointerdown', () => this.nextDialog());*/
         this.DialogBg.setVisible(false);
 
-        this.DialogImage = this.add.image(gameWidth*1/2, gameHeight*1/2, 'buttonFullScreen');
-        this.DialogImage.setScrollFactor(0);
-        this.DialogImage.setScale(0.5);
-        this.DialogImage.setVisible(false);
+        this.buttonDialog = this.add.image(gameWidth*13.5/16, gameHeight*9/16, 'buttonDialog');
+        this.buttonDialog.setDepth(2);
+        this.buttonDialog.setScrollFactor(0);
+        //this.buttonDialog.setScale(0.5);
+        this.buttonDialog.setInteractive({ useHandCursor: true  } )
+        .on('pointerdown', () => this.nextDialog());
+        this.buttonDialog.setVisible(false);
 
-        this.DialogText = this.add.text(gameWidth*1/2, gameHeight*1/2,  "", {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "black", strokeThickness: 2});
+        this.DialogText = this.add.text(gameWidth*6/16, gameHeight*6/16,  "", {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "white", strokeThickness: 2});
         this.DialogText.setScrollFactor(0);
+        this.DialogText.setDepth(2);
         this.DialogText.setVisible(false);
 
         //FULL SCREEN
@@ -340,7 +346,7 @@ class LevelManager extends Phaser.Scene
         this.attackButton = this.input.keyboard.addKey(controls.attack);
         this.testButton = this.input.keyboard.addKey(controls.test); // ELIMINAR VERSION FINAL
         this.pauseButton = this.input.keyboard.addKey(controls.pause);
-        
+
         // Reiniciamos eventos
         this.jumpButton.off('down');
         this.jumpButton.off('up');
@@ -835,19 +841,30 @@ class LevelManager extends Phaser.Scene
         user.money+= levelSettings[DifficultyIndexSubnode(levelIndex)][userConfig.difficulty][3];
         user.map[levelIndex] = true;
         saveUserData();
-        if(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)]!=null)
+        /*if(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)]!=null)
             this.DialogText.setText(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)][this.indexText]);
         else{
              this.levelCompletedFunc();
+        }*/
+        if(stringsJSON.Dialogs[levelIndex]!=null)
+            this.DialogText.setText(stringsJSON.Dialogs[levelIndex][this.indexText]);
+        else{
+             this.levelCompletedFunc();
         }
+
         musicGameplay.stop();
         this.soundRunning.stop();
         this.player.setVelocityX(0);
+        this.player.setVisible(false);
         this.DialogBg.setVisible(true);
-        this.DialogImage.setVisible(true);
+        this.buttonDialog.setVisible(true);
         this.DialogText.setVisible(true);
-        this.player.anims.play('einar_iddle', true);
-    
+        this.endTrigger.setVisible(false);
+        //this.healthIconOffset.setVisible(false);
+        //this.player.anims.play('einar_iddle', true);
+        //this.DialogText.setText(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)][this.indexText]);
+        //this.DialogText.setText(stringsJSON.Dialogs[levelIndex][this.indexText]);
+
     }
 
     nextDialog(){
@@ -889,6 +906,7 @@ class LevelManager extends Phaser.Scene
             this.playerMovementSpeed = levelSettings[i][l][1];
             this.minTrapDistance = levelSettings[i][l][2];
             this.goldBase = levelSettings[i][l][3];
+            this.indexText = 0;
         } else {
             this.endlessMode = false;
             let i = DifficultyIndexSubnode(levelIndex);

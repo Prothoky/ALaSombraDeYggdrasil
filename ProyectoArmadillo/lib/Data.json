@@ -61,7 +61,7 @@
       "Dialogs": [
         [
           "Einar: Hacia tiempo que no salía al combate, \n mis brazos ya no son lo que era, mis piernas están cansadas.",
-          "Einar: Los dioses me bendijeron hace mcuhos soles, soy Einar el inmortal, la calamidad de mis enemigos y el escudo de mi pueblo.",
+          "Einar: Los dioses me bendijeron hace mcuhos soles, soy Einar el inmortal, \n la calamidad de mis enemigos y el escudo de mi pueblo.",
           "Einar: Pero llevo demasiado tiempo sin nada ni nadie a quien defender.",
           "Einar: Dime tu Munin, cuervo de la memoria.",
           "Einar: Qué hice para estar aquí?",
@@ -69,11 +69,11 @@
           "Munin: ... ... ..."
         ],
         [
-          "Einar: He estado intentando recordar por el camino, pero apenas consigo vislumbrar un poco de la vida que deje atrás.",
+          "Einar: He estado intentando recordar por el camino, pero apenas \n consigo vislumbrar un poco de la vida que deje atrás.",
           "Einar: ¿Tenía familia? ",
           "Einar: ¿Qué vieron en mí los dioses?",
-          "Einar: Mi memoria solo me dice que llevo demasiado tiempo huyendo. Mi hacha está oxidada y no sé qué sangre es mía o de un enemigo.",
-          "Einar: Necesito nombres y motivos, ya no puedo seguir en el cobijo de mi ignorancia. Dime que tengo que hacer para encontrar mis respuestas.",
+          "Einar: Mi memoria solo me dice que llevo demasiado tiempo huyendo. \n Mi hacha está oxidada y no sé qué sangre es mía o de un enemigo.",
+          "Einar: Necesito nombres y motivos, ya no puedo seguir en el cobijo de mi ignorancia. \n Dime que tengo que hacer para encontrar mis respuestas.",
           "Einar: ¿A dónde voy? ",
           "Munin:  …  …  … "
 

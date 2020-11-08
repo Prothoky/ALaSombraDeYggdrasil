@@ -110,6 +110,8 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('pauseButton', 'ASSETS/Gameplay/ButtonPause.png');
       this.load.spritesheet('einar_running', 'ASSETS/Gameplay/animacion_correr.png', { frameWidth: 400, frameHeight: 350 });
       this.load.spritesheet('einar_jumping', 'ASSETS/Gameplay/animacion_saltar.png', { frameWidth: 400, frameHeight: 350 });
+      this.load.image('backgroundDialog', 'ASSETS/Gameplay/FondoDialogo.png');
+      this.load.image('buttonDialog', 'ASSETS/Gameplay/BotonPasarDialogo.png');
 
 
     //Pause Menu
