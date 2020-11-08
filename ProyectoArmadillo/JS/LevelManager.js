@@ -115,6 +115,8 @@ class LevelManager extends Phaser.Scene
         this.DialogText
         this.indexText=0;
 
+        this.goalArrived = false;
+
     }
 
     create ()
@@ -252,7 +254,7 @@ class LevelManager extends Phaser.Scene
         this.physics.add.overlap(this.player, this.triggers, this.enemyStartMotion, null, this);    // Función que se llama al entrar el jugador en el área de visión del enemigo
         this.physics.add.overlap(this.player, this.coins, this.collectCoin, null, this);    // Función de recoger moneda
         if (this.endlessMode == false) {    // Dependiendo de si es modo arcade
-            this.physics.add.overlap(this.player, this.endTrigger, this.finalDialog, null, this);   // Genera el texto de fin del nivel
+            this.physics.add.overlap(this.player, this.endTrigger, this.endArrived, null, this);   // Genera el texto de fin del nivel
         } else {
             this.arcadeCicleCollision = this.physics.add.overlap(this.player, this.endTrigger, this.arcadeCicle, null, this);   // Resetea la posición del personaje y genera nuevas trampas
             this.physics.add.overlap(this.player, this.halfLevelTrigger, this.generateEndCabin, null, this);    // Genera la cabaña de reseteo de nivel
@@ -324,7 +326,7 @@ class LevelManager extends Phaser.Scene
         .on('pointerdown', () => this.nextDialog());
         this.buttonDialog.setVisible(false);
 
-        this.DialogText = this.add.text(gameWidth*6/16, gameHeight*6/16,  "", {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "white", strokeThickness: 2});
+        this.DialogText = this.add.text(gameWidth*6/16, gameHeight*6/16,  "", {fontFamily: "StayHappy",stroke:'#000000', fill: "white", strokeThickness: 2});
         this.DialogText.setScrollFactor(0);
         this.DialogText.setDepth(2);
         this.DialogText.setVisible(false);
@@ -834,7 +836,7 @@ class LevelManager extends Phaser.Scene
 
     // FUNCIONES DE FLUJO DEL JUEGO -------------------------------------
     // Devuelve el jugador al mapa del mundo (al completar el nivel)
-    finalDialog() {
+    endArrived() {
         this.actualizeMapsCompleted();
         console.log("Pasaste el nivel" + levelIndex);
         //levelIndex ++;
@@ -846,18 +848,12 @@ class LevelManager extends Phaser.Scene
         else{
              this.levelCompletedFunc();
         }*/
-        if(stringsJSON.Dialogs[levelIndex]!=null)
-            this.DialogText.setText(stringsJSON.Dialogs[levelIndex][this.indexText]);
-        else{
-             this.levelCompletedFunc();
-        }
+
 
         musicGameplay.stop();
         this.soundRunning.stop();
         this.player.setVelocityX(0);
-        this.player.setVisible(false);
-        this.DialogBg.setVisible(true);
-        this.buttonDialog.setVisible(true);
+        //this.player.setVisible(false);
         this.DialogText.setVisible(true);
         this.endTrigger.setVisible(false);
         //this.healthIconOffset.setVisible(false);
@@ -865,7 +861,25 @@ class LevelManager extends Phaser.Scene
         //this.DialogText.setText(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)][this.indexText]);
         //this.DialogText.setText(stringsJSON.Dialogs[levelIndex][this.indexText]);
 
+
+        if ( this.goalArrived == true){
+
+          if(stringsJSON.Dialogs[levelIndex]!=null)
+              this.DialogText.setText(stringsJSON.Dialogs[levelIndex][this.indexText]);
+          else{
+               this.levelCompletedFunc();
+          }
+
+          this.DialogBg.setVisible(true);
+          this.buttonDialog.setVisible(true);
+
+        }
+
+
+
+
     }
+
 
     nextDialog(){
         if(stringsJSON.Dialogs[levelIndex][++this.indexText] != null){
@@ -1071,6 +1085,19 @@ class LevelManager extends Phaser.Scene
         this.bg_far.tilePositionX = this.cameras.main.scrollX *.5;
         this.bg_medium.tilePositionX = this.cameras.main.scrollX *1.5;
         this.bg_near.tilePositionX = this.cameras.main.scrollX*2;
+
+        console.log("goal " + this.goalArrived);
+
+
+          console.log("delta " + delta);
+          console.log("time " + time);
+
+          if (time > 32000){
+
+            this.goalArrived = true;
+
+          }
+
 
 
     }
