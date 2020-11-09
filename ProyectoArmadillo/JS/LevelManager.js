@@ -28,7 +28,7 @@ class LevelManager extends Phaser.Scene
         this.enemySpeed = -200; // Velocidad de movimiento de los enemigos
         // 1.4) Ajustes del generador aleatorio
         // La distancia entre trampas final será maxRandTrapDistance(rand) + trapDistance + minDistance
-        this.platformPositionY = 385;   // Posición base en Y de las plataformas
+        this.platformPositionY = 300;   // Posición base en Y de las plataformas
         this.platformPositionOffset = 75;  // Distancia que puede variar la posición de la plataforma
         this.platformMaxHeight = 285;   // Altura máxima de las plataformas
         this.maxRandTrapDistance = 200; // Máximo de distancia entre trampas añadido (250)
@@ -96,6 +96,7 @@ class LevelManager extends Phaser.Scene
         this.playerAttackAvaliable = true;  // Está el ataque disponible?
         this.isPlayerInvulnerable = false;  // Es el jugador invulnerable?
         this.hasCicled = false; // Se ha completado una primera vuelta en el modo arcade?
+        this.isIceLevel = false; // Es un nivel de hielo?
         this.xPointerFinalValue = 0;    // Almacena la posición donde se debe pintar la cabaña en endless mode
 
         // 6) INPUT
@@ -129,6 +130,8 @@ class LevelManager extends Phaser.Scene
         this.doubleJumpAvaliable = true;
         distanceAchieved = 0;  // Distancia modo endless a 0
 
+        // ----CARGA DE DATOS----
+        this.loadSettings();    // Carga los datos del nivel del archivo LevelConfiguration
 
         // ----ASSETS----
         // 1) AUDIO
@@ -152,7 +155,7 @@ class LevelManager extends Phaser.Scene
         this.soundEnemy = this.sound.add('enemy_1', config);
 
         // 2) BACKGROUND
-        if (DifficultyIndexSubnode(levelIndex) > 4) {
+        if (this.isIceLevel) {
             this.bg_backgorund = this.add.tileSprite(0,0, 5715, 916, 'bg_background_ice');
             this.bg_far = this.add.tileSprite(0,0, 5715, 916, "bg_far_ice");
             this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium_ice");
@@ -180,11 +183,7 @@ class LevelManager extends Phaser.Scene
         this.bg_near.setScale(0.7);
 
         //  ----GAMEPLAY----
-        // 1) CARGA DE DATOS
-        this.loadSettings();    // Carga los datos del nivel del archivo LevelConfiguration
-
-
-        // 2) PERSONAJE
+        // 1) PERSONAJE
         // Creación personaje: setOrigin(1) IMPORTANTE (calcular colisiones)
         this.player = this.physics.add.sprite(400, this.playerStartPositionY, 'einar_running').setOrigin(1).setScale(this.playerResizeFactor).setSize(this.playerHitboxWidth, this.playerHitboxHeight);
         this.player.setOffset(110, 140);    // Offset respecto hitbox
@@ -692,8 +691,15 @@ class LevelManager extends Phaser.Scene
     // enemy = puede haber un enemigo encima?
     // Si no se otorgan valores se asignan solos. Enemy true y posición aleatoria (dentro de límites)
     // Únicamente cambiar el sprite y el valor de setScale()
-    generatePlatform(xPos, yPos = this.platformPositionY + Math.floor(Math.random() * this.platformPositionOffset) - this.platformPositionOffset/2, enemy = true, scaleFactor = 0.4, visible = true) {
-        let localPlatform = this.platforms.create(xPos, yPos, 'ground').setScale(scaleFactor).setOrigin(0, 0).setTint(0x00ff38).setVisible(visible).refreshBody();
+    generatePlatform(xPos, yPos = this.platformPositionY + Math.floor(Math.random() * this.platformPositionOffset) - this.platformPositionOffset/2, enemy = true, scaleFactor = 0.5, visible = true) {
+        let platformId = '';
+        if (this.isIceLevel) {
+            platformId = 'platform_ice';
+        } else {
+            platformId = 'platform';
+        }
+        let localPlatform = this.platforms.create(xPos, yPos, platformId).setScale(scaleFactor).setOrigin(0).setVisible(visible).setSize(170, 10);
+        localPlatform.setOffset(235, 200);
         localPlatform.body.checkCollision.left = false;
         localPlatform.body.checkCollision.right = false;
         localPlatform.body.checkCollision.down = false;
@@ -932,6 +938,12 @@ class LevelManager extends Phaser.Scene
 
     // Carga los datos del fichero de configuración
     loadSettings() {
+        // Almacena si es un nivel de hielo o no
+        if (DifficultyIndexSubnode(levelIndex) > 4 && arcadeMode == false) {
+            this.isIceLevel = true;
+        } else {
+            this.isIceLevel = false;
+        }
         if (arcadeMode == true) {
             this.endlessMode = true;
             let i = 10;
