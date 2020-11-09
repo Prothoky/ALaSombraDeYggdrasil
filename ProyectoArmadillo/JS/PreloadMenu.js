@@ -81,7 +81,8 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('DifficultButtonSelected', './ASSETS/OptionsMenu/OptionsMainMenu/BotonDificilSeleccionado.png');
 
     //Credits Menu
-      this.load.image('backgroundCM', './ASSETS/MapSelectionMenu/MapMenuBackground.jpeg'); //CAMBIAR
+    
+      this.load.image('credits', 'ASSETS/Placeholders/Text_Credits.png');
       this.load.image('backButtonCM', './ASSETS/MapSelectionMenu/BotonSalir.png');
 
     //Map Selection Menu

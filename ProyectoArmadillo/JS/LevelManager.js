@@ -158,16 +158,7 @@ class LevelManager extends Phaser.Scene
         this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium");
         this.bg_near = this.add.tileSprite(0,0, 5715, 916, "bg_near");
         this.bg_near.depth = 2;
-        /*  Fix poco eficiente para bg_medium se mueve a la velocidad del jugador
-        // start hotfix
-        this.bg_medium = new Array();
-        let iter = 0;
-        for (let i = 0; i < this.levelWidth; i = i + 5715 * 0.66) {
-            this.bg_medium[iter] = this.add.tileSprite(i, 0, 5715, 916, "bg_medium");
-            iter++;
-        }
-        // end hotfix
-        */
+        
         // Ajusta los tileSprites
         this.bg_backgorund.setOrigin(0,0);
         this.bg_far.setOrigin(0,0);
@@ -1085,15 +1076,15 @@ class LevelManager extends Phaser.Scene
     // Da movimiento al fondo
     update (time, delta){
         //Fondo dinámico
-        this.bg_backgorund.tilePositionX = this.cameras.main.scrollX * .1;
         /*
         this.bg_far.tilePositionX = this.cameras.main.scrollX *.1;
         this.bg_medium.tilePositionX = this.cameras.main.scrollX * .5;
         this.bg_near.tilePositionX = this.cameras.main.scrollX;
         */
-        this.bg_far.tilePositionX = this.cameras.main.scrollX *.5;
-        this.bg_medium.tilePositionX = this.cameras.main.scrollX *1.5;
-        this.bg_near.tilePositionX = this.cameras.main.scrollX*2;
+       this.bg_backgorund.tilePositionX = this.cameras.main.scrollX * .1;
+       this.bg_far.tilePositionX = this.cameras.main.scrollX *.5;
+       this.bg_medium.tilePositionX = this.cameras.main.scrollX *1.5;
+       this.bg_near.tilePositionX = this.cameras.main.scrollX*2;
 
     }
 
