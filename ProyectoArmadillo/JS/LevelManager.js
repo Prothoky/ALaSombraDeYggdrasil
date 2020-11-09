@@ -751,8 +751,10 @@ class LevelManager extends Phaser.Scene
         this.generatePlatform(xPos + 165, 317, enemies, 0.35, false);
         this.generatePlatform(xPos + 395, 317, enemies, 0.35, false);
         // Fix modo arcade hitbox desplazada
-        if (this.endlessMode == true) {
-            this.generateBarricade(xPos + 370, undefined, 0.7, false);
+        if (this.endlessMode == true && !this.hasCicled) {
+            this.generateBarricade(xPos + 370, this.levelGroundHeight + 100, 0.7, false);
+        } else if (this.endlessMode == true && this.hasCicled) {
+            this.generateBarricade(xPos + 370, this.levelGroundHeight + 173, 0.7, false);
         } else {
             this.generateBarricade(xPos + 290, undefined, 0.7, false);
         }
