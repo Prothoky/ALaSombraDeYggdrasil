@@ -53,7 +53,7 @@ class LevelManager extends Phaser.Scene
         this.endlessMode = false;  // Modo arcade (endless)
         this.levelGroundHeight = 470;   // Altura del suelo
         // 3.1) Settings enerador procedural
-        this.levelIntroWidth = 500; // Longitud al principio del mapa asegurado sin trampas
+        this.levelIntroWidth = 1200; // Longitud al principio del mapa asegurado sin trampas
         this.endEventOffset = 500;  // Distancia desde la última trampa hasta el evento de fin de nivel.
         this.levelEndWidth = 3500;   // Longitud al final del mapa asegurado sin trampas. Debe ser muy grande.
         // 3.2) PowerUps
@@ -196,14 +196,14 @@ class LevelManager extends Phaser.Scene
                 break;
         }
         if (this.endlessMode == true) {
-            this.playerHealth = 30;
+            this.playerHealth = 5;
         }
         // Aplica los efectos de las mejoras
         this.applyBuffs();
 
 
         // 3) OBJETOS DE CONTROL DE FLUJO
-      //  this.arcadeIntervalTimer = this.time.addEvent( { delay: 200, callback: this.arcadeIntervalFunc(), callbackScope: this, loop: true } );
+        this.arcadeIntervalTimer = this.time.addEvent( { delay: 200, callback: this.arcadeIntervalFunc, callbackScope: this, loop: true } );
         this.endTrigger = this.physics.add.sprite(0, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight + 200);  // Trigger de evento final de nivel
         this.endTrigger.body.setAllowGravity(false);    // Quitar gravedad
         if (this.endlessMode == true) {
@@ -977,6 +977,7 @@ class LevelManager extends Phaser.Scene
     arcadeIntervalFunc() {
         distanceAchieved += 5;
         this.playerMovementSpeed += 0.02; //ANTES ESTABA A 0.2
+        this.player.body.setVelocityX(this.playerMovementSpeed);
     }
 
     // Resetea la posición del jugador (para no crear mapa infinito) y crea nuevas trampas
@@ -1098,13 +1099,13 @@ class LevelManager extends Phaser.Scene
        this.bg_medium.tilePositionX = this.cameras.main.scrollX *1.5;
        this.bg_near.tilePositionX = this.cameras.main.scrollX*2;
 
-       //this.arcadeIntervalTimer;
-
-       if (arcadeMode == true){
-         this.arcadeIntervalTimer = this.time.addEvent( { delay: 200, callback: this.arcadeIntervalFunc(), callbackScope: this, loop: true } );
-         console.log(distanceAchieved);
-       }
-
+        /*
+        //this.arcadeIntervalTimer;
+        if (arcadeMode == true){
+            this.arcadeIntervalTimer = this.time.addEvent( { delay: 200, callback: this.arcadeIntervalFunc(), callbackScope: this, loop: true } );
+            console.log(distanceAchieved);
+        }
+        */
 
     }
 
