@@ -115,8 +115,6 @@ class LevelManager extends Phaser.Scene
         this.DialogText
         this.indexText=0;
 
-        this.goalArrived = false;
-
     }
 
     create ()
@@ -254,7 +252,7 @@ class LevelManager extends Phaser.Scene
         this.physics.add.overlap(this.player, this.triggers, this.enemyStartMotion, null, this);    // Función que se llama al entrar el jugador en el área de visión del enemigo
         this.physics.add.overlap(this.player, this.coins, this.collectCoin, null, this);    // Función de recoger moneda
         if (this.endlessMode == false) {    // Dependiendo de si es modo arcade
-            this.physics.add.overlap(this.player, this.endTrigger, this.endArrived, null, this);   // Genera el texto de fin del nivel
+            this.physics.add.overlap(this.player, this.endTrigger, this.goalArrived, null, this);   // Genera el texto de fin del nivel
         } else {
             this.arcadeCicleCollision = this.physics.add.overlap(this.player, this.endTrigger, this.arcadeCicle, null, this);   // Resetea la posición del personaje y genera nuevas trampas
             this.physics.add.overlap(this.player, this.halfLevelTrigger, this.generateEndCabin, null, this);    // Genera la cabaña de reseteo de nivel
@@ -851,30 +849,19 @@ class LevelManager extends Phaser.Scene
 
 
     // Devuelve el jugador al mapa del mundo (al completar el nivel)
-    endArrived() {
+    goalArrived() {
         this.actualizeMapsCompleted();
         console.log("Pasaste el nivel" + levelIndex);
-        //levelIndex ++;
         user.money+= levelSettings[DifficultyIndexSubnode(levelIndex)][userConfig.difficulty][3];
         user.map[levelIndex] = true;
         saveUserData();
-        /*if(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)]!=null)
-            this.DialogText.setText(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)][this.indexText]);
-        else{
-             this.levelCompletedFunc();
-        }*/
-
 
         musicGameplay.stop();
         this.soundRunning.stop();
         this.player.setVelocityX(0);
-        //this.player.setVisible(false);
         this.DialogText.setVisible(true);
         this.endTrigger.setVisible(false);
-        //this.healthIconOffset.setVisible(false);
         //this.player.anims.play('einar_iddle', true);
-        //this.DialogText.setText(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)][this.indexText]);
-        //this.DialogText.setText(stringsJSON.Dialogs[levelIndex][this.indexText]);
 
         for(let i = 0; i < this.playerHealth; i++) {    // Posiciona los puntos de vida en el HUD
             this.healthPointsDisplay[i].setVisible(false);
@@ -886,7 +873,7 @@ class LevelManager extends Phaser.Scene
                     this.showDialog();
                 },
                 callbackScope: this
-            }, this);
+        }, this);
 
     }
 
