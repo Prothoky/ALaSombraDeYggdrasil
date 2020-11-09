@@ -203,7 +203,7 @@ class LevelManager extends Phaser.Scene
                 break;
         }
         if (this.endlessMode == true) {
-            this.playerHealth = 5;
+            this.playerHealth = 20;
         }
         // Aplica los efectos de las mejoras
         this.applyBuffs();
@@ -749,10 +749,10 @@ class LevelManager extends Phaser.Scene
     }
 
     // Tronco de arbol, similar a barricada
-    generateTrunk(xPos, yPos = this.levelGroundHeight, scaleFactor = 0.5) {
+    generateTrunk(xPos, yPos = this.levelGroundHeight - 100, scaleFactor = 0.5) {
         let localBarricade = this.barricades.create(xPos, yPos, 'trunk').setScale(scaleFactor).setOrigin(0, 1).refreshBody();
         localBarricade.body.setSize(230, 80);
-        localBarricade.setOffset(90, 240);
+        localBarricade.setOffset(135, 160);
         localBarricade.depth = 0;
         return this.minDistTrunk;
 
@@ -833,7 +833,7 @@ class LevelManager extends Phaser.Scene
 
     // Genera una barricada + plataforma con barricada
     generateDoubleBarricade(xPos) {
-        let platformY = this.levelGroundHeight - 200;
+        let platformY = this.levelGroundHeight - 260;
         this.generatePlatformNoEnemy(xPos - 150, platformY);
         if (this.endlessMode && this.hasCicled) {
             this.generateBarricade(xPos - 90, this.levelGroundHeight - 60);
