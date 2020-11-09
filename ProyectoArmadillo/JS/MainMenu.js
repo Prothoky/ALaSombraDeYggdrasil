@@ -18,6 +18,7 @@ class MainMenu extends Phaser.Scene{
       loop: true,
       delay: 0
     };
+    
     if (musicMenu == null) {
       musicMenu = this.sound.add('test', config);
       musicMenu.play();

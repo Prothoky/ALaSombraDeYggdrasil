@@ -68,6 +68,7 @@ var user = { //Mapas desbloqueados y dinero del jugador
   map: [false, false, false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
   buffs: [0, 0, 0, 0],
   money: 0,
+  maxDistanceArcade: 0
 }
 
 var userConfig = {
