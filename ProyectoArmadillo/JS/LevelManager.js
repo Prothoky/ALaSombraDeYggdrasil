@@ -153,10 +153,17 @@ class LevelManager extends Phaser.Scene
         this.soundEnemy = this.sound.add('enemy_1', config);
 
         // 2) BACKGROUND
-        this.bg_backgorund = this.add.tileSprite(0,0, 5715, 916, 'bg_background');
-        this.bg_far = this.add.tileSprite(0,0, 5715, 916, "bg_far");
-        this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium");
-        this.bg_near = this.add.tileSprite(0,0, 5715, 916, "bg_near");
+        if (DifficultyIndexSubnode(levelIndex) > 4) {
+            this.bg_backgorund = this.add.tileSprite(0,0, 5715, 916, 'bg_background_ice');
+            this.bg_far = this.add.tileSprite(0,0, 5715, 916, "bg_far_ice");
+            this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium_ice");
+            this.bg_near = this.add.tileSprite(0,0, 5715, 916, "bg_near_ice");
+        } else {
+            this.bg_backgorund = this.add.tileSprite(0,0, 5715, 916, 'bg_background');
+            this.bg_far = this.add.tileSprite(0,0, 5715, 916, "bg_far");
+            this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium");
+            this.bg_near = this.add.tileSprite(0,0, 5715, 916, "bg_near");    
+        }
         this.bg_near.depth = 2;
 
         // Ajusta los tileSprites
@@ -358,7 +365,7 @@ class LevelManager extends Phaser.Scene
             this.attackButton.on('down', this.playerAttack, this);
             this.playerRight();
             //this.testButton.on('down', this.swapVelocity, this);  // ELIMINAR VERSION FINAL
-            this.testButton.on('down', this.levelCompletedFunc, this);  // ELIMINAR VERSION FINAL
+            this.testButton.on('down', this.goalArrived, this);  // ELIMINAR VERSION FINAL
         } else {    // 1.2) Modo control izq/der
             this.jumpButton.on('down', this.playerStartJump, this);
             this.jumpButton.on('up', this.playerStopJump, this);
