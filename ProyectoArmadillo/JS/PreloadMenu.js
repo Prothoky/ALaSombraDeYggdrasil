@@ -104,6 +104,10 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('bg_medium' , 'ASSETS/Secciones/Zona media.png');
       this.load.image('bg_near' , 'ASSETS/Secciones/Zona delantera.png');
       this.load.image('bg_background', 'ASSETS/Secciones/Fondo.png');
+      this.load.image('bg_far_ice', 'ASSETS/Secciones/Zona lejana_hielo.png');
+      this.load.image('bg_medium_ice' , 'ASSETS/Secciones/Zona media_hielo.png');
+      this.load.image('bg_near_ice' , 'ASSETS/Secciones/Zona delantera_hielo.png');
+      this.load.image('bg_background_ice', 'ASSETS/Secciones/Fondo_hielo.png');
       this.load.image('einar', 'ASSETS/Gameplay/einar_provisional.png');
       this.load.image('barricade', 'ASSETS/Gameplay/barricade.png');
       this.load.image('trunk', 'ASSETS/Gameplay/trunk.png');
