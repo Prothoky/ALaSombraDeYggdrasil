@@ -97,6 +97,7 @@ class LevelManager extends Phaser.Scene
         this.isPlayerInvulnerable = false;  // Es el jugador invulnerable?
         this.hasCicled = false; // Se ha completado una primera vuelta en el modo arcade?
         this.isIceLevel = false; // Es un nivel de hielo?
+        this.hasArrived = false;    // Ha llegado al final del nivel?
         this.xPointerFinalValue = 0;    // Almacena la posición donde se debe pintar la cabaña en endless mode
 
         // 6) INPUT
@@ -128,6 +129,7 @@ class LevelManager extends Phaser.Scene
         this.playerAttackAvaliable = true;
         this.isPlayerInvulnerable = false;
         this.doubleJumpAvaliable = true;
+        this.hasArrived = false;
         distanceAchieved = 0;  // Distancia modo endless a 0
 
         // ----CARGA DE DATOS----
@@ -555,14 +557,16 @@ class LevelManager extends Phaser.Scene
     // Cambia la variable que almacena si el personaje está saltando.
     // DEBE LLAMARSE SIEMPRE QUE TOQUE UN SUELO (ya lo hacen grupos platforms y ground)
     grounded() {
-        if (!this.soundRunning.isPlaying) {
-            this.soundRunning.play(this.getAudioConfig());
-            this.soundRunning.setLoop(true);
+        if (this.hasArrived != true) {
+            if (!this.soundRunning.isPlaying) {
+                this.soundRunning.play(this.getAudioConfig());
+                this.soundRunning.setLoop(true);
+            }
+            this.isPlayerJumping = false;
+            this.isPlayerTouchingGround = true;
+            this.doubleJumpAvaliable = true;
+            this.player.anims.play('einar_running', true);
         }
-        this.isPlayerJumping = false;
-        this.isPlayerTouchingGround = true;
-        this.doubleJumpAvaliable = true;
-        this.player.anims.play('einar_running', true);
     }
 
     // moverse a la izquierda
@@ -862,6 +866,7 @@ class LevelManager extends Phaser.Scene
 
     // Devuelve el jugador al mapa del mundo (al completar el nivel)
     goalArrived() {
+        this.hasArrived = true;
         this.actualizeMapsCompleted();
         console.log("Pasaste el nivel" + levelIndex);
         user.money+= levelSettings[DifficultyIndexSubnode(levelIndex)][userConfig.difficulty][3];
@@ -870,6 +875,7 @@ class LevelManager extends Phaser.Scene
 
         musicGameplay.stop();
         this.soundRunning.stop();
+        this.playerMovementSpeed = 0;
         this.player.setVelocityX(0);
         this.DialogText.setVisible(true);
         this.endTrigger.setVisible(false);
