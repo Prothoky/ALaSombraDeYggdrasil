@@ -37,6 +37,9 @@ class World1Map extends Phaser.Scene{
   }
 
   create(){
+    
+    this.cameras.main.fadeIn(1000, 0, 0, 0);
+
     // Controlador de audio
     // Paramos música gameplay
     if (musicGameplay != null && musicGameplay.isPlaying) {
@@ -487,7 +490,7 @@ class World1Map extends Phaser.Scene{
          this.buttonNode0Sel.setVisible(true);
          this.level0Name.setVisible(true);
          this.buttonNode0Sel.setInteractive({ useHandCursor: true  } )
-         .on('pointerdown', () => this.scene.start('LevelManager'));
+         .on('pointerdown', () => this.StartPlaying());
          levelIndex = level;
          console.log("a jugar el " + level);
        }
@@ -508,7 +511,7 @@ class World1Map extends Phaser.Scene{
         this.buttonNode1Sel.setVisible(true);
         this.level1Name.setVisible(true);
         this.buttonNode1Sel.setInteractive({ useHandCursor: true  } )
-        .on('pointerdown', () => this.scene.start('LevelManager'));
+        .on('pointerdown', () => this.StartPlaying());
         levelIndex = level;
         console.log("a jugar el " + level);
       }
@@ -529,7 +532,7 @@ class World1Map extends Phaser.Scene{
         this.buttonNode2Sel.setVisible(true);
         this.level2Name.setVisible(true);
         this.buttonNode2Sel.setInteractive({ useHandCursor: true  } )
-        .on('pointerdown', () => this.scene.start('LevelManager'));
+        .on('pointerdown', () => this.StartPlaying());
         levelIndex = level;
         console.log("a jugar el " + level);
       }
@@ -550,7 +553,7 @@ class World1Map extends Phaser.Scene{
         this.numActiveNodes ++;
         this.buttonNode3Sel.setVisible(true);
         this.buttonNode3Sel.setInteractive({ useHandCursor: true  } )
-        .on('pointerdown', () => this.scene.start('LevelManager'));
+        .on('pointerdown', () => this.StartPlaying());
         levelIndex = level;
         console.log("a jugar el " + level);
       }
@@ -571,7 +574,7 @@ class World1Map extends Phaser.Scene{
         this.level4Name.setVisible(true);
         this.buttonNode4Sel.setVisible(true);
         this.buttonNode4Sel.setInteractive({ useHandCursor: true  } )
-        .on('pointerdown', () => this.scene.start('LevelManager'));
+        .on('pointerdown', () => this.StartPlaying());
         levelIndex = level;
         console.log("a jugar el " + level);
       }
@@ -592,7 +595,7 @@ class World1Map extends Phaser.Scene{
         this.buttonNode5Sel.setVisible(true);
         this.level5Name.setVisible(true);
         this.buttonNode5Sel.setInteractive({ useHandCursor: true  } )
-        .on('pointerdown', () => this.scene.start('LevelManager'));
+        .on('pointerdown', () => this.StartPlaying());
         levelIndex = level;
         console.log("a jugar el " + level);
       }
@@ -613,7 +616,7 @@ class World1Map extends Phaser.Scene{
         this.level6Name.setVisible(true);
         this.buttonNode6Sel.setVisible(true);
         this.buttonNode6Sel.setInteractive({ useHandCursor: true  } )
-        .on('pointerdown', () => this.scene.start('LevelManager'));
+        .on('pointerdown', () => this.StartPlaying());
         levelIndex = level;
         console.log("a jugar el " + level);
       }
@@ -634,7 +637,7 @@ class World1Map extends Phaser.Scene{
         this.level7Name.setVisible(true);
         this.buttonNode7Sel.setVisible(true);
         this.buttonNode7Sel.setInteractive({ useHandCursor: true  } )
-        .on('pointerdown', () => this.scene.start('LevelManager'));
+        .on('pointerdown', () => this.StartPlaying());
         levelIndex = level;
         console.log("a jugar el " + level);
       }
@@ -655,7 +658,7 @@ class World1Map extends Phaser.Scene{
         this.level8Name.setVisible(true);
         this.buttonNode8Sel.setVisible(true);
         this.buttonNode8Sel.setInteractive({ useHandCursor: true  } )
-        .on('pointerdown', () => this.scene.start('LevelManager'));
+        .on('pointerdown', () => this.StartPlaying());
         levelIndex = level;
         console.log("a jugar el " + level);
       }
@@ -676,7 +679,7 @@ class World1Map extends Phaser.Scene{
         this.level9Name.setVisible(true);
         this.buttonNode9Sel.setVisible(true);
         this.buttonNode9Sel.setInteractive({ useHandCursor: true  } )
-        .on('pointerdown', () => this.scene.start('LevelManager'));
+        .on('pointerdown', () => this.StartPlaying());
         levelIndex = level;
         console.log("a jugar el " + level);
       }
@@ -697,7 +700,7 @@ class World1Map extends Phaser.Scene{
         this.buttonSubnode1_1Sel.setVisible(true);
         this.level0Name.setVisible(true);
         this.buttonSubnode1_1Sel.setInteractive({ useHandCursor: true  } )
-        .on('pointerdown', () => this.scene.start('LevelManager'));
+        .on('pointerdown', () => this.StartPlaying());
         levelIndex = 10;
         console.log("a jugar el " + level);
       }
@@ -718,7 +721,7 @@ class World1Map extends Phaser.Scene{
         this.buttonSubnode2_1Sel.setVisible(true);
         this.level0Name.setVisible(true);
         this.buttonSubnode2_1Sel.setInteractive({ useHandCursor: true  } )
-        .on('pointerdown', () => this.scene.start('LevelManager'));
+        .on('pointerdown', () => this.StartPlaying());
         levelIndex = 11;
         console.log("a jugar el " + level);
       }
@@ -739,7 +742,7 @@ class World1Map extends Phaser.Scene{
         this.buttonSubnode4_1Sel.setVisible(true);
         this.level0Name.setVisible(true);
         this.buttonSubnode4_1Sel.setInteractive({ useHandCursor: true  } )
-        .on('pointerdown', () => this.scene.start('LevelManager'));
+        .on('pointerdown', () => this.StartPlaying());
         levelIndex = 12;
         console.log("a jugar el " + level);
       }
@@ -760,7 +763,7 @@ class World1Map extends Phaser.Scene{
         this.buttonSubnode4_2Sel.setVisible(true);
         this.level0Name.setVisible(true);
         this.buttonSubnode4_2Sel.setInteractive({ useHandCursor: true  } )
-        .on('pointerdown', () => this.scene.start('LevelManager'));
+        .on('pointerdown', () => this.StartPlaying());
         levelIndex = 13;
         console.log("a jugar el " + level);
       }
@@ -781,7 +784,7 @@ class World1Map extends Phaser.Scene{
         this.buttonSubnode5_1Sel.setVisible(true);
         this.level0Name.setVisible(true);
         this.buttonSubnode5_1Sel.setInteractive({ useHandCursor: true  } )
-        .on('pointerdown', () => this.scene.start('LevelManager'));
+        .on('pointerdown', () => this.StartPlaying());
         levelIndex = 14;
         console.log("a jugar el " + level);
       }
@@ -802,7 +805,7 @@ class World1Map extends Phaser.Scene{
         this.buttonSubnode5_2Sel.setVisible(true);
         this.level0Name.setVisible(true);
         this.buttonSubnode5_2Sel.setInteractive({ useHandCursor: true  } )
-        .on('pointerdown', () => this.scene.start('LevelManager'));
+        .on('pointerdown', () => this.StartPlaying());
         levelIndex = 15;
         console.log("a jugar el " + level);
       }
@@ -823,7 +826,7 @@ class World1Map extends Phaser.Scene{
         this.buttonSubnode7_1Sel.setVisible(true);
         this.level0Name.setVisible(true);
         this.buttonSubnode7_1Sel.setInteractive({ useHandCursor: true  } )
-        .on('pointerdown', () => this.scene.start('LevelManager'));
+        .on('pointerdown', () => this.StartPlaying());
         levelIndex = 16;
         console.log("a jugar el " + level);
       }
@@ -844,7 +847,7 @@ class World1Map extends Phaser.Scene{
         this.buttonSubnode7_2Sel.setVisible(true);
         this.level0Name.setVisible(true);
         this.buttonSubnode7_2Sel.setInteractive({ useHandCursor: true  } )
-        .on('pointerdown', () => this.scene.start('LevelManager'));
+        .on('pointerdown', () => this.StartPlaying());
         levelIndex = 17;
         console.log("a jugar el " + level);
       }
@@ -858,6 +861,13 @@ class World1Map extends Phaser.Scene{
 
      }
 
+   }
+
+   StartPlaying(){
+     this.cameras.main.fadeOut(1000, 0, 0, 0);
+     this.time.delayedCall(1000, () => {
+		     this.scene.start('LevelManager')
+	   });
    }
 
    BackMapSelectionMenu(){

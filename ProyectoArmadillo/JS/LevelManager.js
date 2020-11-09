@@ -119,6 +119,9 @@ class LevelManager extends Phaser.Scene
 
     create ()
     {
+
+      //this.cameras.main.fadeIn(1500, 0, 0, 0);
+
         // ----FIX----
         // 1) ASIGNACIONES DE RESETEO
         // Vuelve a asignar los valores de determinadas variables al reintentar ya que no pasa correctamente por el constructor
@@ -891,8 +894,17 @@ class LevelManager extends Phaser.Scene
     // Actualiza los mapas completados y guarda los datos
     levelCompletedFunc() {
         this.soundRunning.stop();   // Para el sonido de los pasos
-        this.scene.stop('LevelManager');
-        this.scene.start('WinnerMenu');
+        //this.scene.stop('LevelManager');
+       //  this.scene.start('WinnerMenu');
+
+        if (this.endlessMode == true){
+          this.scene.stop('LevelManager');
+          this.scene.start('WinnerMenu');
+        }else{
+          this.scene.stop('LevelManager');
+          this.scene.start('World1Map');
+        }
+
     }
 
     // Actualiza la variable global de mapas pasados

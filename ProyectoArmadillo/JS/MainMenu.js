@@ -6,7 +6,7 @@ class MainMenu extends Phaser.Scene{
 
   create(){
 
-    //this.cameras.main.fadeOut(1000, 0, 0, 0);
+    this.cameras.main.fadeIn(1000, 0, 0, 0);
 
     // Controlador de audio
     let config = {
@@ -77,8 +77,13 @@ class MainMenu extends Phaser.Scene{
 
   InitArcadeGame(){
     arcadeMode = true;
-    this.scene.pause('MainMenu');
-    this.scene.start('LevelManager');
+
+    this.cameras.main.fadeOut(1000, 0, 0, 0);
+    this.time.delayedCall(1000, () => {
+      this.scene.pause('MainMenu');
+      this.scene.start('LevelManager');
+    });
+
   }
 
   OptionsGame(){

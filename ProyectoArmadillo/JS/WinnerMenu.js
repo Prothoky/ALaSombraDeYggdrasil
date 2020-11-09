@@ -5,6 +5,8 @@ class WinnerMenu extends Phaser.Scene{
 
   create(){
 
+    this.cameras.main.fadeIn(1000, 0, 0, 0);
+
     var backgroundWM = this.add.image(0, 0, 'backgroundWM');
     backgroundWM.setScale(2/3);
     backgroundWM.setPosition(gameWidth/2, gameHeight/2);

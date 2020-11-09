@@ -5,6 +5,8 @@ class GameOverMenu extends Phaser.Scene{
 
   create(){
 
+    this.cameras.main.fadeIn(500, 0, 0, 0);
+
     var backgroundGOM = this.add.image(0, 0, 'backgroundGOM');
     backgroundGOM.setScale(2/3);
     backgroundGOM.setPosition(gameWidth/2, gameHeight/2);

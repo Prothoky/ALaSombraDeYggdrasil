@@ -9,6 +9,8 @@ class MapSelectionMenu extends Phaser.Scene{
 
   create(){
 
+    this.cameras.main.fadeIn(1000, 0, 0, 0);
+
     this.backgroundMSM = this.add.image(0, 0, 'backgroundMSM');
     this.backgroundMSM.setPosition(gameWidth/2, gameHeight/2);
     this.backgroundMSM.setInteractive({ useHandCursor: false  } )
