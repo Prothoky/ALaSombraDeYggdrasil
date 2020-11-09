@@ -727,8 +727,9 @@ class LevelManager extends Phaser.Scene
     // Funciones de creación de trampa de pinchos
     // xPos, yPos = posiciones x e y. Origen del sprite en el límite inferior derecho.
     // Únicamente cambiar el sprite y el valor de setScale()
-    generateSpikesTrap(xPos, yPos = this.levelGroundHeight - 1, scaleFactor = 0.5) {
-        this.spikesTraps.create(xPos, yPos, 'ground').setScale(scaleFactor).setOrigin(0, 0).setTint(0xe62272).refreshBody();
+    generateSpikesTrap(xPos, yPos = this.levelGroundHeight - 38, scaleFactor = 0.75) {
+        let localSpikes = this.spikesTraps.create(xPos, yPos, 'spikes').setScale(scaleFactor).setOrigin(0, 0).setSize(136, 10);;
+        localSpikes.setOffset(145, 90);
         return this.minDistSpikes;
     }
 
