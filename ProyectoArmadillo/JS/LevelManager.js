@@ -788,11 +788,10 @@ class LevelManager extends Phaser.Scene
 
     // FUNCIONES COMPLEJAS (valores hardcodeados)
     // Plataforma + pinchos (necesario saltar desde la plataforma para no recibir hit)
-    generatePlatformToSpikes(xPos, enemy = true) {
+    generatePlatformToSpikes(xPos, enemy = true, yPos = this.levelGroundHeight - 38, scaleFactor = 0.9) {
         this.generatePlatform(xPos + Math.floor(Math.random() * 170), this.platformPositionY - this.platformPositionOffset/2, enemy);
-        this.generateSpikesTrap(xPos);
-        this.generateSpikesTrap(xPos + 200);
-        this.generateSpikesTrap(xPos + 300);
+        let localSpikes = this.spikesTraps.create(xPos - 50, yPos, 'spikes_long').setScale(scaleFactor).setOrigin(0, 0).setSize(450, 10);;
+        localSpikes.setOffset(317, 90);
         return this.minDistPlatformToSpikes;
     }
 
