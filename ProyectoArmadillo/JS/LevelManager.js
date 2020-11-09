@@ -835,6 +835,21 @@ class LevelManager extends Phaser.Scene
 
 
     // FUNCIONES DE FLUJO DEL JUEGO -------------------------------------
+
+    showDialog(){
+
+      if(stringsJSON.Dialogs[levelIndex]!=null)
+            this.DialogText.setText(stringsJSON.Dialogs[levelIndex][this.indexText]);
+        else{
+             this.levelCompletedFunc();
+        }
+
+        this.DialogBg.setVisible(true);
+        this.buttonDialog.setVisible(true);
+
+      }
+
+
     // Devuelve el jugador al mapa del mundo (al completar el nivel)
     endArrived() {
         this.actualizeMapsCompleted();
@@ -861,22 +876,17 @@ class LevelManager extends Phaser.Scene
         //this.DialogText.setText(stringsJSON.Dialogs[DifficultyIndexSubnode(levelIndex)][this.indexText]);
         //this.DialogText.setText(stringsJSON.Dialogs[levelIndex][this.indexText]);
 
-
-        if ( this.goalArrived == true){
-
-          if(stringsJSON.Dialogs[levelIndex]!=null)
-              this.DialogText.setText(stringsJSON.Dialogs[levelIndex][this.indexText]);
-          else{
-               this.levelCompletedFunc();
-          }
-
-          this.DialogBg.setVisible(true);
-          this.buttonDialog.setVisible(true);
-
+        for(let i = 0; i < this.playerHealth; i++) {    // Posiciona los puntos de vida en el HUD
+            this.healthPointsDisplay[i].setVisible(false);
         }
 
-
-
+        this.time.addEvent({
+                delay: 800,
+                callback: function() {
+                    this.showDialog();
+                },
+                callbackScope: this
+            }, this);
 
     }
 
@@ -1085,20 +1095,6 @@ class LevelManager extends Phaser.Scene
         this.bg_far.tilePositionX = this.cameras.main.scrollX *.5;
         this.bg_medium.tilePositionX = this.cameras.main.scrollX *1.5;
         this.bg_near.tilePositionX = this.cameras.main.scrollX*2;
-
-        console.log("goal " + this.goalArrived);
-
-
-          console.log("delta " + delta);
-          console.log("time " + time);
-
-          if (time > 32000){
-
-            this.goalArrived = true;
-
-          }
-
-
 
     }
 

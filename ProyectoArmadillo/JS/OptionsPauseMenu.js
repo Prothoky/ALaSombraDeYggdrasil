@@ -11,6 +11,8 @@ class OptionsPauseMenu extends Phaser.Scene{
 
   create(){
 
+    this.cameras.main.fadeIn(1500, 0, 0, 0);
+
     var background = this.add.image(0, 0, 'backgroundVM');
     background.setScale(1/3);
     background.setPosition(gameWidth/2, gameHeight/2);

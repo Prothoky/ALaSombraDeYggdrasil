@@ -5,6 +5,9 @@ class MainMenu extends Phaser.Scene{
 
 
   create(){
+
+    //this.cameras.main.fadeOut(1000, 0, 0, 0);
+
     // Controlador de audio
     let config = {
       mute: false,
@@ -23,16 +26,9 @@ class MainMenu extends Phaser.Scene{
       musicGameplay = this.sound.add('test2', config);
     }
 
-
-    var backgroundMM = this.add.image(0, 0, 'backgroundMM');
-    backgroundMM.setOrigin(0, 0);
-    backgroundMM.setScale(2/3);
-
-    //JUGAR
-  /*  this.playButton = this.add.image(gameWidth/2, gameHeight*6/16, 'playButton');
-    this.playButton.setScale(2/3);
-    this.playButton.setInteractive({ useHandCursor: true  } )
-		.on('pointerdown', () => this.InitGame());*/
+    this.backgroundMM = this.add.image(0, 0, 'backgroundMM');
+    this.backgroundMM.setOrigin(0, 0);
+    this.backgroundMM.setScale(2/3);
 
     //JUGAR
     this.arcadeButton = this.add.image(gameWidth*6.5/16, gameHeight*6/16, 'arcadeButton');
@@ -49,7 +45,7 @@ class MainMenu extends Phaser.Scene{
     this.optionsButton = this.add.image(gameWidth/2, gameHeight*8/16, 'optionsButton');
     this.optionsButton.setScale(2/3);
     this.optionsButton.setInteractive({ useHandCursor: true  } )
-		.on('pointerdown', () => this.OptionsGame());
+		.on('pointerdown', () => (this.OptionsGame()));
 
     //CREDITS MENU
     this.creditsButton = this.add.image(gameWidth/2, gameHeight*10/16, 'creditsButton');
@@ -94,12 +90,6 @@ class MainMenu extends Phaser.Scene{
     this.scene.pause('MainMenu');
     this.scene.start('CreditsMenu');
   }
-
-/*  SetFullScreen(){
-    console.log ("Hola");
-    //this.game.config.Phaser.scale.FIT;
-    scene.scale.on('enterfullscreen', function() {});
-  }*/
 
   ShopMenu(){
     this.scene.pause('MainMenu');

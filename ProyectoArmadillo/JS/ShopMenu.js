@@ -9,15 +9,17 @@ class ShopMenu extends Phaser.Scene{
 
   create(){
 
-    var backgroundSM = this.add.image(0, 0, 'backgroundSM');
-    backgroundSM.setScale(2/3);
-    backgroundSM.setPosition(gameWidth/2, gameHeight/2);
+    this.cameras.main.fadeIn(1500, 0, 0, 0);
+
+    this.backgroundSM = this.add.image(0, 0, 'backgroundSM');
+    this.backgroundSM .setScale(2/3);
+    this.backgroundSM .setPosition(gameWidth/2, gameHeight/2);
 
     //MONEY
     this.backgroundMoney = this.add.image(0, 0, 'backgroundMoney');
     this.backgroundMoney.setScale(1/3);
     this.backgroundMoney.setPosition(gameWidth*13/16, gameHeight*1/16);
-    this.Money = this.add.text(gameWidth*12.85/16, gameHeight*0.7/16,  user.money, {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "black", strokeThickness: 2});
+    this.Money = this.add.text(gameWidth*12.85/16, gameHeight*0.7/16,  user.money, {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "white", strokeThickness: 2});
 
     //BOTON OBJETO 1
     this.object1Button = this.add.image(gameWidth*2.6/16, gameHeight*8.64/16, 'object1Button');

@@ -9,6 +9,8 @@ class SettingsMenu extends Phaser.Scene{
 
   create(){
 
+    this.cameras.main.fadeIn(1500, 0, 0, 0);
+
     this.backgroundSM = this.add.image(0, 0, 'backgroundSetM');
     this.backgroundSM.setScale(2/3);
     this.backgroundSM.setPosition(gameWidth/2, gameHeight/2);
