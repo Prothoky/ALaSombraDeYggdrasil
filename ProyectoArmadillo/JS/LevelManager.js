@@ -106,7 +106,6 @@ class LevelManager extends Phaser.Scene
         this.attackButton;
         this.testButton;
         this.pauseButton;
-        this.dialogButton;
 
         //7) Textos
         //Dinero en posesion

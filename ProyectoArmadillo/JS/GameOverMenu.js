@@ -28,18 +28,25 @@ class GameOverMenu extends Phaser.Scene{
     //this.Money = this.add.text(gameWidth*12.85/16, gameHeight*0.7/16,  user.money, {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "white", strokeThickness: 2});
     //this.DialogText = this.add.text(gameWidth*6/16, gameHeight*6/16,  "", {fontFamily: "StayHappy",stroke:'#000000', fill: "white", strokeThickness: 2});
 
+    if(user.maxDistanceArcade==null){
+      user.maxDistanceArcade=0;
+    }
+
     if(arcadeMode == false){
       this.gameOverRunner = this.add.text(gameWidth*6/16, gameHeight*6/16,  "Moristes Wey", {fontFamily: "StayHappy", fontSize: 24, stroke:'#000000', fill: "white", strokeThickness: 2});
     }else{
       this.DialogText = this.add.text(gameWidth*6/16, gameHeight*6/16,  ("Puntuación: " + distanceAchieved ), {fontFamily: "StayHappy",  fontSize: 24, stroke:'#000000', fill: "white", strokeThickness: 2});
 
+      
       if (distanceAchieved > user.maxDistanceArcade ){
         user.maxDistanceArcade = distanceAchieved;
       }
+      
 
       this.DialogText = this.add.text(gameWidth*5/16, gameHeight*8/16,  ("Distancia máxima recorrida: " + user.maxDistanceArcade) , {fontFamily: "StayHappy",  fontSize: 24, stroke:'#000000', fill: "white", strokeThickness: 2});
       distanceAchieved = 0;
 
+      saveUserData();
     }
 
   }
@@ -54,7 +61,7 @@ class GameOverMenu extends Phaser.Scene{
   QuitGameGOM(){
     this.scene.pause('GameOverMenu');
     this.scene.sendToBack('GameOverMenu');
-    this.scene.start('World1Map');
+    this.scene.start('MainMenu');
   }
 
 }
