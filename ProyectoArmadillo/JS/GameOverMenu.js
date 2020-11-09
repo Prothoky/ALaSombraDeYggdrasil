@@ -37,11 +37,11 @@ class GameOverMenu extends Phaser.Scene{
     }else{
       this.DialogText = this.add.text(gameWidth*6/16, gameHeight*6/16,  ("Puntuación: " + distanceAchieved ), {fontFamily: "StayHappy",  fontSize: 24, stroke:'#000000', fill: "white", strokeThickness: 2});
 
-      
+
       if (distanceAchieved > user.maxDistanceArcade ){
         user.maxDistanceArcade = distanceAchieved;
       }
-      
+
 
       this.DialogText = this.add.text(gameWidth*5/16, gameHeight*8/16,  ("Distancia máxima recorrida: " + user.maxDistanceArcade) , {fontFamily: "StayHappy",  fontSize: 24, stroke:'#000000', fill: "white", strokeThickness: 2});
       distanceAchieved = 0;
@@ -59,9 +59,17 @@ class GameOverMenu extends Phaser.Scene{
   }
 
   QuitGameGOM(){
-    this.scene.pause('GameOverMenu');
-    this.scene.sendToBack('GameOverMenu');
-    this.scene.start('MainMenu');
+
+    if (arcadeMode == true){
+      this.scene.pause('GameOverMenu');
+      this.scene.sendToBack('GameOverMenu');
+      this.scene.start('MainMenu');
+    }else{
+      this.scene.pause('GameOverMenu');
+      this.scene.sendToBack('GameOverMenu');
+      this.scene.start('World1Map');
+    }
+
   }
 
 }

@@ -59,6 +59,14 @@ class SettingsMenu extends Phaser.Scene{
     this.backButtonVM.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.BackOptionsMenuSM());
 
+    if (userConfig.difficulty == 0){
+      this.easyButtonSelSM.setVisible(true);
+    }else if(userConfig.difficulty == 1){
+      this.mediumButtonSelSM.setVisible(true);
+    }else{
+      this.difficultButtonSelSM.setVisible(true);
+    }
+
   }
 
   BackOptionsMenuSM(){
