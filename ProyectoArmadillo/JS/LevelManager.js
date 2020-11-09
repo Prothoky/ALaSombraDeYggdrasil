@@ -158,7 +158,7 @@ class LevelManager extends Phaser.Scene
         this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium");
         this.bg_near = this.add.tileSprite(0,0, 5715, 916, "bg_near");
         this.bg_near.depth = 2;
-        
+
         // Ajusta los tileSprites
         this.bg_backgorund.setOrigin(0,0);
         this.bg_far.setOrigin(0,0);
@@ -203,7 +203,7 @@ class LevelManager extends Phaser.Scene
 
 
         // 3) OBJETOS DE CONTROL DE FLUJO
-        this.arcadeIntervalTimer = this.time.addEvent( { delay: 200, callback: this.arcadeIntervalFunc, callbackScope: this, loop: true } );
+      //  this.arcadeIntervalTimer = this.time.addEvent( { delay: 200, callback: this.arcadeIntervalFunc(), callbackScope: this, loop: true } );
         this.endTrigger = this.physics.add.sprite(0, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight + 200);  // Trigger de evento final de nivel
         this.endTrigger.body.setAllowGravity(false);    // Quitar gravedad
         if (this.endlessMode == true) {
@@ -294,12 +294,16 @@ class LevelManager extends Phaser.Scene
         }
 
         //MONEY
-        this.backgroundMoney = this.add.image(0, 0, 'backgroundMoney');
-        this.backgroundMoney.setScale(1/3);
-        this.backgroundMoney.setScrollFactor(0);
-        this.backgroundMoney.setPosition(gameWidth*13/16, gameHeight*1/16);
-        this.Money = this.add.text(gameWidth*12.85/16, gameHeight*0.7/16,  user.money, {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "white", strokeThickness: 2});
-        this.Money.setScrollFactor(0);
+
+        if (arcadeMode == false){
+          this.backgroundMoney = this.add.image(0, 0, 'backgroundMoney');
+          this.backgroundMoney.setScale(1/3);
+          this.backgroundMoney.setScrollFactor(0);
+          this.backgroundMoney.setPosition(gameWidth*13/16, gameHeight*1/16);
+          this.Money = this.add.text(gameWidth*12.85/16, gameHeight*0.7/16,  user.money, {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "white", strokeThickness: 2});
+          this.Money.setScrollFactor(0);
+        }
+
 
         //DIALOG End Level
         this.DialogBg = this.add.image(gameWidth*7.5/16, gameHeight*6/16, 'backgroundDialog');
@@ -888,7 +892,15 @@ class LevelManager extends Phaser.Scene
         //this.scene.stop('LevelManager');
        //  this.scene.start('WinnerMenu');
 
-        if (this.endlessMode == true){
+        /*if (arcadeMode == true){
+          this.scene.stop('LevelManager');
+          this.scene.start('WinnerMenu');
+        }else{
+          this.scene.stop('LevelManager');
+          this.scene.start('World1Map');
+        }*/
+
+        if (levelIndex == 9){
           this.scene.stop('LevelManager');
           this.scene.start('WinnerMenu');
         }else{
@@ -941,7 +953,7 @@ class LevelManager extends Phaser.Scene
         this.isPlayerTouchingGround = false;
         this.playerAttackAvaliable = true;
         this.doubleJumpAvaliable = true;
-        distanceAchieved = 0;
+        //distanceAchieved = 0;
         if (this.jumpTimer != null) {
             this.jumpTimer.remove();
         }
@@ -964,7 +976,7 @@ class LevelManager extends Phaser.Scene
     // Función que se ejecuta repetidamente en el modo arcade, actualiza posición y aumenta velocidad
     arcadeIntervalFunc() {
         distanceAchieved += 5;
-        this.playerMovementSpeed += 0.2;
+        this.playerMovementSpeed += 0.02; //ANTES ESTABA A 0.2
     }
 
     // Resetea la posición del jugador (para no crear mapa infinito) y crea nuevas trampas
@@ -1085,6 +1097,14 @@ class LevelManager extends Phaser.Scene
        this.bg_far.tilePositionX = this.cameras.main.scrollX *.5;
        this.bg_medium.tilePositionX = this.cameras.main.scrollX *1.5;
        this.bg_near.tilePositionX = this.cameras.main.scrollX*2;
+
+       //this.arcadeIntervalTimer;
+
+       if (arcadeMode == true){
+         this.arcadeIntervalTimer = this.time.addEvent( { delay: 200, callback: this.arcadeIntervalFunc(), callbackScope: this, loop: true } );
+         console.log(distanceAchieved);
+       }
+
 
     }
 

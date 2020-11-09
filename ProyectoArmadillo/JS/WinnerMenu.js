@@ -25,7 +25,7 @@ class WinnerMenu extends Phaser.Scene{
   ContinueWM(){
     this.scene.pause('WinnerMenu');
     this.scene.sendToBack('WinnerMenu');
-    this.scene.start('World1Map');
+    this.scene.start('MainMenu');
   }
 
 }
