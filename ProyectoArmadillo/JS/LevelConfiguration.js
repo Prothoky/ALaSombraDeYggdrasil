@@ -7,7 +7,7 @@ const seasons = {
 }
 
 LevelTrapValues[i] -> i indica el nivel (10 modo endless)
-LevelTrapValues[i][j, k] -> j indica la trampa a settear el porcentaje de aparición, 
+LevelTrapValues[i][j, k] -> j indica la trampa a settear el porcentaje de aparición,
 k indica el porcentaje de aparición de dicha trampa. Se suman todos los porcentajes de
 aparición de LevelTrapValues[i] y ese es el total.
 (ej: [0, 3],[1, 3],[2, 3] aparecerían igual porcentaje de trampas 0, 1 y 2)
@@ -19,7 +19,7 @@ Leyenda de trampas
 3 - plataformas con enemigos
 4 - enemigos con movimiento ¡NO USAR!
 5 - pinchos largos con plataforma para lograr el salto
-6 - pinchos pequeñitos seguidos
+6 - pinchos pequeñitos seguidos sin enemigo
 7 - pinchos pequeñitos seguidos con enemigos
 8 - barricada
 9 - tronco tirado
@@ -27,6 +27,7 @@ Leyenda de trampas
 11 - moneda
 12 - barricada en el suelo + barricada en plataforma
 13 - cabaña sin enemigos
+14 - cabaña de pasar por dentro
 */
 
 var levelTrapValues = new Array();
