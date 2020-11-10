@@ -51,14 +51,14 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('backgroundIM', './ASSETS/InitMenu/InitMenuBackground.jpg');
 
     //Main MENU
-        this.load.image('backgroundMM', './ASSETS/MainMenu/MainMenuBackground.jpg');
-        this.load.image('shopButtonMM', './ASSETS/MainMenu/BotonTienda.jpg');
-        //this.load.image('playButton', './ASSETS/MainMenu/BotonJugar.png');
-        this.load.image('optionsButton', './ASSETS/MainMenu/BotonOpciones.png');
-        this.load.image('creditsButton', './ASSETS/MainMenu/BotonCreditos.png');
-        this.load.image('quitButton', './ASSETS/MainMenu/BotonSalir.png');
-        this.load.image('historyButton', './ASSETS/MainMenu/BotonHistoria.png');
-        this.load.image('arcadeButton', './ASSETS/MainMenu/BotonArcade.png');
+      this.load.image('backgroundMM', './ASSETS/MainMenu/MainMenuBackground.jpg');
+      this.load.image('shopButtonMM', './ASSETS/MainMenu/BotonTienda.jpg');
+      //this.load.image('playButton', './ASSETS/MainMenu/BotonJugar.png');
+      this.load.image('optionsButton', './ASSETS/MainMenu/BotonOpciones.png');
+      this.load.image('creditsButton', './ASSETS/MainMenu/BotonCreditos.png');
+      this.load.image('quitButton', './ASSETS/MainMenu/BotonSalir.png');
+      this.load.image('historyButton', './ASSETS/MainMenu/BotonHistoria.png');
+      this.load.image('arcadeButton', './ASSETS/MainMenu/BotonArcade.png');
 
     //Options Menu General
       this.load.image('backgroundOM', './ASSETS/OptionsMenu/OptionsMenuBackground.jpg');
@@ -66,13 +66,13 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('VolumeUpButtonOM', './ASSETS/OptionsMenu/BotonSubirVolumen.png');
       this.load.image('VolumeDownButtonOM', './ASSETS/OptionsMenu/BotonBajarVolumen.png');
 
-      //Options Main Menu
+    //Options Main Menu
       this.load.image('backgroundVM', './ASSETS/OptionsMenu/MusicMenuBackground.jpg'); //Fondo Volume Menu
       this.load.image('backgroundSetM', './ASSETS/OptionsMenu/OptionsMainMenu/SettingsMenuBackgr.jpg'); //Fondo Settings Menu
       this.load.image('SettingsButton', './ASSETS/OptionsMenu/OptionsMainMenu/BotonAjustes.jpg');
       this.load.image('VolumeButton', './ASSETS/OptionsMenu/OptionsMainMenu/BotonVolumen.png');
 
-      //Settings Menu
+    //Settings Menu
       this.load.image('DeleteButton', './ASSETS/OptionsMenu/OptionsMainMenu/BotonBorrar.png');
       this.load.image('EasyButton', './ASSETS/OptionsMenu/OptionsMainMenu/BotonFacil.png');
       this.load.image('EasyButtonSelected', './ASSETS/OptionsMenu/OptionsMainMenu/BotonFacilSeleccionado.png');
@@ -81,11 +81,8 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('DifficultButton', './ASSETS/OptionsMenu/OptionsMainMenu/BotonDificil.png');
       this.load.image('DifficultButtonSelected', './ASSETS/OptionsMenu/OptionsMainMenu/BotonDificilSeleccionado.png');
 
-    //Credits Menu
-    
+    //Credits Menu    
       this.load.image('logo','ASSETS/Logo.jpeg');
-      this.load.image('credits', 'ASSETS/Placeholders/Text_Credits.png');
-      this.load.image('backButtonCM', './ASSETS/MapSelectionMenu/BotonSalir.png');
 
     //Map Selection Menu
       this.load.image('backgroundMSM', './ASSETS/MapSelectionMenu/MapMenuBackground.jpeg');
@@ -93,7 +90,7 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('World2Button', './ASSETS/MapSelectionMenu/BotonMundo2.png');
       this.load.image('World3Button', './ASSETS/MapSelectionMenu/BotonMundo3.png');
       this.load.image('World4Button', './ASSETS/MapSelectionMenu/BotonMundo4.png');
-      this.load.image('backButtonMSM', './ASSETS/MapSelectionMenu/BotonSalir.png');
+      this.load.image('backButton', './ASSETS/MapSelectionMenu/BotonSalir.png');
       this.load.image('paperDesciptionMSM', './ASSETS/MapSelectionMenu/Pergamino.png');
       this.load.image('playButtonMSM', './ASSETS/MapSelectionMenu/BotonJugar.png');
 
@@ -132,12 +129,12 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('optionsButtonPM', './ASSETS/PauseMenu/BotonOpciones.png');
 
     //SHOP MEMU
-    this.load.image('backgroundSM', './ASSETS/Tienda/FondoTienda.jpg');
-    this.load.image('backButtonSM', './ASSETS/PauseMenu/BotonAtras.png');
-    this.load.image('object1Button', './ASSETS/Tienda/BotonObjeto1.png');
-    this.load.image('object2Button', './ASSETS/Tienda/BotonObjeto2.png');
-    this.load.image('object3Button', './ASSETS/Tienda/BotonObjeto3.png');
-    this.load.image('object4Button', './ASSETS/Tienda/BotonObjeto4.png');
+      this.load.image('backgroundSM', './ASSETS/Tienda/FondoTienda.jpg');
+      this.load.image('backButtonSM', './ASSETS/PauseMenu/BotonAtras.png');
+      this.load.image('object1Button', './ASSETS/Tienda/BotonObjeto1.png');
+      this.load.image('object2Button', './ASSETS/Tienda/BotonObjeto2.png');
+      this.load.image('object3Button', './ASSETS/Tienda/BotonObjeto3.png');
+      this.load.image('object4Button', './ASSETS/Tienda/BotonObjeto4.png');
 
     //World 1 Map
       this.load.image('backgroundWM1M', './ASSETS/World1Menu/FondoMapaMundo1.jpg');

@@ -3,14 +3,9 @@ class CreditsMenu extends Phaser.Scene{
       super("CreditsMenu");
   }
 
-  preload(){
-
-    this.levelHeight = 145; 
-    this.levelWidth = 70 ;  
-
-  }
-
   create(){
+
+    this.cameras.main.fadeIn(1500, 0, 0, 0);
 
     //1) BACKGROUND
     this.bg_backgorund = this.add.tileSprite(0,0, 5715, 916, 'bg_background');
@@ -44,8 +39,7 @@ class CreditsMenu extends Phaser.Scene{
     this.physics.add.collider(this.player, this.ground); // Permitimos colisiones entre suelo y jugador y cuenta como grounded (puede saltar)
 
     // 3) CREDITS
-    //this.credits = this.add.image(0, 100,"credits");
-    this.credits = this.add.text(0, 150, stringsJSON.Credits , {fontFamily: "Acadian_Runes", fill: "white", fontSize: 18, align: 'center' ,boundsAlignH: "center", boundsAlignV: "middle"});
+    this.credits = this.add.text(0, 250, stringsJSON.Credits , {fontFamily: "Acadian_Runes", fill: "white", fontSize: 18, align: 'center' ,boundsAlignH: "center", boundsAlignV: "middle"});
     this.credits.setOrigin(0,0);
     this.credits.depth=3;
 
@@ -65,11 +59,11 @@ class CreditsMenu extends Phaser.Scene{
     });
 
     //BACK BUTTON
-    this.backButtonCM = this.add.image(this.cameras.main.x,0, 'backButtonCM');
-    this.backButtonCM.setScale(1.5/3);
-    this.backButtonCM.setInteractive({ useHandCursor: true  } )
+    this.backButton = this.add.image(this.cameras.main.x,0, 'backButton');
+    this.backButton.setScale(1.5/3);
+    this.backButton.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.BackMainMenu());
-    this.backButtonCM.depth = 3;
+    this.backButton.depth = 3;
 
     //PLAYER MOVEMENT
     this.player.anims.play('einar_running',true);
@@ -86,7 +80,7 @@ class CreditsMenu extends Phaser.Scene{
     this.bg_near.tilePositionX += 5;
     this.credits.setX(this.cameras.main.x+800);
     this.credits.setY(this.credits.y-0.5);
-    this.backButtonCM.setX(this.cameras.main.x+1350);
+    this.backButton.setX(this.cameras.main.x+1350);
     if(this.credits.y<=-1500){
       this.credits.y=100;
     }

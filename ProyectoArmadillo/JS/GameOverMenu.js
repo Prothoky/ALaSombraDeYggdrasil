@@ -25,7 +25,8 @@ class GameOverMenu extends Phaser.Scene{
 
     //this.FinalText = this.add.text(gameWidth*8/16, gameHeight*8.6/16, 'Perdiste Wey', {fill: "black"});
 
-    //this.Money = this.add.text(gameWidth*12.85/16, gameHeight*0.7/16,  user.money, {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "white", strokeThickness: 2});
+    //this.Money = this.add.text(gameWidth*13/16, gameHeight*0.95/16,  user.money, {fontFamily: "Acadian_Runes",stroke:'#000000', align: 'center', fill: "white", strokeThickness: 2});
+    //this.Money.setOrigin(0.5,0.5);
     //this.DialogText = this.add.text(gameWidth*6/16, gameHeight*6/16,  "", {fontFamily: "StayHappy",stroke:'#000000', fill: "white", strokeThickness: 2});
 
     if(user.maxDistanceArcade==null){

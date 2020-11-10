@@ -304,12 +304,13 @@ class LevelManager extends Phaser.Scene
         //MONEY
 
         if (arcadeMode == false){
-          this.backgroundMoney = this.add.image(0, 0, 'backgroundMoney');
-          this.backgroundMoney.setScale(1/3);
-          this.backgroundMoney.setScrollFactor(0);
-          this.backgroundMoney.setPosition(gameWidth*13/16, gameHeight*1/16);
-          this.Money = this.add.text(gameWidth*12.85/16, gameHeight*0.7/16,  user.money, {fontFamily: "Acadian_Runes",stroke:'#000000', fill: "white", strokeThickness: 2});
-          this.Money.setScrollFactor(0);
+            this.backgroundMoney = this.add.image(0, 0, 'backgroundMoney');
+            this.backgroundMoney.setScale(1/3);
+            this.backgroundMoney.setScrollFactor(0);
+            this.backgroundMoney.setPosition(gameWidth*13/16, gameHeight*1/16);
+            this.Money = this.add.text(gameWidth*13/16, gameHeight*0.95/16,  user.money, {fontFamily: "Acadian_Runes",stroke:'#000000', align: 'center', fill: "white", strokeThickness: 2});
+            this.Money.setOrigin(0.5,0.5);
+            this.Money.setScrollFactor(0);
         }
 
 

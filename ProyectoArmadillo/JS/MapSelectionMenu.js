@@ -17,9 +17,9 @@ class MapSelectionMenu extends Phaser.Scene{
     .on('pointerdown', () => this.DesactivatePaper());
 
     //BOTON ATRAS
-    this.backButtonMSM = this.add.image(gameWidth*14/16, gameHeight*15/16, 'backButtonMSM');
-    this.backButtonMSM.setScale(1.5/3);
-    this.backButtonMSM.setInteractive({ useHandCursor: true  } )
+    this.backButton = this.add.image(gameWidth*14/16, gameHeight*15/16, 'backButton');
+    this.backButton.setScale(1.5/3);
+    this.backButton.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () => this.BackMainMenu());
 
     //BOTON TIENDA
@@ -74,7 +74,7 @@ class MapSelectionMenu extends Phaser.Scene{
     this.paperDescription1.setVisible(true);
     this.playButtonMSM.setVisible(true);
     this.shopButtonW1M.setVisible(false);
-    this.backButtonMSM.setVisible(false);
+    this.backButton.setVisible(false);
     this.timeText.setVisible(false);
   }
 
@@ -82,7 +82,7 @@ class MapSelectionMenu extends Phaser.Scene{
     this.paperDescription1.setVisible(false);
     this.playButtonMSM.setVisible(false);
     this.shopButtonW1M.setVisible(true);
-    this.backButtonMSM.setVisible(true);
+    this.backButton.setVisible(true);
     this.timeText.setVisible(true);
   }
 
