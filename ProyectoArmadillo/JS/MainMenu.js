@@ -18,7 +18,7 @@ class MainMenu extends Phaser.Scene{
       loop: true,
       delay: 0
     };
-    
+
     if (musicMenu == null) {
       musicMenu = this.sound.add('test', config);
       musicMenu.play();
@@ -34,8 +34,9 @@ class MainMenu extends Phaser.Scene{
     //JUGAR
     this.arcadeButton = this.add.image(gameWidth*6.5/16, gameHeight*6/16, 'arcadeButton');
     this.arcadeButton.setScale(2/3);
-    this.arcadeButton.setInteractive({ useHandCursor: true  } )
-		.on('pointerdown', () => this.InitArcadeGame());
+    this.arcadeButton.on('pointerover', function (pointer) {this.arcadeButton.setScale(0.9);}, this);
+    this.arcadeButton.on('pointerout', function (pointer) {this.arcadeButton.setScale(2/3);}, this);
+    this.arcadeButton.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.InitArcadeGame());
 
     this.historyButton = this.add.image(gameWidth*9.5/16, gameHeight*6/16, 'historyButton');
     this.historyButton.setScale(2/3);
