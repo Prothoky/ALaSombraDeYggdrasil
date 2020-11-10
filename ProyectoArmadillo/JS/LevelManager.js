@@ -763,7 +763,13 @@ class LevelManager extends Phaser.Scene
     // Pinta imagen de cabaña y crea 3 plataformas y 1 barricada
     generateCabinUp(xPos, yPos = this.levelGroundHeight + 123, scaleFactor = 0.7, enemies = true) {
         xPos += 300;
-        let localCabin = this.physics.add.image(xPos, yPos, 'cabin_up').setScale(scaleFactor).setOrigin(0, 1);
+        let cabinId;
+        if (this.isIceLevel) {
+            cabinId = 'cabin_up_ice';
+        } else {
+            cabinId = 'cabin_up';
+        }
+        let localCabin = this.physics.add.image(xPos, yPos, cabinId).setScale(scaleFactor).setOrigin(0, 1);
         localCabin.body.setAllowGravity(false);
         this.generatePlatform(xPos - 275, 300, enemies && Math.random() >= 0.5);
         this.generatePlatform(xPos + 142, 260, enemies, 0.35, false);
