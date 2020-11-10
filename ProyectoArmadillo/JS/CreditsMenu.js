@@ -44,9 +44,14 @@ class CreditsMenu extends Phaser.Scene{
     this.physics.add.collider(this.player, this.ground); // Permitimos colisiones entre suelo y jugador y cuenta como grounded (puede saltar)
 
     // 3) CREDITS
-    this.credits = this.add.image(0, 100,"credits");
-    this.credits.setOrigin(0, 0);
+    //this.credits = this.add.image(0, 100,"credits");
+    this.credits = this.add.text(0, 150, stringsJSON.Credits , {fontFamily: "Acadian_Runes", fill: "white", fontSize: 18, align: 'center' ,boundsAlignH: "center", boundsAlignV: "middle"});
+    this.credits.setOrigin(0,0);
     this.credits.depth=3;
+
+    // 4) LOGO
+    this.logo = this.add.image(1425,-395, 'logo');
+    this.logo.setScale(0.125)
 
     // 3) CAMERA
     this.cameras.main.startFollow(this.player, false, 1, 1, -250, 200); // Cámar sigue al personaje
@@ -76,12 +81,15 @@ class CreditsMenu extends Phaser.Scene{
   update(){
 
     this.bg_backgorund.tilePositionX += 0.5;
-    this.bg_far.tilePositionX +=2.5;
-    this.bg_medium.tilePositionX += 7.5;
-    this.bg_near.tilePositionX += 10;
-    this.credits.setX(this.cameras.main.x+650);
-    this.credits.setY(this.credits.y-1);
-    this.backButtonCM.setX(this.cameras.main.x+1250);
+    this.bg_far.tilePositionX +=1;
+    this.bg_medium.tilePositionX += 3;
+    this.bg_near.tilePositionX += 5;
+    this.credits.setX(this.cameras.main.x+800);
+    this.credits.setY(this.credits.y-0.5);
+    this.backButtonCM.setX(this.cameras.main.x+1350);
+    if(this.credits.y<=-1500){
+      this.credits.y=100;
+    }
   }
 
   BackMainMenu(){

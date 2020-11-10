@@ -31,6 +31,7 @@ class PreloadMenu extends Phaser.Scene{
               fontSize: '25px',
               fontFamily: 'Acadian_Runes',
               fontStyle: 'bold',
+              align: 'center',
               fill: '#ffffff'
           }
       });
@@ -82,6 +83,7 @@ class PreloadMenu extends Phaser.Scene{
 
     //Credits Menu
     
+      this.load.image('logo','ASSETS/Logo.jpeg');
       this.load.image('credits', 'ASSETS/Placeholders/Text_Credits.png');
       this.load.image('backButtonCM', './ASSETS/MapSelectionMenu/BotonSalir.png');
 

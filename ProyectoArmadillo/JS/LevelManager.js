@@ -113,6 +113,7 @@ class LevelManager extends Phaser.Scene
         //Dinero en posesion
         this.Money;
         //Dialogos finales
+        this.DialogShowing=false;
         this.DialogText
         this.indexText=0;
 
@@ -317,8 +318,6 @@ class LevelManager extends Phaser.Scene
         this.DialogBg.setScale(2/3);
         this.DialogBg.setDepth(2);
         this.DialogBg.setScrollFactor(0);
-        /*this.DialogBg.setInteractive({ useHandCursor: true  } )
-        .on('pointerdown', () => this.nextDialog());*/
         this.DialogBg.setVisible(false);
 
         this.buttonDialog = this.add.image(gameWidth*13.5/16, gameHeight*9/16, 'buttonDialog');
@@ -868,11 +867,10 @@ class LevelManager extends Phaser.Scene
     goalArrived() {
         this.hasArrived = true;
         this.actualizeMapsCompleted();
-        console.log("Pasaste el nivel" + levelIndex);
         user.money+= levelSettings[DifficultyIndexSubnode(levelIndex)][userConfig.difficulty][3];
         user.map[levelIndex] = true;
         saveUserData();
-
+        
         musicGameplay.stop();
         this.soundRunning.stop();
         this.playerMovementSpeed = 0;
@@ -888,6 +886,7 @@ class LevelManager extends Phaser.Scene
         this.time.addEvent({
                 delay: 800,
                 callback: function() {
+                    this.DialogShowing=true;
                     this.showDialog();
                 },
                 callbackScope: this
@@ -902,6 +901,7 @@ class LevelManager extends Phaser.Scene
         }
         else{
             this.indexText = 0;
+            this.DialogShowing=false;
             this.levelCompletedFunc();
         }
     }
@@ -1126,10 +1126,14 @@ class LevelManager extends Phaser.Scene
         this.bg_medium.tilePositionX = this.cameras.main.scrollX *1.5;
         this.bg_near.tilePositionX = this.cameras.main.scrollX*2;
         */
-       this.bg_backgorund.tilePositionX += 1;
-       this.bg_far.tilePositionX += 2.5;
-       this.bg_medium.tilePositionX += 6.25;
-       this.bg_near.tilePositionX += 7.75;
+
+        if(!this.DialogShowing){
+            this.bg_backgorund.tilePositionX += 1;
+            this.bg_far.tilePositionX += 2.5;
+            this.bg_medium.tilePositionX += 6.25;
+            this.bg_near.tilePositionX += 7.75;
+        }
+       
         /*
         //this.arcadeIntervalTimer;
         if (arcadeMode == true){
