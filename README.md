@@ -58,7 +58,8 @@ Hay diferentes obstáculos en función del mapa en el que se encuentre el jugado
 
 Diseño de estructura de niveles de bosque con subniveles 
 
-![diseño niveles boceto](https://user-images.githubusercontent.com/55508821/96874064-00613880-1476-11eb-9242-3d6ee32c792d.jpg)
+![Fase Bosque](https://user-images.githubusercontent.com/55508821/98613632-f4d79380-22f6-11eb-9d0e-61c4e781673e.png)
+
 
 
 Boceto de mapa del bosque "tileable"
@@ -68,36 +69,33 @@ Aquí se muestra la continuación del mapa del bosque con un enemigo y un obstá
 ![mapa fase 2](https://user-images.githubusercontent.com/55508821/96566275-a7eb3900-12c5-11eb-8953-51e343277f71.jpg)
 
 La escena de selección de mapa es en un tablero inspirado en paisajes de Noruega y Suecia donde el jugador va avanzando por los diferentes niveles del mundo.
-![boceto mapa de niveles](https://user-images.githubusercontent.com/55508821/96410879-e4486780-11e7-11eb-986e-956eb7e3723b.jpeg)
+![Midgard final](https://user-images.githubusercontent.com/55508821/98613748-3ff1a680-22f7-11eb-9d1f-bfcb319d769d.jpeg)
+
 
 
 
 El diseño de niveles está desarrollado con una curva de dificultad progresiva y situacional en función al avance de los distintos niveles del mundo. Una vez se alcance el hielo en el mapa, la dificultad bajará para que el usuario se pueda adaptar a los nuevos elementos incorporados en estos.
 
 
-![dificultad](https://user-images.githubusercontent.com/55508821/97113804-f2691d00-16ec-11eb-9c7a-35e91484c141.JPG)
+
+![Dificultad final](https://user-images.githubusercontent.com/55508821/98614050-f190d780-22f7-11eb-85d2-1194f2f01c3c.JPG)
 
 Durante la partida saldrán varios elementos a esquivar, ya sean enemigos u obstáculos:
-[Ya implementados]
- - Pinchos normales
- - Plataformas
- - Enemigos quietos
- - Plataformas con enemigos
- - Enemigos con movimiento
- - Pinchos largos con plataforma para lograr el salto
- - Pinchos pequeños seguidos
- - Pinchos pequeños seguidos con enemigos
- 
-  [Aún por incluir]
-  
-  
- - Casa vikinga
- - Casa vikinga con obstáculo en el suelo
- - Casa vikinga con obstáculo en el techo
- - Casa vikinga con enemigo
- - Enemigo con ataque a distancia
- - Árbol
- - ...
+0  -  Pinchos standar
+1  -  Plataformas
+2  -  Enemigos quietos
+3  -  Plataformas con enemigos
+4  -  Enemigos con movimiento ¡NO USAR!
+5  -  Pinchos largos con plataforma para lograr el salto
+6  -  Pinchos pequeñitos seguidos
+7  -  Pinchos pequeñitos seguidos con enemigos
+8  -  Barricada
+9  -  Tronco tirado
+10 -  Cabaña sin enemigo
+11 -  Moneda
+12 -  Barricada en el suelo + barricada en plataforma
+
+[Añadir las dos últimas cuando estén impleentadas]
 
 
 ## Interfaz y modos de juego
@@ -109,7 +107,7 @@ La interfaz de juego está mayormente limitada por el lanzamiento del juego en l
 
 
 ## Flujo de juego
-![A la sombra de Yggdrasil](https://user-images.githubusercontent.com/55508821/96869494-d3118c00-146f-11eb-983f-405292a00031.png)
+![A la sombra de Yggdrasil](https://user-images.githubusercontent.com/55508821/98612539-a45f3680-22f4-11eb-8d3b-8b0e48d76194.png)
 
 
 ## Historia
