@@ -273,7 +273,7 @@ class LevelManager extends Phaser.Scene
         this.proceduralGenerator(); // Genera el mapa
         // Especial para modo arcade
         if (this.endlessMode == true) {
-            let localTrashRecolector = this.trashRecolectors.create(-200, 300, 'dot').setOrigin(1).setSize(40, 610).setVisible(false);   // Objeto que elimina trampas ya superadas
+            let localTrashRecolector = this.trashRecolectors.create(-600, 300, 'dot').setOrigin(1).setSize(40, 610).setVisible(false);   // Objeto que elimina trampas ya superadas
             localTrashRecolector.body.setAllowGravity(false);   // Quita gravedad
             localTrashRecolector.setVelocityX(this.playerMovementSpeed);
             this.levelIntroWidth = 1500;
@@ -727,9 +727,9 @@ class LevelManager extends Phaser.Scene
     // Funciones de creación de trampa de pinchos
     // xPos, yPos = posiciones x e y. Origen del sprite en el límite inferior derecho.
     // Únicamente cambiar el sprite y el valor de setScale()
-    generateSpikesTrap(xPos, yPos = this.levelGroundHeight - 45, scaleFactor = 0.75) {
+    generateSpikesTrap(xPos, yPos = this.levelGroundHeight - 46, scaleFactor = 0.75) {
         let localSpikes = this.spikesTraps.create(xPos, yPos, 'spikes').setScale(scaleFactor).setOrigin(0, 0).setSize(136, 10);;
-        localSpikes.setOffset(145, 90);
+        localSpikes.setOffset(142, 98);
         return this.minDistSpikes;
     }
 
@@ -1025,7 +1025,7 @@ class LevelManager extends Phaser.Scene
 
         // Reposiciona al jugador y al recolector de basura y les da velocidad
         this.player.x = 595;
-        let localTrashRecolector = this.trashRecolectors.create(-200, 300, 'dot').setOrigin(1).setSize(40, 610).setVisible(false);   // Objeto que elimina trampas ya superadas
+        let localTrashRecolector = this.trashRecolectors.create(-600, 300, 'dot').setOrigin(1).setSize(40, 610).setVisible(false);   // Objeto que elimina trampas ya superadas
         localTrashRecolector.body.setAllowGravity(false);   // Quita gravedad)
         this.player.setVelocityX(this.playerMovementSpeed);
         localTrashRecolector.setVelocityX(this.playerMovementSpeed);
