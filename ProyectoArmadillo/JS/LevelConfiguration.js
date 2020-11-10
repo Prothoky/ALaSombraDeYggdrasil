@@ -26,10 +26,11 @@ Leyenda de trampas
 10 - cabaña
 11 - moneda
 12 - barricada en el suelo + barricada en plataforma
+13 - cabaña sin enemigos
 */
 
 var levelTrapValues = new Array();
-levelTrapValues[0] = [ [0, 1], [1, 1], [2, 1], [3, 1], [5, 1], [6, 1], [7, 1], [8, 1], [9, 1], [10, 1], [11, 1], [12, 1] ];
+levelTrapValues[0] = [ [0, 1], [1, 1], [2, 1], [3, 1], [5, 1], [6, 1], [7, 1], [8, 1], [9, 1], [10, 1], [11, 1], [12, 1], [13, 1] ];
 levelTrapValues[1] = [ [0, 1], [1, 1], [2, 1], [3, 1], [5, 1], [6, 1], [7, 1] ];
 levelTrapValues[2] = [ [0, 1], [1, 1], [2, 1], [3, 1], [5, 1], [6, 1], [7, 1] ];
 levelTrapValues[3] = [ [0, 1], [1, 1], [2, 1], [3, 1], [5, 1], [6, 1], [7, 1] ];

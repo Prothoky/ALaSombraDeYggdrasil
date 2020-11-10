@@ -506,7 +506,7 @@ class LevelManager extends Phaser.Scene
                                     'this.generatePlatform', 'this.generateMovingEnemy', 'this.generatePlatformToSpikes',
                                     'this.generateSmallSpikesNoEnemy', 'this.generateSmallSpikes', 'this.generateBarricade',
                                     'this.generateTrunk', 'this.generateCabinUp', 'this.generatePlatformToCoin',
-                                    'this.generateDoubleBarricade' ];
+                                    'this.generateDoubleBarricade', 'this.generateCabinUpNoEnemy' ];
         for (let i = 0; i < trapFunctionsNames.length; i++) {
             this.trapFunctionsArray[i] = trapFunctionsNames[i];
         }
@@ -765,9 +765,9 @@ class LevelManager extends Phaser.Scene
         xPos += 300;
         let localCabin = this.physics.add.image(xPos, yPos, 'cabin_up').setScale(scaleFactor).setOrigin(0, 1);
         localCabin.body.setAllowGravity(false);
-        this.generatePlatform(xPos - 275, 300, false);
+        this.generatePlatform(xPos - 275, 300, enemies && Math.random() >= 0.5);
         this.generatePlatform(xPos + 142, 260, enemies, 0.35, false);
-        this.generatePlatform(xPos + 330, 260, enemies, 0.35, false);
+        this.generatePlatform(xPos + 330, 260, enemies && Math.random() >= 0.5, 0.35, false);
         // Fix modo arcade hitbox desplazada
         if (this.endlessMode == true && !this.hasCicled) {
             this.generateBarricade(xPos + 370, this.levelGroundHeight + 100, 0.7, false);
@@ -777,6 +777,11 @@ class LevelManager extends Phaser.Scene
             this.generateBarricade(xPos + 290, undefined, 0.7, false);
         }
         this.cabins[this.cabins.length] = localCabin;   // Almacena referencia para su eliminación
+        return this.minDistCabin;
+    }
+
+    generateCabinUpNoEnemy(xPos,  yPos = this.levelGroundHeight + 123, scaleFactor = 0.7) {
+        this.generateCabinUp(xPos, yPos, scaleFactor, false);
         return this.minDistCabin;
     }
 
