@@ -1120,11 +1120,16 @@ class LevelManager extends Phaser.Scene
         this.bg_medium.tilePositionX = this.cameras.main.scrollX * .5;
         this.bg_near.tilePositionX = this.cameras.main.scrollX;
         */
-       this.bg_backgorund.tilePositionX = this.cameras.main.scrollX * .1;
-       this.bg_far.tilePositionX = this.cameras.main.scrollX *.5;
-       this.bg_medium.tilePositionX = this.cameras.main.scrollX *1.5;
-       this.bg_near.tilePositionX = this.cameras.main.scrollX*2;
-
+        /*
+        this.bg_backgorund.tilePositionX = this.cameras.main.scrollX * .1;
+        this.bg_far.tilePositionX = this.cameras.main.scrollX *.5;
+        this.bg_medium.tilePositionX = this.cameras.main.scrollX *1.5;
+        this.bg_near.tilePositionX = this.cameras.main.scrollX*2;
+        */
+       this.bg_backgorund.tilePositionX += 1;
+       this.bg_far.tilePositionX += 2.5;
+       this.bg_medium.tilePositionX += 6.25;
+       this.bg_near.tilePositionX += 7.75;
         /*
         //this.arcadeIntervalTimer;
         if (arcadeMode == true){
