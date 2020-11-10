@@ -39,7 +39,7 @@ class CreditsMenu extends Phaser.Scene{
     this.physics.add.collider(this.player, this.ground); // Permitimos colisiones entre suelo y jugador y cuenta como grounded (puede saltar)
 
     // 3) CREDITS
-    this.credits = this.add.text(0, 250, stringsJSON.Credits , {fontFamily: "Acadian_Runes", fill: "white", fontSize: 18, align: 'center' ,boundsAlignH: "center", boundsAlignV: "middle"});
+    this.credits = this.add.text(0, 150, stringsJSON.Credits , {fontFamily: "Acadian_Runes", fill: "white", fontSize: 18, align: 'center' ,boundsAlignH: "center", boundsAlignV: "middle"});
     this.credits.setOrigin(0,0);
     this.credits.depth=3;
 
@@ -81,7 +81,7 @@ class CreditsMenu extends Phaser.Scene{
     this.credits.setX(this.cameras.main.x+800);
     this.credits.setY(this.credits.y-0.5);
     this.backButton.setX(this.cameras.main.x+1350);
-    if(this.credits.y<=-1500){
+    if(this.credits.y<=-1250){
       this.credits.y=100;
     }
   }
