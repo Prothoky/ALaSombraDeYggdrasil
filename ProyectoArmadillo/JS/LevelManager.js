@@ -211,10 +211,10 @@ class LevelManager extends Phaser.Scene
 
 
         // 3) OBJETOS DE CONTROL DE FLUJO
-        this.arcadeIntervalTimer = this.time.addEvent( { delay: 200, callback: this.arcadeIntervalFunc, callbackScope: this, loop: true } );
         this.endTrigger = this.physics.add.sprite(0, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight + 200);  // Trigger de evento final de nivel
         this.endTrigger.body.setAllowGravity(false);    // Quitar gravedad
         if (this.endlessMode == true) {
+            this.arcadeIntervalTimer = this.time.addEvent( { delay: 200, callback: this.arcadeIntervalFunc, callbackScope: this, loop: true } );    // Aumenta la velocidad y la distancia
             this.halfLevelTrigger = this.physics.add.sprite(this.levelWidth / 2, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight + 200);  // Trigger de evento final de nivel
             this.halfLevelTrigger.body.setAllowGravity(false);    // Quitar gravedad
             this.halfLevelTrigger.setVisible(false);
@@ -874,7 +874,6 @@ class LevelManager extends Phaser.Scene
         
         musicGameplay.stop();
         this.soundRunning.stop();
-        this.playerMovementSpeed = 0;
         this.player.setVelocityX(0);
         this.DialogText.setVisible(true);
         this.endTrigger.setVisible(false);
