@@ -713,7 +713,7 @@ class LevelManager extends Phaser.Scene
         } else {
             enemyYOffset = 20;
         }
-        if (Math.random() < 0.5 && enemy == true) {    // Generamos enemigo?
+        if (enemy == true) {    // Generamos enemigo?
             this.generateStillEnemy(xPos + localPlatform.width*scaleFactor/2, yPos - enemyYOffset);
         }
         return this.minDistPlatform;

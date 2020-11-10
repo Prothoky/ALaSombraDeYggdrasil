@@ -14,7 +14,7 @@ aparición de LevelTrapValues[i] y ese es el total.
 Leyenda de trampas
 
 0 - pinchos standar
-1 - plataformas
+1 - plataformas sin enemigos
 2 - enemigos quietos
 3 - plataformas con enemigos
 4 - enemigos con movimiento ¡NO USAR!
