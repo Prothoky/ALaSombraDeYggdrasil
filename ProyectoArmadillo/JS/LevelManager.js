@@ -37,7 +37,7 @@ class LevelManager extends Phaser.Scene
         this.minDistPlatform = 200;   // Mínimo de distancia tras una plataforma
         this.minDistSpikes = 400;   // Mínimo de distancia tras una trampa de pinchos
         this.minDistBarricade = 250;    // Mínimo de distancia tras una barricada
-        this.minDistTrunk = 450;    // Mínimo de distancia tras un tronco
+        this.minDistTrunk = 485;    // Mínimo de distancia tras un tronco
         this.minDistPlatformToSpikes = 550; // Mínimo de distancia tras una plataforma + pinchos largos
         this.minDistCabin = 1100;   // Mínimo de distancia tras una cabaña
         this.minDistCoin = 0;   // Mínimo de distancia tras una moneda
@@ -170,7 +170,7 @@ class LevelManager extends Phaser.Scene
             this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium");
             this.bg_near = this.add.tileSprite(0,0, 5715, 916, "bg_near");    
         }
-        this.bg_near.depth = 2;
+        this.bg_near.depth = 3;
 
         // Ajusta los tileSprites
         this.bg_backgorund.setOrigin(0,0);
@@ -506,7 +506,7 @@ class LevelManager extends Phaser.Scene
                                     'this.generatePlatform', 'this.generateMovingEnemy', 'this.generatePlatformToSpikes',
                                     'this.generateSmallSpikesNoEnemy', 'this.generateSmallSpikes', 'this.generateBarricade',
                                     'this.generateTrunk', 'this.generateCabinUp', 'this.generatePlatformToCoin',
-                                    'this.generateDoubleBarricade', 'this.generateCabinUpNoEnemy' ];
+                                    'this.generateDoubleBarricade', 'this.generateCabinUpNoEnemy', 'this.generateCabinDown' ];
         for (let i = 0; i < trapFunctionsNames.length; i++) {
             this.trapFunctionsArray[i] = trapFunctionsNames[i];
         }
@@ -728,8 +728,8 @@ class LevelManager extends Phaser.Scene
     // Funciones de creación de trampa de pinchos
     // xPos, yPos = posiciones x e y. Origen del sprite en el límite inferior derecho.
     // Únicamente cambiar el sprite y el valor de setScale()
-    generateSpikesTrap(xPos, yPos = this.levelGroundHeight - 46, scaleFactor = 0.75) {
-        let localSpikes = this.spikesTraps.create(xPos, yPos, 'spikes').setScale(scaleFactor).setOrigin(0, 0).setSize(136, 10);;
+    generateSpikesTrap(xPos, yPos = this.levelGroundHeight - 46, scaleFactor = 0.75, visible = true, sizeX = 136, sizeY = 10) {
+        let localSpikes = this.spikesTraps.create(xPos, yPos, 'spikes').setScale(scaleFactor).setOrigin(0, 0).setSize(sizeX, sizeY).setVisible(visible);
         localSpikes.setOffset(142, 98);
         return this.minDistSpikes;
     }
@@ -791,6 +791,41 @@ class LevelManager extends Phaser.Scene
         return this.minDistCabin;
     }
 
+    // Cabaña de pasar por dentro
+    // Pinta imagen de cabaña y crea 3 plataformas y 1 collider de daño en el tejado
+    generateCabinDown(xPos, yPos = this.levelGroundHeight + 123, scaleFactor = 0.7) {
+        xPos += 300;
+        let cabinId1;
+        let cabinId2;
+        if (this.isIceLevel) {
+            cabinId1 = 'cabin_down_ice_1';
+            cabinId2 = 'cabin_down_ice_2';
+        } else {
+            cabinId1 = 'cabin_down_1';
+            cabinId2 = 'cabin_down_2';
+        }
+        let localCabin1 = this.physics.add.image(xPos, yPos, cabinId1).setScale(scaleFactor).setOrigin(0, 1);
+        localCabin1.body.setAllowGravity(false);
+        localCabin1.depth = 2;
+        let localCabin2 = this.physics.add.image(xPos, yPos, cabinId2).setScale(scaleFactor).setOrigin(0, 1);
+        localCabin2.body.setAllowGravity(false);
+
+        this.generateSpikes
+
+        // Fix modo arcade hitbox desplazada
+        if (this.endlessMode == true && !this.hasCicled) {
+
+        } else if (this.endlessMode == true && this.hasCicled) {
+
+        } else {
+
+        }
+        // ALmacena referencias para eliminación
+        this.cabins[this.cabins.length] = localCabin1;
+        this.cabins[this.cabins.length] = localCabin2; 
+        return this.minDistCabin;
+    }
+
     // Moneda
     generateCoin(xPos, yPos = this.levelGroundHeight - 150, scaleFactor = 2.5) {
         this.coins.create(xPos, yPos, 'dot').setScale(scaleFactor).refreshBody();
@@ -809,13 +844,14 @@ class LevelManager extends Phaser.Scene
 
     // Genera trampas de pinchos pequeñas y seguidas
     generateSmallSpikes(xPos, enemy = true) {
-        let spikesLength = 220;
+        let spikesLength = 215;
         let enemyOffset = 175;
-        this.generateSpikesTrap(xPos, undefined, 0.2);
         let randomAdd = 0;
         let iteration = 1;
         while (randomAdd < 1) { // Aleatoriamente sigue añadiendo pinchos(cada vez menos probable)
-            this.generateSpikesTrap(xPos + spikesLength * iteration, undefined, 0.2);
+            let localSpikes = this.spikesTraps.create(xPos + spikesLength * iteration, this.levelGroundHeight - 19, 'spikes').setScale(0.375).setOrigin(0, 0).setSize(68, 10);
+            localSpikes.setOffset(129, 70);
+            console.log("iter + " + iteration);
             randomAdd += Math.random() * 0.65;
             if (enemy == true && iteration%2 != 0) {    // Sie es con enemigo añade enemigo
                 this.generateStillEnemy(xPos + spikesLength * iteration + enemyOffset);
