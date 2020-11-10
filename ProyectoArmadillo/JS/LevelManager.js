@@ -84,6 +84,7 @@ class LevelManager extends Phaser.Scene
         this.trapFunctionsArray = new Array();  // Array que guarda las funciones de las trampas a generar
         this.endTrigger;    // Trigger del fin del nivel
         this.halfLevelTrigger;  // Trigger de medio nivel
+        this.halfLevelCollision;    // Colisión del anterior trigger
         this.arcadeCicleCollision;  // Punto de reset (modo arcade)
 
         // 5) VARIABLES DE INFORMACIÓN
@@ -257,7 +258,7 @@ class LevelManager extends Phaser.Scene
             this.physics.add.overlap(this.player, this.endTrigger, this.goalArrived, null, this);   // Genera el texto de fin del nivel
         } else {
             this.arcadeCicleCollision = this.physics.add.overlap(this.player, this.endTrigger, this.arcadeCicle, null, this);   // Resetea la posición del personaje y genera nuevas trampas
-            this.physics.add.overlap(this.player, this.halfLevelTrigger, this.generateEndCabin, null, this);    // Genera la cabaña de reseteo de nivel
+            this.halfLevelCollision = this.physics.add.overlap(this.player, this.halfLevelTrigger, this.generateEndCabin, null, this);    // Genera la cabaña de reseteo de nivel
         }
         // Recolector de basura, elimina los objetos que toca
         this.physics.add.overlap(this.trashRecolectors, this.spikesTraps, this.deleteObject, null, this);
@@ -364,8 +365,8 @@ class LevelManager extends Phaser.Scene
             this.jumpButton.on('up', this.playerStopJump, this);
             this.attackButton.on('down', this.playerAttack, this);
             this.playerRight();
-            //this.testButton.on('down', this.swapVelocity, this);  // ELIMINAR VERSION FINAL
-            this.testButton.on('down', this.goalArrived, this);  // ELIMINAR VERSION FINAL
+            this.testButton.on('down', this.swapVelocity, this);  // ELIMINAR VERSION FINAL
+            //this.testButton.on('down', this.goalArrived, this);  // ELIMINAR VERSION FINAL
         } else {    // 1.2) Modo control izq/der
             this.jumpButton.on('down', this.playerStartJump, this);
             this.jumpButton.on('up', this.playerStopJump, this);
@@ -760,18 +761,18 @@ class LevelManager extends Phaser.Scene
 
     // Cabaña
     // Pinta imagen de cabaña y crea 3 plataformas y 1 barricada
-    generateCabinUp(xPos, yPos = this.levelGroundHeight + 145, scaleFactor = 0.7, enemies = true) {
+    generateCabinUp(xPos, yPos = this.levelGroundHeight + 123, scaleFactor = 0.7, enemies = true) {
         xPos += 300;
         let localCabin = this.physics.add.image(xPos, yPos, 'cabin_up').setScale(scaleFactor).setOrigin(0, 1);
         localCabin.body.setAllowGravity(false);
-        this.generatePlatform(xPos - 250, 360, false);
-        this.generatePlatform(xPos + 165, 317, enemies, 0.35, false);
-        this.generatePlatform(xPos + 395, 317, enemies, 0.35, false);
+        this.generatePlatform(xPos - 275, 300, false);
+        this.generatePlatform(xPos + 142, 260, enemies, 0.35, false);
+        this.generatePlatform(xPos + 330, 260, enemies, 0.35, false);
         // Fix modo arcade hitbox desplazada
         if (this.endlessMode == true && !this.hasCicled) {
             this.generateBarricade(xPos + 370, this.levelGroundHeight + 100, 0.7, false);
         } else if (this.endlessMode == true && this.hasCicled) {
-            this.generateBarricade(xPos + 370, this.levelGroundHeight + 173, 0.7, false);
+            this.generateBarricade(xPos + 370, this.levelGroundHeight + 187, 0.7, false);
         } else {
             this.generateBarricade(xPos + 290, undefined, 0.7, false);
         }
@@ -1031,9 +1032,11 @@ class LevelManager extends Phaser.Scene
         localTrashRecolector.setVelocityX(this.playerMovementSpeed);
 
         this.arcadeCicleCollision.active = true;    // Permite de nuevo las colision de reseteo
+        this.halfLevelCollision.active = true;  // Permite de nuevo la generación de la cabaña final
     }
 
     generateEndCabin() {
+        this.halfLevelCollision.active = false; // Desactiva colisión para que solo se genere una
         this.generateCabinUp(this.xPointerFinalValue, undefined, undefined, false);
     }
     // FIN DE FUNCIONES DE FLUJO DEL JUEGO ------------------------------
