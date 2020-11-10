@@ -81,21 +81,23 @@ El diseño de niveles está desarrollado con una curva de dificultad progresiva 
 ![Dificultad final](https://user-images.githubusercontent.com/55508821/98614050-f190d780-22f7-11eb-85d2-1194f2f01c3c.JPG)
 
 Durante la partida saldrán varios elementos a esquivar, ya sean enemigos u obstáculos:
-0  -  Pinchos standar
-1  -  Plataformas
-2  -  Enemigos quietos
-3  -  Plataformas con enemigos
-4  -  Enemigos con movimiento ¡NO USAR!
-5  -  Pinchos largos con plataforma para lograr el salto
-6  -  Pinchos pequeñitos seguidos
-7  -  Pinchos pequeñitos seguidos con enemigos
-8  -  Barricada
-9  -  Tronco tirado
-10 -  Cabaña sin enemigo
-11 -  Moneda
-12 -  Barricada en el suelo + barricada en plataforma
+|Obstáculos|
+| -- | 
+|0  -  Pinchos standar|
+|1  -  Plataformas|
+|2  -  Enemigos quietos|
+|3  -  Plataformas con enemigos|
+|4  -  Enemigos con movimiento ¡NO USAR!|
+|5  -  Pinchos largos con plataforma para lograr el salto|
+|6  -  Pinchos pequeñitos seguidos|
+|7  -  Pinchos pequeñitos seguidos con enemigos|
+|8  -  Barricada|
+|9  -  Tronco tirado|
+|10 -  Cabaña sin enemigo|
+|11 -  Moneda|
+|12 -  Barricada en el suelo + barricada en plataforma|
 
-[Añadir las dos últimas cuando estén impleentadas]
+[Añadir las dos últimas cuando estén implementadas]
 
 
 ## Interfaz y modos de juego
