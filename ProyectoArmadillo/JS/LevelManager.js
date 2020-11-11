@@ -118,8 +118,8 @@ class LevelManager extends Phaser.Scene
         this.Money;
         //Dialogos finales
         this.DialogShowing=false;
-        this.DialogText
-        this.indexText=0;
+        this.DialogText;
+        this.indexText = 0;
 
         this.buttonPause;
 
@@ -333,11 +333,10 @@ class LevelManager extends Phaser.Scene
         this.buttonDialog.setDepth(2);
         this.buttonDialog.setScrollFactor(0);
         //this.buttonDialog.setScale(0.5);
-        this.buttonDialog.setInteractive({ useHandCursor: true  } )
-        .on('pointerdown', () => this.nextDialog());
+        this.buttonDialog.setInteractive({ useHandCursor: true}).on('pointerdown', () => (this.nextDialog(), this.indexText ++));
         this.buttonDialog.setVisible(false);
 
-        this.DialogText = this.add.text(gameWidth*6/16, gameHeight*6/16,  "", {fontFamily: "StayHappy",stroke:'#000000', fill: "white", strokeThickness: 2});
+        this.DialogText = this.add.text(gameWidth*6/16, gameHeight*6/16,  " ", {fontFamily: "StayHappy",stroke:'#000000', fill: "white", strokeThickness: 2});
         this.DialogText.setScrollFactor(0);
         this.DialogText.setDepth(3);
         this.DialogText.setVisible(false);
@@ -945,8 +944,8 @@ class LevelManager extends Phaser.Scene
 
       if(stringsJSON.Dialogs[levelIndex]!=null)
             this.DialogText.setText(stringsJSON.Dialogs[levelIndex][this.indexText]);
-        else{
-             this.levelCompletedFunc();
+      else{
+             //this.levelCompletedFunc();
         }
 
         this.DialogBg.setVisible(true);
@@ -988,13 +987,17 @@ class LevelManager extends Phaser.Scene
 
 
     nextDialog(){
-        if(stringsJSON.Dialogs[levelIndex][++this.indexText] != null){
+        if(stringsJSON.Dialogs[levelIndex][this.indexText] != null){
+            console.log("indice pre" + this.indexText);
             this.DialogText.setText(stringsJSON.Dialogs[levelIndex][this.indexText]);
+            console.log("indice post" + this.indexText);
         }
         else{
-            this.indexText = 0;
-            this.DialogShowing=false;
-            //this.cameras.main.fadeOut(2500, 0, 0, 0);
+            console.log("indice final" + this.indexText);
+            console.log("Texto finalizado");
+            this.buttonDialog.setVisible(false);
+            this.DialogText.setVisible(false);
+            this.DialogShowing = false;
             this.levelCompletedFunc();
         }
     }
@@ -1012,8 +1015,9 @@ class LevelManager extends Phaser.Scene
           this.scene.stop('LevelManager');
           this.scene.start('World1Map');
         }*/
-        this.cameras.main.fadeOut(2500, 0, 0, 0);
+        this.indexText = 0;
 
+        this.cameras.main.fadeOut(2500, 0, 0, 0);
         this.time.delayedCall(2500, () => {
           if (levelIndex == 9){
             this.scene.stop('LevelManager');
