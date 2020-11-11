@@ -36,7 +36,6 @@ class SettingsMenu extends Phaser.Scene{
     this.mediumButtonSelSM.setScale(2/3);
     this.mediumButtonSelSM.setVisible(false);
 
-
     //BOTON DIFICIL
     this.diffButtonSM = this.add.image(gameWidth*12/16, gameHeight*7/16, 'DifficultButton');
     this.diffButtonSM.setScale(2/3);
@@ -64,7 +63,7 @@ class SettingsMenu extends Phaser.Scene{
     }else if(userConfig.difficulty == 1){
       this.mediumButtonSelSM.setVisible(true);
     }else{
-      this.difficultButtonSelSM.setVisible(true);
+      this.diffButtonSelSM.setVisible(true);
     }
 
   }
