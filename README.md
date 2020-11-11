@@ -83,19 +83,23 @@ El diseño de niveles está desarrollado con una curva de dificultad progresiva 
 Durante la partida saldrán varios elementos a esquivar, ya sean enemigos u obstáculos:
 |Obstáculos|
 | -- | 
-|0  -  Pinchos standar|
-|1  -  Plataformas|
-|2  -  Enemigos quietos|
-|3  -  Plataformas con enemigos|
-|4  -  Enemigos con movimiento ¡NO USAR!|
-|5  -  Pinchos largos con plataforma para lograr el salto|
-|6  -  Pinchos pequeñitos seguidos|
-|7  -  Pinchos pequeñitos seguidos con enemigos|
-|8  -  Barricada|
-|9  -  Tronco tirado|
-|10 -  Cabaña sin enemigo|
-|11 -  Moneda|
-|12 -  Barricada en el suelo + barricada en plataforma|
+| 0 - pinchos standar| 
+| 1 - plataformas sin enemigos| 
+| 2 - enemigos quietos| 
+| 3 - plataformas con enemigos| 
+| 4 - enemigos con movimiento ¡NO!| 
+| 5 - pinchos largos con plataforma para lograr el salto| 
+| 6 - pinchos pequeñitos seguidos sin enemigo| 
+| 7 - pinchos pequeñitos seguidos con enemigos| 
+| 8 - barricada| 
+| 9 - tronco tirado| 
+| 10 - cabaña con enemigos| 
+| 11 - moneda sin enemigos| 
+| 12 - barricada en el suelo + barricada en plataforma| 
+| 13 - cabaña sin enemigos| 
+| 14 - cabaña de pasar por dentro| 
+| 15 - moneda con enemigo| 
+
 
 [Añadir las dos últimas cuando estén implementadas]
 
