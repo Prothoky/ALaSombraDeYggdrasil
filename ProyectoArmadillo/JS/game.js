@@ -6,10 +6,12 @@ window.onload = function(){
     parent:'game',
     width: 1270, //Comprobar si en el escalado funciona bien
     height: 610,
+    fps: { target: fpsTarget, },
     physics: {
       default: 'arcade',
       arcade: {
          debug: false,
+         fps: fpsTarget,
          gravity: { y: 3500 }
       }
     },
@@ -46,6 +48,8 @@ var controls = {  // Controles del jugador (teclado)
   test: Phaser.Input.Keyboard.KeyCodes.F,
   pause: Phaser.Input.Keyboard.KeyCodes.ESC
 };
+
+var fpsTarget = 60;
 
 var levelIndex = 0; // Indica el nivel a generar para LevelManager (CAMBIAR A PASO DE OBJETO DE ESCENA A ESCENA)
 

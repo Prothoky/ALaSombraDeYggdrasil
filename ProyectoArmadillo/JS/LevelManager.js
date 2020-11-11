@@ -128,6 +128,7 @@ class LevelManager extends Phaser.Scene
     create ()
     {
 
+        this.physics.world.setFPS(fpsTarget);
       //this.cameras.main.fadeIn(1500, 0, 0, 0);
 
         // ----FIX----
