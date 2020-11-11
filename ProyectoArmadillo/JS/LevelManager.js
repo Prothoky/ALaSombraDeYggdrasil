@@ -326,20 +326,20 @@ class LevelManager extends Phaser.Scene
         //DIALOG End Level
         this.DialogBg = this.add.image(gameWidth*7.5/16, gameHeight*6/16, 'backgroundDialog');
         this.DialogBg.setScale(2/3);
-        this.DialogBg.setDepth(2);
+        this.DialogBg.setDepth(7);
         this.DialogBg.setScrollFactor(0);
         this.DialogBg.setVisible(false);
 
         this.buttonDialog = this.add.image(gameWidth*13.5/16, gameHeight*9/16, 'buttonDialog');
-        this.buttonDialog.setDepth(2);
+        this.buttonDialog.setDepth(7);
         this.buttonDialog.setScrollFactor(0);
         //this.buttonDialog.setScale(0.5);
-        this.buttonDialog.setInteractive({ useHandCursor: true}).on('pointerdown', () => (this.nextDialog(), this.indexText ++));
+        this.buttonDialog.setInteractive({ useHandCursor: true}).on('pointerdown', () => (this.nextDialog()));
         this.buttonDialog.setVisible(false);
 
         this.DialogText = this.add.text(gameWidth*6/16, gameHeight*6/16,  " ", {fontFamily: "StayHappy",stroke:'#000000', fill: "white", strokeThickness: 2});
         this.DialogText.setScrollFactor(0);
-        this.DialogText.setDepth(3);
+        this.DialogText.setDepth(7);
         this.DialogText.setVisible(false);
 
         //FULL SCREEN
@@ -997,14 +997,10 @@ class LevelManager extends Phaser.Scene
 
 
     nextDialog(){
-        if(stringsJSON.Dialogs[levelIndex][this.indexText] != null){
-            console.log("indice pre" + this.indexText);
+        if(stringsJSON.Dialogs[levelIndex][++this.indexText] != null){
             this.DialogText.setText(stringsJSON.Dialogs[levelIndex][this.indexText]);
-            console.log("indice post" + this.indexText);
         }
         else{
-            console.log("indice final" + this.indexText);
-            console.log("Texto finalizado");
             this.DialogShowing = false;
             this.levelCompletedFunc();
         }
