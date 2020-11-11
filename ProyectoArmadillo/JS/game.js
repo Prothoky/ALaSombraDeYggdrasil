@@ -27,7 +27,7 @@ window.onload = function(){
     //URL del JUEGO
     //utl: "http://proyectoArmadillo.es",
 
-    scene: [PreloadMenu, MainMenu, MapSelectionMenu, OptionsPauseMenu, OptionsMainMenu, VolumeMenu, SettingsMenu, PauseMenu, ShopMenu, CreditsMenu, World1Map, LevelManager, WinnerMenu, GameOverMenu]
+    scene: [PreloadMenu, MainMenu, MapSelectionMenu, OptionsPauseMenu, OptionsMainMenu, VolumeMenu, SettingsMenu, PauseMenu, ShopMenu, CreditsMenu, TutorialMenu, World1Map, LevelManager, WinnerMenu, GameOverMenu]
 
   }
 
@@ -109,6 +109,8 @@ function updateLanguage(userLang=null){
     stringsJSON = phaserJSON.eng;
   }
 }
+
+//var gamePaused = false;
 
 // Variable música entre escenas
 var musicMenu;  // Controlador de música de menú

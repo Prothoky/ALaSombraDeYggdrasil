@@ -102,6 +102,7 @@ class LevelManager extends Phaser.Scene
         this.isIceLevel = false; // Es un nivel de hielo?
         this.hasArrived = false;    // Ha llegado al final del nivel?
         this.xPointerFinalValue = 0;    // Almacena la posición donde se debe pintar la cabaña en endless mode
+        //this.gamePaused = false;
 
         // 6) INPUT
         // Teclas (no ejecutar si es en móvil)
@@ -119,6 +120,8 @@ class LevelManager extends Phaser.Scene
         this.DialogShowing=false;
         this.DialogText
         this.indexText=0;
+
+        this.buttonPause;
 
     }
 
@@ -170,7 +173,7 @@ class LevelManager extends Phaser.Scene
             this.bg_backgorund = this.add.tileSprite(0,0, 5715, 916, 'bg_background');
             this.bg_far = this.add.tileSprite(0,0, 5715, 916, "bg_far");
             this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium");
-            this.bg_near = this.add.tileSprite(0,0, 5715, 916, "bg_near");    
+            this.bg_near = this.add.tileSprite(0,0, 5715, 916, "bg_near");
         }
         this.bg_near.depth = 6;
 
@@ -294,10 +297,9 @@ class LevelManager extends Phaser.Scene
 
         // ----HUD----
         // 1) Botón de pausa
-        this.pauseButton = this.add.image(60, 40, 'pauseButton');
-        this.pauseButton.setScrollFactor(0);
-        this.pauseButton.setInteractive({ useHandCursor: true  } )
-            .on('pointerdown', () => this.PauseGame());
+        this.buttonPause = this.add.image(60, 40, 'pauseButton');
+        this.buttonPause.setScrollFactor(0);
+        this.buttonPause.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.PauseGame());
 
         // 2) Puntos de vida
         this.healthIconOffset = 30; // Offset de los iconos de vida
@@ -337,7 +339,7 @@ class LevelManager extends Phaser.Scene
 
         this.DialogText = this.add.text(gameWidth*6/16, gameHeight*6/16,  "", {fontFamily: "StayHappy",stroke:'#000000', fill: "white", strokeThickness: 2});
         this.DialogText.setScrollFactor(0);
-        this.DialogText.setDepth(2);
+        this.DialogText.setDepth(3);
         this.DialogText.setVisible(false);
 
         //FULL SCREEN
@@ -363,6 +365,7 @@ class LevelManager extends Phaser.Scene
         this.jumpButton.off('up');
         this.attackButton.off('down');
         this.testButton.off('down');  // ELIMINAR VERSION FINAL
+        this.pauseButton.off('down');
 
         // 1.1) Modo endless runner
         if (this.runnerMode == true) {
@@ -372,6 +375,7 @@ class LevelManager extends Phaser.Scene
             this.playerRight();
             this.testButton.on('down', this.swapVelocity, this);  // ELIMINAR VERSION FINAL
             //this.testButton.on('down', this.goalArrived, this);  // ELIMINAR VERSION FINAL
+            this.pauseButton.on('down', this.PauseGame, this);
         } else {    // 1.2) Modo control izq/der
             this.jumpButton.on('down', this.playerStartJump, this);
             this.jumpButton.on('up', this.playerStopJump, this);
@@ -381,6 +385,7 @@ class LevelManager extends Phaser.Scene
             this.rightButton.on('down', this.playerRight, this);
             this.rightButton.on('up',  this.playerStop,this);
             this.testButton.on('down', this.levelCompletedFunc, this);  // ELIMINAR VERSION FINAL
+            this.pauseButton.on('down', this.PauseGame, this);
         }
 
         // 2) MÓVIL
@@ -511,7 +516,7 @@ class LevelManager extends Phaser.Scene
                                     'this.generatePlatform', 'this.generateMovingEnemy', 'this.generatePlatformToSpikes',
                                     'this.generateSmallSpikesNoEnemy', 'this.generateSmallSpikes', 'this.generateBarricade',
                                     'this.generateTrunk', 'this.generateCabinUp', 'this.generatePlatformToCoinNoEnemy',
-                                    'this.generateDoubleBarricade', 'this.generateCabinUpNoEnemy', 'this.generateCabinDown', 
+                                    'this.generateDoubleBarricade', 'this.generateCabinUpNoEnemy', 'this.generateCabinDown',
                                     'this.generatePlatformToCoin' ];
         for (let i = 0; i < trapFunctionsNames.length; i++) {
             this.trapFunctionsArray[i] = trapFunctionsNames[i];
@@ -783,7 +788,7 @@ class LevelManager extends Phaser.Scene
         this.generatePlatform(xPos + 130, 260, enemies, 0.35, false, true);
         this.generatePlatform(xPos + 330, 260, enemies && Math.random() >= 0.5, 0.35, false, true);
         // Fix modo arcade hitbox desplazada
-        
+
         if (this.endlessMode == true && !this.hasCicled) {
             this.generateBarricade(xPos + 370, this.levelGroundHeight + 100, 0.7, false);
         } else if (this.endlessMode == true && this.hasCicled) {
@@ -791,7 +796,7 @@ class LevelManager extends Phaser.Scene
         } else {
             this.generateBarricade(xPos + 290, undefined, 0.7, false);
         }
-        
+
         this.cabinHitbox.create(xPos + 310, this.levelGroundHeight, 'spikes').setOrigin(0, 1).setSize(370, 160).setVisible(false);
 
         this.cabins[this.cabins.length] = localCabin;   // Almacena referencia para su eliminación
@@ -845,7 +850,7 @@ class LevelManager extends Phaser.Scene
         }
         // ALmacena referencias para eliminación
         this.cabins[this.cabins.length] = localCabin1;
-        this.cabins[this.cabins.length] = localCabin2; 
+        this.cabins[this.cabins.length] = localCabin2;
         return this.minDistCabin;
     }
 
@@ -857,7 +862,7 @@ class LevelManager extends Phaser.Scene
             } else if (cabinHitbox.body.width == 370) {
                 player.depth = 1;
             }
-            this.resetDepthTimer = this.time.addEvent( { delay: 1000, callback: function() { this.player.depth = 3;}, callbackScope: this, loop: false } );    // Aumenta la velocidad y la distancia    
+            this.resetDepthTimer = this.time.addEvent( { delay: 1000, callback: function() { this.player.depth = 3;}, callbackScope: this, loop: false } );    // Aumenta la velocidad y la distancia
         }
     }
 
@@ -957,12 +962,13 @@ class LevelManager extends Phaser.Scene
         user.money+= levelSettings[DifficultyIndexSubnode(levelIndex)][userConfig.difficulty][3];
         user.map[levelIndex] = true;
         saveUserData();
-        
+
         musicGameplay.stop();
         this.soundRunning.stop();
         this.player.setVelocityX(0);
         this.DialogText.setVisible(true);
         this.endTrigger.setVisible(false);
+        this.buttonPause.setVisible(false);
         //this.player.anims.play('einar_iddle', true);
 
         for(let i = 0; i < this.playerHealth; i++) {    // Posiciona los puntos de vida en el HUD
@@ -988,6 +994,7 @@ class LevelManager extends Phaser.Scene
         else{
             this.indexText = 0;
             this.DialogShowing=false;
+            //this.cameras.main.fadeOut(2500, 0, 0, 0);
             this.levelCompletedFunc();
         }
     }
@@ -1005,14 +1012,18 @@ class LevelManager extends Phaser.Scene
           this.scene.stop('LevelManager');
           this.scene.start('World1Map');
         }*/
+        this.cameras.main.fadeOut(2500, 0, 0, 0);
 
-        if (levelIndex == 9){
-          this.scene.stop('LevelManager');
-          this.scene.start('WinnerMenu');
-        }else{
-          this.scene.stop('LevelManager');
-          this.scene.start('World1Map');
-        }
+        this.time.delayedCall(2500, () => {
+          if (levelIndex == 9){
+            this.scene.stop('LevelManager');
+            this.scene.start('WinnerMenu');
+          }else{
+            this.scene.stop('LevelManager');
+            this.scene.start('World1Map');
+          }
+        });
+
 
     }
 
@@ -1221,7 +1232,7 @@ class LevelManager extends Phaser.Scene
             this.bg_medium.tilePositionX += 6.25;
             this.bg_near.tilePositionX += 7.75;
         }
-       
+
         /*
         //this.arcadeIntervalTimer;
         if (arcadeMode == true){
@@ -1230,9 +1241,14 @@ class LevelManager extends Phaser.Scene
         }
         */
 
+        /*if (this.pauseButton.isDown && gamePaused == false){
+          this.PauseGame();
+        }*/
+
     }
 
     PauseGame() {
+        //gamePaused = true;
         this.soundRunning.stop();
         this.scene.run('PauseMenu');
         this.scene.bringToTop('PauseMenu');

@@ -55,11 +55,11 @@ class MainMenu extends Phaser.Scene{
     this.creditsButton.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.GameCredits());
 
-    //SHOP MENU
-    this.shopButton = this.add.image(gameWidth/2, gameHeight*12/16, 'shopButtonMM');
-    this.shopButton.setScale(2/3);
-    this.shopButton.setInteractive({ useHandCursor: true  } )
-		.on('pointerdown', () => this.ShopMenu());
+    //TUTORIAL MENU
+    this.tutorialButton = this.add.image(gameWidth/2, gameHeight*12/16, 'tutorialButtonMM');
+    this.tutorialButton.setScale(2/3);
+    this.tutorialButton.setInteractive({ useHandCursor: true  } )
+		.on('pointerdown', () => this.TutorialMenu());
 
     //FULL SCREEN
     this.fullScreen = this.add.image(gameWidth*15.5/16, gameHeight*13/14, 'buttonFullScreen');
@@ -98,9 +98,9 @@ class MainMenu extends Phaser.Scene{
     this.scene.start('CreditsMenu');
   }
 
-  ShopMenu(){
+  TutorialMenu(){
     this.scene.pause('MainMenu');
-    this.scene.start('ShopMenu');
+    this.scene.start('TutorialMenu');
     prevScene = 'MainMenu';
   }
 
