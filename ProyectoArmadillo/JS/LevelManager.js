@@ -168,16 +168,17 @@ class LevelManager extends Phaser.Scene
             this.bg_backgorund = this.add.tileSprite(0,0, 5715, 916, 'bg_background_ice');
             this.bg_far = this.add.tileSprite(0,0, 5715, 916, "bg_far_ice");
             this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium_ice");
-            this.bg_near = this.add.tileSprite(0,0, 5715, 916, "bg_near_ice");
+            this.bg_near = this.add.tileSprite(0,75, 5715, 916, "bg_near_ice");
         } else {
             this.bg_backgorund = this.add.tileSprite(0,0, 5715, 916, 'bg_background');
             this.bg_far = this.add.tileSprite(0,0, 5715, 916, "bg_far");
             this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium");
-            this.bg_near = this.add.tileSprite(0,0, 5715, 916, "bg_near");
+            this.bg_near = this.add.tileSprite(0,75, 5715, 916, "bg_near");
         }
         this.bg_near.depth = 6;
 
         // Ajusta los tileSprites
+        this.bg_near.alpha=0.95;
         this.bg_backgorund.setOrigin(0,0);
         this.bg_far.setOrigin(0,0);
         this.bg_medium.setOrigin(0,0);
@@ -189,7 +190,7 @@ class LevelManager extends Phaser.Scene
         this.bg_backgorund.setScale(0.66);
         this.bg_far.setScale(0.66);
         this.bg_medium.setScale(0.66);
-        this.bg_near.setScale(0.7);
+        this.bg_near.setScale(0.6);
 
         //  ----GAMEPLAY----
         // 1) PERSONAJE
@@ -345,6 +346,8 @@ class LevelManager extends Phaser.Scene
         //FULL SCREEN
         this.fullScreenLM = this.add.image(gameWidth*15.5/16, gameHeight*13/14, 'buttonFullScreen');
         this.fullScreenLM.setScale(2/60);
+        this.fullScreenLM.setScrollFactor(0);
+        this.fullScreenLM.setDepth(10);
         this.fullScreenLM.setInteractive({ useHandCursor: true})
     		.on('pointerdown', function() {
           this.scene.scale.toggleFullscreen();
@@ -395,8 +398,15 @@ class LevelManager extends Phaser.Scene
 
         this.input.addPointer(2);
 
-        var pointerJump = this.add.image(10, 10, 'dude').setInteractive(); //Hace la imagen interactuable
-        var pointerAttack = this.add.image(500, 10, 'dude').setInteractive();
+        var pointerJump = this.add.image(100,550, 'mobile_button').setInteractive(); //Hace la imagen interactuable
+        pointerJump.setOrigin(0.5,0.5);
+        pointerJump.setScale(0.15);
+        pointerJump.setDepth(15);
+        var pointerAttack = this.add.image(1100, 550, 'mobile_button').setInteractive();
+        pointerAttack.setDepth(15);
+        pointerAttack.setScale(0.15);
+        pointerAttack.setOrigin(0.5,0.5);
+
         pointerJump.setScrollFactor(0); //Los botones siempre quedan en pantalla
         pointerAttack.setScrollFactor(0);
         // setSize() cambia el tamaño de la hitbox
