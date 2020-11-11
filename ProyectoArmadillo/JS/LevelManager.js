@@ -510,9 +510,9 @@ class LevelManager extends Phaser.Scene
         let trapFunctionsNames = [ 'this.generateSpikesTrap', 'this.generatePlatformNoEnemy', 'this.generateStillEnemy',
                                     'this.generatePlatform', 'this.generateMovingEnemy', 'this.generatePlatformToSpikes',
                                     'this.generateSmallSpikesNoEnemy', 'this.generateSmallSpikes', 'this.generateBarricade',
-                                    'this.generateTrunk', 'this.generateCabinUp', 'this.generatePlatformToCoin',
+                                    'this.generateTrunk', 'this.generateCabinUp', 'this.generatePlatformToCoinNoEnemy',
                                     'this.generateDoubleBarricade', 'this.generateCabinUpNoEnemy', 'this.generateCabinDown', 
-                                    'this.generatePlatformToCoinNoEnemy' ];
+                                    'this.generatePlatformToCoin' ];
         for (let i = 0; i < trapFunctionsNames.length; i++) {
             this.trapFunctionsArray[i] = trapFunctionsNames[i];
         }
