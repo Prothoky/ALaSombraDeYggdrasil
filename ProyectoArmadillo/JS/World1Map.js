@@ -146,7 +146,7 @@ class World1Map extends Phaser.Scene{
     this.buttonSubnode1_1.setScale(2/3);
     this.buttonSubnode1_1.setVisible(false);
     //Botón Seleccionado
-    this.buttonSubnode1_1Sel = this.add.image(gameWidth*13.45/16, gameHeight*13.65/16, 'ButtonSubNodeSel');
+    this.buttonSubnode1_1Sel = this.add.image(gameWidth*13.49/16, gameHeight*13.65/16, 'ButtonSubNodeSel');
     this.buttonSubnode1_1Sel.setScale(2/3);
     this.buttonSubnode1_1Sel.setVisible(false);
     //Funciones Boton
@@ -295,7 +295,7 @@ class World1Map extends Phaser.Scene{
     this.buttonSubnode4_2.setScale(2/3);
     this.buttonSubnode4_2.setVisible(false);
     //Botón Seleccionado
-    this.buttonSubnode4_2Sel = this.add.image(gameWidth*4.68/16, gameHeight*8.78/16, 'ButtonSubNodeSel');
+    this.buttonSubnode4_2Sel = this.add.image(gameWidth*4.68/16, gameHeight*8.75/16, 'ButtonSubNodeSel');
     this.buttonSubnode4_2Sel.setScale(2/3);
     this.buttonSubnode4_2Sel.setVisible(false);
     //Funciones Boton
@@ -320,7 +320,7 @@ class World1Map extends Phaser.Scene{
     this.buttonNode5.setScale(2/3);
     this.buttonNode5.setVisible(false);
     //Botón Seleccionado
-    this.buttonNode5Sel = this.add.image(gameWidth*3.41/16, gameHeight*4.53/16, 'ButtonNodePrincSnowSel');
+    this.buttonNode5Sel = this.add.image(gameWidth*3.41/16, gameHeight*4.56/16, 'ButtonNodePrincSnowSel');
     this.buttonNode5Sel.setScale(2/3);
     this.buttonNode5Sel.setVisible(false);
     //Funciones BOTON
@@ -375,7 +375,7 @@ class World1Map extends Phaser.Scene{
     this.buttonSubnode5_2.setScale(2/3);
     this.buttonSubnode5_2.setVisible(false);
     //Botón Seleccionado
-    this.buttonSubnode5_2Sel = this.add.image(gameWidth*1.0/16, gameHeight*1.35/16, 'ButtonSubNodeSel');
+    this.buttonSubnode5_2Sel = this.add.image(gameWidth*1.0/16, gameHeight*1.38/16, 'ButtonSubNodeSel');
     this.buttonSubnode5_2Sel.setScale(2/3);
     this.buttonSubnode5_2Sel.setVisible(false);
     //Funciones Boton
@@ -398,7 +398,7 @@ class World1Map extends Phaser.Scene{
     this.buttonNode6.setScale(2/3);
     this.buttonNode6.setVisible(false);
     //Botón Seleccionado
-    this.buttonNode6Sel = this.add.image(gameWidth*6.41/16, gameHeight*1.5/16, 'ButtonNodePrincSnowSel');
+    this.buttonNode6Sel = this.add.image(gameWidth*6.41/16, gameHeight*1.53/16, 'ButtonNodePrincSnowSel');
     this.buttonNode6Sel.setScale(2/3);
     this.buttonNode6Sel.setVisible(false);
     //Funciones BOTON
@@ -420,7 +420,7 @@ class World1Map extends Phaser.Scene{
     this.buttonNode7.setScale(2/3);
     this.buttonNode7.setVisible(false);
     //Botón Seleccionado
-    this.buttonNode7Sel = this.add.image(gameWidth*6.79/16, gameHeight*5.61/16, 'ButtonNodePrincSnowSel');
+    this.buttonNode7Sel = this.add.image(gameWidth*6.79/16, gameHeight*5.64/16, 'ButtonNodePrincSnowSel');
     this.buttonNode7Sel.setScale(2/3);
     this.buttonNode7Sel.setVisible(false);
     //Funciones BOTON
@@ -499,7 +499,7 @@ class World1Map extends Phaser.Scene{
     this.buttonNode8.setScale(2/3);
     this.buttonNode8.setVisible(false);
     //Botón Seleccionado
-    this.buttonNode8Sel = this.add.image(gameWidth*9.845/16, gameHeight*4.75/16, 'ButtonNodePrincSnowSel');
+    this.buttonNode8Sel = this.add.image(gameWidth*9.845/16, gameHeight*4.78/16, 'ButtonNodePrincSnowSel');
     this.buttonNode8Sel.setScale(2/3);
     this.buttonNode8Sel.setVisible(false);
     //Funciones BOTON
@@ -521,7 +521,7 @@ class World1Map extends Phaser.Scene{
     this.buttonNode9.setScale(2/3);
     this.buttonNode9.setVisible(false);
     //Botón Seleccionado
-    this.buttonNode9Sel = this.add.image(gameWidth*12.6/16, gameHeight*5.1/16, 'ButtonNodePrincSnowSel');
+    this.buttonNode9Sel = this.add.image(gameWidth*12.6/16, gameHeight*5.13/16, 'ButtonNodePrincSnowSel');
     this.buttonNode9Sel.setScale(2/3);
     this.buttonNode9Sel.setVisible(false);
     //Funciones BOTON
