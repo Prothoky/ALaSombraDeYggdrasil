@@ -1005,8 +1005,6 @@ class LevelManager extends Phaser.Scene
         else{
             console.log("indice final" + this.indexText);
             console.log("Texto finalizado");
-            this.buttonDialog.setVisible(false);
-            this.DialogText.setVisible(false);
             this.DialogShowing = false;
             this.levelCompletedFunc();
         }
@@ -1015,20 +1013,13 @@ class LevelManager extends Phaser.Scene
     // Actualiza los mapas completados y guarda los datos
     levelCompletedFunc() {
         this.soundRunning.stop();   // Para el sonido de los pasos
-        //this.scene.stop('LevelManager');
-       //  this.scene.start('WinnerMenu');
+        this.buttonDialog.setVisible(false);
+        this.DialogText.setVisible(false);
 
-        /*if (arcadeMode == true){
-          this.scene.stop('LevelManager');
-          this.scene.start('WinnerMenu');
-        }else{
-          this.scene.stop('LevelManager');
-          this.scene.start('World1Map');
-        }*/
-        this.indexText = 0;
 
         this.cameras.main.fadeOut(2500, 0, 0, 0);
         this.time.delayedCall(2500, () => {
+          this.indexText = 0;
           if (levelIndex == 9){
             this.scene.stop('LevelManager');
             this.scene.start('WinnerMenu');
