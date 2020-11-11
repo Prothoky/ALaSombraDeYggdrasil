@@ -23,11 +23,12 @@ Leyenda de trampas
 7 - pinchos pequeñitos seguidos con enemigos
 8 - barricada
 9 - tronco tirado
-10 - cabaña
-11 - moneda
+10 - cabaña con enemigos
+11 - moneda sin enemigos
 12 - barricada en el suelo + barricada en plataforma
 13 - cabaña sin enemigos
 14 - cabaña de pasar por dentro
+15 - moneda con enemigo
 */
 
 var levelTrapValues = new Array();
@@ -41,7 +42,7 @@ levelTrapValues[6] =  [ [0, 1], [1, 1], [2, 1], [3, 1], [5, 1], [6, 1], [7, 1], 
 levelTrapValues[7] =  [ [0, 1], [1, 1], [2, 1], [3, 1], [5, 1], [6, 1], [7, 1], [8, 1], [9, 1], [10, 1], [11, 1], [12, 1], [13, 1] ];
 levelTrapValues[8] =  [ [0, 1], [1, 1], [2, 1], [3, 1], [5, 1], [6, 1], [7, 1], [8, 1], [9, 1], [10, 1], [11, 1], [12, 1], [13, 1] ];
 levelTrapValues[9] =  [ [0, 1], [1, 1], [2, 1], [3, 1], [5, 1], [6, 1], [7, 1], [8, 1], [9, 1], [10, 1], [11, 1], [12, 1], [13, 1] ];
-levelTrapValues[10] = [ [0, 1], [1, 1], [2, 1], [3, 1], [5, 1], [6, 1], [7, 1], [8, 1], [9, 1], [10, 1], [11, 1], [12, 1], [13, 1] ];
+levelTrapValues[10] = [ [0, 2], [1, 2], [2, 2], [3, 2], [5, 2], [6, 1], [7, 1], [8, 2], [9, 2], [10, 1], [12, 2], [13, 1], [14, 2] ];
 
 /*
 LevelSetting[i][l] -> i indica el nivel (10 modo endless), l la dificultad (0 = facil, 1 = normal , 2 dificil)

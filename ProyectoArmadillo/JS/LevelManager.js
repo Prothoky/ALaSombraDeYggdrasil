@@ -70,6 +70,7 @@ class LevelManager extends Phaser.Scene
         this.barricades;    // Grupo de barricadas
         this.cabins = new Array();  // Grupo de cabañas
         this.coins; // Grupo de monedas
+        this.cabinHitbox;
         this.trashRecolectors;   // Grupo de ecolector de basura (modo arcade)
         this.trashRecolectorRemover;    // Eliminador de recolectores de basura
         // 4.2) HUD
@@ -80,6 +81,7 @@ class LevelManager extends Phaser.Scene
         this.playerAttackTimer;   // Temporizador de fin de ataque
         this.jumpSpeedDecrementTimer;   // Temporizador de disminución velocidad salto
         this.arcadeIntervalTimer; // Actualiza la distancia recorrida en el modo endless
+        this.resetDepthTimer;
         this.attackHitbox;  // Hitbox del ataque
         this.trapFunctionsArray = new Array();  // Array que guarda las funciones de las trampas a generar
         this.endTrigger;    // Trigger del fin del nivel
@@ -170,7 +172,7 @@ class LevelManager extends Phaser.Scene
             this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium");
             this.bg_near = this.add.tileSprite(0,0, 5715, 916, "bg_near");    
         }
-        this.bg_near.depth = 3;
+        this.bg_near.depth = 6;
 
         // Ajusta los tileSprites
         this.bg_backgorund.setOrigin(0,0);
@@ -191,7 +193,7 @@ class LevelManager extends Phaser.Scene
         // Creación personaje: setOrigin(1) IMPORTANTE (calcular colisiones)
         this.player = this.physics.add.sprite(400, this.playerStartPositionY, 'einar_running').setOrigin(1).setScale(this.playerResizeFactor).setSize(this.playerHitboxWidth, this.playerHitboxHeight);
         this.player.setOffset(110, 140);    // Offset respecto hitbox
-        this.player.depth = 1;  // Profundidad del sprite
+        this.player.depth = 3;  // Profundidad del sprite
         // Dependiendo de la dificultad escogida asignamos nº vidas
         switch (userConfig.difficulty) {
             case 0:
@@ -237,6 +239,7 @@ class LevelManager extends Phaser.Scene
         this.barricades = this.physics.add.group(); // Grupo de barricadas
         this.attackHitbox = this.physics.add.group(); // Grupo de hitbox del personaje
         this.coins = this.physics.add.staticGroup();    // Grupo de monedas
+        this.cabinHitbox = this.physics.add.staticGroup();
         this.trashRecolectors = this.physics.add.group();   // Objetos que eliminan trampas ya superadas
 
         this.generateGround(200, 'ground'); // Genera suelo para todo el nivel
@@ -244,6 +247,7 @@ class LevelManager extends Phaser.Scene
         // 3.2) Declaración de funciones de colision/overlap
         this.physics.add.collider(this.player, this.ground, this.grounded, null, this); // Permitimos colisiones entre suelo y jugador y cuenta como grounded (puede saltar)
         this.physics.add.collider(this.player, this.spikesTraps, () => this.playerHit()); // Función que se ejecuta al colisionar con spikes
+        this.physics.add.overlap(this.player, this.cabinHitbox, this.changeDepth, null, this);
         this.physics.add.overlap(this.player, this.barricades, () => this.playerHit());    // Al hacer overlap con barricadas
         this.physics.add.collider(this.barricades, this.ground);    // barricadas chocan con el suelo
         this.physics.add.collider(this.barricades, this.platforms);    // barricadas chocan con plataformas
@@ -262,6 +266,7 @@ class LevelManager extends Phaser.Scene
         }
         // Recolector de basura, elimina los objetos que toca
         this.physics.add.overlap(this.trashRecolectors, this.spikesTraps, this.deleteObject, null, this);
+        this.physics.add.overlap(this.trashRecolectors, this.cabinHitbox, this.deleteObject, null, this);
         this.physics.add.overlap(this.trashRecolectors, this.barricades, this.deleteObject, null, this);
         this.physics.add.overlap(this.trashRecolectors, this.platforms, this.deleteObject, null, this);
         this.physics.add.overlap(this.trashRecolectors, this.enemies, this.deleteObject, null, this);
@@ -506,7 +511,8 @@ class LevelManager extends Phaser.Scene
                                     'this.generatePlatform', 'this.generateMovingEnemy', 'this.generatePlatformToSpikes',
                                     'this.generateSmallSpikesNoEnemy', 'this.generateSmallSpikes', 'this.generateBarricade',
                                     'this.generateTrunk', 'this.generateCabinUp', 'this.generatePlatformToCoin',
-                                    'this.generateDoubleBarricade', 'this.generateCabinUpNoEnemy', 'this.generateCabinDown' ];
+                                    'this.generateDoubleBarricade', 'this.generateCabinUpNoEnemy', 'this.generateCabinDown', 
+                                    'this.generatePlatformToCoinNoEnemy' ];
         for (let i = 0; i < trapFunctionsNames.length; i++) {
             this.trapFunctionsArray[i] = trapFunctionsNames[i];
         }
@@ -675,6 +681,7 @@ class LevelManager extends Phaser.Scene
         }
         let newEnemy = this.enemies.create(xPos, yPos, 'dude').setOrigin(1).setTint(0xe62272).refreshBody();
         newEnemy.body.setSize(collisionWidth, collisionHeight);
+        newEnemy.depth = 3;
         return this.minDistStillEnemy;
     }
 
@@ -696,7 +703,7 @@ class LevelManager extends Phaser.Scene
     // enemy = puede haber un enemigo encima?
     // Si no se otorgan valores se asignan solos. Enemy true y posición aleatoria (dentro de límites)
     // Únicamente cambiar el sprite y el valor de setScale()
-    generatePlatform(xPos, yPos = this.platformPositionY + Math.floor(Math.random() * this.platformPositionOffset) - this.platformPositionOffset/2, enemy = true, scaleFactor = 0.5, visible = true) {
+    generatePlatform(xPos, yPos = this.platformPositionY + Math.floor(Math.random() * this.platformPositionOffset) - this.platformPositionOffset/2, enemy = true, scaleFactor = 0.5, visible = true, checkCollisionDown = false) {
         let platformId = '';
         if (this.isIceLevel) {
             platformId = 'platform_ice';
@@ -707,7 +714,7 @@ class LevelManager extends Phaser.Scene
         localPlatform.setOffset(235, 200);
         localPlatform.body.checkCollision.left = false;
         localPlatform.body.checkCollision.right = false;
-        localPlatform.body.checkCollision.down = false;
+        localPlatform.body.checkCollision.down = checkCollisionDown;
         let enemyYOffset; // Offset vertical del enemigo (para que caiga en la plataforma debido a los orígenes de las imágenes)
         if (this.endlessMode == false) {
             enemyYOffset = 40;
@@ -771,10 +778,12 @@ class LevelManager extends Phaser.Scene
         }
         let localCabin = this.physics.add.image(xPos, yPos, cabinId).setScale(scaleFactor).setOrigin(0, 1);
         localCabin.body.setAllowGravity(false);
+        localCabin.depth = 2;
         this.generatePlatform(xPos - 275, 300, enemies && Math.random() >= 0.5);
-        this.generatePlatform(xPos + 142, 260, enemies, 0.35, false);
-        this.generatePlatform(xPos + 330, 260, enemies && Math.random() >= 0.5, 0.35, false);
+        this.generatePlatform(xPos + 130, 260, enemies, 0.35, false, true);
+        this.generatePlatform(xPos + 330, 260, enemies && Math.random() >= 0.5, 0.35, false, true);
         // Fix modo arcade hitbox desplazada
+        
         if (this.endlessMode == true && !this.hasCicled) {
             this.generateBarricade(xPos + 370, this.levelGroundHeight + 100, 0.7, false);
         } else if (this.endlessMode == true && this.hasCicled) {
@@ -782,6 +791,9 @@ class LevelManager extends Phaser.Scene
         } else {
             this.generateBarricade(xPos + 290, undefined, 0.7, false);
         }
+        
+        this.cabinHitbox.create(xPos + 310, this.levelGroundHeight, 'spikes').setOrigin(0, 1).setSize(370, 160).setVisible(false);
+
         this.cabins[this.cabins.length] = localCabin;   // Almacena referencia para su eliminación
         return this.minDistCabin;
     }
@@ -806,11 +818,22 @@ class LevelManager extends Phaser.Scene
         }
         let localCabin1 = this.physics.add.image(xPos, yPos, cabinId1).setScale(scaleFactor).setOrigin(0, 1);
         localCabin1.body.setAllowGravity(false);
-        localCabin1.depth = 2;
+        localCabin1.depth = 4;
         let localCabin2 = this.physics.add.image(xPos, yPos, cabinId2).setScale(scaleFactor).setOrigin(0, 1);
         localCabin2.body.setAllowGravity(false);
 
-        this.generateSpikes
+        // Creamos el techo
+        let localPlatform1 = this.platforms.create(xPos + 50, 300, 'platform').setScale(0.5).setOrigin(0).setVisible(false).setSize(250, 10);
+        localPlatform1.setOffset(235, 200);
+        localPlatform1.body.checkCollision.left = false;
+        localPlatform1.body.checkCollision.right = false;
+        let localPlatform2 = this.platforms.create(xPos + 330, 300, 'platform').setScale(0.5).setOrigin(0).setVisible(false).setSize(170, 10);
+        localPlatform2.setOffset(235, 200);
+        localPlatform2.body.checkCollision.left = false;
+        localPlatform2.body.checkCollision.right = false;
+
+        // Creamos la hitbox de daño
+        this.cabinHitbox.create(xPos + 295, 280, 'spikes').setOrigin(0, 1).setSize(380, 160).setVisible(false);
 
         // Fix modo arcade hitbox desplazada
         if (this.endlessMode == true && !this.hasCicled) {
@@ -824,6 +847,18 @@ class LevelManager extends Phaser.Scene
         this.cabins[this.cabins.length] = localCabin1;
         this.cabins[this.cabins.length] = localCabin2; 
         return this.minDistCabin;
+    }
+
+    changeDepth(player, cabinHitbox) {
+        if (this.isPlayerTouchingGround) {
+            if (cabinHitbox.body.width == 380) {
+                this.playerHit();
+                player.depth = 5;
+            } else if (cabinHitbox.body.width == 370) {
+                player.depth = 1;
+            }
+            this.resetDepthTimer = this.time.addEvent( { delay: 1000, callback: function() { this.player.depth = 3;}, callbackScope: this, loop: false } );    // Aumenta la velocidad y la distancia    
+        }
     }
 
     // Moneda
@@ -851,7 +886,6 @@ class LevelManager extends Phaser.Scene
         while (randomAdd < 1) { // Aleatoriamente sigue añadiendo pinchos(cada vez menos probable)
             let localSpikes = this.spikesTraps.create(xPos + spikesLength * iteration, this.levelGroundHeight - 19, 'spikes').setScale(0.375).setOrigin(0, 0).setSize(68, 10);
             localSpikes.setOffset(129, 70);
-            console.log("iter + " + iteration);
             randomAdd += Math.random() * 0.65;
             if (enemy == true && iteration%2 != 0) {    // Sie es con enemigo añade enemigo
                 this.generateStillEnemy(xPos + spikesLength * iteration + enemyOffset);
@@ -870,13 +904,17 @@ class LevelManager extends Phaser.Scene
     }
 
     // Genera una plataforma y después una moneda a gran altura, sólo alcanzable desde la plataforma
-    generatePlatformToCoin(xPos) {
+    generatePlatformToCoin(xPos, enemy = true) {
         let ret = 0;
-        ret += this.generatePlatform(xPos);
+        ret += this.generatePlatform(xPos, undefined, enemy);
         ret += 200;
         xPos += ret;
         ret += this.generateCoin(xPos, 150);
         return ret;
+    }
+
+    generatePlatformToCoinNoEnemy(xPos) {
+        return this.generatePlatformToCoin(xPos, false);
     }
 
     // Genera una barricada + plataforma con barricada
