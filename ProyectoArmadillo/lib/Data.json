@@ -15,11 +15,13 @@
 
   "esp": {
     "Buttons": {
-      "play": "Jugar",
-      "options": "Opciones",
-      "credits": "Créditos",
-      "shop": "Tienda",
-      "back": "Volver",
+      "arcade": "ARCADE",
+      "story": "HISTORIA",
+      "options": "OPCIONES",
+      "tutorial": "TUTORIAL",
+      "credits": "CRÉDITOS",
+      "shop": "TIENDA",
+      "back": "VOLVER",
       "volume": "Volumen",
       "adjust": "Ajustes",
       "easy": "Facil",
@@ -139,11 +141,13 @@
   "eng": {
     "Loading": "Loading",
     "Buttons": {
-      "play": "Play",
-      "options": "Options",
-      "credits": "Credits",
-      "shop": "Shop",
-      "back": "Baack",
+      "arcade": "ARCADE",
+      "story": "STORY",
+      "options": "OPTIONS",
+      "tutorial": "TUTORIAL",
+      "credits": "CREDITS",
+      "shop": "SHOP",
+      "back": "BACK",
       "volume": "Volume",
       "adjust": "Adjust",
       "easy": "Easy",

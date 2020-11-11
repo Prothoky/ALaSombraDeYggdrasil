@@ -102,8 +102,9 @@ function resetUserData(){
 }
 
 var stringsJSON;
+var userLang;
 
-function updateLanguage(userLang=null){
+function updateLanguage(userLang = null){
   if(userLang==null)
     userLang = navigator.language || navigator.userLanguage;
   if(userLang == "es-ES" || "es"){
