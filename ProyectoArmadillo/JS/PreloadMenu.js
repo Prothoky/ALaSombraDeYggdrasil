@@ -14,7 +14,6 @@ class PreloadMenu extends Phaser.Scene{
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
       PC=false;
     }
-
     //BARRA DE CARGA DE PROGRESO
 
       var progressBar = this.add.graphics();
@@ -96,6 +95,7 @@ class PreloadMenu extends Phaser.Scene{
 
     //Level Manager
       this.load.spritesheet('dude', 'ASSETS/Placeholders/dude.png', { frameWidth: 32, frameHeight: 48 });
+      this.load.image('mobile_button', 'ASSETS/Placeholders/button.png');
       this.load.image('ground', 'ASSETS/Placeholders/platform.png');
       this.load.image('dot', 'ASSETS/Placeholders/star.png');
       this.load.image('bomb', 'ASSETS/Placeholders/bomb.png');
