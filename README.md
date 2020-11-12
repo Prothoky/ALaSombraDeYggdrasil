@@ -111,6 +111,13 @@ Durante la partida saldrán varios elementos a esquivar, ya sean enemigos u obst
 
 [Añadir las dos últimas cuando estén implementadas]
 
+
+
+## Influencias
+La travesía por Midgrad transcurre por la región de Sigtuna situado a una hora de Estocolmo en Suecia. Esa zona es conocida por la belleza de sus bosques y el gran lago Mälaren que en invierno se hace uno con el hielo.
+[Insertar imágenes del bosque y el lago de verdad y la comparación ]
+
+
 ## Escenarios 
 
 ![MAPA BOSQUE](https://user-images.githubusercontent.com/55508821/98616851-f22c6c80-22fd-11eb-9cd8-a69b29f06a4a.jpg)
@@ -120,10 +127,16 @@ Durante la partida saldrán varios elementos a esquivar, ya sean enemigos u obst
 ![MAPA HIELO](https://user-images.githubusercontent.com/55508821/98616835-e80a6e00-22fd-11eb-9470-2e7837797009.jpg)
 
 
+
+
 ## Interfaz y modos de juego
 El diseño de interfaz de usuario debe de ser muy sencilla y ligera para el usuario, no pretendemos distraer con mucha carga de información para atraer a la mayor cantidad de público posible. El diseño del menú principal tiene como principal atención a Yggdrasil sujetando a los 9 mundos vikingos, estos estarán en gris hasta que se vayan desbloqueando, el jugador seleccionará el mundo y se adentrará en su respectivo tablero de niveles 
 
-![boceto menu principal](https://user-images.githubusercontent.com/55508821/96411648-160dfe00-11e9-11eb-88f5-9fe2edd62911.jpeg)
+![Mení principal acabado](https://user-images.githubusercontent.com/55508821/98905009-f81b7c80-24ba-11eb-91e1-2ed3e8509b3c.jpeg)
+
+A continuación la pantalla en la que aparecerán todos los mundos y la manera de seleccionar mundo
+![Yggdrasil con poema](https://user-images.githubusercontent.com/55508821/98905036-023d7b00-24bb-11eb-95c2-0b3372ae8815.jpeg)
+
 
 La interfaz de juego está mayormente limitada por el lanzamiento del juego en los dispositivos móviles, en la pantalla de juego, una vez el jugador ya haya empuñado el hacha, aparecerá en la esquina superior izquierda a modo de vidas, unos escudos vikingos que te indicarán el número de escudos restantes que restan. Por la esquina superior derecha encontraremos un botón de pausa, ahí el jugador accederá al menú de pausa, donde tendrá las opciones de modificar el volumen, salir del juego o reiniciar la partida.
 
