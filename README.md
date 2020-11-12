@@ -32,7 +32,6 @@ Para dotar al juego de personalidad, el recorrido de este estará repleto de ref
 Durante el transcurso del juego el protagonista irá narrando su experiencia por este último viaje, invitando a una reflexión sobre la vida, su final y hacia donde se dirige su espíritu. De este modo dotamos de vida al personaje y así alcanza un mayor vínculo con el usuario.
 
 
-[Contar sobre la experiencia de jugador, estilo visual y jugabilidad]
 
 ## Personaje
 
@@ -44,18 +43,30 @@ El mayor debate que surgió con este fue el movimiento que tendría en función 
 
 
 
-
-## Modos de dificultad y posible modo arcade
+## Modos de dificultad y modo arcade
 A la hora de plantear la dificultad fuimos claro, tenemos que tener dificultades suficientes para todo el público posible, por eso hemos creado 3, fácil, normal y dificil con un nivelado ajuste de tiempo y aparición de enemigos en cada escenario siguiendo la curva de dificultad definida en el mundo.
 [Pensar nombres chulos para las dificultades     (expedición,..... y cólera,    o cosas así )]
 Cada nivel tiene un array donde especificamos el porcentaje de aparición de cada tipo de enemigo y de obstáculo. 
 
 Para aumentar el tiempo de juego hemos implementado un modo arcade, siendo este un endless runner clásico donde el jugador probará la destreza obtenida durante la historia. Este no constará de ningún tipo de dificuldad opcional, ya que al ir aumentando progresivamente la velocidad, el jugador necesitará de una destreza espectacular para poder llegar lejos. Al final de la partida se indicará al jugador la distancia recorrida y el número de enemigos aniquilados.
+
 ## Mecánicas de juego
 El juego tiene un sistema de movimiento limitado, el jugado irá por defecto de izquierda a derecha con la única opción de saltar y atacar.
-La principal característica de este juego es la creación de niveles de manera procedimental, así el factor sorpresa es constante y podemos crear un mayor número de niveles para extender el tiempo de vida del juego mucho más.
-Hay diferentes obstáculos en función del mapa en el que se encuentre el jugador, el contenido será temático para sumergir de una mejor manera al jugador y así también dotarlo con una mayor variedad de referencias.
 
+El juego sigue una dinámica simple de esquive y ataque continuo. Lo interesante de este juego es por el modo historia que va a ir recorriendo el protagonista. 
+Los 18 niveles están diseñados para generar continuamente un factor sorpresa por diversos motivos:
+ - Aparición de nuevos elementos en cada nivel.
+ - Aumento progresivo de la velocidad siguiendo el gráfico de la dificultad.
+ - Reducción progresiva de la distancia entre trampas para que el jugador vaya afinando sus habilidades
+ - Subniveles con historias secundarias para sacar un dinero extra.
+ 
+ Para mejorar la jugabilidad del usuario hemos implementado unas mejoras en la tienda para que en los niveles finales pueda seguir jugando aún con el ritmo y la dificultad en aumento.
+- Salto doble
+- Mayor tiempo de invulnerabilidad tras un golpe
+- Aumento en la velocidad de ataque de Einar
+- Escudos
+
+En el modo arcade, el jugador se enfrentará a un clásico endless runner donde la aceleración será continua, aquí queremos que los jugadores más experimentados muestren su talento llevando el juego a un nivel competitivo. Al acabar la partida aparecerá la distancia recorrida y su récord actual. En futuras actualizaciones implementaremos un sistema de desafíos a completar con un sistema de niveles para darle una mayor consistencia al modo.
 Diseño de estructura de niveles de bosque con subniveles 
 
 ![Fase Bosque](https://user-images.githubusercontent.com/55508821/98613632-f4d79380-22f6-11eb-9d0e-61c4e781673e.png)
@@ -72,10 +83,7 @@ La escena de selección de mapa es en un tablero inspirado en paisajes de Norueg
 ![Midgard final](https://user-images.githubusercontent.com/55508821/98613748-3ff1a680-22f7-11eb-9d1f-bfcb319d769d.jpeg)
 
 
-
-
 El diseño de niveles está desarrollado con una curva de dificultad progresiva y situacional en función al avance de los distintos niveles del mundo. Una vez se alcance el hielo en el mapa, la dificultad bajará para que el usuario se pueda adaptar a los nuevos elementos incorporados en estos.
-
 
 
 ![Dificultad final](https://user-images.githubusercontent.com/55508821/98614050-f190d780-22f7-11eb-85d2-1194f2f01c3c.JPG)
@@ -147,17 +155,21 @@ A la hora de acabar el nivel, el jugador recibirá un dinero por el recorrido, d
 
 
 ## Estilo artístico y música
+La música buscada debía cumplir con la clara presencia de los sonidos vikingos. 
+Para el menú principal la canción escogida debía acompañar al jugador en su proceso de exploración por las distintas pantallas. 
+Para la canción principal del juego, encargamos a un profesional una canción a medida que pudiera inspirar al jugador la épica suficiente como para querer avanzar por la historia aún con el hándicap del diseño de niveles procedimental. Esta canción es una dosis de adrenalina para el jugador.
+La canción de diálogo es un cambio de ritmo importante en el juego, así mostramos las distintas facetas del juego, tiene su parte frenética de juego en donde el jugador deberá ser muy ágil esquivando cada enemigo y una parte mucho más reflexiva donde se busca aumentar el nivel de empatía con el protagonista.
+
 
 ## Experiencia de usuario
 Pensando en la experiencia de usuario, tendremos que dividirla  en función el tipo de jugador que tengamos. 
-
-*Modificar y aumentar esto*
 
 **Casual:** ese jugador que no tiene un gusto muy especifico y juega con pocas pretensiones. Estos se alejan de las dificultades asfixiantes y disfrutan del juego a modo de travesia, no suelen tener un alto nivel de juego.
 
 **Explorador:** ese jugador va a indagar en todos los aspectos del juego, interesandose por la historia y los distintos cambios que van surgiendo conforme va progresando en el juego.
 
 **Arcade:** ese jugador interesado unicamente en el modo endless runner, este tipo de jugadores huye de todo tipo de historia o explicaciones posibles, va al grano y tiene un entretenimiento muy concreto. Suelen buscar un nivel de dificultad fuerte para poner a prueba su destreza.
+
 
 ## Modelo de negocio
 Para sostener este proyecto a dos años vista tenemos desarrollado un sistema de lanzamiento periódico del contenido del juego, de este modo conseguiremos extender el pulso del juego y rentabilizar el trabajo con un mayor beneficio económico.
