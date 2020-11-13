@@ -114,24 +114,29 @@ class ShopMenu extends Phaser.Scene{
 
     if(Number(user.buffs[0]) < 3){
       this.object1Bought.setVisible(false);
+      this.buyObject1.setVisible(true);
     }else if(Number(user.buffs[0]) == 0){
       this.icon1Button.setVisible(false);
       this.textIcon1Button.setVisible(false);
+      this.buyObject1.setVisible(true);
     }
 
     if(Number(user.buffs[1]) == 0){
       this.object2Bought.setVisible(false);
       this.icon2Button.setVisible(false);
+      this.buyObject2.setVisible(true);
     }
 
     if(Number(user.buffs[2]) == 0){
       this.object3Bought.setVisible(false);
       this.icon3Button.setVisible(false);
+      this.buyObject3.setVisible(true);
     }
 
     if(Number(user.buffs[3]) == 0){
       this.object4Bought.setVisible(false);
       this.icon4Button.setVisible(false);
+      this.buyObject4.setVisible(true);
     }
 
 
@@ -145,13 +150,14 @@ class ShopMenu extends Phaser.Scene{
       this.Money.setText(user.money);
       this.icon1Button.setVisible(true);
       this.textIcon1Button.setVisible(true);
-      this.textIcon1Button.setText("x"+ user.buffs[0]);
+      this.textIcon1Button.setText("x"+ user.buffs[0]);      
     }else{
       console.log("No tienes suficiente dinero");
     }
 
     if(user.buffs[0] == 3){
       this.object1Bought.setVisible(true);
+      this.buyObject1.setVisible(false);
     }
 
     saveUserData();
@@ -165,6 +171,7 @@ class ShopMenu extends Phaser.Scene{
         this.Money.setText(user.money);
         this.object2Bought.setVisible(true);
         this.icon2Button.setVisible(true);
+        this.buyObject2.setVisible(false);
 
       }else{
         console.log("No tienes suficiente dinero");
@@ -180,6 +187,7 @@ class ShopMenu extends Phaser.Scene{
       this.Money.setText(user.money);
       this.object3Bought.setVisible(true);
       this.icon3Button.setVisible(true);
+      this.buyObject3.setVisible(false);
     }else{
       console.log("No tienes suficiente dinero");
     }
@@ -194,6 +202,7 @@ class ShopMenu extends Phaser.Scene{
       this.Money.setText(user.money);
       this.icon4Button.setVisible(true);
       this.object4Bought.setVisible(true);
+      this.buyObject4.setVisible(false);
     }else{
       console.log("No tienes suficiente dinero");
     }
