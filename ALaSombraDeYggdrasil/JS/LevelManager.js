@@ -200,7 +200,7 @@ class LevelManager extends Phaser.Scene
         //  ----GAMEPLAY----
         // 1) PERSONAJE
         // Creación personaje: setOrigin(1) IMPORTANTE (calcular colisiones)
-        this.player = this.physics.add.sprite(400, this.playerStartPositionY, 'einar_running').setOrigin(1).setScale(this.playerResizeFactor).setSize(this.playerHitboxWidth, this.playerHitboxHeight);
+        this.player = this.physics.add.sprite(1400, this.playerStartPositionY, 'einar_running').setOrigin(1).setScale(this.playerResizeFactor).setSize(this.playerHitboxWidth, this.playerHitboxHeight);
         this.player.setOffset(110, 140);    // Offset respecto hitbox
         this.player.depth = 3;  // Profundidad del sprite
         // Dependiendo de la dificultad escogida asignamos nº vidas
@@ -377,8 +377,6 @@ class LevelManager extends Phaser.Scene
             this.jumpButton.on('up', this.playerStopJump, this);
             this.attackButton.on('down', this.playerAttack, this);
             this.playerRight();
-            this.testButton.on('down', this.swapVelocity, this);  // ELIMINAR VERSION FINAL
-            //this.testButton.on('down', this.goalArrived, this);  // ELIMINAR VERSION FINAL
             this.pauseButton.on('down', this.PauseGame, this);
         } else {    // 1.2) Modo control izq/der
             this.jumpButton.on('down', this.playerStartJump, this);
@@ -453,15 +451,6 @@ class LevelManager extends Phaser.Scene
 
 
         // ----TESTEO----
-
-    }
-
-    swapVelocity() {
-        if (this.player.body.velocity.x == 10) {
-            this.player.setVelocityX(400);
-        } else {
-            this.player.setVelocityX(10);
-        }
 
     }
 
@@ -988,7 +977,8 @@ class LevelManager extends Phaser.Scene
 
         musicGameplay.stop();
         this.soundRunning.stop();
-        this.player.setVelocityX(0);
+        this.player.setAccelerationX(-1);
+        //this.player.setVelocityX(0);
         this.DialogText.setVisible(true);
         this.endTrigger.setVisible(false);
         this.buttonPause.setVisible(false);
@@ -1049,7 +1039,7 @@ class LevelManager extends Phaser.Scene
         this.soundRunning.stop();   // Para el sonido de los pasos
         this.buttonDialog.setVisible(false);
         this.DialogText.setVisible(false);
-
+        this.DialogShowing=false;
 
         this.cameras.main.fadeOut(2500, 0, 0, 0);
         this.time.delayedCall(2500, () => {
@@ -1278,26 +1268,28 @@ class LevelManager extends Phaser.Scene
     // FIN DE OTRAS FUNCIONES -------------------------------------------
     // Da movimiento al fondo
     update (time, delta){
+
+
         //Fondo dinámico
         /*
         this.bg_far.tilePositionX = this.cameras.main.scrollX *.1;
         this.bg_medium.tilePositionX = this.cameras.main.scrollX * .5;
         this.bg_near.tilePositionX = this.cameras.main.scrollX;
         */
-        /*
+        
         this.bg_backgorund.tilePositionX = this.cameras.main.scrollX * .1;
         this.bg_far.tilePositionX = this.cameras.main.scrollX *.5;
         this.bg_medium.tilePositionX = this.cameras.main.scrollX *1.5;
         this.bg_near.tilePositionX = this.cameras.main.scrollX*2;
-        */
-
+       
+/*
         if(!this.DialogShowing){
             this.bg_backgorund.tilePositionX += 5;
             this.bg_far.tilePositionX += 5.5;
             this.bg_medium.tilePositionX += 16.25;
             this.bg_near.tilePositionX += 20.75;
         }
-
+ */
         /*
         //this.arcadeIntervalTimer;
         if (arcadeMode == true){
