@@ -1150,6 +1150,7 @@ class LevelManager extends Phaser.Scene
 
     // Función que se ejecuta repetidamente en el modo arcade, actualiza posición y aumenta velocidad
     arcadeIntervalFunc() {
+      console.log(distanceAchieved);
         distanceAchieved += 5;
         this.playerMovementSpeed += 0.2; //ANTES ESTABA A 0.2
         this.player.body.setVelocityX(this.playerMovementSpeed);
