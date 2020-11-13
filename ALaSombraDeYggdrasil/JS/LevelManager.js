@@ -862,6 +862,7 @@ class LevelManager extends Phaser.Scene
         } else {
 
         }
+        
         // ALmacena referencias para eliminación
         this.cabins[this.cabins.length] = localCabin1;
         this.cabins[this.cabins.length] = localCabin2;
