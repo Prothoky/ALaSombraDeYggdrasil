@@ -201,7 +201,7 @@ class LevelManager extends Phaser.Scene
         //  ----GAMEPLAY----
         // 1) PERSONAJE
         // Creación personaje: setOrigin(1) IMPORTANTE (calcular colisiones)
-        this.player = this.physics.add.sprite(0, this.playerStartPositionY, 'einar_running').setOrigin(1).setScale(this.playerResizeFactor).setSize(this.playerHitboxWidth, this.playerHitboxHeight);
+        this.player = this.physics.add.sprite(-400, this.playerStartPositionY, 'einar_running').setOrigin(1).setScale(this.playerResizeFactor).setSize(this.playerHitboxWidth, this.playerHitboxHeight);
         this.player.setOffset(110, 140);    // Offset respecto hitbox
         this.player.visible = true;
         this.player.depth = 23;  // Profundidad del sprite
@@ -1286,7 +1286,7 @@ class LevelManager extends Phaser.Scene
             this.bg_medium.tilePositionX = this.cameras.main.scrollX *1.5;
             this.bg_near.tilePositionX = this.cameras.main.scrollX*2;
        }
-       if(this.player.x >=1000 && !this.following){
+       if(this.player.x >=400 && !this.following){
             this.following=true;
             this.cameras.main.startFollow(this.player, false, 1, 1, this.cameraOffsetX, 0); // Cámar sigue al personaje
        }
