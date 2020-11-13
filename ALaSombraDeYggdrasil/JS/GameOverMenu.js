@@ -36,15 +36,14 @@ class GameOverMenu extends Phaser.Scene{
     if(arcadeMode == false){
       this.gameOverRunner = this.add.text(gameWidth*6/16, gameHeight*6/16,  "Moristes Wey", {fontFamily: "StayHappy", fontSize: 24, stroke:'#000000', fill: "white", strokeThickness: 2});
     }else{
-      this.DialogText = this.add.text(gameWidth*6/16, gameHeight*6/16,  ("Puntuación: " + distanceAchieved ), {fontFamily: "StayHappy",  fontSize: 24, stroke:'#000000', fill: "white", strokeThickness: 2});
-
-
+      
       if (distanceAchieved > user.maxDistanceArcade ){
         user.maxDistanceArcade = distanceAchieved;
       }
 
+      this.DialogTextD = this.add.text(gameWidth*6/16, gameHeight*6/16,  ("Puntuación: " + distanceAchieved ), {fontFamily: "Acadian_Runes",  fontSize: 24, stroke:'#000000', fill: "white", strokeThickness: 2});
+      this.DialogTextDM = this.add.text(gameWidth*5/16, gameHeight*8/16,  ("Distancia máxima recorrida: " + user.maxDistanceArcade) , {fontFamily: "Acadian_Runes",  fontSize: 24, stroke:'#000000', fill: "white", strokeThickness: 2});
 
-      this.DialogText = this.add.text(gameWidth*5/16, gameHeight*8/16,  ("Distancia máxima recorrida: " + user.maxDistanceArcade) , {fontFamily: "StayHappy",  fontSize: 24, stroke:'#000000', fill: "white", strokeThickness: 2});
       distanceAchieved = 0;
 
       saveUserData();
