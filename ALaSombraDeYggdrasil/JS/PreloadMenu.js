@@ -197,8 +197,9 @@ class PreloadMenu extends Phaser.Scene{
         this.load.image('buttonFullScreen', './ASSETS/HUDpantallas/BotonFullScreen.jpg');
 
       // Música
-      this.load.audio('test', './ASSETS/Music/music_1.mp3');
-      this.load.audio('test2', './ASSETS/Music/music_2.mp3');
+      this.load.audio('music_1', './ASSETS/Music/music_1.mp3');
+      this.load.audio('music_2', './ASSETS/Music/music_2.mp3');
+      this.load.audio('music_3', './ASSETS/Music/music_3.mp3');
       this.load.audio('player_death', './ASSETS/Sounds/449702__digestcontent__female-scream.wav');
       this.load.audio('player_attack', './ASSETS/Sounds/487643__phonosupf__electronic-attack.wav');
       this.load.audio('player_jump', './ASSETS/Sounds/341247__sharesynth__jump01.wav');
