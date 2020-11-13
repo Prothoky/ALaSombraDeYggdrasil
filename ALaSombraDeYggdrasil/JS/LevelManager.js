@@ -1292,10 +1292,10 @@ class LevelManager extends Phaser.Scene
         */
 
         if(!this.DialogShowing){
-            this.bg_backgorund.tilePositionX += 1;
-            this.bg_far.tilePositionX += 2.5;
-            this.bg_medium.tilePositionX += 6.25;
-            this.bg_near.tilePositionX += 7.75;
+            this.bg_backgorund.tilePositionX += 5;
+            this.bg_far.tilePositionX += 5.5;
+            this.bg_medium.tilePositionX += 16.25;
+            this.bg_near.tilePositionX += 20.75;
         }
 
         /*
