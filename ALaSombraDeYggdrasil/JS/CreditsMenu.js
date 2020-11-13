@@ -34,7 +34,7 @@ class CreditsMenu extends Phaser.Scene{
     this.player.depth = 1;  // Profundidad del sprie
 
     // FLOOR
-    this.ground = this.physics.add.staticGroup(); 
+    this.ground = this.physics.add.staticGroup();
     this.ground.create(400, 0 , 'ground').setOrigin(0, 0).setVisible(false).refreshBody();
     this.physics.add.collider(this.player, this.ground); // Permitimos colisiones entre suelo y jugador y cuenta como grounded (puede saltar)
 
@@ -59,12 +59,22 @@ class CreditsMenu extends Phaser.Scene{
     });
 
     //BACK BUTTON
-    this.backButton = this.add.image(this.cameras.main.x,0, 'backButton');
-    this.backButton.setScale(1.5/3);
-    this.backButton.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => this.BackMainMenu());
-    this.backButton.depth = 3;
+    //BACK BUTTON
+    this.backButtonCM = this.add.image((this.cameras.main.x), 10, 'deselectedButtonSmall');
+    this.backButtonCM.setScale(2/3);
+    this.backButtonCMSel = this.add.image((this.cameras.main.x), 10, 'selSmallLeftButton');
+    this.backButtonCMSel.setScale(2/3);
+    this.backButtonCMSel.setVisible(false);
+    //Texto Boton
+    this.backText = this.add.text(this.cameras.main.x, 1,  stringsJSON.Buttons.back, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
+    //Acciones Boton
+    this.backButtonCM.on('pointerover', function (pointer) {this.backButtonCMSel.setVisible(true);}, this);
+    this.backButtonCM.on('pointerout', function (pointer) {this.backButtonCMSel.setVisible(false);}, this);
+    this.backButtonCM.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.BackMainMenu());
 
+    this.backButtonCM.depth = 3;
+    this.backButtonCMSel.depth = 3;
+    this.backText.depth = 3;
     //PLAYER MOVEMENT
     this.player.anims.play('einar_running',true);
     //this.player.setVelocityX(400);
@@ -80,7 +90,9 @@ class CreditsMenu extends Phaser.Scene{
     this.bg_near.tilePositionX += 5;
     this.credits.setX(this.cameras.main.x+800);
     this.credits.setY(this.credits.y-0.5);
-    this.backButton.setX(this.cameras.main.x+1350);
+    this.backButtonCM.setX(this.cameras.main.x+1350);
+    this.backButtonCMSel.setX(this.cameras.main.x+1328);
+    this.backText.setX(this.cameras.main.x+1313);
     if(this.credits.y<=-1250){
       this.credits.y=100;
     }
