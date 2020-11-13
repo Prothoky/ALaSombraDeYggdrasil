@@ -97,6 +97,7 @@ class MapSelectionMenu extends Phaser.Scene{
       this.playButtonMSM.setVisible(true);
       this.shopButtonW1M.setVisible(false);
       this.backButtonMSM.setVisible(false);
+      this.backText.setVisible(false);
       this.timeText.setVisible(false);
     }
 
@@ -107,6 +108,7 @@ class MapSelectionMenu extends Phaser.Scene{
     this.playButtonMSM.setVisible(false);
     this.shopButtonW1M.setVisible(true);
     this.backButtonMSM.setVisible(true);
+    this.backText.setVisible(true);
     this.timeText.setVisible(true);
   }
 

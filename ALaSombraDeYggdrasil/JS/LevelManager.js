@@ -166,7 +166,7 @@ class LevelManager extends Phaser.Scene
 
         // 2) BACKGROUND
         if (this.isIceLevel) {
-            this.bg_backgorund = this.add.tileSprite(0,0, 5715, 916, 'bg_background_ice');
+            this.bg_backgorund = this.add.tileSprite(0, 0, 5715, 916, 'bg_background_ice');
             this.bg_far = this.add.tileSprite(0,0, 5715, 916, "bg_far_ice");
             this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium_ice");
             this.bg_near = this.add.tileSprite(0,75, 5715, 916, "bg_near_ice");
@@ -314,13 +314,13 @@ class LevelManager extends Phaser.Scene
         //MONEY
 
         if (arcadeMode == false){
-            this.backgroundMoney = this.add.image(0, 0, 'backgroundMoney');
-            this.backgroundMoney.setScale(1/3);
-            this.backgroundMoney.setScrollFactor(0);
-            this.backgroundMoney.setPosition(gameWidth*13/16, gameHeight*1/16);
-            this.Money = this.add.text(gameWidth*13/16, gameHeight*0.95/16,  user.money, {fontFamily: "Acadian_Runes",stroke:'#000000', align: 'center', fill: "white", strokeThickness: 2});
-            this.Money.setOrigin(0.5,0.5);
-            this.Money.setScrollFactor(0);
+
+          this.backgroundMoney = this.add.image(gameWidth*13/16, gameHeight*1.3/16, 'backButton');
+          this.backgroundMoney.setScale(1.5/3);
+          this.backgroundMoney.setScrollFactor(0);
+
+          this.Money = this.add.text(gameWidth*12.6/16, gameHeight*0.92/16,  user.money, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
+          this.Money.setScrollFactor(0);
         }
 
 
@@ -1010,7 +1010,7 @@ class LevelManager extends Phaser.Scene
     // Actualiza los mapas completados y guarda los datos
     levelCompletedFunc() {
 
-      if (Number(user.buffs[1]) == 1) {
+      /*if (Number(user.buffs[1]) == 1) {
         user.buffs[1] = 0;
       }
 
@@ -1020,7 +1020,18 @@ class LevelManager extends Phaser.Scene
 
       if (Number(user.buffs[3]) == 1) {
         user.buffs[3] = 0;
-      }
+      }*/
+
+      /*this.bg_backgorund.setOrigin(0,0);
+      this.bg_far.setOrigin(0,0);
+      this.bg_medium.setOrigin(0,0);
+      this.bg_near.setOrigin(0,0);
+
+      this.bg_backgorund.tilePositionX= 0;
+      this.bg_far.tilePositionX= 0;
+      this.bg_medium.tilePositionX= 0;
+      this.bg_near.tilePositionX= 0;
+      */
 
         this.soundRunning.stop();   // Para el sonido de los pasos
         this.buttonDialog.setVisible(false);
@@ -1091,6 +1102,19 @@ class LevelManager extends Phaser.Scene
         this.isPlayerTouchingGround = false;
         this.playerAttackAvaliable = true;
         this.doubleJumpAvaliable = true;
+        this.DialogShowing = false;
+
+        /*this.bg_backgorund.setOrigin(0,0);
+        this.bg_far.setOrigin(0,0);
+        this.bg_medium.setOrigin(0,0);
+        this.bg_near.setOrigin(0,0);
+
+        this.bg_backgorund.tilePositionX= 0;
+        this.bg_far.tilePositionX= 0;
+        this.bg_medium.tilePositionX= 0;
+        this.bg_near.tilePositionX= 0;
+        */
+
         //distanceAchieved = 0;
         if (this.jumpTimer != null) {
             this.jumpTimer.remove();

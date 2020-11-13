@@ -58,18 +58,24 @@ class World1Map extends Phaser.Scene{
     .on('pointerdown', () => (this.nameActiveNode.setVisible(false), this.activeNode.setVisible(false), this.numActiveNodes = 0));
 
     //MONEY
-    this.backgroundMoney = this.add.image(0, 0, 'backgroundMoney');
-    this.backgroundMoney.setScale(1/3);
-    this.backgroundMoney.setPosition(gameWidth*13/16, gameHeight*1/16);
-    this.Money = this.add.text(gameWidth*13/16, gameHeight*0.95/16,  user.money, {fontFamily: "Acadian_Runes",stroke:'#000000', align: 'center', fill: "white", strokeThickness: 2});
-    this.Money.setOrigin(0.5,0.5);
+    this.backgroundMoneyW1M = this.add.image(gameWidth*13/16, gameHeight*1.3/16, 'backButton');
+    this.backgroundMoneyW1M.setScale(1.5/3);
+    this.MoneyW1M = this.add.text(gameWidth*12.6/16, gameHeight*0.92/16,  user.money, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
+    //this.Money.setOrigin(0.5,0.5);
 
 
     //BOTON ATRAS
-    this.backButtonW1M = this.add.image(gameWidth*14/16, gameHeight*15/16, 'BackButtonW1M');
-    this.backButtonW1M.setScale(1/3);
-    this.backButtonW1M.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => this.BackMapSelectionMenu());
+    this.backButtonW1M = this.add.image(gameWidth*14.5/16, gameHeight*15/16, 'backButton');
+    this.backButtonW1M.setScale(1.5/3);
+    this.backButtonW1MSel = this.add.image(gameWidth*14.3/16, gameHeight*14.8/16, 'selSmallLeftButton');
+    this.backButtonW1MSel.setScale(1.5/3);
+    this.backButtonW1MSel.setVisible(false);
+    //Texto Boton
+    this.backText = this.add.text(gameWidth*14.18/16, gameHeight*14.61/16,  stringsJSON.Buttons.back, {fontFamily: "Acadian_Runes",fontSize: "16px", align: 'center', fill: "#481d18"});
+    //Acciones Boton
+    this.backButtonW1M.on('pointerover', function (pointer) {this.backButtonW1MSel.setVisible(true);}, this);
+    this.backButtonW1M.on('pointerout', function (pointer) {this.backButtonW1MSel.setVisible(false);}, this);
+    this.backButtonW1M.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.BackMapSelectionMenu());
 
     //BOTON TIENDA
     this.shopButtonW1M = this.add.image(gameWidth*14/16, gameHeight*1/16, 'shopButtonIG');
