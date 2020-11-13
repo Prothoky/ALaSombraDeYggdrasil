@@ -23,6 +23,7 @@ class LevelManager extends Phaser.Scene
         this.playerHealth = 0;  // Puntos de vida del jugador (ajustar en el switch del create)
         this.playerStartPositionY = 510;    // Posición de inicio del personaje
         // 1.2) Ajustes cámara
+        this.following = false;
         this.cameraOffsetX = -250;  // Offset del seguido del personaje en el eje X
         // 1.3) Ajustes enemigos
         this.enemySpeed = -200; // Velocidad de movimiento de los enemigos
@@ -200,9 +201,10 @@ class LevelManager extends Phaser.Scene
         //  ----GAMEPLAY----
         // 1) PERSONAJE
         // Creación personaje: setOrigin(1) IMPORTANTE (calcular colisiones)
-        this.player = this.physics.add.sprite(1400, this.playerStartPositionY, 'einar_running').setOrigin(1).setScale(this.playerResizeFactor).setSize(this.playerHitboxWidth, this.playerHitboxHeight);
+        this.player = this.physics.add.sprite(0, this.playerStartPositionY, 'einar_running').setOrigin(1).setScale(this.playerResizeFactor).setSize(this.playerHitboxWidth, this.playerHitboxHeight);
         this.player.setOffset(110, 140);    // Offset respecto hitbox
-        this.player.depth = 3;  // Profundidad del sprite
+        this.player.visible = true;
+        this.player.depth = 23;  // Profundidad del sprite
         // Dependiendo de la dificultad escogida asignamos nº vidas
         switch (userConfig.difficulty) {
             case 0:
@@ -294,7 +296,7 @@ class LevelManager extends Phaser.Scene
 
         // 5) CÁMARA
         this.cameras.main.setBounds(0, 0, 1000000, this.levelHeight);   // Límites cámara
-        this.cameras.main.startFollow(this.player, false, 1, 1, this.cameraOffsetX, 0); // Cámar sigue al personaje
+        //this.cameras.main.startFollow(this.player, false, 1, 1, this.cameraOffsetX, 0); // Cámar sigue al personaje
 
 
 
@@ -975,6 +977,7 @@ class LevelManager extends Phaser.Scene
         user.map[levelIndex] = true;
         saveUserData();
 
+        this.following=false;
         musicGameplay.stop();
         this.soundRunning.stop();
         this.player.setAccelerationX(-1);
@@ -1277,12 +1280,16 @@ class LevelManager extends Phaser.Scene
         this.bg_medium.tilePositionX = this.cameras.main.scrollX * .5;
         this.bg_near.tilePositionX = this.cameras.main.scrollX;
         */
-        
-        this.bg_backgorund.tilePositionX = this.cameras.main.scrollX * .1;
-        this.bg_far.tilePositionX = this.cameras.main.scrollX *.5;
-        this.bg_medium.tilePositionX = this.cameras.main.scrollX *1.5;
-        this.bg_near.tilePositionX = this.cameras.main.scrollX*2;
-       
+       if(!this.DialogShowing){
+            this.bg_backgorund.tilePositionX = this.cameras.main.scrollX * .1;
+            this.bg_far.tilePositionX = this.cameras.main.scrollX *.5;
+            this.bg_medium.tilePositionX = this.cameras.main.scrollX *1.5;
+            this.bg_near.tilePositionX = this.cameras.main.scrollX*2;
+       }
+       if(this.player.x >=1000 && !this.following){
+            this.following=true;
+            this.cameras.main.startFollow(this.player, false, 1, 1, this.cameraOffsetX, 0); // Cámar sigue al personaje
+       }
 /*
         if(!this.DialogShowing){
             this.bg_backgorund.tilePositionX += 5;
