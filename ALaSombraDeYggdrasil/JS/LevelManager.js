@@ -251,6 +251,13 @@ class LevelManager extends Phaser.Scene
         this.trashRecolectors = this.physics.add.group();   // Objetos que eliminan trampas ya superadas
 
         this.generateGround(200, 'ground'); // Genera suelo para todo el nivel
+        
+        // Suelo antes del mapa para que venga desde antes corriendo einar
+        this.ground.create(-200, this.levelGroundHeight, 'ground').setOrigin(0, 0).setVisible(false).refreshBody();
+        this.ground.create(-400, this.levelGroundHeight, 'ground').setOrigin(0, 0).setVisible(false).refreshBody();
+        this.ground.create(-600, this.levelGroundHeight, 'ground').setOrigin(0, 0).setVisible(false).refreshBody();
+        this.ground.create(-800, this.levelGroundHeight, 'ground').setOrigin(0, 0).setVisible(false).refreshBody();
+        
 
         // 3.2) Declaración de funciones de colision/overlap
         this.physics.add.collider(this.player, this.ground, this.grounded, null, this); // Permitimos colisiones entre suelo y jugador y cuenta como grounded (puede saltar)
@@ -1153,7 +1160,6 @@ class LevelManager extends Phaser.Scene
 
     // Función que se ejecuta repetidamente en el modo arcade, actualiza posición y aumenta velocidad
     arcadeIntervalFunc() {
-      console.log(distanceAchieved);
         distanceAchieved += 5;
         this.playerMovementSpeed += 0.2; //ANTES ESTABA A 0.2
         this.player.body.setVelocityX(this.playerMovementSpeed);
