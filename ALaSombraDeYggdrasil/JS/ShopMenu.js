@@ -32,8 +32,10 @@ class ShopMenu extends Phaser.Scene{
     //Texto BOTON
     this.buyObject1 = this.add.text(gameWidth*3.45/16, gameHeight*13.9/16,  stringsJSON.Buttons.buy, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
     this.textIcon1Button= this.add.text(gameWidth*15.5/16, gameHeight*3.6/16, (" x" + user.buffs[0]), {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "white"});
+    this.buyObject1.setVisible(false);
     //Acciones Boton
     if(Number(user.buffs[0]) < 3){
+      this.buyObject1.setVisible(true);
       this.object1Button.on('pointerover', function (pointer) {this.object1ButtonSel.setVisible(true);}, this);
       this.object1Button.on('pointerout', function (pointer) {this.object1ButtonSel.setVisible(false);}, this);
     }
@@ -52,8 +54,10 @@ class ShopMenu extends Phaser.Scene{
     //this.object2Bought.setVisible(false);
     //Texto BOTON
     this.buyObject2 = this.add.text(gameWidth*6.15/16, gameHeight*13.9/16,  stringsJSON.Buttons.buy, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
+    this.buyObject2.setVisible(false);
     //Acciones Boton
     if(Number(user.buffs[1]) < 1){
+    this.buyObject2.setVisible(true);
     this.object2Button.on('pointerover', function (pointer) {this.object2ButtonSel.setVisible(true);}, this);
     this.object2Button.on('pointerout', function (pointer) {this.object2ButtonSel.setVisible(false);}, this);
     }
@@ -72,10 +76,12 @@ class ShopMenu extends Phaser.Scene{
     //this.object3Bought.setVisible(false);
     //Texto Boton
     this.buyObject3 = this.add.text(gameWidth*8.85/16, gameHeight*13.9/16,  stringsJSON.Buttons.buy, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
+    this.buyObject3.setVisible(false);
     //Acciones Boton
     if(Number(user.buffs[2]) < 1){
-    this.object3Button.on('pointerover', function (pointer) {this.object3ButtonSel.setVisible(true);}, this);
-    this.object3Button.on('pointerout', function (pointer) {this.object3ButtonSel.setVisible(false);}, this);
+      this.buyObject3.setVisible(true);
+      this.object3Button.on('pointerover', function (pointer) {this.object3ButtonSel.setVisible(true);}, this);
+      this.object3Button.on('pointerout', function (pointer) {this.object3ButtonSel.setVisible(false);}, this);
     }
     this.object3Button.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AddObject3());
 
@@ -92,8 +98,10 @@ class ShopMenu extends Phaser.Scene{
     //this.object4Bought.setVisible(false);
     //Texto Boton
     this.buyObject4 = this.add.text(gameWidth*11.55/16, gameHeight*13.9/16,  stringsJSON.Buttons.buy, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
+    this.buyObject4.setVisible(false);
     //Acciones Boton
     if(Number(user.buffs[2]) < 1){
+    this.buyObject4.setVisible(true);
     this.object4Button.on('pointerover', function (pointer) {this.object4ButtonSel.setVisible(true);}, this);
     this.object4Button.on('pointerout', function (pointer) {this.object4ButtonSel.setVisible(false);}, this);
     }
@@ -150,7 +158,7 @@ class ShopMenu extends Phaser.Scene{
       this.Money.setText(user.money);
       this.icon1Button.setVisible(true);
       this.textIcon1Button.setVisible(true);
-      this.textIcon1Button.setText("x"+ user.buffs[0]);      
+      this.textIcon1Button.setText("x"+ user.buffs[0]);
     }else{
       console.log("No tienes suficiente dinero");
     }
