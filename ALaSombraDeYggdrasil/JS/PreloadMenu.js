@@ -46,15 +46,20 @@ class PreloadMenu extends Phaser.Scene{
 
     //CARGA DE ASSETS
 
+    //ASSETS COMUNES
+    this.load.image('deselectedButtonSmall', './ASSETS/AssetsComunes/BotonPequeño.png');
+    this.load.image('selSmallLeftButton', './ASSETS/AssetsComunes/BotonPequeñoSelIzq.png');
+    this.load.image('deselectedButton', './ASSETS/AssetsComunes/BotonDeseleccionado.png');
+    this.load.image('selLeftButton', './ASSETS/AssetsComunes/BotonSelIzq.png');
+    this.load.image('selRightButton', './ASSETS/AssetsComunes/BotonSelDcha.png');
+
     //Init Menu
       this.load.image('backgroundIM', './ASSETS/InitMenu/InitMenuBackground.jpg');
 
     //Main MENU
-    this.load.image('backgroundPRUEBA', './ASSETS/MainMenu/MenuRefference.jpg');
+      this.load.image('backgroundPRUEBA', './ASSETS/MainMenu/MenuRefference.jpg');
       this.load.image('backgroundMM', './ASSETS/MainMenu/MainMenuBackground.jpg');
-      this.load.image('deselectedButton', './ASSETS/MainMenu/BotonDeseleccionado.png');
-      this.load.image('selLeftButton', './ASSETS/MainMenu/BotonSelIzq.png');
-      this.load.image('selRightButton', './ASSETS/MainMenu/BotonSelDcha.png');
+
 
 
     //Options Menu General
@@ -133,11 +138,16 @@ class PreloadMenu extends Phaser.Scene{
 
     //SHOP MEMU
       this.load.image('backgroundSM', './ASSETS/Tienda/FondoTienda.jpg');
-      this.load.image('backButtonSM', './ASSETS/PauseMenu/BotonAtras.png');
-      this.load.image('object1Button', './ASSETS/Tienda/BotonObjeto1.png');
-      this.load.image('object2Button', './ASSETS/Tienda/BotonObjeto2.png');
-      this.load.image('object3Button', './ASSETS/Tienda/BotonObjeto3.png');
-      this.load.image('object4Button', './ASSETS/Tienda/BotonObjeto4.png');
+      //Comprados
+      this.load.image('object1Bought', './ASSETS/Tienda/BendicionMaximo.png');
+      this.load.image('object2Bought', './ASSETS/Tienda/FuerzaComprado.png');
+      this.load.image('object3Bought', './ASSETS/Tienda/PlumaComprado.png');
+      this.load.image('object4Bought', './ASSETS/Tienda/RabiaComprado.png');
+      //Iconos
+      this.load.image('IconObject1', './ASSETS/Tienda/IconoBendicion.png');
+      this.load.image('IconObject2', './ASSETS/Tienda/IconoFuerza.png');
+      this.load.image('IconObject3', './ASSETS/Tienda/IconoPluma.png');
+      this.load.image('IconObject4', './ASSETS/Tienda/IconoRabia.png');
 
     //World 1 Map
       this.load.image('backgroundWM1M', './ASSETS/World1Menu/FondoMapaMundo1.jpg');

@@ -1009,6 +1009,19 @@ class LevelManager extends Phaser.Scene
 
     // Actualiza los mapas completados y guarda los datos
     levelCompletedFunc() {
+
+      if (Number(user.buffs[1]) == 1) {
+        user.buffs[1] = 0;
+      }
+
+      if (Number(user.buffs[2]) == 1) {
+        user.buffs[2] = 0;
+      }
+
+      if (Number(user.buffs[3]) == 1) {
+        user.buffs[3] = 0;
+      }
+
         this.soundRunning.stop();   // Para el sonido de los pasos
         this.buttonDialog.setVisible(false);
         this.DialogText.setVisible(false);
@@ -1094,8 +1107,18 @@ class LevelManager extends Phaser.Scene
         if (this.arcadeIntervalTimer != null) {
             this.arcadeIntervalTimer.remove();
         }
-        //this.scene.stop();
-        //this.scene.restart();
+
+        if (Number(user.buffs[1]) == 1) {
+          user.buffs[1] = 0;
+        }
+
+        if (Number(user.buffs[2]) == 1) {
+          user.buffs[2] = 0;
+        }
+
+        if (Number(user.buffs[3]) == 1) {
+          user.buffs[3] = 0;
+        }
     }
 
     // Función que se ejecuta repetidamente en el modo arcade, actualiza posición y aumenta velocidad
