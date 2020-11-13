@@ -87,14 +87,14 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('logo','ASSETS/Logo.jpeg');
 
     //Map Selection Menu
-      this.load.image('backgroundMSM', './ASSETS/MapSelectionMenu/MapMenuBackground.jpeg');
-      this.load.image('World1Button', './ASSETS/MapSelectionMenu/BotonMundo1.png');
-      this.load.image('World2Button', './ASSETS/MapSelectionMenu/BotonMundo2.png');
-      this.load.image('World3Button', './ASSETS/MapSelectionMenu/BotonMundo3.png');
-      this.load.image('World4Button', './ASSETS/MapSelectionMenu/BotonMundo4.png');
-      this.load.image('backButton', './ASSETS/MapSelectionMenu/BotonSalir.png');
-      this.load.image('paperDesciptionMSM', './ASSETS/MapSelectionMenu/Pergamino.png');
-      this.load.image('playButtonMSM', './ASSETS/MapSelectionMenu/BotonJugar.png');
+      this.load.image('backgroundMSM', './ASSETS/MapSelectionMenu/MapMenuBackground.jpg');
+      this.load.image('backgroundMSMWolrd1Comp', './ASSETS/MapSelectionMenu/MapMenuBackground.jpg');
+      this.load.image('World1Button', './ASSETS/MapSelectionMenu/BotonMidgard.png');
+      this.load.image('World2Button', './ASSETS/MapSelectionMenu/BotonMuspelheim.png');
+      this.load.image('backButton', './ASSETS/MapSelectionMenu/BotonVolver.png');
+      this.load.image('paperWorld1', './ASSETS/MapSelectionMenu/PergaminoMidgard.png');
+      this.load.image('playButton', './ASSETS/MapSelectionMenu/BotonJugar.png');
+      this.load.image('playButtonSel', './ASSETS/MapSelectionMenu/JugarSeleccionado.png');
 
     //Level Manager
       this.load.spritesheet('dude', 'ASSETS/Placeholders/dude.png', { frameWidth: 32, frameHeight: 48 });
