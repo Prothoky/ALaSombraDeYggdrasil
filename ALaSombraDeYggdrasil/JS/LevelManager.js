@@ -206,8 +206,6 @@ class LevelManager extends Phaser.Scene
         // Creación personaje: setOrigin(1) IMPORTANTE (calcular colisiones)
         this.player = this.physics.add.sprite(-400, this.playerStartPositionY, 'einar_running').setOrigin(1).setScale(this.playerResizeFactor).setSize(this.playerHitboxWidth, this.playerHitboxHeight);
         this.player.setOffset(110, 140);    // Offset respecto hitbox
-        this.player.visible = true;
-        this.player.depth = 23;  // Profundidad del sprite
         // Dependiendo de la dificultad escogida asignamos nº vidas
         switch (userConfig.difficulty) {
             case 0:
@@ -1285,6 +1283,7 @@ class LevelManager extends Phaser.Scene
     // Da movimiento al fondo
     update (time, delta){
 
+        console.log(this.xPointer);
         //Fondo dinámico
         /*
         this.bg_far.tilePositionX = this.cameras.main.scrollX *.1;
