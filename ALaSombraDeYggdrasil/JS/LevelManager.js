@@ -1380,6 +1380,7 @@ class LevelManager extends Phaser.Scene
     }
 
     Disable_controls(){
+        this.input.enabled = false;
         this.jumpButton.enabled = false;
         this.leftButton.enabled = false;
         this.rightButton.enabled =false;
@@ -1390,6 +1391,7 @@ class LevelManager extends Phaser.Scene
     }
     
     Enable_controls(){
+        this.input.enabled = true;
         this.jumpButton.enabled = true;
         this.leftButton.enabled = true;
         this.rightButton.enabled =true;
