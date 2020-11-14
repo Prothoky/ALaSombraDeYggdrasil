@@ -44,8 +44,9 @@ class CreditsMenu extends Phaser.Scene{
     this.credits.depth=3;
 
     // 4) LOGO
-    this.logo = this.add.image(1425,-395, 'logo');
-    this.logo.setScale(0.125)
+    this.logo = this.add.image(0,500, 'logo');
+    this.logo.setScale(0.125);
+    this.logo.setOrigin(0.5,0.5);
 
     // 3) CAMERA
     this.cameras.main.startFollow(this.player, false, 1, 1, -250, 200); // Cámar sigue al personaje
@@ -89,13 +90,13 @@ class CreditsMenu extends Phaser.Scene{
     this.bg_medium.tilePositionX += 3;
     this.bg_near.tilePositionX += 5;
     this.credits.setX(this.cameras.main.x+800);
+    this.logo.setX(this.cameras.main.x+950);
     this.credits.setY(this.credits.y-0.5);
+    this.logo.setY(this.credits.y+this.credits.height+150);
     this.backButtonCM.setX(this.cameras.main.x+1350);
     this.backButtonCMSel.setX(this.cameras.main.x+1328);
     this.backText.setX(this.cameras.main.x+1313);
-    if(this.credits.y<=-1250){
-      this.credits.y=100;
-    }
+
   }
 
   BackMainMenu(){

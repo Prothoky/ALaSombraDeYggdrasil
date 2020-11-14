@@ -1346,7 +1346,7 @@ class LevelManager extends Phaser.Scene
             this.cameras.main.startFollow(this.player, false, 1, 1, this.cameraOffsetX, 0); // Cámar sigue al personaje
        }
        if(this.player.body.velocity.x<=0){
-        this.player.setAccelerationX(0);
+            this.player.setAccelerationX(0);
            this.player.body.setVelocityX(0);
        }
 /*
