@@ -130,11 +130,16 @@ class MapSelectionMenu extends Phaser.Scene{
   }
 
   updateTimeText() {
-    var dias = Math.round((unlockDate -  new Date()) / 86400000);
-    var horas =  Math.round((unlockDate -  new Date()) / 3600000)-(dias*24);
+    var dias = Math.round((unlockDate -  new Date()) / 86400000)-31;
+    var horas =  Math.round((unlockDate -  new Date()) / 3600000)-((dias+30)*24);
     //this.timeText.setText("Quedan " + dias + " días y \n" + horas +" horas para desbloquear el siguiente Mundo");
     //poner If english = dias + days left
-    this.timeText.setText(dias + " días \n" + "restantes");
+    if(dias==0){
+      this.timeText.setText(horas + " horas \n" + "restantes");     
+    }
+    else{
+      this.timeText.setText(dias + " días \n" + "restantes");     
+    }
     if(unlockDate -  new Date() < 0 || unlockDate == new Date()){
       this.timeText.setText("NUEVO MUNDO DESBLOQUEADO");
       this.events.emit("Unlock World",);

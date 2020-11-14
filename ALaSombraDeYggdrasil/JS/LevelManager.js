@@ -108,6 +108,7 @@ class LevelManager extends Phaser.Scene
 
         // 6) INPUT
         // Teclas (no ejecutar si es en móvil)
+        this.controls_enable;
         this.jumpButton;
         this.leftButton;
         this.rightButton;
@@ -129,7 +130,7 @@ class LevelManager extends Phaser.Scene
 
     create ()
     {
-
+        
         this.physics.world.setFPS(fpsTarget);
       //this.cameras.main.fadeIn(1500, 0, 0, 0);
 
@@ -367,6 +368,7 @@ class LevelManager extends Phaser.Scene
 
         // ----CONTROLES----
         // 1) PC
+        this.controls_enable=true;
         this.jumpButton = this.input.keyboard.addKey(controls.up);
         this.leftButton = this.input.keyboard.addKey(controls.left);
         this.rightButton = this.input.keyboard.addKey(controls.right);
@@ -458,7 +460,7 @@ class LevelManager extends Phaser.Scene
             pointerAttack.destroy();
         }
 
-
+        Reset_Vars();
 
         // ----TESTEO----
 
@@ -989,7 +991,7 @@ class LevelManager extends Phaser.Scene
         this.following=false;
         musicGameplay.stop();
         this.soundRunning.stop();
-        this.player.setAccelerationX(-1);
+        
         //this.player.setVelocityX(0);
         this.DialogText.setVisible(true);
         this.endTrigger.setVisible(false);
@@ -999,7 +1001,8 @@ class LevelManager extends Phaser.Scene
         for(let i = 0; i < this.playerHealth; i++) {    // Posiciona los puntos de vida en el HUD
             this.healthPointsDisplay[i].setVisible(false);
         }
-
+        Disable_controls();
+        this.player.setAccelerationX(-100);
         this.time.addEvent({
                 delay: 800,
                 callback: function() {
@@ -1281,7 +1284,6 @@ class LevelManager extends Phaser.Scene
     // Da movimiento al fondo
     update (time, delta){
 
-
         //Fondo dinámico
         /*
         this.bg_far.tilePositionX = this.cameras.main.scrollX *.1;
@@ -1294,9 +1296,12 @@ class LevelManager extends Phaser.Scene
             this.bg_medium.tilePositionX = this.cameras.main.scrollX *1.5;
             this.bg_near.tilePositionX = this.cameras.main.scrollX*2;
        }
-       if(this.player.x >=400 && !this.following){
+       if(this.player.x >=300 && !this.following){
             this.following=true;
             this.cameras.main.startFollow(this.player, false, 1, 1, this.cameraOffsetX, 0); // Cámar sigue al personaje
+       }
+       if(this.player.speed<=0){
+           this.player.setAccelerationX(0);
        }
 /*
         if(!this.DialogShowing){
@@ -1381,4 +1386,28 @@ function DifficultyIndexSubnode(index){
   return indexNode
 
 
+}
+
+function Disable_controls(){
+    this.jumpButton = null;
+    this.leftButton = null;
+    this.rightButton =null;
+    this.attackButton = null;
+    this.testButton = null;
+    this.pauseButton =null;
+    this.controls_enable=false;
+}
+
+function Enable_controls(){
+    this.jumpButton = this.input.keyboard.addKey(controls.up);
+    this.leftButton = this.input.keyboard.addKey(controls.left);
+    this.rightButton = this.input.keyboard.addKey(controls.right);
+    this.attackButton = this.input.keyboard.addKey(controls.attack);
+    this.testButton = this.input.keyboard.addKey(controls.test); // ELIMINAR VERSION FINAL
+    this.pauseButton = this.input.keyboard.addKey(controls.pause);
+}
+
+function Reset_Vars(){
+    this.following=false;
+    this.DialogShowing=false;
 }
