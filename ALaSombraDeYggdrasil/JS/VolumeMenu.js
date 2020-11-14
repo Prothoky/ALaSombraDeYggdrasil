@@ -4,8 +4,7 @@ class VolumeMenu extends Phaser.Scene{
   }
 
   create(){
-    this.cameras.main.fadeIn(1500, 0, 0, 0);
-    
+
     this.backgroundVM = this.add.image(0, 0, 'backgroundVM');
     this.backgroundVM.setScale(2/3);
     this.backgroundVM.setPosition(gameWidth/2, gameHeight/2);

@@ -25,14 +25,16 @@
       "quit": "SALIR",
       "volume": "VOLUMEN",
       "adjust": "AJUSTES",
-      "easy": "TRAVESÍA",
-      "medium": "CACERÍA",
-      "difficult": "FRENESÍ",
-      "erase_Data": "RESET",
+      "easy": "Facil",
+      "medium": "Medio",
+      "difficult": "Dificil",
+      "erase_Data": "Borrar datos",
       "confirm": "Confirmar",
       "cancel": "Cancelar",
       "buy": "COMPRAR",
-      "language": "ESPAÑOL"
+      "languaje": "Idioma",
+      "esp": "Español",
+      "eng": "Inglés"
     },
     "Dialogs": [
       [
@@ -185,14 +187,16 @@
       "quit": "QUIT",
       "volume": "VOLUME",
       "adjust": "SETTINGS",
-      "easy": "CROSSING",
-      "medium": "HUNTING",
-      "difficult": "FRENZY",
-      "erase_Data": "RESET",
-      "confirm": "CONFIRM",
-      "cancel": "CANCEL",
+      "easy": "Easy",
+      "medium": "Medium",
+      "difficult": "Hard",
+      "erase_Data": "Erase Data",
+      "confirm": "Confirm",
+      "cancel": "Cancel",
       "buy": "BUY",
-      "language": "ENGLISH"
+      "languaje": "Language",
+      "esp": "Spanish",
+      "eng": "English"
     },
     "World_Menu": {
       "world_1": "Helheim",
