@@ -137,6 +137,8 @@ class LevelManager extends Phaser.Scene
         // ----FIX----
         // 1) ASIGNACIONES DE RESETEO
         // Vuelve a asignar los valores de determinadas variables al reintentar ya que no pasa correctamente por el constructor
+        this.following=false;
+        this.DialogShowing=false;
         this.playerAttackAvaliable = true;
         this.isPlayerInvulnerable = false;
         this.doubleJumpAvaliable = true;
@@ -1405,9 +1407,4 @@ function Enable_controls(){
     this.attackButton = this.input.keyboard.addKey(controls.attack);
     this.testButton = this.input.keyboard.addKey(controls.test); // ELIMINAR VERSION FINAL
     this.pauseButton = this.input.keyboard.addKey(controls.pause);
-}
-
-function Reset_Vars(){
-    this.following=false;
-    this.DialogShowing=false;
 }
