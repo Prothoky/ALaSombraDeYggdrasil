@@ -21,7 +21,7 @@ class LevelManager extends Phaser.Scene
         this.playerResizeFactor = 0.56; // Escalado del personaje
         this.playerAttackHeight = this.playerHitboxHeight * this.playerResizeFactor;   // Alto de hitbox del ataque
         this.playerHealth = 0;  // Puntos de vida del jugador (ajustar en el switch del create)
-        this.playerStartPositionY = 510;    // Posición de inicio del personaje
+        this.playerStartPositionY = 500;    // Posición de inicio del personaje
         // 1.2) Ajustes cámara
         this.following = false;
         this.cameraOffsetX = -250;  // Offset del seguido del personaje en el eje X
@@ -204,8 +204,9 @@ class LevelManager extends Phaser.Scene
         //  ----GAMEPLAY----
         // 1) PERSONAJE
         // Creación personaje: setOrigin(1) IMPORTANTE (calcular colisiones)
-        this.player = this.physics.add.sprite(-400, this.playerStartPositionY, 'einar_running').setOrigin(1).setScale(this.playerResizeFactor).setSize(this.playerHitboxWidth, this.playerHitboxHeight);
+        this.player = this.physics.add.sprite(-200, this.playerStartPositionY, 'einar_running').setOrigin(1).setScale(this.playerResizeFactor).setSize(this.playerHitboxWidth, this.playerHitboxHeight);
         this.player.setOffset(110, 140);    // Offset respecto hitbox
+        this.player.depth = 3;  // Profundidad del sprite
         // Dependiendo de la dificultad escogida asignamos nº vidas
         switch (userConfig.difficulty) {
             case 0:
@@ -462,7 +463,6 @@ class LevelManager extends Phaser.Scene
 
 
         // ----TESTEO----
-
     }
 
 
@@ -981,6 +981,7 @@ class LevelManager extends Phaser.Scene
 
     // Devuelve el jugador al mapa del mundo (al completar el nivel)
     goalArrived() {
+        this.player.setAccelerationX(-1000);
         this.hasArrived = true;
         this.actualizeMapsCompleted();
         user.money+= levelSettings[DifficultyIndexSubnode(levelIndex)][userConfig.difficulty][3];
@@ -1000,8 +1001,7 @@ class LevelManager extends Phaser.Scene
         for(let i = 0; i < this.playerHealth; i++) {    // Posiciona los puntos de vida en el HUD
             this.healthPointsDisplay[i].setVisible(false);
         }
-        Disable_controls();
-        this.player.setAccelerationX(-100);
+        this.Disable_controls();
         this.time.addEvent({
                 delay: 800,
                 callback: function() {
@@ -1283,7 +1283,8 @@ class LevelManager extends Phaser.Scene
     // Da movimiento al fondo
     update (time, delta){
 
-        console.log(this.xPointer);
+        console.log(this.player.y);
+        console.log(this.player.x);
         //Fondo dinámico
         /*
         this.bg_far.tilePositionX = this.cameras.main.scrollX *.1;
@@ -1300,8 +1301,9 @@ class LevelManager extends Phaser.Scene
             this.following=true;
             this.cameras.main.startFollow(this.player, false, 1, 1, this.cameraOffsetX, 0); // Cámar sigue al personaje
        }
-       if(this.player.speed<=0){
-           this.player.setAccelerationX(0);
+       if(this.player.body.velocity.x<=0){
+        this.player.setAccelerationX(0);
+           this.player.body.setVelocityX(0);
        }
 /*
         if(!this.DialogShowing){
@@ -1331,6 +1333,26 @@ class LevelManager extends Phaser.Scene
         this.scene.run('PauseMenu');
         this.scene.bringToTop('PauseMenu');
         this.scene.pause();
+    }
+
+    Disable_controls(){
+        this.jumpButton.enabled = false;
+        this.leftButton.enabled = false;
+        this.rightButton.enabled =false;
+        this.attackButton.enabled = false;
+        this.testButton.enabled = false;
+        this.pauseButton.enabled =false;
+        this.controls_enable=false;
+    }
+    
+    Enable_controls(){
+        this.jumpButton.enabled = true;
+        this.leftButton.enabled = true;
+        this.rightButton.enabled =true;
+        this.attackButton.enabled = true;
+        this.testButton.enabled = true;
+        this.pauseButton.enabled =true;
+        this.controls_enable=true;
     }
 
 }
@@ -1386,23 +1408,4 @@ function DifficultyIndexSubnode(index){
   return indexNode
 
 
-}
-
-function Disable_controls(){
-    this.jumpButton = null;
-    this.leftButton = null;
-    this.rightButton =null;
-    this.attackButton = null;
-    this.testButton = null;
-    this.pauseButton =null;
-    this.controls_enable=false;
-}
-
-function Enable_controls(){
-    this.jumpButton = this.input.keyboard.addKey(controls.up);
-    this.leftButton = this.input.keyboard.addKey(controls.left);
-    this.rightButton = this.input.keyboard.addKey(controls.right);
-    this.attackButton = this.input.keyboard.addKey(controls.attack);
-    this.testButton = this.input.keyboard.addKey(controls.test); // ELIMINAR VERSION FINAL
-    this.pauseButton = this.input.keyboard.addKey(controls.pause);
 }
