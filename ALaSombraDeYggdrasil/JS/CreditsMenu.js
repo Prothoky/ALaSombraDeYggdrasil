@@ -47,7 +47,8 @@ class CreditsMenu extends Phaser.Scene{
     this.logo = this.add.image(0,500, 'logo');
     this.logo.setScale(0.125);
     this.logo.setOrigin(0.5,0.5);
-
+    this.logo.depth=3;
+    
     // 3) CAMERA
     this.cameras.main.startFollow(this.player, false, 1, 1, -250, 200); // Cámar sigue al personaje
 
