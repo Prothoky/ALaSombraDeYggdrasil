@@ -246,16 +246,16 @@
   },
   "Store": {
     "shields": {
-      "price": 250
+      "price": 30
     },
     "doublejump": {
-      "price": 500
+      "price": 300
     },
     "invulnerability": {
-      "price": 1000
+      "price": 300
     },
     "cooldown": {
-      "price": 750
+      "price": 300
     }
   }
 
