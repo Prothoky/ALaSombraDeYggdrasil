@@ -462,7 +462,6 @@ class LevelManager extends Phaser.Scene
             pointerAttack.destroy();
         }
 
-        Reset_Vars();
 
         // ----TESTEO----
 
