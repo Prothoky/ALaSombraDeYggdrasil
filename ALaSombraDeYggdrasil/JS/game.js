@@ -104,14 +104,16 @@ function resetUserData(){
 var stringsJSON;
 var userLang;
 
-function updateLanguage(userLang = null){
+function updateLanguage(){
   if(userLang==null)
     userLang = navigator.language || navigator.userLanguage;
   if(userLang == "es-ES" || "es"){
     stringsJSON = phaserJSON.esp;
+    userLang = "es";
   }
   else if(userLang == "en-US" || "en"){
     stringsJSON = phaserJSON.eng;
+    userLang = "en";
   }
 }
 
