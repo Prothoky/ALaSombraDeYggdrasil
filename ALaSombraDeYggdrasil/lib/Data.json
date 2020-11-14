@@ -121,7 +121,7 @@
         ["EINAR","Einar: Estoy cansado de esta tierra, no hay más que saqueadores, demasiado caos hay en la que antaño fue mi casa.  "],
         ["EINAR","Einar: Midgard está en continua guerra y yo ya no soy parte de ella. "],
         ["EINAR","Einar: ¿Qué hago Hugin? ¿Por qué no vuelves a tu casa?"],
-        ["HUGIN","Hugin: La sombra se está propagando por Yggdrasil, los dioses han perdido su poder durante este tiempo."],
+        ["HUGIN","Hugin: La sombra se está propagando por Yggdrasil, \n los dioses han perdido su poder durante este tiempo."],
         ["HUGIN","Hugin: Odín me abandonó con la caída del Valhalla."],
         ["EINAR","Einar: ¿Qué ha pasado? ¿Cómo pierde un dios su poder?"],
         ["EINAR","Einar: Debo buscar el Bifröst, espero que su guardian Heimdal \n siga recordando aquel favor que le hice salvando   \n a aquella hija bastarda suya en la guerra de Wessex.  "],

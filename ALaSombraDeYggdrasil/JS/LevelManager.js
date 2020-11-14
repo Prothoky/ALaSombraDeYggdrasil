@@ -121,6 +121,7 @@ class LevelManager extends Phaser.Scene
         this.Money;
         //Dialogos finales
         this.DialogShowing=false;
+        this.DialogBg;
         this.DialogText;
         this.indexText = 0;
 
@@ -210,7 +211,7 @@ class LevelManager extends Phaser.Scene
         // Dependiendo de la dificultad escogida asignamos nº vidas
         switch (userConfig.difficulty) {
             case 0:
-                this.playerHealth = 15;
+                this.playerHealth = 7;
                 break;
             case 1:
                 this.playerHealth = 3;
@@ -338,33 +339,16 @@ class LevelManager extends Phaser.Scene
 
 
         //DIALOG End Level
-        this.DialogBgE = this.add.image(gameWidth*8/16, gameHeight*12.5/16, 'backgroundDialogEinar');
-        this.DialogBgE.setScale(2/3);
-        this.DialogBgE.setDepth(7);
-        this.DialogBgE.setScrollFactor(0);
-        this.DialogBgE.setVisible(false);
+        this.DialogBg = this.add.image(gameWidth*8/16, gameHeight*12.5/16, 'backgroundDialogEinar');
+        this.DialogBg.setScale(2/3);
+        this.DialogBg.setDepth(7);
+        this.DialogBg.setScrollFactor(0);
+        this.DialogBg.setVisible(false);
+        this.DialogBg.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.nextDialog());
 
-        this.buttonDialog = this.add.image(gameWidth*10.7/16, gameHeight*13.34/16, 'buttonDialog');
-        this.buttonDialog.setScale(2/3);
-        this.buttonDialog.setDepth(7);
-        this.buttonDialog.setScrollFactor(0);
-        this.buttonDialog.setVisible(false);
-
-        this.buttonDialogSel = this.add.image(gameWidth*10.7/16, gameHeight*13.34/16, 'buttonDialogSel');
-        this.buttonDialogSel.setScale(2/3);
-        this.buttonDialogSel.setDepth(7);
-        this.buttonDialogSel.setScrollFactor(0);
-        this.buttonDialogSel.setVisible(false);
-
-        //this.buttonDialog.setScale(0.5);
-        this.buttonDialog.on('pointerover', function (pointer) {this.buttonDialogSel.setVisible(true);}, this);
-        this.buttonDialog.on('pointerout', function (pointer) {this.buttonDialogSel.setVisible(false);}, this);
-        this.buttonDialog.setInteractive({ useHandCursor: true}).on('pointerdown', () => (this.nextDialog()));
-
-
-        this.DialogText = this.add.text(gameWidth*6/16, gameHeight*6/16,  " ", {fontFamily: "StayHappy",stroke:'#000000', fill: "white", strokeThickness: 2});
+        this.DialogText = this.add.text(gameWidth*6.75/16, gameHeight*11.5/16,  " ", {fontFamily: "StayHappy",stroke:'#000000', fill: "white", strokeThickness: 2});
         this.DialogText.setScrollFactor(0);
-        this.DialogText.setDepth(7);
+        this.DialogText.setDepth(8);
         this.DialogText.setVisible(false);
 
         //FULL SCREEN
@@ -978,31 +962,32 @@ class LevelManager extends Phaser.Scene
 
     showDialog(){
 
-      if(stringsJSON.Dialogs[levelIndex]!=null)
+      if(stringsJSON.Dialogs[levelIndex]!=null){
             this.DialogText.setText(stringsJSON.Dialogs[levelIndex][this.indexText][1]);
-             /*
             switch (stringsJSON.Dialogs[levelIndex][this.indexText][0]){
                 case 'EINAR':{
-                    this.DialogBg = 
+                    this.DialogBg.setTexture('backgroundDialogEinar');
+                    break;
                 }
                 case 'MUNIN':{
-                    this.DialogBg = 
+                    this.DialogBg.setTexture('backgroundDialogMunin');
+                    break;
                 }
                 case 'HUGIN':{
-                    this.DialogBg = 
+                    this.DialogBg.setTexture('backgroundDialogHugin');
+                    break;
                 }
                 default:{
-
+                    this.DialogBg.setTexture('backgroundDialogHugin');
+                    break;
                 }
             }
-            */
+        }
+            
       else{
              //this.levelCompletedFunc();
         }
 
-        this.DialogBgE.setVisible(true);
-        this.buttonDialog.setVisible(true);
-        //this.buttonDialogSel.setVisible(true);
 
       }
 
@@ -1015,16 +1000,12 @@ class LevelManager extends Phaser.Scene
         user.money+= levelSettings[DifficultyIndexSubnode(levelIndex)][userConfig.difficulty][3];
         user.map[levelIndex] = true;
         saveUserData();
-
         this.following=false;
         musicGameplay.stop();
         this.soundRunning.stop();
-        
-        //this.player.setVelocityX(0);
-        this.DialogText.setVisible(true);
+
         this.endTrigger.setVisible(false);
         this.buttonPause.setVisible(false);
-        //this.player.anims.play('einar_iddle', true);
 
         for(let i = 0; i < this.playerHealth; i++) {    // Posiciona los puntos de vida en el HUD
             this.healthPointsDisplay[i].setVisible(false);
@@ -1033,6 +1014,8 @@ class LevelManager extends Phaser.Scene
         this.time.addEvent({
                 delay: 800,
                 callback: function() {
+                    this.DialogBg.setVisible(true);
+                    this.DialogText.setVisible(true);
                     this.DialogShowing=true;
                     this.showDialog();
                 },
@@ -1045,22 +1028,24 @@ class LevelManager extends Phaser.Scene
     nextDialog(){
         if(stringsJSON.Dialogs[levelIndex][++this.indexText] != null){
             this.DialogText.setText(stringsJSON.Dialogs[levelIndex][this.indexText][1]);
-            /*
             switch (stringsJSON.Dialogs[levelIndex][this.indexText][0]){
                 case 'EINAR':{
-                    this.DialogBg = 
+                    this.DialogBg.setTexture('backgroundDialogEinar');
+                    break;
                 }
                 case 'MUNIN':{
-                    this.DialogBg = 
+                    this.DialogBg.setTexture('backgroundDialogMunin');
+                    break;
                 }
                 case 'HUGIN':{
-                    this.DialogBg = 
+                    this.DialogBg.setTexture('backgroundDialogHugin');
+                    break;
                 }
                 default:{
-
+                    this.DialogBg.setTexture('backgroundDialogHugin');
+                    break;
                 }
             }
-            */
             
         }
         else{
@@ -1096,9 +1081,8 @@ class LevelManager extends Phaser.Scene
       */
 
         this.soundRunning.stop();   // Para el sonido de los pasos
-        this.buttonDialog.setVisible(false);
-        this.buttonDialogSel.setVisible(false);
         this.DialogText.setVisible(false);
+        this.DialogBg.setVisible(false);
         this.DialogShowing=false;
 
         this.cameras.main.fadeOut(2500, 0, 0, 0);
