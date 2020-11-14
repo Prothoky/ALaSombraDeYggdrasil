@@ -76,8 +76,8 @@ var user = { //Mapas desbloqueados y dinero del jugador
 }
 
 var userConfig = {
-  volumeMusic: 5,
-  volumeEffects: 5,
+  volumeMusic: 6,
+  volumeEffects: 6,
   difficulty: 0, // Indica la dificultad escogida: 0 fácil - 1 normal - 2 dificil  (aún sin implementar)
 }
 

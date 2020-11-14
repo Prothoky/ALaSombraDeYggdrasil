@@ -124,6 +124,7 @@ class PreloadMenu extends Phaser.Scene{
       this.load.spritesheet('einar_jumping', 'ASSETS/Gameplay/animacion_saltar.png', { frameWidth: 400, frameHeight: 350 });
       this.load.image('backgroundDialog', 'ASSETS/Gameplay/FondoDialogo.png');
       this.load.image('buttonDialog', 'ASSETS/Gameplay/BotonPasarDialogo.png');
+      this.load.image('life', 'ASSETS/Tienda/IconoBendicion.png')
 
 
     //Pause Menu

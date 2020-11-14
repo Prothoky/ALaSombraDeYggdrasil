@@ -251,13 +251,13 @@ class LevelManager extends Phaser.Scene
         this.trashRecolectors = this.physics.add.group();   // Objetos que eliminan trampas ya superadas
 
         this.generateGround(200, 'ground'); // Genera suelo para todo el nivel
-        
+
         // Suelo antes del mapa para que venga desde antes corriendo einar
         this.ground.create(-200, this.levelGroundHeight, 'ground').setOrigin(0, 0).setVisible(false).refreshBody();
         this.ground.create(-400, this.levelGroundHeight, 'ground').setOrigin(0, 0).setVisible(false).refreshBody();
         this.ground.create(-600, this.levelGroundHeight, 'ground').setOrigin(0, 0).setVisible(false).refreshBody();
         this.ground.create(-800, this.levelGroundHeight, 'ground').setOrigin(0, 0).setVisible(false).refreshBody();
-        
+
 
         // 3.2) Declaración de funciones de colision/overlap
         this.physics.add.collider(this.player, this.ground, this.grounded, null, this); // Permitimos colisiones entre suelo y jugador y cuenta como grounded (puede saltar)
@@ -316,7 +316,8 @@ class LevelManager extends Phaser.Scene
         // 2) Puntos de vida
         this.healthIconOffset = 30; // Offset de los iconos de vida
         for(let i = 0; i < this.playerHealth; i++) {    // Posiciona los puntos de vida en el HUD
-            this.healthPointsDisplay[i] = this.add.image(1270 - this.healthIconOffset * (1 + i), + this.healthIconOffset, 'bomb');
+            this.healthPointsDisplay[i] = this.add.image(1270 - 25 * (1 + i), 50, 'life');
+            this.healthPointsDisplay[i].setScale(2.5/5);
             this.healthPointsDisplay[i].setScrollFactor(0);
             this.healthPointsDisplay[i].depth = 10;
         }
@@ -869,7 +870,7 @@ class LevelManager extends Phaser.Scene
         } else {
 
         }
-        
+
         // ALmacena referencias para eliminación
         this.cabins[this.cabins.length] = localCabin1;
         this.cabins[this.cabins.length] = localCabin2;

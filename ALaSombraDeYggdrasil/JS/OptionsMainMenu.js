@@ -3,19 +3,13 @@ class OptionsMainMenu extends Phaser.Scene{
       super("OptionsMainMenu");
   }
 
-  preload(){
-
-
-
-  }
-
   create(){
 
     this.cameras.main.fadeIn(1500, 0, 0, 0);
 
-    var background = this.add.image(0, 0, 'backgroundOM');
-    background.setScale(2/3);
-    background.setPosition(gameWidth/2, gameHeight/2);
+    this.backgroundOMM = this.add.image(0, 0, 'backgroundOM');
+    this.backgroundOMM.setScale(2/3);
+    this.backgroundOMM.setPosition(gameWidth/2, gameHeight/2);
 
     //BOTON VOLUMEN
     this.VolumeButtonOM = this.add.image(gameWidth*8/16, gameHeight*6.7/16, 'deselectedButton');
