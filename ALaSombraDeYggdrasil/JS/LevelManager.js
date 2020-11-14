@@ -338,18 +338,29 @@ class LevelManager extends Phaser.Scene
 
 
         //DIALOG End Level
-        this.DialogBg = this.add.image(gameWidth*7.5/16, gameHeight*6/16, 'backgroundDialog');
-        this.DialogBg.setScale(2/3);
-        this.DialogBg.setDepth(7);
-        this.DialogBg.setScrollFactor(0);
-        this.DialogBg.setVisible(false);
+        this.DialogBgE = this.add.image(gameWidth*8/16, gameHeight*12.5/16, 'backgroundDialogEinar');
+        this.DialogBgE.setScale(2/3);
+        this.DialogBgE.setDepth(7);
+        this.DialogBgE.setScrollFactor(0);
+        this.DialogBgE.setVisible(false);
 
-        this.buttonDialog = this.add.image(gameWidth*13.5/16, gameHeight*9/16, 'buttonDialog');
+        this.buttonDialog = this.add.image(gameWidth*10.7/16, gameHeight*13.34/16, 'buttonDialog');
+        this.buttonDialog.setScale(2/3);
         this.buttonDialog.setDepth(7);
         this.buttonDialog.setScrollFactor(0);
-        //this.buttonDialog.setScale(0.5);
-        this.buttonDialog.setInteractive({ useHandCursor: true}).on('pointerdown', () => (this.nextDialog()));
         this.buttonDialog.setVisible(false);
+
+        this.buttonDialogSel = this.add.image(gameWidth*10.7/16, gameHeight*13.34/16, 'buttonDialogSel');
+        this.buttonDialogSel.setScale(2/3);
+        this.buttonDialogSel.setDepth(7);
+        this.buttonDialogSel.setScrollFactor(0);
+        this.buttonDialogSel.setVisible(false);
+
+        //this.buttonDialog.setScale(0.5);
+        this.buttonDialog.on('pointerover', function (pointer) {this.buttonDialogSel.setVisible(true);}, this);
+        this.buttonDialog.on('pointerout', function (pointer) {this.buttonDialogSel.setVisible(false);}, this);
+        this.buttonDialog.setInteractive({ useHandCursor: true}).on('pointerdown', () => (this.nextDialog()));
+
 
         this.DialogText = this.add.text(gameWidth*6/16, gameHeight*6/16,  " ", {fontFamily: "StayHappy",stroke:'#000000', fill: "white", strokeThickness: 2});
         this.DialogText.setScrollFactor(0);
@@ -989,8 +1000,9 @@ class LevelManager extends Phaser.Scene
              //this.levelCompletedFunc();
         }
 
-        this.DialogBg.setVisible(true);
+        this.DialogBgE.setVisible(true);
         this.buttonDialog.setVisible(true);
+        //this.buttonDialogSel.setVisible(true);
 
       }
 
@@ -1085,6 +1097,7 @@ class LevelManager extends Phaser.Scene
 
         this.soundRunning.stop();   // Para el sonido de los pasos
         this.buttonDialog.setVisible(false);
+        this.buttonDialogSel.setVisible(false);
         this.DialogText.setVisible(false);
         this.DialogShowing=false;
 
