@@ -296,7 +296,7 @@ class LevelManager extends Phaser.Scene
         this.proceduralGenerator(); // Genera el mapa
         // Especial para modo arcade
         if (this.endlessMode == true) {
-            this.arcadeTrashRecolector = this.trashRecolectors.create(-600, 300, 'dot').setOrigin(1).setSize(40, 610).setVisible(false);   // Objeto que elimina trampas ya superadas
+            this.arcadeTrashRecolector = this.trashRecolectors.create(-1200, 300, 'dot').setOrigin(1).setSize(40, 610).setVisible(false);   // Objeto que elimina trampas ya superadas
             this.arcadeTrashRecolector.body.setAllowGravity(false);   // Quita gravedad
             this.arcadeTrashRecolector.setVelocityX(this.playerMovementSpeed);
             this.levelIntroWidth = 1500;
