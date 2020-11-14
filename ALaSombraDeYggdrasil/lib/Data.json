@@ -38,112 +38,111 @@
     },
     "Dialogs": [
       [
-        "Einar: Hacia tiempo que no salía al combate, \n mis brazos ya no son lo que era, mis piernas están cansadas.",
-        "Einar: Los dioses me bendijeron hace mcuhos soles, soy Einar el inmortal, \n la calamidad de mis enemigos y el escudo de mi pueblo.",
-        "Einar: Pero llevo demasiado tiempo sin nada ni nadie a quien defender.",
-        "Einar: Dime tu Munin, cuervo de la memoria.",
-        "Einar: Qué hice para estar aquí?",
-        "Einar: ¿Acaso alguien me recuerda?",
-        "Munin: ... ... ..."
+        ["EINAR","Einar: Hacia tiempo que no salía al combate, \n mis brazos ya no son lo que era, mis piernas están cansadas."],
+        ["EINAR","Einar: Los dioses me bendijeron hace mcuhos soles, soy Einar el inmortal, \n la calamidad de mis enemigos y el escudo de mi pueblo."],
+        ["EINAR","Einar: Pero llevo demasiado tiempo sin nada ni nadie a quien defender."],
+        ["EINAR","Einar: Dime tu Munin, cuervo de la memoria."],
+        ["EINAR","Einar: Qué hice para estar aquí?"],
+        ["EINAR","Einar: ¿Acaso alguien me recuerda?"],
+        ["MUNIN","MUNIN","Munin: ... ... ..."]
       ],
       [
-        "Einar: He estado intentando recordar por el camino, pero apenas \n consigo vislumbrar un poco de la vida que deje atrás.",
-        "Einar: ¿Tenía familia? ",
-        "Einar: ¿Qué vieron en mí los dioses?",
-        "Einar: Mi memoria solo me dice que llevo demasiado tiempo huyendo. \n Mi hacha está oxidada y no sé qué sangre es mía o de un enemigo.",
-        "Einar: Necesito nombres y motivos, ya no puedo seguir en el cobijo de mi ignorancia. \n Dime que tengo que hacer para encontrar mis respuestas.",
-        "Einar: ¿A dónde voy? ",
-        "Munin:  …  …  … "
+        ["EINAR","Einar: He estado intentando recordar por el camino, pero apenas \n consigo vislumbrar un poco de la vida que deje atrás."],
+        ["EINAR","Einar: ¿Tenía familia? "],
+        ["EINAR","Einar: ¿Qué vieron en mí los dioses?"],
+        ["EINAR","Einar: Mi memoria solo me dice que llevo demasiado tiempo huyendo. \n Mi hacha está oxidada y no sé qué sangre es mía o de un enemigo."],
+        ["EINAR","Einar: Necesito nombres y motivos, ya no puedo seguir en el cobijo de mi ignorancia. \n Dime que tengo que hacer para encontrar mis respuestas."],
+        ["EINAR","Einar: ¿A dónde voy? "],
+        ["MUNIN","Munin:  …  …  … "]
       ],
       [
-        "Einar: Este bosque está repleto de sitios donde morir, debo buscar el lago Mälaren.",
-        "Einar: Munin di algo que me sirva de brújula para seguir.",
-        "Munin: ¿Te acuerdas de Greta?",
-        "Einar: …",
-        "Einar: Mi hija, que pequeña era. Ahora veo el color de sus ojos, \n le encantaba montar a caballo por estas montañas.",
-        "Einar:_____, ay ______ . Acabo de escuchar la voz de mi mujer. \n Hubo un tiempo en el que fui más feliz de lo que podía,",
-        "Einar: ¿Cómo pude olvidar quién era? ",
-        "Munin:  …  …  … "
+        ["EINAR","Einar: Este bosque está repleto de sitios donde morir, debo buscar el lago Mälaren."],
+        ["EINAR","Einar: Munin di algo que me sirva de brújula para seguir."],
+        ["MUNIN","Munin: ¿Te acuerdas de Greta?"],
+        ["EINAR","Einar: …"],
+        ["EINAR","Einar: Mi hija, que pequeña era. Ahora veo el color de sus ojos, \n le encantaba montar a caballo por estas montañas."],
+        ["EINAR","Einar:_____, ay ______ . Acabo de escuchar la voz de mi mujer. \n Hubo un tiempo en el que fui más feliz de lo que podía,"],
+        ["EINAR","Einar: ¿Cómo pude olvidar quién era? "],
+        ["MUNIN","Munin:  …  …  … "]
 
       ],
       [
-        "Einar: Llevo todo el camino pensando en mi casa, \n en los campos de trigo que cuidaba mi familia. ",
-        "Einar: La vida allí era muy bonita",
-        "Einar: ¿Cómo pude acabar así? ",
-        "Einar: Llevaba tanto tiempo siendo uno con el silencio \n que había dejado de pensar. He despertado al fin.",
-        "Einar: Munin, necesito seguir conociendo mi pasado, \n quiero saber que ha sido de mí y de mi pueblo.",
-        "Einar: ¿Qué he hecho durante toda mi vida?",
-        "Munin:  …  …  … "
+        ["EINAR","Einar: Llevo todo el camino pensando en mi casa, \n en los campos de trigo que cuidaba mi familia. "],
+        ["EINAR","Einar: La vida allí era muy bonita"],
+        ["EINAR","Einar: ¿Cómo pude acabar así? "],
+        ["EINAR","Einar: Llevaba tanto tiempo siendo uno con el silencio \n que había dejado de pensar. He despertado al fin."],
+        ["EINAR","Einar: Munin, necesito seguir conociendo mi pasado, \n quiero saber que ha sido de mí y de mi pueblo."],
+        ["EINAR","Einar: ¿Qué he hecho durante toda mi vida?"],
+        ["MUNIN","Munin:  …  …  … "]
 
       ],
       [
-        "Einar: Me falta el aire. Seré inmortal, \n pero mis huesos ya se están rompiendo.  ",
-        "Einar: Muchas guerras llevan este escudo y \n muchas heridas estas piernas.",
-        "Einar: ¿Por qué estás aquí Munin? ¿Quién te manda?",
-        "Munin: ¡Por Odín!",
-        "Einar: Ese maldito dios fue quien me ató a este cuerpo.",
-        "Einar: Me dijo que sería el protector de mi pueblo, \n lo que no me contó, fue todas las batallas \n que libraría y toda la muerte que me perseguiría.",
-        "Einar: ¿Cómo puede lo divino ser tan sádico?"
+        ["EINAR","Einar: Me falta el aire. Seré inmortal, \n pero mis huesos ya se están rompiendo.  "],
+        ["EINAR","Einar: Muchas guerras llevan este escudo y \n muchas heridas estas piernas."],
+        ["EINAR","Einar: ¿Por qué estás aquí Munin? ¿Quién te manda?"],
+        ["MUNIN","Munin: ¡Por Odín!"],
+        ["EINAR","Einar: Ese maldito dios fue quien me ató a este cuerpo."],
+        ["EINAR","Einar: Me dijo que sería el protector de mi pueblo, \n lo que no me contó, fue todas las batallas \n que libraría y toda la muerte que me perseguiría."],
+        ["EINAR","Einar: ¿Cómo puede lo divino ser tan sádico?"]
       ],
       [
-        "Einar: Que paz me trae este lago, \n volver aquí ha sido un respiro, \n mi casa estaba al este de las montañas nevadas.",
-        "Einar: El frío era una mezcla de nostalgia y penumbra.",
-        "Einar: Jummm…,",
-        "Einar: Oh Hugin, cuervo del pensamiento. \n ¿Qué haces en Midgard? ",
-        "Einar: Hacia tantos inviernos que no volabas, \n que te di por extinto.",
-        "Hugin:  …  …  … ",
-        "Einar: Veo que todo este tiempo no te ha cambiado. ",
-        "Einar: Si vienes a espiarme poco vas a ver, \n voy a donde nací, a buscar en los vestigios de mi cuna.",
-        "Einar: ¿Qué queda aún de lo que fui?"
+        ["EINAR","Einar: Que paz me trae este lago, \n volver aquí ha sido un respiro, \n mi casa estaba al este de las montañas nevadas."],
+        ["EINAR","Einar: El frío era una mezcla de nostalgia y penumbra."],
+        ["EINAR","Einar: Jummm…,"],
+        ["EINAR","Einar: Oh Hugin, cuervo del pensamiento. \n ¿Qué haces en Midgard? "],
+        ["EINAR","Einar: Hacia tantos inviernos que no volabas, \n que te di por extinto."],
+        ["HUGIN","Hugin:  …  …  … "],
+        ["EINAR","Einar: Veo que todo este tiempo no te ha cambiado. "],
+        ["EINAR","Einar: Si vienes a espiarme poco vas a ver, \n voy a donde nací, a buscar en los vestigios de mi cuna."],
+        ["EINAR","Einar: ¿Qué queda aún de lo que fui?"]
 
       ],
       [
-        "Einar: Voy a rastras evitando a estos berserkers, \n están poseídos por las setas del bosque.",
-        "Einar: Puedo sentir su locura porque yo la he vivido también. ",
-        "Einar: ¿Cómo pude estar tantos siglos secuestrado por la ira?",
-        "Einar: Hugin, tú qué sabes todo, \n confiésame la razón de los deseos de los dioses. ",
-        "Hugin: Tus preguntas están ciegas. \n Mira tú puño antes que las nubes.",
-        "Einar: Puf... ",
-        "Einar: Tal vez tengas razón, \n la voluntad de los dioses me hizo inmortal, \n pero la sed de sangre era mía.  ",
-        "Einar: El muro de mi fe me ha amordazado \n haciendo de mis deseos un futuro vil.",
-        "Einar: ¿Cuánto tiempo he pasado entre rezos a oídos ajenos?"
-      ]
-      ,
-      [
-        "Einar: El hielo me dificulta el paso, además mi cabeza lleva tiempo lejos de mi cuerpo.\n Este camino me ha embravecido el espíritu, soy una mezcla de furia y desconcierto. ",
-        "Einar: ¿Para qué sirven los dioses? ",
-        "Einar: He visto tanto la corrisiva voluntad de los hombres, \n que creo que el único poder de los dioses \n es sembrar furia en la ignorancia y utopías en los sueños.",
-        "Hugin: ¿No tienes miedo a que te escuchen?",
-        "Einar: Para mí la muerte no sería un castigo Hugin, he vivido más de lo que hubiera deseado.",
-        "Einar: Haría cualquier cosa por descansar en el Valhalla junto a mi pueblo, aquí solo queda miseria.  ",
-        "Einar: ¿Qué puedo hacer para llegar al Valhalla?  "
+        ["EINAR","Einar: Voy a rastras evitando a estos berserkers, \n están poseídos por las setas del bosque."],
+        ["EINAR","Einar: Puedo sentir su locura porque yo la he vivido también. "],
+        ["EINAR","Einar: ¿Cómo pude estar tantos siglos secuestrado por la ira?"],
+        ["EINAR","Einar: Hugin, tú qué sabes todo, \n confiésame la razón de los deseos de los dioses. "],
+        ["HUGIN","Hugin: Tus preguntas están ciegas. \n Mira tú puño antes que las nubes."],
+        ["EINAR","Einar: Puf... "],
+        ["EINAR","Einar: Tal vez tengas razón, \n la voluntad de los dioses me hizo inmortal, \n pero la sed de sangre era mía.  "],
+        ["EINAR","Einar: El muro de mi fe me ha amordazado \n haciendo de mis deseos un futuro vil."],
+        ["EINAR","Einar: ¿Cuánto tiempo he pasado entre rezos a oídos ajenos?"]
       ],
       [
-        "Einar: Estoy cansado de esta tierra, no hay más que saqueadores, demasiado caos hay en la que antaño fue mi casa.  ",
-        "Einar: Midgard está en continua guerra y yo ya no soy parte de ella. ",
-        "Einar: ¿Qué hago Hugin? ¿Por qué no vuelves a tu casa?",
-        "Hugin: La sombra se está propagando por Yggdrasil, los dioses han perdido su poder durante este tiempo.",
-        "Hugin: Odín me abandonó con la caída del Valhalla.",
-        "Einar: ¿Qué ha pasado? ¿Cómo pierde un dios su poder?",
-        "Einar: Debo buscar el Bifröst, espero que su guardian Heimdal \n siga recordando aquel favor que le hice salvando   \n a aquella hija bastarda suya en la guerra de Wessex.  ",
-        "Einar: ¿Y ahora qué debo de hacer?  "
+        ["EINAR","Einar: El hielo me dificulta el paso, además mi cabeza lleva tiempo lejos de mi cuerpo.\n Este camino me ha embravecido el espíritu, soy una mezcla de furia y desconcierto. "],
+        ["EINAR","Einar: ¿Para qué sirven los dioses? "],
+        ["EINAR","Einar: He visto tanto la corrisiva voluntad de los hombres, \n que creo que el único poder de los dioses \n es sembrar furia en la ignorancia y utopías en los sueños."],
+        ["HUGIN","Hugin: ¿No tienes miedo a que te escuchen?"],
+        ["EINAR","Einar: Para mí la muerte no sería un castigo Hugin, he vivido más de lo que hubiera deseado."],
+        ["EINAR","Einar: Haría cualquier cosa por descansar en el Valhalla junto a mi pueblo, aquí solo queda miseria.  "],
+        ["EINAR","Einar: ¿Qué puedo hacer para llegar al Valhalla?  "]
       ],
       [
-        "Einar: ¿Qué habrá podido acabar con los dioses?  ",
-        "Einar: Tengo que ir a verlo con mis propios ojos. ",
-        "Einar: Hugin, vamos a atravesar Yggdrasil y sus planetas \n para unir a un ejército con el cual salvar Asgard. ",
-        "Einar: Yo solo estaría perdido, necesito conseguir a las mejores bestias \n y guerreros para limpiar la sombra que recorre las ramas.",
-        "Hugin: : Las migas también son pan Einar. ",
-        "Hugin: : Cruzaremos los ocho mundos siguiendo la estela del arcoíris, se escribirán leyendas sobre este destino.  ",
-        "Hugin: : Es peligroso ir solo, mira siempre quien te da la mano y quien te la esconde. ",
-        "Einar: Vamos al final de los finales Hugin. ",
-        "Einar: Tengo que descubrir cómo puedo romper esta falsa \n bendición a la que me esclavizaron los dioses.",
-        "Einar: Espero encontrar respuestas por el camino. ",
-        "Einar: ¿Qué habrá en el resto de mundos? ",
-        "Einar: ¿Encontraré a los espíritus de mi familia? ",
-        "Einar: ¿Habrá paz tras la sombra? ",
-        "Einar: ¿Será este el inicio del Ragnarok?",
-        "Einar: ¿Podré morir algún día?"
+        ["EINAR","Einar: Estoy cansado de esta tierra, no hay más que saqueadores, demasiado caos hay en la que antaño fue mi casa.  "],
+        ["EINAR","Einar: Midgard está en continua guerra y yo ya no soy parte de ella. "],
+        ["EINAR","Einar: ¿Qué hago Hugin? ¿Por qué no vuelves a tu casa?"],
+        ["HUGIN","Hugin: La sombra se está propagando por Yggdrasil, los dioses han perdido su poder durante este tiempo."],
+        ["HUGIN","Hugin: Odín me abandonó con la caída del Valhalla."],
+        ["EINAR","Einar: ¿Qué ha pasado? ¿Cómo pierde un dios su poder?"],
+        ["EINAR","Einar: Debo buscar el Bifröst, espero que su guardian Heimdal \n siga recordando aquel favor que le hice salvando   \n a aquella hija bastarda suya en la guerra de Wessex.  "],
+        ["EINAR","Einar: ¿Y ahora qué debo de hacer?  "]
+      ],
+      [
+        ["EINAR","Einar: ¿Qué habrá podido acabar con los dioses?  "],
+        ["EINAR","Einar: Tengo que ir a verlo con mis propios ojos. "],
+        ["EINAR","Einar: Hugin, vamos a atravesar Yggdrasil y sus planetas \n para unir a un ejército con el cual salvar Asgard. "],
+        ["EINAR","Einar: Yo solo estaría perdido, necesito conseguir a las mejores bestias \n y guerreros para limpiar la sombra que recorre las ramas."],
+        ["HUGIN","Hugin: : Las migas también son pan Einar. "],
+        ["HUGIN","Hugin: : Cruzaremos los ocho mundos siguiendo la estela del arcoíris, se escribirán leyendas sobre este destino.  "],
+        ["HUGIN","Hugin: : Es peligroso ir solo, mira siempre quien te da la mano y quien te la esconde. "],
+        ["EINAR","Einar: Vamos al final de los finales Hugin. "],
+        ["EINAR","Einar: Tengo que descubrir cómo puedo romper esta falsa \n bendición a la que me esclavizaron los dioses."],
+        ["EINAR","Einar: Espero encontrar respuestas por el camino. "],
+        ["EINAR","Einar: ¿Qué habrá en el resto de mundos? "],
+        ["EINAR","Einar: ¿Encontraré a los espíritus de mi familia? "],
+        ["EINAR","Einar: ¿Habrá paz tras la sombra? "],
+        ["EINAR","Einar: ¿Será este el inicio del Ragnarok?"],
+        ["EINAR","Einar: ¿Podré morir algún día?"]
       ]
     ],
     "Loading": "Cargando",
@@ -232,13 +231,13 @@
     },
     "Dialogs": [
       [
-        "Einar: It was long time ago since last time fought, \n my arms are no longer what it used to be, my legs are tired.",
-        "Einar: All Gods blessed me much Suns ago, \n I'm Einar the inmortal, my enemie's calamity and the shield of my people.",
-        "Einar: But I've been enought time without \n nothing and nobody witch defend.",
-        "Einar: Tell me you Munin, memory raven.",
-        "Einar: What I have done to be here?",
-        "Einar: ¿Is it that someone remembers??",
-        "Munin: ... ... ..."
+        ["EINAR","Einar: It was long time ago since last time fought, \n my arms are no longer what it used to be, my legs are tired."],
+        ["EINAR","Einar: All Gods blessed me much Suns ago, \n I'm Einar the inmortal, my enemie's calamity and the shield of my people."],
+        ["EINAR","Einar: But I've been enought time without \n nothing and nobody witch defend."],
+        ["EINAR","Einar: Tell me you Munin, memory raven."],
+        ["EINAR","Einar: What I have done to be here?"],
+        ["EINAR","Einar: ¿Is it that someone remembers??"],
+        ["MUNIN","Munin: ... ... ..."]
       ],
       [
 

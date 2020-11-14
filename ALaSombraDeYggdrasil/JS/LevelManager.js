@@ -968,7 +968,23 @@ class LevelManager extends Phaser.Scene
     showDialog(){
 
       if(stringsJSON.Dialogs[levelIndex]!=null)
-            this.DialogText.setText(stringsJSON.Dialogs[levelIndex][this.indexText]);
+            this.DialogText.setText(stringsJSON.Dialogs[levelIndex][this.indexText][1]);
+             /*
+            switch (stringsJSON.Dialogs[levelIndex][this.indexText][0]){
+                case 'EINAR':{
+                    this.DialogBg = 
+                }
+                case 'MUNIN':{
+                    this.DialogBg = 
+                }
+                case 'HUGIN':{
+                    this.DialogBg = 
+                }
+                default:{
+
+                }
+            }
+            */
       else{
              //this.levelCompletedFunc();
         }
@@ -1016,7 +1032,24 @@ class LevelManager extends Phaser.Scene
 
     nextDialog(){
         if(stringsJSON.Dialogs[levelIndex][++this.indexText] != null){
-            this.DialogText.setText(stringsJSON.Dialogs[levelIndex][this.indexText]);
+            this.DialogText.setText(stringsJSON.Dialogs[levelIndex][this.indexText][1]);
+            /*
+            switch (stringsJSON.Dialogs[levelIndex][this.indexText][0]){
+                case 'EINAR':{
+                    this.DialogBg = 
+                }
+                case 'MUNIN':{
+                    this.DialogBg = 
+                }
+                case 'HUGIN':{
+                    this.DialogBg = 
+                }
+                default:{
+
+                }
+            }
+            */
+            
         }
         else{
             this.DialogShowing = false;
@@ -1283,8 +1316,6 @@ class LevelManager extends Phaser.Scene
     // Da movimiento al fondo
     update (time, delta){
 
-        console.log(this.player.y);
-        console.log(this.player.x);
         //Fondo dinámico
         /*
         this.bg_far.tilePositionX = this.cameras.main.scrollX *.1;
