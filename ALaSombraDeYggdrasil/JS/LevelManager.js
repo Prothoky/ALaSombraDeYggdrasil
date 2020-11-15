@@ -149,6 +149,9 @@ class LevelManager extends Phaser.Scene
         this.xPointer = 0;
         this.hasCicled = false;
         this.cicleIteration = 1;
+        this.doubleJumpEnabled = false;
+        this.playerInvulnerabilityDuration = 1000;
+        this.playerAttackCooldown = 450;
 
         // ----CARGA DE DATOS----
         this.loadSettings();    // Carga los datos del nivel del archivo LevelConfiguration
@@ -691,8 +694,10 @@ class LevelManager extends Phaser.Scene
             this.playerHealth--;
             // si está con un escudo comprado, quitarlo
             this.soundDeath.play(this.getAudioConfig());
-            if (Number(user.buffs[0]) > 0)
-                user.buffs[0] = Number(user.buffs[0]) - 1;
+            if (!this.endlessMode) {
+                if (Number(user.buffs[0]) > 0)
+                    user.buffs[0] = Number(user.buffs[0]) - 1;
+            }
             if (this.playerHealth <= 0) {   // Si no le quedan vidas muere
                 this.playerDeath();
             } else {
@@ -1301,30 +1306,31 @@ class LevelManager extends Phaser.Scene
 
     // Aplica los efectos de las mejoras
     applyBuffs() {
-        // Añade escudos
-        this.playerHealth += Number(user.buffs[0]);
+        if (!this.endlessMode) {
+             // Añade escudos
+            this.playerHealth += Number(user.buffs[0]);
 
-        // Permite doble salto
-        if (Number(user.buffs[1]) == 1) {
-            this.doubleJumpEnabled = true;
-        } else {
-            this.doubleJumpEnabled = false;
+            // Permite doble salto
+            if (Number(user.buffs[1]) == 1) {
+                this.doubleJumpEnabled = true;
+            } else {
+                this.doubleJumpEnabled = false;
+            }
+
+            // Aumenta la invulnerabilidad
+            if (Number(user.buffs[2]) == 1) {
+                this.playerInvulnerabilityDuration = 2000;
+            } else {
+                this.playerInvulnerabilityDuration = 1000;
+            }
+
+            // Reduce el cooldown del ataque
+            if (Number(user.buffs[3]) == 1) {
+                this.playerAttackCooldown = 350;
+            } else {
+                this.playerAttackCooldown = 450;
+            }
         }
-
-        // Aumenta la invulnerabilidad
-        if (Number(user.buffs[2]) == 1) {
-            this.playerInvulnerabilityDuration = 2000;
-        } else {
-            this.playerInvulnerabilityDuration = 1000;
-        }
-
-        // Reduce el cooldown del ataque
-        if (Number(user.buffs[3]) == 1) {
-            this.playerAttackCooldown = 350;
-        } else {
-            this.playerAttackCooldown = 450;
-        }
-
     }
 
     // Devuelve la configuración de la reproducción de sonidos
