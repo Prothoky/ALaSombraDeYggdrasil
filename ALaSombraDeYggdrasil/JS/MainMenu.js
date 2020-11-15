@@ -19,6 +19,9 @@ class MainMenu extends Phaser.Scene{
       delay: 0
     };
 
+    this.clickSound = this.sound.add('ClickButtonSound', this.EffectsConfig);
+
+
     if (musicMenu == null || !musicMenu.isPlaying) {
       musicMenu = this.sound.add('music_3', config);
       musicMenu.play();
@@ -124,12 +127,15 @@ class MainMenu extends Phaser.Scene{
   }
 
   InitGame(){
+    this.clickSound.play();
     this.scene.pause('MainMenu');
     this.scene.start('MapSelectionMenu');
     arcadeMode = false;
+
   }
 
   InitArcadeGame(){
+    this.clickSound.play();
     arcadeMode = true;
 
     this.cameras.main.fadeOut(1000, 0, 0, 0);
@@ -141,19 +147,34 @@ class MainMenu extends Phaser.Scene{
   }
 
   OptionsGame(){
+    this.clickSound.play();
     this.scene.pause('MainMenu');
     this.scene.start('OptionsMainMenu');
   }
 
   GameCredits(){
+    this.clickSound.play();
     this.scene.pause('MainMenu');
     this.scene.start('CreditsMenu');
   }
 
   TutorialMenu(){
+    this.clickSound.play();
     this.scene.pause('MainMenu');
     this.scene.start('TutorialMenu');
     prevScene = 'MainMenu';
+  }
+
+  EffectsConfig(){
+    return {
+      mute: false,
+      volume: userConfig.volumeEffects/10,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0
+    };
   }
 
 }

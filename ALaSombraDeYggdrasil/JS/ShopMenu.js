@@ -222,4 +222,16 @@ class ShopMenu extends Phaser.Scene{
     this.scene.start(prevScene);
   }
 
+  EffectsConfig(){
+    return {
+      mute: false,
+      volume: userConfig.volumeEffects/10,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0
+    };
+  }
+
 }
