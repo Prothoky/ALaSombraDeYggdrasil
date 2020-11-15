@@ -44,11 +44,11 @@ El mayor debate que surgió con este fue el movimiento que tendría en función 
 
 
 ## Modos de dificultad y modo arcade
-A la hora de plantear la dificultad fuimos claro, tenemos que tener dificultades suficientes para todo el público posible, por eso hemos creado 3, fácil, normal y dificil con un nivelado ajuste de tiempo y aparición de enemigos en cada escenario siguiendo la curva de dificultad definida en el mundo.
-[Pensar nombres chulos para las dificultades     (expedición,..... y cólera,    o cosas así )]
+A la hora de plantear la dificultad fuimos claro, tenemos que tener dificultades suficientes para todo el público posible, por eso hemos creado 3, Travesía(Fácil), cacería (normal) y frenesí (dificil) con un nivelado de tiempo, distancia entre trampas, dinero recibido y velocidad distintos en función decada dificultad
+
 Cada nivel tiene un array donde especificamos el porcentaje de aparición de cada tipo de enemigo y de obstáculo. 
 
-Para aumentar el tiempo de juego hemos implementado un modo arcade, siendo este un endless runner clásico donde el jugador probará la destreza obtenida durante la historia. Este no constará de ningún tipo de dificuldad opcional, ya que al ir aumentando progresivamente la velocidad, el jugador necesitará de una destreza espectacular para poder llegar lejos. Al final de la partida se indicará al jugador la distancia recorrida y el número de enemigos aniquilados.
+Para aumentar el tiempo de juego hemos implementado un modo arcade, siendo este un endless runner clásico donde el jugador probará la destreza obtenida durante la historia. Este no constará de ningún tipo de dificuldad opcional, ya que al ir aumentando progresivamente la velocidad, el jugador necesitará mucho tiempo para poder llegar lejos. Al final de la partida se indicará al jugador la distancia recorrida y su mayor recorrido.
 
 ## Mecánicas de juego
 El juego tiene un sistema de movimiento limitado, el jugado irá por defecto de izquierda a derecha con la única opción de saltar y atacar.
@@ -66,7 +66,6 @@ Los 18 niveles están diseñados para generar continuamente un factor sorpresa p
 - Aumento en la velocidad de ataque de Einar
 - Escudos
 
-En el modo arcade, el jugador se enfrentará a un clásico endless runner donde la aceleración será continua, aquí queremos que los jugadores más experimentados muestren su talento llevando el juego a un nivel competitivo. Al acabar la partida aparecerá la distancia recorrida y su récord actual. En futuras actualizaciones implementaremos un sistema de desafíos a completar con un sistema de niveles para darle una mayor consistencia al modo.
 Diseño de estructura de niveles de bosque con subniveles 
 
 ![Fase Bosque](https://user-images.githubusercontent.com/55508821/98613632-f4d79380-22f6-11eb-9d0e-61c4e781673e.png)
@@ -107,9 +106,6 @@ Durante la partida saldrán varios elementos a esquivar, ya sean enemigos u obst
 | 13 - cabaña sin enemigos| 
 | 14 - cabaña de pasar por dentro| 
 | 15 - moneda con enemigo| 
-
-
-[Añadir las dos últimas cuando estén implementadas]
 
 
 
