@@ -11,7 +11,7 @@ class MapSelectionMenu extends Phaser.Scene{
 
     this.cameras.main.fadeIn(1000, 0, 0, 0);
 
-
+    this.clickSound = this.sound.add('ClickButtonSound', this.EffectsConfig());
 
     //BACKGROUND
     this.backgroundMSM = this.add.image(0, 0, 'backgroundMSM');
@@ -34,13 +34,13 @@ class MapSelectionMenu extends Phaser.Scene{
 
 
     //BOTON ATRAS
-    this.backButtonMSM = this.add.image(gameWidth*14/16, gameHeight*15/16, 'backButton');
-    this.backButtonMSM.setScale(2/3);
-    this.backButtonMSMSel = this.add.image(gameWidth*13.72/16, gameHeight*14.78/16, 'selSmallLeftButton');
-    this.backButtonMSMSel.setScale(2/3);
+    this.backButtonMSM = this.add.image(gameWidth*14.5/16, gameHeight*15/16, 'backButton');
+    this.backButtonMSM.setScale(1.5/3);
+    this.backButtonMSMSel = this.add.image(gameWidth*14.3/16, gameHeight*14.8/16, 'selSmallLeftButton');
+    this.backButtonMSMSel.setScale(1.5/3);
     this.backButtonMSMSel.setVisible(false);
     //Texto Boton
-    this.backText = this.add.text(gameWidth*13.63/16, gameHeight*14.6/16,  stringsJSON.Buttons.back, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
+    this.backText = this.add.text(gameWidth*14.18/16, gameHeight*14.61/16,  stringsJSON.Buttons.back, {fontFamily: "Acadian_Runes",fontSize: "16px", align: 'center', fill: "#481d18"});
     //Acciones Boton
     this.backButtonMSM.on('pointerover', function (pointer) {this.backButtonMSMSel.setVisible(true);}, this);
     this.backButtonMSM.on('pointerout', function (pointer) {this.backButtonMSMSel.setVisible(false);}, this);
@@ -55,7 +55,12 @@ class MapSelectionMenu extends Phaser.Scene{
     });
 
     //PERGAMINO
-    this.paperDescription1 = this.add.image(gameWidth*13.7/16, gameHeight*8.15/16, 'paperWorld1');
+    if(userLang == "es"){
+      this.paperDescription1 = this.add.image(gameWidth*13.7/16, gameHeight*8.15/16, 'paperWorld1');
+    }else{
+      this.paperDescription1 = this.add.image(gameWidth*13.7/16, gameHeight*8.15/16, 'paperWorld1En');
+    }
+
     this.paperDescription1.setScale(2/3);
     this.paperDescription1.setVisible(false);
 
@@ -83,6 +88,7 @@ class MapSelectionMenu extends Phaser.Scene{
   }
 
   ActivatePaper(level){
+    this.clickSound.play();
 
     if(level == 1){
       this.paperDescription1.setVisible(true);
@@ -96,6 +102,7 @@ class MapSelectionMenu extends Phaser.Scene{
   }
 
   DesactivatePaper(){
+    this.clickSound.play();
     this.paperDescription1.setVisible(false);
     this.playButtonMSM.setVisible(false);
     this.backButtonMSM.setVisible(true);
@@ -105,17 +112,20 @@ class MapSelectionMenu extends Phaser.Scene{
   }
 
   BackMainMenu(){
+    this.clickSound.play();
     this.scene.pause('MapSelectionMenu');
     this.scene.start('MainMenu');
   }
 
   ShopMenuMSM(){
+    this.clickSound.play();
     prevScene = 'MapSelectionMenu';
     this.scene.stop('World1Map');
     this.scene.start('ShopMenu');
   }
 
   World1Menu(){
+    this.clickSound.play();
     this.scene.pause('MapSelectionMenu');
     this.scene.start('World1Map');
     this.scene.bringToTop('World1Map');
@@ -140,6 +150,18 @@ class MapSelectionMenu extends Phaser.Scene{
 
   unlockWorld(){
     this.events.emit("Update Date");
+  }
+
+  EffectsConfig(){
+    return {
+      mute: false,
+      volume: userConfig.volumeEffects/10,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0
+    };
   }
 
 }

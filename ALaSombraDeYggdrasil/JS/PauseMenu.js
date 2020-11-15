@@ -9,9 +9,11 @@ class PauseMenu extends Phaser.Scene{
 
   create(){
 
-    var backgroundPM = this.add.image(0, 0, 'backgroundPM');
-    backgroundPM.setScale(2/3);
-    backgroundPM.setPosition(gameWidth/2, gameHeight/2);
+    this.clickSound = this.sound.add('ClickButtonSound', this.EffectsConfig());
+
+    this.backgroundPM = this.add.image(0, 0, 'backgroundPM');
+    this.backgroundPM.setScale(2/3);
+    this.backgroundPM.setPosition(gameWidth/2, gameHeight/2);
 
     //BOTON ATRAS
     this.backButtonPM = this.add.image(gameWidth*8/16, gameHeight*6.7/16, 'deselectedButton');
@@ -55,19 +57,21 @@ class PauseMenu extends Phaser.Scene{
   }
 
   GoOptionsMenu(){
+    this.clickSound.play();
     this.scene.stop('PauseMenu');
     this.scene.start('OptionsPauseMenu');
     this.scene.bringToTop('OptionsPauseMenu');
   }
 
   BackGame(){
-    //gamePaused = false;
+    this.clickSound.play();
     this.scene.stop('PauseMenu');
     this.scene.sendToBack('PauseMenu');
     this.scene.resume('LevelManager');
   }
 
   QuitGame(){
+    this.clickSound.play();
     this.scene.stop('LevelManager');
     if(arcadeMode==true){
       this.scene.start('MainMenu');
@@ -77,5 +81,17 @@ class PauseMenu extends Phaser.Scene{
       this.scene.start('World1Map');
       this.scene.bringToTop('World1Map');
     }
+  }
+
+  EffectsConfig(){
+    return {
+      mute: false,
+      volume: userConfig.volumeEffects/10,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0
+    };
   }
 }

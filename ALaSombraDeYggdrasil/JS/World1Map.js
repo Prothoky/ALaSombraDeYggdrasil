@@ -40,6 +40,7 @@ class World1Map extends Phaser.Scene{
 
   create(){
 
+    this.clickSound = this.sound.add('ClickButtonSound', this.EffectsConfig());
     this.cameras.main.fadeIn(1000, 0, 0, 0);
 
     // Controlador de audio
@@ -691,6 +692,8 @@ class World1Map extends Phaser.Scene{
 
   AccessToLevel(level){
 
+    this.clickSound.play();
+
     switch (level){
 
        case 0:
@@ -1091,6 +1094,7 @@ class World1Map extends Phaser.Scene{
    }
 
    StartPlaying(){
+     this.clickSound.play();
      this.cameras.main.fadeOut(1000, 0, 0, 0);
      this.time.delayedCall(1000, () => {
 		     this.scene.start('LevelManager')
@@ -1098,14 +1102,28 @@ class World1Map extends Phaser.Scene{
    }
 
    BackMapSelectionMenu(){
+     this.clickSound.play();
      this.scene.pause('World1Map');
      this.scene.start('MapSelectionMenu');
    }
 
    ShopMenuW1M(){
+     this.clickSound.play();
      prevScene = 'World1Map';
      this.scene.stop('World1Map');
      this.scene.start('ShopMenu');
+   }
+
+   EffectsConfig(){
+     return {
+       mute: false,
+       volume: userConfig.volumeEffects/10,
+       rate: 1,
+       detune: 0,
+       seek: 0,
+       loop: false,
+       delay: 0
+     };
    }
 
 }

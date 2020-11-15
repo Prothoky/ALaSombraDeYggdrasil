@@ -5,11 +5,12 @@ class WinnerMenu extends Phaser.Scene{
 
   create(){
 
+    this.clickSound = this.sound.add('ClickButtonSound', this.EffectsConfig());
     this.cameras.main.fadeIn(1000, 0, 0, 0);
 
-    var backgroundWM = this.add.image(0, 0, 'backgroundWM');
-    backgroundWM.setScale(2/3);
-    backgroundWM.setPosition(gameWidth/2, gameHeight/2);
+    this.backgroundWM = this.add.image(0, 0, 'backgroundWM');
+    this.backgroundWM.setScale(2/3);
+    this.backgroundWM.setPosition(gameWidth/2, gameHeight/2);
 
     //BOTON CONTINUAR
     this.continueButtonWM = this.add.image(gameWidth*8/16, gameHeight*14/16, 'ButtonContinueWM');
@@ -23,9 +24,22 @@ class WinnerMenu extends Phaser.Scene{
   }
 
   ContinueWM(){
+    this.clickSound.play();
     this.scene.pause('WinnerMenu');
     this.scene.sendToBack('WinnerMenu');
     this.scene.start('MainMenu');
+  }
+
+  EffectsConfig(){
+    return {
+      mute: false,
+      volume: userConfig.volumeEffects/10,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0
+    };
   }
 
 }

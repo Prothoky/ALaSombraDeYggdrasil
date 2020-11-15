@@ -86,6 +86,7 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('World2Button', './ASSETS/MapSelectionMenu/BotonMuspelheim.png');
       this.load.image('backButton', './ASSETS/MapSelectionMenu/BotonVolver.png');
       this.load.image('paperWorld1', './ASSETS/MapSelectionMenu/PergaminoMidgard.png');
+      this.load.image('paperWorld1En', './ASSETS/MapSelectionMenu/PergaminMidgard.png');
       this.load.image('playButton', './ASSETS/MapSelectionMenu/BotonJugar.png');
       this.load.image('playButtonSel', './ASSETS/MapSelectionMenu/JugarSeleccionado.png');
 

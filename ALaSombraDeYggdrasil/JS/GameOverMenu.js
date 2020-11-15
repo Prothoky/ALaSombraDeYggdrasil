@@ -5,6 +5,7 @@ class GameOverMenu extends Phaser.Scene{
 
   create(){
 
+    this.clickSound = this.sound.add('ClickButtonSound', this.EffectsConfig());
     this.cameras.main.fadeIn(500, 0, 0, 0);
 
     var backgroundGOM = this.add.image(0, 0, 'backgroundGOM');
@@ -36,7 +37,7 @@ class GameOverMenu extends Phaser.Scene{
     if(arcadeMode == false){
       this.gameOverRunner = this.add.text(gameWidth*6/16, gameHeight*6/16,  "Moristes Wey", {fontFamily: "StayHappy", fontSize: 24, stroke:'#000000', fill: "white", strokeThickness: 2});
     }else{
-      
+
       if (distanceAchieved > user.maxDistanceArcade ){
         user.maxDistanceArcade = distanceAchieved;
       }
@@ -52,6 +53,7 @@ class GameOverMenu extends Phaser.Scene{
   }
 
   PlayAgain(){
+    this.clickSound.play();
     this.scene.stop('GameOverMenu');
     this.scene.start('LevelManager');
     this.scene.bringToTop('LevelManager');
@@ -59,7 +61,7 @@ class GameOverMenu extends Phaser.Scene{
   }
 
   QuitGameGOM(){
-
+    this.clickSound.play();
     if (arcadeMode == true){
       this.scene.pause('GameOverMenu');
       this.scene.sendToBack('GameOverMenu');
@@ -69,7 +71,18 @@ class GameOverMenu extends Phaser.Scene{
       this.scene.sendToBack('GameOverMenu');
       this.scene.start('World1Map');
     }
+  }
 
+  EffectsConfig(){
+    return {
+      mute: false,
+      volume: userConfig.volumeEffects/10,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0
+    };
   }
 
 }

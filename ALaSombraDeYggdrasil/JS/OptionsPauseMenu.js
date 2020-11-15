@@ -5,6 +5,7 @@ class OptionsPauseMenu extends Phaser.Scene{
 
   create(){
 
+    this.clickSound = this.sound.add('ClickButtonSound', this.EffectsConfig());
     this.cameras.main.fadeIn(1500, 0, 0, 0);
 
     this.backgroundOPM = this.add.image(0, 0, 'backgroundVM');
@@ -51,6 +52,7 @@ class OptionsPauseMenu extends Phaser.Scene{
   }
 
   SubirMusica() {
+    this.clickSound.play();
     if (userConfig.volumeMusic < 10) {
       userConfig.volumeMusic += 1;
       musicMenu.setVolume(userConfig.volumeMusic/10);
@@ -60,6 +62,7 @@ class OptionsPauseMenu extends Phaser.Scene{
   }
 
   BajarMusica() {
+    this.clickSound.play();
     if (userConfig.volumeMusic > 0) {
       userConfig.volumeMusic -= 1;
       musicMenu.setVolume(userConfig.volumeMusic/10);
@@ -69,6 +72,7 @@ class OptionsPauseMenu extends Phaser.Scene{
   }
 
   SubirEfectos() {
+    this.clickSound.play();
     if ( userConfig.volumeEffects < 10) {
        userConfig.volumeEffects += 1;
     }
@@ -76,6 +80,7 @@ class OptionsPauseMenu extends Phaser.Scene{
   }
 
   BajarEfectos() {
+    this.clickSound.play();
     if ( userConfig.volumeEffects > 0) {
        userConfig.volumeEffects -= 1;
     }
@@ -83,8 +88,21 @@ class OptionsPauseMenu extends Phaser.Scene{
   }
 
   BackPauseMenu(){
+    this.clickSound.play();
     this.scene.stop('OptionsPauseMenu');
     this.scene.sendToBack('OptionsPauseMenu');
     this.scene.start('PauseMenu'); //Ver como hacer para que lleve a la anterior real
+  }
+
+  EffectsConfig(){
+    return {
+      mute: false,
+      volume: userConfig.volumeEffects/10,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0
+    };
   }
 }

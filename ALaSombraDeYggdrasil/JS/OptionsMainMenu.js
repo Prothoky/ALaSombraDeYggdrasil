@@ -7,6 +7,8 @@ class OptionsMainMenu extends Phaser.Scene{
 
     this.cameras.main.fadeIn(1500, 0, 0, 0);
 
+    this.clickSound = this.sound.add('ClickButtonSound', this.EffectsConfig());
+
     this.backgroundOMM = this.add.image(0, 0, 'backgroundOM');
     this.backgroundOMM.setScale(2/3);
     this.backgroundOMM.setPosition(gameWidth/2, gameHeight/2);
@@ -53,11 +55,13 @@ class OptionsMainMenu extends Phaser.Scene{
   }
 
   VolumeMenu(){
+    this.clickSound.play();
     this.scene.pause('OptionsMainMenu');
     this.scene.start('VolumeMenu'); //Ver como hacer para que lleve a la anterior real
   }
 
   SettingsMenu(){
+    this.clickSound.play();
     console.log ("Nivel " + userConfig.difficulty);
     this.scene.pause('OptionsMainMenu');
     this.scene.start('SettingsMenu'); //Ver como hacer para que lleve a la anterior real
@@ -65,7 +69,20 @@ class OptionsMainMenu extends Phaser.Scene{
 
 
   BackMainMenu(){
+    this.clickSound.play();
     this.scene.pause('OptionsMainMenu');
     this.scene.start('MainMenu'); //Ver como hacer para que lleve a la anterior real
+  }
+
+  EffectsConfig(){
+    return {
+      mute: false,
+      volume: userConfig.volumeEffects/10,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0
+    };
   }
 }

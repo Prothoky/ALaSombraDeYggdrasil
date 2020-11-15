@@ -4,8 +4,10 @@ class VolumeMenu extends Phaser.Scene{
   }
 
   create(){
+
+    this.clickSound = this.sound.add('ClickButtonSound', this.EffectsConfig());
     this.cameras.main.fadeIn(1500, 0, 0, 0);
-    
+
     this.backgroundVM = this.add.image(0, 0, 'backgroundVM');
     this.backgroundVM.setScale(2/3);
     this.backgroundVM.setPosition(gameWidth/2, gameHeight/2);
@@ -55,6 +57,7 @@ class VolumeMenu extends Phaser.Scene{
   }
 
   SubirMusica() {
+    this.clickSound.play();
     if ( userConfig.volumeMusic < 10) {
        userConfig.volumeMusic += 1;
       musicMenu.setVolume( userConfig.volumeMusic/10);
@@ -64,6 +67,7 @@ class VolumeMenu extends Phaser.Scene{
   }
 
   BajarMusica() {
+    this.clickSound.play();
     if ( userConfig.volumeMusic > 0) {
        userConfig.volumeMusic -= 1;
       musicMenu.setVolume( userConfig.volumeMusic/10);
@@ -73,6 +77,7 @@ class VolumeMenu extends Phaser.Scene{
   }
 
   SubirEfectos() {
+    this.clickSound.play();
     if ( userConfig.volumeEffects < 10) {
        userConfig.volumeEffects += 1;
     }
@@ -81,6 +86,7 @@ class VolumeMenu extends Phaser.Scene{
   }
 
   BajarEfectos() {
+    this.clickSound.play();
     if ( userConfig.volumeEffects > 0) {
        userConfig.volumeEffects -= 1;
     }
@@ -88,8 +94,21 @@ class VolumeMenu extends Phaser.Scene{
   }
 
   BackOptionsMenuVM(){
+    this.clickSound.play();
     this.scene.pause('VolumeMenu');
     this.scene.start('OptionsMainMenu');
+  }
+
+  EffectsConfig(){
+    return {
+      mute: false,
+      volume: userConfig.volumeEffects/10,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0
+    };
   }
 
 }

@@ -6,6 +6,7 @@ class CreditsMenu extends Phaser.Scene{
   create(){
 
     this.cameras.main.fadeIn(1500, 0, 0, 0);
+    this.clickSound = this.sound.add('ClickButtonSound', this.EffectsConfig());
 
     //1) BACKGROUND
     this.bg_backgorund = this.add.tileSprite(0,0, 5715, 916, 'bg_background');
@@ -48,7 +49,7 @@ class CreditsMenu extends Phaser.Scene{
     this.logo.setScale(0.125);
     this.logo.setOrigin(0.5,0.5);
     this.logo.depth=3;
-    
+
     // 3) CAMERA
     this.cameras.main.startFollow(this.player, false, 1, 1, -250, 200); // Cámar sigue al personaje
 
@@ -61,6 +62,19 @@ class CreditsMenu extends Phaser.Scene{
     });
 
     //BACK BUTTON
+    this.backButtonCM = this.add.image((this.cameras.main.x),+50,  'backButton');
+    this.backButtonCM.setScale(1.5/3);
+    this.backButtonCMSel = this.add.image((this.cameras.main.x), +43, 'selSmallLeftButton');
+    this.backButtonCMSel.setScale(1.5/3);
+    this.backButtonCMSel.setVisible(false);
+    //Texto Boton
+    this.backText = this.add.text(this.cameras.main.x, +38,  stringsJSON.Buttons.back, {fontFamily: "Acadian_Runes",fontSize: "16px", align: 'center', fill: "#481d18"});
+    //Acciones Boton
+    this.backButtonCM.on('pointerover', function (pointer) {this.backButtonCMSel.setVisible(true);}, this);
+    this.backButtonCM.on('pointerout', function (pointer) {this.backButtonCMSel.setVisible(false);}, this);
+    this.backButtonCM.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.BackMainMenu());
+
+/*
     //BACK BUTTON
     this.backButtonCM = this.add.image((this.cameras.main.x), 10, 'deselectedButtonSmall');
     this.backButtonCM.setScale(2/3);
@@ -73,7 +87,7 @@ class CreditsMenu extends Phaser.Scene{
     this.backButtonCM.on('pointerover', function (pointer) {this.backButtonCMSel.setVisible(true);}, this);
     this.backButtonCM.on('pointerout', function (pointer) {this.backButtonCMSel.setVisible(false);}, this);
     this.backButtonCM.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.BackMainMenu());
-
+*/
     this.backButtonCM.depth = 3;
     this.backButtonCMSel.depth = 3;
     this.backText.depth = 3;
@@ -94,15 +108,28 @@ class CreditsMenu extends Phaser.Scene{
     this.logo.setX(this.cameras.main.x+950);
     this.credits.setY(this.credits.y-0.5);
     this.logo.setY(this.credits.y+this.credits.height+150);
-    this.backButtonCM.setX(this.cameras.main.x+1350);
+    this.backButtonCM.setX(this.cameras.main.x+1345);
     this.backButtonCMSel.setX(this.cameras.main.x+1328);
     this.backText.setX(this.cameras.main.x+1313);
 
   }
 
   BackMainMenu(){
+    this.clickSound.play();
     this.scene.pause('CreditsMenu');
     this.scene.start('MainMenu');
+  }
+
+  EffectsConfig(){
+    return {
+      mute: false,
+      volume: userConfig.volumeEffects/10,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0
+    };
   }
 
 }

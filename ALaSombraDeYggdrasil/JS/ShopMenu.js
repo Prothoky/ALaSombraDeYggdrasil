@@ -9,6 +9,8 @@ class ShopMenu extends Phaser.Scene{
 
   create(){
 
+    this.buyObj = this.sound.add('BuyObject', this.EffectsConfig());
+    this.clickSound = this.sound.add('ClickButtonSound', this.EffectsConfig());
     this.cameras.main.fadeIn(1500, 0, 0, 0);
 
     this.backgroundSM = this.add.image(0, 0, 'backgroundSM');
@@ -152,6 +154,8 @@ class ShopMenu extends Phaser.Scene{
 
   AddObject1(){
 
+    this.buyObj.play();
+
     if ((user.money >= phaserJSON.Store.shields.price)&& (user.buffs[0] < 3)){
       user.buffs[0]++;
       user.money-= phaserJSON.Store.shields.price;
@@ -173,6 +177,8 @@ class ShopMenu extends Phaser.Scene{
 
   AddObject2(){
 
+      this.buyObj.play();
+
       if ((user.money >= phaserJSON.Store.doublejump.price)&&(user.buffs[1] == 0)){
         user.buffs[1]++;
         user.money-= phaserJSON.Store.doublejump.price;
@@ -188,6 +194,7 @@ class ShopMenu extends Phaser.Scene{
   }
 
   AddObject3(){
+    this.buyObj.play();
 
     if ((user.money >= phaserJSON.Store.invulnerability.price)&&(user.buffs[2] == 0)){
       user.buffs[2]++;
@@ -204,6 +211,8 @@ class ShopMenu extends Phaser.Scene{
 
   AddObject4(){
 
+    this.buyObj.play();
+
     if ((user.money >= phaserJSON.Store.cooldown.price) && (Number(user.buffs[3]) == 0)){
       user.buffs[3]++;
       user.money-= phaserJSON.Store.cooldown.price;
@@ -218,6 +227,7 @@ class ShopMenu extends Phaser.Scene{
   }
 
   BackMainMenu(){
+    this.clickSound.play();
     this.scene.pause('ShopMenu');
     this.scene.start(prevScene);
   }
