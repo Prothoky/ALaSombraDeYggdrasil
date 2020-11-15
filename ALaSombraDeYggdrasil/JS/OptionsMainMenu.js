@@ -58,6 +58,7 @@ class OptionsMainMenu extends Phaser.Scene{
   }
 
   SettingsMenu(){
+    console.log ("Nivel " + userConfig.difficulty);
     this.scene.pause('OptionsMainMenu');
     this.scene.start('SettingsMenu'); //Ver como hacer para que lleve a la anterior real
   }

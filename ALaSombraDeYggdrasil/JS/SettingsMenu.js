@@ -5,7 +5,7 @@ class SettingsMenu extends Phaser.Scene{
       this.easyButtonSelSM;
       this.mediumButtonSelSM;
       this.diffButtonSelSM;
-      this.difSel;
+      //this.difSel = userConfig.difficulty;
 
       this.backButtonText;
       this.resetText;
@@ -32,16 +32,23 @@ class SettingsMenu extends Phaser.Scene{
     //Seleccionado
     this.easyButtonSelSM = this.add.image(gameWidth*4.8/16, gameHeight*6.5/16, 'EasyButtonSelected');
     this.easyButtonSelSM.setScale(2/3);
-    //this.easyButtonSelSM.setVisible(false);
+
+    if(userConfig.difficulty == 0){
+      this.easyButtonSelSM.setVisible(true);
+    }else{
+      this.easyButtonSelSM.setVisible(false);
+    }
+
     this.easyButtonSelSM2 = this.add.image(gameWidth*4.8/16, gameHeight*6.5/16, 'EasyButtonSelected');
     this.easyButtonSelSM2.setScale(2/3);
     this.easyButtonSelSM2.setVisible(false);
 
-    if (this.difSel != 0){
+    if (userConfig.difficulty != 0){
       this.easyButtonSM.on('pointerover', function (pointer) {this.easyButtonSelSM2.setVisible(true);}, this);
       this.easyButtonSM.on('pointerout', function (pointer) {this.easyButtonSelSM2.setVisible(false);}, this);
-      this.easyButtonSM.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.EasyLevel());
     }
+
+    this.easyButtonSM.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.EasyLevel());
 
 
     //BOTON MEDIO
@@ -51,16 +58,24 @@ class SettingsMenu extends Phaser.Scene{
     //Seleccionado
     this.mediumButtonSelSM = this.add.image(gameWidth*8.00/16, gameHeight*6.5/16, 'MediumButtonSelected');
     this.mediumButtonSelSM.setScale(2/3);
-    this.mediumButtonSelSM.setVisible(false);
+
+    if(userConfig.difficulty == 1){
+      this.mediumButtonSelSM.setVisible(true);
+    }else{
+      this.mediumButtonSelSM.setVisible(false);
+    }
+
     this.mediumButtonSelSM2 = this.add.image(gameWidth*8.00/16, gameHeight*6.5/16, 'MediumButtonSelected');
     this.mediumButtonSelSM2.setScale(2/3);
     this.mediumButtonSelSM2.setVisible(false);
 
-    if (this.difSel != 1){
+    if (userConfig.difficulty != 1){
       this.mediumButtonSM.on('pointerover', function (pointer) {this.mediumButtonSelSM2.setVisible(true);}, this);
       this.mediumButtonSM.on('pointerout', function (pointer) {this.mediumButtonSelSM2.setVisible(false);}, this);
-      this.mediumButtonSM.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.MediumLevel());
     }
+
+    this.mediumButtonSM.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.MediumLevel());
+
 
     //BOTON DIFICIL
     this.diffButtonSM = this.add.image(gameWidth*11.15/16, gameHeight*6.5/16, 'deselectedButton');
@@ -69,16 +84,23 @@ class SettingsMenu extends Phaser.Scene{
     //Seleccionado
     this.diffButtonSelSM = this.add.image(gameWidth*11.15/16, gameHeight*6.5/16, 'DifficultButtonSelected');
     this.diffButtonSelSM.setScale(2/3);
-    this.diffButtonSelSM.setVisible(false);
+
+    if(userConfig.difficulty == 2){
+      this.diffButtonSelSM.setVisible(true);
+    }else{
+      this.diffButtonSelSM.setVisible(false);
+    }
+
     this.diffButtonSelSM2 = this.add.image(gameWidth*11.15/16, gameHeight*6.5/16, 'DifficultButtonSelected');
     this.diffButtonSelSM2.setScale(2/3);
     this.diffButtonSelSM2.setVisible(false);
 
-    if (this.difSel != 2){
+    if (userConfig.difficulty != 2){
       this.diffButtonSM.on('pointerover', function (pointer) {this.diffButtonSelSM2.setVisible(true);}, this);
       this.diffButtonSM.on('pointerout', function (pointer) {this.diffButtonSelSM2.setVisible(false);}, this);
-      this.diffButtonSM.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.DifficultLevel());
     }
+
+    this.diffButtonSM.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.DifficultLevel());
 
     //CHANGE LANGUAGE
     //Botones
@@ -156,36 +178,83 @@ class SettingsMenu extends Phaser.Scene{
 
   }
 
+  Update(){
+
+    if (userConfig.difficulty == 0){
+      this.easyButtonSelSM.setVisible(true);
+      this.mediumButtonSelSMSel.setVisible(false);
+      this.diffButtonSelSM.setVisible(false);
+    }
+    if (userConfig.difficulty == 1){
+      this.easyButtonSelSM.setVisible(false);
+      this.mediumButtonSelSMSel.setVisible(true);
+      this.diffButtonSelSM.setVisible(false);
+    }
+    if (userConfig.difficulty == 2){
+      this.easyButtonSelSM.setVisible(false);
+      this.mediumButtonSelSMSel.setVisible(false);
+      this.diffButtonSelSM.setVisible(true);
+    }
+
+    if (userConfig.difficulty != 0){
+      this.easyButtonSM.on('pointerover', function (pointer) {this.easyButtonSelSM2.setVisible(true);}, this);
+      this.easyButtonSM.on('pointerout', function (pointer) {this.easyButtonSelSM2.setVisible(false);}, this);
+    }
+
+    if (userConfig.difficulty != 1){
+      this.mediumButtonSM.on('pointerover', function (pointer) {this.mediumButtonSelSM2.setVisible(true);}, this);
+      this.mediumButtonSM.on('pointerout', function (pointer) {this.mediumButtonSelSM2.setVisible(false);}, this);
+    }
+
+    if (userConfig.difficulty != 2){
+      this.diffButtonSM.on('pointerover', function (pointer) {this.diffButtonSelSM2.setVisible(true);}, this);
+      this.diffButtonSM.on('pointerout', function (pointer) {this.diffButtonSelSM2.setVisible(false);}, this);
+    }
+
+
+  }
+
   BackOptionsMenuSM(){
     this.scene.pause('SettingsMenu');
     this.scene.start('OptionsMainMenu');
+
+    console.log ("Nivel " + userConfig.difficulty);
+    saveUserData();
   }
 
   EasyLevel(){
     this.easyButtonSelSM.setVisible(true);
     this.mediumButtonSelSM.setVisible(false);
     this.diffButtonSelSM.setVisible(false);
-    this.difSel = 0;
     userConfig.difficulty = 0;
+    //userConfig.difficulty = 0;
     console.log ("Nivel fácil" + userConfig.difficulty);
+    //console.log ("Nivel fácil" + userConfig.difficulty);
+    saveUserData();
   }
 
   MediumLevel(){
     this.easyButtonSelSM.setVisible(false);
     this.mediumButtonSelSM.setVisible(true);
     this.diffButtonSelSM.setVisible(false);
-    this.difSel = 1;
     userConfig.difficulty = 1;
-    console.log ("Nivel medio" + userConfig.difficulty);
+    userConfig.difficulty = 1;
+    //console.log ("Nivel medio" + userConfig.difficulty);
+    ///console.log ("Nivel medio" + userConfig.difficulty);
+
+    saveUserData();
   }
 
   DifficultLevel(){
     this.easyButtonSelSM.setVisible(false);
     this.mediumButtonSelSM.setVisible(false);
     this.diffButtonSelSM.setVisible(true);
-    this.difSel = 2;
-    userConfig.difficulty = 2;
+    userConfig.difficulty= 2;
+    //userConfig.difficulty = 2;
     console.log ("Nivel dificil" + userConfig.difficulty);
+    //console.log ("Nivel dificil" + this.difSel);
+
+    saveUserData();
   }
 
   ChangeLanguaje(){
@@ -201,6 +270,7 @@ class SettingsMenu extends Phaser.Scene{
       userLang = "es";
     }
 
+    saveUserData();
     this.backButtonText.setText( stringsJSON.Buttons.back);
     this.resetText.setText( stringsJSON.Buttons.erase_Data);
     this.easyText.setText( stringsJSON.Buttons.easy);
