@@ -647,7 +647,7 @@ class LevelManager extends Phaser.Scene
                                     'this.generateSmallSpikesNoEnemy', 'this.generateSmallSpikes', 'this.generateBarricade',
                                     'this.generateTrunk', 'this.generateCabinUp', 'this.generatePlatformToCoinNoEnemy',
                                     'this.generateDoubleBarricade', 'this.generateCabinUpNoEnemy', 'this.generateCabinDown',
-                                    'this.generatePlatformToCoin' ];
+                                    'this.generatePlatformToCoin', 'this.generatePlatformToCoinRare' ];
         for (let i = 0; i < trapFunctionsNames.length; i++) {
             this.trapFunctionsArray[i] = trapFunctionsNames[i];
         }
@@ -1000,8 +1000,15 @@ class LevelManager extends Phaser.Scene
     }
 
     // Moneda
-    generateCoin(xPos, yPos = this.levelGroundHeight - 150, scaleFactor = 2.5) {
-        this.coins.create(xPos, yPos, 'dot').setScale(scaleFactor).refreshBody();
+    generateCoin(xPos, yPos = this.levelGroundHeight - 150, scaleFactor = 2.5, highValue = false) {
+        if (highValue) {
+            let localCoin = this.coins.create(xPos, yPos, 'dude').setScale(scaleFactor).setTint(0xe62272).refreshBody();
+            localCoin.value = 1;
+        } else {
+            let localCoin = this.coins.create(xPos, yPos, 'dot').setScale(scaleFactor).refreshBody();
+            localCoin.value = 0;
+
+        }
         return this.minDistCoin;
     }
 
@@ -1048,6 +1055,15 @@ class LevelManager extends Phaser.Scene
         ret += 200;
         xPos += ret;
         ret += this.generateCoin(xPos, 150);
+        return ret;
+    }
+
+    generatePlatformToCoinRare(xPos, enemy = true) {
+        let ret = 0;
+        ret += this.generatePlatform(xPos, undefined, enemy);
+        ret += 215;
+        xPos += ret;
+        ret += this.generateCoin(xPos, 140, undefined, true);
         return ret;
     }
 
@@ -1438,7 +1454,34 @@ class LevelManager extends Phaser.Scene
     // Recoge la moneda
     collectCoin(player, coin) {
         coin.destroy();
-        user.money += 100;
+        if (coin.value == 0) {
+            switch(userConfig.difficulty) {
+                case 0:
+                    user.money += 100;
+                    break;
+                case 1:
+                    user.money += 50;
+                    break;
+                case 2:
+                    user.money += 25;
+                    break;
+                default:
+            }
+        }
+        if (coin.value == 1) {
+            switch(userConfig.difficulty) {
+                case 0:
+                    user.money += 200;
+                    break;
+                case 1:
+                    user.money += 100;
+                    break;
+                case 2:
+                    user.money += 50;
+                    break;
+                default:
+            }
+        }
         this.Money.setText(user.money);
     }
 

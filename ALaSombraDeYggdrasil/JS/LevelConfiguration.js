@@ -29,6 +29,7 @@ Leyenda de trampas
 13 - cabaña sin enemigos
 14 - cabaña de pasar por dentro
 15 - moneda con enemigo
+16 - moneda con enemigo valiosa
 */
 
 var levelTrapValues = new Array();
