@@ -800,13 +800,13 @@ class LevelManager extends Phaser.Scene
     Como proceder para el endlessMode... -> como la primera pasada no se porque siempre se pone la hitbox un poco a la
     izquierda, pues ajustarlo para que en las sigu9ientes esté bien.
     */
-    generateBarricade(xPos, yPos = this.levelGroundHeight, scaleFactor = 0.3, visible = true) {
+    generateBarricade(xPos, yPos = this.levelGroundHeight, scaleFactor = 0.3, visible = true, offsetY = 110) {
         if (this.hasCicled == true) {   // fix modo arcade
             yPos -= 60;
         }
         let localBarricade = this.barricades.create(xPos, yPos, 'barricade').setScale(scaleFactor).setOrigin(1, 1).setVisible(visible).refreshBody();
         localBarricade.body.setSize(180, 180);
-        localBarricade.setOffset(40, 150);
+        localBarricade.setOffset(40, offsetY);
         return this.minDistBarricade;
     }
 
@@ -975,13 +975,13 @@ class LevelManager extends Phaser.Scene
     // Genera una barricada + plataforma con barricada
     generateDoubleBarricade(xPos) {
         let platformY = this.levelGroundHeight - 260;
-        this.generatePlatformNoEnemy(xPos - 150, platformY);
+        this.generatePlatformNoEnemy(xPos - 150, platformY - 20);
         if (this.endlessMode && this.hasCicled) {
             this.generateBarricade(xPos - 90, this.levelGroundHeight - 60);
-            this.generateBarricade(xPos - 90, platformY - 60);
+            this.generateBarricade(xPos - 90, platformY - 60 - 20, undefined, undefined, 150);
         } else {
             this.generateBarricade(xPos);
-            this.generateBarricade(xPos, platformY);
+            this.generateBarricade(xPos, platformY - 20, undefined, undefined, 150);
         }
         return this.minDistDoubleBarricade;
     }
