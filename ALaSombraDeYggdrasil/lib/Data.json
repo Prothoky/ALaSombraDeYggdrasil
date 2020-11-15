@@ -229,16 +229,110 @@
     },
     "Dialogs": [
       [
-        ["EINAR","Einar: It was long time ago since last time fought, \n my arms are no longer what it used to be, my legs are tired."],
-        ["EINAR","Einar: All Gods blessed me much Suns ago, \n I'm Einar the inmortal, my enemie's calamity and the shield of my people."],
-        ["EINAR","Einar: But I've been enought time without \n nothing and nobody witch defend."],
-        ["EINAR","Einar: Tell me you Munin, memory raven."],
-        ["EINAR","Einar: What I have done to be here?"],
-        ["EINAR","Einar: ¿Is it that someone remembers??"],
-        ["MUNIN","Munin: ... ... ..."]
+        [ "EINAR", "\nEinar: It has been a long time since my last combat \n, my arms arent what they used to, \n my legs are tired." ],
+        [ "EINAR", "   Einar: I was blessed by gods so many suns ago, \n I am Einar, the inmortal, \n calamity of my enemies \n and my the shield of my hometown." ],
+        [ "EINAR", "    \n         Einar: But I have not been a defender  \n for a long time." ],
+        [ "EINAR", "    \n         Einar: Tell me, Munin, raven of the memory." ],
+        [ "EINAR", "    \n             Einar: ¿What did I do to be here?" ],
+        [ "EINAR", "    \n             Einar: ¿Does anyone remember me?" ],
+        [ "MUNIN", "    \n             Munin: ... ... ..." ]
       ],
       [
+        [ "EINAR", "     Einar: I have been trying to remember  \n through my way, but I can barely \n see a few moments from my past life." ],
+        [ "EINAR", "    \n          Einar: ¿Did I have a family? " ],
+        [ "EINAR", "    \n     Einar: ¿What did the gods see in me?" ],
+        [ "EINAR", "     Einar: My memory only says  \n I have been too many years running away. \n My axe is rusty and I do not know which blood is mine." ],
+        [ "EINAR", "     Einar: I need names and reasons. \n I cant be inside the shelter of my \n ignorance anymore. Tell me, what should \n I do to find my answers?" ],
+        [ "EINAR", "    \n          Einar: ¿Where should I go? " ],
+        [ "MUNIN", "    \n          Munin:  …  …  … " ]
+      ],
+      [
+        [ "EINAR", "     Einar: This forest is full of places to die, \n I should look for the Freyja's lake." ],
+        [ "EINAR", "          Einar: Munin di algo que me sirva \n de brújula para seguir." ],
+        [ "MUNIN", "     \n           Munin: ¿Do you remember Greta?" ],
+        [ "EINAR", "     \n           Einar: …" ],
+        [ "EINAR", "               Einar: My daughter, she was so little. \n Now I can see the color of her eyes, \n she loved riding a horse through that mountains." ],
+        [ "EINAR", "          Einar: Kaira, ay Kaira. \n I've just listened my wife's voice" ],
+        [ "EINAR", "     \n           Einar: ¿How could I forgot who she was? " ],
+        [ "MUNIN", "     \n           Munin:  …  …  … " ]
 
+      ],
+      [
+        [ "EINAR", " \n     Einar: I've been all this way thinking \n  about my home, about the wheat fields \n my family took care of." ],
+        [ "EINAR", "     \n          Einar: Life there was so beautiful" ],
+        [ "EINAR", "     \n          Einar: ¿How could I end this way? " ],
+        [ "EINAR", "     Einar: I spent so much time being one with the silence \n that I gave up thinking. \n I've finally woke up." ],
+        [ "EINAR", "     Einar: Munin, I need to keep remembering my past, \n  I want to know what happened with me \n and my hometown." ],
+        [ "EINAR", "     \n     Einar: ¿What did I do during my life?" ],
+        [ "MUNIN", "     \n           Munin:  …  …  … " ]
+
+      ],
+      [
+        [ "EINAR", " \n          Einar: I can’t breath. I'll be immortal, \n but now my bones are broken. \n A lot of wars guide this shield.  " ],
+        [ "EINAR", " \n     Einar: Why are you here Munin? " ],
+        [ "MUNIN", "     \n           Munin: ¡Odín!" ],
+        [ "EINAR", " \n     Einar: That damned god whas who \n constrained me to this body." ],
+        [ "EINAR", "Einar: He told me I would be the protector of my village, \n what he didin't say was all the battles \n i would fight and all the death \n I would carry on." ],
+        [ "EINAR", " \n     Einar: ¿How can the divine be so sadist?" ]
+      ],
+      [
+        [ "EINAR", "           Einar: This lake makes me so peaceful, being here again is a blast, my house was at the East of the snowed mountains." ],
+        [ "EINAR", "      \n           Einar:  The cold was a mix between homesick and gloom." ],
+        [ "EINAR", "     \n           Einar: Jummm…," ],
+        [ "EINAR", " \n     Einar: Oh hugin, Raven of the Thought ¿What are you doing in Midgard? " ],
+        [ "EINAR", " \n     Einar: Hacia tantos inviernos que no volabas, \n que te di por extinto." ],
+        [ "HUGIN", "     \n           Hugin:  …  …  … " ],
+        [ "EINAR", " \n     Einar: I can see that time did not change you. " ],
+        [ "EINAR", "      Einar: If you are here to spy me on you will not see anything, I'm going to the place I was born, to look for the trace of my cradle." ],
+        [ "EINAR", "     \n           Einar: ¿What still remains about myself?" ]
+
+      ],
+      [
+        [ "EINAR", "\n Einar: I go dragging, avoiding those berserkers, \n they are possessed by the mushrooms of the forest." ],
+        [ "EINAR", " \n      Einar: I can feel their madness because \n  i felt it too. " ],
+        [ "EINAR", " \n      Einar: How could have  I been so much time \n  abducted by the rage?" ],
+        [ "EINAR", "      Einar: Hugin, you know everything, \n confess me the gods’ reason. " ],
+        [ "HUGIN", " \n            Hugin: Your questions are blind. \n Look at your fist before looking at the clouds." ],
+        [ "EINAR", "      \n           Einar: Puf... " ],
+        [ "EINAR", "Einar: Maybe you are right,, \n       the gods’ choices made me immortal, \n but the thirst for blood was mine.  " ],
+        [ "EINAR", "      Einar: The wall of my faith has gagged me \n converting my wishes in a vile future." ],
+        [ "EINAR", " \n      Einar: ¿How much time have I spent \n praying to distant ears?" ]
+      ],
+      [
+        [ "EINAR", "Einar: The ice difficulties my way, \n in addition my head have been so many time far away from my body.\n This trip has enraged my spirit, \n  im a mixture of rage and confusion. " ],
+        [ "EINAR", "      \n           Einar: What are gods for? " ],
+        [ "EINAR", "Einar: I have seen so many times the corrosive \n man’s will, I think the only gods’ power \n is to plant rage in the ignorance \n and utopias in dreams" ],
+        [ "HUGIN", "      \n           Hugin: Aren't you afraid of they hearing you?" ],
+        [ "EINAR", "\n Einar: For me, the death wouldn't be a punishment, \n Hugin,  I´ve loved more than I would have desired." ],
+        [ "EINAR", "\n     Einar:  I could do anything for resting \n in Valhalla with my nation, \n  here only misery remains..  " ],
+        [ "EINAR", "\n Einar: How can I reach Valhalla?  " ]
+      ],
+      [
+        [ "EINAR", "Einar: I’m tired of this place, \n there are only looters, \n too much chaos in what once was my home.  " ],
+        [ "EINAR", "Einar: Midgard is always in battle and \n i'm not part of it anymore. " ],
+        [ "EINAR", "Einar: What can I do, Hugin?" ],
+        [ "HUGIN", "Hugin: The shadow is growing through \n Yggdrasil, Yggdrasil, the gods have lost \n their power during this time." ],
+        [ "HUGIN", "Hugin: Odin abandoned me when Valhalla fell." ],
+        [ "EINAR", "Einar: What has happened? \n  How does a god lose his power?" ],
+        [ "EINAR", "Einar: I should look for the Bifrost, \n  I hope his guard, Heimdal still remembers \n that favor I did him  \n when I saved his bastard daughter in Wessex’ war  " ],
+        [ "EINAR", "     Einar: What should I do now?  " ]
+      ],
+      [
+        [ "EINAR", "Einar: What could have finished the gods off?  " ],
+        [ "EINAR", "Einar: I have to go to see it with my own eyes " ],
+        [ "EINAR", "Einar:Hugin, we are going to cross Yggdrasil and its planets, \n to join an army for saving Asgard. " ],
+        [ "EINAR", "Einar: If I was alone I would be lost, \n  I need to get the best beasts \n and fighters to clean up the shadows going across the branches." ],
+        [ "HUGIN", "Hugin: : The crumbs are bread too, Einar " ],
+        [ "HUGIN", "Hugin: : Let's cross the other eight worlds following the rainbow’s tail, there Will be legends about this Destiny." ],
+        [ "HUGIN", "Hugin: :   Is dangerous going alone, \n look always to who always lends you a hand and who hides it. " ],
+        [ "EINAR", "Einar:   We go to the final of finals Hugin. " ],
+        [ "EINAR", "Einar: I have to find how can I break this fake blessing \n  I was enslave by gods." ],
+        [ "EINAR", "Einar: I hope to find answer through the way. " ],
+        [ "EINAR", "Einar:  What would be in the other worlds? " ],
+        [ "EINAR", "Einar:   Would I fins my family´s spirits? " ],
+        [ "EINAR", "Einar:   Would it be peace behind the shadow? " ],
+        [ "EINAR", "Einar:   Would this be the start or Ragnarok?" ],
+        [ "EINAR", "Einar:   Could I die one day?" ]
       ]
     ]
   },
