@@ -40,9 +40,9 @@
         ["EINAR","Einar: Los dioses me bendijeron hace mcuhos soles, soy Einar el inmortal, \n la calamidad de mis enemigos y el escudo de mi pueblo."],
         ["EINAR","Einar: Pero llevo demasiado tiempo sin nada ni nadie a quien defender."],
         ["EINAR","Einar: Dime tu Munin, cuervo de la memoria."],
-        ["EINAR","Einar: Qué hice para estar aquí?"],
+        ["EINAR","Einar: ¿Qué hice para estar aquí?"],
         ["EINAR","Einar: ¿Acaso alguien me recuerda?"],
-        ["MUNIN","MUNIN","Munin: ... ... ..."]
+        ["MUNIN","Munin: ... ... ..."]
       ],
       [
         ["EINAR","Einar: He estado intentando recordar por el camino, pero apenas \n consigo vislumbrar un poco de la vida que deje atrás."],
@@ -59,7 +59,7 @@
         ["MUNIN","Munin: ¿Te acuerdas de Greta?"],
         ["EINAR","Einar: …"],
         ["EINAR","Einar: Mi hija, que pequeña era. Ahora veo el color de sus ojos, \n le encantaba montar a caballo por estas montañas."],
-        ["EINAR","Einar:_____, ay ______ . Acabo de escuchar la voz de mi mujer. \n Hubo un tiempo en el que fui más feliz de lo que podía,"],
+        ["EINAR","Einar: Kaira, ay Kaira. Acabo de escuchar la voz de mi mujer. \n Hubo un tiempo en el que fui más feliz de lo que podía,"],
         ["EINAR","Einar: ¿Cómo pude olvidar quién era? "],
         ["MUNIN","Munin:  …  …  … "]
 
