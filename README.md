@@ -118,6 +118,23 @@ La travesía por Midgrad transcurre por la región de Sigtuna situado a una hora
 [Insertar imágenes del bosque y el lago de verdad y la comparación ]
 
 
+![imagen](https://user-images.githubusercontent.com/55508821/99160092-ac97e700-26e3-11eb-82e2-9d0158e9e993.png)
+
+![imagen](https://user-images.githubusercontent.com/55508821/99160094-bd485d00-26e3-11eb-89e1-7b86f6b384b2.png)
+
+El bosque cercano a Sigtuna
+
+
+![imagen](https://user-images.githubusercontent.com/55508821/99160225-3e542400-26e5-11eb-81c8-8548d941615a.png)
+
+
+El lago de Sigtuna
+
+
+![imagen](https://user-images.githubusercontent.com/55508821/99160211-f03f2080-26e4-11eb-8d5f-d52a5dd2640a.png)
+
+
+
 ## Escenarios 
 
 ![MAPA BOSQUE](https://user-images.githubusercontent.com/55508821/98616851-f22c6c80-22fd-11eb-9cd8-a69b29f06a4a.jpg)
