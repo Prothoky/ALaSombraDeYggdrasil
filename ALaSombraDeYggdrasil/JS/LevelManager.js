@@ -88,6 +88,7 @@ class LevelManager extends Phaser.Scene
         this.trapFunctionsArray = new Array();  // Array que guarda las funciones de las trampas a generar
         this.endTrigger;    // Trigger del fin del nivel
         this.arcadeCicleCollision;  // Punto de reset (modo arcade)
+        this.endLevelCollision;
 
         // 5) VARIABLES DE INFORMACIÓN
         this.levelHeight = gameHeight;  // Alto del nivel
@@ -290,7 +291,8 @@ class LevelManager extends Phaser.Scene
         this.physics.add.overlap(this.player, this.triggers, this.enemyStartMotion, null, this);    // Función que se llama al entrar el jugador en el área de visión del enemigo
         this.physics.add.overlap(this.player, this.coins, this.collectCoin, null, this);    // Función de recoger moneda
         if (this.endlessMode == false) {    // Dependiendo de si es modo arcade
-            this.physics.add.overlap(this.player, this.endTrigger, this.goalArrived, null, this);   // Genera el texto de fin del nivel
+            this.endLevelCollision = this.physics.add.overlap(this.player, this.endTrigger, this.goalArrived, null, this);   // Genera el texto de fin del nivel
+            this.endLevelCollision.active = true;
         } else {
             this.arcadeCicleCollision = this.physics.add.overlap(this.player, this.endTrigger, this.arcadeCicle, null, this);   // Resetea la posición del personaje y genera nuevas trampas
         }
@@ -1171,6 +1173,7 @@ class LevelManager extends Phaser.Scene
 
     // Devuelve el jugador al mapa del mundo (al completar el nivel)
     goalArrived() {
+        this.endLevelCollision.active = false;
         this.player.setAccelerationX(-1000);
         this.hasArrived = true;
         this.actualizeMapsCompleted();
