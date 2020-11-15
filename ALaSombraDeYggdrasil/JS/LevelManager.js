@@ -125,8 +125,15 @@ class LevelManager extends Phaser.Scene
         this.DialogText;
         this.indexText = 0;
         //this.buttonDialog
-
         this.buttonPause;
+
+        this.Poem1_1;
+        this.Poem2_1;
+        this.Poem4_1;
+        this.Poem4_2;
+        this.Poem7_1;
+        this.Poem7_2;
+        this.PoemVisible;
 
     }
 
@@ -176,6 +183,8 @@ class LevelManager extends Phaser.Scene
         this.soundJump = this.sound.add('player_jump', config);
         this.soundAttack = this.sound.add('player_attack', config);
         this.soundEnemy = this.sound.add('enemy_1', config);
+        this.clickButtonSound = this.sound.add('ClickButtonSound', config);
+        this.poemSound = this.sound.add('Poem', config);
 
         // 2) BACKGROUND
         if (this.isIceLevel) {
@@ -383,6 +392,80 @@ class LevelManager extends Phaser.Scene
         this.buttonDialog.on('pointerover', function (pointer) {this.buttonDialogSel.setVisible(true);}, this);
         this.buttonDialog.on('pointerout', function (pointer) {this.buttonDialogSel.setVisible(false);}, this);
         this.buttonDialog.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.nextDialog());
+
+        //POEMS
+
+        if(userLang == "es"){
+          this.Poem1_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poema1_1');
+        }else{
+          this.Poem1_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poem1_1');
+        }
+
+        if(userLang == "es"){
+          this.Poem2_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poema2_1');
+        }else{
+          this.Poem2_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poem2_1');
+        }
+
+        if(userLang == "es"){
+          this.Poem4_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poema4_1');
+        }else{
+          this.Poem4_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poem4_1');
+        }
+
+        if(userLang == "es"){
+          this.Poem4_2 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poema4_2');
+        }else{
+          this.Poem4_2 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poem4_2');
+        }
+
+        if(userLang == "es"){
+          this.Poem7_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poema7_1');
+        }else{
+          this.Poem7_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poem7_1');
+        }
+
+        if(userLang == "es"){
+          this.Poem7_2 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poema7_2');
+        }else{
+          this.Poem7_2 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poem7_2');
+        }
+
+        this.Poem1_1.setScale(2/3);
+        this.Poem1_1.setDepth(11);
+        this.Poem1_1.setVisible(false);
+        this.Poem1_1.setScrollFactor(0);
+        this.Poem1_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.levelCompletedFunc());
+
+        this.Poem2_1.setScale(2/3);
+        this.Poem2_1.setDepth(11);
+        this.Poem2_1.setVisible(false);
+        this.Poem2_1.setScrollFactor(0);
+        this.Poem2_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.levelCompletedFunc());
+
+        this.Poem4_1.setScale(2/3);
+        this.Poem4_1.setDepth(11);
+        this.Poem4_1.setVisible(false);
+        this.Poem4_1.setScrollFactor(0);
+        this.Poem4_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.levelCompletedFunc());
+
+        this.Poem4_2.setScale(2/3);
+        this.Poem4_2.setDepth(11);
+        this.Poem4_2.setVisible(false);
+        this.Poem4_2.setScrollFactor(0);
+        this.Poem4_2.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.levelCompletedFunc());
+
+        this.Poem7_1.setScale(2/3);
+        this.Poem7_1.setDepth(11);
+        this.Poem7_1.setVisible(false);
+        this.Poem7_1.setScrollFactor(0);
+        this.Poem7_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.levelCompletedFunc());
+
+        this.Poem7_2.setScale(2/3);
+        this.Poem7_2.setDepth(11);
+        this.Poem7_2.setVisible(false);
+        this.Poem7_2.setScrollFactor(0);
+        this.Poem7_2.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.levelCompletedFunc());
 
         //FULL SCREEN
         this.fullScreenLM = this.add.image(gameWidth*15.5/16, gameHeight*13/14, 'buttonFullScreen');
@@ -993,31 +1076,71 @@ class LevelManager extends Phaser.Scene
 
     showDialog(){
 
-      if(stringsJSON.Dialogs[levelIndex]!=null){
-            this.DialogText.setText(stringsJSON.Dialogs[levelIndex][this.indexText][1]);
-            switch (stringsJSON.Dialogs[levelIndex][this.indexText][0]){
-                case 'EINAR':{
-                    this.DialogBg.setTexture('backgroundDialogEinar');
-                    break;
-                }
-                case 'MUNIN':{
-                    this.DialogBg.setTexture('backgroundDialogMunin');
-                    break;
-                }
-                case 'HUGIN':{
-                    this.DialogBg.setTexture('backgroundDialogHugin');
-                    break;
-                }
-                default:{
-                    this.DialogBg.setTexture('backgroundDialogHugin');
-                    break;
-                }
-            }
-        }
+      if((levelIndex < 10) || (levelIndex == 14) || (levelIndex == 15)){
 
-      else{
-             //this.levelCompletedFunc();
+        //set cuervo visible
+
+        if(stringsJSON.Dialogs[levelIndex]!=null){
+              this.DialogText.setText(stringsJSON.Dialogs[levelIndex][this.indexText][1]);
+              switch (stringsJSON.Dialogs[levelIndex][this.indexText][0]){
+                  case 'EINAR':{
+                      this.DialogBg.setTexture('backgroundDialogEinar');
+                      break;
+                  }
+                  case 'MUNIN':{
+                      this.DialogBg.setTexture('backgroundDialogMunin');
+                      break;
+                  }
+                  case 'HUGIN':{
+                      this.DialogBg.setTexture('backgroundDialogHugin');
+                      break;
+                  }
+                  default:{
+                      this.DialogBg.setTexture('backgroundDialogHugin');
+                      break;
+                  }
+              }
+          }
+
+        else{
+               //this.levelCompletedFunc();
+          }
+      }else{
+
+        switch (levelIndex){
+          case 10:
+            this.poemSound.play();
+            this.Poem1_1.setVisible(true);
+            this.PoemVisible = this.Poem1_1;
+            break;
+          case 11:
+            this.poemSound.play();
+            this.Poem2_1.setVisible(true);
+            this.PoemVisible = this.Poem2_1;
+            break;
+          case 12:
+            this.poemSound.play();
+            this.Poem4_1.setVisible(true);
+            this.PoemVisible = this.Poem4_1;
+            break;
+          case 13:
+            this.poemSound.play();
+            this.Poem4_2.setVisible(true);
+            this.PoemVisible = this.Poem4_2;
+            break;
+          case 16:
+            this.poemSound.play();
+            this.Poem7_1.setVisible(true);
+            this.PoemVisible = this.Poem7_1;
+            break;
+          case 17:
+            this.poemSound.play();
+            this.Poem7_2.setVisible(true);
+            this.PoemVisible = this.Poem7_2;
+            break;
+
         }
+      }
 
         //this.buttonDialog.setVisible(true);
         //this.buttonDialogSel.setVisible(true);
@@ -1050,12 +1173,15 @@ class LevelManager extends Phaser.Scene
         this.time.addEvent({
                 delay: 800,
                 callback: function() {
+
+                  if((levelIndex < 10) || (levelIndex == 14) ||(levelIndex == 15) ){
                     this.DialogBg.setVisible(true);
                     this.DialogText.setVisible(true);
                     this.buttonDialog.setVisible(true);
                     this.DialogShowing=true;
-                    this.showDialog();
-                    console.log("deberia funcionar la flecha");
+                  }
+                  this.showDialog();
+
                 },
                 callbackScope: this
         }, this);
@@ -1064,6 +1190,9 @@ class LevelManager extends Phaser.Scene
 
 
     nextDialog(){
+
+      this.clickButtonSound.play();
+
         if(stringsJSON.Dialogs[levelIndex][++this.indexText] != null){
             this.DialogText.setText(stringsJSON.Dialogs[levelIndex][this.indexText][1]);
             switch (stringsJSON.Dialogs[levelIndex][this.indexText][0]){
@@ -1119,11 +1248,20 @@ class LevelManager extends Phaser.Scene
       */
 
         this.soundRunning.stop();   // Para el sonido de los pasos
-        this.DialogText.setVisible(false);
-        this.DialogBg.setVisible(false);
-        this.buttonDialog.setVisible(false);
-        this.buttonDialogSel.setVisible(false);
-        this.DialogShowing=false;
+
+        if((levelIndex < 10) || (levelIndex == 14) ||(levelIndex == 15) ){
+          this.DialogText.setVisible(false);
+          this.DialogBg.setVisible(false);
+          this.buttonDialog.setVisible(false);
+          this.buttonDialogSel.setVisible(false);
+          this.DialogShowing=false;
+        }
+
+        else{
+          this.clickButtonSound.play();
+          this.PoemVisible.setVisible(false);
+
+        }
 
         this.cameras.main.fadeOut(2500, 0, 0, 0);
         this.time.delayedCall(2500, () => {
@@ -1259,7 +1397,7 @@ class LevelManager extends Phaser.Scene
         this.proceduralGenerator(); // Genera trampas de nuevo
         //this.generateCabinUp(0, undefined, undefined, false);    // Fakea el final con una cabaña
 
-        // Reposiciona al jugador y al recolector de basura y les da velocidad        
+        // Reposiciona al jugador y al recolector de basura y les da velocidad
         this.cameras.main.setBounds(0, 0, this.levelWidth * this.cicleIteration, this.levelHeight);   // Límites cámara
 
         this.arcadeCicleCollision.active = true;    // Permite de nuevo las colision de reseteo
@@ -1401,6 +1539,7 @@ class LevelManager extends Phaser.Scene
 
     PauseGame() {
         //gamePaused = true;
+        this.clickButtonSound.play();
         this.soundRunning.stop();
         this.scene.run('PauseMenu');
         this.scene.bringToTop('PauseMenu');

@@ -221,6 +221,25 @@ class PreloadMenu extends Phaser.Scene{
         this.load.image('shopButtonIG', './ASSETS/HUDpantallas/BotonTiendaInGame.png');
         this.load.image('buttonFullScreen', './ASSETS/HUDpantallas/BotonFullScreen.jpg');
 
+
+      //POEMS
+      //Esp
+      this.load.image('Poema1_1', './ASSETS/GamePlay/PoemaYggdrasil.png');
+      this.load.image('Poema2_1', './ASSETS/GamePlay/PoemaValquirias.png');
+      this.load.image('Poema4_1', './ASSETS/GamePlay/PoemaValhalla.png');
+      this.load.image('Poema4_2', './ASSETS/GamePlay/PoemaBerserker.png');
+      this.load.image('Poema7_1', './ASSETS/GamePlay/PoemaRagnarok.png');
+      this.load.image('Poema7_2', './ASSETS/GamePlay/PoemaEinar.png');
+
+      //Eng
+      this.load.image('Poem1_1', './ASSETS/GamePlay/PoemYggdrasil.png');
+      this.load.image('Poem2_1', './ASSETS/GamePlay/PoemValKyres.png');
+      this.load.image('Poem4_1', './ASSETS/GamePlay/PoemValhalla.png');
+      this.load.image('Poem4_2', './ASSETS/GamePlay/PoemBerserker.png');
+      this.load.image('Poem7_1', './ASSETS/GamePlay/PoemRagnarok.png');
+      this.load.image('Poem7_2', './ASSETS/GamePlay/PoemEinar.png');
+
+
       // Música
       this.load.audio('music_1', './ASSETS/Music/music_1.mp3');
       this.load.audio('music_2', './ASSETS/Music/music_2.mp3');
@@ -230,11 +249,10 @@ class PreloadMenu extends Phaser.Scene{
       this.load.audio('player_jump', './ASSETS/Sounds/sound_jump.mp3');
       this.load.audio('enemy_1', './ASSETS/Sounds/166036__vinrax__monster-pain8.wav');
       this.load.audio('player_running', './ASSETS/Sounds/107624__stintx__running-02.wav');
-
-      //Carga automáticamente main menu cuando los assets están cargados
-        /*this.load.on('complete', () => {
-          this.scene.start('MainMenu')
-        })*/
+      this.load.audio('ChangeDifficulty', './ASSETS/Sounds/Dificultad.mp3');
+      this.load.audio('ClickButtonSound', './ASSETS/Sounds/Click.mp3');
+      this.load.audio('BuyObject', './ASSETS/Sounds/Compra.mp3');
+      this.load.audio('Poem', './ASSETS/Sounds/Poema.mp3');
 
         this.load.on("complete", () => {
             console.log("Complete");

@@ -19,6 +19,9 @@ class SettingsMenu extends Phaser.Scene{
 
     this.cameras.main.fadeIn(1500, 0, 0, 0);
 
+    this.clickSound = this.sound.add('ClickButtonSound', this.EffectsConfig());
+    this.DiffSound = this.sound.add('ChangeDifficulty', this.EffectsConfig());
+
     this.backgroundSM = this.add.image(0, 0, 'backgroundSetM');
     this.backgroundSM.setScale(2/3);
     this.backgroundSM.setPosition(gameWidth/2, gameHeight/2);
@@ -213,6 +216,8 @@ class SettingsMenu extends Phaser.Scene{
   }
 
   BackOptionsMenuSM(){
+    this.clickSound.play();
+
     this.scene.pause('SettingsMenu');
     this.scene.start('OptionsMainMenu');
 
@@ -221,6 +226,8 @@ class SettingsMenu extends Phaser.Scene{
   }
 
   EasyLevel(){
+    this.DiffSound.play();
+
     this.easyButtonSelSM.setVisible(true);
     this.mediumButtonSelSM.setVisible(false);
     this.diffButtonSelSM.setVisible(false);
@@ -230,6 +237,8 @@ class SettingsMenu extends Phaser.Scene{
   }
 
   MediumLevel(){
+    this.DiffSound.play();
+
     this.easyButtonSelSM.setVisible(false);
     this.mediumButtonSelSM.setVisible(true);
     this.diffButtonSelSM.setVisible(false);
@@ -239,6 +248,8 @@ class SettingsMenu extends Phaser.Scene{
   }
 
   DifficultLevel(){
+    this.DiffSound.play();
+
     this.easyButtonSelSM.setVisible(false);
     this.mediumButtonSelSM.setVisible(false);
     this.diffButtonSelSM.setVisible(true);
@@ -248,6 +259,8 @@ class SettingsMenu extends Phaser.Scene{
   }
 
   ChangeLanguaje(){
+
+    this.clickSound.play();
 
     console.log("idioma" + userLang);
 
@@ -260,7 +273,6 @@ class SettingsMenu extends Phaser.Scene{
       userLang = "es";
     }
 
-    saveUserData();
     this.backButtonText.setText( stringsJSON.Buttons.back);
     this.resetText.setText( stringsJSON.Buttons.erase_Data);
     this.easyText.setText( stringsJSON.Buttons.easy);
@@ -268,9 +280,12 @@ class SettingsMenu extends Phaser.Scene{
     this.diffText.setText( stringsJSON.Buttons.difficult);
     this.languageText.setText( stringsJSON.Buttons.language);
 
+    saveUserData();
   }
 
   ActivateConfirmation(){
+    this.clickSound.play();
+
     this.confirmButton.setVisible(true);
     this.cancelButton.setVisible(true);
     this.resetButton.setVisible(false);
@@ -279,6 +294,8 @@ class SettingsMenu extends Phaser.Scene{
   }
 
   ConfirmErase(erase){
+
+    this.clickSound.play();
 
     if(erase == true){
       console.log("resetiado");
@@ -295,6 +312,18 @@ class SettingsMenu extends Phaser.Scene{
     this.cancelText.setVisible(false);
     this.confirmText.setVisible(false);
 
+  }
+
+  EffectsConfig(){
+    return {
+      mute: false,
+      volume: userConfig.volumeEffects/10,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0
+    };
   }
 
 }

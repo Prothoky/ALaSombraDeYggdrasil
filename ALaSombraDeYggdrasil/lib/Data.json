@@ -118,31 +118,61 @@
       ],
       [
         ["EINAR","Einar: Estoy cansado de esta tierra, \n no hay más que saqueadores, \n demasiado caos hay en la que antaño fue mi casa.  "],
-        ["EINAR","Einar: Midgard está en continua guerra y \n yo ya no soy parte de ella. "],
-        ["EINAR","Einar: ¿Qué hago Hugin? \n ¿Por qué no vuelves a tu casa?"],
-        ["HUGIN","Hugin: La sombra se está propagando por \n Yggdrasil, los dioses han perdido \n su poder durante este tiempo."],
-        ["HUGIN","Hugin: Odín me abandonó \n con la caída del Valhalla."],
-        ["EINAR","Einar: ¿Qué ha pasado? \n  ¿Cómo pierde un dios su poder?"],
-        ["EINAR","Einar: Debo buscar el Bifröst, \n espero que su guardian Heimdal siga recordando \n aquel favor que le hice salvando  \n a aquella hija bastarda suya en la guerra de Wessex.  "],
-        ["EINAR","     Einar: ¿Y ahora qué debo de hacer?  "]
+        ["EINAR"," \n      Einar: Midgard está en continua guerra y \n yo ya no soy parte de ella. "],
+        ["EINAR","       \n              Einar: ¿Qué hago Hugin? \n             ¿Por qué no vuelves a tu casa?"],
+        ["HUGIN","      Hugin: La sombra se está propagando por \n Yggdrasil, los dioses han perdido \n su poder durante este tiempo."],
+        ["HUGIN"," \n                    Hugin: Odín me abandonó \n             con la caída del Valhalla."],
+        ["EINAR"," \n                    Einar: ¿Qué ha pasado? \n              ¿Cómo pierde un dios su poder?"],
+        ["EINAR","Einar: Debo buscar el Bifröst, espero que \n su guardian Heimdal siga recordando \n aquel favor que le hice salvando a aquella hija \n bastarda suya en la guerra de Wessex.  "],
+        ["EINAR","      \n           Einar: ¿Y ahora qué debo de hacer?  "]
       ],
       [
-        ["EINAR","Einar: ¿Qué habrá podido acabar con los dioses?  "],
-        ["EINAR","Einar: Tengo que ir a verlo con mis propios ojos. "],
-        ["EINAR","Einar: Hugin, vamos a atravesar Yggdrasil y sus planetas \n para unir a un ejército con el cual salvar Asgard. "],
-        ["EINAR","Einar: Yo solo estaría perdido, \n necesito conseguir a las mejores bestias \n y guerreros para limpiar la sombra que recorre las ramas."],
-        ["HUGIN","Hugin: : Las migas también son pan Einar. "],
-        ["HUGIN","Hugin: : Cruzaremos los ocho mundos siguiendo la estela del arcoíris, se escribirán leyendas sobre este destino.  "],
-        ["HUGIN","Hugin: : Es peligroso ir solo, \n mira siempre quien te da la mano y quien te la esconde. "],
-        ["EINAR","Einar: Vamos al final de los finales Hugin. "],
-        ["EINAR","Einar: Tengo que descubrir cómo puedo romper esta falsa \n bendición a la que me esclavizaron los dioses."],
-        ["EINAR","Einar: Espero encontrar respuestas por el camino. "],
-        ["EINAR","Einar: ¿Qué habrá en el resto de mundos? "],
-        ["EINAR","Einar: ¿Encontraré a los espíritus de mi familia? "],
-        ["EINAR","Einar: ¿Habrá paz tras la sombra? "],
-        ["EINAR","Einar: ¿Será este el inicio del Ragnarok?"],
-        ["EINAR","Einar: ¿Podré morir algún día?"]
+        ["EINAR","\n Einar: ¿Qué habrá podido acabar con los dioses?  "],
+        ["EINAR","\n Einar: Tengo que ir a verlo con mis propios ojos. "],
+        ["EINAR","      Einar: Hugin, vamos a atravesar Yggdrasil \n y sus planetas para unir a un ejército \n con el que salvar Asgard. "],
+        ["EINAR","Einar: Yo solo estaría perdido, \n necesito conseguir a las mejores bestias \n y guerreros para limpiar la sombra \n que recorre las ramas."],
+        ["HUGIN"," \n       Hugin: : Las migas también son pan Einar. "],
+        ["HUGIN","Hugin: : Cruzaremos los ocho mundos siguiendo \n la estela del arcoíris, \n se escribirán leyendas sobre este destino.  "],
+        ["HUGIN","     Hugin: : Es peligroso ir solo, \n      mira siempre quien te da la mano \n      y quien te la esconde. "],
+        ["EINAR"," \n      Einar: Vamos al final de los finales Hugin. "],
+        ["EINAR","     Einar: Tengo que descubrir cómo puedo \n romper esta falsa bendición a la que \n me esclavizaron los dioses."],
+        ["EINAR","\n Einar: Espero encontrar respuestas por el camino. "],
+        ["EINAR","\n      Einar: ¿Qué habrá en el resto de mundos? "],
+        ["EINAR","\n Einar: ¿Encontraré a los espíritus de mi familia? "],
+        ["EINAR","\n            Einar: ¿Habrá paz tras la sombra? "],
+        ["EINAR","\n      Einar: ¿Será este el inicio del Ragnarok?"],
+        ["EINAR","\n            Einar: ¿Podré morir algún día?"]
+      ],
+
+      [],
+      [],
+      [],
+      [],
+      [
+        [ "EINAR", "Einar: Mi pueblo adoraba estas cordilleras, \n los inviernos que vivíamos eran largos, \n pero recuerdo con mucho cariño las fiestas en el templo de Upsala. " ],
+        [ "EINAR", "Einar: Mi padre era un granjero muy querido \n y mi madre murió al darme a luz, \n ahora está con los dioses, o eso dicen. " ],
+        [ "EINAR", "Einar: Aprendí a luchar por supervivencia \n cuando mi pueblo conoció las invasiones de los rus.  " ],
+        [ "EINAR", "Einar: No hubo rey que pudiera con ellos, \n su inteligencia era digna de Balder." ],
+        [ "EINAR", "Einar: ¿Por qué hubo tanta guerra \n si todos teníamos la misma sangre? " ],
+        [ "EINAR", "Einar: ¿De qué sirvió si no queda nadie?" ],
+        [ "EINAR", "Einar: Soy el último vestigio de mi pueblo, \n pero para qué quiero estar aquí si no tengo\t \t  motivos para celebrar nada. " ],
+        [ "EINAR", "Einar: El tiempo es un daño constante. " ],
+        [ "EINAR", "Einar: Tener pulso no me hace estar vivo. " ]
+      ],
+      [
+        [ "EINAR", "Einar: Hace tanto tiempo que no veo a mi familia que ya no consigo reconocer poco más que unos destellos de paz. " ],
+        [ "EINAR", "Einar: Conocí a Kaira en las fiestas de la primavera con el crujir del deshielo.  " ],
+        [ "EINAR", "Einar: Luchamos en la orilla del río Sena y atravesamos incluso las columnas de hércules.   " ],
+        [ "EINAR", "Einar: Nadie me quería como ella, nunca olvidaré el día que dio a luz." ],
+        [ "EINAR", "Einar: Mi querida Greta era más pequeña que mi barba cuando nació." ],
+        [ "EINAR", "Einar: Con ella aprendí a amar." ],
+        [ "EINAR", "Einar: Siempre estaba corriendo por los cultivos, ella odiaba la lucha, su única pasión era escribir grandes relatos sobre los dioses y las historias que le contaba sobre mis guerras. " ],
+        [ "EINAR", "Einar: Algunas canciones las llevo en el bolsillo todavía. " ],
+        [ "EINAR", "Einar: ¿Qué queda de ellas ahora?" ],
+        [ "EINAR", "Einar: ¿Serán felices allá donde estén?    " ]
+
       ]
+
     ],
     "Loading": "Cargando",
 
