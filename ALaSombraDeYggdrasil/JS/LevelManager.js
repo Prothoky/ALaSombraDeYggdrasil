@@ -306,7 +306,7 @@ class LevelManager extends Phaser.Scene
 
 
         // 5) CÁMARA
-        this.cameras.main.setBounds(0, 0, 1000000, this.levelHeight);   // Límites cámara
+        this.cameras.main.setBounds(0, 0, this.levelWidth, this.levelHeight);   // Límites cámara
         //this.cameras.main.startFollow(this.player, false, 1, 1, this.cameraOffsetX, 0); // Cámar sigue al personaje
 
 
@@ -508,7 +508,6 @@ class LevelManager extends Phaser.Scene
         } else {
             endWidth = 0;
         }
-        console.log(this.levelWidth + " , " + endWidth);
         while (this.xPointer < this.levelWidth * this.cicleIteration - endWidth) { // 200 extra por si un enemigo cae justo en el límite
             // Genera una trampa aleatoria del pool de trampas y almacena su distancia mínima entre trampas
             addedDistance = this.generateRandomTrap(this.xPointer);
@@ -1255,7 +1254,8 @@ class LevelManager extends Phaser.Scene
         this.proceduralGenerator(); // Genera trampas de nuevo
         //this.generateCabinUp(0, undefined, undefined, false);    // Fakea el final con una cabaña
 
-        // Reposiciona al jugador y al recolector de basura y les da velocidad
+        // Reposiciona al jugador y al recolector de basura y les da velocidad        
+        this.cameras.main.setBounds(0, 0, this.levelWidth * this.cicleIteration, this.levelHeight);   // Límites cámara
 
         this.arcadeCicleCollision.active = true;    // Permite de nuevo las colision de reseteo
     }
@@ -1263,7 +1263,6 @@ class LevelManager extends Phaser.Scene
     deleteCabins() {
         for (let i = 0; i < this.cabins.length; i++) {
             if (this.cabins[i].x < this.player.x - 700) {
-                console.log("deleteao" + this.player.x + ", " + this.cabins[i].x);
                 this.cabins[i].destroy();
                 this.cabins.splice(i, 1);
             }
