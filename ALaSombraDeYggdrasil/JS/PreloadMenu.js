@@ -161,11 +161,45 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('BackButtonW1M', './ASSETS/World1Menu/BotonSalir.png'); //CAMBIAR
 
       //Level Names
-      this.load.image('Level0Name', './ASSETS/World1Menu/Nombre1.png');
-      this.load.image('Level1Name', './ASSETS/World1Menu/Nombre2.png');
-      this.load.image('Level2Name', './ASSETS/World1Menu/Nombre3.png');
-      this.load.image('Level3Name', './ASSETS/World1Menu/Nombre4.png');
-      this.load.image('Level4Name', './ASSETS/World1Menu/Nombre5.png');
+      //ENG
+      this.load.image('Level0Name', './ASSETS/World1Menu/TitulosNodos/TheRegress.png');
+      this.load.image('Level1Name', './ASSETS/World1Menu/TitulosNodos/MyMemory.png');
+      //this.load.image('Nivel1_1Name', './ASSETS/World1Menu/TitulosNodos/Yggdrasil.png');
+      this.load.image('Level2Name', './ASSETS/World1Menu/TitulosNodos/PastVoice.png');
+      this.load.image('Level2_1Name', './ASSETS/World1Menu/TitulosNodos/Valkyre.png');
+      this.load.image('Level3Name', './ASSETS/World1Menu/TitulosNodos/Finally.png');
+      this.load.image('Level4Name', './ASSETS/World1Menu/TitulosNodos/TheDisbelief.png');
+      this.load.image('Level5Name', './ASSETS/World1Menu/TitulosNodos/TheFrozenLake.png');
+      //this.load.image('Nivel5_1Name', './ASSETS/World1Menu/TitulosNodos/Valhalla.png');
+      //this.load.image('Nivel5_2Name', './ASSETS/World1Menu/TitulosNodos/Berserker.png');
+      this.load.image('Level6Name', './ASSETS/World1Menu/TitulosNodos/TheBetrayal.png');
+      this.load.image('Level6_1Name', './ASSETS/World1Menu/TitulosNodos/MyHometown.png');
+      this.load.image('Level6_2Name', './ASSETS/World1Menu/TitulosNodos/MyFamily.png');
+      this.load.image('Level7Name', './ASSETS/World1Menu/TitulosNodos/TheRests.png');
+      this.load.image('Level8Name', './ASSETS/World1Menu/TitulosNodos/TheMust.png');
+      //this.load.image('Nivel8_1Name', './ASSETS/World1Menu/TitulosNodos/Ragnarok.png');
+      //this.load.image('Nivel8_2Name', './ASSETS/World1Menu/TitulosNodos/Einar.png');
+      this.load.image('Level9Name', './ASSETS/World1Menu/TitulosNodos/TheShadow.png');
+      //ESP
+      this.load.image('Nivel0Name', './ASSETS/World1Menu/TitulosNodos/ElRegreso.png');
+      this.load.image('Nivel1Name', './ASSETS/World1Menu/TitulosNodos/MiMemoria.png');
+      this.load.image('Nivel1_1Name', './ASSETS/World1Menu/TitulosNodos/Yggdrasil.png');
+      this.load.image('Nivel2Name', './ASSETS/World1Menu/TitulosNodos/LaVozDelPasado.png');
+      this.load.image('Nivel2_1Name', './ASSETS/World1Menu/TitulosNodos/Valquirias.png');
+      this.load.image('Nivel3Name', './ASSETS/World1Menu/TitulosNodos/AlFin.png');
+      this.load.image('Nivel4Name', './ASSETS/World1Menu/TitulosNodos/LaDescreencia.png');
+      this.load.image('Nivel5Name', './ASSETS/World1Menu/TitulosNodos/ElLagoHelado.png');
+      this.load.image('Nivel5_1Name', './ASSETS/World1Menu/TitulosNodos/Valhalla.png');
+      this.load.image('Nivel5_2Name', './ASSETS/World1Menu/TitulosNodos/Berserker.png');
+      this.load.image('Nivel6Name', './ASSETS/World1Menu/TitulosNodos/LaTraicion.png');
+      this.load.image('Nivel6_1Name', './ASSETS/World1Menu/TitulosNodos/MiPueblo.png');
+      this.load.image('Nivel6_2Name', './ASSETS/World1Menu/TitulosNodos/MiFamilia.png');
+      this.load.image('Nivel7Name', './ASSETS/World1Menu/TitulosNodos/LosRestos.png');
+      this.load.image('Nivel8Name', './ASSETS/World1Menu/TitulosNodos/ElDeber.png');
+      this.load.image('Nivel8_1Name', './ASSETS/World1Menu/TitulosNodos/Ragnarok.png');
+      this.load.image('Nivel8_2Name', './ASSETS/World1Menu/TitulosNodos/Einar.png');
+      this.load.image('Nivel9Name', './ASSETS/World1Menu/TitulosNodos/LaSombra.png');
+
 
 
       //Subnodos

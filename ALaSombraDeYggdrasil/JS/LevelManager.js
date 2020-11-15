@@ -124,6 +124,7 @@ class LevelManager extends Phaser.Scene
         this.DialogBg;
         this.DialogText;
         this.indexText = 0;
+        //this.buttonDialog
 
         this.buttonPause;
 
@@ -131,7 +132,7 @@ class LevelManager extends Phaser.Scene
 
     create ()
     {
-        
+
         this.physics.world.setFPS(fpsTarget);
       //this.cameras.main.fadeIn(1500, 0, 0, 0);
 
@@ -344,12 +345,29 @@ class LevelManager extends Phaser.Scene
         this.DialogBg.setDepth(7);
         this.DialogBg.setScrollFactor(0);
         this.DialogBg.setVisible(false);
-        this.DialogBg.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.nextDialog());
+        //this.DialogBg.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.nextDialog());
 
         this.DialogText = this.add.text(gameWidth*6.75/16, gameHeight*11.5/16,  " ", {fontFamily: "StayHappy",stroke:'#000000', fill: "white", strokeThickness: 2});
         this.DialogText.setScrollFactor(0);
         this.DialogText.setDepth(8);
         this.DialogText.setVisible(false);
+
+        this.buttonDialog = this.add.image(gameWidth*10.7/16, gameHeight*13.34/16, 'buttonDialog');
+        this.buttonDialog.setScale(2/3);
+        this.buttonDialog.setDepth(11);
+        this.buttonDialog.setScrollFactor(0);
+        //this.buttonDialog.setVisible(false);
+
+        this.buttonDialogSel = this.add.image(gameWidth*10.7/16, gameHeight*13.34/16, 'buttonDialogSel');
+        this.buttonDialogSel.setScale(2/3);
+        this.buttonDialogSel.setDepth(11);
+        this.buttonDialogSel.setScrollFactor(0);
+        //this.buttonDialogSel.setVisible(false);
+
+        //this.buttonDialog.setScale(0.5);
+        this.buttonDialog.on('pointerover', function (pointer) {this.buttonDialogSel.setVisible(true);}, this);
+        this.buttonDialog.on('pointerout', function (pointer) {this.buttonDialogSel.setVisible(false);}, this);
+        this.buttonDialog.setInteractive({ useHandCursor: true}).on('pointerdown', () => (this.nextDialog()));
 
         //FULL SCREEN
         this.fullScreenLM = this.add.image(gameWidth*15.5/16, gameHeight*13/14, 'buttonFullScreen');
@@ -357,8 +375,7 @@ class LevelManager extends Phaser.Scene
         this.fullScreenLM.setScrollFactor(0);
         this.fullScreenLM.setDepth(10);
         this.fullScreenLM.setInteractive({ useHandCursor: true})
-    		.on('pointerdown', function() {
-          this.scene.scale.toggleFullscreen();
+    		.on('pointerdown', function() { this.scene.scale.toggleFullscreen();
         });
 
 
@@ -983,12 +1000,13 @@ class LevelManager extends Phaser.Scene
                 }
             }
         }
-            
+
       else{
              //this.levelCompletedFunc();
         }
 
-
+        //this.buttonDialog.setVisible(true);
+        //this.buttonDialogSel.setVisible(true);
       }
 
 
@@ -1016,6 +1034,7 @@ class LevelManager extends Phaser.Scene
                 callback: function() {
                     this.DialogBg.setVisible(true);
                     this.DialogText.setVisible(true);
+                    this.buttonDialog.setVisible(true);
                     this.DialogShowing=true;
                     this.showDialog();
                 },
@@ -1046,7 +1065,7 @@ class LevelManager extends Phaser.Scene
                     break;
                 }
             }
-            
+
         }
         else{
             this.DialogShowing = false;
@@ -1083,6 +1102,8 @@ class LevelManager extends Phaser.Scene
         this.soundRunning.stop();   // Para el sonido de los pasos
         this.DialogText.setVisible(false);
         this.DialogBg.setVisible(false);
+        this.buttonDialog.setVisible(false);
+        this.buttonDialogSel.setVisible(false);
         this.DialogShowing=false;
 
         this.cameras.main.fadeOut(2500, 0, 0, 0);
@@ -1373,7 +1394,7 @@ class LevelManager extends Phaser.Scene
         this.pauseButton.enabled =false;
         this.controls_enable=false;
     }
-    
+
     Enable_controls(){
         this.input.enabled = true;
         this.jumpButton.enabled = true;
