@@ -18,20 +18,22 @@ class World1Map extends Phaser.Scene{
     this.buttonNode9Sel;   this.level9NameEs;   this.level9NameEn;
 
     //Subnodos
-    this.buttonSubnode1_1;  this.buttonSubnode1_1Sel;   this.level1_1NameEs;    this.level1_1NameEn;
-    this.buttonSubnode2_1;  this.buttonSubnode2_1Sel;   this.level2_1NameEs;    this.level2_1NameEn;
-    this.buttonSubnode4_1;  this.buttonSubnode4_1Sel;   this.level4_1NameEs;    this.level4_1NameEn;
-    this.buttonSubnode4_2;  this.buttonSubnode4_2Sel;   this.level4_2NameEs;    this.level4_2NameEn;
-    this.buttonSubnode5_1;  this.buttonSubnode5_1Sel;   this.level5_1NameEs;    this.level5_1NameEn;
-    this.buttonSubnode5_2;  this.buttonSubnode5_2Sel;   this.level5_2NameEs;    this.level5_2NameEn;
-    this.buttonSubnode6_1;  this.buttonSubnode6_1Sel;   this.level6_1NameEs;    this.level6_1NameEn;
-    this.buttonSubnode5_2;  this.buttonSubnode6_2Sel;   this.level6_2NameEs;    this.level6_2NameEn;
+    this.buttonSubnode1_1;  this.buttonSubnode1_1Sel;   this.level1_1Name;
+    this.buttonSubnode2_1;  this.buttonSubnode2_1Sel;   this.level2_1Name;
+    this.buttonSubnode4_1;  this.buttonSubnode4_1Sel;   this.level4_1Name;
+    this.buttonSubnode4_2;  this.buttonSubnode4_2Sel;   this.level4_2Name;
+    this.buttonSubnode5_1;  this.buttonSubnode5_1Sel;   this.level5_1Name;
+    this.buttonSubnode5_2;  this.buttonSubnode5_2Sel;   this.level5_2Name;
+    this.buttonSubnode6_1;  this.buttonSubnode6_1Sel;   this.level6_1Name;
+    this.buttonSubnode5_2;  this.buttonSubnode6_2Sel;   this.level6_2Name;
 
     //Variables
     this.activeNode;
     this.nameActiveNode;
     this.numActiveNodes = 0;
     this.backgroundW1;
+
+    this.MoneyW1M;
 
     //this.load.image('FONDOGUIA', './ASSETS/World1Menu/FondoGuia.jpg');
   }
@@ -58,10 +60,25 @@ class World1Map extends Phaser.Scene{
     .on('pointerdown', () => (this.nameActiveNode.setVisible(false), this.activeNode.setVisible(false), this.numActiveNodes = 0));
 
     //MONEY
-    this.backgroundMoneyW1M = this.add.image(gameWidth*13/16, gameHeight*1.3/16, 'backButton');
+    this.backgroundMoneyW1M = this.add.image(gameWidth*13/16, gameHeight*1.1/16, 'deselectedButtonSmall');
     this.backgroundMoneyW1M.setScale(1.5/3);
-    this.MoneyW1M = this.add.text(gameWidth*12.6/16, gameHeight*0.92/16,  user.money, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
-    //this.Money.setOrigin(0.5,0.5);
+    this.MoneyW1M = this.add.text(gameWidth*14/16, gameHeight*0.92/16,  user.money, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
+
+    if(user.money>100){
+      this.SetTextPos();
+    }
+
+    //BOTON TIENDA
+    this.shopButtonW1M = this.add.image(gameWidth*14.5/16, gameHeight*1.1/16, 'deselectedButtonSmall');
+    this.shopButtonW1M.setScale(1.5/3);
+    this.shopButtonW1MSel = this.add.image(gameWidth*14.7/16, gameHeight*1.1/16, 'selSmallRightButton');
+    this.shopButtonW1MSel.setScale(1.5/3);
+    this.shopButtonW1MSel.setVisible(false);
+    this.shotButtonText = this.add.text(gameWidth*14.1/16, gameHeight*0.92/16,  stringsJSON.Buttons.shop, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
+    this.shopButtonW1M.on('pointerover', function (pointer) {this.shopButtonW1MSel.setVisible(true);}, this);
+    this.shopButtonW1M.on('pointerout', function (pointer) {this.shopButtonW1MSel.setVisible(false);}, this);
+    this.shopButtonW1M.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.ShopMenuW1M());
+
 
 
     //BOTON ATRAS
@@ -77,15 +94,11 @@ class World1Map extends Phaser.Scene{
     this.backButtonW1M.on('pointerout', function (pointer) {this.backButtonW1MSel.setVisible(false);}, this);
     this.backButtonW1M.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.BackMapSelectionMenu());
 
-    //BOTON TIENDA
-    this.shopButtonW1M = this.add.image(gameWidth*14/16, gameHeight*1/16, 'shopButtonIG');
-    this.shopButtonW1M.setScale(1/3);
-    this.shopButtonW1M.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => this.ShopMenuW1M());
+
 
     //FULL SCREEN
     this.fullScreenW1M = this.add.image(gameWidth*15.5/16, gameHeight*13/14, 'buttonFullScreen');
-    this.fullScreenW1M.setScale(2/60);
+    this.fullScreenW1M.setScale(2/60, 1/60);
     this.fullScreenW1M.setInteractive({ useHandCursor: true})
 		.on('pointerdown', function() {
       this.scene.scale.toggleFullscreen();
@@ -281,11 +294,11 @@ class World1Map extends Phaser.Scene{
     this.buttonNode4.setInteractive({ useHandCursor: true}).on('pointerdown', () =>  this.AccessToLevel(4));
     //Fondo con nombre y boton JUGAR
     if(userLang == "es"){
-      this.level4Name = this.add.image(gameWidth*3.025/16, gameHeight*10.05/16, 'Nivel4Name');
+      this.level4Name = this.add.image(gameWidth*3.025/16, gameHeight*9.95/16, 'Nivel4Name');
     }else{
-      this.level4Name = this.add.image(gameWidth*3.025/16, gameHeight*10.05/16, 'Level4Name');
+      this.level4Name = this.add.image(gameWidth*3.025/16, gameHeight*9.95/16, 'Level4Name');
     }
-    this.level4Name.setScale(1.8/3);
+    this.level4Name.setScale(2/3);
     this.level4Name.setDepth(2);
     this.level4Name.setVisible(false);
 
@@ -320,7 +333,7 @@ class World1Map extends Phaser.Scene{
     }else{
       this.level4_1Name = this.add.image(gameWidth*2.53/16, gameHeight*7/16, 'Level4_1NameEn');
     }*/
-    this.level4_1Name = this.add.image(gameWidth*2.53/16, gameHeight*7/16, 'Level4_1NameEn');
+    this.level4_1Name = this.add.image(gameWidth*2.53/16, gameHeight*5.9/16, 'Nivel4_1Name');
     this.level4_1Name.setScale(1.8/3);
     this.level4_1Name.setVisible(false);
 
@@ -352,7 +365,7 @@ class World1Map extends Phaser.Scene{
     }else{
       this.level4_2Name = this.add.image(gameWidth*4.7/16, gameHeight*8/16, 'Level4_2NameEn');
     }*/
-    this.level4_2Name = this.add.image(gameWidth*4.7/16, gameHeight*8/16, 'Nivel4_2Name');
+    this.level4_2Name = this.add.image(gameWidth*4.7/16, gameHeight*7.3/16, 'Nivel4_2Name');
     this.level4_2Name.setScale(1.8/3);
     this.level4_2Name.setVisible(false);
 
@@ -375,11 +388,12 @@ class World1Map extends Phaser.Scene{
     this.buttonNode5.setInteractive({ useHandCursor: true}).on('pointerdown', () =>  this.AccessToLevel(5));
     //Fondo con nombre y boton JUGAR
     if(userLang == "es"){
-      this.level5Name = this.add.image(gameWidth*3.41/16, gameHeight*3.525/16, 'Nivel5Name');
+      this.level5Name = this.add.image(gameWidth*3.41/16, gameHeight*3.05/16, 'Nivel5Name');
     }else{
-      this.level5Name = this.add.image(gameWidth*3.41/16, gameHeight*3.525/16, 'Level5Name');
+      this.level5Name = this.add.image(gameWidth*3.41/16, gameHeight*3.05/16, 'Level5Name');
     }
-    this.level5Name.setScale(1.8/3);
+    this.level5Name.setScale(2/3);
+    this.level5Name.setDepth(3);
     this.level5Name.setVisible(false);
 
     //SUBNIVEL 5.1
@@ -408,9 +422,9 @@ class World1Map extends Phaser.Scene{
     this.buttonSubnode5_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(14));
     //Fondo con nombre
     if(userLang == "es"){
-      this.level5_1Name = this.add.image(gameWidth*3.2/16, gameHeight*1.5/16, 'Nivel5_1Name');
+      this.level5_1Name = this.add.image(gameWidth*3.2/16, gameHeight*0.7/16, 'Nivel5_1Name');
     }else{
-      this.level5_1Name = this.add.image(gameWidth*3.2/16, gameHeight*1.5/16, 'Level5_1Name');
+      this.level5_1Name = this.add.image(gameWidth*3.2/16, gameHeight*0.7/16, 'Level5_1Name');
     }
     this.level5_1Name.setScale(1.8/3);
     this.level5_1Name.setVisible(false);
@@ -439,9 +453,9 @@ class World1Map extends Phaser.Scene{
 
     //Fondo con nombre
     if(userLang == "es"){
-      this.level5_2Name = this.add.image(gameWidth*3/16, gameHeight*1.3/16, 'Nivel5_2Name');
+      this.level5_2Name = this.add.image(gameWidth*1/16, gameHeight*2.6/16, 'Nivel5_2Name');
     }else{
-      this.level5_2Name = this.add.image(gameWidth*3/16, gameHeight*1.3/16, 'Level5_2Name');
+      this.level5_2Name = this.add.image(gameWidth*1/16, gameHeight*2.6/16, 'Level5_2Name');
     }
     this.level5_2Name.setScale(1.8/3);
     this.level5_2Name.setVisible(false);
@@ -465,9 +479,9 @@ class World1Map extends Phaser.Scene{
     this.buttonNode6.setInteractive({ useHandCursor: true}).on('pointerdown', () =>  this.AccessToLevel(6));
     //Fondo con nombre y boton JUGAR
     if(userLang == "es"){
-      this.level6Name = this.add.image(gameWidth*6.41/16, gameHeight*1.3/16, 'Nivel6Name');
+      this.level6Name = this.add.image(gameWidth*7.8/16, gameHeight*1.5/16, 'Nivel6Name');
     }else{
-      this.level6Name = this.add.image(gameWidth*6.41/16, gameHeight*1.3/16, 'Level6Name');
+      this.level6Name = this.add.image(gameWidth*7.8/16, gameHeight*1.5/16, 'Level6Name');
     }
     this.level6Name.setScale(1.8/3);
     this.level6Name.setVisible(false);
@@ -491,9 +505,9 @@ class World1Map extends Phaser.Scene{
     this.buttonNode7.setInteractive({ useHandCursor: true}).on('pointerdown', () =>  this.AccessToLevel(7));
     //Fondo con nombre y boton JUGAR
     if(userLang == "es"){
-      this.level7Name = this.add.image(gameWidth*6.79/16, gameHeight*4.61/16, 'Nivel7Name');
+      this.level7Name = this.add.image(gameWidth*6.79/16, gameHeight*4.21/16, 'Nivel7Name');
     }else{
-      this.level7Name = this.add.image(gameWidth*6.79/16, gameHeight*4.61/16, 'Level7Name');
+      this.level7Name = this.add.image(gameWidth*6.79/16, gameHeight*4.21/16, 'Level7Name');
     }
     this.level7Name.setScale(1.8/3);
     this.level7Name.setVisible(false);
@@ -529,7 +543,7 @@ class World1Map extends Phaser.Scene{
     }else{
       this.level7_1Name = this.add.image(gameWidth*8.76/16, gameHeight*7.8/16, 'Level7_1NameEn');
     }*/
-    this.level7_1Name = this.add.image(gameWidth*8.76/16, gameHeight*7.8/16, 'Level7_1NameEn');
+    this.level7_1Name = this.add.image(gameWidth*8.3/16, gameHeight*6.7/16, 'Nivel7_1Name');
     this.level7_1Name.setScale(1.8/3);
     this.level7_1Name.setVisible(false);
 
@@ -555,13 +569,7 @@ class World1Map extends Phaser.Scene{
     this.buttonSubnode7_2.on('pointerout', function (pointer) {this.buttonSubode72SelClick.setVisible(false);}, this);
     this.buttonSubnode7_2.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(17));
 
-    //Fondo con nombre
-    /*if(userLang == "es"){
-      this.level7_2Name = this.add.image(gameWidth*10/16, gameHeight*7.8/16, 'Level7_2NameEs');
-    }else{
-      this.level7_2Name = this.add.image(gameWidth*10/16, gameHeight*7.8/16, 'Level7_2NameEn');
-    }*/
-    this.level7_2Name = this.add.image(gameWidth*8.76/16, gameHeight*7.8/16, 'Level7_1NameEn');
+    this.level7_2Name = this.add.image(gameWidth*9.95/16, gameHeight*6.8/16, 'Nivel7_2Name');
     this.level7_2Name.setScale(1.8/3);
     this.level7_2Name.setVisible(false);
 
@@ -584,9 +592,9 @@ class World1Map extends Phaser.Scene{
     this.buttonNode8.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(8));
     //Fondo con nombre y boton JUGAR
     if(userLang == "es"){
-      this.level8Name = this.add.image(gameWidth*9.845/16, gameHeight*3.75/16, 'Nivel8Name');
+      this.level8Name = this.add.image(gameWidth*9.845/16, gameHeight*3.35/16, 'Nivel8Name');
     }else{
-      this.level8Name = this.add.image(gameWidth*9.845/16, gameHeight*3.75/16, 'Level8Name');
+      this.level8Name = this.add.image(gameWidth*9.845/16, gameHeight*3.35/16, 'Level8Name');
     }
     this.level8Name.setScale(1.8/3);
     this.level8Name.setVisible(false);
@@ -611,15 +619,17 @@ class World1Map extends Phaser.Scene{
     .on('pointerdown', () =>  this.AccessToLevel(9));
     //Fondo con nombre y boton JUGAR
     if(userLang == "es"){
-      this.level9Name = this.add.image(gameWidth*12.6/16, gameHeight*4.1/16, 'Nivel9Name');
+      this.level9Name = this.add.image(gameWidth*12.6/16, gameHeight*3.7/16, 'Nivel9Name');
     }else{
-      this.level9Name = this.add.image(gameWidth*12.6/16, gameHeight*4.1/16, 'Level9Name');
+      this.level9Name = this.add.image(gameWidth*12.6/16, gameHeight*3.7/16, 'Level9Name');
     }
     this.level9Name.setScale(1.8/3);
     this.level9Name.setVisible(false);
   }
 
   update(){
+
+    //this.SetTextPos();
 
     if (user.map[0] == true){
       this.buttonNode1.setVisible(true);
@@ -1063,6 +1073,21 @@ class World1Map extends Phaser.Scene{
 
      }
 
+   }
+
+   SetTextPos(){
+
+     if((user.money>0) && (user.money<100)){
+       this.MoneyW1M.x = gameWidth*13/16
+     }else if((user.money>=100) && (user.money<1000)){
+       this.MoneyW1M.x = gameWidth*12.9/16
+     }else if ((user.money>1000) && (user.money<10000)){
+       this.MoneyW1M.x = gameWidth*12.8/16
+     }else if ((user.money>=10000) && (user.money<10000)){
+       this.MoneyW1M.x = gameWidth*12.7/16
+     }else{
+       this.MoneyW1M.x = gameWidth*12.6/16
+     }
    }
 
    StartPlaying(){

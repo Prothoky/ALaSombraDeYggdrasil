@@ -46,14 +46,6 @@ class MapSelectionMenu extends Phaser.Scene{
     this.backButtonMSM.on('pointerout', function (pointer) {this.backButtonMSMSel.setVisible(false);}, this);
     this.backButtonMSM.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.BackMainMenu());
 
-    //BOTON TIENDA
-    this.shopButtonW1M = this.add.image(gameWidth*14/16, gameHeight*1/16, 'shopButtonIG');
-    this.shopButtonW1M.setScale(1/3);
-    this.shopButtonW1M.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => this.ShopMenuMSM());
-
-
-
     //FULL SCREEN
     this.fullScreenMSM = this.add.image(gameWidth*15.5/16, gameHeight*13/14, 'buttonFullScreen');
     this.fullScreenMSM.setScale(2/60);
@@ -95,9 +87,10 @@ class MapSelectionMenu extends Phaser.Scene{
     if(level == 1){
       this.paperDescription1.setVisible(true);
       this.playButtonMSM.setVisible(true);
-      this.shopButtonW1M.setVisible(false);
       this.backButtonMSM.setVisible(false);
       this.backText.setVisible(false);
+      this.fullScreenMSM.setVisible(false);
+      this.timeText.setVisible(false);
     }
 
   }
@@ -105,10 +98,10 @@ class MapSelectionMenu extends Phaser.Scene{
   DesactivatePaper(){
     this.paperDescription1.setVisible(false);
     this.playButtonMSM.setVisible(false);
-    this.shopButtonW1M.setVisible(true);
     this.backButtonMSM.setVisible(true);
     this.backText.setVisible(true);
     this.timeText.setVisible(true);
+    this.fullScreenMSM.setVisible(true);
   }
 
   BackMainMenu(){
@@ -134,10 +127,10 @@ class MapSelectionMenu extends Phaser.Scene{
     //this.timeText.setText("Quedan " + dias + " días y \n" + horas +" horas para desbloquear el siguiente Mundo");
     //poner If english = dias + days left
     if(dias==0){
-      this.timeText.setText(horas + " horas \n" + "restantes");     
+      this.timeText.setText(horas + " horas \n" + "restantes");
     }
     else{
-      this.timeText.setText(dias + " días \n" + "restantes");     
+      this.timeText.setText(dias + " días \n" + "restantes");
     }
     if(unlockDate -  new Date() < 0 || unlockDate == new Date()){
       this.timeText.setText("NUEVO MUNDO DESBLOQUEADO");

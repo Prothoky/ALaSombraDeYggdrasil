@@ -5,8 +5,6 @@ class SettingsMenu extends Phaser.Scene{
       this.easyButtonSelSM;
       this.mediumButtonSelSM;
       this.diffButtonSelSM;
-      //this.difSel = userConfig.difficulty;
-
       this.backButtonText;
       this.resetText;
       this.easyText;
@@ -227,9 +225,7 @@ class SettingsMenu extends Phaser.Scene{
     this.mediumButtonSelSM.setVisible(false);
     this.diffButtonSelSM.setVisible(false);
     userConfig.difficulty = 0;
-    //userConfig.difficulty = 0;
     console.log ("Nivel fácil" + userConfig.difficulty);
-    //console.log ("Nivel fácil" + userConfig.difficulty);
     saveUserData();
   }
 
@@ -239,9 +235,6 @@ class SettingsMenu extends Phaser.Scene{
     this.diffButtonSelSM.setVisible(false);
     userConfig.difficulty = 1;
     userConfig.difficulty = 1;
-    //console.log ("Nivel medio" + userConfig.difficulty);
-    ///console.log ("Nivel medio" + userConfig.difficulty);
-
     saveUserData();
   }
 
@@ -250,10 +243,7 @@ class SettingsMenu extends Phaser.Scene{
     this.mediumButtonSelSM.setVisible(false);
     this.diffButtonSelSM.setVisible(true);
     userConfig.difficulty= 2;
-    //userConfig.difficulty = 2;
     console.log ("Nivel dificil" + userConfig.difficulty);
-    //console.log ("Nivel dificil" + this.difSel);
-
     saveUserData();
   }
 

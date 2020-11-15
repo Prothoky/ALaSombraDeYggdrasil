@@ -212,7 +212,7 @@ class LevelManager extends Phaser.Scene
         // Dependiendo de la dificultad escogida asignamos nº vidas
         switch (userConfig.difficulty) {
             case 0:
-                this.playerHealth = 5;
+                this.playerHealth = 80;
                 break;
             case 1:
                 this.playerHealth = 3;
@@ -313,9 +313,21 @@ class LevelManager extends Phaser.Scene
 
         // ----HUD----
         // 1) Botón de pausa
-        this.buttonPause = this.add.image(60, 40, 'pauseButton');
+        this.buttonPause = this.add.image(60, 40, 'backButton');
+        this.buttonPause.setScale(1.5/3);
         this.buttonPause.setScrollFactor(0);
+        this.buttonPauseSel = this.add.image(75, 33, 'selSmallRightButton');
+        this.buttonPauseSel.setScale(1.5/3);
+        this.buttonPauseSel.setScrollFactor(0);
+        this.buttonPauseSel.setVisible(false);
+
+        this.buttonPause.on('pointerover', function (pointer) {this.buttonPauseSel.setVisible(true);}, this);
+        this.buttonPause.on('pointerout', function (pointer) {this.buttonPauseSel.setVisible(false);}, this);
         this.buttonPause.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.PauseGame());
+
+        this.pauseText = this.add.text(gameWidth*0.4/16, gameHeight*0.68/16,  stringsJSON.Buttons.pause, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
+        this.pauseText.setScrollFactor(0);
+
 
         // 2) Puntos de vida
         this.healthIconOffset = 30; // Offset de los iconos de vida
@@ -347,7 +359,7 @@ class LevelManager extends Phaser.Scene
         this.DialogBg.setVisible(false);
         //this.DialogBg.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.nextDialog());
 
-        this.DialogText = this.add.text(gameWidth*6.75/16, gameHeight*11.5/16,  " ", {fontFamily: "StayHappy",fontSize: "20px", align: 'center', fill: "#481d18"});
+        this.DialogText = this.add.text(gameWidth*6/16, gameHeight*11/16,  " ", {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
         this.DialogText.setScrollFactor(0);
         this.DialogText.setDepth(8);
         this.DialogText.setVisible(false);
@@ -1021,6 +1033,10 @@ class LevelManager extends Phaser.Scene
         this.soundRunning.stop();
         this.endTrigger.setVisible(false);
         this.buttonPause.setVisible(false);
+        this.Money.setVisible(false);
+        this.backgroundMoney.setVisible(false);
+        this.buttonPause.setVisible(false);
+        this.pauseText.setVisible(false);
 
         for(let i = 0; i < this.playerHealth; i++) {    // Posiciona los puntos de vida en el HUD
             this.healthPointsDisplay[i].setVisible(false);
@@ -1339,6 +1355,9 @@ class LevelManager extends Phaser.Scene
         this.bg_medium.tilePositionX = this.cameras.main.scrollX * .5;
         this.bg_near.tilePositionX = this.cameras.main.scrollX;
         */
+
+        this.SetTextPos();
+
        if(!this.DialogShowing){
             this.bg_backgorund.tilePositionX = this.cameras.main.scrollX * .1;
             this.bg_far.tilePositionX = this.cameras.main.scrollX *.5;
@@ -1403,6 +1422,22 @@ class LevelManager extends Phaser.Scene
         this.testButton.enabled = true;
         this.pauseButton.enabled =true;
         this.controls_enable=true;
+    }
+
+    SetTextPos(){
+
+      if((user.money>0) && (user.money<100)){
+        this.Money.x = gameWidth*13/16
+      }else if((user.money>=100) && (user.money<1000)){
+        this.Money.x = gameWidth*12.9/16
+      }else if ((user.money>=1000) && (user.money<10000)){
+        this.Money.x = gameWidth*12.8/16
+      }else if ((user.money>=10000) && (user.money<10000)){
+        this.Money.x = gameWidth*12.7/16
+      }else{
+        this.Money.x = gameWidth*12.6/16
+      }
+
     }
 
 }
