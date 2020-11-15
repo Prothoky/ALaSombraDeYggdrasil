@@ -907,15 +907,20 @@ class LevelManager extends Phaser.Scene
     // Pinta imagen de cabaña y crea 3 plataformas y 1 barricada
     generateCabinUp(xPos, yPos = this.levelGroundHeight + 123, scaleFactor = 0.7, enemies = true) {
         xPos += 300;
-        let cabinId;
+        let cabinId1;
+        let cabinId2;
         if (this.isIceLevel) {
-            cabinId = 'cabin_up_ice';
+            cabinId1 = 'cabin_up_ice_1';
+            cabinId2 = 'cabin_up_ice_2';
         } else {
-            cabinId = 'cabin_up';
+            cabinId1 = 'cabin_up_1';
+            cabinId2 = 'cabin_up_2';
         }
-        let localCabin = this.physics.add.image(xPos, yPos, cabinId).setScale(scaleFactor).setOrigin(0, 1);
-        localCabin.body.setAllowGravity(false);
-        localCabin.depth = 2;
+        let localCabin1 = this.physics.add.image(xPos, yPos, cabinId1).setScale(scaleFactor).setOrigin(0, 1);
+        localCabin1.body.setAllowGravity(false);
+        localCabin1.depth = 2;
+        let localCabin2 = this.physics.add.image(xPos, yPos, cabinId2).setScale(scaleFactor).setOrigin(0, 1);
+        localCabin2.body.setAllowGravity(false);
         this.generatePlatform(xPos - 275, 300, enemies && Math.random() >= 0.5);
         this.generatePlatform(xPos + 130, 260, enemies, 0.35, false, true);
         this.generatePlatform(xPos + 330, 260, enemies && Math.random() >= 0.5, 0.35, false, true);
@@ -931,7 +936,8 @@ class LevelManager extends Phaser.Scene
 
         this.cabinHitbox.create(xPos + 310, this.levelGroundHeight, 'spikes').setOrigin(0, 1).setSize(370, 160).setVisible(false);
 
-        this.cabins[this.cabins.length] = localCabin;   // Almacena referencia para su eliminación
+        this.cabins[this.cabins.length] = localCabin1;   // Almacena referencia para su eliminación
+        this.cabins[this.cabins.length] = localCabin2;   // Almacena referencia para su eliminación
         return this.minDistCabin;
     }
 

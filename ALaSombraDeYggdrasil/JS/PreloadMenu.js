@@ -107,10 +107,12 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('einar', 'ASSETS/Gameplay/einar_provisional.png');
       this.load.image('barricade', 'ASSETS/Gameplay/barricade.png');
       this.load.image('trunk', 'ASSETS/Gameplay/trunk.png');
-      this.load.image('cabin_up', 'ASSETS/Gameplay/cabin_up.png');
+      this.load.image('cabin_up_1', 'ASSETS/Gameplay/cabin_up_1.png');
+      this.load.image('cabin_up_2', 'ASSETS/Gameplay/cabin_up_2.png');
       this.load.image('cabin_down_1', 'ASSETS/Gameplay/cabin_down_1.png');
       this.load.image('cabin_down_2', 'ASSETS/Gameplay/cabin_down_2.png');
-      this.load.image('cabin_up_ice', 'ASSETS/Gameplay/cabin_up_ice.png');
+      this.load.image('cabin_up_ice_1', 'ASSETS/Gameplay/cabin_up_ice_1.png');
+      this.load.image('cabin_up_ice_2', 'ASSETS/Gameplay/cabin_up_ice_2.png');
       this.load.image('cabin_down_ice_1', 'ASSETS/Gameplay/cabin_down_ice_1.png');
       this.load.image('cabin_down_ice_2', 'ASSETS/Gameplay/cabin_down_ice_2.png');
       this.load.image('platform', 'ASSETS/Gameplay/platform.png');
