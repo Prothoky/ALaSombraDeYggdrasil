@@ -347,7 +347,7 @@ class LevelManager extends Phaser.Scene
         this.DialogBg.setVisible(false);
         //this.DialogBg.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.nextDialog());
 
-        this.DialogText = this.add.text(gameWidth*6.75/16, gameHeight*11.5/16,  " ", {fontFamily: "StayHappy",stroke:'#000000', fill: "white", strokeThickness: 2});
+        this.DialogText = this.add.text(gameWidth*6.75/16, gameHeight*11.5/16,  " ", {fontFamily: "StayHappy",fontSize: "20px", align: 'center', fill: "#481d18"});
         this.DialogText.setScrollFactor(0);
         this.DialogText.setDepth(8);
         this.DialogText.setVisible(false);
@@ -356,27 +356,25 @@ class LevelManager extends Phaser.Scene
         this.buttonDialog.setScale(2/3);
         this.buttonDialog.setDepth(11);
         this.buttonDialog.setScrollFactor(0);
-        //this.buttonDialog.setVisible(false);
+        this.buttonDialog.setVisible(false);
 
         this.buttonDialogSel = this.add.image(gameWidth*10.7/16, gameHeight*13.34/16, 'buttonDialogSel');
         this.buttonDialogSel.setScale(2/3);
         this.buttonDialogSel.setDepth(11);
         this.buttonDialogSel.setScrollFactor(0);
-        //this.buttonDialogSel.setVisible(false);
+        this.buttonDialogSel.setVisible(false);
 
         //this.buttonDialog.setScale(0.5);
         this.buttonDialog.on('pointerover', function (pointer) {this.buttonDialogSel.setVisible(true);}, this);
         this.buttonDialog.on('pointerout', function (pointer) {this.buttonDialogSel.setVisible(false);}, this);
-        this.buttonDialog.setInteractive({ useHandCursor: true}).on('pointerdown', () => (this.nextDialog()));
+        this.buttonDialog.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.nextDialog());
 
         //FULL SCREEN
         this.fullScreenLM = this.add.image(gameWidth*15.5/16, gameHeight*13/14, 'buttonFullScreen');
         this.fullScreenLM.setScale(2/60);
         this.fullScreenLM.setScrollFactor(0);
         this.fullScreenLM.setDepth(10);
-        this.fullScreenLM.setInteractive({ useHandCursor: true})
-    		.on('pointerdown', function() { this.scene.scale.toggleFullscreen();
-        });
+        this.fullScreenLM.setInteractive({ useHandCursor: true}).on('pointerdown', function() { this.scene.scale.toggleFullscreen()});
 
 
         // ----CONTROLES----
@@ -1021,13 +1019,13 @@ class LevelManager extends Phaser.Scene
         this.following=false;
         musicGameplay.stop();
         this.soundRunning.stop();
-
         this.endTrigger.setVisible(false);
         this.buttonPause.setVisible(false);
 
         for(let i = 0; i < this.playerHealth; i++) {    // Posiciona los puntos de vida en el HUD
             this.healthPointsDisplay[i].setVisible(false);
         }
+
         this.Disable_controls();
         this.time.addEvent({
                 delay: 800,
@@ -1037,6 +1035,7 @@ class LevelManager extends Phaser.Scene
                     this.buttonDialog.setVisible(true);
                     this.DialogShowing=true;
                     this.showDialog();
+                    console.log("deberia funcionar la flecha");
                 },
                 callbackScope: this
         }, this);
@@ -1200,7 +1199,7 @@ class LevelManager extends Phaser.Scene
             this.arcadeIntervalTimer.remove();
         }
 
-        if (Number(user.buffs[1]) == 1) {
+      /*  if (Number(user.buffs[1]) == 1) {
           user.buffs[1] = 0;
         }
 
@@ -1210,7 +1209,7 @@ class LevelManager extends Phaser.Scene
 
         if (Number(user.buffs[3]) == 1) {
           user.buffs[3] = 0;
-        }
+        }*/
     }
 
     // Función que se ejecuta repetidamente en el modo arcade, actualiza posición y aumenta velocidad
@@ -1385,7 +1384,7 @@ class LevelManager extends Phaser.Scene
     }
 
     Disable_controls(){
-        this.input.enabled = false;
+        //this.input.enabled = false;
         this.jumpButton.enabled = false;
         this.leftButton.enabled = false;
         this.rightButton.enabled =false;
@@ -1396,7 +1395,7 @@ class LevelManager extends Phaser.Scene
     }
 
     Enable_controls(){
-        this.input.enabled = true;
+        //this.input.enabled = true;
         this.jumpButton.enabled = true;
         this.leftButton.enabled = true;
         this.rightButton.enabled =true;
