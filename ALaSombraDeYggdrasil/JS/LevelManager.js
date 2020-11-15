@@ -1424,20 +1424,20 @@ class LevelManager extends Phaser.Scene
         this.controls_enable=true;
     }
 
-    SetTextPos(){
-
-      if((user.money>0) && (user.money<100)){
-        this.Money.x = gameWidth*13/16
-      }else if((user.money>=100) && (user.money<1000)){
-        this.Money.x = gameWidth*12.9/16
-      }else if ((user.money>=1000) && (user.money<10000)){
-        this.Money.x = gameWidth*12.8/16
-      }else if ((user.money>=10000) && (user.money<10000)){
-        this.Money.x = gameWidth*12.7/16
-      }else{
-        this.Money.x = gameWidth*12.6/16
-      }
-
+    SetTextPos() {
+        if (!this.endlessMode) {
+            if((user.money>0) && (user.money<100)){
+                this.Money.x = gameWidth*13/16
+            }else if((user.money>=100) && (user.money<1000)){
+                this.Money.x = gameWidth*12.9/16
+            }else if ((user.money>=1000) && (user.money<10000)){
+                this.Money.x = gameWidth*12.8/16
+            }else if ((user.money>=10000) && (user.money<10000)){
+                this.Money.x = gameWidth*12.7/16
+            }else{
+                this.Money.x = gameWidth*12.6/16
+            }
+        }
     }
 
 }
