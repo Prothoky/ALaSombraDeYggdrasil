@@ -213,7 +213,7 @@ class LevelManager extends Phaser.Scene
         this.bg_backgorund.setScale(0.66);
         this.bg_far.setScale(0.66);
         this.bg_medium.setScale(0.66);
-        this.bg_near.setScale(0.6);
+        this.bg_near.setScale(0.75);
 
         //  ----GAMEPLAY----
         // 1) PERSONAJE
