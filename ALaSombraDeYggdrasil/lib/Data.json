@@ -175,6 +175,7 @@
       ]
 
     ],
+
     "Loading": "Cargando",
 
     "Map_Menu": {
@@ -395,6 +396,7 @@
       ]
     ]
   },
+
   "Store": {
     "shields": {
       "price": 30

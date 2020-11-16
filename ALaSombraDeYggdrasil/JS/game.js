@@ -105,33 +105,18 @@ function resetUserData(){
 var stringsJSON;
 //var userLang;
 
-/*function updateLanguage(){
-  /*if(userLang==null)
-    userLang = navigator.language || navigator.userLanguage;*/
-  /*if(userLang == "es-ES" || "es"){
+function updateLanguage(userLang =null){
+  if(userConfig.lang==null)
+    userConfig.lang = navigator.language || navigator.userLanguage;
+  if(userLang == "es-ES" || "es"){
     stringsJSON = phaserJSON.esp;
-    userLang = "es";
+    userConfig.lang = "es";
   }
   else if(userLang == "en-US" || "en"){
     stringsJSON = phaserJSON.eng;
-    userLang = "en";
+    userConfig.lang = "en";
   }
-
-  if(userConfig.lang==null){
-    userConfig.lang = navigator.language || navigator.userLanguage;
-  }else{
-    if(userConfig.lang == "es-ES" || "es"){
-      stringsJSON = phaserJSON.esp;
-      //userLang = "es";
-    }
-    else if(userConfig.lang == "en-US" || "en"){
-      stringsJSON = phaserJSON.eng;
-      //userLang = "en";
-    }
-  }*/
-
-
-//}
+}
 
 //var gamePaused = false;
 
