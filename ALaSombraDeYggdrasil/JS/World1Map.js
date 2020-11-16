@@ -75,6 +75,9 @@ class World1Map extends Phaser.Scene{
     this.shopButtonW1MSel.setScale(1.5/3);
     this.shopButtonW1MSel.setVisible(false);
     this.shopButtonText = this.add.text(gameWidth*14.1/16, gameHeight*0.92/16,  stringsJSON.Buttons.shop, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
+    if (userConfig.lang == "en"){
+      this.shopButtonText.setX(gameWidth*14.25 /16);
+    }
     this.shopButtonW1M.on('pointerover', function (pointer) {this.shopButtonW1MSel.setVisible(true);}, this);
     this.shopButtonW1M.on('pointerout', function (pointer) {this.shopButtonW1MSel.setVisible(false);}, this);
     this.shopButtonW1M.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.ShopMenuW1M());
@@ -89,6 +92,9 @@ class World1Map extends Phaser.Scene{
     this.backButtonW1MSel.setVisible(false);
     //Texto Boton
     this.backText = this.add.text(gameWidth*14.18/16, gameHeight*14.61/16,  stringsJSON.Buttons.back, {fontFamily: "Acadian_Runes",fontSize: "16px", align: 'center', fill: "#481d18"});
+    if (userConfig.lang == "en"){
+      this.backText.setX(gameWidth*14.3 /16);
+    }
     //Acciones Boton
     this.backButtonW1M.on('pointerover', function (pointer) {this.backButtonW1MSel.setVisible(true);}, this);
     this.backButtonW1M.on('pointerout', function (pointer) {this.backButtonW1MSel.setVisible(false);}, this);
@@ -216,7 +222,11 @@ class World1Map extends Phaser.Scene{
     }else{
       this.level2Name = this.add.image(gameWidth*10.18/16, gameHeight*10.1/16, 'Level2Name');
     }
-    this.level2Name.setScale(2.1/3);
+    if (userConfig.lang == "en"){
+      this.level2Name.setScale(1.8/3);
+    }else{
+      this.level2Name.setScale(2.1/3);
+    }
     this.level2Name.setVisible(false);
 
     //SUBNIVEL 2.1
@@ -1085,7 +1095,7 @@ class World1Map extends Phaser.Scene{
        this.MoneyW1M.x = gameWidth*12.9/16
      }else if ((user.money>1000) && (user.money<10000)){
        this.MoneyW1M.x = gameWidth*12.8/16
-     }else if ((user.money>=10000) && (user.money<10000)){
+     }else if ((user.money>=10000) && (user.money<100000)){
        this.MoneyW1M.x = gameWidth*12.7/16
      }else{
        this.MoneyW1M.x = gameWidth*12.6/16

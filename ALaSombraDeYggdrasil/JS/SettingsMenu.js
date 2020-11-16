@@ -5,6 +5,9 @@ class SettingsMenu extends Phaser.Scene{
       this.easyButtonSelSM;
       this.mediumButtonSelSM;
       this.diffButtonSelSM;
+      this.easyButtonSM;
+      this.mediumButtonSM;
+      this.diffButtonSM;
       this.backButtonText;
       this.resetText;
       this.easyText;
@@ -13,6 +16,7 @@ class SettingsMenu extends Phaser.Scene{
       this.languageText;
 
       this.erase = false;
+      this.dif;
   }
 
   create(){
@@ -44,11 +48,8 @@ class SettingsMenu extends Phaser.Scene{
     this.easyButtonSelSM2.setScale(2/3);
     this.easyButtonSelSM2.setVisible(false);
 
-    if (userConfig.difficulty != 0){
-      this.easyButtonSM.on('pointerover', function (pointer) {this.easyButtonSelSM2.setVisible(true);}, this);
-      this.easyButtonSM.on('pointerout', function (pointer) {this.easyButtonSelSM2.setVisible(false);}, this);
-    }
-
+    this.easyButtonSM.on('pointerover', function (pointer) {this.easyButtonSelSM2.setVisible(true);}, this);
+    this.easyButtonSM.on('pointerout', function (pointer) {this.easyButtonSelSM2.setVisible(false);}, this);
     this.easyButtonSM.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.EasyLevel());
 
 
@@ -56,6 +57,9 @@ class SettingsMenu extends Phaser.Scene{
     this.mediumButtonSM = this.add.image(gameWidth*8.00/16, gameHeight*6.5/16, 'deselectedButton');
     this.mediumButtonSM.setScale(2/3);
     this.medText = this.add.text(gameWidth*7/16, gameHeight*6.1/16,  stringsJSON.Buttons.medium , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "40px"});
+    if (userConfig.lang == "en"){
+      this.medText.setX(gameWidth*7.15/16);
+    }
     //Seleccionado
     this.mediumButtonSelSM = this.add.image(gameWidth*8.00/16, gameHeight*6.5/16, 'MediumButtonSelected');
     this.mediumButtonSelSM.setScale(2/3);
@@ -70,11 +74,8 @@ class SettingsMenu extends Phaser.Scene{
     this.mediumButtonSelSM2.setScale(2/3);
     this.mediumButtonSelSM2.setVisible(false);
 
-    if (userConfig.difficulty != 1){
-      this.mediumButtonSM.on('pointerover', function (pointer) {this.mediumButtonSelSM2.setVisible(true);}, this);
-      this.mediumButtonSM.on('pointerout', function (pointer) {this.mediumButtonSelSM2.setVisible(false);}, this);
-    }
-
+    this.mediumButtonSM.on('pointerover', function (pointer) {this.mediumButtonSelSM2.setVisible(true);}, this);
+    this.mediumButtonSM.on('pointerout', function (pointer) {this.mediumButtonSelSM2.setVisible(false);}, this);
     this.mediumButtonSM.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.MediumLevel());
 
 
@@ -82,6 +83,9 @@ class SettingsMenu extends Phaser.Scene{
     this.diffButtonSM = this.add.image(gameWidth*11.15/16, gameHeight*6.5/16, 'deselectedButton');
     this.diffButtonSM.setScale(2/3);
     this.diffText = this.add.text(gameWidth*10.2/16, gameHeight*6.1/16,  stringsJSON.Buttons.difficult , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "40px"});
+    if (userConfig.lang == "en"){
+      this.diffText.setX(gameWidth*10.3/16);
+    }
     //Seleccionado
     this.diffButtonSelSM = this.add.image(gameWidth*11.15/16, gameHeight*6.5/16, 'DifficultButtonSelected');
     this.diffButtonSelSM.setScale(2/3);
@@ -96,11 +100,8 @@ class SettingsMenu extends Phaser.Scene{
     this.diffButtonSelSM2.setScale(2/3);
     this.diffButtonSelSM2.setVisible(false);
 
-    if (userConfig.difficulty != 2){
-      this.diffButtonSM.on('pointerover', function (pointer) {this.diffButtonSelSM2.setVisible(true);}, this);
-      this.diffButtonSM.on('pointerout', function (pointer) {this.diffButtonSelSM2.setVisible(false);}, this);
-    }
-
+    this.diffButtonSM.on('pointerover', function (pointer) {this.diffButtonSelSM2.setVisible(true);}, this);
+    this.diffButtonSM.on('pointerout', function (pointer) {this.diffButtonSelSM2.setVisible(false);}, this);
     this.diffButtonSM.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.DifficultLevel());
 
     //CHANGE LANGUAGE
@@ -126,7 +127,10 @@ class SettingsMenu extends Phaser.Scene{
     this.resetButtonSel.setVisible(false);
     this.resetButtonSel.setScale(2/3);
     //Texto
-    this.resetText = this.add.text(gameWidth*7.2/16, gameHeight*10.4/16,  stringsJSON.Buttons.erase_Data , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "40px"});
+    this.resetText = this.add.text(gameWidth*6.8/16, gameHeight*10.4/16,  stringsJSON.Buttons.erase_Data , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "40px"});
+    if (userConfig.lang == "en"){
+      this.resetText.setX(gameWidth*7.2/16);
+    }
     //Acciones boton
     this.resetButton.on('pointerover', function (pointer) {this.resetButtonSel.setVisible(true);}, this);
     this.resetButton.on('pointerout', function (pointer) {this.resetButtonSel.setVisible(false);}, this);
@@ -140,7 +144,10 @@ class SettingsMenu extends Phaser.Scene{
     this.confirmButtonSel.setVisible(false);
     this.confirmButtonSel.setScale(2/3);
     //Texto
-    this.confirmText = this.add.text(gameWidth*7/16, gameHeight*10.4/16,  stringsJSON.Buttons.confirm , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "40px"});
+    this.confirmText = this.add.text(gameWidth*6.9/16, gameHeight*10.5/16,  stringsJSON.Buttons.confirm , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "35px"});
+    if (userConfig.lang == "en"){
+      this.confirmText.setX(gameWidth*7.2/16);
+    }
     this.confirmText.setVisible(false);
     //Acciones boton
     this.confirmButton.on('pointerover', function (pointer) {this.confirmButtonSel.setVisible(true);}, this);
@@ -155,7 +162,10 @@ class SettingsMenu extends Phaser.Scene{
     this.cancelButtonSel.setVisible(false);
     this.cancelButtonSel.setScale(2/3);
     //Texto
-    this.cancelText = this.add.text(gameWidth*10.4/16, gameHeight*10.4/16,  stringsJSON.Buttons.cancel , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "40px"});
+    this.cancelText = this.add.text(gameWidth*10.4/16, gameHeight*10.5/16,  stringsJSON.Buttons.cancel , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "35px"});
+    if (userConfig.lang == "en"){
+      this.cancelText.setX(gameWidth*10.8/16);
+    }
     this.cancelText.setVisible(false);
     //Acciones boton
     this.cancelButton.on('pointerover', function (pointer) {this.cancelButtonSel.setVisible(true);}, this);
@@ -171,6 +181,9 @@ class SettingsMenu extends Phaser.Scene{
     this.backButtonSMSel.setVisible(false);
     //Texto
     this.backButtonText = this.add.text(gameWidth*7.2/16, gameHeight*12.6/16,  stringsJSON.Buttons.back , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "40px"});
+    if (userConfig.lang == "en"){
+      this.backButtonText.setX(gameWidth*7.4/16);
+    }
     //Funciones Botones
     this.backButtonSM.on('pointerover', function (pointer) {this.backButtonSMSel.setVisible(true);}, this);
     this.backButtonSM.on('pointerout', function (pointer) {this.backButtonSMSel.setVisible(false);}, this);
@@ -180,6 +193,8 @@ class SettingsMenu extends Phaser.Scene{
   }
 
   Update(){
+
+    this.dif = userConfig.difficulty ;
 
     if (userConfig.difficulty == 0){
       this.easyButtonSelSM.setVisible(true);
@@ -276,7 +291,9 @@ class SettingsMenu extends Phaser.Scene{
     this.medText.setText( stringsJSON.Buttons.medium);
     this.diffText.setText( stringsJSON.Buttons.difficult);
     this.languageText.setText( stringsJSON.Buttons.language);
-
+    this.cancelText.setText( stringsJSON.Buttons.cancel);
+    this.confirmText.setText( stringsJSON.Buttons.confirm);
+    this.UpdatePosition();
     saveUserData();
   }
 
@@ -321,5 +338,25 @@ class SettingsMenu extends Phaser.Scene{
       delay: 0
     };
   }
+
+  UpdatePosition(){
+
+	if(userConfig.lang == "es"){
+		this.medText.setX(gameWidth*7/16);
+		this.diffText.setX(gameWidth*10.2/16);
+		this.resetText.setX(gameWidth*6.8/16);
+		this.confirmText.setX(gameWidth*6.9/16);
+		this.cancelText.setX(gameWidth*10.4/16);
+		this.backButtonText.setX(gameWidth*7.2/16);
+
+	}else{
+		this.medText.setX(gameWidth*7.15/16);
+		this.diffText.setX(gameWidth*10.3/16);
+		this.resetText.setX(gameWidth*7.2/16);
+		this.confirmText.setX(gameWidth*7.2/16);
+		this.cancelText.setX(gameWidth*10.8/16);
+		this.backButtonText.setX(gameWidth*7.4/16);
+	}
+}
 
 }

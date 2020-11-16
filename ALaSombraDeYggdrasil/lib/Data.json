@@ -30,9 +30,9 @@
       "easy": "TRAVESÍA",
       "medium": "CACERÍA",
       "difficult": "FRENESÍ",
-      "erase_Data": "RESET",
-      "confirm": "Confirmar",
-      "cancel": "Cancelar",
+      "erase_Data": "RESETEAR",
+      "confirm": "CONFIRMAR",
+      "cancel": "CANCELAR",
       "buy": "COMPRAR",
       "language": "ESPAÑOL"
     },

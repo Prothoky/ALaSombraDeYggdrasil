@@ -1292,6 +1292,8 @@ class LevelManager extends Phaser.Scene
         this.time.delayedCall(2500, () => {
           this.indexText = 0;
           if (levelIndex == 9){
+            world1Completed = true;
+            user.map[0] = true;
             this.scene.stop('LevelManager');
             this.scene.start('WinnerMenu');
           }else{
@@ -1628,7 +1630,7 @@ class LevelManager extends Phaser.Scene
                 this.Money.x = gameWidth*12.9/16
             }else if ((user.money>=1000) && (user.money<10000)){
                 this.Money.x = gameWidth*12.8/16
-            }else if ((user.money>=10000) && (user.money<10000)){
+            }else if ((user.money>=10000) && (user.money<100000)){
                 this.Money.x = gameWidth*12.7/16
             }else{
                 this.Money.x = gameWidth*12.6/16

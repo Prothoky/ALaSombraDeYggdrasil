@@ -62,10 +62,10 @@ class MainMenu extends Phaser.Scene{
     this.historyButtonSel.setScale(2/3);
     //Texto
 
-    if (userConfig.lang == 'esp' || "es-ES"){
-      this.historyButtonText = this.add.text(gameWidth*9.35/16, gameHeight*6.72/16,  stringsJSON.Buttons.story , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "40px"});
-    }else if (userConfig.lang == 'en' || "en-US"){
-      this.arcadeButtonText = this.add.text(gameWidth*9.55/16, gameHeight*6.72/16,  phaserJSON.eng.Buttons.story , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "40px"});
+    this.historyButtonText = this.add.text(gameWidth*9.35/16, gameHeight*6.72/16,  stringsJSON.Buttons.story , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "40px"});
+
+    if (userConfig.lang == "en"){
+      this.historyButtonText.setX(gameWidth*9.6/16)
     }
     //Funciones Botones
     this.historyButton.on('pointerover', function (pointer) {this.historyButtonSel.setVisible(true);}, this);
@@ -97,6 +97,9 @@ class MainMenu extends Phaser.Scene{
     this.optionsButtonSel.setScale(2/3);
     //Texto
     this.optionsButtonText = this.add.text(gameWidth*7.8/16, gameHeight*11.2/16,  stringsJSON.Buttons.options , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "40px"});
+    if (userConfig.lang == "en"){
+      this.optionsButtonText.setX(gameWidth*8/16)
+    }
     //Acciones boton
     this.optionsButton.on('pointerover', function (pointer) {this.optionsButtonSel.setVisible(true);}, this);
     this.optionsButton.on('pointerout', function (pointer) {this.optionsButtonSel.setVisible(false);}, this);
@@ -112,6 +115,9 @@ class MainMenu extends Phaser.Scene{
     this.creditsButtonSel.setVisible(false);
     //Texto
     this.creditsButtonText = this.add.text(gameWidth*7.8/16, gameHeight*13.3/16,  stringsJSON.Buttons.credits , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "40px"});
+    if (userConfig.lang == "en"){
+      this.creditsButtonText.setX(gameWidth*8/16)
+    }
     //Funciones Botones
     this.creditsButton.on('pointerover', function (pointer) {this.creditsButtonSel.setVisible(true);}, this);
     this.creditsButton.on('pointerout', function (pointer) {this.creditsButtonSel.setVisible(false);}, this);

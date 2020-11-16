@@ -15,7 +15,7 @@ class MapSelectionMenu extends Phaser.Scene{
 
     //BACKGROUND
 
-    if(levelIndex < 10){
+    if(user.map[0] == false){
       this.backgroundMSM = this.add.image(0, 0, 'backgroundMSM');
     }else{
       this.backgroundMSM = this.add.image(0, 0, 'backgroundMSMWolrd1Comp');
@@ -47,6 +47,9 @@ class MapSelectionMenu extends Phaser.Scene{
     this.backButtonMSMSel.setVisible(false);
     //Texto Boton
     this.backText = this.add.text(gameWidth*14.18/16, gameHeight*14.61/16,  stringsJSON.Buttons.back, {fontFamily: "Acadian_Runes",fontSize: "16px", align: 'center', fill: "#481d18"});
+    if (userConfig.lang == "en"){
+      this.backText.setX(gameWidth*14.24 /16);
+    }
     //Acciones Boton
     this.backButtonMSM.on('pointerover', function (pointer) {this.backButtonMSMSel.setVisible(true);}, this);
     this.backButtonMSM.on('pointerout', function (pointer) {this.backButtonMSMSel.setVisible(false);}, this);
@@ -83,7 +86,10 @@ class MapSelectionMenu extends Phaser.Scene{
     this.playButtonMSM.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.World1Menu());
 
     //Texto tiempo
-    this.timeText = this.add.text(gameWidth*8.2/16, gameHeight*7.5/16, "TEXTO" , {fontFamily: "Acadian_Runes", fill: "white", fontSize: 18});
+    this.timeText = this.add.text(gameWidth*8.1/16, gameHeight*7.5/16, "TEXTO" , {fontFamily: "Acadian_Runes", fill: "white", fontSize: 18});
+    if (userConfig.lang == "en"){
+      this.timeText.setX(gameWidth*8.2/16);
+    }
 
     this.events.once("Update Date", this.updateTimeText, this);
     this.events.once("Unlock World", this.unlockWorld, this);
@@ -143,13 +149,27 @@ class MapSelectionMenu extends Phaser.Scene{
     //this.timeText.setText("Quedan " + dias + " días y \n" + horas +" horas para desbloquear el siguiente Mundo");
     //poner If english = dias + days left
     if(dias==0){
-      this.timeText.setText(horas + " horas \n" + "restantes");
+      if (userConfig.lang == "es"){
+        this.timeText.setText(horas + " horas \n" + "restantes");
+      }else{
+        this.timeText.setText(horas + " hours \n" + "  left");
+      }
     }
     else{
-      this.timeText.setText(dias + " días \n" + "restantes");
+      if (userConfig.lang == "es"){
+        this.timeText.setText(" " + dias + " días \n" + "restantes");
+      }else{
+        this.timeText.setText(dias + " days \n" + "  left");
+      }
+
     }
     if(unlockDate -  new Date() < 0 || unlockDate == new Date()){
-      this.timeText.setText("NUEVO MUNDO DESBLOQUEADO");
+
+      if (userConfig.lang == "es"){
+        this.timeText.setText("NUEVO MUNDO DESBLOQUEADO");
+      }else{
+        this.timeText.setText("NEW WORLD UNLOCKED");
+      }
       this.events.emit("Unlock World",);
     }
   }

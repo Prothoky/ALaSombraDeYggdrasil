@@ -18,8 +18,9 @@ class ShopMenu extends Phaser.Scene{
     this.backgroundSM .setPosition(gameWidth/2, gameHeight/2);
 
     //MONEY
-    this.Money = this.add.text(gameWidth*14.8/16, gameHeight*1.28/16,  user.money, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
-    this.Money.setOrigin(0.5,0.5);
+    this.MoneyShop = this.add.text(gameWidth*14.8/16, gameHeight*1/16,  user.money, {fontFamily: "Acadian_Runes",fontSize: "26px", align: 'center', fill: "#481d18"});
+    this.SetTextPos();
+    //this.Money.setOrigin(0.5,0.5);
 
     //BOTON OBJETO 1
     this.object1Button = this.add.image(gameWidth*3.96/16, gameHeight*14.08/16, 'deselectedButtonSmall');
@@ -33,6 +34,9 @@ class ShopMenu extends Phaser.Scene{
     this.icon1Button.setScale(2/3);
     //Texto BOTON
     this.buyObject1 = this.add.text(gameWidth*3.45/16, gameHeight*13.9/16,  stringsJSON.Buttons.buy, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
+    if (userConfig.lang == "en"){
+      this.buyObject1.setX(gameWidth*3.7/16);
+    }
     this.textIcon1Button= this.add.text(gameWidth*15.5/16, gameHeight*3.6/16, (" x" + user.buffs[0]), {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "white"});
     this.buyObject1.setVisible(false);
     //Acciones Boton
@@ -56,6 +60,9 @@ class ShopMenu extends Phaser.Scene{
     //this.object2Bought.setVisible(false);
     //Texto BOTON
     this.buyObject2 = this.add.text(gameWidth*6.15/16, gameHeight*13.9/16,  stringsJSON.Buttons.buy, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
+    if (userConfig.lang == "en"){
+      this.buyObject2.setX(gameWidth*6.4/16);
+    }
     this.buyObject2.setVisible(false);
     //Acciones Boton
     if(Number(user.buffs[1]) < 1){
@@ -78,6 +85,9 @@ class ShopMenu extends Phaser.Scene{
     //this.object3Bought.setVisible(false);
     //Texto Boton
     this.buyObject3 = this.add.text(gameWidth*8.85/16, gameHeight*13.9/16,  stringsJSON.Buttons.buy, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
+    if (userConfig.lang == "en"){
+      this.buyObject3.setX(gameWidth*9.1/16);
+    }
     this.buyObject3.setVisible(false);
     //Acciones Boton
     if(Number(user.buffs[2]) < 1){
@@ -100,6 +110,9 @@ class ShopMenu extends Phaser.Scene{
     //this.object4Bought.setVisible(false);
     //Texto Boton
     this.buyObject4 = this.add.text(gameWidth*11.55/16, gameHeight*13.9/16,  stringsJSON.Buttons.buy, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
+    if (userConfig.lang == "en"){
+      this.buyObject4.setX(gameWidth*11.8/16);
+    }
     this.buyObject4.setVisible(false);
     //Acciones Boton
     if(Number(user.buffs[2]) < 1){
@@ -159,7 +172,7 @@ class ShopMenu extends Phaser.Scene{
     if ((user.money >= phaserJSON.Store.shields.price)&& (user.buffs[0] < 3)){
       user.buffs[0]++;
       user.money-= phaserJSON.Store.shields.price;
-      this.Money.setText(user.money);
+      this.MoneyShop.setText(user.money);
       this.icon1Button.setVisible(true);
       this.textIcon1Button.setVisible(true);
       this.textIcon1Button.setText("x"+ user.buffs[0]);
@@ -182,7 +195,7 @@ class ShopMenu extends Phaser.Scene{
       if ((user.money >= phaserJSON.Store.doublejump.price)&&(user.buffs[1] == 0)){
         user.buffs[1]++;
         user.money-= phaserJSON.Store.doublejump.price;
-        this.Money.setText(user.money);
+        this.MoneyShop.setText(user.money);
         this.object2Bought.setVisible(true);
         this.icon2Button.setVisible(true);
         this.buyObject2.setVisible(false);
@@ -199,7 +212,7 @@ class ShopMenu extends Phaser.Scene{
     if ((user.money >= phaserJSON.Store.invulnerability.price)&&(user.buffs[2] == 0)){
       user.buffs[2]++;
       user.money-= phaserJSON.Store.invulnerability.price;
-      this.Money.setText(user.money);
+      this.MoneyShop.setText(user.money);
       this.object3Bought.setVisible(true);
       this.icon3Button.setVisible(true);
       this.buyObject3.setVisible(false);
@@ -216,7 +229,7 @@ class ShopMenu extends Phaser.Scene{
     if ((user.money >= phaserJSON.Store.cooldown.price) && (Number(user.buffs[3]) == 0)){
       user.buffs[3]++;
       user.money-= phaserJSON.Store.cooldown.price;
-      this.Money.setText(user.money);
+      this.MoneyShop.setText(user.money);
       this.icon4Button.setVisible(true);
       this.object4Bought.setVisible(true);
       this.buyObject4.setVisible(false);
@@ -230,6 +243,28 @@ class ShopMenu extends Phaser.Scene{
     this.clickSound.play();
     this.scene.pause('ShopMenu');
     this.scene.start(prevScene);
+  }
+
+  SetTextPos() {
+
+          if((user.money>0) && (user.money<100)){
+            console.log("menos 100");
+              this.MoneyShop.x = gameWidth*14.55/16
+          }else if((user.money>=100) && (user.money<1000)){
+            console.log("menos 1.000");
+              this.MoneyShop.x = gameWidth*14.45/16
+          }else if ((user.money>=1000) && (user.money<10000)){
+            console.log("menos 10.000");
+              this.MoneyShop.x = gameWidth*14.35/16
+          }else if ((user.money>=10000) && (user.money<100000)){
+            console.log("menos 100.000");
+              this.MoneyShop.x = gameWidth*14.25/16
+          }else{
+            console.log("lol");
+            console.log(user.money);
+              this.MoneyShop.x = gameWidth*14.15/16
+          }
+
   }
 
   EffectsConfig(){

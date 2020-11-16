@@ -52,6 +52,7 @@ var controls = {  // Controles del jugador (teclado)
 var fpsTarget = 60;
 
 var levelIndex = 0; // Indica el nivel a generar para LevelManager (CAMBIAR A PASO DE OBJETO DE ESCENA A ESCENA)
+var world1Completed = false;
 
 var prevScene = 'MainMenu';
 

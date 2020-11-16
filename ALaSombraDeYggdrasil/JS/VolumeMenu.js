@@ -47,6 +47,9 @@ class VolumeMenu extends Phaser.Scene{
     this.backButtonVMSel.setVisible(false);
     //TEXT
     this.backText = this.add.text(gameWidth*7.1/16, gameHeight*12.5/16,  stringsJSON.Buttons.back, {fontFamily: "Acadian_Runes",fontSize: "40px", align: 'center', fill: "#481d18"});
+    if (userConfig.lang == "en"){
+      this.backText.setX(gameWidth*7.4/16)
+    }
     //ACTIONS
     this.backButtonVM.on('pointerover', function (pointer) {this.backButtonVMSel.setVisible(true);}, this);
     this.backButtonVM.on('pointerout', function (pointer) {this.backButtonVMSel.setVisible(false);}, this);

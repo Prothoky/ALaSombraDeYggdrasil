@@ -21,6 +21,9 @@ class OptionsMainMenu extends Phaser.Scene{
     this.VolumeButtonOMSel.setVisible(false);
     //TEXT
     this.volumeText = this.add.text(gameWidth*7/16, gameHeight*6.3/16,  stringsJSON.Buttons.volume, {fontFamily: "Acadian_Runes",fontSize: "40px", align: 'center', fill: "#481d18"});
+    if (userConfig.lang == "en"){
+      this.volumeText.setX(gameWidth*7.1/16)
+    }
     //ACTIONS
     this.VolumeButtonOM.on('pointerover', function (pointer) {this.VolumeButtonOMSel.setVisible(true);}, this);
     this.VolumeButtonOM.on('pointerout', function (pointer) {this.VolumeButtonOMSel.setVisible(false);}, this);
@@ -34,6 +37,9 @@ class OptionsMainMenu extends Phaser.Scene{
     this.SettingsButtonOMSel.setVisible(false);
     //TEXT
     this.seetingsText = this.add.text(gameWidth*7.1/16, gameHeight*9.3/16,  stringsJSON.Buttons.adjust, {fontFamily: "Acadian_Runes",fontSize: "40px", align: 'center', fill: "#481d18"});
+    if (userConfig.lang == "en"){
+      this.seetingsText.setX(gameWidth*6.9/16)
+    }
     //ACTIONS
     this.SettingsButtonOM.on('pointerover', function (pointer) {this.SettingsButtonOMSel.setVisible(true);}, this);
     this.SettingsButtonOM.on('pointerout', function (pointer) {this.SettingsButtonOMSel.setVisible(false);}, this);
@@ -48,6 +54,9 @@ class OptionsMainMenu extends Phaser.Scene{
     this.backButtonOMSel.setVisible(false);
     //TEXT
     this.backText = this.add.text(gameWidth*7.1/16, gameHeight*12.5/16,  stringsJSON.Buttons.back, {fontFamily: "Acadian_Runes",fontSize: "40px", align: 'center', fill: "#481d18"});
+    if (userConfig.lang == "en"){
+      this.backText.setX(gameWidth*7.4/16)
+    }
     //ACTIONS
     this.backButtonOM.on('pointerover', function (pointer) {this.backButtonOMSel.setVisible(true);}, this);
     this.backButtonOM.on('pointerout', function (pointer) {this.backButtonOMSel.setVisible(false);}, this);

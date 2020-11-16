@@ -25,6 +25,8 @@ class WinnerMenu extends Phaser.Scene{
 
   ContinueWM(){
     this.clickSound.play();
+    world1Completed = true;
+    user.map[0] = true;
     this.scene.pause('WinnerMenu');
     this.scene.sendToBack('WinnerMenu');
     this.scene.start('MapSelectionMenu');
