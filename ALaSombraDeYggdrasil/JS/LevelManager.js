@@ -1028,12 +1028,16 @@ class LevelManager extends Phaser.Scene
     }
 
     // Moneda
-    generateCoin(xPos, yPos = this.levelGroundHeight - 150, scaleFactor = 2.5, highValue = false) {
+    generateCoin(xPos, yPos = this.levelGroundHeight - 150, scaleFactor = this.playerResizeFactor, highValue = false) {
+        let hitboxWidth = 70;
+        let hitboxHeight = 70;
         if (highValue) {
-            let localCoin = this.coins.create(xPos, yPos, 'dude').setScale(scaleFactor).setTint(0xe62272).refreshBody();
+            let localCoin = this.coins.create(xPos, yPos, 'coin_1').setScale(scaleFactor).setTint(0xe62272).refreshBody();
+            localCoin.body.setSize(hitboxWidth, hitboxHeight);
             localCoin.value = 1;
         } else {
-            let localCoin = this.coins.create(xPos, yPos, 'dot').setScale(scaleFactor).refreshBody();
+            let localCoin = this.coins.create(xPos, yPos, 'coin_1').setScale(scaleFactor).refreshBody();
+            localCoin.body.setSize(hitboxWidth, hitboxHeight);
             localCoin.value = 0;
 
         }

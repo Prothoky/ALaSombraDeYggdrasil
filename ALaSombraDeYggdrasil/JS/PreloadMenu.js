@@ -143,6 +143,7 @@ class PreloadMenu extends Phaser.Scene{
       this.load.spritesheet('eagle_attacking', 'ASSETS/Gameplay/eagle_attacking.png', { frameWidth: 650, frameHeight: 550 });
       this.load.image('life', 'ASSETS/Tienda/IconoBendicion.png');
       this.load.image('ravenHugin', 'ASSETS/Gameplay/Hugin.png');
+      this.load.image('coin_1', 'ASSETS/Gameplay/coin_1.png');
 
       this.load.image('backgroundDialogEinar', 'ASSETS/Gameplay/CajaTextoEinar.png');
       this.load.image('backgroundDialogHugin', 'ASSETS/Gameplay/CajaTextoHugin.png');
