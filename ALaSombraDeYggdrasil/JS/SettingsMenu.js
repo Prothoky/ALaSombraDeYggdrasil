@@ -17,6 +17,9 @@ class SettingsMenu extends Phaser.Scene{
 
   create(){
 
+    
+    this.load.json('Data',"./lib/Data.json");
+    this.settingsJSON = this.cache.json.get('Data');
     this.cameras.main.fadeIn(1500, 0, 0, 0);
 
     this.clickSound = this.sound.add('ClickButtonSound', this.EffectsConfig());
@@ -297,7 +300,7 @@ class SettingsMenu extends Phaser.Scene{
 
     if(erase == true){
       console.log("resetiado");
-      resetUserData();
+      resetUserData(this.settingsJSON);
       this.cameras.main.flash(600);
     }
     else{

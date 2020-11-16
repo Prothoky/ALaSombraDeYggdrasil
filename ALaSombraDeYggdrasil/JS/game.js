@@ -96,16 +96,16 @@ function loadUserData(){
     userConfig = JSON.parse(data);
 }
 
-function resetUserData(){
-  user=phaserJSON.user;
-  userConfig=phaserJSON.userConfig;
+function resetUserData(configJson){
+  user=configJson.user;
+  userConfig=configJson.userConfig;
   saveUserData();
 }
 
 var stringsJSON;
 
 function updateLanguage(userLang){
-  if(userConfig.lang==null || userConfig.lang=="null")
+  if(userConfig.lang==null || userConfig.lang=="null"|| userConfig.lang=="")
     userConfig.lang = navigator.language || navigator.userLanguage;
   if(userConfig.lang == "es-ES" || userConfig.lang == "es"){
     stringsJSON = phaserJSON.esp;
