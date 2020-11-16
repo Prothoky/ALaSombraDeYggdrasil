@@ -189,6 +189,7 @@ class LevelManager extends Phaser.Scene
         this.soundEnemy = this.sound.add('enemy_1', config);
         this.clickButtonSound = this.sound.add('ClickButtonSound', config);
         this.poemSound = this.sound.add('Poem', config);
+        this.dialogSound = this.sound.add('musicDialog', config);
 
         // 2) BACKGROUND
         if (this.isIceLevel) {
@@ -1195,6 +1196,9 @@ class LevelManager extends Phaser.Scene
                 delay: timeFadeOut,
                 callback: function() {
 
+                  this.dialogSound.setLoop(true);
+                  this.dialogSound.play();
+
                   if((levelIndex < 10) || (levelIndex == 14) ||(levelIndex == 15) ){
                     this.DialogBg.setVisible(true);
                     this.DialogText.setVisible(true);
@@ -1242,6 +1246,7 @@ class LevelManager extends Phaser.Scene
         }
         else{
             this.DialogShowing = false;
+            this.dialogSound.stop();
             this.levelCompletedFunc();
         }
     }
