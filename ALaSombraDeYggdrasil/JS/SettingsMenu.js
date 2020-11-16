@@ -213,18 +213,24 @@ class SettingsMenu extends Phaser.Scene{
     }
 
     if (userConfig.difficulty != 0){
-      this.easyButtonSM.on('pointerover', function (pointer) {this.easyButtonSelSM2.setVisible(true);}, this);
-      this.easyButtonSM.on('pointerout', function (pointer) {this.easyButtonSelSM2.setVisible(false);}, this);
+      this.easyButtonSM.on('pointerover', function (pointer) {//this.easyButtonSM.setTexture('');
+        this.easyButtonSelSM2.setVisible(true);}, this);
+      this.easyButtonSM.on('pointerout', function (pointer) {//this.easyButtonSM.setTexture('');
+        this.easyButtonSelSM2.setVisible(false);}, this);
     }
 
     if (userConfig.difficulty != 1){
-      this.mediumButtonSM.on('pointerover', function (pointer) {this.mediumButtonSelSM2.setVisible(true);}, this);
-      this.mediumButtonSM.on('pointerout', function (pointer) {this.mediumButtonSelSM2.setVisible(false);}, this);
+      this.mediumButtonSM.on('pointerover', function (pointer) {//this.mediumButtonSM.setTexture('');
+        this.mediumButtonSelSM2.setVisible(true);}, this);
+      this.mediumButtonSM.on('pointerout', function (pointer) {//this.mediumButtonSM.setTexture('');
+        this.mediumButtonSelSM2.setVisible(false);}, this);
     }
 
     if (userConfig.difficulty != 2){
-      this.diffButtonSM.on('pointerover', function (pointer) {this.diffButtonSelSM2.setVisible(true);}, this);
-      this.diffButtonSM.on('pointerout', function (pointer) {this.diffButtonSelSM2.setVisible(false);}, this);
+      this.diffButtonSM.on('pointerover', function (pointer) {//this.diffButtonSM.setTexture('');
+        this.diffButtonSelSM2.setVisible(true);}, this);
+      this.diffButtonSM.on('pointerout', function (pointer) {//this.diffButtonSM.setTexture('');
+        this.diffButtonSelSM2.setVisible(false);}, this);
     }
 
 

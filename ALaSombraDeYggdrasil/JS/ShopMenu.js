@@ -9,6 +9,7 @@ class ShopMenu extends Phaser.Scene{
 
   create(){
 
+    this.bendicionDeHierroSound = this.sound.add('soundBendicionDeHierro',this.EffectsConfig())
     this.buyObj = this.sound.add('BuyObject', this.EffectsConfig());
     this.clickSound = this.sound.add('ClickButtonSound', this.EffectsConfig());
     this.cameras.main.fadeIn(1500, 0, 0, 0);
@@ -168,7 +169,7 @@ class ShopMenu extends Phaser.Scene{
   AddObject1(){
 
     this.buyObj.play();
-
+    this.bendicionDeHierroSound.play();
     if ((user.money >= phaserJSON.Store.shields.price)&& (user.buffs[0] < 3)){
       user.buffs[0]++;
       user.money-= phaserJSON.Store.shields.price;

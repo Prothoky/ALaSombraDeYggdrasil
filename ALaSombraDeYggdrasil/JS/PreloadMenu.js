@@ -138,6 +138,8 @@ class PreloadMenu extends Phaser.Scene{
 
     //SHOP MEMU
       this.load.image('backgroundSM', './ASSETS/Tienda/FondoTienda.jpg');
+      //Sonidos
+      this.load.audio('soundBendicionDeHierro' , './ASSETS/Sounds/BendicionDeHierro.m4a')
       //Comprados
       this.load.image('object1Bought', './ASSETS/Tienda/BendicionMaximo.png');
       this.load.image('object2Bought', './ASSETS/Tienda/FuerzaComprado.png');
