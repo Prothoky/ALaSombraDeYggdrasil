@@ -851,7 +851,7 @@ class LevelManager extends Phaser.Scene
         newEnemy.setOffset(80, 140);
         newEnemy.depth = 3;
         newEnemy.isStill = true;
-        let newTrigger = this.triggers.create(xPos - 500, this.levelGroundHeight, 'dot').setVisible(false).refreshBody();
+        let newTrigger = this.triggers.create(xPos - 250, this.levelGroundHeight, 'dot').setVisible(false).refreshBody();
         newTrigger.body.setSize(500, 500);   // Trigger que hará que el enemigo se mueva cuando entre el personaje en contacto
         newTrigger.associatedEnemy = newEnemy;
         return this.minDistStillEnemy;
