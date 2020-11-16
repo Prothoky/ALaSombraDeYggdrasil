@@ -99,6 +99,7 @@ class LevelManager extends Phaser.Scene
         this.doubleJumpAvaliable = true;    // Está el doble salto disponible?
         this.playerAttackAvaliable = true;  // Está el ataque disponible?
         this.isPlayerInvulnerable = false;  // Es el jugador invulnerable?
+        this.isPlayerAttacking = false;
         this.hasCicled = false; // Se ha completado una primera vuelta en el modo arcade?
         this.isIceLevel = false; // Es un nivel de hielo?
         this.hasArrived = false;    // Ha llegado al final del nivel?
@@ -675,7 +676,9 @@ class LevelManager extends Phaser.Scene
     // Si termina el timer o se suelta el botón de salto se llamará a playerStopJump()
     playerStartJump() {
         if (this.isPlayerTouchingGround && this.player.body.velocity.y == 0) {
-            this.player.anims.play('einar_jumping');
+            if (!this.isPlayerAttacking) {
+                this.player.anims.play('einar_jumping');
+            }
             this.soundJump.play(this.getAudioConfig());
             this.soundRunning.stop();
             this.player.setVelocityY(this.playerJumpSpeed);
@@ -721,7 +724,9 @@ class LevelManager extends Phaser.Scene
             this.isPlayerJumping = false;
             this.isPlayerTouchingGround = true;
             this.doubleJumpAvaliable = true;
-            this.player.anims.play('einar_running', true);
+            if (!this.isPlayerAttacking) {
+                this.player.anims.play('einar_running', true);
+            }
         }
     }
 
@@ -752,10 +757,13 @@ class LevelManager extends Phaser.Scene
     // Crea una hitbox de ataque (si está disponible el ataque) y crea los timers para su actualizado)
     playerAttack() {
         if (this.playerAttackAvaliable == true) {   // Si está disponible el ataque
+            this.isPlayerAttacking = true;
+            this.player.anims.play('einar_attacking');
             this.soundAttack.play(this.getAudioConfig());
             this.playerAttackAvaliable = false;
             // Crea la hitbox
             let localAttackHitbox = this.attackHitbox.create(this.player.body.x, this.player.body.y, 'bomb');    // Cambiar sprite por 'dot' al importar animacion definitiva
+            localAttackHitbox.setVisible(false);
             localAttackHitbox.setOrigin(0);
             localAttackHitbox.setSize(this.playerAttackWidth, this.playerAttackHeight, false);
             localAttackHitbox.body.setAllowGravity(false);
@@ -772,6 +780,7 @@ class LevelManager extends Phaser.Scene
     playerAttackRefresh() {
         this.playerAttackCounter += this.playerAttackRefreshRate;
         if (this.playerAttackCounter > this.playerAttackDuration) { // Si ha pasado el tiempo máximo destruye el ataque y crea timer para el cooldown.
+            this.isPlayerAttacking = false;
             this.attackHitbox.clear(true, true);
             this.playerAttackCounter = 0;
             this.playerAttackTimer.remove();
@@ -1412,7 +1421,7 @@ class LevelManager extends Phaser.Scene
 
     deleteCabins() {
         for (let i = 0; i < this.cabins.length; i++) {
-            if (this.cabins[i].x < this.player.x - 700) {
+            if (this.cabins[i].x < this.player.x - 1200) {
                 this.cabins[i].destroy();
                 this.cabins.splice(i, 1);
             }
@@ -1543,6 +1552,16 @@ class LevelManager extends Phaser.Scene
             this.player.body.setVelocityX(0);
             this.player.anims.stop(); //Sustituir por iddle si existe
             this.following=false;
+        }
+
+        if (this.player.anims.getCurrentKey() == 'einar_attacking'){
+            if (this.player.anims.getProgress() >= 1) {  
+                if (this.isPlayerTouchingGround) {
+                    this.player.anims.play('einar_running');
+                }   else {
+                    this.player.anims.play('einar_jumping');
+                }           
+            }
         }
     }
 
