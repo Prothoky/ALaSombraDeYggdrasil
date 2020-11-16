@@ -192,12 +192,12 @@ class LevelManager extends Phaser.Scene
             this.bg_backgorund = this.add.tileSprite(0, 0, 5715, 916, 'bg_background_ice');
             this.bg_far = this.add.tileSprite(0,0, 5715, 916, "bg_far_ice");
             this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium_ice");
-            this.bg_near = this.add.tileSprite(0,75, 5715, 916, "bg_near_ice");
+            this.bg_near = this.add.tileSprite(0,0, 5715, 916, "bg_near_ice");
         } else {
             this.bg_backgorund = this.add.tileSprite(0,0, 5715, 916, 'bg_background');
             this.bg_far = this.add.tileSprite(0,0, 5715, 916, "bg_far");
             this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium");
-            this.bg_near = this.add.tileSprite(0,75, 5715, 916, "bg_near");
+            this.bg_near = this.add.tileSprite(0,0, 5715, 916, "bg_near");
         }
         this.bg_near.depth = 6;
 
