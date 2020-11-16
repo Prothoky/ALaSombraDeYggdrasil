@@ -65,9 +65,8 @@ class World1Map extends Phaser.Scene{
     this.backgroundMoneyW1M.setScale(1.5/3);
     this.MoneyW1M = this.add.text(gameWidth*14/16, gameHeight*0.92/16,  user.money, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
 
-    if(user.money>100){
-      this.SetTextPos();
-    }
+    this.SetTextPos();
+    
 
     //BOTON TIENDA
     this.shopButtonW1M = this.add.image(gameWidth*14.5/16, gameHeight*1.1/16, 'deselectedButtonSmall');
@@ -1080,7 +1079,7 @@ class World1Map extends Phaser.Scene{
 
    SetTextPos(){
 
-     if((user.money>0) && (user.money<100)){
+     if((user.money>=0) && (user.money<100)){
        this.MoneyW1M.x = gameWidth*13/16
      }else if((user.money>=100) && (user.money<1000)){
        this.MoneyW1M.x = gameWidth*12.9/16
