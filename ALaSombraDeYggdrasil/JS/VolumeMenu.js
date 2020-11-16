@@ -87,7 +87,7 @@ class VolumeMenu extends Phaser.Scene{
     if ( userConfig.volumeEffects < 10) {
        userConfig.volumeEffects += 1;
     }
-
+    this.clickSound.setVolume(userConfig.volumeEffects/10);
     this.VolumenEfectos.setText( userConfig.volumeEffects);
   }
 
@@ -96,6 +96,7 @@ class VolumeMenu extends Phaser.Scene{
     if ( userConfig.volumeEffects > 0) {
        userConfig.volumeEffects -= 1;
     }
+    this.clickSound.setVolume(userConfig.volumeEffects/10);
     this.VolumenEfectos.setText( userConfig.volumeEffects);
   }
 
