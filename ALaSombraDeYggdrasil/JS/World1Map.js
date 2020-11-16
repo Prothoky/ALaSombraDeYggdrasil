@@ -104,7 +104,7 @@ class World1Map extends Phaser.Scene{
 
     //FULL SCREEN
     this.fullScreenW1M = this.add.image(gameWidth*15.5/16, gameHeight*13/14, 'buttonFullScreen');
-    this.fullScreenW1M.setScale(2/60, 1/60);
+    this.fullScreenW1M.setScale(2/60);
     this.fullScreenW1M.setInteractive({ useHandCursor: true})
 		.on('pointerdown', function() {
       this.scene.scale.toggleFullscreen();

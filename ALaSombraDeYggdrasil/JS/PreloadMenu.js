@@ -147,6 +147,13 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('backgroundSM', './ASSETS/Tienda/FondoTienda.jpg');
       //Sonidos
       this.load.audio('soundBendicionDeHierro' , './ASSETS/Sounds/BendicionDeHierro.m4a')
+      this.load.audio('soundPlumaDeValquiria' , './ASSETS/Sounds/PlumaDeValquiria.m4a')
+      this.load.audio('soundFuerzaDeOdin' , './ASSETS/Sounds/FuerzaDeOdin.m4a')
+      this.load.audio('soundFuria' , './ASSETS/Sounds/Furia.m4a')
+      this.load.audio('soundForceOfOdin' , './ASSETS/Sounds/ForceOfOdin.m4a')
+      this.load.audio('soundIronBlessing' , './ASSETS/Sounds/IronBlessing.m4a')
+      this.load.audio('soundValkirieFeather' , './ASSETS/Sounds/ValkirieFeather.m4a')
+      this.load.audio('soundRage' , './ASSETS/Sounds/Rage.m4a')
       //Comprados
       this.load.image('object1Bought', './ASSETS/Tienda/BendicionMaximo.png');
       this.load.image('object2Bought', './ASSETS/Tienda/FuerzaComprado.png');
