@@ -1295,7 +1295,7 @@ class LevelManager extends Phaser.Scene
           this.indexText = 0;
           if (levelIndex == 9){
             world1Completed = true;
-            //user.world[0] = true;
+            user.world[1] = true;
             this.scene.stop('LevelManager');
             this.scene.start('WinnerMenu');
           }else{

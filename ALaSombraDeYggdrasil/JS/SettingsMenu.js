@@ -15,6 +15,12 @@ class SettingsMenu extends Phaser.Scene{
       this.diffText;
       this.languageText;
 
+      this.diffButtonSelSM2;
+      this.easyButtonSelSM2;
+      this.mediumButtonSelSM2;
+      this.backgroundSM;
+
+
       this.erase = false;
       this.dif;
   }
@@ -27,6 +33,9 @@ class SettingsMenu extends Phaser.Scene{
     this.DiffSound = this.sound.add('ChangeDifficulty', this.EffectsConfig());
 
     this.backgroundSM = this.add.image(0, 0, 'backgroundSetM');
+    if (userConfig.lang == "en"){
+      this.backgroundSM.setTexture('backgroundSetMEn');
+    }
     this.backgroundSM.setScale(2/3);
     this.backgroundSM.setPosition(gameWidth/2, gameHeight/2);
 
@@ -37,16 +46,21 @@ class SettingsMenu extends Phaser.Scene{
     //Seleccionado
     this.easyButtonSelSM = this.add.image(gameWidth*4.8/16, gameHeight*6.5/16, 'EasyButtonSelected');
     this.easyButtonSelSM.setScale(2/3);
+    //Seleccionado 2
+    this.easyButtonSelSM2 = this.add.image(gameWidth*4.8/16, gameHeight*6.5/16, 'EasyButtonSelected');
+    this.easyButtonSelSM2.setScale(2/3);
+    this.easyButtonSelSM2.setVisible(false);
+
+    if (userConfig.lang == "en"){
+      this.easyButtonSelSM.setTexture('EasyButtonSelectedEn');
+      this.easyButtonSelSM2.setTexture('EasyButtonSelectedEn');
+    }
 
     if(userConfig.difficulty == 0){
       this.easyButtonSelSM.setVisible(true);
     }else{
       this.easyButtonSelSM.setVisible(false);
     }
-
-    this.easyButtonSelSM2 = this.add.image(gameWidth*4.8/16, gameHeight*6.5/16, 'EasyButtonSelected');
-    this.easyButtonSelSM2.setScale(2/3);
-    this.easyButtonSelSM2.setVisible(false);
 
     this.easyButtonSM.on('pointerover', function (pointer) {this.easyButtonSelSM2.setVisible(true);}, this);
     this.easyButtonSM.on('pointerout', function (pointer) {this.easyButtonSelSM2.setVisible(false);}, this);
@@ -57,12 +71,19 @@ class SettingsMenu extends Phaser.Scene{
     this.mediumButtonSM = this.add.image(gameWidth*8.00/16, gameHeight*6.5/16, 'deselectedButton');
     this.mediumButtonSM.setScale(2/3);
     this.medText = this.add.text(gameWidth*7/16, gameHeight*6.1/16,  stringsJSON.Buttons.medium , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "40px"});
-    if (userConfig.lang == "en"){
-      this.medText.setX(gameWidth*7.15/16);
-    }
     //Seleccionado
     this.mediumButtonSelSM = this.add.image(gameWidth*8.00/16, gameHeight*6.5/16, 'MediumButtonSelected');
     this.mediumButtonSelSM.setScale(2/3);
+    //Seleccionado2
+    this.mediumButtonSelSM2 = this.add.image(gameWidth*8.00/16, gameHeight*6.5/16, 'MediumButtonSelected');
+    this.mediumButtonSelSM2.setScale(2/3);
+    this.mediumButtonSelSM2.setVisible(false);
+
+    if (userConfig.lang == "en"){
+      this.medText.setX(gameWidth*7.15/16);
+      this.mediumButtonSelSM.setTexture('MediumButtonSelectedEn');
+      this.mediumButtonSelSM2.setTexture('MediumButtonSelectedEn');
+    }
 
     if(userConfig.difficulty == 1){
       this.mediumButtonSelSM.setVisible(true);
@@ -70,9 +91,7 @@ class SettingsMenu extends Phaser.Scene{
       this.mediumButtonSelSM.setVisible(false);
     }
 
-    this.mediumButtonSelSM2 = this.add.image(gameWidth*8.00/16, gameHeight*6.5/16, 'MediumButtonSelected');
-    this.mediumButtonSelSM2.setScale(2/3);
-    this.mediumButtonSelSM2.setVisible(false);
+
 
     this.mediumButtonSM.on('pointerover', function (pointer) {this.mediumButtonSelSM2.setVisible(true);}, this);
     this.mediumButtonSM.on('pointerout', function (pointer) {this.mediumButtonSelSM2.setVisible(false);}, this);
@@ -83,22 +102,27 @@ class SettingsMenu extends Phaser.Scene{
     this.diffButtonSM = this.add.image(gameWidth*11.15/16, gameHeight*6.5/16, 'deselectedButton');
     this.diffButtonSM.setScale(2/3);
     this.diffText = this.add.text(gameWidth*10.2/16, gameHeight*6.1/16,  stringsJSON.Buttons.difficult , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "40px"});
-    if (userConfig.lang == "en"){
-      this.diffText.setX(gameWidth*10.3/16);
-    }
+
     //Seleccionado
     this.diffButtonSelSM = this.add.image(gameWidth*11.15/16, gameHeight*6.5/16, 'DifficultButtonSelected');
     this.diffButtonSelSM.setScale(2/3);
+    //Seleccionado 2
+    this.diffButtonSelSM2 = this.add.image(gameWidth*11.15/16, gameHeight*6.5/16, 'DifficultButtonSelected');
+    this.diffButtonSelSM2.setScale(2/3);
+    this.diffButtonSelSM2.setVisible(false);
+
+    if (userConfig.lang == "en"){
+      this.diffText.setX(gameWidth*10.3/16);
+      this.diffButtonSelSM.setTexture('DifficultButtonSelectedEn');
+      this.diffButtonSelSM2.setTexture('DifficultButtonSelectedEn');
+    }
+
 
     if(userConfig.difficulty == 2){
       this.diffButtonSelSM.setVisible(true);
     }else{
       this.diffButtonSelSM.setVisible(false);
     }
-
-    this.diffButtonSelSM2 = this.add.image(gameWidth*11.15/16, gameHeight*6.5/16, 'DifficultButtonSelected');
-    this.diffButtonSelSM2.setScale(2/3);
-    this.diffButtonSelSM2.setVisible(false);
 
     this.diffButtonSM.on('pointerover', function (pointer) {this.diffButtonSelSM2.setVisible(true);}, this);
     this.diffButtonSM.on('pointerout', function (pointer) {this.diffButtonSelSM2.setVisible(false);}, this);
@@ -354,6 +378,13 @@ class SettingsMenu extends Phaser.Scene{
 		this.confirmText.setX(gameWidth*6.9/16);
 		this.cancelText.setX(gameWidth*10.4/16);
 		this.backButtonText.setX(gameWidth*7.2/16);
+    this.backgroundSM.setTexture('backgroundSetM');
+    this.easyButtonSelSM.setTexture('EasyButtonSelected');
+    this.easyButtonSelSM2.setTexture('EasyButtonSelected');
+    this.mediumButtonSelSM.setTexture('MediumButtonSelected');
+    this.mediumButtonSelSM2.setTexture('MediumButtonSelected');
+    this.diffButtonSelSM.setTexture('DifficultButtonSelected');
+    this.diffButtonSelSM2.setTexture('DifficultButtonSelected');
 
 	}else{
 		this.medText.setX(gameWidth*7.15/16);
@@ -362,6 +393,13 @@ class SettingsMenu extends Phaser.Scene{
 		this.confirmText.setX(gameWidth*7.2/16);
 		this.cancelText.setX(gameWidth*10.8/16);
 		this.backButtonText.setX(gameWidth*7.4/16);
+    this.backgroundSM.setTexture('backgroundSetMEn');
+    this.easyButtonSelSM.setTexture('EasyButtonSelectedEn');
+    this.easyButtonSelSM2.setTexture('EasyButtonSelectedEn');
+    this.mediumButtonSelSM.setTexture('MediumButtonSelectedEn');
+    this.mediumButtonSelSM2.setTexture('MediumButtonSelectedEn');
+    this.diffButtonSelSM.setTexture('DifficultButtonSelectedEn');
+    this.diffButtonSelSM2.setTexture('DifficultButtonSelectedEn');
 	}
 }
 
