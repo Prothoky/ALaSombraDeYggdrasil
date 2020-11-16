@@ -1019,7 +1019,7 @@ class LevelManager extends Phaser.Scene
     // Plataforma + pinchos (necesario saltar desde la plataforma para no recibir hit)
     generatePlatformToSpikes(xPos, enemy = true, yPos = this.levelGroundHeight - 38, scaleFactor = 0.9) {
         this.generatePlatform(xPos + Math.floor(Math.random() * 170), this.platformPositionY - this.platformPositionOffset/2, enemy);
-        let localSpikes = this.spikesTraps.create(xPos - 50, yPos, 'spikes_long').setScale(scaleFactor).setOrigin(0, 0).setSize(450, 10);;
+        let localSpikes = this.spikesTraps.create(xPos - 50, yPos, 'spikes_long').setScale(scaleFactor).setOrigin(0, 0).setSize(450, 10);
         localSpikes.setOffset(317, 90);
         return this.minDistPlatformToSpikes;
     }
@@ -1165,14 +1165,19 @@ class LevelManager extends Phaser.Scene
     goalArrived() {
         let timeFadeOut=3000;
         this.endLevelCollision.active = false;
-        this.player.setAccelerationX(-125);
+        this.player.setAccelerationX(-200);
         this.hasArrived = true;
         this.actualizeMapsCompleted();
         user.money+= levelSettings[DifficultyIndexSubnode(levelIndex)][userConfig.difficulty][3];
         user.map[levelIndex] = true;
         saveUserData();
-        this.following=false;
-        this.plugins.get('rexsoundfadeplugin').fadeOut(this, musicGameplay, timeFadeOut);
+        try{
+            this.plugins.get('rexsoundfadeplugin').fadeOut(this, musicGameplay, timeFadeOut);
+        }
+        catch(error){
+            console.log("Imposible get rexsoundfadeplugin")
+            musicGameplay.stop();
+        }
         this.soundRunning.stop();
         this.endTrigger.setVisible(false);
         this.buttonPause.setVisible(false);
@@ -1197,9 +1202,12 @@ class LevelManager extends Phaser.Scene
                     this.DialogShowing=true;
                   }
                   this.showDialog();
-                  //this.plugins.get('rexsoundfadeplugin').fadeOut(this, MusicDialog, 3000);
-                  //musicDialog.play();
-                  this.player.anims.stop();
+                  try{
+                    //this.plugins.get('rexsoundfadeplugin').fadeOut(this, MusicDialog, 3000);
+                  }
+                  catch{
+                    //musicDialog.play();
+                  }
                 },
                 callbackScope: this
         }, this);
@@ -1507,12 +1515,10 @@ class LevelManager extends Phaser.Scene
        }
        if(this.player.body.velocity.x<=0){
             this.player.setAccelerationX(0);
-           this.player.body.setVelocityX(0);
-       }
-       if(this.musicstopping){
-            musicGameplay.setVolume( userConfig.volume-=0.5);
-       }
-       
+            this.player.body.setVelocityX(0);
+            this.player.anims.stop(); //Sustituir por iddle si existe
+            this.following=false;
+        }
     }
 
     PauseGame() {
