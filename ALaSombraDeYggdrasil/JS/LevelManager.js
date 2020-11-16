@@ -90,6 +90,7 @@ class LevelManager extends Phaser.Scene
         this.endTrigger;    // Trigger del fin del nivel
         this.arcadeCicleCollision;  // Punto de reset (modo arcade)
         this.endLevelCollision;
+        this.enemyCollision;
 
         // 5) VARIABLES DE INFORMACIÓN
         this.levelHeight = gameHeight;  // Alto del nivel
@@ -294,7 +295,7 @@ class LevelManager extends Phaser.Scene
         this.physics.add.overlap(this.attackHitbox, this.enemies, this.killEnemy, null, this);  // LLama a killEnemy cuando la hitbox del ataque impacte con un enemigo
         this.physics.add.collider(this.enemies, this.platforms);    // Enemigos colisionan con el suelo
         this.physics.add.collider(this.enemies, this.ground);   // Enemigos colisionan con plataformas
-        this.physics.add.overlap(this.player, this.triggers, this.enemyStartMotion, null, this);    // Función que se llama al entrar el jugador en el área de visión del enemigo
+        this.enemyCollision = this.physics.add.overlap(this.player, this.triggers, this.enemyStartMotion, null, this);    // Función que se llama al entrar el jugador en el área de visión del enemigo
         this.physics.add.overlap(this.player, this.coins, this.collectCoin, null, this);    // Función de recoger moneda
         if (this.endlessMode == false) {    // Dependiendo de si es modo arcade
             this.endLevelCollision = this.physics.add.overlap(this.player, this.endTrigger, this.goalArrived, null, this);   // Genera el texto de fin del nivel
@@ -840,13 +841,19 @@ class LevelManager extends Phaser.Scene
     // Función de creación de enemigos sin movimiento
     // xPos, yPos: posición en el mapa
     // collisionWidth, collisionHeight: tamaño de la hitbox
-    generateStillEnemy(xPos, yPos = this.levelGroundHeight - 20, collisionWidth = 40, collisionHeight = 60) {
+    generateStillEnemy(xPos, yPos = this.levelGroundHeight - 20, collisionWidth = 250, collisionHeight = 140) {
         if (this.hasCicled) {
             yPos += 40;
         }
-        let newEnemy = this.enemies.create(xPos, yPos, 'dude').setOrigin(1).setTint(0xe62272).refreshBody();
+        xPos += 75;
+        let newEnemy = this.enemies.create(xPos, yPos, 'draugr').setOrigin(1).setScale(this.playerResizeFactor);
         newEnemy.body.setSize(collisionWidth, collisionHeight);
+        newEnemy.setOffset(80, 140);
         newEnemy.depth = 3;
+        newEnemy.isStill = true;
+        let newTrigger = this.triggers.create(xPos - 500, this.levelGroundHeight, 'dot').setVisible(false).refreshBody();
+        newTrigger.body.setSize(500, 500);   // Trigger que hará que el enemigo se mueva cuando entre el personaje en contacto
+        newTrigger.associatedEnemy = newEnemy;
         return this.minDistStillEnemy;
     }
 
@@ -860,6 +867,7 @@ class LevelManager extends Phaser.Scene
         newEnemy.body.setAllowGravity(false);
         newEnemy.body.setSize(collisionWidth, collisionHeight);
         newEnemy.setOffset(130, 330);
+        newEnemy.isStill = false;
         let newTrigger = this.triggers.create(xPos - 1700, this.levelGroundHeight, 'dot').setVisible(false).refreshBody();
         newTrigger.body.setSize(triggerWidth, triggerHeight);   // Trigger que hará que el enemigo se mueva cuando entre el personaje en contacto
         newTrigger.associatedEnemy = newEnemy;
@@ -953,7 +961,7 @@ class LevelManager extends Phaser.Scene
         let localCabin2 = this.physics.add.image(xPos, yPos, cabinId2).setScale(scaleFactor).setOrigin(0, 1);
         localCabin2.body.setAllowGravity(false);
         this.generatePlatform(xPos - 275, 300, enemies && Math.random() >= 0.5);
-        this.generatePlatform(xPos + 130, 260, enemies, 0.35, false, true);
+        this.generatePlatform(xPos + 130, 260, false, 0.35, false, true);
         this.generatePlatform(xPos + 330, 260, enemies && Math.random() >= 0.5, 0.35, false, true);
         // Fix modo arcade hitbox desplazada
 
@@ -1454,8 +1462,14 @@ class LevelManager extends Phaser.Scene
 
     // Función que ordena al enemigo moverse cuando se encuentra con el jugador
     enemyStartMotion(player, triggers) {
-        triggers.associatedEnemy.setVelocityX(this.eagleSpeedX);
-        triggers.associatedEnemy.setVelocityY(this.eagleSpeedY);
+        if (triggers.associatedEnemy.isStill == false) {
+            triggers.associatedEnemy.setVelocityX(this.eagleSpeedX);
+            triggers.associatedEnemy.setVelocityY(this.eagleSpeedY);
+        } else {            
+            if (!triggers.associatedEnemy.anims.isPlaying)
+                    triggers.associatedEnemy.anims.play('draugr_attacking');
+        }
+        this.triggers.remove(triggers, true);
     }
 
     // Destruye al enemigo

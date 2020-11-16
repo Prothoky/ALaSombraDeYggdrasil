@@ -141,6 +141,8 @@ class PreloadMenu extends Phaser.Scene{
       this.load.spritesheet('einar_jumping', 'ASSETS/Gameplay/animacion_saltar.png', { frameWidth: 400, frameHeight: 350 });
       this.load.spritesheet('einar_attack', 'ASSETS/Gameplay/animacion_atacar.png', { frameWidth: 400, frameHeight: 350 });
       this.load.spritesheet('eagle_attacking', 'ASSETS/Gameplay/eagle_attacking.png', { frameWidth: 650, frameHeight: 550 });
+      this.load.spritesheet('draugr_attacking', 'ASSETS/Gameplay/animacion_atacar_draugr.png', { frameWidth: 450, frameHeight: 350 });
+      this.load.image('draugr', 'ASSETS/Gameplay/draugr.png');
       this.load.image('life', 'ASSETS/Tienda/IconoBendicion.png');
       this.load.image('ravenHugin', 'ASSETS/Gameplay/Hugin.png');
       this.load.image('coin_1', 'ASSETS/Gameplay/coin_1.png');
@@ -341,6 +343,14 @@ class PreloadMenu extends Phaser.Scene{
       frameRate: 24,
       repeat: -1
     })
+
+    this.anims.create ({
+      key: 'draugr_attacking',
+      frames: this.anims.generateFrameNumbers('draugr_attacking', { start: 0, end: 11}),
+      frameRate: 24,
+      repeat: 0
+    })
+
 
     this.logo = this.add.sprite(gameWidth*8/16, gameHeight*8/16, 'Logo');
     this.logo.setScale(1/3);
