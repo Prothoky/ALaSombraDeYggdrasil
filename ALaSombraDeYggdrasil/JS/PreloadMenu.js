@@ -81,7 +81,7 @@ class PreloadMenu extends Phaser.Scene{
 
     //Map Selection Menu
       this.load.image('backgroundMSM', './ASSETS/MapSelectionMenu/MapMenuBackground.jpg');
-      this.load.image('backgroundMSMWolrd1Comp', './ASSETS/MapSelectionMenu/MapMenuBackground.jpg');
+      this.load.image('backgroundMSMWolrd1Comp', './ASSETS/MapSelectionMenu/MapMenuBackgroundMidgardComp.jpg');
       this.load.image('World1Button', './ASSETS/MapSelectionMenu/BotonMidgard.png');
       this.load.image('World2Button', './ASSETS/MapSelectionMenu/BotonMuspelheim.png');
       this.load.image('backButton', './ASSETS/MapSelectionMenu/BotonVolver.png');
@@ -268,9 +268,25 @@ class PreloadMenu extends Phaser.Scene{
 
     loadUserData();
 
+    if(userConfig.lang == "null"){
+      userConfig.lang = navigator.language || navigator.userLanguage;
+    }
+
     phaserJSON = this.cache.json.get('Data');
 
-    updateLanguage();
+    if(userConfig.lang == "es"){
+        stringsJSON = phaserJSON.esp;
+    }
+    else if(userConfig.lang == "en"){
+      stringsJSON = phaserJSON.eng;
+    }
+
+
+
+
+
+
+    //updateLanguage();
     var wid = this.cameras.main.width;
     var heig = this.cameras.main.height;
 

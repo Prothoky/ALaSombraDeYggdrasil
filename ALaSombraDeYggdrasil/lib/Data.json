@@ -10,7 +10,8 @@
   "userConfig": {
     "volumeMusic": 6,
     "volumeEffects": 6,
-    "difficulty": 0
+    "difficulty": 0,
+    "lang": "null"
   },
 
   "esp": {
@@ -130,7 +131,7 @@
         ["EINAR","\n Einar: ¿Qué habrá podido acabar con los dioses?  "],
         ["EINAR","\n Einar: Tengo que ir a verlo con mis propios ojos. "],
         ["EINAR","      Einar: Hugin, vamos a atravesar Yggdrasil \n y sus planetas para unir a un ejército \n con el que salvar Asgard. "],
-        ["EINAR","Einar: Yo solo estaría perdido, \n necesito conseguir a las mejores bestias \n y guerreros para limpiar la sombra \n que recorre las ramas."],
+        ["EINAR","      Einar: Yo solo estaría perdido, \n       necesito conseguir a las mejores bestias \n       y guerreros para limpiar la sombra \n       que recorre las ramas."],
         ["HUGIN"," \n       Hugin: : Las migas también son pan Einar. "],
         ["HUGIN","Hugin: : Cruzaremos los ocho mundos siguiendo \n la estela del arcoíris, \n se escribirán leyendas sobre este destino.  "],
         ["HUGIN","     Hugin: : Es peligroso ir solo, \n      mira siempre quien te da la mano \n      y quien te la esconde. "],
@@ -149,27 +150,27 @@
       [],
       [],
       [
-        [ "EINAR", "Einar: Mi pueblo adoraba estas cordilleras, \n los inviernos que vivíamos eran largos, \n pero recuerdo con mucho cariño las fiestas en el templo de Upsala. " ],
-        [ "EINAR", "Einar: Mi padre era un granjero muy querido \n y mi madre murió al darme a luz, \n ahora está con los dioses, o eso dicen. " ],
-        [ "EINAR", "Einar: Aprendí a luchar por supervivencia \n cuando mi pueblo conoció las invasiones de los rus.  " ],
-        [ "EINAR", "Einar: No hubo rey que pudiera con ellos, \n su inteligencia era digna de Balder." ],
-        [ "EINAR", "Einar: ¿Por qué hubo tanta guerra \n si todos teníamos la misma sangre? " ],
-        [ "EINAR", "Einar: ¿De qué sirvió si no queda nadie?" ],
-        [ "EINAR", "Einar: Soy el último vestigio de mi pueblo, \n pero para qué quiero estar aquí si no tengo\t \t  motivos para celebrar nada. " ],
-        [ "EINAR", "Einar: El tiempo es un daño constante. " ],
-        [ "EINAR", "Einar: Tener pulso no me hace estar vivo. " ]
+        [ "EINAR", "Einar: Mi pueblo adoraba estas cordilleras, \n los inviernos que vivíamos eran largos, \n pero recuerdo con mucho cariño \n las fiestas en el templo de Upsala. " ],
+        [ "EINAR", "     Einar: Mi padre era un granjero muy querido \n      y mi madre murió al darme a luz, \n      ahora está con los dioses, o eso dicen. " ],
+        [ "EINAR", "\n Einar: Aprendí a luchar por supervivencia \n cuando mi pueblo conoció las invasiones de los rus.  " ],
+        [ "EINAR", "\n      Einar: No hubo rey que pudiera con ellos, \n      su inteligencia era digna de Balder." ],
+        [ "EINAR", "\n      Einar: ¿Por qué hubo tanta guerra \n      si todos teníamos la misma sangre? " ],
+        [ "EINAR", " \n      Einar: ¿De qué sirvió si no queda nadie?" ],
+        [ "EINAR", "     Einar: Soy el último vestigio de mi pueblo, \n      pero para qué quiero estar aquí si no tengo \n  motivos para celebrar nada. " ],
+        [ "EINAR", " \n      Einar: El tiempo es un daño constante. " ],
+        [ "EINAR", " \n      Einar: Tener pulso no me hace estar vivo. " ]
       ],
       [
-        [ "EINAR", "Einar: Hace tanto tiempo que no veo a mi familia que ya no consigo reconocer poco más que unos destellos de paz. " ],
-        [ "EINAR", "Einar: Conocí a Kaira en las fiestas de la primavera con el crujir del deshielo.  " ],
-        [ "EINAR", "Einar: Luchamos en la orilla del río Sena y atravesamos incluso las columnas de hércules.   " ],
-        [ "EINAR", "Einar: Nadie me quería como ella, nunca olvidaré el día que dio a luz." ],
-        [ "EINAR", "Einar: Mi querida Greta era más pequeña que mi barba cuando nació." ],
-        [ "EINAR", "Einar: Con ella aprendí a amar." ],
-        [ "EINAR", "Einar: Siempre estaba corriendo por los cultivos, ella odiaba la lucha, su única pasión era escribir grandes relatos sobre los dioses y las historias que le contaba sobre mis guerras. " ],
-        [ "EINAR", "Einar: Algunas canciones las llevo en el bolsillo todavía. " ],
-        [ "EINAR", "Einar: ¿Qué queda de ellas ahora?" ],
-        [ "EINAR", "Einar: ¿Serán felices allá donde estén?    " ]
+        [ "EINAR", "     Einar: Hace tanto tiempo que no veo \n      a mi familia que ya no consigo reconocer \n      poco más que unos destellos de paz. " ],
+        [ "EINAR", "     Einar: Conocí a Kaira en las fiestas de \n      la primavera con el crujir del deshielo.  " ],
+        [ "EINAR", "Einar: Luchamos en la orilla del río Sena \n y atravesamos incluso las columnas de hércules.   " ],
+        [ "EINAR", "     Einar: Nadie me quería como ella, \n      nunca olvidaré el día que dio a luz." ],
+        [ "EINAR", "     Einar: Mi querida Greta era más pequeña \n      que mi barba cuando nació." ],
+        [ "EINAR", "\n           Einar: Con ella aprendí a amar." ],
+        [ "EINAR", "Einar: Siempre estaba corriendo por los \n cultivos, ella odiaba la lucha, su única pasión \n  era escribir grandes relatos sobre los dioses y \n las historias que le contaba sobre mis guerras. " ],
+        [ "EINAR", "\n           Einar: Algunas canciones las llevo \n en el bolsillo todavía. " ],
+        [ "EINAR", "\n           Einar: ¿Qué queda de ellas ahora?" ],
+        [ "EINAR", "\n           Einar: ¿Serán felices allá donde estén?    " ]
 
       ]
 
@@ -259,7 +260,7 @@
     },
     "Dialogs": [
       [
-        [ "EINAR", "\nEinar: It has been a long time since my last combat \n, my arms arent what they used to, \n my legs are tired." ],
+        [ "EINAR", "Einar: It has been a long time since my last combat, \n my arms arent what they used to, \n my legs are tired." ],
         [ "EINAR", "   Einar: I was blessed by gods so many suns ago, \n I am Einar, the inmortal, \n calamity of my enemies \n and my the shield of my hometown." ],
         [ "EINAR", "    \n         Einar: But I have not been a defender  \n for a long time." ],
         [ "EINAR", "    \n         Einar: Tell me, Munin, raven of the memory." ],
@@ -271,28 +272,28 @@
         [ "EINAR", "     Einar: I have been trying to remember  \n through my way, but I can barely \n see a few moments from my past life." ],
         [ "EINAR", "    \n          Einar: ¿Did I have a family? " ],
         [ "EINAR", "    \n     Einar: ¿What did the gods see in me?" ],
-        [ "EINAR", "     Einar: My memory only says  \n I have been too many years running away. \n My axe is rusty and I do not know which blood is mine." ],
-        [ "EINAR", "     Einar: I need names and reasons. \n I cant be inside the shelter of my \n ignorance anymore. Tell me, what should \n I do to find my answers?" ],
+        [ "EINAR", "     Einar: My memory only says I have been \n too many years running away. My axe \n is rusty and I do not know which blood is mine." ],
+        [ "EINAR", "          Einar: I need names and reasons. \n      I cant be inside the shelter of my \n      ignorance anymore. Tell me, what should \n      I do to find my answers?" ],
         [ "EINAR", "    \n          Einar: ¿Where should I go? " ],
         [ "MUNIN", "    \n          Munin:  …  …  … " ]
       ],
       [
-        [ "EINAR", "     Einar: This forest is full of places to die, \n I should look for the Freyja's lake." ],
-        [ "EINAR", "          Einar: Munin di algo que me sirva \n de brújula para seguir." ],
+        [ "EINAR", " \n     Einar: This forest is full of places to die, \n I should look for the Freyja's lake." ],
+        [ "EINAR", " \n         Einar: Munin di algo que me sirva \n de brújula para seguir." ],
         [ "MUNIN", "     \n           Munin: ¿Do you remember Greta?" ],
         [ "EINAR", "     \n           Einar: …" ],
-        [ "EINAR", "               Einar: My daughter, she was so little. \n Now I can see the color of her eyes, \n she loved riding a horse through that mountains." ],
-        [ "EINAR", "          Einar: Kaira, ay Kaira. \n I've just listened my wife's voice" ],
+        [ "EINAR", "     Einar: My daughter, she was so little. \n Now I can see the color of her eyes, \n she loved riding a horse through that mountains." ],
+        [ "EINAR", "          Einar: Kaira, ay Kaira. \n           I've just listened my wife's voice" ],
         [ "EINAR", "     \n           Einar: ¿How could I forgot who she was? " ],
         [ "MUNIN", "     \n           Munin:  …  …  … " ]
 
       ],
       [
-        [ "EINAR", " \n     Einar: I've been all this way thinking \n  about my home, about the wheat fields \n my family took care of." ],
+        [ "EINAR", " \n          Einar: I've been all this way thinking \n       about my home, about the wheat fields \n my family took care of." ],
         [ "EINAR", "     \n          Einar: Life there was so beautiful" ],
         [ "EINAR", "     \n          Einar: ¿How could I end this way? " ],
-        [ "EINAR", "     Einar: I spent so much time being one with the silence \n that I gave up thinking. \n I've finally woke up." ],
-        [ "EINAR", "     Einar: Munin, I need to keep remembering my past, \n  I want to know what happened with me \n and my hometown." ],
+        [ "EINAR", "     Einar: I spent so much time being one with \n the silence that I gave up thinking. \n I've finally woke up." ],
+        [ "EINAR", " Einar: Munin, I need to keep remembering my past, \n  I want to know what happened with me \n and my hometown." ],
         [ "EINAR", "     \n     Einar: ¿What did I do during my life?" ],
         [ "MUNIN", "     \n           Munin:  …  …  … " ]
 
@@ -302,18 +303,18 @@
         [ "EINAR", " \n     Einar: Why are you here Munin? " ],
         [ "MUNIN", "     \n           Munin: ¡Odín!" ],
         [ "EINAR", " \n     Einar: That damned god whas who \n constrained me to this body." ],
-        [ "EINAR", "Einar: He told me I would be the protector of my village, \n what he didin't say was all the battles \n i would fight and all the death \n I would carry on." ],
+        [ "EINAR", "Einar: He told me I would be the protector of \n my village, what he didin't say was all the battles \n i would fight and all the death \n I would carry on." ],
         [ "EINAR", " \n     Einar: ¿How can the divine be so sadist?" ]
       ],
       [
-        [ "EINAR", "           Einar: This lake makes me so peaceful, being here again is a blast, my house was at the East of the snowed mountains." ],
-        [ "EINAR", "      \n           Einar:  The cold was a mix between homesick and gloom." ],
+        [ "EINAR", "           Einar: This lake makes me feel so peaceful, \n being here again is a blast, \n my house was at the East of the snowed mountains." ],
+        [ "EINAR", "      \n           Einar:  The cold was a mix between homesick \n and gloom." ],
         [ "EINAR", "     \n           Einar: Jummm…," ],
-        [ "EINAR", " \n     Einar: Oh hugin, Raven of the Thought ¿What are you doing in Midgard? " ],
-        [ "EINAR", " \n     Einar: Hacia tantos inviernos que no volabas, \n que te di por extinto." ],
+        [ "EINAR", " \n     Einar: Oh hugin, Raven of the Thought \n ¿What are you doing in Midgard? " ],
+        [ "EINAR", " \n     Einar: It has been so many winters since \n your last soar, I thought you were stinct." ],
         [ "HUGIN", "     \n           Hugin:  …  …  … " ],
         [ "EINAR", " \n     Einar: I can see that time did not change you. " ],
-        [ "EINAR", "      Einar: If you are here to spy me on you will not see anything, I'm going to the place I was born, to look for the trace of my cradle." ],
+        [ "EINAR", "      Einar: If you are here to spy me on you will not \n see anything, I'm going to the place \n I was born, to look for the trace of my cradle." ],
         [ "EINAR", "     \n           Einar: ¿What still remains about myself?" ]
 
       ],
@@ -321,48 +322,76 @@
         [ "EINAR", "\n Einar: I go dragging, avoiding those berserkers, \n they are possessed by the mushrooms of the forest." ],
         [ "EINAR", " \n      Einar: I can feel their madness because \n  i felt it too. " ],
         [ "EINAR", " \n      Einar: How could have  I been so much time \n  abducted by the rage?" ],
-        [ "EINAR", "      Einar: Hugin, you know everything, \n confess me the gods’ reason. " ],
-        [ "HUGIN", " \n            Hugin: Your questions are blind. \n Look at your fist before looking at the clouds." ],
+        [ "EINAR", "\n       Einar: Hugin, you know everything, \n confess me the gods’ reason. " ],
+        [ "HUGIN", " \n            Hugin: Your questions are blind. Look \n at your fist before looking at the clouds." ],
         [ "EINAR", "      \n           Einar: Puf... " ],
         [ "EINAR", "Einar: Maybe you are right,, \n       the gods’ choices made me immortal, \n but the thirst for blood was mine.  " ],
         [ "EINAR", "      Einar: The wall of my faith has gagged me \n converting my wishes in a vile future." ],
-        [ "EINAR", " \n      Einar: ¿How much time have I spent \n praying to distant ears?" ]
+        [ "EINAR", " \n           Einar: ¿How much time have I spent \n praying to distant ears?" ]
       ],
       [
-        [ "EINAR", "Einar: The ice difficulties my way, \n in addition my head have been so many time far away from my body.\n This trip has enraged my spirit, \n  im a mixture of rage and confusion. " ],
+        [ "EINAR", "Einar: The ice difficulties my way, in addition, \n my head have been so many time far away from \n my body. This trip has enraged my spirit, \n  im a mixture of rage and confusion. " ],
         [ "EINAR", "      \n           Einar: What are gods for? " ],
-        [ "EINAR", "Einar: I have seen so many times the corrosive \n man’s will, I think the only gods’ power \n is to plant rage in the ignorance \n and utopias in dreams" ],
+        [ "EINAR", "     Einar: I have seen so many times the corrosive \n      man’s will, I think the only gods’ power \n      is to plant rage in the ignorance \n      and utopias in dreams" ],
         [ "HUGIN", "      \n           Hugin: Aren't you afraid of they hearing you?" ],
         [ "EINAR", "\n Einar: For me, the death wouldn't be a punishment, \n Hugin,  I´ve loved more than I would have desired." ],
         [ "EINAR", "\n     Einar:  I could do anything for resting \n in Valhalla with my nation, \n  here only misery remains..  " ],
-        [ "EINAR", "\n Einar: How can I reach Valhalla?  " ]
+        [ "EINAR", "\n      Einar: How can I reach Valhalla?  " ]
       ],
       [
-        [ "EINAR", "Einar: I’m tired of this place, \n there are only looters, \n too much chaos in what once was my home.  " ],
-        [ "EINAR", "Einar: Midgard is always in battle and \n i'm not part of it anymore. " ],
-        [ "EINAR", "Einar: What can I do, Hugin?" ],
-        [ "HUGIN", "Hugin: The shadow is growing through \n Yggdrasil, Yggdrasil, the gods have lost \n their power during this time." ],
-        [ "HUGIN", "Hugin: Odin abandoned me when Valhalla fell." ],
-        [ "EINAR", "Einar: What has happened? \n  How does a god lose his power?" ],
-        [ "EINAR", "Einar: I should look for the Bifrost, \n  I hope his guard, Heimdal still remembers \n that favor I did him  \n when I saved his bastard daughter in Wessex’ war  " ],
-        [ "EINAR", "     Einar: What should I do now?  " ]
+        [ "EINAR", "Einar: I’m tired of this place, \n there are only looters, \n      too much chaos in what once was my home." ],
+        [ "EINAR", "\n      Einar: Midgard is always in battle and \n i'm not part of it anymore. " ],
+        [ "EINAR", "\n      Einar: What can I do, Hugin?" ],
+        [ "HUGIN", "     Hugin: The shadow is growing through \n      Yggdrasil, the gods have lost \n      their power during this time." ],
+        [ "HUGIN", "\n      Hugin: Odin abandoned me when Valhalla fell." ],
+        [ "EINAR", "\n           Einar: What has happened? \n       How does a god lose his power?" ],
+        [ "EINAR", "Einar: I should look for the Bifrost, \n  I hope his guard, Heimdal still remembers \n that favor I did him when I saved \n his bastard daughter in Wessex’ war  " ],
+        [ "EINAR", "\n           Einar: What should I do now?  " ]
       ],
       [
-        [ "EINAR", "Einar: What could have finished the gods off?  " ],
-        [ "EINAR", "Einar: I have to go to see it with my own eyes " ],
-        [ "EINAR", "Einar:Hugin, we are going to cross Yggdrasil and its planets, \n to join an army for saving Asgard. " ],
-        [ "EINAR", "Einar: If I was alone I would be lost, \n  I need to get the best beasts \n and fighters to clean up the shadows going across the branches." ],
-        [ "HUGIN", "Hugin: : The crumbs are bread too, Einar " ],
-        [ "HUGIN", "Hugin: : Let's cross the other eight worlds following the rainbow’s tail, there Will be legends about this Destiny." ],
-        [ "HUGIN", "Hugin: :   Is dangerous going alone, \n look always to who always lends you a hand and who hides it. " ],
-        [ "EINAR", "Einar:   We go to the final of finals Hugin. " ],
-        [ "EINAR", "Einar: I have to find how can I break this fake blessing \n  I was enslave by gods." ],
-        [ "EINAR", "Einar: I hope to find answer through the way. " ],
-        [ "EINAR", "Einar:  What would be in the other worlds? " ],
-        [ "EINAR", "Einar:   Would I fins my family´s spirits? " ],
-        [ "EINAR", "Einar:   Would it be peace behind the shadow? " ],
-        [ "EINAR", "Einar:   Would this be the start or Ragnarok?" ],
-        [ "EINAR", "Einar:   Could I die one day?" ]
+        [ "EINAR", "\n      Einar: What could have finished the gods off?  " ],
+        [ "EINAR", "\n      Einar: I have to go to see it with my own eyes " ],
+        [ "EINAR", "\n      Einar:Hugin, we are going to cross Yggdrasil \n and its planets, to join an \n army for saving Asgard. " ],
+        [ "EINAR", "     Einar: If I was alone I would be lost, \n  I need to get the best beasts \n and fighters to clean up the shadows \n going across the branches." ],
+        [ "HUGIN", "\n      Hugin: : The crumbs are bread too, Einar " ],
+        [ "HUGIN", "\n      Hugin: : Let's cross the other eight worlds \n following the rainbow’s tail, there will be \n legends about this Destiny." ],
+        [ "HUGIN", "Hugin: :   Is dangerous going alone, \n look always to who always lends you a hand and \n who hides it. " ],
+        [ "EINAR", "\n      Einar:   We go to the final of finals Hugin. " ],
+        [ "EINAR", "\n      Einar: I have to find how can I break this fake \n blessing I was enslave by gods." ],
+        [ "EINAR", "\n      Einar: I hope to find answer through the way. " ],
+        [ "EINAR", "\n      Einar:  What would be in the other worlds? " ],
+        [ "EINAR", "\n      Einar:   Would I fins my family´s spirits? " ],
+        [ "EINAR", "\n      Einar:   Would it be peace behind the shadow? " ],
+        [ "EINAR", "\n      Einar:   Would this be the start or Ragnarok?" ],
+        [ "EINAR", "\n      Einar:   Could I die one day?" ]
+      ],
+      [],
+      [],
+      [],
+      [],
+      [
+        [ "EINAR", "Einar: Mi village loved this mountain chains, \n the winters we lived where long, but I remember \n very fontly the parties in Upsala´s Temple. " ],
+        [ "EINAR", "\n Einar: My father was a loved framer and \n my mother died in my birth." ],
+        [ "EINAR", "\n Einar: I learned to fight for surviving when\n  my village knew the rus invasions.  " ],
+        [ "EINAR", "\n Einar: There was no King to deal with them, \n their intelligence was fitting of blader." ],
+        [ "EINAR", "\n Einar: Why was so much war if everyone \n had the same blood?" ],
+        [ "EINAR", "\n Einar: Was it worthy even if there was no one else?" ],
+        [ "EINAR", "Einar: Im the last village´s trace, but for why \n I want to be here if I havent motives \n to celebrate nothing." ],
+        [ "EINAR", "\n           Einar: Time is a constant damage. " ],
+        [ "EINAR", "\n      Einar: Having pulse doesn´t makes me be alive. " ]
+      ],
+      [
+        [ "EINAR", "Einar: I has been so long since the last time \n I saw my family that i cant recongize \n more than a few peace flashes." ],
+        [ "EINAR", "     Einar: I first met Kaira in the spring´s \n patry while the crack of ices melting.  " ],
+        [ "EINAR", "     Einar: We fought in the Sena´s shore \n and we crossed even the Hercules´columns.   " ],
+        [ "EINAR", "     Einar: No one loved like her, i will \n never forget the day she gave birth." ],
+        [ "EINAR", "     Einar: Mi loved Greta was smaller \n than my beard when she was born." ],
+        [ "EINAR", "\n           Einar: With her I learned tol ove." ],
+        [ "EINAR", "           Einar: She was always running through \n the farming, she hated the fight, her only pasion \n was writting big narratives over the gods and the \n stories I shared with her about my battles. " ],
+        [ "EINAR", "\n           Einar: I still carry on some songs.. " ],
+        [ "EINAR", "\n           Einar: What still resto f them?" ],
+        [ "EINAR", "\n       Einar: Would they be happy where they where? " ]
+
       ]
     ]
   },

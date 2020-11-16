@@ -27,7 +27,7 @@ class WinnerMenu extends Phaser.Scene{
     this.clickSound.play();
     this.scene.pause('WinnerMenu');
     this.scene.sendToBack('WinnerMenu');
-    this.scene.start('MainMenu');
+    this.scene.start('MapSelectionMenu');
   }
 
   EffectsConfig(){

@@ -14,7 +14,13 @@ class MapSelectionMenu extends Phaser.Scene{
     this.clickSound = this.sound.add('ClickButtonSound', this.EffectsConfig());
 
     //BACKGROUND
-    this.backgroundMSM = this.add.image(0, 0, 'backgroundMSM');
+
+    if(levelIndex < 10){
+      this.backgroundMSM = this.add.image(0, 0, 'backgroundMSM');
+    }else{
+      this.backgroundMSM = this.add.image(0, 0, 'backgroundMSMWolrd1Comp');
+    }
+
     this.backgroundMSM.setPosition(gameWidth/2, gameHeight/2);
     this.backgroundMSM.setScale(2/3);
     this.backgroundMSM.setInteractive({useHandCursor: false}).on('pointerdown', () => this.DesactivatePaper());
@@ -55,7 +61,7 @@ class MapSelectionMenu extends Phaser.Scene{
     });
 
     //PERGAMINO
-    if(userLang == "es"){
+    if(userConfig.lang == "es"){
       this.paperDescription1 = this.add.image(gameWidth*13.7/16, gameHeight*8.15/16, 'paperWorld1');
     }else{
       this.paperDescription1 = this.add.image(gameWidth*13.7/16, gameHeight*8.15/16, 'paperWorld1En');

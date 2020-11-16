@@ -79,6 +79,7 @@ var userConfig = {
   volumeMusic: 6,
   volumeEffects: 6,
   difficulty: 0, // Indica la dificultad escogida: 0 fácil - 1 normal - 2 dificil  (aún sin implementar)
+  lang: null
 }
 
 function saveUserData(){
@@ -102,12 +103,12 @@ function resetUserData(){
 }
 
 var stringsJSON;
-var userLang;
+//var userLang;
 
-function updateLanguage(){
-  if(userLang==null)
-    userLang = navigator.language || navigator.userLanguage;
-  if(userLang == "es-ES" || "es"){
+/*function updateLanguage(){
+  /*if(userLang==null)
+    userLang = navigator.language || navigator.userLanguage;*/
+  /*if(userLang == "es-ES" || "es"){
     stringsJSON = phaserJSON.esp;
     userLang = "es";
   }
@@ -115,7 +116,22 @@ function updateLanguage(){
     stringsJSON = phaserJSON.eng;
     userLang = "en";
   }
-}
+
+  if(userConfig.lang==null){
+    userConfig.lang = navigator.language || navigator.userLanguage;
+  }else{
+    if(userConfig.lang == "es-ES" || "es"){
+      stringsJSON = phaserJSON.esp;
+      //userLang = "es";
+    }
+    else if(userConfig.lang == "en-US" || "en"){
+      stringsJSON = phaserJSON.eng;
+      //userLang = "en";
+    }
+  }*/
+
+
+//}
 
 //var gamePaused = false;
 

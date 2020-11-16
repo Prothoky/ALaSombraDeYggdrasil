@@ -262,15 +262,17 @@ class SettingsMenu extends Phaser.Scene{
 
     this.clickSound.play();
 
-    console.log("idioma" + userLang);
+    console.log("idioma" + userConfig.lang);
 
-    if(userLang == "es"){
+    if(userConfig.lang == "es"){
       stringsJSON = phaserJSON.eng;
-      userLang = "en";
+      userConfig.lang = "en";
+      //userLang = "en";
     }
-    else if(userLang == "en"){
+    else if(userConfig.lang == "en"){
       stringsJSON = phaserJSON.esp;
-      userLang = "es";
+      userConfig.lang = "es";
+      //userLang = "es";
     }
 
     this.backButtonText.setText( stringsJSON.Buttons.back);

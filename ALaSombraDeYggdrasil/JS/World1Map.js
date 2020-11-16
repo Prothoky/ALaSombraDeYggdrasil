@@ -75,7 +75,7 @@ class World1Map extends Phaser.Scene{
     this.shopButtonW1MSel = this.add.image(gameWidth*14.7/16, gameHeight*1.1/16, 'selSmallRightButton');
     this.shopButtonW1MSel.setScale(1.5/3);
     this.shopButtonW1MSel.setVisible(false);
-    this.shotButtonText = this.add.text(gameWidth*14.1/16, gameHeight*0.92/16,  stringsJSON.Buttons.shop, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
+    this.shopButtonText = this.add.text(gameWidth*14.1/16, gameHeight*0.92/16,  stringsJSON.Buttons.shop, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
     this.shopButtonW1M.on('pointerover', function (pointer) {this.shopButtonW1MSel.setVisible(true);}, this);
     this.shopButtonW1M.on('pointerout', function (pointer) {this.shopButtonW1MSel.setVisible(false);}, this);
     this.shopButtonW1M.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.ShopMenuW1M());
@@ -124,7 +124,7 @@ class World1Map extends Phaser.Scene{
     this.buttonNode0Sel.setVisible(false);
 
     //Fondo con nombre y boton JUGAR
-    if(userLang == "es"){
+    if(userConfig.lang == "es"){
       this.level0Name = this.add.image(gameWidth*14.6/16, gameHeight*8.65/16, 'Nivel0Name');
     }else{
       this.level0Name = this.add.image(gameWidth*14.6/16, gameHeight*8.65/16, 'Level0Name');
@@ -152,7 +152,7 @@ class World1Map extends Phaser.Scene{
     this.buttonNode1.on('pointerout', function (pointer) {this.buttonNode1SelClick.setVisible(false);}, this);
     this.buttonNode1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(1));
     //Fondo con nombre
-    if(userLang == "es"){
+    if(userConfig.lang == "es"){
       this.level1Name = this.add.image(gameWidth*11.41/16, gameHeight*11.8/16, 'Nivel1Name');
     }else{
       this.level1Name = this.add.image(gameWidth*11.41/16, gameHeight*11.8/16, 'Level1Name');
@@ -212,7 +212,7 @@ class World1Map extends Phaser.Scene{
     this.buttonNode2.on('pointerout', function (pointer) {this.buttonNode2SelClick.setVisible(false);}, this);
     this.buttonNode2.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(2));
     //Fondo con nombre y boton JUGAR
-    if(userLang == "es"){
+    if(userConfig.lang == "es"){
       this.level2Name = this.add.image(gameWidth*10.18/16, gameHeight*10.1/16, 'Nivel2Name');
     }else{
       this.level2Name = this.add.image(gameWidth*10.18/16, gameHeight*10.1/16, 'Level2Name');
@@ -242,7 +242,7 @@ class World1Map extends Phaser.Scene{
     this.buttonSubnode2_1.on('pointerout', function (pointer) {this.buttonSubode21SelClick.setVisible(false);}, this);
     this.buttonSubnode2_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(11));
     //Fondo con nombre
-    if(userLang == "es"){
+    if(userConfig.lang == "es"){
       this.level2_1Name = this.add.image(gameWidth*8.3/16, gameHeight*10.5/16, 'Nivel2_1Name');
     }else{
       this.level2_1Name = this.add.image(gameWidth*8.3/16, gameHeight*10.5/16, 'Level2_1Name');
@@ -268,7 +268,7 @@ class World1Map extends Phaser.Scene{
     this.buttonNode3.on('pointerout', function (pointer) {this.buttonNode3SelClick.setVisible(false);}, this);
     this.buttonNode3.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(3));
     //Fondo con nombre y boton JUGAR
-    if(userLang == "es"){
+    if(userConfig.lang == "es"){
       this.level3Name = this.add.image(gameWidth*7.4/16, gameHeight*12.7/16, 'Nivel3Name');
     }else{
       this.level3Name = this.add.image(gameWidth*7.4/16, gameHeight*12.7/16, 'Level3Name');
@@ -294,7 +294,7 @@ class World1Map extends Phaser.Scene{
     this.buttonNode4.on('pointerout', function (pointer) {this.buttonNode4SelClick.setVisible(false);}, this);
     this.buttonNode4.setInteractive({ useHandCursor: true}).on('pointerdown', () =>  this.AccessToLevel(4));
     //Fondo con nombre y boton JUGAR
-    if(userLang == "es"){
+    if(userConfig.lang == "es"){
       this.level4Name = this.add.image(gameWidth*3.025/16, gameHeight*9.95/16, 'Nivel4Name');
     }else{
       this.level4Name = this.add.image(gameWidth*3.025/16, gameHeight*9.95/16, 'Level4Name');
@@ -388,7 +388,7 @@ class World1Map extends Phaser.Scene{
     this.buttonNode5.on('pointerout', function (pointer) {this.buttonNode5SelClick.setVisible(false);}, this);
     this.buttonNode5.setInteractive({ useHandCursor: true}).on('pointerdown', () =>  this.AccessToLevel(5));
     //Fondo con nombre y boton JUGAR
-    if(userLang == "es"){
+    if(userConfig.lang == "es"){
       this.level5Name = this.add.image(gameWidth*3.41/16, gameHeight*3.05/16, 'Nivel5Name');
     }else{
       this.level5Name = this.add.image(gameWidth*3.41/16, gameHeight*3.05/16, 'Level5Name');
@@ -422,7 +422,7 @@ class World1Map extends Phaser.Scene{
     this.buttonSubnode5_1.on('pointerout', function (pointer) {this.buttonSubode51SelClick.setVisible(false);}, this);
     this.buttonSubnode5_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(14));
     //Fondo con nombre
-    if(userLang == "es"){
+    if(userConfig.lang == "es"){
       this.level5_1Name = this.add.image(gameWidth*3.2/16, gameHeight*0.7/16, 'Nivel5_1Name');
     }else{
       this.level5_1Name = this.add.image(gameWidth*3.2/16, gameHeight*0.7/16, 'Level5_1Name');
@@ -453,7 +453,7 @@ class World1Map extends Phaser.Scene{
     this.buttonSubnode5_2.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(15));
 
     //Fondo con nombre
-    if(userLang == "es"){
+    if(userConfig.lang == "es"){
       this.level5_2Name = this.add.image(gameWidth*1/16, gameHeight*2.6/16, 'Nivel5_2Name');
     }else{
       this.level5_2Name = this.add.image(gameWidth*1/16, gameHeight*2.6/16, 'Level5_2Name');
@@ -479,7 +479,7 @@ class World1Map extends Phaser.Scene{
     this.buttonNode6.on('pointerout', function (pointer) {this.buttonNode6SelClick.setVisible(false);}, this);
     this.buttonNode6.setInteractive({ useHandCursor: true}).on('pointerdown', () =>  this.AccessToLevel(6));
     //Fondo con nombre y boton JUGAR
-    if(userLang == "es"){
+    if(userConfig.lang == "es"){
       this.level6Name = this.add.image(gameWidth*7.8/16, gameHeight*1.5/16, 'Nivel6Name');
     }else{
       this.level6Name = this.add.image(gameWidth*7.8/16, gameHeight*1.5/16, 'Level6Name');
@@ -505,7 +505,7 @@ class World1Map extends Phaser.Scene{
     this.buttonNode7.on('pointerout', function (pointer) {this.buttonNode7SelClick.setVisible(false);}, this);
     this.buttonNode7.setInteractive({ useHandCursor: true}).on('pointerdown', () =>  this.AccessToLevel(7));
     //Fondo con nombre y boton JUGAR
-    if(userLang == "es"){
+    if(userConfig.lang == "es"){
       this.level7Name = this.add.image(gameWidth*6.79/16, gameHeight*4.21/16, 'Nivel7Name');
     }else{
       this.level7Name = this.add.image(gameWidth*6.79/16, gameHeight*4.21/16, 'Level7Name');
@@ -592,7 +592,7 @@ class World1Map extends Phaser.Scene{
     this.buttonNode8.on('pointerout', function (pointer) {this.buttonNode8SelClick.setVisible(false);}, this);
     this.buttonNode8.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(8));
     //Fondo con nombre y boton JUGAR
-    if(userLang == "es"){
+    if(userConfig.lang == "es"){
       this.level8Name = this.add.image(gameWidth*9.845/16, gameHeight*3.35/16, 'Nivel8Name');
     }else{
       this.level8Name = this.add.image(gameWidth*9.845/16, gameHeight*3.35/16, 'Level8Name');
@@ -619,7 +619,7 @@ class World1Map extends Phaser.Scene{
     this.buttonNode9.setInteractive({ useHandCursor: true  } )
     .on('pointerdown', () =>  this.AccessToLevel(9));
     //Fondo con nombre y boton JUGAR
-    if(userLang == "es"){
+    if(userConfig.lang == "es"){
       this.level9Name = this.add.image(gameWidth*12.6/16, gameHeight*3.7/16, 'Nivel9Name');
     }else{
       this.level9Name = this.add.image(gameWidth*12.6/16, gameHeight*3.7/16, 'Level9Name');

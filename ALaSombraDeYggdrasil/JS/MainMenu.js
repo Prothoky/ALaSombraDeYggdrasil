@@ -7,6 +7,7 @@ class MainMenu extends Phaser.Scene{
   create(){
 
     this.cameras.main.fadeIn(1000, 0, 0, 0);
+    console.log(userConfig.lang);
 
     // Controlador de audio
     let config = {
@@ -61,9 +62,9 @@ class MainMenu extends Phaser.Scene{
     this.historyButtonSel.setScale(2/3);
     //Texto
 
-    if (userLang == 'esp' || "es-ES"){
+    if (userConfig.lang == 'esp' || "es-ES"){
       this.historyButtonText = this.add.text(gameWidth*9.35/16, gameHeight*6.72/16,  stringsJSON.Buttons.story , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "40px"});
-    }else if (userLang == 'en' || "en-US"){
+    }else if (userConfig.lang == 'en' || "en-US"){
       this.arcadeButtonText = this.add.text(gameWidth*9.55/16, gameHeight*6.72/16,  phaserJSON.eng.Buttons.story , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "40px"});
     }
     //Funciones Botones

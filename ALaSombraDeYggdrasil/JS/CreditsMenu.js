@@ -74,20 +74,6 @@ class CreditsMenu extends Phaser.Scene{
     this.backButtonCM.on('pointerout', function (pointer) {this.backButtonCMSel.setVisible(false);}, this);
     this.backButtonCM.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.BackMainMenu());
 
-/*
-    //BACK BUTTON
-    this.backButtonCM = this.add.image((this.cameras.main.x), 10, 'deselectedButtonSmall');
-    this.backButtonCM.setScale(2/3);
-    this.backButtonCMSel = this.add.image((this.cameras.main.x), 10, 'selSmallLeftButton');
-    this.backButtonCMSel.setScale(2/3);
-    this.backButtonCMSel.setVisible(false);
-    //Texto Boton
-    this.backText = this.add.text(this.cameras.main.x, 1,  stringsJSON.Buttons.back, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
-    //Acciones Boton
-    this.backButtonCM.on('pointerover', function (pointer) {this.backButtonCMSel.setVisible(true);}, this);
-    this.backButtonCM.on('pointerout', function (pointer) {this.backButtonCMSel.setVisible(false);}, this);
-    this.backButtonCM.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.BackMainMenu());
-*/
     this.backButtonCM.depth = 3;
     this.backButtonCMSel.depth = 3;
     this.backText.depth = 3;

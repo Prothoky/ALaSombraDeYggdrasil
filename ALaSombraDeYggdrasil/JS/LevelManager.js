@@ -397,37 +397,37 @@ class LevelManager extends Phaser.Scene
 
         //POEMS
 
-        if(userLang == "es"){
+        if(userConfig.lang == "es"){
           this.Poem1_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poema1_1');
         }else{
           this.Poem1_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poem1_1');
         }
 
-        if(userLang == "es"){
+        if(userConfig.lang == "es"){
           this.Poem2_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poema2_1');
         }else{
           this.Poem2_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poem2_1');
         }
 
-        if(userLang == "es"){
+        if(userConfig.lang == "es"){
           this.Poem4_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poema4_1');
         }else{
           this.Poem4_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poem4_1');
         }
 
-        if(userLang == "es"){
+        if(userConfig.lang == "es"){
           this.Poem4_2 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poema4_2');
         }else{
           this.Poem4_2 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poem4_2');
         }
 
-        if(userLang == "es"){
+        if(userConfig.lang == "es"){
           this.Poem7_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poema7_1');
         }else{
           this.Poem7_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poem7_1');
         }
 
-        if(userLang == "es"){
+        if(userConfig.lang == "es"){
           this.Poem7_2 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poema7_2');
         }else{
           this.Poem7_2 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poem7_2');
