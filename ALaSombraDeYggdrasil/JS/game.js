@@ -103,22 +103,28 @@ function resetUserData(){
 }
 
 var stringsJSON;
-//var userLang;
 
-function updateLanguage(userLang =null){
+function updateLanguage(userLang){
   if(userConfig.lang==null)
     userConfig.lang = navigator.language || navigator.userLanguage;
-  if(userLang == "es-ES" || "es"){
+  else{
+    if(userConfig.lang == "es-ES" || userConfig.lang == "es"){
+      stringsJSON = phaserJSON.esp;
+      userConfig.lang = "es";}
+    else if(userConfig.lang == "en-US" || userConfig.lang == "en"){
+        stringsJSON = phaserJSON.eng;
+        userConfig.lang = "en";
+    }
+  }
+  if(userLang == "es-ES" || userLang == "es"){
     stringsJSON = phaserJSON.esp;
     userConfig.lang = "es";
   }
-  else if(userLang == "en-US" || "en"){
+  else if(userLang == "en-US" || userLang == "en"){
     stringsJSON = phaserJSON.eng;
     userConfig.lang = "en";
   }
 }
-
-//var gamePaused = false;
 
 // Variable música entre escenas
 var musicMenu;  // Controlador de música de menú
