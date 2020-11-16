@@ -138,6 +138,9 @@ class LevelManager extends Phaser.Scene
 
     }
 
+    preload(){
+        this.load.plugin('rexsoundfadeplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexsoundfadeplugin.min.js', true);
+    }
     create ()
     {
 
@@ -225,7 +228,7 @@ class LevelManager extends Phaser.Scene
         // Dependiendo de la dificultad escogida asignamos nº vidas
         switch (userConfig.difficulty) {
             case 0:
-                this.playerHealth = 5;
+                this.playerHealth = 105;
                 break;
             case 1:
                 this.playerHealth = 3;
@@ -593,9 +596,9 @@ class LevelManager extends Phaser.Scene
         let endWidth = 0;
         if (!this.endlessMode) {
             endWidth = this.levelEndWidth + 200;
-        } else {
+        } /*else {
             endWidth = 0;
-        }
+        }*/
         while (this.xPointer < this.levelWidth * this.cicleIteration - endWidth) { // 200 extra por si un enemigo cae justo en el límite
             // Genera una trampa aleatoria del pool de trampas y almacena su distancia mínima entre trampas
             addedDistance = this.generateRandomTrap(this.xPointer);
@@ -980,15 +983,6 @@ class LevelManager extends Phaser.Scene
         // Creamos la hitbox de daño
         this.cabinHitbox.create(xPos + 295, 280, 'spikes').setOrigin(0, 1).setSize(380, 160).setVisible(false);
 
-        // Fix modo arcade hitbox desplazada
-        if (this.endlessMode == true && !this.hasCicled) {
-
-        } else if (this.endlessMode == true && this.hasCicled) {
-
-        } else {
-
-        }
-
         // ALmacena referencias para eliminación
         this.cabins[this.cabins.length] = localCabin1;
         this.cabins[this.cabins.length] = localCabin2;
@@ -1165,23 +1159,20 @@ class LevelManager extends Phaser.Scene
 
         }
       }
-
-        //this.buttonDialog.setVisible(true);
-        //this.buttonDialogSel.setVisible(true);
-      }
-
+    }
 
     // Devuelve el jugador al mapa del mundo (al completar el nivel)
     goalArrived() {
+        let timeFadeOut=3000;
         this.endLevelCollision.active = false;
-        this.player.setAccelerationX(-1000);
+        this.player.setAccelerationX(-125);
         this.hasArrived = true;
         this.actualizeMapsCompleted();
         user.money+= levelSettings[DifficultyIndexSubnode(levelIndex)][userConfig.difficulty][3];
         user.map[levelIndex] = true;
         saveUserData();
         this.following=false;
-        musicGameplay.stop();
+        this.plugins.get('rexsoundfadeplugin').fadeOut(this, musicGameplay, timeFadeOut);
         this.soundRunning.stop();
         this.endTrigger.setVisible(false);
         this.buttonPause.setVisible(false);
@@ -1196,7 +1187,7 @@ class LevelManager extends Phaser.Scene
 
         this.Disable_controls();
         this.time.addEvent({
-                delay: 800,
+                delay: timeFadeOut,
                 callback: function() {
 
                   if((levelIndex < 10) || (levelIndex == 14) ||(levelIndex == 15) ){
@@ -1206,13 +1197,14 @@ class LevelManager extends Phaser.Scene
                     this.DialogShowing=true;
                   }
                   this.showDialog();
-
+                  //this.plugins.get('rexsoundfadeplugin').fadeOut(this, MusicDialog, 3000);
+                  //musicDialog.play();
+                  this.player.anims.stop();
                 },
                 callbackScope: this
         }, this);
 
     }
-
 
     nextDialog(){
 
@@ -1248,29 +1240,6 @@ class LevelManager extends Phaser.Scene
 
     // Actualiza los mapas completados y guarda los datos
     levelCompletedFunc() {
-
-      /*if (Number(user.buffs[1]) == 1) {
-        user.buffs[1] = 0;
-      }
-
-      if (Number(user.buffs[2]) == 1) {
-        user.buffs[2] = 0;
-      }
-
-      if (Number(user.buffs[3]) == 1) {
-        user.buffs[3] = 0;
-      }*/
-
-      /*this.bg_backgorund.setOrigin(0,0);
-      this.bg_far.setOrigin(0,0);
-      this.bg_medium.setOrigin(0,0);
-      this.bg_near.setOrigin(0,0);
-
-      this.bg_backgorund.tilePositionX= 0;
-      this.bg_far.tilePositionX= 0;
-      this.bg_medium.tilePositionX= 0;
-      this.bg_near.tilePositionX= 0;
-      */
 
         this.soundRunning.stop();   // Para el sonido de los pasos
 
@@ -1356,17 +1325,6 @@ class LevelManager extends Phaser.Scene
         this.doubleJumpAvaliable = true;
         this.DialogShowing = false;
 
-        /*this.bg_backgorund.setOrigin(0,0);
-        this.bg_far.setOrigin(0,0);
-        this.bg_medium.setOrigin(0,0);
-        this.bg_near.setOrigin(0,0);
-
-        this.bg_backgorund.tilePositionX= 0;
-        this.bg_far.tilePositionX= 0;
-        this.bg_medium.tilePositionX= 0;
-        this.bg_near.tilePositionX= 0;
-        */
-
         //distanceAchieved = 0;
         if (this.jumpTimer != null) {
             this.jumpTimer.remove();
@@ -1384,17 +1342,6 @@ class LevelManager extends Phaser.Scene
             this.arcadeIntervalTimer.remove();
         }
 
-      /*  if (Number(user.buffs[1]) == 1) {
-          user.buffs[1] = 0;
-        }
-
-        if (Number(user.buffs[2]) == 1) {
-          user.buffs[2] = 0;
-        }
-
-        if (Number(user.buffs[3]) == 1) {
-          user.buffs[3] = 0;
-        }*/
     }
 
     // Función que se ejecuta repetidamente en el modo arcade, actualiza posición y aumenta velocidad
@@ -1546,13 +1493,6 @@ class LevelManager extends Phaser.Scene
     // Da movimiento al fondo
     update (time, delta){
 
-        //Fondo dinámico
-        /*
-        this.bg_far.tilePositionX = this.cameras.main.scrollX *.1;
-        this.bg_medium.tilePositionX = this.cameras.main.scrollX * .5;
-        this.bg_near.tilePositionX = this.cameras.main.scrollX;
-        */
-
         this.SetTextPos();
 
        if(!this.DialogShowing){
@@ -1569,26 +1509,10 @@ class LevelManager extends Phaser.Scene
             this.player.setAccelerationX(0);
            this.player.body.setVelocityX(0);
        }
-/*
-        if(!this.DialogShowing){
-            this.bg_backgorund.tilePositionX += 5;
-            this.bg_far.tilePositionX += 5.5;
-            this.bg_medium.tilePositionX += 16.25;
-            this.bg_near.tilePositionX += 20.75;
-        }
- */
-        /*
-        //this.arcadeIntervalTimer;
-        if (arcadeMode == true){
-            this.arcadeIntervalTimer = this.time.addEvent( { delay: 200, callback: this.arcadeIntervalFunc(), callbackScope: this, loop: true } );
-            console.log(distanceAchieved);
-        }
-        */
-
-        /*if (this.pauseButton.isDown && gamePaused == false){
-          this.PauseGame();
-        }*/
-
+       if(this.musicstopping){
+            musicGameplay.setVolume( userConfig.volume-=0.5);
+       }
+       
     }
 
     PauseGame() {
