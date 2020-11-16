@@ -143,7 +143,6 @@ class LevelManager extends Phaser.Scene
 
     create ()
     {
-
         this.physics.world.setFPS(fpsTarget);
       //this.cameras.main.fadeIn(1500, 0, 0, 0);
 
@@ -809,7 +808,12 @@ class LevelManager extends Phaser.Scene
                 this.playerDeath();
             } else {
                 this.isPlayerInvulnerable = true;   // lo vuelve invulnerable durante un tiempo
-                this.player.setTint(0xe62272);
+                console.log(user.buffs[1]);
+                if (Number(user.buffs[1]) == 1) {
+                    this.player.setTint(0x1CC3FF);
+                } else {
+                    this.player.setTint(0xe62272);
+                }
                 this.invulnerabilityTimer = this.time.addEvent( { delay: this.playerInvulnerabilityDuration, callback: function () { this.isPlayerInvulnerable = false; this.player.clearTint() }, callbackScope: this, loop: false } );
                 this.healthPointsDisplay[this.playerHealth].destroy();
             }
@@ -1497,14 +1501,14 @@ class LevelManager extends Phaser.Scene
             this.playerHealth += Number(user.buffs[0]);
 
             // Permite doble salto
-            if (Number(user.buffs[1]) == 1) {
+            if (Number(user.buffs[2]) == 1) {
                 this.doubleJumpEnabled = true;
             } else {
                 this.doubleJumpEnabled = false;
             }
 
             // Aumenta la invulnerabilidad
-            if (Number(user.buffs[2]) == 1) {
+            if (Number(user.buffs[1]) == 1) {
                 this.playerInvulnerabilityDuration = 2000;
             } else {
                 this.playerInvulnerabilityDuration = 1000;
