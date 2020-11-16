@@ -69,6 +69,7 @@ class LevelManager extends Phaser.Scene
         this.platforms;    // Grupos de plataformas
         this.solidPlatforms;    // Grupos de plataformas con las que se ha hecho contacto
         this.enemies;   // Grupos de enemigos
+        this.eagles;
         this.triggers;  // Grupos de triggers (colisiones que disparan eventos)
         this.barricades;    // Grupo de barricadas
         this.cabins = new Array();  // Grupo de cabañas
@@ -267,6 +268,7 @@ class LevelManager extends Phaser.Scene
         this.platforms = this.physics.add.staticGroup();    // Grupo de plataformas
         this.solidPlatforms = this.physics.add.staticGroup();   // Grupo de plataformas con las que se ha hecho contacto
         this.enemies = this.physics.add.group();  // Grupo de enemigos
+        this.eagles = this.physics.add.group();
         this.triggers = this.physics.add.staticGroup();   // Grupo de triggers
         this.barricades = this.physics.add.group(); // Grupo de barricadas
         this.attackHitbox = this.physics.add.group(); // Grupo de hitbox del personaje
@@ -292,7 +294,9 @@ class LevelManager extends Phaser.Scene
         this.physics.add.collider(this.barricades, this.platforms);    // barricadas chocan con plataformas
         this.physics.add.collider(this.player, this.platforms, this.grounded, null, this);  // Permitimos colision es entre plataforms y jugador y cuenta como grounded (puede saltar)
         this.physics.add.overlap(this.player, this.enemies, () => this.playerHit()); // Llama a playerDeath si colisiona con enemigo
+        this.physics.add.overlap(this.player, this.eagles, () => this.playerHit()); // Llama a playerDeath si colisiona con enemigo
         this.physics.add.overlap(this.attackHitbox, this.enemies, this.killEnemy, null, this);  // LLama a killEnemy cuando la hitbox del ataque impacte con un enemigo
+        this.physics.add.overlap(this.attackHitbox, this.eagles, this.killEnemy, null, this);  // LLama a killEnemy cuando la hitbox del ataque impacte con un enemigo
         this.physics.add.collider(this.enemies, this.platforms);    // Enemigos colisionan con el suelo
         this.physics.add.collider(this.enemies, this.ground);   // Enemigos colisionan con plataformas
         this.enemyCollision = this.physics.add.overlap(this.player, this.triggers, this.enemyStartMotion, null, this);    // Función que se llama al entrar el jugador en el área de visión del enemigo
@@ -310,6 +314,7 @@ class LevelManager extends Phaser.Scene
         this.physics.add.overlap(this.trashRecolectors, this.barricades, this.deleteObject, null, this);
         this.physics.add.overlap(this.trashRecolectors, this.platforms, this.deleteObject, null, this);
         this.physics.add.overlap(this.trashRecolectors, this.enemies, this.deleteObject, null, this);
+        this.physics.add.overlap(this.trashRecolectors, this.eagles, this.deleteObject, null, this);
         this.physics.add.overlap(this.trashRecolectors, this.triggers, this.deleteObject, null, this);
         //this.physics.add.overlap(this.trashRecolectorRemover, this.trashRecolectors, this.deleteObject, null, this);
 
@@ -862,12 +867,13 @@ class LevelManager extends Phaser.Scene
     // collisionWidth, collisionHeight: tamaño de la hitbox
     // triggerWidth, triggerHeight: tamaño del trigger de movimiento. Si no se pasa toma valor por defecto
     generateMovingEnemy(xPos, yPos = -300, collisionWidth = 90, collisionHeight = 120, triggerWidth = 500, triggerHeight = 500) {
-        let newEnemy = this.enemies.create(xPos, yPos, 'eagle_attacking').setOrigin(0).setScale(this.playerResizeFactor).refreshBody();
+        let newEnemy = this.eagles.create(xPos, yPos, 'eagle_attacking').setOrigin(0).setScale(this.playerResizeFactor);
         newEnemy.anims.play('eagle_attacking');
         newEnemy.body.setAllowGravity(false);
         newEnemy.body.setSize(collisionWidth, collisionHeight);
         newEnemy.setOffset(130, 330);
         newEnemy.isStill = false;
+        this.cabins[this.cabins.length] = newEnemy;
         let newTrigger = this.triggers.create(xPos - 1700, this.levelGroundHeight, 'dot').setVisible(false).refreshBody();
         newTrigger.body.setSize(triggerWidth, triggerHeight);   // Trigger que hará que el enemigo se mueva cuando entre el personaje en contacto
         newTrigger.associatedEnemy = newEnemy;
@@ -966,7 +972,7 @@ class LevelManager extends Phaser.Scene
         // Fix modo arcade hitbox desplazada
 
         if (this.endlessMode == true && !this.hasCicled) {
-            this.generateBarricade(xPos + 370, this.levelGroundHeight + 100, 0.7, false);
+            this.generateBarricade(xPos + 310, this.levelGroundHeight, 0.7, false);
         } else if (this.endlessMode == true && this.hasCicled) {
             this.generateBarricade(xPos + 370, this.levelGroundHeight + 187, 0.7, false);
         } else {
