@@ -17,10 +17,13 @@ class PreloadMenu extends Phaser.Scene{
     //BARRA DE CARGA DE PROGRESO
 
       var progressBar = this.add.graphics();
-
       var progressBox = this.add.graphics();
+
       progressBox.fillStyle(0xffffff, 0.2);
       progressBox.fillRect(100, 500, 1000, 50);
+
+      progressBox.setDepth(2);
+      progressBar.setDepth(2);
 
       var percentText = this.make.text({
           x: 600,
@@ -36,12 +39,20 @@ class PreloadMenu extends Phaser.Scene{
       });
 
       percentText.setOrigin(0.5, 0.5);
+      percentText.setDepth(2);
+
       console.log("Loading");
       this.load.on("progress", function(value){
           percentText.setText(parseInt(value * 100) + ' %');
           progressBar.clear();
-          progressBar.fillStyle(0xCB2821, 1);
+          progressBar.fillStyle(0xffbc00, 1);
           progressBar.fillRect(110, 510, 980 * value, 30);
+
+          if(value*100>99){
+            progressBox.setVisible(false);
+            progressBar.setVisible(false);
+            percentText.setVisible(false);
+          }
       });
 
     //CARGA DE ASSETS
@@ -280,10 +291,13 @@ class PreloadMenu extends Phaser.Scene{
       this.load.audio('BuyObject', './ASSETS/Sounds/Compra.mp3');
       this.load.audio('Poem', './ASSETS/Sounds/Poema.mp3');
 
-        this.load.on("complete", () => {
+      /*  this.load.on("complete", () => {
             console.log("Complete");
             this.scene.start('MainMenu');
-        });
+        });*/
+
+      this.load.image('Logo', './ASSETS/Logo.jpeg');
+
 
   }
 
@@ -295,14 +309,6 @@ class PreloadMenu extends Phaser.Scene{
 
     updateLanguage();
 
-    var wid = this.cameras.main.width;
-    var heig = this.cameras.main.height;
-
-    var background = this.add.image(0, 0, 'backgroundIM');
-    background.setPosition(wid/2, heig/2);
-    background.setScale(2/3);
-
-    var text = this.add.text(wid*3/7, heig*3/4, stringsJSON.Loading , {fill: "white"});
 
     // Animaciones
     this.anims.create({
@@ -318,6 +324,23 @@ class PreloadMenu extends Phaser.Scene{
         frameRate: 24,
         repeat: -1
     })
+
+    this.logo = this.add.sprite(gameWidth*8/16, gameHeight*8/16, 'Logo');
+    this.logo.setScale(1/3);
+    this.logo.alpha = 0;
+
+    this.tweens.add({
+      targets:this.logo,
+      duration: 1000,
+      alpha: 1,
+      yoyo: true,
+      hold: 1000,
+      delay: 1000,
+      completeDelay: 2000,
+      onComplete:()=>this.scene.start('MainMenu')
+    })
+
+
   }
 
 }
