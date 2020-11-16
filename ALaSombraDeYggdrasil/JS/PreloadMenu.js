@@ -68,7 +68,9 @@ class PreloadMenu extends Phaser.Scene{
 
     //Options Main Menu
       this.load.image('backgroundOM', './ASSETS/OptionsMenu/OptionsMenuBackground.jpg');
+      this.load.image('backgroundOMEn', './ASSETS/OptionsMenu/OptionsMenuBackgroundEng.jpg');
       this.load.image('backgroundVM', './ASSETS/OptionsMenu/MusicMenuBackground.jpg'); //Fondo Volume Menu
+      this.load.image('backgroundVMEn', './ASSETS/OptionsMenu/MusicMenuBackgroundEng.jpg');
       this.load.image('backgroundSetM', './ASSETS/OptionsMenu/OptionsMainMenu/SettingsMenuBackgr.jpg'); //Fondo Settings Menu
       this.load.image('backgroundSetMEn', './ASSETS/OptionsMenu/OptionsMainMenu/SettingsMenuBackgrEng.jpg');
 
@@ -139,6 +141,7 @@ class PreloadMenu extends Phaser.Scene{
 
     //Pause Menu
       this.load.image('backgroundPM', './ASSETS/PauseMenu/PauseMenuBackground.jpg');
+      this.load.image('backgroundPMEn', './ASSETS/PauseMenu/PauseMenuBackgroundEn.jpg');
 
     //SHOP MEMU
       this.load.image('backgroundSM', './ASSETS/Tienda/FondoTienda.jpg');

@@ -12,6 +12,9 @@ class PauseMenu extends Phaser.Scene{
     this.clickSound = this.sound.add('ClickButtonSound', this.EffectsConfig());
 
     this.backgroundPM = this.add.image(0, 0, 'backgroundPM');
+    if (userConfig.lang == "en"){
+      this.backgroundPM.setTexture('backgroundPMEn');
+    }
     this.backgroundPM.setScale(2/3);
     this.backgroundPM.setPosition(gameWidth/2, gameHeight/2);
 
@@ -23,6 +26,9 @@ class PauseMenu extends Phaser.Scene{
     this.backButtonPMSel.setVisible(false);
     //Text
     this.backText = this.add.text(gameWidth*7.05/16, gameHeight*6.3/16,  stringsJSON.Buttons.back, {fontFamily: "Acadian_Runes",fontSize: "40px", align: 'center', fill: "#481d18"});
+    if (userConfig.lang == "en"){
+      this.backText.setX(gameWidth*7.4/16);
+    }
     //Actions
     this.backButtonPM.on('pointerover', function (pointer) {this.backButtonPMSel.setVisible(true);}, this);
     this.backButtonPM.on('pointerout', function (pointer) {this.backButtonPMSel.setVisible(false);}, this);

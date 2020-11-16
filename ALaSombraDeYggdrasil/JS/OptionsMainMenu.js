@@ -10,6 +10,9 @@ class OptionsMainMenu extends Phaser.Scene{
     this.clickSound = this.sound.add('ClickButtonSound', this.EffectsConfig());
 
     this.backgroundOMM = this.add.image(0, 0, 'backgroundOM');
+    if (userConfig.lang == "en"){
+      this.backgroundOMM.setTexture('backgroundOMEn');
+    }
     this.backgroundOMM.setScale(2/3);
     this.backgroundOMM.setPosition(gameWidth/2, gameHeight/2);
 
