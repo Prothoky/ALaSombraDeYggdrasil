@@ -333,7 +333,7 @@ class PreloadMenu extends Phaser.Scene{
     this.anims.create ({
       key: 'einar_attacking',
       frames: this.anims.generateFrameNumbers('einar_attack', { start: 0, end: 17}),
-      frameRate: 70,
+      frameRate: 24,
       repeat: 0
     })
 
