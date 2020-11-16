@@ -83,22 +83,42 @@ var userConfig = {
 }
 
 function saveUserData(){
-  localStorage.setItem("UserData", JSON.stringify(user));
-  localStorage.setItem("UserConfig" ,JSON.stringify(userConfig));
+if(user == null || user == 'null')
+  user = phaserJSON.user;
+localStorage.setItem("UserData", JSON.stringify(user));
+if(userConfig == null || user == 'null')
+  userConfig = phaserJSON.userConfig;
+localStorage.setItem("UserConfig" ,JSON.stringify(userConfig));
+updateLanguage()
 }
 
 function loadUserData(){
-  let data = localStorage.getItem("UserData");
-  if (data != null)
-    user = JSON.parse(data);
-  data = localStorage.getItem("UserConfig");
-  if(data!=null)
-    userConfig = JSON.parse(data);
+  let dataUser = localStorage.getItem("UserData");
+  let dataConfig = localStorage.getItem("UserConfig")
+  if ((dataUser == null || dataUser == 'null') && (dataConfig == null || dataConfig == 'null')){
+    user = phaserJSON.user;
+    userConfig = phaserJSON.userConfig;
+  }
+  else{
+    user = JSON.parse(dataUser);
+    userConfig = JSON.parse(dataConfig);
+  }
 }
 
-function resetUserData(configJson){
-  user=configJson.user;
-  userConfig=configJson.userConfig;
+function resetUserData(){
+  user= {
+    world: [true,false,false,false,false,false,false,false,false],
+    map: [false, false, false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+    buffs: [0, 0, 0, 0],
+    money: 0,
+    maxDistanceArcade: 0
+  }
+  userConfig = {
+    volumeMusic: 6,
+    volumeEffects: 6,
+    difficulty: 0, // Indica la dificultad escogida: 0 fácil - 1 normal - 2 dificil  (aún sin implementar)
+    lang: null
+  }
   saveUserData();
 }
 

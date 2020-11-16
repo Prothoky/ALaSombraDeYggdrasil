@@ -17,9 +17,6 @@ class SettingsMenu extends Phaser.Scene{
 
   create(){
 
-    
-    this.load.json('Data',"./lib/Data.json");
-    this.settingsJSON = this.cache.json.get('Data');
     this.cameras.main.fadeIn(1500, 0, 0, 0);
 
     this.clickSound = this.sound.add('ClickButtonSound', this.EffectsConfig());
@@ -225,7 +222,6 @@ class SettingsMenu extends Phaser.Scene{
     this.scene.start('OptionsMainMenu');
 
     console.log ("Nivel " + userConfig.difficulty);
-    saveUserData();
   }
 
   EasyLevel(){
@@ -297,10 +293,9 @@ class SettingsMenu extends Phaser.Scene{
   ConfirmErase(erase){
 
     this.clickSound.play();
-
     if(erase == true){
       console.log("resetiado");
-      resetUserData(this.settingsJSON);
+      resetUserData();
       this.cameras.main.flash(600);
     }
     else{
