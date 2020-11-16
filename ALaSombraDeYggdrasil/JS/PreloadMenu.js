@@ -123,6 +123,7 @@ class PreloadMenu extends Phaser.Scene{
       this.load.spritesheet('einar_running', 'ASSETS/Gameplay/animacion_correr.png', { frameWidth: 400, frameHeight: 350 });
       this.load.spritesheet('einar_jumping', 'ASSETS/Gameplay/animacion_saltar.png', { frameWidth: 400, frameHeight: 350 });
       this.load.image('life', 'ASSETS/Tienda/IconoBendicion.png');
+      this.load.image('ravenHugin', 'ASSETS/Gameplay/Hugin.png');
 
       this.load.image('backgroundDialogEinar', 'ASSETS/Gameplay/CajaTextoEinar.png');
       this.load.image('backgroundDialogHugin', 'ASSETS/Gameplay/CajaTextoHugin.png');

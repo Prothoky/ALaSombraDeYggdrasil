@@ -15,7 +15,7 @@ class MapSelectionMenu extends Phaser.Scene{
 
     //BACKGROUND
 
-    if(user.map[0] == false){
+    if(user.world[1] == false){
       this.backgroundMSM = this.add.image(0, 0, 'backgroundMSM');
     }else{
       this.backgroundMSM = this.add.image(0, 0, 'backgroundMSMWolrd1Comp');

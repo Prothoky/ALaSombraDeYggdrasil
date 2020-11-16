@@ -127,6 +127,7 @@ class LevelManager extends Phaser.Scene
         this.indexText = 0;
         //this.buttonDialog
         this.buttonPause;
+        this.ravenHugin;
 
         this.Poem1_1;
         this.Poem2_1;
@@ -229,7 +230,7 @@ class LevelManager extends Phaser.Scene
         // Dependiendo de la dificultad escogida asignamos nº vidas
         switch (userConfig.difficulty) {
             case 0:
-                this.playerHealth = 5;
+                this.playerHealth = 75;
                 break;
             case 1:
                 this.playerHealth = 3;
@@ -372,25 +373,25 @@ class LevelManager extends Phaser.Scene
         //DIALOG End Level
         this.DialogBg = this.add.image(gameWidth*8/16, gameHeight*12.5/16, 'backgroundDialogEinar');
         this.DialogBg.setScale(2/3);
-        this.DialogBg.setDepth(7);
+        this.DialogBg.setDepth(11);
         this.DialogBg.setScrollFactor(0);
         this.DialogBg.setVisible(false);
         //this.DialogBg.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.nextDialog());
 
         this.DialogText = this.add.text(gameWidth*6/16, gameHeight*11/16,  " ", {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
         this.DialogText.setScrollFactor(0);
-        this.DialogText.setDepth(8);
+        this.DialogText.setDepth(12);
         this.DialogText.setVisible(false);
 
         this.buttonDialog = this.add.image(gameWidth*10.7/16, gameHeight*13.34/16, 'buttonDialog');
         this.buttonDialog.setScale(2/3);
-        this.buttonDialog.setDepth(11);
+        this.buttonDialog.setDepth(12);
         this.buttonDialog.setScrollFactor(0);
         this.buttonDialog.setVisible(false);
 
         this.buttonDialogSel = this.add.image(gameWidth*10.7/16, gameHeight*13.34/16, 'buttonDialogSel');
         this.buttonDialogSel.setScale(2/3);
-        this.buttonDialogSel.setDepth(11);
+        this.buttonDialogSel.setDepth(12);
         this.buttonDialogSel.setScrollFactor(0);
         this.buttonDialogSel.setVisible(false);
 
@@ -398,6 +399,13 @@ class LevelManager extends Phaser.Scene
         this.buttonDialog.on('pointerover', function (pointer) {this.buttonDialogSel.setVisible(true);}, this);
         this.buttonDialog.on('pointerout', function (pointer) {this.buttonDialogSel.setVisible(false);}, this);
         this.buttonDialog.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.nextDialog());
+
+        //RAVEN ravenHugin
+        this.ravenHugin = this.add.image(gameWidth*11.7/16, gameHeight*8.34/16, 'ravenHugin');
+        this.ravenHugin.setScale(2/3);
+        this.ravenHugin.setDepth(5);
+        this.ravenHugin.setVisible(false);
+        this.ravenHugin.setScrollFactor(0);
 
         //POEMS
 
@@ -1207,6 +1215,7 @@ class LevelManager extends Phaser.Scene
                         this.DialogBg.setVisible(true);
                         this.DialogText.setVisible(true);
                         this.buttonDialog.setVisible(true);
+                        this.ravenHugin.setVisible(true);
                         this.DialogShowing=true;
                     }
                     musicGameplay.stop();
@@ -1271,6 +1280,7 @@ class LevelManager extends Phaser.Scene
           this.DialogBg.setVisible(false);
           this.buttonDialog.setVisible(false);
           this.buttonDialogSel.setVisible(false);
+          this.ravenHugin.setVisible(false);
           this.DialogShowing=false;
         }
 
@@ -1285,7 +1295,7 @@ class LevelManager extends Phaser.Scene
           this.indexText = 0;
           if (levelIndex == 9){
             world1Completed = true;
-            user.map[0] = true;
+            //user.world[0] = true;
             this.scene.stop('LevelManager');
             this.scene.start('WinnerMenu');
           }else{

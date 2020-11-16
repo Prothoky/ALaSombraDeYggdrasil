@@ -66,7 +66,7 @@ class World1Map extends Phaser.Scene{
     this.MoneyW1M = this.add.text(gameWidth*14/16, gameHeight*0.92/16,  user.money, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
 
     this.SetTextPos();
-    
+
 
     //BOTON TIENDA
     this.shopButtonW1M = this.add.image(gameWidth*14.5/16, gameHeight*1.1/16, 'deselectedButtonSmall');
@@ -679,6 +679,7 @@ class World1Map extends Phaser.Scene{
       this.buttonNode9.setVisible(true);
     }
     if (user.map[9] == true){
+      user.world[1] = true;
      console.log("Desbloquear mundo 2");
     }
 
