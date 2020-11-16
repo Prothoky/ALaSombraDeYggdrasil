@@ -26,7 +26,8 @@ class LevelManager extends Phaser.Scene
         this.following = false;
         this.cameraOffsetX = -250;  // Offset del seguido del personaje en el eje X
         // 1.3) Ajustes enemigos
-        this.enemySpeed = -200; // Velocidad de movimiento de los enemigos
+        this.eagleSpeedX = -550; // Velocidad de movimiento de los enemigos
+        this.eagleSpeedY = 250;
         // 1.4) Ajustes del generador aleatorio
         // La distancia entre trampas final será maxRandTrapDistance(rand) + trapDistance + minDistance
         this.platformPositionY = 300;   // Posición base en Y de las plataformas
@@ -849,10 +850,13 @@ class LevelManager extends Phaser.Scene
     // xPos, yPos: posición en el mapa
     // collisionWidth, collisionHeight: tamaño de la hitbox
     // triggerWidth, triggerHeight: tamaño del trigger de movimiento. Si no se pasa toma valor por defecto
-    generateMovingEnemy(xPos, yPos = this.levelGroundHeight - 60, collisionWidth = 40, collisionHeight = 60, triggerWidth = 500, triggerHeight = 500) {
-        let newEnemy = this.enemies.create(xPos, yPos, 'dude').setOrigin(1).setTint(0x00ff38).refreshBody();
+    generateMovingEnemy(xPos, yPos = -300, collisionWidth = 90, collisionHeight = 120, triggerWidth = 500, triggerHeight = 500) {
+        let newEnemy = this.enemies.create(xPos, yPos, 'eagle_attacking').setOrigin(0).setScale(this.playerResizeFactor).refreshBody();
+        newEnemy.anims.play('eagle_attacking');
+        newEnemy.body.setAllowGravity(false);
         newEnemy.body.setSize(collisionWidth, collisionHeight);
-        let newTrigger = this.triggers.create(xPos, yPos, 'dot').setVisible(false).refreshBody();
+        newEnemy.setOffset(130, 330);
+        let newTrigger = this.triggers.create(xPos - 1700, this.levelGroundHeight, 'dot').setVisible(false).refreshBody();
         newTrigger.body.setSize(triggerWidth, triggerHeight);   // Trigger que hará que el enemigo se mueva cuando entre el personaje en contacto
         newTrigger.associatedEnemy = newEnemy;
         return this.minDistMovingEnemy;
@@ -1442,7 +1446,8 @@ class LevelManager extends Phaser.Scene
 
     // Función que ordena al enemigo moverse cuando se encuentra con el jugador
     enemyStartMotion(player, triggers) {
-        triggers.associatedEnemy.setVelocityX(this.enemySpeed);
+        triggers.associatedEnemy.setVelocityX(this.eagleSpeedX);
+        triggers.associatedEnemy.setVelocityY(this.eagleSpeedY);
     }
 
     // Destruye al enemigo

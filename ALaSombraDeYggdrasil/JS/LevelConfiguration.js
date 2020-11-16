@@ -17,7 +17,7 @@ Leyenda de trampas
 1 - plataformas sin enemigos
 2 - enemigos quietos
 3 - plataformas con enemigos
-4 - enemigos con movimiento ¡NO USAR!
+4 - aguila
 5 - pinchos largos con plataforma para lograr el salto
 6 - pinchos pequeñitos seguidos sin enemigo
 7 - pinchos pequeñitos seguidos con enemigos
