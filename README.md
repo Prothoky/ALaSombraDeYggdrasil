@@ -18,7 +18,7 @@ La cultura vikinga es el punto de interés del juego, estará basado en los pueb
 
 ## Descripción del juego
 
-El juego está inspirado en los clásicos endless runner, pero a diferencia de estos, el nivel en este caso tiene un final. El jugador se encontrará un mundo entero para atravesar, este está distribuido en un cuadrícula de XX por XX. Con este diseño de mapa se busca la exploración por completo del mundo para así conseguir todos los objetos y desafíos por resolver.
+El juego está inspirado en los clásicos endless runner, pero a diferencia de estos, el nivel en este caso tiene un final. El jugador se encontrará un mundo entero para atravesar con dos tipos de escenarios.  Con este diseño de mapa se busca la exploración por completo del mundo para así conseguir todos los objetos y desafíos por resolver.
 
 
 Respecto a la historia, el personaje es un vikingo ya vivido que tiene como único deseo morir en la guerra para poder alcanzar el Valhalla y poder reunirse con su familia y amigos más allá. Para ello vikingo irá recorriendo los 9 mundos que describen la mitología nórdica los cuales conforman el universo vikingo.
@@ -35,23 +35,21 @@ Durante el transcurso del juego el protagonista irá narrando su experiencia por
 
 ## Personaje
 
-Por el momento estamos trabajando en el diseño del personaje. Están por definir aún las habilidades de este, aunque sabemos que el hacha será el arma principal del juego.
-El mayor debate que surgió con este fue el movimiento que tendría en función de cómo sujetaría el hacha, pero hemos decidido que el personaje llevará el hacha en una única mano, pensando que sería una animación más lógica para este tipo de juegos tan rápidos.
-
+Einar, la calamidad de Midgar es un robusto vikingo que lleva muchos siglos perdido en su amnesia. Está inspirado en los relatos descriptivos de como eran los berserkers. Este personaje irá dialogando con los cuervos de Odín al final de cada nivel. Durante el camino hará uso de su imponente hacha para librarse de todos los enemigos que le dan caza.
 ![Einar](https://user-images.githubusercontent.com/55508821/97813399-3b3e4a00-1c88-11eb-80d3-1dbf2db12bf5.jpg)
 
 
 
 
 ## Modos de dificultad y modo arcade
-A la hora de plantear la dificultad fuimos claro, tenemos que tener dificultades suficientes para todo el público posible, por eso hemos creado 3, Travesía(Fácil), cacería (normal) y frenesí (dificil) con un nivelado de tiempo, distancia entre trampas, dinero recibido y velocidad distintos en función decada dificultad
+Hemos desarrollado 3 dificultades distintas en función de los distintos tipos de jugador que podemos encontrar. Travesía(Fácil), Cacería (normal) y Frenesí (dificil) con un nivelado de tiempo, distancia entre trampas, dinero recibido y velocidad distintos en función decada dificultad
 
 Cada nivel tiene un array donde especificamos el porcentaje de aparición de cada tipo de enemigo y de obstáculo. 
 
-Para aumentar el tiempo de juego hemos implementado un modo arcade, siendo este un endless runner clásico donde el jugador probará la destreza obtenida durante la historia. Este no constará de ningún tipo de dificuldad opcional, ya que al ir aumentando progresivamente la velocidad, el jugador necesitará mucho tiempo para poder llegar lejos. Al final de la partida se indicará al jugador la distancia recorrida y su mayor recorrido.
+Para aumentar el tiempo de juego hemos implementado un modo arcade, siendo este un endless runner clásico donde el jugador probará la destreza obtenida durante la historia. Este no constará de ningún tipo de dificuldad opcional, ya que al ir aumentando progresivamente la velocidad. El jugador necesitará mucho tiempo para poder llegar lejos. Al final de la partida se indicará al jugador la distancia recorrida y su mayor recorrido.
 
 ## Mecánicas de juego
-El juego tiene un sistema de movimiento limitado, el jugado irá por defecto de izquierda a derecha con la única opción de saltar y atacar.
+El juego tiene un sistema de movimiento limitado, el jugador irá por defecto de izquierda a derecha con la única opción de saltar y atacar.
 
 El juego sigue una dinámica simple de esquive y ataque continuo. Lo interesante de este juego es por el modo historia que va a ir recorriendo el protagonista. 
 Los 18 niveles están diseñados para generar continuamente un factor sorpresa por diversos motivos:
@@ -60,7 +58,7 @@ Los 18 niveles están diseñados para generar continuamente un factor sorpresa p
  - Reducción progresiva de la distancia entre trampas para que el jugador vaya afinando sus habilidades
  - Subniveles con historias secundarias para sacar un dinero extra.
  
- Para mejorar la jugabilidad del usuario hemos implementado unas mejoras en la tienda para que en los niveles finales pueda seguir jugando aún con el ritmo y la dificultad en aumento.
+ Para mejorar la jugabilidad del usuario hemos implementado unas mejoras en la tienda para que en los niveles finales pueda seguir     jugando aún con el ritmo y la dificultad en aumento.
 - Salto doble
 - Mayor tiempo de invulnerabilidad tras un golpe
 - Aumento en la velocidad de ataque de Einar
@@ -143,7 +141,7 @@ El lago de Sigtuna
 
 
 ## Interfaz y modos de juego
-El diseño de interfaz de usuario debe de ser muy sencilla y ligera para el usuario, no pretendemos distraer con mucha carga de información para atraer a la mayor cantidad de público posible. El diseño del menú principal tiene como principal atención a Yggdrasil sujetando a los 9 mundos vikingos, estos estarán en gris hasta que se vayan desbloqueando, el jugador seleccionará el mundo y se adentrará en su respectivo tablero de niveles 
+El diseño de interfaz de usuario debe de ser muy sencilla y ligera para el usuario, no pretendemos distraer con mucha carga de información para atraer a la mayor cantidad de público posible. El diseño del menú principal tiene como premisa crear  atención a Yggdrasil sujetando a los 9 mundos vikingos, estos estarán en gris hasta que se vayan desbloqueando, el jugador seleccionará el mundo y se adentrará en su respectivo mapa de selección de niveles.
 
 ![Mení principal acabado](https://user-images.githubusercontent.com/55508821/98905009-f81b7c80-24ba-11eb-91e1-2ed3e8509b3c.jpeg)
 
@@ -151,7 +149,7 @@ A continuación la pantalla en la que aparecerán todos los mundos y la manera d
 ![Yggdrasil con poema](https://user-images.githubusercontent.com/55508821/98905036-023d7b00-24bb-11eb-95c2-0b3372ae8815.jpeg)
 
 
-La interfaz de juego está mayormente limitada por el lanzamiento del juego en los dispositivos móviles, en la pantalla de juego, una vez el jugador ya haya empuñado el hacha, aparecerá en la esquina superior izquierda a modo de vidas, unos escudos vikingos que te indicarán el número de escudos restantes que restan. Por la esquina superior derecha encontraremos un botón de pausa, ahí el jugador accederá al menú de pausa, donde tendrá las opciones de modificar el volumen, salir del juego o reiniciar la partida.
+La interfaz de juego está mayormente limitada por el lanzamiento del juego en los dispositivos móviles, en la pantalla de juego, una vez el jugador ya haya empuñado el hacha, aparecerá en la esquina superior derecha el número de vidas, son unos escudos vikingos que te indican el número de escudos restantes. Por la esquina superior izquierda está un botón de pausa, ahí el jugador podrá acceder al menú de pausa, donde tiene las opciones para  modificar el volumen, salir del juego o reiniciar la partida.
 
 
 ## Flujo de juego
@@ -160,15 +158,18 @@ La interfaz de juego está mayormente limitada por el lanzamiento del juego en l
 
 ## Historia
 
-Einar es el vikingo protagonista de esta historia. Fue bendecido con el don de la inmortalidad como regalo de los dioses para que guiara a su pueblo a un lugar próspero. El problema de este regalo es que juega como arma de doble filo, su pueblo acabó siendo arrastrado por el tiempo y el olvido. De ese legado apenas quedan unos poemas y unos cuentos de niños. Einar, ya sin familia ni destino sufre el exilio de la muerte en vida por eso, decide ir a ver a Odín a su propia casa, para reclamar su merecido sitio en el Valhalla para poder reunirse con su familia después de siglos de soliloquio. 
+Einar es el vikingo protagonista de esta historia. Fue bendecido con el don de la inmortalidad como regalo de los dioses para que guiara a su pueblo a un lugar próspero. El problema de este regalo es que juega como arma de doble filo, su pueblo acabó siendo arrastrado por el tiempo y el olvido. De ese legado apenas quedan unos poemas y unos cuentos de niños. 
 
-Para ello Einar irá recorriendo los nueve mundos que sostiene Yggdrasil teniendo a Asgard como meta. Esta aventura comienza en su planeta natal Midgard.
+Einar, ya sin familia ni destino sufre el exilio de la muerte en vida por eso, durante su periplo irá recordando su legado y reflexionando sobre los dioses y sus influencias sobre el mundo.
 
-Cada mundo se dividirá en unos cuantos subniveles principales con sus respectivos niveles extras, extendiendose a modo de árbol por las fases principales. En estos niveles adicionales el jugador encontraría cuentos y leyendas de dioses y del propio Einar, progagando así la narrativa por varias direcciones.
+Durante su viaje por Midgard oirá el rumor de que Yggdrasil está en peligro y que el poder de los dioses no ha tenido ningún efecto.
+Einar irá recorriendo los nueve mundos que sostiene Yggdrasil teniendo a Asgard como meta.
 
-Habrá 10 niveles principales, 5 en el bosque y los otros 5 en el hielo. Algunos de estos niveles tendrán ramas que contendrán niveles extras con historias adicionales sobre la cultura nórdica. 
+Cada mundo se divide en unos cuantos subniveles principales con sus respectivos niveles extras, extendiendose a modo de árbol por las fases principales. En estos niveles adicionales el jugador hay cuentos y leyendas de dioses y del propio Einar, progagando así la narrativa por varias direcciones.
 
-La historia principal del primer mundo constará de dos fases a nivel narrativo, el jugador al llegar al final de cada nivel se encontrará un cuervo para hablar, serán dos, Hugin y Munin, cuervo del pensamiento y del recuerdo. Con el apoyo a nivel metafórico del concepto de estos, Einar irá al principio recordando quien era tras tantos siglos de soledad, se hará muchas preguntas acerca de su pasado, su causa y la familia que tenía. Conforme avance, irá redescubriendo su vida hasta llegar al punto de recordar que es inmortal por la gracia o desgracia de Odín, que es el que le ha causado tantas guerras y penas. 
+Hay 10 niveles principales, 5 en el bosque y los otros 5 en el hielo. Algunos de estos niveles tienen ramas que contienen niveles extras con historias adicionales sobre la cultura nórdica. 
+
+La historia principal del primer mundo consta de dos fases a nivel narrativo, el jugador al llegar al final de cada nivel se encuentra con dos cuervos para hablar, son Hugin y Munin, cuervo del pensamiento y del recuerdo. Con el apoyo a nivel metafórico del concepto de estos, Einar irá al principio recordando quien era tras tantos siglos de soledad, se hará muchas preguntas acerca de su pasado, su causa y la familia que tenía. Conforme avance, irá redescubriendo su vida hasta llegar al punto de recordar que es inmortal por la gracia o desgracia de Odín, que es el que le ha causado tantas guerras y penas. 
 Durante la segunda mitad Einar se encontrará con el cuervo del pensamiento e irá reflexionando sobre diversos temas mientras atraviesa el lago Mälaren. Tratará la descreencia de lo divino, las incongruencias de la guerra y la ignorancia que ata a los hombres a estos dos eternos debates.
 
 
@@ -176,9 +177,7 @@ Durante la segunda mitad Einar se encontrará con el cuervo del pensamiento e ir
 
 [Incluir título de cada nivel y una breve descripción sobre este]
 
-A la hora de acabar el nivel, el jugador recibirá un dinero por el recorrido, dependiendo este del número de muerte y el número de enemigos establecidos. Este dinero también se repartirá de manera distinta en función del nivel de dificultad que se encuentre el jugador, estableceremos una economía de juego pensada para que el jugador pueda comprar habilidades antes de llegar a determinados niveles, así podrá ver su utilidad. Si este avanzara a niveles donde su falta de habilidades especiales le impide continuar, tendrá que volver a niveles pasados o completar todos los subniveles extra para poder obtener el dinero suficiente.
-
-
+A la hora de acabar el nivel, el jugador recibe un dinero por el recorrido. Este dinero también se reparte de manera distinta en función del nivel de dificultad que se encuentre el jugador, hay una economía de juego pensada para que el jugador pueda comprar habilidades antes de llegar a determinados niveles, así puede comprobar su utilidad. Si este avanzara a niveles donde su falta de habilidades especiales le impide continuar, tendrá que volver a niveles pasados o completar todos los subniveles extra para poder obtener el dinero suficiente.
 
 ## Estilo artístico y música
 La música buscada debía cumplir con la clara presencia de los sonidos vikingos. 
