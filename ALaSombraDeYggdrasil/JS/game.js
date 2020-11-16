@@ -105,16 +105,14 @@ function resetUserData(){
 var stringsJSON;
 
 function updateLanguage(userLang){
-  if(userConfig.lang==null)
+  if(userConfig.lang==null || userConfig.lang=="null")
     userConfig.lang = navigator.language || navigator.userLanguage;
-  else{
-    if(userConfig.lang == "es-ES" || userConfig.lang == "es"){
-      stringsJSON = phaserJSON.esp;
-      userConfig.lang = "es";}
-    else if(userConfig.lang == "en-US" || userConfig.lang == "en"){
-        stringsJSON = phaserJSON.eng;
-        userConfig.lang = "en";
-    }
+  if(userConfig.lang == "es-ES" || userConfig.lang == "es"){
+    stringsJSON = phaserJSON.esp;
+    userConfig.lang = "es";}
+  else if(userConfig.lang == "en-US" || userConfig.lang == "en"){
+      stringsJSON = phaserJSON.eng;
+      userConfig.lang = "en";
   }
   if(userLang == "es-ES" || userLang == "es"){
     stringsJSON = phaserJSON.esp;
