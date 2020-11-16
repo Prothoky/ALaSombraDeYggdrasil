@@ -252,6 +252,7 @@ class LevelManager extends Phaser.Scene
         // 3) OBJETOS DE CONTROL DE FLUJO
         this.endTrigger = this.physics.add.sprite(0, this.levelGroundHeight, 'dot').setSize(50, this.levelHeight + 200);  // Trigger de evento final de nivel
         this.endTrigger.body.setAllowGravity(false);    // Quitar gravedad
+        this.endTrigger.setVisible(false);
         if (this.endlessMode == true) {
             this.arcadeIntervalTimer = this.time.addEvent( { delay: 200, callback: this.arcadeIntervalFunc, callbackScope: this, loop: true } );    // Aumenta la velocidad y la distancia
         }
