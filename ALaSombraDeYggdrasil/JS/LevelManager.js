@@ -138,9 +138,6 @@ class LevelManager extends Phaser.Scene
 
     }
 
-    preload(){
-        this.load.plugin('rexsoundfadeplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexsoundfadeplugin.min.js', true);
-    }
     create ()
     {
 
@@ -176,7 +173,10 @@ class LevelManager extends Phaser.Scene
         }
         // Ponemos música gameplay si no está ya
         if (!musicGameplay.isPlaying) {
-          musicGameplay.play();
+            musicGameplay.play();
+        }
+        if(musicGameplay.volume <= 0){
+            musicGameplay.setVolume(userConfig.volumeMusic/10);
         }
 
         // 1.2) Sonidos
@@ -229,7 +229,7 @@ class LevelManager extends Phaser.Scene
         // Dependiendo de la dificultad escogida asignamos nº vidas
         switch (userConfig.difficulty) {
             case 0:
-                this.playerHealth = 105;
+                this.playerHealth = 5;
                 break;
             case 1:
                 this.playerHealth = 3;
@@ -1166,17 +1166,21 @@ class LevelManager extends Phaser.Scene
     goalArrived() {
         let timeFadeOut=3000;
         this.endLevelCollision.active = false;
-        this.player.setAccelerationX(-200);
+        this.player.setAccelerationX(-250);
         this.hasArrived = true;
         this.actualizeMapsCompleted();
         user.money+= levelSettings[DifficultyIndexSubnode(levelIndex)][userConfig.difficulty][3];
         user.map[levelIndex] = true;
         saveUserData();
         try{
-            this.plugins.get('rexsoundfadeplugin').fadeOut(this, musicGameplay, timeFadeOut);
+            this.tweens.add({
+                targets:  musicGameplay,
+                volume:   0,
+                timeFadeOut: 3000
+            });
         }
         catch(error){
-            console.log("Imposible get rexsoundfadeplugin")
+            console.log("Imposible get fadeout")
             musicGameplay.stop();
         }
         this.soundRunning.stop();
@@ -1196,22 +1200,28 @@ class LevelManager extends Phaser.Scene
                 delay: timeFadeOut,
                 callback: function() {
 
-                  this.dialogSound.setLoop(true);
-                  this.dialogSound.play();
+                    this.dialogSound.setLoop(true);
+                    this.dialogSound.play();
 
-                  if((levelIndex < 10) || (levelIndex == 14) ||(levelIndex == 15) ){
-                    this.DialogBg.setVisible(true);
-                    this.DialogText.setVisible(true);
-                    this.buttonDialog.setVisible(true);
-                    this.DialogShowing=true;
-                  }
-                  this.showDialog();
-                  try{
-                    //this.plugins.get('rexsoundfadeplugin').fadeOut(this, MusicDialog, 3000);
-                  }
-                  catch{
-                    //musicDialog.play();
-                  }
+                    if((levelIndex < 10) || (levelIndex == 14) ||(levelIndex == 15) ){
+                        this.DialogBg.setVisible(true);
+                        this.DialogText.setVisible(true);
+                        this.buttonDialog.setVisible(true);
+                        this.DialogShowing=true;
+                    }
+                    musicGameplay.stop();
+                    this.showDialog();
+                    try{
+                        this.tweens.add({
+                            targets:   this.dialogSound,
+                            volume:   userConfig.volumeMusic/10,
+                            timeFadeOut: 1500
+                        });
+                    }
+                    catch(error){
+                        console.log("Imposible get fadein")
+                        this.dialogSound.play();
+                    }
                 },
                 callbackScope: this
         }, this);
@@ -1269,7 +1279,7 @@ class LevelManager extends Phaser.Scene
           this.PoemVisible.setVisible(false);
 
         }
-
+        this.plugins.stop("rexsoundfadeplugin");
         this.cameras.main.fadeOut(2500, 0, 0, 0);
         this.time.delayedCall(2500, () => {
           this.indexText = 0;
