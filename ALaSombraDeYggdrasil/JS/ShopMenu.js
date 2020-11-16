@@ -9,7 +9,15 @@ class ShopMenu extends Phaser.Scene{
 
   create(){
 
-    this.bendicionDeHierroSound = this.sound.add('soundBendicionDeHierro',this.EffectsConfig())
+    this.bendicionDeHierroSound = this.sound.add('soundBendicionDeHierro',this.EffectsConfig());
+    this.FuerzaDeOdinSound = this.sound.add('soundFuerzaDeOdin',this.EffectsConfig());
+    this.FuriaSound = this.sound.add('soundFuria',this.EffectsConfig());
+    this.PlumaDeValquiriaSound = this.sound.add('soundPlumaDeValquiria',this.EffectsConfig());
+    this.ForceOfOdinSound = this.sound.add('soundForceOfOdin',this.EffectsConfig());
+    this.IronBlessingSound = this.sound.add('soundIronBlessing',this.EffectsConfig());
+    this.RageSound = this.sound.add('soundRage',this.EffectsConfig());
+    this.ValkirieFeatherSound = this.sound.add('soundValkirieFeather',this.EffectsConfig());
+
     this.buyObj = this.sound.add('BuyObject', this.EffectsConfig());
     this.clickSound = this.sound.add('ClickButtonSound', this.EffectsConfig());
     this.cameras.main.fadeIn(1500, 0, 0, 0);
@@ -169,7 +177,11 @@ class ShopMenu extends Phaser.Scene{
   AddObject1(){
 
     this.buyObj.play();
-    this.bendicionDeHierroSound.play();
+    if(userConfig.lang=="es")
+      this.bendicionDeHierroSound.play();
+    else
+      this.IronBlessingSound.play();
+
     if ((user.money >= phaserJSON.Store.shields.price)&& (user.buffs[0] < 3)){
       user.buffs[0]++;
       user.money-= phaserJSON.Store.shields.price;
@@ -192,7 +204,11 @@ class ShopMenu extends Phaser.Scene{
   AddObject2(){
 
       this.buyObj.play();
-
+      if(userConfig.lang=="es")
+        this.FuerzaDeOdinSound.play();
+      else
+        this.ForceOfOdinSound.play();
+      
       if ((user.money >= phaserJSON.Store.doublejump.price)&&(user.buffs[1] == 0)){
         user.buffs[1]++;
         user.money-= phaserJSON.Store.doublejump.price;
@@ -209,6 +225,10 @@ class ShopMenu extends Phaser.Scene{
 
   AddObject3(){
     this.buyObj.play();
+    if(userConfig.lang=="es")
+      this.PlumaDeValquiriaSound.play();
+    else
+      this.ValkirieFeatherSound.play();
 
     if ((user.money >= phaserJSON.Store.invulnerability.price)&&(user.buffs[2] == 0)){
       user.buffs[2]++;
@@ -226,6 +246,10 @@ class ShopMenu extends Phaser.Scene{
   AddObject4(){
 
     this.buyObj.play();
+    if(userConfig.lang=="es")
+      this.FuriaSound.play();
+    else
+      this.RageSound.play();
 
     if ((user.money >= phaserJSON.Store.cooldown.price) && (Number(user.buffs[3]) == 0)){
       user.buffs[3]++;
