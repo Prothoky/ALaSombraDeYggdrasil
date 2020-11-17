@@ -199,12 +199,12 @@ class LevelManager extends Phaser.Scene
         if (this.isIceLevel) {
             this.bg_backgorund = this.add.tileSprite(0, 0, 5715, 916, 'bg_background_ice');
             this.bg_far = this.add.tileSprite(0,0, 5715, 916, "bg_far_ice");
-            this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium_ice");
+            this.bg_medium = this.add.tileSprite(0,0, 3772, 605, "bg_medium_ice");
             this.bg_near = this.add.tileSprite(0,0, 5715, 916, "bg_near_ice");
         } else {
             this.bg_backgorund = this.add.tileSprite(0,0, 5715, 916, 'bg_background');
             this.bg_far = this.add.tileSprite(0,0, 5715, 916, "bg_far");
-            this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium");
+            this.bg_medium = this.add.tileSprite(0,0, 3772, 605, "bg_medium");
             this.bg_near = this.add.tileSprite(0,0, 5715, 916, "bg_near");
         }
         this.bg_near.depth = 6;
@@ -221,7 +221,6 @@ class LevelManager extends Phaser.Scene
         this.bg_near.setScrollFactor(0);
         this.bg_backgorund.setScale(0.66);
         this.bg_far.setScale(0.66);
-        this.bg_medium.setScale(0.66);
         this.bg_near.setScale(0.75);
 
         //  ----GAMEPLAY----
@@ -547,6 +546,7 @@ class LevelManager extends Phaser.Scene
         pointerJump.setOrigin(0.5,0.5);
         pointerJump.setScale(0.15);
         pointerJump.setDepth(15);
+        
         var pointerAttack = this.add.image(1100, 550, 'mobile_button').setInteractive();
         pointerAttack.setDepth(15);
         pointerAttack.setScale(0.15);
