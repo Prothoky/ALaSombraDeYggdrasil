@@ -1,0 +1,337 @@
+{
+	"images":{
+		"files":[
+			{
+		      "type": "image",
+		      "key": "Logo",
+		      "url": "./ASSETS/Logo.jpeg"
+		    },
+			{
+		      "type": "image",
+		      "key": "backgroundMM",
+		      "url": "./ASSETS/Fondos/MainMenuBackground.jpg"
+		    },
+		    {
+		      "type": "image",
+		      "key": "VolumeUpButtonOM",
+		      "url": "./ASSETS/Botones/BotonSubirVolumen.png"
+		    },
+		    {
+		      "type": "image",
+		      "key": "backgroundOM",
+		      "url": "./ASSETS/Fondos/OptionsMenuBackground.jpg"
+		    },
+		     {
+		      "type": "image",
+		      "key": "backgroundOMEn",
+		      "url": "./ASSETS/Fondos/OptionsMenuBackgroundEng.jpg"
+		    }, {
+		      "type": "image",
+		      "key": "backgroundVM",
+		      "url": "./ASSETS/Fondos/MusicMenuBackground.jpg"
+		    }, {
+		      "type": "image",
+		      "key": "backgroundVMEn",
+		      "url": "./ASSETS/Fondos/MusicMenuBackgroundEng.jpg"
+		    }, {
+		      "type": "image",
+		      "key": "backgroundSetM",
+		      "url": "./ASSETS/Fondos/SettingsMenuBackgr.jpg"
+		    }, {
+		      "type": "image",
+		      "key": "backgroundSetMEn",
+		      "url": "./ASSETS/Fondos/SettingsMenuBackgrEng.jpg"
+		    },
+			{
+		      "type": "image",
+		      "key": "EasyButtonSelected",
+		      "url": "./ASSETS/Botones/BotonFacilSeleccionado.png"
+		    },
+		    {
+		      "type": "image",
+		      "key": "MediumButtonSelected",
+		      "url": "./ASSETS/Botones/BotonMedioSeleccionado.png"
+		    },
+		    {
+		      "type": "image",
+		      "key": "DifficultButtonSelected",
+		      "url": "./ASSETS/Botones/BotonDificilSeleccionado.png"
+		    },
+		    {
+		      "type": "image",
+		      "key": "EasyButtonSelectedEn",
+		      "url": "./ASSETS/Botones/BotonFacilSeleccionadoEng.png"
+		    },
+		    {
+		      "type": "image",
+		      "key": "MediumButtonSelectedEn",
+		      "url": "./ASSETS/Botones/BotonMedioSeleccionadoEng.png"
+		    },
+		    {
+		      "type": "image",
+		      "key": "DifficultButtonSelectedEn",
+		      "url": "./ASSETS/Botones/BotonDificilSeleccionadoEng.png"
+		    },
+			{
+		      "type": "image",
+		      "key": "backgroundMSM",
+		      "url": "./ASSETS/Fondos/MapMenuBackground.jpg"
+		    },{
+		      "type": "image",
+		      "key": "backgroundMSMWolrd1Comp",
+		      "url": "./ASSETS/Fondos/MapMenuBackgroundMidgardComp.jpg"
+		    },{
+		      "type": "image",
+		      "key": "World1Button",
+		      "url": "./ASSETS/Mundos/BotonMidgard.png"
+		    },{
+		      "type": "image",
+		      "key": "World2Button",
+		      "url": "./ASSETS/Mundos/BotonMuspelheim.png"
+		    },{
+		      "type": "image",
+		      "key": "paperWorld1",
+		      "url": "./ASSETS/Pergaminos/PergaminoMidgard.png"
+		    },{
+		      "type": "image",
+		      "key": "paperWorld1En",
+		      "url": "./ASSETS/Pergaminos/PergaminMidgard.png"
+		    },{
+		      "type": "image",
+		      "key": "playButton",
+		      "url": "./ASSETS/Botones/BotonJugar.png"
+		    },{
+		      "type": "image",
+		      "key": "playButtonSel",
+		      "url": "./ASSETS/Botones/JugarSeleccionado.png"
+		    },{
+		      "type": "image",
+		      "key": "deselectedButtonSmall",
+		      "url": "./ASSETS/Botones/BotonPequenio.png"
+		    },{
+		      "type": "image",
+		      "key": "selSmallLeftButton",
+		      "url": "./ASSETS/Botones/BotonPequenioSelIzq.png"
+		    },{
+		      "type": "image",
+		      "key": "selSmallRightButton",
+		      "url": "./ASSETS/Botones/BotonPequenioSelDch.png"
+		    },{
+		      "type": "image",
+		      "key": "deselectedButton",
+		      "url": "./ASSETS/Botones/BotonPequenioSelDch.png"
+		    },{
+		      "type": "image",
+		      "key": "selLeftButton",
+		      "url": "./ASSETS/Botones/BotonDeseleccionado.png"
+		    },{
+		      "type": "image",
+		      "key": "selLeftButton",
+		      "url": "./ASSETS/Botones/BotonSelIzq.png"
+		    },{
+		      "type": "image",
+		      "key": "selRightButton",
+		      "url": "./ASSETS/Botones/BotonSelDcha.png"
+		    },{
+		      "type": "image",
+		      "key": "mobile_button",
+		      "url": "./ASSETSUnused/Placeholders/button.png"
+		    },{
+		      "type": "image",
+		      "key": "bg_far",
+		      "url": "./ASSETS/Secciones/Zona_lejana.png"
+		    },{
+		      "type": "image",
+		      "key": "bg_medium",
+		      "url": "ASSETS/Secciones/Zona_media.png'"
+		    },{
+		      "type": "image",
+		      "key": "bg_near",
+		      "url": "ASSETS/Secciones/Zona_delantera.png"
+		    },{
+		      "type": "image",
+		      "key": "bg_background",
+		      "url": "ASSETS/Secciones/Fondo.png"
+		    },{
+		      "type": "image",
+		      "key": "bg_far_ice",
+		      "url": "./ASSETS/Secciones/Zona_lejana_hielo.png"
+		    },{
+		      "type": "image",
+		      "key": "bg_medium_ice",
+		      "url": "ASSETS/Secciones/Zona_media._hielopng'"
+		    },{
+		      "type": "image",
+		      "key": "bg_near_ice",
+		      "url": "ASSETS/Secciones/Zona_delantera_hielo.png"
+		    },{
+		      "type": "image",
+		      "key": "bg_background_ice",
+		      "url": "ASSETS/Secciones/Fondo_hielo.png"
+		    },{
+		      "type": "image",
+		      "key": "barricade",
+		      "url": "ASSETS/Gameplay/barricade.png"
+		    },{
+		      "type": "image",
+		      "key": "trunk",
+		      "url": "ASSETS/Gameplay/trunk.png"
+		    },{
+		      "type": "image",
+		      "key": "cabin_up_1",
+		      "url": "ASSETS/Gameplay/cabin_up_1.png"
+		    },{
+		      "type": "image",
+		      "key": "cabin_down_1",
+		      "url": "ASSETS/Gameplay/cabin_down_1.png"
+		    },{
+		      "type": "image",
+		      "key": "cabin_up_ice_1",
+		      "url": "ASSETS/Gameplay/cabin_up_ice_1.png"
+		    },{
+		      "type": "image",
+		      "key": "cabin_down_ice_1",
+		      "url": "ASSETS/Gameplay/cabin_down_ice_1.png"
+		    },{
+		      "type": "image",
+		      "key": "cabin_up_2",
+		      "url": "ASSETS/Gameplay/cabin_up_2.png"
+		    },{
+		      "type": "image",
+		      "key": "cabin_down_2",
+		      "url": "ASSETS/Gameplay/cabin_down_2.png"
+		    },{
+		      "type": "image",
+		      "key": "cabin_up_ice_2",
+		      "url": "ASSETS/Gameplay/cabin_up_ice_2.png"
+		    },{
+		      "type": "image",
+		      "key": "cabin_down_ice_2",
+		      "url": "ASSETS/Gameplay/cabin_down_ice_2.png"
+		    },{
+		      "type": "image",
+		      "key": "platform",
+		      "url": "ASSETS/Gameplay/platform.png"
+		    },{
+		      "type": "image",
+		      "key": "platform_ice",
+		      "url": "ASSETS/Gameplay/platform_ice.png"
+		    },{
+		      "type": "image",
+		      "key": "spikes",
+		      "url": "ASSETS/Gameplay/spikes.png"
+		    },{
+		      "type": "image",
+		      "key": "spikes_long",
+		      "url": "ASSETS/Gameplay/spikes_long.png"
+		    },{
+		      "type": "image",
+		      "key": "pauseButton",
+		      "url": "ASSETS/Gameplay/ButtonPause.png"
+		    }
+
+
+
+
+		]
+	},
+	"sounds":{
+		"files":[
+			{
+				"type": "audio",
+		      	"key": "music_1",
+		    	"url": "./ASSETS/Musica/music_1.mp3"
+			},
+			{
+				"type": "audio",
+		      	"key": "music_2",
+		    	"url": "./ASSETS/Musica/music_2.mp3"
+			},
+			{
+				"type": "audio",
+		      	"key": "music_3",
+		    	"url": "./ASSETS/Musica/music_3.mp3"
+			},
+			{
+				"type": "audio",
+		      	"key": "musicDialog",
+		    	"url": "./ASSETS/Musica/MusicaDialogoFinal.mp3"
+			},
+			{
+				"type": "audio",
+		      	"key": "player_death",
+		    	"url": "./ASSETS/SFX/sound_hit.mp3"
+			},
+			{
+				"type": "audio",
+		      	"key": "player_attack",
+		    	"url": "./ASSETS/SFX/sound_attack.mp3"
+			},
+			{
+				"type": "audio",
+		      	"key": "player_jump",
+		    	"url": "./ASSETS/SFX/sound_jump.mp3"
+			},
+			{
+				"type": "audio",
+		      	"key": "ChangeDifficulty",
+		    	"url": "./ASSETS/SFX/Dificultad.mp3"
+			},
+			{
+				"type": "audio",
+		      	"key": "ClickButtonSound",
+		    	"url": "./ASSETS/SFX/Click.mp3"
+			},
+			{
+				"type": "audio",
+		      	"key": "BuyObject",
+		    	"url": "./ASSETS/SFX/Compra.mp3"
+			},
+			{
+				"type": "audio",
+		      	"key": "Poem",
+		    	"url": "./ASSETS/SFX/Poema.mp3"
+			},
+			{
+				"type": "audio",
+		      	"key": "soundBendicionDeHierro",
+		    	"url": "./ASSETS/SFX/BendicionDeHierro.m4a"
+			},
+			{
+				"type": "audio",
+		      	"key": "soundPlumaDeValquiria",
+		    	"url": "./ASSETS/SFX/PlumaDeValquiria.m4a"
+			},
+			{
+				"type": "audio",
+		      	"key": "soundFuerzaDeOdin",
+		    	"url": "./ASSETS/SFX/FuerzaDeOdin.m4a"
+			},
+			{
+				"type": "audio",
+		      	"key": "soundRabia",
+		    	"url": "./ASSETS/SFX/Rabia.m4a"
+			},
+			{
+				"type": "audio",
+		      	"key": "soundForceOfOdin",
+		    	"url": "./ASSETS/SFX/ForceOfOdin.m4a"
+			},
+			{
+				"type": "audio",
+		      	"key": "soundIronBlessing",
+		    	"url": "./ASSETS/SFX/IronBlessing.m4a"
+			},
+			{
+				"type": "audio",
+		      	"key": "soundValkirieFeather",
+		    	"url": "./ASSETS/SFX/ValkirieFeather.m4a"
+			},
+			{
+				"type": "audio",
+		      	"key": "soundRage",
+		    	"url": "./ASSETS/SFX/Rage.m4a"
+			}
+		]
+	}
+}

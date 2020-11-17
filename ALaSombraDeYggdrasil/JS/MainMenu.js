@@ -6,8 +6,7 @@ class MainMenu extends Phaser.Scene{
 
   create(){
 
-    this.cameras.main.fadeIn(1000, 0, 0, 0);
-    console.log(userConfig.lang);
+    this.cameras.main.fadeIn(500, 0, 0, 0);
 
     // Controlador de audio
     let config = {
