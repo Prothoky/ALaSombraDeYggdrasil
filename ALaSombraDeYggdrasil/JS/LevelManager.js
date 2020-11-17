@@ -544,12 +544,12 @@ class LevelManager extends Phaser.Scene
 
         this.input.addPointer(2);
 
-        var pointerJump = this.add.image(100,550, 'mobile_button').setInteractive(); //Hace la imagen interactuable
+        var pointerJump = this.add.image(100,550, 'coin_1').setInteractive(); //Hace la imagen interactuable
         pointerJump.setOrigin(0.5,0.5);
         pointerJump.setScale(0.15);
         pointerJump.setDepth(15);
         
-        var pointerAttack = this.add.image(1100, 550, 'mobile_button').setInteractive();
+        var pointerAttack = this.add.image(1100, 550, 'coin_1').setInteractive();
         pointerAttack.setDepth(15);
         pointerAttack.setScale(0.15);
         pointerAttack.setOrigin(0.5,0.5);
