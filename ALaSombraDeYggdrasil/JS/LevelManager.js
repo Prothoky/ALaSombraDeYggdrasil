@@ -850,14 +850,14 @@ class LevelManager extends Phaser.Scene
     // Función de creación de enemigos sin movimiento
     // xPos, yPos: posición en el mapa
     // collisionWidth, collisionHeight: tamaño de la hitbox
-    generateStillEnemy(xPos, yPos = this.levelGroundHeight - 20, collisionWidth = 250, collisionHeight = 140) {
+    generateStillEnemy(xPos, yPos = this.levelGroundHeight - 20, collisionWidth = 190, collisionHeight = 110) {
         if (this.hasCicled) {
             yPos += 40;
         }
         xPos += 75;
         let newEnemy = this.enemies.create(xPos, yPos, 'draugr').setOrigin(1).setScale(this.playerResizeFactor);
         newEnemy.body.setSize(collisionWidth, collisionHeight);
-        newEnemy.setOffset(80, 140);
+        newEnemy.setOffset(135, 165);
         newEnemy.depth = 3;
         newEnemy.isStill = true;
         let newTrigger = this.triggers.create(xPos - 250, this.levelGroundHeight, 'dot').setVisible(false).refreshBody();
