@@ -360,10 +360,9 @@ class PreloadMenu extends Phaser.Scene{
 
 
     this.logo = this.add.sprite(gameWidth*8/16, gameHeight*8/16, 'logo');
-    this.logo.setScale(1/3);
+    this.logo.setScale(2/3);
     this.logo.alpha = 0;
 
-    //console.log(this.anims.exists());
     this.tweens.add({
       targets:this.logo,
       duration: 2000,
