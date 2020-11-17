@@ -1482,7 +1482,22 @@ class LevelManager extends Phaser.Scene
     // Destruye al enemigo
     killEnemy(attackHitbox, enemies) {
         this.soundEnemy.play(this.getAudioConfig());
-        this.enemies.remove(enemies, true); // Elimina el enemigo de la lista y del juego
+        enemies.setTint(0xe62272);
+        enemies.body.enable = false;
+        this.time.addEvent( { delay: 100, callback: this.killEnemyInterval, args: [enemies], callbackScope: this, loop: false } );
+    }
+
+    killEnemyInterval(enemy) {
+        if (enemy.alpha > 0) {
+            enemy.alpha -= 0.05;
+            this.time.addEvent( { delay: 100, callback: this.killEnemyInterval, args: [enemy], callbackScope: this, loop: false } );
+        } else {
+            if (enemy.isStil == true) {
+                    this.enemies.remove(enemy, true);
+            } else {
+                    this.eagles.remove(enemy, true);
+            }
+        }
     }
 
     // Recoge la moneda
