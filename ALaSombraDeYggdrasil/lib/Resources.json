@@ -130,10 +130,6 @@
 		      "url": "./ASSETS/Botones/BotonSelDcha.png"
 		    },{
 		      "type": "image",
-		      "key": "mobile_button",
-		      "url": "./ASSETSUnused/Placeholders/button.png"
-		    },{
-		      "type": "image",
 		      "key": "bg_far",
 		      "url": "./ASSETS/Secciones/Zona_lejana.png"
 		    },{
