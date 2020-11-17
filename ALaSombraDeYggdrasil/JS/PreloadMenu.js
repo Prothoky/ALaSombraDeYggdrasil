@@ -110,37 +110,7 @@ class PreloadMenu extends Phaser.Scene{
     //this.load.image('selRightButton', './ASSETS/AssetsComunes/BotonSelDcha.png'); 
 
     //Level Manager
-<<<<<<< Updated upstream
-      this.load.spritesheet('dude', 'ASSETS/Placeholders/dude.png', { frameWidth: 32, frameHeight: 48 });
-      this.load.image('mobile_button', 'ASSETS/Placeholders/button.png');
-      this.load.image('ground', 'ASSETS/Placeholders/platform.png');
-      this.load.image('dot', 'ASSETS/Placeholders/star.png');
-      this.load.image('bomb', 'ASSETS/Placeholders/bomb.png');
-      this.load.image('bg_far', 'ASSETS/Secciones/Zona lejana.png');
-      this.load.image('bg_medium' , 'ASSETS/Secciones/Zona media.png');
-      this.load.image('bg_near' , 'ASSETS/Secciones/Zona delantera.png');
-      this.load.image('bg_background', 'ASSETS/Secciones/Fondo.png');
-      this.load.image('bg_far_ice', 'ASSETS/Secciones/Zona lejana_hielo.png');
-      this.load.image('bg_medium_ice' , 'ASSETS/Secciones/Zona media_hielo.png');
-      this.load.image('bg_near_ice' , 'ASSETS/Secciones/Zona delantera_hielo.png');
-      this.load.image('bg_background_ice', 'ASSETS/Secciones/Fondo_hielo.png');
-      this.load.image('einar', 'ASSETS/Gameplay/einar_provisional.png');
-      this.load.image('barricade', 'ASSETS/Gameplay/barricade.png');
-      this.load.image('trunk', 'ASSETS/Gameplay/trunk.png');
-      this.load.image('cabin_up_1', 'ASSETS/Gameplay/cabin_up_1.png');
-      this.load.image('cabin_up_2', 'ASSETS/Gameplay/cabin_up_2.png');
-      this.load.image('cabin_down_1', 'ASSETS/Gameplay/cabin_down_1.png');
-      this.load.image('cabin_down_2', 'ASSETS/Gameplay/cabin_down_2.png');
-      this.load.image('cabin_up_ice_1', 'ASSETS/Gameplay/cabin_up_ice_1.png');
-      this.load.image('cabin_up_ice_2', 'ASSETS/Gameplay/cabin_up_ice_2.png');
-      this.load.image('cabin_down_ice_1', 'ASSETS/Gameplay/cabin_down_ice_1.png');
-      this.load.image('cabin_down_ice_2', 'ASSETS/Gameplay/cabin_down_ice_2.png');
-      this.load.image('platform', 'ASSETS/Gameplay/platform.png');
-      this.load.image('platform_ice', 'ASSETS/Gameplay/platform_ice.png');
-      this.load.image('spikes', 'ASSETS/Gameplay/spikes.png');
-      this.load.image('spikes_long', 'ASSETS/Gameplay/spikes_long.png');
       //this.load.image('pauseButton', 'ASSETS/Gameplay/ButtonPause.png');
-=======
       //this.load.image('mobile_button', 'ASSETS/Placeholders/button.png');
       //this.load.image('ground', 'ASSETS/Placeholders/platform.png');
       //this.load.image('dot', 'ASSETS/Placeholders/star.png');
@@ -169,69 +139,61 @@ class PreloadMenu extends Phaser.Scene{
       //this.load.image('spikes', 'ASSETS/Gameplay/spikes.png');
       //this.load.image('spikes_long', 'ASSETS/Gameplay/spikes_long.png');
       //this.load.image('pauseButton', 'ASSETS/Gameplay/ButtonPause.png');
-  /*
->>>>>>> Stashed changes
-      this.load.spritesheet('einar_running', 'ASSETS/Gameplay/animacion_correr.png', { frameWidth: 400, frameHeight: 350 });
-      this.load.spritesheet('einar_jumping', 'ASSETS/Gameplay/animacion_saltar.png', { frameWidth: 400, frameHeight: 350 });
-      this.load.spritesheet('einar_attack', 'ASSETS/Gameplay/animacion_atacar.png', { frameWidth: 400, frameHeight: 350 });
-      this.load.spritesheet('eagle_attacking', 'ASSETS/Gameplay/eagle_attacking.png', { frameWidth: 650, frameHeight: 550 });
-      this.load.spritesheet('draugr_attacking', 'ASSETS/Gameplay/animacion_atacar_draugr.png', { frameWidth: 450, frameHeight: 350 });
-      this.load.image('draugr', 'ASSETS/Gameplay/draugr.png');
-      this.load.image('life', 'ASSETS/Tienda/IconoBendicion.png');
-      this.load.image('ravenHugin', 'ASSETS/Gameplay/Hugin.png');
-      this.load.image('coin_1', 'ASSETS/Gameplay/coin_1.png');
 
-      this.load.image('backgroundDialogEinar', 'ASSETS/Gameplay/CajaTextoEinar.png');
-      this.load.image('backgroundDialogHugin', 'ASSETS/Gameplay/CajaTextoHugin.png');
-      this.load.image('backgroundDialogMunin', 'ASSETS/Gameplay/CajaTextoMunin.png');
-      this.load.image('buttonDialogSel', 'ASSETS/Gameplay/FlechaSel.png');
-      this.load.image('buttonDialog', 'ASSETS/Gameplay/Flecha.png');
+  
+      //this.load.image('draugr', 'ASSETS/Gameplay/draugr.png');
+      //this.load.image('life', 'ASSETS/Tienda/IconoBendicion.png');
+      //this.load.image('ravenHugin', 'ASSETS/Gameplay/Hugin.png');
+      //this.load.image('coin_1', 'ASSETS/Gameplay/coin_1.png');
 
+      //this.load.image('backgroundDialogEinar', 'ASSETS/Gameplay/CajaTextoEinar.png');
+      //this.load.image('backgroundDialogHugin', 'ASSETS/Gameplay/CajaTextoHugin.png');
+      //this.load.image('backgroundDialogMunin', 'ASSETS/Gameplay/CajaTextoMunin.png');
+      //this.load.image('buttonDialogSel', 'ASSETS/Gameplay/FlechaSel.png');
+      //this.load.image('buttonDialog', 'ASSETS/Gameplay/Flecha.png');
 
 
     //Pause Menu
-      this.load.image('backgroundPM', './ASSETS/PauseMenu/PauseMenuBackground.jpg');
-      this.load.image('backgroundPMEn', './ASSETS/PauseMenu/PauseMenuBackgroundEn.jpg');
+      //this.load.image('backgroundPM', './ASSETS/PauseMenu/PauseMenuBackground.jpg');
+      //this.load.image('backgroundPMEn', './ASSETS/PauseMenu/PauseMenuBackgroundEn.jpg');
+
 
     //SHOP MEMU
-      this.load.image('backgroundSM', './ASSETS/Tienda/FondoTienda.jpg');
-      this.load.image('backgroundSMEn', './ASSETS/Tienda/FondoTiendaEng.jpg');
+      //this.load.image('backgroundSM', './ASSETS/Tienda/FondoTienda.jpg');
+      //this.load.image('backgroundSMEn', './ASSETS/Tienda/FondoTiendaEng.jpg');
       //Sonidos
-      this.load.audio('soundBendicionDeHierro' , './ASSETS/Sounds/BendicionDeHierro.m4a')
-      this.load.audio('soundPlumaDeValquiria' , './ASSETS/Sounds/PlumaDeValquiria.m4a')
-      this.load.audio('soundFuerzaDeOdin' , './ASSETS/Sounds/FuerzaDeOdin.m4a')
-      this.load.audio('soundFuria' , './ASSETS/Sounds/Furia.m4a')
-      this.load.audio('soundForceOfOdin' , './ASSETS/Sounds/ForceOfOdin.m4a')
-      this.load.audio('soundIronBlessing' , './ASSETS/Sounds/IronBlessing.m4a')
-      this.load.audio('soundValkirieFeather' , './ASSETS/Sounds/ValkirieFeather.m4a')
-      this.load.audio('soundRage' , './ASSETS/Sounds/Rage.m4a')
+      //this.load.audio('soundBendicionDeHierro' , './ASSETS/Sounds/BendicionDeHierro.m4a')
+      //this.load.audio('soundPlumaDeValquiria' , './ASSETS/Sounds/PlumaDeValquiria.m4a')
+      //this.load.audio('soundFuerzaDeOdin' , './ASSETS/Sounds/FuerzaDeOdin.m4a')
+      //this.load.audio('soundFuria' , './ASSETS/Sounds/Furia.m4a')
+      //this.load.audio('soundForceOfOdin' , './ASSETS/Sounds/ForceOfOdin.m4a')
+      //this.load.audio('soundIronBlessing' , './ASSETS/Sounds/IronBlessing.m4a')
+      //this.load.audio('soundValkirieFeather' , './ASSETS/Sounds/ValkirieFeather.m4a')
+      //this.load.audio('soundRage' , './ASSETS/Sounds/Rage.m4a')
       //Comprados
-      this.load.image('object1Bought', './ASSETS/Tienda/BendicionMaximo.png');
-      this.load.image('object2Bought', './ASSETS/Tienda/FuerzaComprado.png');
-      this.load.image('object3Bought', './ASSETS/Tienda/PlumaComprado.png');
-      this.load.image('object4Bought', './ASSETS/Tienda/RabiaComprado.png');
-      this.load.image('object1BoughtEn', './ASSETS/Tienda/BendicionMaximoEng.png');
-      this.load.image('object2BoughtEn', './ASSETS/Tienda/FuerzaCompradoEng.png');
-      this.load.image('object3BoughtEn', './ASSETS/Tienda/PlumaCompradoEng.png');
-      this.load.image('object4BoughtEn', './ASSETS/Tienda/RabiaCompradoEng.png');
+      //this.load.image('object1Bought', './ASSETS/Tienda/BendicionMaximo.png');
+      //this.load.image('object2Bought', './ASSETS/Tienda/FuerzaComprado.png');
+      //this.load.image('object3Bought', './ASSETS/Tienda/PlumaComprado.png');
+      //this.load.image('object4Bought', './ASSETS/Tienda/RabiaComprado.png');
+      //this.load.image('object1BoughtEn', './ASSETS/Tienda/BendicionMaximoEng.png');
+      //this.load.image('object2BoughtEn', './ASSETS/Tienda/FuerzaCompradoEng.png');
+      //this.load.image('object3BoughtEn', './ASSETS/Tienda/PlumaCompradoEng.png');
+      //this.load.image('object4BoughtEn', './ASSETS/Tienda/RabiaCompradoEng.png');
       //Iconos
-      this.load.image('IconObject1', './ASSETS/Tienda/IconoBendicion.png');
-      this.load.image('IconObject2', './ASSETS/Tienda/IconoFuerza.png');
-      this.load.image('IconObject3', './ASSETS/Tienda/IconoPluma.png');
-      this.load.image('IconObject4', './ASSETS/Tienda/IconoRabia.png');
+      //this.load.image('IconObject1', './ASSETS/Tienda/IconoBendicion.png');
+      //this.load.image('IconObject2', './ASSETS/Tienda/IconoFuerza.png');
+      //this.load.image('IconObject3', './ASSETS/Tienda/IconoPluma.png');
+      //this.load.image('IconObject4', './ASSETS/Tienda/IconoRabia.png');
 
     //World 1 Map
-      this.load.image('backgroundWM1M', './ASSETS/World1Menu/FondoMapaMundo1.jpg');
-      this.load.image('NodoBlocked', './ASSETS/World1Menu/IconosNodos/NivelBloqueado.png');
-      this.load.image('ButtonNodePrinc', './ASSETS/World1Menu/IconosNodos/NodoPrincipalDesbloq.png');
-      this.load.image('ButtonNodePrincSnow', './ASSETS/World1Menu/IconosNodos/NodoPrincipalNieveDesbloq.png');
-      this.load.image('ButtonNodePrincSel', './ASSETS/World1Menu/IconosNodos/NodoPrincipalSel.png');
-      this.load.image('ButtonNodePrincSnowSel', './ASSETS/World1Menu/IconosNodos/NodoPrincipalNieveSel.png');
-      //this.load.image('ButtonSubode1', './ASSETS/World1Menu/NodoSecundario.png'); //CAMBIAR
-      //this.load.image('ButtonPlayLevel', './ASSETS/World1Menu/BotonJugar.png'); //CAMBIAR
-      //this.load.image('BackgrAcessToLevel', './ASSETS/World1Menu/FondoAccesoANivel.png'); //CAMBIAR
-      //this.load.image('BackButtonW1M', './ASSETS/World1Menu/BotonSalir.png'); //CAMBIAR
+      //this.load.image('backgroundWM1M', './ASSETS/World1Menu/FondoMapaMundo1.jpg');
+      //this.load.image('NodoBlocked', './ASSETS/World1Menu/IconosNodos/NivelBloqueado.png');
+      //this.load.image('ButtonNodePrinc', './ASSETS/World1Menu/IconosNodos/NodoPrincipalDesbloq.png');
+      //this.load.image('ButtonNodePrincSnow', './ASSETS/World1Menu/IconosNodos/NodoPrincipalNieveDesbloq.png');
+      //this.load.image('ButtonNodePrincSel', './ASSETS/World1Menu/IconosNodos/NodoPrincipalSel.png');
+      //this.load.image('ButtonNodePrincSnowSel', './ASSETS/World1Menu/IconosNodos/NodoPrincipalNieveSel.png');
 
+/*
       //Level Names
       //ENG
       this.load.image('Level0Name', './ASSETS/World1Menu/TitulosNodos/TheRegress.png');
@@ -313,6 +275,13 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('Poem4_2', './ASSETS/GamePlay/PoemBerserker.png');
       this.load.image('Poem7_1', './ASSETS/GamePlay/PoemRagnarok.png');
       this.load.image('Poem7_2', './ASSETS/GamePlay/PoemEinar.png');
+
+      this.load.spritesheet('einar_running', 'ASSETS/Gameplay/animacion_correr.png', { frameWidth: 400, frameHeight: 350 });
+      this.load.spritesheet('einar_jumping', 'ASSETS/Gameplay/animacion_saltar.png', { frameWidth: 400, frameHeight: 350 });
+      this.load.spritesheet('einar_attack', 'ASSETS/Gameplay/animacion_atacar.png', { frameWidth: 400, frameHeight: 350 });
+      this.load.spritesheet('eagle_attacking', 'ASSETS/Gameplay/eagle_attacking.png', { frameWidth: 650, frameHeight: 550 });
+      this.load.spritesheet('draugr_attacking', 'ASSETS/Gameplay/animacion_atacar_draugr.png', { frameWidth: 450, frameHeight: 350 });
+      
 
 */
       // Música
