@@ -1611,10 +1611,10 @@ class LevelManager extends Phaser.Scene
         this.SetTextPos();
 
        if(!this.DialogShowing){
-            this.bg_backgorund.tilePositionX = this.cameras.main.scrollX * .1;
-            this.bg_far.tilePositionX = this.cameras.main.scrollX *.5;
-            this.bg_medium.tilePositionX = this.cameras.main.scrollX *1.5;
-            this.bg_near.tilePositionX = this.cameras.main.scrollX*2;
+            this.bg_backgorund.tilePositionX = this.cameras.main.scrollX * .05;
+            this.bg_far.tilePositionX = this.cameras.main.scrollX *.25;
+            this.bg_medium.tilePositionX = this.cameras.main.scrollX *0.75;
+            this.bg_near.tilePositionX = this.cameras.main.scrollX*1;
        }
        if(this.player.x >=300 && !this.following){
             this.following=true;
