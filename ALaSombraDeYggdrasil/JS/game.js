@@ -5,7 +5,7 @@ window.onload = function(){
     type: Phaser.AUTO,
     parent:'game',
     width: 1270, //Comprobar si en el escalado funciona bien
-    height: 610,
+    height: 600,
     fps: { target: fpsTarget, },
     physics: {
       default: 'arcade',
@@ -59,7 +59,7 @@ var PC = true;
 
 // Tamaño pantalla
 var gameWidth = 1270;
-var gameHeight = 610;
+var gameHeight = 600;
 
 //Fecha de desbloqueo de nuevo mundo
 unlockDate=new Date(2020,12,1);

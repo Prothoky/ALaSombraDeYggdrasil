@@ -352,7 +352,7 @@ class PreloadMenu extends Phaser.Scene{
     })
 
 
-    this.logo = this.add.sprite(gameWidth*8/16, gameHeight*8/16, 'Logo');
+    this.logo = this.add.sprite(gameWidth*8/16, gameHeight*8/16, 'logo');
     this.logo.setScale(2/3);
     this.logo.alpha = 0;
 
