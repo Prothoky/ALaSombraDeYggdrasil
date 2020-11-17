@@ -201,25 +201,26 @@ class LevelManager extends Phaser.Scene
 
         // 2) BACKGROUND
         if (this.isIceLevel) {
-            this.bg_backgorund = this.add.tileSprite(0, 0, 3772, 605, 'bg_background_ice');
+            this.bg_background = this.add.tileSprite(0, 0, 3772, 605, 'bg_background_ice');
             this.bg_far = this.add.tileSprite(0,0, 3772, 605, "bg_far_ice");
             this.bg_medium = this.add.tileSprite(0,0, 3772, 605, "bg_medium_ice");
-            this.bg_near = this.add.tileSprite(0,100, 3215, 515, "bg_near_ice");
+            this.bg_near = this.add.tileSprite(0,-25, 3215, 515, "bg_near_ice");
         } else {
-            this.bg_backgorund = this.add.tileSprite(0,0, 3772, 605, 'bg_background');
+            this.bg_background = this.add.tileSprite(0,0, 3772, 605, 'bg_background');
             this.bg_far = this.add.tileSprite(0,0, 3772, 605, "bg_far");
             this.bg_medium = this.add.tileSprite(0,0, 3772, 605, "bg_medium");
-            this.bg_near = this.add.tileSprite(0,100, 3215, 515, "bg_near");
+            this.bg_near = this.add.tileSprite(0, -25, 3215, 515, "bg_near");
         }
+        this.bg_near.setScale(1,1.25)
         this.bg_near.depth = 6;
 
         // Ajusta los tileSprites
         this.bg_near.alpha=0.95;
-        this.bg_backgorund.setOrigin(0,0);
+        this.bg_background.setOrigin(0,0);
         this.bg_far.setOrigin(0,0);
         this.bg_medium.setOrigin(0,0);
         this.bg_near.setOrigin(0,0);
-        this.bg_backgorund.setScrollFactor(0);
+        this.bg_background.setScrollFactor(0);
         this.bg_far.setScrollFactor(0);
         this.bg_medium.setScrollFactor(0);
         this.bg_near.setScrollFactor(0);
@@ -1613,9 +1614,9 @@ class LevelManager extends Phaser.Scene
         this.SetTextPos();
 
        if(!this.DialogShowing){
-            this.bg_backgorund.tilePositionX = this.cameras.main.scrollX * .05;
+            this.bg_background.tilePositionX = this.cameras.main.scrollX * .05;
             this.bg_far.tilePositionX = this.cameras.main.scrollX *.25;
-            this.bg_medium.tilePositionX = this.cameras.main.scrollX *0.75;
+            this.bg_medium.tilePositionX = this.cameras.main.scrollX *1;
             this.bg_near.tilePositionX = this.cameras.main.scrollX*1;
        }
        if(this.player.x >=300 && !this.following){

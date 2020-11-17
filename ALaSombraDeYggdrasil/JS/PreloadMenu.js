@@ -302,10 +302,10 @@ class PreloadMenu extends Phaser.Scene{
         progressBox.destroy();
         console.log("Complete");
 	  });
-
+    
   }
 
-  create(){
+  create(){    
 
     phaserJSON = this.cache.json.get('Data');
 
@@ -313,6 +313,14 @@ class PreloadMenu extends Phaser.Scene{
 
     updateLanguage();
 
+    this.soundStart = this.sound.add('soundStart', {
+      mute: false,
+      volume: 1,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0});    
 
     // Animaciones
     this.anims.create({
@@ -365,6 +373,18 @@ class PreloadMenu extends Phaser.Scene{
       completeDelay: 500,
       onComplete:()=>this.scene.start('MainMenu')
     })
+    
+    let logosound=0;
+    this.logo.setInteractive({ useHandCursor: true});
+    this.logo.on('pointerdown', () => {
+      if(logosound <= 0){
+        logosound++;
+        let context = new AudioContext();
+        context.resume();
+        this.soundStart.play();
+      }
+      
+    });
 
   }
 
