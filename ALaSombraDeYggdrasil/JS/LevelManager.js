@@ -691,23 +691,16 @@ class LevelManager extends Phaser.Scene
             if (!this.isPlayerAttacking) {
                 this.player.anims.play('einar_jumping');
             }
-            this.soundJump.play(this.getAudioConfig());
-            this.soundRunning.stop();
-            this.player.setVelocityY(this.playerJumpSpeed);
-            this.isPlayerJumping = true;
-            this.isPlayerTouchingGround = false;
-            this.player.body.setAllowGravity(false);
-            this.jumpTimer = this.time.addEvent( { delay: this.playerJumpDuration, callback: this.playerStopJump, callbackScope: this, loop: false } );
         } else if (this.doubleJumpAvaliable == true && this.doubleJumpEnabled == true) {
-            this.soundJump.play(this.getAudioConfig());
-            this.soundRunning.stop();
-            this.player.setVelocityY(this.playerJumpSpeed);
             this.doubleJumpAvaliable = false;
-            this.isPlayerJumping = true;
-            this.isPlayerTouchingGround = false;
-            this.player.body.setAllowGravity(false);
-            this.jumpTimer = this.time.addEvent( { delay: this.playerJumpDuration, callback: this.playerStopJump, callbackScope: this, loop: false } );
         }
+        this.soundJump.play(this.getAudioConfig());
+        this.soundRunning.stop();
+        this.isPlayerTouchingGround = false;
+        this.player.body.setAllowGravity(false);
+        this.isPlayerJumping = true;
+        this.player.setVelocityY(this.playerJumpSpeed);
+        this.jumpTimer = this.time.addEvent( { delay: this.playerJumpDuration, callback: this.playerStopJump, callbackScope: this, loop: false } );
         this.jumpSpeedDecrementTimer = this.time.addEvent( { delay: 60, callback: this.playerDecrementJumpSpeed, callbackScope: this, loop: true } );
     }
 

@@ -12,7 +12,7 @@ class CreditsMenu extends Phaser.Scene{
     this.bg_backgorund = this.add.tileSprite(0,0, 5715, 916, 'bg_background');
     this.bg_far = this.add.tileSprite(0,0, 5715, 916, "bg_far");
     this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium");
-    this.bg_near = this.add.tileSprite(0,10, 5715, 916, "bg_near");
+    this.bg_near = this.add.tileSprite(0,0, 5715, 916, "bg_near");
     this.bg_near.depth = 2;
 
     // 2) CHARACTER
@@ -65,8 +65,6 @@ class CreditsMenu extends Phaser.Scene{
     this.backText.depth = 3;
     //PLAYER MOVEMENT
     this.player.anims.play('einar_running',true);
-    //this.player.setVelocityX(400);
-    //this.credits.setVelocityY(10);
 
   }
 

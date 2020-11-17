@@ -3,7 +3,7 @@
 		"files":[
 			{
 		      "type": "image",
-		      "key": "Logo",
+		      "key": "logo",
 		      "url": "./ASSETS/Logo.jpeg"
 		    },
 			{
