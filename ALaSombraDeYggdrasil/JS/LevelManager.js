@@ -1617,7 +1617,7 @@ class LevelManager extends Phaser.Scene
             this.bg_background.tilePositionX = this.cameras.main.scrollX * .05;
             this.bg_far.tilePositionX = this.cameras.main.scrollX *.25;
             this.bg_medium.tilePositionX = this.cameras.main.scrollX *1;
-            this.bg_near.tilePositionX = this.cameras.main.scrollX*1;
+            this.bg_near.tilePositionX = this.cameras.main.scrollX*1.15;
        }
        if(this.player.x >=300 && !this.following){
             this.following=true;

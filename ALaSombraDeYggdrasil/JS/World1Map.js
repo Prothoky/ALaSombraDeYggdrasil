@@ -96,7 +96,7 @@ class World1Map extends Phaser.Scene{
     this.optionsButtonMSMSel.setVisible(false);
     this.opButtonText = this.add.text(gameWidth*14.1/16, gameHeight*0.92/16,  stringsJSON.Buttons.options, {fontFamily: "Acadian_Runes",fontSize: "15px", align: 'center', fill: "#481d18"});
     if (userConfig.lang == "en"){
-      this.opButtonText.setX(gameWidth*14.25 /16);
+      this.opButtonText.setX(gameWidth*14.1/16);
     }
     this.optionsButtonMSM.on('pointerover', function (pointer) {this.optionsButtonMSMSel.setVisible(true);}, this);
     this.optionsButtonMSM.on('pointerout', function (pointer) {this.optionsButtonMSMSel.setVisible(false);}, this);
