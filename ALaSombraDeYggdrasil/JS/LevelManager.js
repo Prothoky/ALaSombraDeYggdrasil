@@ -223,7 +223,6 @@ class LevelManager extends Phaser.Scene
         this.bg_far.setScrollFactor(0);
         this.bg_medium.setScrollFactor(0);
         this.bg_near.setScrollFactor(0);
-        this.bg_near.setScale(0.75);
 
         //  ----GAMEPLAY----
         // 1) PERSONAJE
@@ -548,7 +547,7 @@ class LevelManager extends Phaser.Scene
         pointerJump.setOrigin(0.5,0.5);
         pointerJump.setScale(0.15);
         pointerJump.setDepth(15);
-        
+
         var pointerAttack = this.add.image(1100, 550, 'coin_1').setInteractive();
         pointerAttack.setDepth(15);
         pointerAttack.setScale(0.15);
