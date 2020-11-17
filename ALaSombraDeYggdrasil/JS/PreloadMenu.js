@@ -132,8 +132,8 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('cabin_up_ice_2', 'ASSETS/Gameplay/cabin_up_ice_2.png');
       this.load.image('cabin_down_ice_1', 'ASSETS/Gameplay/cabin_down_ice_1.png');
       this.load.image('cabin_down_ice_2', 'ASSETS/Gameplay/cabin_down_ice_2.png');
-      this.load.image('platform', 'ASSETS/Gameplay/platform.png');
-      this.load.image('platform_ice', 'ASSETS/Gameplay/platform_ice.png');
+      this.load.image('platform', 'ASSETS/Gameplay/platform_halo.png');
+      this.load.image('platform_ice', 'ASSETS/Gameplay/platform_ice_halo.png');
       this.load.image('spikes', 'ASSETS/Gameplay/spikes.png');
       this.load.image('spikes_long', 'ASSETS/Gameplay/spikes_long.png');
       //this.load.image('pauseButton', 'ASSETS/Gameplay/ButtonPause.png');

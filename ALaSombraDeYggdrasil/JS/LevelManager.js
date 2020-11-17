@@ -30,7 +30,7 @@ class LevelManager extends Phaser.Scene
         this.eagleSpeedY = 250;
         // 1.4) Ajustes del generador aleatorio
         // La distancia entre trampas final será maxRandTrapDistance(rand) + trapDistance + minDistance
-        this.platformPositionY = 300;   // Posición base en Y de las plataformas
+        this.platformPositionY = 260;   // Posición base en Y de las plataformas
         this.platformPositionOffset = 75;  // Distancia que puede variar la posición de la plataforma
         this.platformMaxHeight = 285;   // Altura máxima de las plataformas
         this.maxRandTrapDistance = 200; // Máximo de distancia entre trampas añadido (250)
@@ -889,7 +889,7 @@ class LevelManager extends Phaser.Scene
     // enemy = puede haber un enemigo encima?
     // Si no se otorgan valores se asignan solos. Enemy true y posición aleatoria (dentro de límites)
     // Únicamente cambiar el sprite y el valor de setScale()
-    generatePlatform(xPos, yPos = this.platformPositionY + Math.floor(Math.random() * this.platformPositionOffset) - this.platformPositionOffset/2, enemy = true, scaleFactor = 0.5, visible = true, checkCollisionDown = false) {
+    generatePlatform(xPos, yPos = this.platformPositionY + Math.floor(Math.random() * this.platformPositionOffset) - this.platformPositionOffset/2, enemy = true, scaleFactor = 0.5, visible = true, checkCollisionDown = false, cabinPlatform = false) {
         let platformId = '';
         if (this.isIceLevel) {
             platformId = 'platform_ice';
@@ -897,7 +897,12 @@ class LevelManager extends Phaser.Scene
             platformId = 'platform';
         }
         let localPlatform = this.platforms.create(xPos, yPos, platformId).setScale(scaleFactor).setOrigin(0).setVisible(visible).setSize(170, 10);
-        localPlatform.setOffset(235, 200);
+        if (cabinPlatform == true) {
+            localPlatform.setOffset(365, 335);
+        } else {
+            localPlatform.setOffset(365, 335);
+        }
+        //localPlatform.setOffset(235, 200);
         localPlatform.body.checkCollision.left = false;
         localPlatform.body.checkCollision.right = false;
         localPlatform.body.checkCollision.down = checkCollisionDown;
@@ -970,9 +975,9 @@ class LevelManager extends Phaser.Scene
         localCabin1.depth = 2;
         let localCabin2 = this.physics.add.image(xPos, yPos, cabinId2).setScale(scaleFactor).setOrigin(0, 1);
         localCabin2.body.setAllowGravity(false);
-        this.generatePlatform(xPos - 275, 300, enemies && Math.random() >= 0.5);
-        this.generatePlatform(xPos + 130, 260, false, 0.35, false, true);
-        this.generatePlatform(xPos + 330, 260, enemies && Math.random() >= 0.5, 0.35, false, true);
+        this.generatePlatform(xPos - 340, 260, enemies && Math.random() >= 0.5);
+        this.generatePlatform(xPos + 105, 215, false, 0.35, false, true, true);
+        this.generatePlatform(xPos + 305, 215, enemies && Math.random() >= 0.5, 0.35, false, true, true);
         // Fix modo arcade hitbox desplazada
 
         if (this.endlessMode == true && !this.hasCicled) {
@@ -1015,11 +1020,11 @@ class LevelManager extends Phaser.Scene
         localCabin2.body.setAllowGravity(false);
 
         // Creamos el techo
-        let localPlatform1 = this.platforms.create(xPos + 50, 300, 'platform').setScale(0.5).setOrigin(0).setVisible(false).setSize(250, 10);
+        let localPlatform1 = this.platforms.create(xPos + 150, 380, 'platform').setScale(0.5).setOrigin(0).setVisible(false).setSize(250, 10);
         localPlatform1.setOffset(235, 200);
         localPlatform1.body.checkCollision.left = false;
         localPlatform1.body.checkCollision.right = false;
-        let localPlatform2 = this.platforms.create(xPos + 330, 300, 'platform').setScale(0.5).setOrigin(0).setVisible(false).setSize(170, 10);
+        let localPlatform2 = this.platforms.create(xPos + 430, 380, 'platform').setScale(0.5).setOrigin(0).setVisible(false).setSize(170, 10);
         localPlatform2.setOffset(235, 200);
         localPlatform2.body.checkCollision.left = false;
         localPlatform2.body.checkCollision.right = false;
@@ -1124,7 +1129,7 @@ class LevelManager extends Phaser.Scene
     // Genera una barricada + plataforma con barricada
     generateDoubleBarricade(xPos) {
         let platformY = this.levelGroundHeight - 260;
-        this.generatePlatformNoEnemy(xPos - 150, platformY - 20);
+        this.generatePlatformNoEnemy(xPos - 190, platformY - 60);
         if (this.endlessMode && this.hasCicled) {
             this.generateBarricade(xPos - 90, this.levelGroundHeight - 60);
             this.generateBarricade(xPos - 90, platformY - 60 - 20, undefined, undefined, 150);
