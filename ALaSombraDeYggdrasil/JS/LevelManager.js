@@ -13,7 +13,7 @@ class LevelManager extends Phaser.Scene
         this.playerJumpDuration = 350;    // Duración máxima de la anulación de gravedad del salto en ms
         this.playerJumpSpeedDecrement = 50; // Efecto de la gravedad sobre los saltos
         this.playerInvulnerabilityDuration = 1000;  // Tiempo de invulnerabilidiad después de recibir un ataque
-        this.playerAttackDuration = 709;   // Duración del ataque
+        this.playerAttackDuration = 417;   // Duración del ataque
         this.playerAttackRefreshRate = 30;  // Tasa de refresco de posición de la hitbox del ataque
         this.playerAttackCounter = 0;   // Contador de tiempo del ataque
         this.playerAttackCooldown = 450;   // Cooldown del ataque
@@ -769,7 +769,7 @@ class LevelManager extends Phaser.Scene
             this.soundAttack.play(this.getAudioConfig());
             this.playerAttackAvaliable = false;
             // Crea la hitbox
-            let localAttackHitbox = this.attackHitbox.create(this.player.body.x - this.playerHitboxWidth - 20, this.player.body.y, 'bomb');    // Cambiar sprite por 'dot' al importar animacion definitiva
+            let localAttackHitbox = this.attackHitbox.create(this.player.body.x - this.playerHitboxWidth + 10, this.player.body.y, 'bomb');    // Cambiar sprite por 'dot' al importar animacion definitiva
             localAttackHitbox.setVisible(false);
             localAttackHitbox.setOrigin(0);
             localAttackHitbox.setSize(this.playerAttackWidth, this.playerAttackHeight, false);
