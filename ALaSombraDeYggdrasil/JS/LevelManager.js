@@ -846,14 +846,14 @@ class LevelManager extends Phaser.Scene
     // Función de creación de enemigos sin movimiento
     // xPos, yPos: posición en el mapa
     // collisionWidth, collisionHeight: tamaño de la hitbox
-    generateStillEnemy(xPos, yPos = this.levelGroundHeight - 20, collisionWidth = 250, collisionHeight = 140) {
+            generateStillEnemy(xPos, yPos = this.levelGroundHeight - 20, collisionWidth = 190, collisionHeight = 110) {
         if (this.hasCicled) {
             yPos += 40;
         }
         xPos += 75;
         let newEnemy = this.enemies.create(xPos, yPos, 'draugr').setOrigin(1).setScale(this.playerResizeFactor);
         newEnemy.body.setSize(collisionWidth, collisionHeight);
-        newEnemy.setOffset(80, 140);
+        newEnemy.setOffset(135, 165);
         newEnemy.depth = 3;
         newEnemy.isStill = true;
         let newTrigger = this.triggers.create(xPos - 250, this.levelGroundHeight, 'dot').setVisible(false).refreshBody();
@@ -1016,11 +1016,11 @@ class LevelManager extends Phaser.Scene
         localCabin2.body.setAllowGravity(false);
 
         // Creamos el techo
-                        let localPlatform1 = this.platforms.create(xPos + 150, 380, 'platform').setScale(0.5).setOrigin(0).setVisible(false).setSize(250, 10);
+        let localPlatform1 = this.platforms.create(xPos + 50, 290, 'platform').setScale(0.5).setOrigin(0).setVisible(false).setSize(250, 10);
         localPlatform1.setOffset(235, 200);
         localPlatform1.body.checkCollision.left = false;
         localPlatform1.body.checkCollision.right = false;
-        let localPlatform2 = this.platforms.create(xPos + 430, 380, 'platform').setScale(0.5).setOrigin(0).setVisible(false).setSize(170, 10);
+        let localPlatform2 = this.platforms.create(xPos + 330, 290, 'platform').setScale(0.5).setOrigin(0).setVisible(false).setSize(170, 10);
         localPlatform2.setOffset(235, 200);
         localPlatform2.body.checkCollision.left = false;
         localPlatform2.body.checkCollision.right = false;
