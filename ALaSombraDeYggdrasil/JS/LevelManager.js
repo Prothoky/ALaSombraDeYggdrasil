@@ -693,16 +693,23 @@ class LevelManager extends Phaser.Scene
             if (!this.isPlayerAttacking) {
                 this.player.anims.play('einar_jumping');
             }
+            this.soundJump.play(this.getAudioConfig());
+            this.soundRunning.stop();
+            this.player.setVelocityY(this.playerJumpSpeed);
+            this.isPlayerJumping = true;
+            this.isPlayerTouchingGround = false;
+            this.player.body.setAllowGravity(false);
+            this.jumpTimer = this.time.addEvent( { delay: this.playerJumpDuration, callback: this.playerStopJump, callbackScope: this, loop: false } );
         } else if (this.doubleJumpAvaliable == true && this.doubleJumpEnabled == true) {
+            this.soundJump.play(this.getAudioConfig());
+            this.soundRunning.stop();
+            this.player.setVelocityY(this.playerJumpSpeed);
             this.doubleJumpAvaliable = false;
+            this.isPlayerJumping = true;
+            this.isPlayerTouchingGround = false;
+            this.player.body.setAllowGravity(false);
+            this.jumpTimer = this.time.addEvent( { delay: this.playerJumpDuration, callback: this.playerStopJump, callbackScope: this, loop: false } );
         }
-        this.soundJump.play(this.getAudioConfig());
-        this.soundRunning.stop();
-        this.isPlayerTouchingGround = false;
-        this.player.body.setAllowGravity(false);
-        this.isPlayerJumping = true;
-        this.player.setVelocityY(this.playerJumpSpeed);
-        this.jumpTimer = this.time.addEvent( { delay: this.playerJumpDuration, callback: this.playerStopJump, callbackScope: this, loop: false } );
         this.jumpSpeedDecrementTimer = this.time.addEvent( { delay: 60, callback: this.playerDecrementJumpSpeed, callbackScope: this, loop: true } );
     }
 
@@ -815,7 +822,7 @@ class LevelManager extends Phaser.Scene
                 this.playerDeath();
             } else {
                 this.isPlayerInvulnerable = true;   // lo vuelve invulnerable durante un tiempo
-                if (Number(user.buffs[1]) == 1) {
+                if (this.playerInvulnerabilityDuration > 1000) {
                     this.player.setTint(0x1CC3FF);
                 } else {
                     this.player.setTint(0xe62272);
@@ -1595,6 +1602,10 @@ class LevelManager extends Phaser.Scene
             } else {
                 this.playerAttackCooldown = 450;
             }
+        } else {
+            this.doubleJumpEnabled = false;
+            this.playerInvulnerabilityDuration = 1000;
+            this.playerAttackCooldown = 450;
         }
     }
 
