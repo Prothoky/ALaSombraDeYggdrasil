@@ -1076,8 +1076,8 @@ class LevelManager extends Phaser.Scene
         let randomAdd = 0;
         let iteration = 1;
         while (randomAdd < 1) { // Aleatoriamente sigue añadiendo pinchos(cada vez menos probable)
-            let localSpikes = this.spikesTraps.create(xPos + spikesLength * iteration, this.levelGroundHeight - 19, 'spikes').setScale(0.375).setOrigin(0, 0).setSize(68, 10);
-            localSpikes.setOffset(129, 70);
+            let localSpikes = this.spikesTraps.create(xPos + spikesLength * iteration, this.levelGroundHeight - 26, 'spikes').setScale(0.375).setOrigin(0, 0).setSize(68, 10);
+            localSpikes.setOffset(129, 77);
             randomAdd += Math.random() * 0.65;
             if (enemy == true && iteration%2 != 0) {    // Sie es con enemigo añade enemigo
                 this.generateStillEnemy(xPos + spikesLength * iteration + enemyOffset);
