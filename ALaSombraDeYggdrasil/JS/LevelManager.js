@@ -383,13 +383,15 @@ class LevelManager extends Phaser.Scene
         this.DialogBg.setScale(2/3);
         this.DialogBg.setDepth(11);
         this.DialogBg.setScrollFactor(0);
-        this.DialogBg.setVisible(false);
+        //this.DialogBg.setVisible(false);
+        this.DialogBg.alpha = 0;
         //this.DialogBg.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.nextDialog());
 
         this.DialogText = this.add.text(gameWidth*6/16, gameHeight*11/16,  " ", {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
         this.DialogText.setScrollFactor(0);
         this.DialogText.setDepth(12);
-        this.DialogText.setVisible(false);
+        //this.DialogText.setVisible(false);
+        this.DialogText.alpha = 0;
 
         this.buttonDialog = this.add.image(gameWidth*10.7/16, gameHeight*13.34/16, 'buttonDialog');
         this.buttonDialog.setScale(2/3);
@@ -412,8 +414,9 @@ class LevelManager extends Phaser.Scene
         this.ravenHugin = this.add.image(gameWidth*11.7/16, gameHeight*8.34/16, 'ravenHugin');
         this.ravenHugin.setScale(2/3);
         this.ravenHugin.setDepth(5);
-        this.ravenHugin.setVisible(false);
+        //this.ravenHugin.setVisible(false);
         this.ravenHugin.setScrollFactor(0);
+        this.ravenHugin.alpha = 0;
 
         //POEMS
 
@@ -1043,7 +1046,7 @@ class LevelManager extends Phaser.Scene
     }
 
     // Moneda
-    generateCoin(xPos, yPos = this.levelGroundHeight - 150, scaleFactor = this.playerResizeFactor, highValue = false) {
+    generateCoin(xPos, yPos = this.levelGroundHeight - 150, scaleFactor = 0.4, highValue = false) {
         let hitboxWidth = 70;
         let hitboxHeight = 70;
         if (highValue) {
@@ -1235,9 +1238,10 @@ class LevelManager extends Phaser.Scene
         this.buttonPause.setVisible(false);
         this.pauseText.setVisible(false);
 
-        for(let i = 0; i < this.playerHealth; i++) {    // Posiciona los puntos de vida en el HUD
+        for(let i = 0; i < this.playerHealth; i++) {    // Quita los puntos de vida en el HUD
             this.healthPointsDisplay[i].setVisible(false);
         }
+
 
         this.Disable_controls();
         this.time.addEvent({
@@ -1248,11 +1252,38 @@ class LevelManager extends Phaser.Scene
                     this.dialogSound.play();
 
                     if((levelIndex < 10) || (levelIndex == 14) ||(levelIndex == 15) ){
-                        this.DialogBg.setVisible(true);
-                        this.DialogText.setVisible(true);
-                        this.buttonDialog.setVisible(true);
-                        this.ravenHugin.setVisible(true);
+                        //this.DialogBg.setVisible(true);
+                        this.DialogBg.alpha = 0;
+                        this.DialogText.alpha = 0;
+                        //this.DialogText.setVisible(true);
+
                         this.DialogShowing=true;
+                        this.tweens.add({
+                          targets:this.DialogBg,
+                          duration: 500,
+                          alpha: 1,
+                          yoyo: false,
+                          hold: 2000,
+                          delay: 1100,
+                          completeDelay: 2000,
+                        });
+                        this.tweens.add({
+                          targets:this.DialogText,
+                          duration: 500,
+                          alpha: 1,
+                          yoyo: false,
+                          hold: 2000,
+                          delay: 1100,
+                          completeDelay: 2000,
+                        });
+
+                        this.time.addEvent({
+                          delay: 1100,
+                          callback: function() {
+                            this.buttonDialog.setVisible(true);
+                          },
+                        callbackScope: this
+                        }, this);
                     }
                     musicGameplay.stop();
                     this.showDialog();
@@ -1312,12 +1343,15 @@ class LevelManager extends Phaser.Scene
         this.soundRunning.stop();   // Para el sonido de los pasos
 
         if((levelIndex < 10) || (levelIndex == 14) ||(levelIndex == 15) ){
-          this.DialogText.setVisible(false);
-          this.DialogBg.setVisible(false);
+          //this.DialogText.setVisible(false);
+          //this.DialogBg.setVisible(false);
           this.buttonDialog.setVisible(false);
           this.buttonDialogSel.setVisible(false);
-          this.ravenHugin.setVisible(false);
+          //this.ravenHugin.setVisible(false);
           this.DialogShowing=false;
+          this.ravenHugin.alpha = 0;
+          this.DialogBg.alpha = 0;
+          this.DialogText.alpha = 0;
         }
 
         else{
@@ -1472,7 +1506,7 @@ class LevelManager extends Phaser.Scene
         if (triggers.associatedEnemy.isStill == false) {
             triggers.associatedEnemy.setVelocityX(this.eagleSpeedX);
             triggers.associatedEnemy.setVelocityY(this.eagleSpeedY);
-        } else {            
+        } else {
             if (!triggers.associatedEnemy.anims.isPlaying)
                     triggers.associatedEnemy.anims.play('draugr_attacking');
         }
@@ -1601,15 +1635,25 @@ class LevelManager extends Phaser.Scene
             this.player.body.setVelocityX(0);
             this.player.anims.stop(); //Sustituir por iddle si existe
             this.following=false;
+
+            this.tweens.add({
+              targets:this.ravenHugin,
+              duration: 500,
+              alpha: 1,
+              yoyo: false,
+              hold: 2000,
+              delay: 700,
+              completeDelay: 2000,
+            })
         }
 
         if (this.player.anims.getCurrentKey() == 'einar_attacking'){
-            if (this.player.anims.getProgress() >= 1) {  
+            if (this.player.anims.getProgress() >= 1) {
                 if (this.isPlayerTouchingGround) {
                     this.player.anims.play('einar_running');
                 }   else {
                     this.player.anims.play('einar_jumping');
-                }           
+                }
             }
         }
     }
