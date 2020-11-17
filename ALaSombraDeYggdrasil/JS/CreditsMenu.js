@@ -48,24 +48,24 @@ class CreditsMenu extends Phaser.Scene{
     // 3) CAMERA
     this.cameras.main.startFollow(this.player, false, 1, 1, -250, 200); // Cámar sigue al personaje
 
-    //FULL SCREEN
+    /*//FULL SCREEN
     this.fullScreen = this.add.image(gameWidth*15.5/16, gameHeight*13/14, 'buttonFullScreen');
     this.fullScreen.setScale(2/60);
     this.fullScreen.depth=3;
     this.fullScreen.setInteractive({ useHandCursor: true})
     .on('pointerdown', function() {
       this.scene.scale.toggleFullscreen();
-    });
+    });*/
 
     //BACK BUTTON
-    this.backButton = this.add.image(gameWidth*0.5/16, gameHeight*1/14,  'deselectedButtonSmall');
+    this.backButton = this.add.image(gameWidth*13.5/16, gameHeight*14.8/16,  'deselectedButtonSmall');
     this.backButton.setScale(1.5/3);
-    this.backButtonSel = this.add.image(gameWidth*0.5/16, gameHeight*1/14, 'selSmallLeftButton');
+    this.backButtonSel = this.add.image(gameWidth*13.3/16, gameHeight*14.8/16, 'selSmallLeftButton');
     this.backButtonSel.setScale(1.5/3);
     this.backButtonSel.setVisible(false);
 
     //Texto Boton
-    this.backText = this.add.text(this.cameras.main.x, +38,  stringsJSON.Buttons.back, {fontFamily: "Acadian_Runes",fontSize: "16px", align: 'center', fill: "#481d18"});
+    this.backText = this.add.text(this.cameras.main.x - 100, gameHeight*14.61/16,  stringsJSON.Buttons.back, {fontFamily: "Acadian_Runes",fontSize: "16px", align: 'center', fill: "#481d18"});
     //Acciones Boton
     this.backButton.on('pointerover', function (pointer) {this.backButtonSel.setVisible(true);}, this);
     this.backButton.on('pointerout', function (pointer) {this.backButtonSel.setVisible(false);}, this);
