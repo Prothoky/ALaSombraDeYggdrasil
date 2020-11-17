@@ -13,7 +13,7 @@ class LevelManager extends Phaser.Scene
         this.playerJumpDuration = 350;    // Duración máxima de la anulación de gravedad del salto en ms
         this.playerJumpSpeedDecrement = 50; // Efecto de la gravedad sobre los saltos
         this.playerInvulnerabilityDuration = 1000;  // Tiempo de invulnerabilidiad después de recibir un ataque
-        this.playerAttackDuration = 417;   // Duración del ataque
+        this.playerAttackDuration = 333;   // Duración del ataque
         this.playerAttackRefreshRate = 30;  // Tasa de refresco de posición de la hitbox del ataque
         this.playerAttackCounter = 0;   // Contador de tiempo del ataque
         this.playerAttackCooldown = 450;   // Cooldown del ataque
@@ -776,12 +776,12 @@ class LevelManager extends Phaser.Scene
             this.soundAttack.play(this.getAudioConfig());
             this.playerAttackAvaliable = false;
             // Crea la hitbox
-            let localAttackHitbox = this.attackHitbox.create(this.player.body.x - this.playerHitboxWidth + 10, this.player.body.y, 'bomb');    // Cambiar sprite por 'dot' al importar animacion definitiva
+            let localAttackHitbox = this.attackHitbox.create(this.player.body.x - this.playerHitboxWidth + 25, this.player.body.y, 'bomb');    // Cambiar sprite por 'dot' al importar animacion definitiva
             localAttackHitbox.setVisible(false);
             localAttackHitbox.setOrigin(0);
             localAttackHitbox.setSize(this.playerAttackWidth, this.playerAttackHeight, false);
             localAttackHitbox.body.setAllowGravity(false);
-            localAttackHitbox.body.velocity.x = this.player.body.velocity.x + 200;
+            localAttackHitbox.body.velocity.x = this.player.body.velocity.x + 215;
             //localAttackHitbox.setVisible(false);  // Volver invisible al importar animacion definitiva
             localAttackHitbox.refreshBody();
             // Crea el timer de actualziación
@@ -874,7 +874,6 @@ class LevelManager extends Phaser.Scene
     // collisionWidth, collisionHeight: tamaño de la hitbox
     // triggerWidth, triggerHeight: tamaño del trigger de movimiento. Si no se pasa toma valor por defecto
     generateMovingEnemy(xPos, yPos = -300, collisionWidth = 90, collisionHeight = 120, triggerWidth = 500, triggerHeight = 500) {
-        this.add.image(xPos, this.levelGroundHeight, 'dot');
         let newEnemy = this.eagles.create(xPos + 1050, yPos, 'eagle_attacking').setOrigin(0).setScale(this.playerResizeFactor);
         newEnemy.anims.play('eagle_attacking');
         newEnemy.body.setAllowGravity(false);
@@ -1076,7 +1075,7 @@ class LevelManager extends Phaser.Scene
     // FUNCIONES COMPLEJAS (valores hardcodeados)
     // Plataforma + pinchos (necesario saltar desde la plataforma para no recibir hit)
     generatePlatformToSpikes(xPos, enemy = true, yPos = this.levelGroundHeight - 38, scaleFactor = 0.9) {
-        this.generatePlatform(xPos + Math.floor(Math.random() * 170), this.platformPositionY - this.platformPositionOffset/2, enemy);
+        this.generatePlatform(xPos + Math.floor(Math.random() * 155), this.platformPositionY - this.platformPositionOffset/2, enemy);
         let localSpikes = this.spikesTraps.create(xPos - 50, yPos - 15, 'spikes_long').setScale(scaleFactor).setOrigin(0, 0).setSize(450, 10);
         localSpikes.setOffset(317, 105);
         return this.minDistPlatformToSpikes;
