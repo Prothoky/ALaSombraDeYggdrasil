@@ -58,7 +58,13 @@ class World1Map extends Phaser.Scene{
     this.backgroundW1.setScale(2/3);
     this.backgroundW1.setPosition(gameWidth/2, gameHeight/2);
     this.backgroundW1.setInteractive({ useHandCursor: false  } )
-    .on('pointerdown', () => (this.nameActiveNode.setVisible(false), this.activeNode.setVisible(false), this.numActiveNodes = 0));
+    .on('pointerdown', () => {
+        if(this.nameActiveNode!=null)
+            this.nameActiveNode.setVisible(false);
+        if(this.activeNode!=null)  
+            this.activeNode.setVisible(false);
+        this.numActiveNodes = 0;
+    });
 
     //MONEY
     this.backgroundMoneyW1M = this.add.image(gameWidth*13/16, gameHeight*1.1/16, 'deselectedButtonSmall');
@@ -85,7 +91,7 @@ class World1Map extends Phaser.Scene{
 
 
     //BOTON ATRAS
-    this.backButtonW1M = this.add.image(gameWidth*14.5/16, gameHeight*15/16, 'backButton');
+    this.backButtonW1M = this.add.image(gameWidth*14.5/16, gameHeight*15/16, 'deselectedButtonSmall');
     this.backButtonW1M.setScale(1.5/3);
     this.backButtonW1MSel = this.add.image(gameWidth*14.3/16, gameHeight*14.8/16, 'selSmallLeftButton');
     this.backButtonW1MSel.setScale(1.5/3);

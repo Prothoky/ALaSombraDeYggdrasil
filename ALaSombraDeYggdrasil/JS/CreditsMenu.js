@@ -12,22 +12,8 @@ class CreditsMenu extends Phaser.Scene{
     this.bg_backgorund = this.add.tileSprite(0,0, 5715, 916, 'bg_background');
     this.bg_far = this.add.tileSprite(0,0, 5715, 916, "bg_far");
     this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium");
-    this.bg_near = this.add.tileSprite(0,0, 5715, 916, "bg_near");
+    this.bg_near = this.add.tileSprite(0,10, 5715, 916, "bg_near");
     this.bg_near.depth = 2;
-
-    // Ajusta los tileSprites
-    this.bg_backgorund.setOrigin(0,0);
-    this.bg_far.setOrigin(0,0);
-    this.bg_medium.setOrigin(0,0);
-    this.bg_near.setOrigin(0,0);
-    this.bg_backgorund.setScrollFactor(0);
-    this.bg_far.setScrollFactor(0);
-    this.bg_medium.setScrollFactor(0);
-    this.bg_near.setScrollFactor(0);
-    this.bg_backgorund.setScale(0.66);
-    this.bg_far.setScale(0.66);
-    this.bg_medium.setScale(0.66);
-    this.bg_near.setScale(0.7);
 
     // 2) CHARACTER
     this.player = this.physics.add.sprite(650, 0, 'einar_running').setOrigin(1).setScale(0.56).setSize(70,145);
@@ -62,7 +48,7 @@ class CreditsMenu extends Phaser.Scene{
     });
 
     //BACK BUTTON
-    this.backButtonCM = this.add.image((this.cameras.main.x),+50,  'backButton');
+    this.backButtonCM = this.add.image((this.cameras.main.x),+50,  'deselectedButtonSmall');
     this.backButtonCM.setScale(1.5/3);
     this.backButtonCMSel = this.add.image((this.cameras.main.x), +43, 'selSmallLeftButton');
     this.backButtonCMSel.setScale(1.5/3);
@@ -86,10 +72,10 @@ class CreditsMenu extends Phaser.Scene{
 
   update(){
 
-    this.bg_backgorund.tilePositionX += 0.5;
-    this.bg_far.tilePositionX +=1;
-    this.bg_medium.tilePositionX += 3;
-    this.bg_near.tilePositionX += 5;
+    this.bg_backgorund.tilePositionX += 0.25;
+    this.bg_far.tilePositionX +=0.5;
+    this.bg_medium.tilePositionX += 1.5;
+    this.bg_near.tilePositionX += 2.5;
     this.credits.setX(this.cameras.main.x+800);
     this.logo.setX(this.cameras.main.x+950);
     this.credits.setY(this.credits.y-0.5);

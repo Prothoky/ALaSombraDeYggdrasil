@@ -17,7 +17,7 @@ class TutorialMenu extends Phaser.Scene{
     });
 
     //BACK BUTTON
-    this.backButtonTM = this.add.image(gameWidth*14.5/16, gameHeight*15/16, 'backButton');
+    this.backButtonTM = this.add.image(gameWidth*14.5/16, gameHeight*15/16, 'deselectedButtonSmall');
     this.backButtonTM.setScale(1.5/3);
     this.backButtonTM.setDepth(3);
     this.backButtonTMSel = this.add.image(gameWidth*14.3/16, gameHeight*14.8/16, 'selSmallLeftButton');

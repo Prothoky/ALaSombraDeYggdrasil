@@ -677,7 +677,12 @@
 				"type": "audio",
 		      	"key": "soundRage",
 		    	"url": "./ASSETS/SFX/Rage.m4a"
-			}
+			},
+			{
+				"type": "audio",
+		      	"key": "soundStart",
+		    	"url": "./ASSETS/SFX/sound_horn.mp3"
+			}			
 		]
 	}
 

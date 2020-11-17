@@ -40,7 +40,7 @@ class MapSelectionMenu extends Phaser.Scene{
 
 
     //BOTON ATRAS
-    this.backButtonMSM = this.add.image(gameWidth*14.5/16, gameHeight*15/16, 'backButton');
+    this.backButtonMSM = this.add.image(gameWidth*14.5/16, gameHeight*15/16, 'deselectedButtonSmall');
     this.backButtonMSM.setScale(1.5/3);
     this.backButtonMSMSel = this.add.image(gameWidth*14.3/16, gameHeight*14.8/16, 'selSmallLeftButton');
     this.backButtonMSMSel.setScale(1.5/3);

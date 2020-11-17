@@ -183,9 +183,11 @@ class LevelManager extends Phaser.Scene
             musicGameplay.setVolume(userConfig.volumeMusic/10);
         }
 
+
         // 1.2) Sonidos
         // Declaramos sonidos
         let config = this.getAudioConfig();
+        this.soundStart = this.sound.add('soundStart', config);
         this.soundDeath = this.sound.add('player_death', config);
         this.soundRunning = this.sound.add('player_running', config);
         this.soundJump = this.sound.add('player_jump', config);
@@ -194,6 +196,8 @@ class LevelManager extends Phaser.Scene
         this.clickButtonSound = this.sound.add('ClickButtonSound', config);
         this.poemSound = this.sound.add('Poem', config);
         this.dialogSound = this.sound.add('musicDialog', config);
+
+        this.soundStart.play();
 
         // 2) BACKGROUND
         if (this.isIceLevel) {
@@ -1612,7 +1616,6 @@ class LevelManager extends Phaser.Scene
     // FIN DE OTRAS FUNCIONES -------------------------------------------
     // Da movimiento al fondo
     update (time, delta){
-
         this.SetTextPos();
 
        if(!this.DialogShowing){
@@ -1640,6 +1643,8 @@ class LevelManager extends Phaser.Scene
               delay: 700,
               completeDelay: 2000,
             })
+
+            console.log("!!!ERROR")
         }
 
         if (this.player.anims.getCurrentKey() == 'einar_attacking'){
