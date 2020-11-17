@@ -308,9 +308,9 @@ class PreloadMenu extends Phaser.Scene{
 
   create(){
 
-    loadUserData();
-
     phaserJSON = this.cache.json.get('Data');
+    
+    loadUserData();
 
     updateLanguage();
 
