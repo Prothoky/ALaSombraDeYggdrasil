@@ -35,7 +35,7 @@ class LevelManager extends Phaser.Scene
         this.platformMaxHeight = 285;   // Altura máxima de las plataformas
         this.maxRandTrapDistance = 200; // Máximo de distancia entre trampas añadido (250)
         this.minDistStillEnemy = 30;   // Mínimo de distancia tras un enemigo quieto
-        this.minDistMovingEnemy = 30;   // Mínimo de distancia tras un enemigo que se mueve
+        this.minDistMovingEnemy = 80;   // Mínimo de distancia tras un enemigo que se mueve
         this.minDistPlatform = 200;   // Mínimo de distancia tras una plataforma
         this.minDistSpikes = 400;   // Mínimo de distancia tras una trampa de pinchos
         this.minDistBarricade = 250;    // Mínimo de distancia tras una barricada
@@ -867,14 +867,16 @@ class LevelManager extends Phaser.Scene
     // collisionWidth, collisionHeight: tamaño de la hitbox
     // triggerWidth, triggerHeight: tamaño del trigger de movimiento. Si no se pasa toma valor por defecto
     generateMovingEnemy(xPos, yPos = -300, collisionWidth = 90, collisionHeight = 120, triggerWidth = 500, triggerHeight = 500) {
-        let newEnemy = this.eagles.create(xPos, yPos, 'eagle_attacking').setOrigin(0).setScale(this.playerResizeFactor);
+        this.add.image(xPos, this.levelGroundHeight, 'dot');
+        let newEnemy = this.eagles.create(xPos + 1050, yPos, 'eagle_attacking').setOrigin(0).setScale(this.playerResizeFactor);
         newEnemy.anims.play('eagle_attacking');
         newEnemy.body.setAllowGravity(false);
         newEnemy.body.setSize(collisionWidth, collisionHeight);
         newEnemy.setOffset(130, 330);
         newEnemy.isStill = false;
+        newEnemy.depth = 5;
         this.cabins[this.cabins.length] = newEnemy;
-        let newTrigger = this.triggers.create(xPos - 1700, this.levelGroundHeight, 'dot').setVisible(false).refreshBody();
+        let newTrigger = this.triggers.create(xPos - 950, this.levelGroundHeight, 'dot').setVisible(false).refreshBody();
         newTrigger.body.setSize(triggerWidth, triggerHeight);   // Trigger que hará que el enemigo se mueva cuando entre el personaje en contacto
         newTrigger.associatedEnemy = newEnemy;
         return this.minDistMovingEnemy;
