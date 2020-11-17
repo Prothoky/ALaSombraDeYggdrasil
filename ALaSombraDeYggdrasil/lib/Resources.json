@@ -143,15 +143,15 @@
 		    },{
 		      "type": "image",
 		      "key": "bg_medium",
-		      "url": "ASSETS/Secciones/Zona_media.png'"
+		      "url": "./ASSETS/Secciones/Zona_media.png"
 		    },{
 		      "type": "image",
 		      "key": "bg_near",
-		      "url": "ASSETS/Secciones/Zona_delantera.png"
+		      "url": "./ASSETS/Secciones/Zona_delantera.png"
 		    },{
 		      "type": "image",
 		      "key": "bg_background",
-		      "url": "ASSETS/Secciones/Fondo.png"
+		      "url": "./ASSETS/Secciones/Fondo.png"
 		    },{
 		      "type": "image",
 		      "key": "bg_far_ice",
@@ -159,199 +159,419 @@
 		    },{
 		      "type": "image",
 		      "key": "bg_medium_ice",
-		      "url": "ASSETS/Secciones/Zona_media._hielopng'"
+		      "url": "./ASSETS/Secciones/Zona_media_hielo.png"
 		    },{
 		      "type": "image",
 		      "key": "bg_near_ice",
-		      "url": "ASSETS/Secciones/Zona_delantera_hielo.png"
+		      "url": "./ASSETS/Secciones/Zona_delantera_hielo.png"
 		    },{
 		      "type": "image",
 		      "key": "bg_background_ice",
-		      "url": "ASSETS/Secciones/Fondo_hielo.png"
+		      "url": "./ASSETS/Secciones/Fondo_hielo.png"
 		    },{
 		      "type": "image",
 		      "key": "barricade",
-		      "url": "ASSETS/Gameplay/barricade.png"
+		      "url": "./ASSETS/Gameplay/barricade.png"
 		    },{
 		      "type": "image",
 		      "key": "trunk",
-		      "url": "ASSETS/Gameplay/trunk.png"
+		      "url": "./ASSETS/Gameplay/trunk.png"
 		    },{
 		      "type": "image",
 		      "key": "cabin_up_1",
-		      "url": "ASSETS/Gameplay/cabin_up_1.png"
+		      "url": "./ASSETS/Gameplay/cabin_up_1.png"
 		    },{
 		      "type": "image",
 		      "key": "cabin_down_1",
-		      "url": "ASSETS/Gameplay/cabin_down_1.png"
+		      "url": "./ASSETS/Gameplay/cabin_down_1.png"
 		    },{
 		      "type": "image",
 		      "key": "cabin_up_ice_1",
-		      "url": "ASSETS/Gameplay/cabin_up_ice_1.png"
+		      "url": "./ASSETS/Gameplay/cabin_up_ice_1.png"
 		    },{
 		      "type": "image",
 		      "key": "cabin_down_ice_1",
-		      "url": "ASSETS/Gameplay/cabin_down_ice_1.png"
+		      "url": "./ASSETS/Gameplay/cabin_down_ice_1.png"
 		    },{
 		      "type": "image",
 		      "key": "cabin_up_2",
-		      "url": "ASSETS/Gameplay/cabin_up_2.png"
+		      "url": "./ASSETS/Gameplay/cabin_up_2.png"
 		    },{
 		      "type": "image",
 		      "key": "cabin_down_2",
-		      "url": "ASSETS/Gameplay/cabin_down_2.png"
+		      "url": "./ASSETS/Gameplay/cabin_down_2.png"
 		    },{
 		      "type": "image",
 		      "key": "cabin_up_ice_2",
-		      "url": "ASSETS/Gameplay/cabin_up_ice_2.png"
+		      "url": "./ASSETS/Gameplay/cabin_up_ice_2.png"
 		    },{
 		      "type": "image",
 		      "key": "cabin_down_ice_2",
-		      "url": "ASSETS/Gameplay/cabin_down_ice_2.png"
+		      "url": "./ASSETS/Gameplay/cabin_down_ice_2.png"
 		    },{
 		      "type": "image",
 		      "key": "platform",
-		      "url": "ASSETS/Gameplay/platform.png"
+		      "url": "./ASSETS/Gameplay/platform.png"
 		    },{
 		      "type": "image",
 		      "key": "platform_ice",
-		      "url": "ASSETS/Gameplay/platform_ice.png"
+		      "url": "./ASSETS/Gameplay/platform_ice.png"
 		    },{
 		      "type": "image",
 		      "key": "spikes",
-		      "url": "ASSETS/Gameplay/spikes.png"
+		      "url": "./ASSETS/Gameplay/spikes.png"
 		    },{
 		      "type": "image",
 		      "key": "spikes_long",
-		      "url": "ASSETS/Gameplay/spikes_long.png"
-		    },{
-		      "type": "image",
-		      "key": "pauseButton",
-		      "url": "ASSETS/Gameplay/ButtonPause.png"
+		      "url": "./ASSETS/Gameplay/spikes_long.png"
 		    },{
 		      "type": "image",
 		      "key": "draugr",
-		      "url": "ASSETS/Gameplay/draugr.png"
+		      "url": "./ASSETS/Gameplay/draugr.png"
 		    },{
 		      "type": "image",
 		      "key": "life",
-		      "url": "ASSETS/Gameplay/IconoBendicion.png"
+		      "url": "./ASSETS/Tienda/IconoBendicion.png"
 		    },{
 		      "type": "image",
 		      "key": "ravenHugin",
-		      "url": "ASSETS/Gameplay/Hugin.png"
+		      "url": "./ASSETS/Gameplay/Hugin.png"
 		    },{
 		      "type": "image",
 		      "key": "coin_1",
-		      "url": "ASSETS/Gameplay/coin_1.png"
+		      "url": "./ASSETS/Gameplay/coin_1.png"
 		    },{
 		      "type": "image",
 		      "key": "backgroundDialogEinar",
-		      "url": "ASSETS/Gameplay/CajaTextoEinar.png"
+		      "url": "./ASSETS/Gameplay/CajaTextoEinar.png"
 		    },{
 		      "type": "image",
 		      "key": "backgroundDialogHugin",
-		      "url": "ASSETS/Gameplay/CajaTextoHugin.png"
+		      "url": "./ASSETS/Gameplay/CajaTextoHugin.png"
 		    },{
 		      "type": "image",
 		      "key": "backgroundDialogMunin",
-		      "url": "ASSETS/Gameplay/CajaTextoMunin.png"
+		      "url": "./ASSETS/Gameplay/CajaTextoMunin.png"
 		    },{
 		      "type": "image",
 		      "key": "buttonDialogSel",
-		      "url": "ASSETS/Gameplay/FlechaSel.png"
+		      "url": "./ASSETS/Gameplay/FlechaSel.png"
 		    },{
 		      "type": "image",
 		      "key": "buttonDialog",
-		      "url": "ASSETS/Gameplay/Flecha.png"
+		      "url": "./ASSETS/Gameplay/Flecha.png"
 		    },{
 		      "type": "image",
 		      "key": "backgroundPM",
-		      "url": "ASSETS/Fondos/PauseMenuBackground.jpg"
+		      "url": "./ASSETS/Fondos/PauseMenuBackground.jpg"
 		    },{
 		      "type": "image",
 		      "key": "backgroundPMEn",
-		      "url": "ASSETS/Fondos/PauseMenuBackgroundEn.jpg"
+		      "url": "./ASSETS/Fondos/PauseMenuBackgroundEn.jpg"
 		    },{
 		      "type": "image",
 		      "key": "backgroundSM",
-		      "url": "ASSETS/Fondos/FondoTienda.jpg"
+		      "url": "./ASSETS/Fondos/FondoTienda.jpg"
 		    },{
 		      "type": "image",
 		      "key": "backgroundSMEn",
-		      "url": "ASSETS/Fondos/FondoTiendaEng.png"
+		      "url": "./ASSETS/Fondos/FondoTiendaEng.jpg"
 		    },{
 		      "type": "image",
 		      "key": "object1Bought",
-		      "url": "ASSETS/Tienda/BendicionMaximo.png"
+		      "url": "./ASSETS/Tienda/BendicionMaximo.png"
 		    },{
 		      "type": "image",
 		      "key": "object2Bought",
-		      "url": "ASSETS/Tienda/FuerzaComprado.png"
+		      "url": "./ASSETS/Tienda/FuerzaComprado.png"
 		    },{
 		      "type": "image",
 		      "key": "object3Bought",
-		      "url": "ASSETS/Tienda/PlumaComprado.png"
+		      "url": "./ASSETS/Tienda/PlumaComprado.png"
 		    },{
 		      "type": "image",
 		      "key": "object4Bought",
-		      "url": "ASSETS/Tienda/RabiaComprado.png"
+		      "url": "./ASSETS/Tienda/RabiaComprado.png"
 		    },{
 		      "type": "image",
 		      "key": "object1BoughtEn",
-		      "url": "ASSETS/Tienda/BendicionMaximoEng.png"
+		      "url": "./ASSETS/Tienda/BendicionMaximoEng.png"
 		    },{
 		      "type": "image",
 		      "key": "object2BoughtEn",
-		      "url": "ASSETS/Tienda/FuerzaCompradoEng.png"
+		      "url": "./ASSETS/Tienda/FuerzaCompradoEng.png"
 		    },{
 		      "type": "image",
 		      "key": "object3BoughtEn",
-		      "url": "ASSETS/Tienda/PlumaCompradoEng.png"
+		      "url": "./ASSETS/Tienda/PlumaCompradoEng.png"
 		    },{
 		      "type": "image",
 		      "key": "object4BoughtEn",
-		      "url": "ASSETS/Tienda/RabiaCompradoEng.png"
+		      "url": "./ASSETS/Tienda/RabiaCompradoEng.png"
 		    },{
 		      "type": "image",
 		      "key": "IconObject1",
-		      "url": "ASSETS/Tienda/IconoBendicion.png"
+		      "url": "./ASSETS/Tienda/IconoBendicion.png"
 		    },{
 		      "type": "image",
 		      "key": "IconObject2",
-		      "url": "ASSETS/Tienda/IconoFuerza.png"
+		      "url": "./ASSETS/Tienda/IconoFuerza.png"
 		    },{
 		      "type": "image",
 		      "key": "IconObject3",
-		      "url": "ASSETS/Tienda/IconoPluma.png"
+		      "url": "./ASSETS/Tienda/IconoPluma.png"
 		    },{
 		      "type": "image",
 		      "key": "IconObject4",
-		      "url": "ASSETS/Tienda/IconoRabia.png"
+		      "url": "./ASSETS/Tienda/IconoRabia.png"
 		    },{
 		      "type": "image",
 		      "key": "backgroundWM1M",
-		      "url": "ASSETS/Tienda/FondoMapaMundo1.jpg"
+		      "url": "./ASSETS/Fondos/FondoMapaMundo1.jpg"
 		    },{
 		      "type": "image",
 		      "key": "NodoBlocked",
-		      "url": "ASSETS/Tienda/NivelBloqueado.png"
+		      "url": "./ASSETS/IconosNodos/NivelBloqueado.png"
 		    },{
 		      "type": "image",
 		      "key": "ButtonNodePrinc",
-		      "url": "ASSETS/Tienda/NodoPrincipalDesbloq.png"
+		      "url": "./ASSETS/IconosNodos/NodoPrincipalDesbloq.png"
 		    },{
 		      "type": "image",
 		      "key": "ButtonNodePrincSnow",
-		      "url": "ASSETS/Tienda/NodoPrincipalNieveDesbloq.png"
+		      "url": "./ASSETS/IconosNodos/NodoPrincipalNieveDesbloq.png"
 		    },{
 		      "type": "image",
 		      "key": "ButtonNodePrincSel",
-		      "url": "ASSETS/Tienda/NodoPrincipalSel.png"
+		      "url": "./ASSETS/IconosNodos/NodoPrincipalSel.png"
 		    },{
 		      "type": "image",
 		      "key": "ButtonNodePrincSnowSel",
-		      "url": "ASSETS/Tienda/NodoPrincipalNieveSel.png"
+		      "url": "./ASSETS/IconosNodos/NodoPrincipalNieveSel.png"
+		    },{
+		      "type": "image",
+		      "key": "Level0Name",
+		      "url": "./ASSETS/TitulosNodos/TheRegress.png"
+		    },{
+		      "type": "image",
+		      "key": "NameWorld1",
+		      "url": "./ASSETS/TitulosNodos/NombreMidgar.png"
+		    },{
+		      "type": "image",
+		      "key": "Level1Name",
+		      "url": "./ASSETS/TitulosNodos/MyMemory.png"
+		    },{
+		      "type": "image",
+		      "key": "Level2Name",
+		      "url": "./ASSETS/TitulosNodos/PastVoice.png"
+		    },{
+		      "type": "image",
+		      "key": "Level2_1Name",
+		      "url": "./ASSETS/TitulosNodos/Valkyre.png"
+		    },{
+		      "type": "image",
+		      "key": "Level3Name",
+		      "url": "./ASSETS/TitulosNodos/Finally.png"
+		    },{
+		      "type": "image",
+		      "key": "Level4Name",
+		      "url": "./ASSETS/TitulosNodos/TheDisbelief.png"
+		    },{
+		      "type": "image",
+		      "key": "Level5Name",
+		      "url": "./ASSETS/TitulosNodos/TheFrozenLake.png"
+		    },{
+		      "type": "image",
+		      "key": "Level6Name",
+		      "url": "./ASSETS/TitulosNodos/TheBetrayal.png"
+		    },{
+		      "type": "image",
+		      "key": "Level5_1Name",
+		      "url": "./ASSETS/TitulosNodos/MyHometown.png"
+		    },{
+		      "type": "image",
+		      "key": "Level5_2Name",
+		      "url": "./ASSETS/TitulosNodos/MyFamily.png"
+		    },{
+		      "type": "image",
+		      "key": "Level7Name",
+		      "url": "./ASSETS/TitulosNodos/TheRests.png"
+		    },{
+		      "type": "image",
+		      "key": "Level8Name",
+		      "url": "./ASSETS/TitulosNodos/TheMust.png"
+		    },{
+		      "type": "image",
+		      "key": "Level9Name",
+		      "url": "./ASSETS/TitulosNodos/TheShadow.png"
+		    },{
+		      "type": "image",
+		      "key": "Level0Name",
+		      "url": "./ASSETS/TitulosNodos/ElRegreso.png"
+		    },{
+		      "type": "image",
+		      "key": "Level1Name",
+		      "url": "./ASSETS/TitulosNodos/MiMemoria.png"
+		    },{
+		      "type": "image",
+		      "key": "Level2Name",
+		      "url": "./ASSETS/TitulosNodos/LaVozDelPasado.png"
+		    },{
+		      "type": "image",
+		      "key": "Level2_1Name",
+		      "url": "./ASSETS/TitulosNodos/Valquirias.png"
+		    },{
+		      "type": "image",
+		      "key": "Level3Name",
+		      "url": "./ASSETS/TitulosNodos/Finally.png"
+		    },{
+		      "type": "image",
+		      "key": "Level4Name",
+		      "url": "./ASSETS/TitulosNodos/LaDescreencia.png"
+		    },{
+		      "type": "image",
+		      "key": "Level5Name",
+		      "url": "./ASSETS/TitulosNodos/ElLagoHelado.png"
+		    },{
+		      "type": "image",
+		      "key": "Level6Name",
+		      "url": "./ASSETS/TitulosNodos/LaTraicion.png"
+		    },{
+		      "type": "image",
+		      "key": "Level5_1Name",
+		      "url": "./ASSETS/TitulosNodos/MiPueblo.png"
+		    },{
+		      "type": "image",
+		      "key": "Level5_2Name",
+		      "url": "./ASSETS/TitulosNodos/MiFamilia.png"
+		    },{
+		      "type": "image",
+		      "key": "Level7Name",
+		      "url": "./ASSETS/TitulosNodos/LosRestos.png"
+		    },{
+		      "type": "image",
+		      "key": "Level8Name",
+		      "url": "./ASSETS/TitulosNodos/ElDeber.png"
+		    },{
+		      "type": "image",
+		      "key": "Level9Name",
+		      "url": "./ASSETS/TitulosNodos/LaSombra.png"
+		    },{
+		      "type": "image",
+		      "key": "Nivel1_1Name",
+		      "url": "./ASSETS/TitulosNodos/Yggdrasil.png"
+		    },{
+		      "type": "image",
+		      "key": "Nivel4_1Name",
+		      "url": "./ASSETS/TitulosNodos/Valhalla.png"
+		    },{
+		      "type": "image",
+		      "key": "Nivel4_2Name",
+		      "url": "./ASSETS/TitulosNodos/Berserker.png"
+		    },{
+		      "type": "image",
+		      "key": "Nivel7_1Name",
+		      "url": "./ASSETS/TitulosNodos/Ragnarok.png"
+		    },{
+		      "type": "image",
+		      "key": "Nivel7_2Name",
+		      "url": "./ASSETS/TitulosNodos/Einar.png"
+		    },{
+		      "type": "image",
+		      "key": "NodeDeselected",
+		      "url": "./ASSETS/IconosSubniveles/SubnivelDeseleccionado.png"
+		    },{
+		      "type": "image",
+		      "key": "ButtonSubNodeSel",
+		      "url": "./ASSETS/IconosSubniveles/SubnivelSeleccionado.png"
+		    },{
+		      "type": "image",
+		      "key": "ButtonSubNode1",
+		      "url": "./ASSETS/IconosSubniveles/Subnivel2.png"
+		    },{
+		      "type": "image",
+		      "key": "ButtonSubNode2",
+		      "url": "./ASSETS/IconosSubniveles/Subnivel3.png"
+		    },{
+		      "type": "image",
+		      "key": "ButtonSubNode4_1",
+		      "url": "./ASSETS/IconosSubniveles/Subnivel5_1.png"
+		    },{
+		      "type": "image",
+		      "key": "ButtonSubNode4_2",
+		      "url": "./ASSETS/IconosSubniveles/Subnivel5_2.png"
+		    },{
+		      "type": "image",
+		      "key": "ButtonSubNode5_1",
+		      "url": "./ASSETS/IconosSubniveles/Subnivel6_1.png"
+		    },{
+		      "type": "image",
+		      "key": "ButtonSubNode5_2",
+		      "url": "./ASSETS/IconosSubniveles/Subnivel6_2.png"
+		    },{
+		      "type": "image",
+		      "key": "ButtonSubNode7_1",
+		      "url": "./ASSETS/IconosSubniveles/Subnivel8_1.png"
+		    },{
+		      "type": "image",
+		      "key": "ButtonSubNode7_2",
+		      "url": "./ASSETS/IconosSubniveles/Subnivel8_2.png"
+		    },{
+		      "type": "image",
+		      "key": "backgroundGOM",
+		      "url": "./ASSETSUnused/Placeholders/FondoGameOver.jpg"
+		    },{
+		      "type": "image",
+		      "key": "buttonFullScreen",
+		      "url": "./ASSETS/Botones/BotonFullScreen.jpg"
+		    },{
+		      "type": "image",
+		      "key": "Poema1_1",
+		      "url": "./ASSETS/Pergaminos/PoemaYggdrasil.png"
+		    },{
+		      "type": "image",
+		      "key": "Poema2_1",
+		      "url": "./ASSETS/Pergaminos/PoemaValquirias.png"
+		    },{
+		      "type": "image",
+		      "key": "Poema4_1",
+		      "url": "./ASSETS/Pergaminos/PoemaValhalla.png"
+		    },{
+		      "type": "image",
+		      "key": "Poema4_2",
+		      "url": "./ASSETS/Pergaminos/PoemaBerserker.png"
+		    },{
+		      "type": "image",
+		      "key": "Poema7_1",
+		      "url": "./ASSETS/Pergaminos/PoemaRagnarok.png"
+		    },{
+		      "type": "image",
+		      "key": "Poema7_2",
+		      "url": "./ASSETS/Pergaminos/PoemaEinar.png"
+		    },{
+		      "type": "image",
+		      "key": "Poema1_1",
+		      "url": "./ASSETS/Pergaminos/PoemYggdrasil.png"
+		    },{
+		      "type": "image",
+		      "key": "Poema2_1",
+		      "url": "./ASSETS/Pergaminos/PoemValKyres.png"
+		    },{
+		      "type": "image",
+		      "key": "Poema4_1",
+		      "url": "./ASSETS/Pergaminos/PoemValhalla.png"
+		    },{
+		      "type": "image",
+		      "key": "Poema4_2",
+		      "url": "./ASSETS/Pergaminos/PoemBerserker.png"
+		    },{
+		      "type": "image",
+		      "key": "Poema7_1",
+		      "url": "./ASSETS/Pergaminos/PoemRagnarok.png"
+		    },{
+		      "type": "image",
+		      "key": "Poema7_2",
+		      "url": "./ASSETS/Pergaminos/PoemEinar.png"
 		    }
 		]
 	},
@@ -454,4 +674,5 @@
 			}
 		]
 	}
+
 }
