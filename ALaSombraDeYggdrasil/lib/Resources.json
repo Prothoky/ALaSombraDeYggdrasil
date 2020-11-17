@@ -588,8 +588,12 @@
 		      "url": "./ASSETS/Fondos/MenuVictoria.jpg"
 		    },{
 		      "type": "image",
-		      "key": "WinnerBackgrEn",
-		      "url": "./ASSETS/Fondos/MenuVictoriaEng.jpg"
+		      "key": "BackgroundTutorial",
+		      "url": "./ASSETS/Fondos/BackgroundTutorial.jpg"
+		    },{
+		      "type": "image",
+		      "key": "BackgroundTutorialEn",
+		      "url": "./ASSETS/Fondos/BackgroundTutorialEng.jpg"
 		    }
 		]
 	},
