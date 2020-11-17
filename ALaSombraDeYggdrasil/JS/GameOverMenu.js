@@ -8,56 +8,87 @@ class GameOverMenu extends Phaser.Scene{
     this.clickSound = this.sound.add('ClickButtonSound', this.EffectsConfig());
     this.cameras.main.fadeIn(500, 0, 0, 0);
 
-    var backgroundGOM = this.add.image(0, 0, 'backgroundGOM');
-    backgroundGOM.setScale(2/3);
-    backgroundGOM.setPosition(gameWidth/2, gameHeight/2);
-
-    //BOTON VOLVER A JUGAR
-    this.retryButtonGOM = this.add.image(gameWidth*5/16, gameHeight*11/16, 'ButtonRetryGOM');
-    this.retryButtonGOM.setScale(2/3);
-    this.retryButtonGOM.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => this.PlayAgain());
-
-    //BOTON ABANDONAR
-    this.quitButtonGOM = this.add.image(gameWidth*10/16, gameHeight*11/16, 'ButtonQuitGOM');
-    this.quitButtonGOM.setScale(2/3);
-    this.quitButtonGOM.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () => this.QuitGameGOM());
-
-    //this.FinalText = this.add.text(gameWidth*8/16, gameHeight*8.6/16, 'Perdiste Wey', {fill: "black"});
-
-    //this.Money = this.add.text(gameWidth*13/16, gameHeight*0.95/16,  user.money, {fontFamily: "Acadian_Runes",stroke:'#000000', align: 'center', fill: "white", strokeThickness: 2});
-    //this.Money.setOrigin(0.5,0.5);
-    //this.DialogText = this.add.text(gameWidth*6/16, gameHeight*6/16,  "", {fontFamily: "StayHappy",stroke:'#000000', fill: "white", strokeThickness: 2});
-
-    if(user.maxDistanceArcade==null){
-      user.maxDistanceArcade=0;
-    }
-
-    if(arcadeMode == false){
-      this.gameOverRunner = this.add.text(gameWidth*6/16, gameHeight*6/16,  "Moristes Wey", {fontFamily: "StayHappy", fontSize: 24, stroke:'#000000', fill: "white", strokeThickness: 2});
-    }else{
-
-      if (distanceAchieved > user.maxDistanceArcade ){
-        user.maxDistanceArcade = distanceAchieved;
+      if(arcadeMode == false){
+        if(userConfig.lang == "es"){
+          this.backgroundGOM = this.add.image(gameWidth/2, gameHeight/2, 'GameOverBackgr');
+        }else{
+          this.backgroundGOM = this.add.image(gameWidth/2, gameHeight/2, 'GameOverBackgrEn');
+        }
+      }else{
+        if(userConfig.lang == "es"){
+          this.backgroundGOM = this.add.image(gameWidth/2, gameHeight/2, 'GameOverArcBackgr');
+        }else{
+          this.backgroundGOM = this.add.image(gameWidth/2, gameHeight/2, 'GameOverArcBackgrEn');
+        }
       }
 
-      this.DialogTextD = this.add.text(gameWidth*6/16, gameHeight*6/16,  ("Puntuación: " + distanceAchieved ), {fontFamily: "Acadian_Runes",  fontSize: 24, stroke:'#000000', fill: "white", strokeThickness: 2});
-      this.DialogTextDM = this.add.text(gameWidth*5/16, gameHeight*8/16,  ("Distancia máxima recorrida: " + user.maxDistanceArcade) , {fontFamily: "Acadian_Runes",  fontSize: 24, stroke:'#000000', fill: "white", strokeThickness: 2});
+    this.backgroundGOM.setScale(2/3);
 
-      distanceAchieved = 0;
 
-      saveUserData();
+    //Volver a Jugar
+    //Botones
+    this.retryButtonGOM = this.add.image(gameWidth*6.32/16, gameHeight*11.7/16, 'deselectedButton');
+    this.retryButtonGOM.setScale(2/3);
+    this.retryButtonGOMSel = this.add.image(gameWidth*5.97/16, gameHeight*11.7/16, 'selLeftButton');
+    this.retryButtonGOMSel.setScale(2/3);
+    this.retryButtonGOMSel.setVisible(false);
+    //Texto
+    this.retryButtonText = this.add.text(gameWidth*5.3/16, gameHeight*11.17/16,  stringsJSON.Buttons.retry , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "40px"});
+    if (userConfig.lang == "en"){
+      this.retryButtonText.setX(gameWidth*5.65/16);
+    }
+    //Acciones Boton
+    this.retryButtonGOM.on('pointerover', function (pointer) {this.retryButtonGOMSel.setVisible(true);}, this);
+    this.retryButtonGOM.on('pointerout', function (pointer) {this.retryButtonGOMSel.setVisible(false);}, this);
+    this.retryButtonGOM.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.PlayAgain());
+
+
+    //QUIT
+    //Botones
+    this.quitButtonGOM = this.add.image(gameWidth*9.67/16, gameHeight*11.7/16, 'deselectedButton');
+    this.quitButtonGOM.setScale(2/3);
+    this.quitButtonGOMSel = this.add.image(gameWidth*10.0/16, gameHeight*11.7/16, 'selRightButton');
+    this.quitButtonGOMSel.setScale(2/3);
+    this.quitButtonGOMSel.setVisible(false);
+    //Texto
+    this.quitButtonText = this.add.text(gameWidth*9/16, gameHeight*11.17/16,  stringsJSON.Buttons.quit , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "40px"});
+    //Acciones Boton
+    this.quitButtonGOM.on('pointerover', function (pointer) {this.quitButtonGOMSel.setVisible(true);}, this);
+    this.quitButtonGOM.on('pointerout', function (pointer) {this.quitButtonGOMSel.setVisible(false);}, this);
+    this.quitButtonGOM.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.QuitGameGOM());
+
+    //TEXT SHOWED
+
+    if(arcadeMode == true){
+      if(user.maxDistanceArcade==null){
+        user.maxDistanceArcade=0;
+      }
+
+        if (distanceAchieved > user.maxDistanceArcade ){
+          user.maxDistanceArcade = distanceAchieved;
+        }
+
+        this.DialogTextD = this.add.text(gameWidth*7.2/16, gameHeight*5.2/16,  (distanceAchieved ), {fontFamily: "Acadian_Runes",  fontSize: 24, stroke:'#000000', fill: "black", strokeThickness: 2});
+        if (userConfig.lang == "en"){
+          this.DialogTextD.setX(gameWidth*6.8/16);
+        }
+        this.DialogTextDM = this.add.text(gameWidth*9.4/16, gameHeight*6.9/16,  (user.maxDistanceArcade) , {fontFamily: "Acadian_Runes",  fontSize: 24, stroke:'#000000', fill: "black", strokeThickness: 2});
+
+
+        distanceAchieved = 0;
+
+        saveUserData();
     }
 
-  }
+    }
+
+
 
   PlayAgain(){
     this.clickSound.play();
     this.scene.stop('GameOverMenu');
     this.scene.start('LevelManager');
     this.scene.bringToTop('LevelManager');
-    //LevelManager.restartLevel();
   }
 
   QuitGameGOM(){

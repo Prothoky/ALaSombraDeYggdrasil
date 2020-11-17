@@ -340,7 +340,8 @@ class LevelManager extends Phaser.Scene
 
         // ----HUD----
         // 1) Botón de pausa
-        this.buttonPause = this.add.image(60, 40, 'deselectedButtonSmall');
+        this.buttonPause = this.add.image(60, 33, 'deselectedButtonSmall');
+        this.buttonPause.setDepth(11);
         this.buttonPause.setScale(1.5/3);
         this.buttonPause.setScrollFactor(0);
         this.buttonPauseSel = this.add.image(75, 33, 'selSmallRightButton');
@@ -354,6 +355,7 @@ class LevelManager extends Phaser.Scene
 
         this.pauseText = this.add.text(gameWidth*0.4/16, gameHeight*0.68/16,  stringsJSON.Buttons.pause, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
         this.pauseText.setScrollFactor(0);
+        this.pauseText.setDepth(11);
 
 
         // 2) Puntos de vida
@@ -369,7 +371,7 @@ class LevelManager extends Phaser.Scene
 
         if (arcadeMode == false){
 
-          this.backgroundMoney = this.add.image(gameWidth*13/16, gameHeight*1.3/16, 'deselectedButtonSmall');
+          this.backgroundMoney = this.add.image(gameWidth*13/16, gameHeight*1.1/16, 'deselectedButtonSmall');
           this.backgroundMoney.setScale(1.5/3);
           this.backgroundMoney.setScrollFactor(0);
 
@@ -421,39 +423,39 @@ class LevelManager extends Phaser.Scene
         //POEMS
 
         if(userConfig.lang == "es"){
-          this.Poem1_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poema1_1');
+          this.Poem1_1 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poema1_1');
         }else{
-          this.Poem1_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poem1_1');
+          this.Poem1_1 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poem1_1');
         }
 
         if(userConfig.lang == "es"){
-          this.Poem2_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poema2_1');
+          this.Poem2_1 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poema2_1');
         }else{
-          this.Poem2_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poem2_1');
+          this.Poem2_1 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poem2_1');
         }
 
         if(userConfig.lang == "es"){
-          this.Poem4_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poema4_1');
+          this.Poem4_1 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poema4_1');
         }else{
-          this.Poem4_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poem4_1');
+          this.Poem4_1 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poem4_1');
         }
 
         if(userConfig.lang == "es"){
-          this.Poem4_2 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poema4_2');
+          this.Poem4_2 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poema4_2');
         }else{
-          this.Poem4_2 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poem4_2');
+          this.Poem4_2 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poem4_2');
         }
 
         if(userConfig.lang == "es"){
-          this.Poem7_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poema7_1');
+          this.Poem7_1 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poema7_1');
         }else{
-          this.Poem7_1 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poem7_1');
+          this.Poem7_1 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poem7_1');
         }
 
         if(userConfig.lang == "es"){
-          this.Poem7_2 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poema7_2');
+          this.Poem7_2 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poema7_2');
         }else{
-          this.Poem7_2 = this.add.image(gameWidth*9/16, gameHeight*8/16, 'Poem7_2');
+          this.Poem7_2 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poem7_2');
         }
 
         this.Poem1_1.setScale(2/3);
@@ -1626,15 +1628,18 @@ class LevelManager extends Phaser.Scene
             this.player.anims.stop(); //Sustituir por iddle si existe
             this.following=false;
 
-            this.tweens.add({
-              targets:this.ravenHugin,
-              duration: 500,
-              alpha: 1,
-              yoyo: false,
-              hold: 2000,
-              delay: 700,
-              completeDelay: 2000,
-            })
+            if((levelIndex < 10) || (levelIndex == 14) ||(levelIndex == 15)){
+              this.tweens.add({
+                targets:this.ravenHugin,
+                duration: 500,
+                alpha: 1,
+                yoyo: false,
+                hold: 2000,
+                delay: 700,
+                completeDelay: 2000,
+              })
+            }
+
 
             //console.log("!!!ERROR")
         }

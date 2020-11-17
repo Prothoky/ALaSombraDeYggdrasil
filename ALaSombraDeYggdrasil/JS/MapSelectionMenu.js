@@ -32,15 +32,15 @@ class MapSelectionMenu extends Phaser.Scene{
     this.botonMundo1.alpha = (0.0001);
 
 
-    //WORLD 2 BUTTON
+    /*//WORLD 2 BUTTON
     this.botonMundo2 = this.add.image(gameWidth*8.35/16, gameHeight*7.85/16, 'World2Button');
     this.botonMundo2.setScale(2/3);
     this.botonMundo2.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.ActivatePaper(2));
-    this.botonMundo2.alpha = (0.0001);
+    this.botonMundo2.alpha = (0.0001);*/
 
 
     //BOTON ATRAS
-    this.backButtonMSM = this.add.image(gameWidth*14.5/16, gameHeight*15/16, 'deselectedButtonSmall');
+    this.backButtonMSM = this.add.image(gameWidth*14.5/16, gameHeight*14.8/16, 'deselectedButtonSmall');
     this.backButtonMSM.setScale(1.5/3);
     this.backButtonMSMSel = this.add.image(gameWidth*14.3/16, gameHeight*14.8/16, 'selSmallLeftButton');
     this.backButtonMSMSel.setScale(1.5/3);
@@ -73,11 +73,11 @@ class MapSelectionMenu extends Phaser.Scene{
     this.paperDescription1.setScale(2/3);
     this.paperDescription1.setVisible(false);
 
-    //BOTON JUGAR
-    this.playButtonMSM = this.add.image(gameWidth*13.7/16, gameHeight*13.75/16, 'playButton');
+    //BOTON OPCIONES
+    this.playButtonMSM = this.add.image(gameWidth*13.7/16, gameHeight*13.8/16, 'playButton');
     this.playButtonMSM.setScale(2/3);
     this.playButtonMSM.setVisible(false);
-    this.playButtonMSMSel = this.add.image(gameWidth*13.7/16, gameHeight*13.75/16, 'playButtonSel');
+    this.playButtonMSMSel = this.add.image(gameWidth*13.7/16, gameHeight*13.8/16, 'playButtonSel');
     this.playButtonMSMSel.setScale(2/3);
     this.playButtonMSMSel.setVisible(false);
     //Acciones Boton
@@ -85,8 +85,23 @@ class MapSelectionMenu extends Phaser.Scene{
     this.playButtonMSM.on('pointerout', function (pointer) {this.playButtonMSMSel.setVisible(false);}, this);
     this.playButtonMSM.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.World1Menu());
 
+    //BOTON TIENDA
+    this.optionsButtonMSM = this.add.image(gameWidth*14.5/16, gameHeight*1.1/16, 'deselectedButtonSmall');
+    this.optionsButtonMSM.setScale(1.5/3);
+    this.optionsButtonMSMSel = this.add.image(gameWidth*14.7/16, gameHeight*1.1/16, 'selSmallRightButton');
+    this.optionsButtonMSMSel.setScale(1.5/3);
+    this.optionsButtonMSMSel.setVisible(false);
+    this.optButtonText = this.add.text(gameWidth*14.1/16, gameHeight*0.92/16,  stringsJSON.Buttons.options, {fontFamily: "Acadian_Runes",fontSize: "15px", align: 'center', fill: "#481d18"});
+    if (userConfig.lang == "en"){
+      this.optButtonText.setX(gameWidth*14.25 /16);
+    }
+    this.optionsButtonMSM.on('pointerover', function (pointer) {this.optionsButtonMSMSel.setVisible(true);}, this);
+    this.optionsButtonMSM.on('pointerout', function (pointer) {this.optionsButtonMSMSel.setVisible(false);}, this);
+    this.optionsButtonMSM.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.OptionsMenuMSM());
+
     //Texto tiempo
     this.timeText = this.add.text(gameWidth*8.1/16, gameHeight*7.5/16, "TEXTO" , {fontFamily: "Acadian_Runes", fill: "white", fontSize: 18});
+    this.timeText.setVisible(false);
     if (userConfig.lang == "en"){
       this.timeText.setX(gameWidth*8.2/16);
     }
@@ -97,6 +112,10 @@ class MapSelectionMenu extends Phaser.Scene{
 
   update(){
     this.events.emit("Update Date",this.timeText);
+
+    if(user.world[1] == true){
+      this.timeText.setVisible(true);
+    }
   }
 
   ActivatePaper(level){
@@ -108,19 +127,20 @@ class MapSelectionMenu extends Phaser.Scene{
       this.backButtonMSM.setVisible(false);
       this.backText.setVisible(false);
       this.fullScreenMSM.setVisible(false);
-      this.timeText.setVisible(false);
+      this.optButtonText.setVisible(false);
+      this.optionsButtonMSM.setVisible(false);
     }
 
   }
 
   DesactivatePaper(){
-    this.clickSound.play();
     this.paperDescription1.setVisible(false);
     this.playButtonMSM.setVisible(false);
     this.backButtonMSM.setVisible(true);
     this.backText.setVisible(true);
-    this.timeText.setVisible(true);
+    this.optButtonText.setVisible(true);
     this.fullScreenMSM.setVisible(true);
+    this.optionsButtonMSM.setVisible(true);
   }
 
   BackMainMenu(){
@@ -141,6 +161,13 @@ class MapSelectionMenu extends Phaser.Scene{
     this.scene.pause('MapSelectionMenu');
     this.scene.start('World1Map');
     this.scene.bringToTop('World1Map');
+  }
+
+  OptionsMenuMSM(){
+    prevScene = 'MapSelectionMenu';
+    this.clickSound.play();
+    this.scene.pause('MapSelectionMenu');
+    this.scene.start('OptionsMainMenu');
   }
 
   updateTimeText() {

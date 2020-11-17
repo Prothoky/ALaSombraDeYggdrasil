@@ -155,6 +155,7 @@ class MainMenu extends Phaser.Scene{
   }
 
   OptionsGame(){
+    prevScene = 'MainMenu';
     this.clickSound.play();
     this.scene.pause('MainMenu');
     this.scene.start('OptionsMainMenu');

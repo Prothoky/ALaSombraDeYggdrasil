@@ -25,9 +25,9 @@ class PauseMenu extends Phaser.Scene{
     this.backButtonPMSel.setScale(2/3);
     this.backButtonPMSel.setVisible(false);
     //Text
-    this.backText = this.add.text(gameWidth*7.05/16, gameHeight*6.3/16,  stringsJSON.Buttons.back, {fontFamily: "Acadian_Runes",fontSize: "40px", align: 'center', fill: "#481d18"});
+    this.backText = this.add.text(gameWidth*6.9/16, gameHeight*6.3/16,  stringsJSON.Buttons.resume, {fontFamily: "Acadian_Runes",fontSize: "40px", align: 'center', fill: "#481d18"});
     if (userConfig.lang == "en"){
-      this.backText.setX(gameWidth*7.4/16);
+      this.backText.setX(gameWidth*7.1/16);
     }
     //Actions
     this.backButtonPM.on('pointerover', function (pointer) {this.backButtonPMSel.setVisible(true);}, this);

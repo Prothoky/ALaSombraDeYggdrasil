@@ -83,7 +83,7 @@ class OptionsMainMenu extends Phaser.Scene{
   BackMainMenu(){
     this.clickSound.play();
     this.scene.pause('OptionsMainMenu');
-    this.scene.start('MainMenu'); //Ver como hacer para que lleve a la anterior real
+    this.scene.start(prevScene); //Ver como hacer para que lleve a la anterior real
   }
 
   EffectsConfig(){

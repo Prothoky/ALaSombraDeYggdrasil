@@ -404,55 +404,55 @@
 		      "url": "./ASSETS/TitulosNodos/TheShadow.png"
 		    },{
 		      "type": "image",
-		      "key": "Level0Name",
+		      "key": "Nivel0Name",
 		      "url": "./ASSETS/TitulosNodos/ElRegreso.png"
 		    },{
 		      "type": "image",
-		      "key": "Level1Name",
+		      "key": "Nivel1Name",
 		      "url": "./ASSETS/TitulosNodos/MiMemoria.png"
 		    },{
 		      "type": "image",
-		      "key": "Level2Name",
+		      "key": "Nivel2Name",
 		      "url": "./ASSETS/TitulosNodos/LaVozDelPasado.png"
 		    },{
 		      "type": "image",
-		      "key": "Level2_1Name",
+		      "key": "Nivel2_1Name",
 		      "url": "./ASSETS/TitulosNodos/Valquirias.png"
 		    },{
 		      "type": "image",
-		      "key": "Level3Name",
-		      "url": "./ASSETS/TitulosNodos/Finally.png"
+		      "key": "Nivel3Name",
+		      "url": "./ASSETS/TitulosNodos/AlFin.png"
 		    },{
 		      "type": "image",
-		      "key": "Level4Name",
+		      "key": "Nivel4Name",
 		      "url": "./ASSETS/TitulosNodos/LaDescreencia.png"
 		    },{
 		      "type": "image",
-		      "key": "Level5Name",
+		      "key": "Nivel5Name",
 		      "url": "./ASSETS/TitulosNodos/ElLagoHelado.png"
 		    },{
 		      "type": "image",
-		      "key": "Level6Name",
+		      "key": "Nivel6Name",
 		      "url": "./ASSETS/TitulosNodos/LaTraicion.png"
 		    },{
 		      "type": "image",
-		      "key": "Level5_1Name",
+		      "key": "Nivel5_1Name",
 		      "url": "./ASSETS/TitulosNodos/MiPueblo.png"
 		    },{
 		      "type": "image",
-		      "key": "Level5_2Name",
+		      "key": "Nivel5_2Name",
 		      "url": "./ASSETS/TitulosNodos/MiFamilia.png"
 		    },{
 		      "type": "image",
-		      "key": "Level7Name",
+		      "key": "Nivel7Name",
 		      "url": "./ASSETS/TitulosNodos/LosRestos.png"
 		    },{
 		      "type": "image",
-		      "key": "Level8Name",
+		      "key": "Nivel8Name",
 		      "url": "./ASSETS/TitulosNodos/ElDeber.png"
 		    },{
 		      "type": "image",
-		      "key": "Level9Name",
+		      "key": "Nivel9Name",
 		      "url": "./ASSETS/TitulosNodos/LaSombra.png"
 		    },{
 		      "type": "image",
@@ -516,10 +516,6 @@
 		      "url": "./ASSETS/IconosSubniveles/Subnivel8_2.png"
 		    },{
 		      "type": "image",
-		      "key": "backgroundGOM",
-		      "url": "./ASSETS/Fondos/FondoGameOver.jpg"
-		    },{
-		      "type": "image",
 		      "key": "buttonFullScreen",
 		      "url": "./ASSETS/Botones/BotonFullScreen.jpg"
 		    },{
@@ -570,6 +566,30 @@
 		      "type": "image",
 		      "key": "Poema7_2",
 		      "url": "./ASSETS/Pergaminos/PoemEinar.png"
+		    },{
+		      "type": "image",
+		      "key": "GameOverBackgr",
+		      "url": "./ASSETS/Fondos/MenuDerrota.jpg"
+		    },{
+		      "type": "image",
+		      "key": "GameOverBackgrEn",
+		      "url": "./ASSETS/Fondos/MenuDerrotaEng.jpg"
+		    },{
+		      "type": "image",
+		      "key": "GameOverArcBackgr",
+		      "url": "./ASSETS/Fondos/MenuDerrotaArcade.jpg"
+		    },{
+		      "type": "image",
+		      "key": "GameOverArcBackgrEn",
+		      "url": "./ASSETS/Fondos/MenuDerrotaArcadeEng.jpg"
+		    },{
+		      "type": "image",
+		      "key": "WinnerBackgr",
+		      "url": "./ASSETS/Fondos/MenuVictoria.jpg"
+		    },{
+		      "type": "image",
+		      "key": "WinnerBackgrEn",
+		      "url": "./ASSETS/Fondos/MenuVictoriaEng.jpg"
 		    }
 		]
 	},
@@ -684,7 +704,7 @@
 				"type": "audio",
 		      	"key": "soundStart",
 		    	"url": "./ASSETS/SFX/sound_horn.mp3"
-			}			
+			}
 		]
 	}
 

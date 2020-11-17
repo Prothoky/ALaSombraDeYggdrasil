@@ -141,7 +141,7 @@ class PreloadMenu extends Phaser.Scene{
       //this.load.image('spikes_long', 'ASSETS/Gameplay/spikes_long.png');
       //this.load.image('pauseButton', 'ASSETS/Gameplay/ButtonPause.png');
 
-      
+
       //this.load.image('draugr', 'ASSETS/Gameplay/draugr.png');
       //this.load.image('life', 'ASSETS/Tienda/IconoBendicion.png');
       //this.load.image('ravenHugin', 'ASSETS/Gameplay/Hugin.png');
@@ -352,7 +352,7 @@ class PreloadMenu extends Phaser.Scene{
 
 
     this.logo = this.add.sprite(gameWidth*8/16, gameHeight*8/16, 'logo');
-    this.logo.setScale(2/3);
+    this.logo.setScale(1/3);
     this.logo.alpha = 0;
 
     //console.log(this.anims.exists());

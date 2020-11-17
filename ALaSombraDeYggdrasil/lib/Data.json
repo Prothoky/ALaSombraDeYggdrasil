@@ -34,6 +34,9 @@
       "confirm": "CONFIRMAR",
       "cancel": "CANCELAR",
       "buy": "COMPRAR",
+      "resume": "REANUDAR",
+      "retry": "REJUGAR",
+      "continue": "CONTINUAR",
       "language": "ESPAÑOL"
     },
     "Dialogs": [
@@ -226,6 +229,9 @@
       "confirm": "CONFIRM",
       "cancel": "CANCEL",
       "buy": "BUY",
+      "resume": "RESUME",
+      "retry": "RETRY",
+      "continue": "CONTINUE",
       "language": "ENGLISH"
     },
     "World_Menu": {

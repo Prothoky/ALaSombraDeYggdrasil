@@ -12,7 +12,7 @@ class CreditsMenu extends Phaser.Scene{
     this.bg_backgorund = this.add.tileSprite(0,0, 5715, 916, 'bg_background');
     this.bg_far = this.add.tileSprite(0,0, 5715, 916, "bg_far");
     this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium");
-    this.bg_near = this.add.tileSprite(0,0, 5715, 916, "bg_near");
+    this.bg_near = this.add.tileSprite(0,100, 5715, 916, "bg_near");
     this.bg_near.depth = 2;
 
     // 2) CHARACTER
@@ -48,7 +48,7 @@ class CreditsMenu extends Phaser.Scene{
     });
 
     //BACK BUTTON
-    this.backButtonCM = this.add.image((this.cameras.main.x),+50,  'deselectedButtonSmall');
+    this.backButtonCM = this.add.image((this.cameras.main.x),+43,  'deselectedButtonSmall');
     this.backButtonCM.setScale(1.5/3);
     this.backButtonCMSel = this.add.image((this.cameras.main.x), +43, 'selSmallLeftButton');
     this.backButtonCMSel.setScale(1.5/3);
