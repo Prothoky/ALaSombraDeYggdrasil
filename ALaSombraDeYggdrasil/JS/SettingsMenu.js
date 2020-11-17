@@ -341,8 +341,14 @@ class SettingsMenu extends Phaser.Scene{
 
     this.clickSound.play();
     if(erase == true){
-      console.log("resetiado");
-      resetUserData();
+      	console.log("resetiado");
+      	resetUserData();
+	if( this.languageText.text== "ESPAÑOL"){
+		updateLanguage("es")
+	}
+	 else if( this.languageText.text== "ENGLISH"){
+		updateLanguage("en")
+	}
       this.cameras.main.flash(600);
     }
     else{
