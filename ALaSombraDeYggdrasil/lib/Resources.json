@@ -216,6 +216,14 @@
 		      "url": "./ASSETS/Gameplay/platform_ice.png"
 		    },{
 		      "type": "image",
+		      "key": "platform_halo",
+		      "url": "./ASSETS/Gameplay/platform_halo.png"
+		    },{
+		      "type": "image",
+		      "key": "platform_ice_halo",
+		      "url": "./ASSETS/Gameplay/platform_ice_halo.png"
+		    },{
+		      "type": "image",
 		      "key": "spikes",
 		      "url": "./ASSETS/Gameplay/spikes.png"
 		    },{
