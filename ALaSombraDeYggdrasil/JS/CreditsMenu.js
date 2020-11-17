@@ -12,17 +12,17 @@ class CreditsMenu extends Phaser.Scene{
     this.bg_backgorund = this.add.tileSprite(0,0, 5715, 916, 'bg_background');
     this.bg_far = this.add.tileSprite(0,0, 5715, 916, "bg_far");
     this.bg_medium = this.add.tileSprite(0,0, 5715, 916, "bg_medium");
-    this.bg_near = this.add.tileSprite(0,50, 5715, 916, "bg_near");
+    this.bg_near = this.add.tileSprite(0,0, 5715, 916, "bg_near");
     this.bg_near.depth = 2;
 
     // 2) CHARACTER
-    this.player = this.physics.add.sprite(650, 0, 'einar_running').setOrigin(1).setScale(0.56).setSize(70,145);
+    this.player = this.physics.add.sprite(550, 95, 'einar_running').setOrigin(1).setScale(0.56).setSize(70,145);
     this.player.body.setSize(this.player.width, this.player.height, true)
     this.player.depth = 1;  // Profundidad del sprie
 
     // FLOOR
     this.ground = this.physics.add.staticGroup();
-    this.ground.create(400, 0 , 'ground').setOrigin(0, 0).setVisible(false).refreshBody();
+    this.ground.create(400, 100 , 'ground').setOrigin(0, 0).setVisible(false).refreshBody();
     this.physics.add.collider(this.player, this.ground); // Permitimos colisiones entre suelo y jugador y cuenta como grounded (puede saltar)
 
     // 3) CREDITS
@@ -37,7 +37,7 @@ class CreditsMenu extends Phaser.Scene{
     this.logo.depth=3;
 
     // 3) CAMERA
-    this.cameras.main.startFollow(this.player, false, 1, 1, -250, 200); // Cámar sigue al personaje
+    this.cameras.main.startFollow(this.player, false, 1, 1, -250, 300); // Cámar sigue al personaje
 
     //FULL SCREEN
     this.fullScreenLM = this.add.image(gameWidth*15.5/16, gameHeight*13/14, 'buttonFullScreen');
@@ -65,6 +65,18 @@ class CreditsMenu extends Phaser.Scene{
     this.backText.depth = 3;
     //PLAYER MOVEMENT
     this.player.anims.play('einar_running',true);
+    this.player.body.setAllowGravity(false);
+    this.player.setInteractive();
+
+    this.input.setDraggable(this.player);
+
+    this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
+
+        gameObject.x = dragX;
+        gameObject.y = dragY;
+        console.log(dragX);
+        console.log(dragY);
+    });
 
   }
 
@@ -81,6 +93,8 @@ class CreditsMenu extends Phaser.Scene{
     this.backButtonCM.setX(this.cameras.main.x+1345);
     this.backButtonCMSel.setX(this.cameras.main.x+1328);
     this.backText.setX(this.cameras.main.x+1313);
+    console.log(this.player.x);
+    console.log(this.player.y);
 
   }
 

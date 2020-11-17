@@ -58,7 +58,7 @@ class PreloadMenu extends Phaser.Scene{
     //CARGA DE ASSETS
 
     this.load.pack('resources', './lib/Resources.json');
-
+/*
     //Logo
       //this.load.image('logo','ASSETS/Logo.jpeg');
 
@@ -289,13 +289,12 @@ class PreloadMenu extends Phaser.Scene{
       //this.load.audio('BuyObject', './ASSETS/Sounds/Compra.mp3');
       //this.load.audio('Poem', './ASSETS/Sounds/Poema.mp3');
 
-
+*/
       this.load.spritesheet('einar_running', 'ASSETS/Gameplay/animacion_correr.png', { frameWidth: 400, frameHeight: 350 });
       this.load.spritesheet('einar_jumping', 'ASSETS/Gameplay/animacion_saltar.png', { frameWidth: 400, frameHeight: 350 });
       this.load.spritesheet('einar_attack', 'ASSETS/Gameplay/animacion_atacar.png', { frameWidth: 400, frameHeight: 350 });
       this.load.spritesheet('eagle_attacking', 'ASSETS/Gameplay/eagle_attacking.png', { frameWidth: 650, frameHeight: 550 });
       this.load.spritesheet('draugr_attacking', 'ASSETS/Gameplay/animacion_atacar_draugr.png', { frameWidth: 450, frameHeight: 350 });
-
 
       this.load.on("complete", () => {
       	percentText.destroy();
@@ -359,11 +358,11 @@ class PreloadMenu extends Phaser.Scene{
     //console.log(this.anims.exists());
     this.tweens.add({
       targets:this.logo,
-      duration: 1000,
+      duration: 2000,
       alpha: 1,
       yoyo: true,
-      hold: 1000,
-      completeDelay: 2000,
+      hold: 2000,
+      completeDelay: 500,
       onComplete:()=>this.scene.start('MainMenu')
     })
 

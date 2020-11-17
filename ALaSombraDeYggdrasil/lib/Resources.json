@@ -164,7 +164,13 @@
 		      "type": "image",
 		      "key": "barricade",
 		      "url": "./ASSETS/Gameplay/barricade.png"
-		    },{
+		    },
+		    {
+		      "type": "image",
+		      "key": "ground",
+		      "url": "./ASSETS/Gameplay/ground_platform.png"
+		    },
+		    {
 		      "type": "image",
 		      "key": "trunk",
 		      "url": "./ASSETS/Gameplay/trunk.png"

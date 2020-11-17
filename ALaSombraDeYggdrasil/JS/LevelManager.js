@@ -340,7 +340,7 @@ class LevelManager extends Phaser.Scene
 
         // ----HUD----
         // 1) Botón de pausa
-        this.buttonPause = this.add.image(60, 40, 'backButton');
+        this.buttonPause = this.add.image(60, 40, 'deselectedButtonSmall');
         this.buttonPause.setScale(1.5/3);
         this.buttonPause.setScrollFactor(0);
         this.buttonPauseSel = this.add.image(75, 33, 'selSmallRightButton');
@@ -369,7 +369,7 @@ class LevelManager extends Phaser.Scene
 
         if (arcadeMode == false){
 
-          this.backgroundMoney = this.add.image(gameWidth*13/16, gameHeight*1.3/16, 'backButton');
+          this.backgroundMoney = this.add.image(gameWidth*13/16, gameHeight*1.3/16, 'deselectedButtonSmall');
           this.backgroundMoney.setScale(1.5/3);
           this.backgroundMoney.setScrollFactor(0);
 
