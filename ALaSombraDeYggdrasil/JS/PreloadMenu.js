@@ -107,10 +107,10 @@ class PreloadMenu extends Phaser.Scene{
     //this.load.image('selSmallRightButton', './ASSETS/AssetsComunes/BotonPequeñoSelDch.png');
     //this.load.image('deselectedButton', './ASSETS/AssetsComunes/BotonDeseleccionado.png');
     //this.load.image('selLeftButton', './ASSETS/AssetsComunes/BotonSelIzq.png');
-    //this.load.image('selRightButton', './ASSETS/AssetsComunes/BotonSelDcha.png'); 
+    //this.load.image('selRightButton', './ASSETS/AssetsComunes/BotonSelDcha.png');
 
     //Level Manager
-<<<<<<< Updated upstream
+
       this.load.spritesheet('dude', 'ASSETS/Placeholders/dude.png', { frameWidth: 32, frameHeight: 48 });
       this.load.image('mobile_button', 'ASSETS/Placeholders/button.png');
       this.load.image('ground', 'ASSETS/Placeholders/platform.png');
@@ -140,7 +140,7 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('spikes', 'ASSETS/Gameplay/spikes.png');
       this.load.image('spikes_long', 'ASSETS/Gameplay/spikes_long.png');
       //this.load.image('pauseButton', 'ASSETS/Gameplay/ButtonPause.png');
-=======
+
       //this.load.image('mobile_button', 'ASSETS/Placeholders/button.png');
       //this.load.image('ground', 'ASSETS/Placeholders/platform.png');
       //this.load.image('dot', 'ASSETS/Placeholders/star.png');
