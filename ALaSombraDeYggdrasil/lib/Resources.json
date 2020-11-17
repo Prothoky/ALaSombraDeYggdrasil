@@ -228,11 +228,131 @@
 		      "type": "image",
 		      "key": "pauseButton",
 		      "url": "ASSETS/Gameplay/ButtonPause.png"
+		    },{
+		      "type": "image",
+		      "key": "draugr",
+		      "url": "ASSETS/Gameplay/draugr.png"
+		    },{
+		      "type": "image",
+		      "key": "life",
+		      "url": "ASSETS/Gameplay/IconoBendicion.png"
+		    },{
+		      "type": "image",
+		      "key": "ravenHugin",
+		      "url": "ASSETS/Gameplay/Hugin.png"
+		    },{
+		      "type": "image",
+		      "key": "coin_1",
+		      "url": "ASSETS/Gameplay/coin_1.png"
+		    },{
+		      "type": "image",
+		      "key": "backgroundDialogEinar",
+		      "url": "ASSETS/Gameplay/CajaTextoEinar.png"
+		    },{
+		      "type": "image",
+		      "key": "backgroundDialogHugin",
+		      "url": "ASSETS/Gameplay/CajaTextoHugin.png"
+		    },{
+		      "type": "image",
+		      "key": "backgroundDialogMunin",
+		      "url": "ASSETS/Gameplay/CajaTextoMunin.png"
+		    },{
+		      "type": "image",
+		      "key": "buttonDialogSel",
+		      "url": "ASSETS/Gameplay/FlechaSel.png"
+		    },{
+		      "type": "image",
+		      "key": "buttonDialog",
+		      "url": "ASSETS/Gameplay/Flecha.png"
+		    },{
+		      "type": "image",
+		      "key": "backgroundPM",
+		      "url": "ASSETS/Fondos/PauseMenuBackground.jpg"
+		    },{
+		      "type": "image",
+		      "key": "backgroundPMEn",
+		      "url": "ASSETS/Fondos/PauseMenuBackgroundEn.jpg"
+		    },{
+		      "type": "image",
+		      "key": "backgroundSM",
+		      "url": "ASSETS/Fondos/FondoTienda.jpg"
+		    },{
+		      "type": "image",
+		      "key": "backgroundSMEn",
+		      "url": "ASSETS/Fondos/FondoTiendaEng.png"
+		    },{
+		      "type": "image",
+		      "key": "object1Bought",
+		      "url": "ASSETS/Tienda/BendicionMaximo.png"
+		    },{
+		      "type": "image",
+		      "key": "object2Bought",
+		      "url": "ASSETS/Tienda/FuerzaComprado.png"
+		    },{
+		      "type": "image",
+		      "key": "object3Bought",
+		      "url": "ASSETS/Tienda/PlumaComprado.png"
+		    },{
+		      "type": "image",
+		      "key": "object4Bought",
+		      "url": "ASSETS/Tienda/RabiaComprado.png"
+		    },{
+		      "type": "image",
+		      "key": "object1BoughtEn",
+		      "url": "ASSETS/Tienda/BendicionMaximoEng.png"
+		    },{
+		      "type": "image",
+		      "key": "object2BoughtEn",
+		      "url": "ASSETS/Tienda/FuerzaCompradoEng.png"
+		    },{
+		      "type": "image",
+		      "key": "object3BoughtEn",
+		      "url": "ASSETS/Tienda/PlumaCompradoEng.png"
+		    },{
+		      "type": "image",
+		      "key": "object4BoughtEn",
+		      "url": "ASSETS/Tienda/RabiaCompradoEng.png"
+		    },{
+		      "type": "image",
+		      "key": "IconObject1",
+		      "url": "ASSETS/Tienda/IconoBendicion.png"
+		    },{
+		      "type": "image",
+		      "key": "IconObject2",
+		      "url": "ASSETS/Tienda/IconoFuerza.png"
+		    },{
+		      "type": "image",
+		      "key": "IconObject3",
+		      "url": "ASSETS/Tienda/IconoPluma.png"
+		    },{
+		      "type": "image",
+		      "key": "IconObject4",
+		      "url": "ASSETS/Tienda/IconoRabia.png"
+		    },{
+		      "type": "image",
+		      "key": "backgroundWM1M",
+		      "url": "ASSETS/Tienda/FondoMapaMundo1.jpg"
+		    },{
+		      "type": "image",
+		      "key": "NodoBlocked",
+		      "url": "ASSETS/Tienda/NivelBloqueado.png"
+		    },{
+		      "type": "image",
+		      "key": "ButtonNodePrinc",
+		      "url": "ASSETS/Tienda/NodoPrincipalDesbloq.png"
+		    },{
+		      "type": "image",
+		      "key": "ButtonNodePrincSnow",
+		      "url": "ASSETS/Tienda/NodoPrincipalNieveDesbloq.png"
+		    },{
+		      "type": "image",
+		      "key": "ButtonNodePrincSel",
+		      "url": "ASSETS/Tienda/NodoPrincipalSel.png"
+		    },{
+		      "type": "image",
+		      "key": "ButtonNodePrincSnowSel",
+		      "url": "ASSETS/Tienda/NodoPrincipalNieveSel.png"
 		    }
-
-
-
-
 		]
 	},
 	"sounds":{
