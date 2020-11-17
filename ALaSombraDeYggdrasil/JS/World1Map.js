@@ -1137,7 +1137,7 @@ class World1Map extends Phaser.Scene{
      this.scene.start('ShopMenu');
    }
 
-   OptionsMenuMSM(){
+   OptionsMenuW1M(){
      prevScene = 'World1Map';
      this.clickSound.play();
      this.scene.pause('World1Map');
