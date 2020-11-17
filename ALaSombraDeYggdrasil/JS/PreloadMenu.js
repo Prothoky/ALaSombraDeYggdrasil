@@ -66,7 +66,7 @@ class PreloadMenu extends Phaser.Scene{
     this.load.image('selRightButton', './ASSETS/AssetsComunes/BotonSelDcha.png');
 
     //Init Menu
-      this.load.image('backgroundIM', './ASSETS/InitMenu/InitMenuBackground.jpg');
+      //this.load.image('backgroundIM', './ASSETS/InitMenu/InitMenuBackground.jpg');
 
     //Main MENU
       this.load.image('backgroundMM', './ASSETS/MainMenu/MainMenuBackground.jpg');
@@ -136,7 +136,7 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('platform_ice', 'ASSETS/Gameplay/platform_ice.png');
       this.load.image('spikes', 'ASSETS/Gameplay/spikes.png');
       this.load.image('spikes_long', 'ASSETS/Gameplay/spikes_long.png');
-      this.load.image('pauseButton', 'ASSETS/Gameplay/ButtonPause.png');
+      //this.load.image('pauseButton', 'ASSETS/Gameplay/ButtonPause.png');
       this.load.spritesheet('einar_running', 'ASSETS/Gameplay/animacion_correr.png', { frameWidth: 400, frameHeight: 350 });
       this.load.spritesheet('einar_jumping', 'ASSETS/Gameplay/animacion_saltar.png', { frameWidth: 400, frameHeight: 350 });
       this.load.spritesheet('einar_attack', 'ASSETS/Gameplay/animacion_atacar.png', { frameWidth: 400, frameHeight: 350 });
@@ -193,10 +193,10 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('ButtonNodePrincSnow', './ASSETS/World1Menu/IconosNodos/NodoPrincipalNieveDesbloq.png');
       this.load.image('ButtonNodePrincSel', './ASSETS/World1Menu/IconosNodos/NodoPrincipalSel.png');
       this.load.image('ButtonNodePrincSnowSel', './ASSETS/World1Menu/IconosNodos/NodoPrincipalNieveSel.png');
-      this.load.image('ButtonSubode1', './ASSETS/World1Menu/NodoSecundario.png'); //CAMBIAR
-      this.load.image('ButtonPlayLevel', './ASSETS/World1Menu/BotonJugar.png'); //CAMBIAR
-      this.load.image('BackgrAcessToLevel', './ASSETS/World1Menu/FondoAccesoANivel.png'); //CAMBIAR
-      this.load.image('BackButtonW1M', './ASSETS/World1Menu/BotonSalir.png'); //CAMBIAR
+      //this.load.image('ButtonSubode1', './ASSETS/World1Menu/NodoSecundario.png'); //CAMBIAR
+      //this.load.image('ButtonPlayLevel', './ASSETS/World1Menu/BotonJugar.png'); //CAMBIAR
+      //this.load.image('BackgrAcessToLevel', './ASSETS/World1Menu/FondoAccesoANivel.png'); //CAMBIAR
+      //this.load.image('BackButtonW1M', './ASSETS/World1Menu/BotonSalir.png'); //CAMBIAR
 
       //Level Names
       //ENG
@@ -258,8 +258,8 @@ class PreloadMenu extends Phaser.Scene{
         this.load.image('ButtonContinueWM', './ASSETS/WinnerMenu/BotonContinuar.png');
 
       //HUD
-        this.load.image('backgroundMoney', './ASSETS/HUDpantallas/FondoDinero.png');
-        this.load.image('shopButtonIG', './ASSETS/HUDpantallas/BotonTiendaInGame.png');
+        //this.load.image('backgroundMoney', './ASSETS/HUDpantallas/FondoDinero.png');
+        //this.load.image('shopButtonIG', './ASSETS/HUDpantallas/BotonTiendaInGame.png');
         this.load.image('buttonFullScreen', './ASSETS/HUDpantallas/BotonFullScreen.jpg');
 
 
@@ -309,7 +309,7 @@ class PreloadMenu extends Phaser.Scene{
   create(){
 
     phaserJSON = this.cache.json.get('Data');
-    
+
     loadUserData();
 
     updateLanguage();

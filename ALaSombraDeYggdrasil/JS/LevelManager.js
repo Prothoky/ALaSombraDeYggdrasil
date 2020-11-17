@@ -1252,10 +1252,8 @@ class LevelManager extends Phaser.Scene
                     this.dialogSound.play();
 
                     if((levelIndex < 10) || (levelIndex == 14) ||(levelIndex == 15) ){
-                        //this.DialogBg.setVisible(true);
                         this.DialogBg.alpha = 0;
                         this.DialogText.alpha = 0;
-                        //this.DialogText.setVisible(true);
 
                         this.DialogShowing=true;
                         this.tweens.add({
