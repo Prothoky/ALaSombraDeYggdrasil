@@ -119,10 +119,6 @@
 		    },{
 		      "type": "image",
 		      "key": "deselectedButton",
-		      "url": "./ASSETS/Botones/BotonPequenioSelDch.png"
-		    },{
-		      "type": "image",
-		      "key": "selLeftButton",
 		      "url": "./ASSETS/Botones/BotonDeseleccionado.png"
 		    },{
 		      "type": "image",
@@ -355,7 +351,7 @@
 		    },{
 		      "type": "image",
 		      "key": "NameWorld1",
-		      "url": "./ASSETS/TitulosNodos/NombreMidgar.png"
+		      "url": "./ASSETS/TitulosNodos/NombreMidgard.png"
 		    },{
 		      "type": "image",
 		      "key": "Level1Name",
@@ -519,7 +515,7 @@
 		    },{
 		      "type": "image",
 		      "key": "backgroundGOM",
-		      "url": "./ASSETSUnused/Placeholders/FondoGameOver.jpg"
+		      "url": "./ASSETS/Fondos/FondoGameOver.jpg"
 		    },{
 		      "type": "image",
 		      "key": "buttonFullScreen",
@@ -596,6 +592,16 @@
 				"type": "audio",
 		      	"key": "musicDialog",
 		    	"url": "./ASSETS/Musica/MusicaDialogoFinal.mp3"
+			},
+			{
+				"type": "audio",
+		      	"key": "player_running",
+		    	"url": "./ASSETS/SFX/sound_run.wav"
+			},
+			{
+				"type": "audio",
+		      	"key": "enemy_1",
+		    	"url": "./ASSETS/SFX/sound_pain.wav"
 			},
 			{
 				"type": "audio",

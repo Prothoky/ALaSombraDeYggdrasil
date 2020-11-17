@@ -818,7 +818,6 @@ class LevelManager extends Phaser.Scene
                 this.playerDeath();
             } else {
                 this.isPlayerInvulnerable = true;   // lo vuelve invulnerable durante un tiempo
-                console.log(user.buffs[1]);
                 if (Number(user.buffs[1]) == 1) {
                     this.player.setTint(0x1CC3FF);
                 } else {
