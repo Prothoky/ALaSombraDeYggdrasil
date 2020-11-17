@@ -20,14 +20,14 @@ class PreloadMenu extends Phaser.Scene{
       var progressBox = this.add.graphics();
 
       progressBox.fillStyle(0xffffff, 0.2);
-      progressBox.fillRect(100,275, 1000, 50);
+      progressBox.fillRect(100, 500, 1000, 50);
 
       progressBox.setDepth(2);
       progressBar.setDepth(2);
 
       var percentText = this.make.text({
-          x: 635,
-          y: 300,
+          x: 600,
+          y: 525,
           text: "0 %",
           style: {
               fontSize: '25px',
@@ -46,7 +46,7 @@ class PreloadMenu extends Phaser.Scene{
           percentText.setText(parseInt(value * 100) + ' %');
           progressBar.clear();
           progressBar.fillStyle(0xffbc00, 1);
-          progressBar.fillRect(110, 285, 980 * value, 30);
+          progressBar.fillRect(110, 510, 980 * value, 30);
 
           if(value*100>99){
             progressBox.setVisible(false);
@@ -57,60 +57,57 @@ class PreloadMenu extends Phaser.Scene{
 
     //CARGA DE ASSETS
 
-    this.load.pack('resources', './lib/Resources.json');
-
-    //Logo
-      //this.load.image('logo','ASSETS/Logo.jpeg');
+    //ASSETS COMUNES
+    this.load.image('deselectedButtonSmall', './ASSETS/AssetsComunes/BotonPequeño.png');
+    this.load.image('selSmallLeftButton', './ASSETS/AssetsComunes/BotonPequeñoSelIzq.png');
+    this.load.image('selSmallRightButton', './ASSETS/AssetsComunes/BotonPequeñoSelDch.png');
+    this.load.image('deselectedButton', './ASSETS/AssetsComunes/BotonDeseleccionado.png');
+    this.load.image('selLeftButton', './ASSETS/AssetsComunes/BotonSelIzq.png');
+    this.load.image('selRightButton', './ASSETS/AssetsComunes/BotonSelDcha.png');
 
     //Init Menu
       //this.load.image('backgroundIM', './ASSETS/InitMenu/InitMenuBackground.jpg');
 
     //Main MENU
-      //this.load.image('backgroundMM', './ASSETS/MainMenu/MainMenuBackground.jpg');
+      this.load.image('backgroundMM', './ASSETS/MainMenu/MainMenuBackground.jpg');
+
 
 
     //Options Menu General
-      //this.load.image('VolumeUpButtonOM', './ASSETS/OptionsMenu/BotonSubirVolumen.png');
-      //this.load.image('VolumeDownButtonOM', './ASSETS/OptionsMenu/BotonBajarVolumen.png');
+      this.load.image('VolumeUpButtonOM', './ASSETS/OptionsMenu/BotonSubirVolumen.png');
+      this.load.image('VolumeDownButtonOM', './ASSETS/OptionsMenu/BotonBajarVolumen.png');
 
     //Options Main Menu
-      //this.load.image('backgroundOM', './ASSETS/OptionsMenu/OptionsMenuBackground.jpg');
-      //this.load.image('backgroundOMEn', './ASSETS/OptionsMenu/OptionsMenuBackgroundEng.jpg');
-      //this.load.image('backgroundVM', './ASSETS/OptionsMenu/MusicMenuBackground.jpg'); //Fondo Volume Menu
-      //this.load.image('backgroundVMEn', './ASSETS/OptionsMenu/MusicMenuBackgroundEng.jpg');
-      //this.load.image('backgroundSetM', './ASSETS/OptionsMenu/OptionsMainMenu/SettingsMenuBackgr.jpg'); //Fondo Settings Menu
-      //this.load.image('backgroundSetMEn', './ASSETS/OptionsMenu/OptionsMainMenu/SettingsMenuBackgrEng.jpg');
+      this.load.image('backgroundOM', './ASSETS/OptionsMenu/OptionsMenuBackground.jpg');
+      this.load.image('backgroundOMEn', './ASSETS/OptionsMenu/OptionsMenuBackgroundEng.jpg');
+      this.load.image('backgroundVM', './ASSETS/OptionsMenu/MusicMenuBackground.jpg'); //Fondo Volume Menu
+      this.load.image('backgroundVMEn', './ASSETS/OptionsMenu/MusicMenuBackgroundEng.jpg');
+      this.load.image('backgroundSetM', './ASSETS/OptionsMenu/OptionsMainMenu/SettingsMenuBackgr.jpg'); //Fondo Settings Menu
+      this.load.image('backgroundSetMEn', './ASSETS/OptionsMenu/OptionsMainMenu/SettingsMenuBackgrEng.jpg');
 
     //Settings Menu
-      //this.load.image('EasyButtonSelected', './ASSETS/OptionsMenu/OptionsMainMenu/BotonFacilSeleccionado.png');
-      //this.load.image('MediumButtonSelected', './ASSETS/OptionsMenu/OptionsMainMenu/BotonMedioSeleccionado.png');
-      //this.load.image('DifficultButtonSelected', './ASSETS/OptionsMenu/OptionsMainMenu/BotonDificilSeleccionado.png');
-      //this.load.image('EasyButtonSelectedEn', './ASSETS/OptionsMenu/OptionsMainMenu/BotonFacilSeleccionadoEng.png');
-      //this.load.image('MediumButtonSelectedEn', './ASSETS/OptionsMenu/OptionsMainMenu/BotonMedioSeleccionadoEng.png');
-      //this.load.image('DifficultButtonSelectedEn', './ASSETS/OptionsMenu/OptionsMainMenu/BotonDificilSeleccionadoEng.png');
+      this.load.image('EasyButtonSelected', './ASSETS/OptionsMenu/OptionsMainMenu/BotonFacilSeleccionado.png');
+      this.load.image('MediumButtonSelected', './ASSETS/OptionsMenu/OptionsMainMenu/BotonMedioSeleccionado.png');
+      this.load.image('DifficultButtonSelected', './ASSETS/OptionsMenu/OptionsMainMenu/BotonDificilSeleccionado.png');
+      this.load.image('EasyButtonSelectedEn', './ASSETS/OptionsMenu/OptionsMainMenu/BotonFacilSeleccionadoEng.png');
+      this.load.image('MediumButtonSelectedEn', './ASSETS/OptionsMenu/OptionsMainMenu/BotonMedioSeleccionadoEng.png');
+      this.load.image('DifficultButtonSelectedEn', './ASSETS/OptionsMenu/OptionsMainMenu/BotonDificilSeleccionadoEng.png');
 
+    //Credits Menu
+      this.load.image('logo','ASSETS/Logo.jpeg');
 
     //Map Selection Menu
-      //this.load.image('backgroundMSM', './ASSETS/MapSelectionMenu/MapMenuBackground.jpg');
-      //this.load.image('backgroundMSMWolrd1Comp', './ASSETS/MapSelectionMenu/MapMenuBackgroundMidgardComp.jpg');
-      //this.load.image('World1Button', './ASSETS/MapSelectionMenu/BotonMidgard.png');
-      //this.load.image('World2Button', './ASSETS/MapSelectionMenu/BotonMuspelheim.png');
-      //this.load.image('backButton', './ASSETS/MapSelectionMenu/BotonVolver.png');
-      //this.load.image('paperWorld1', './ASSETS/MapSelectionMenu/PergaminoMidgard.png');
-      //this.load.image('paperWorld1En', './ASSETS/MapSelectionMenu/PergaminMidgard.png');
-      //this.load.image('playButton', './ASSETS/MapSelectionMenu/BotonJugar.png');
-      //this.load.image('playButtonSel', './ASSETS/MapSelectionMenu/JugarSeleccionado.png');
-
-    //ASSETS COMUNES
-    //this.load.image('deselectedButtonSmall', './ASSETS/AssetsComunes/BotonPequeño.png');
-    //this.load.image('selSmallLeftButton', './ASSETS/AssetsComunes/BotonPequeñoSelIzq.png');
-    //this.load.image('selSmallRightButton', './ASSETS/AssetsComunes/BotonPequeñoSelDch.png');
-    //this.load.image('deselectedButton', './ASSETS/AssetsComunes/BotonDeseleccionado.png');
-    //this.load.image('selLeftButton', './ASSETS/AssetsComunes/BotonSelIzq.png');
-    //this.load.image('selRightButton', './ASSETS/AssetsComunes/BotonSelDcha.png'); 
+      this.load.image('backgroundMSM', './ASSETS/MapSelectionMenu/MapMenuBackground.jpg');
+      this.load.image('backgroundMSMWolrd1Comp', './ASSETS/MapSelectionMenu/MapMenuBackgroundMidgardComp.jpg');
+      this.load.image('World1Button', './ASSETS/MapSelectionMenu/BotonMidgard.png');
+      this.load.image('World2Button', './ASSETS/MapSelectionMenu/BotonMuspelheim.png');
+      this.load.image('backButton', './ASSETS/MapSelectionMenu/BotonVolver.png');
+      this.load.image('paperWorld1', './ASSETS/MapSelectionMenu/PergaminoMidgard.png');
+      this.load.image('paperWorld1En', './ASSETS/MapSelectionMenu/PergaminMidgard.png');
+      this.load.image('playButton', './ASSETS/MapSelectionMenu/BotonJugar.png');
+      this.load.image('playButtonSel', './ASSETS/MapSelectionMenu/JugarSeleccionado.png');
 
     //Level Manager
-<<<<<<< Updated upstream
       this.load.spritesheet('dude', 'ASSETS/Placeholders/dude.png', { frameWidth: 32, frameHeight: 48 });
       this.load.image('mobile_button', 'ASSETS/Placeholders/button.png');
       this.load.image('ground', 'ASSETS/Placeholders/platform.png');
@@ -140,37 +137,6 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('spikes', 'ASSETS/Gameplay/spikes.png');
       this.load.image('spikes_long', 'ASSETS/Gameplay/spikes_long.png');
       //this.load.image('pauseButton', 'ASSETS/Gameplay/ButtonPause.png');
-=======
-      //this.load.image('mobile_button', 'ASSETS/Placeholders/button.png');
-      //this.load.image('ground', 'ASSETS/Placeholders/platform.png');
-      //this.load.image('dot', 'ASSETS/Placeholders/star.png');
-      //this.load.image('bomb', 'ASSETS/Placeholders/bomb.png');
-      //this.load.image('bg_far', 'ASSETS/Secciones/Zona lejana.png');
-      //this.load.image('bg_medium' , 'ASSETS/Secciones/Zona media.png');
-      //this.load.image('bg_near' , 'ASSETS/Secciones/Zona delantera.png');
-      //this.load.image('bg_background', 'ASSETS/Secciones/Fondo.png');
-      //this.load.image('bg_far_ice', 'ASSETS/Secciones/Zona lejana_hielo.png');
-      //this.load.image('bg_medium_ice' , 'ASSETS/Secciones/Zona media_hielo.png');
-      //this.load.image('bg_near_ice' , 'ASSETS/Secciones/Zona delantera_hielo.png');
-      //this.load.image('bg_background_ice', 'ASSETS/Secciones/Fondo_hielo.png');
-      //this.load.image('einar', 'ASSETS/Gameplay/einar_provisional.png');
-      //this.load.image('barricade', 'ASSETS/Gameplay/barricade.png');
-      //this.load.image('trunk', 'ASSETS/Gameplay/trunk.png');
-      //this.load.image('cabin_up_1', 'ASSETS/Gameplay/cabin_up_1.png');
-      //this.load.image('cabin_up_2', 'ASSETS/Gameplay/cabin_up_2.png');
-      //this.load.image('cabin_down_1', 'ASSETS/Gameplay/cabin_down_1.png');
-      //this.load.image('cabin_down_2', 'ASSETS/Gameplay/cabin_down_2.png');
-      //this.load.image('cabin_up_ice_1', 'ASSETS/Gameplay/cabin_up_ice_1.png');
-      //this.load.image('cabin_up_ice_2', 'ASSETS/Gameplay/cabin_up_ice_2.png');
-      //this.load.image('cabin_down_ice_1', 'ASSETS/Gameplay/cabin_down_ice_1.png');
-      //this.load.image('cabin_down_ice_2', 'ASSETS/Gameplay/cabin_down_ice_2.png');
-      //this.load.image('platform', 'ASSETS/Gameplay/platform.png');
-      //this.load.image('platform_ice', 'ASSETS/Gameplay/platform_ice.png');
-      //this.load.image('spikes', 'ASSETS/Gameplay/spikes.png');
-      //this.load.image('spikes_long', 'ASSETS/Gameplay/spikes_long.png');
-      //this.load.image('pauseButton', 'ASSETS/Gameplay/ButtonPause.png');
-  /*
->>>>>>> Stashed changes
       this.load.spritesheet('einar_running', 'ASSETS/Gameplay/animacion_correr.png', { frameWidth: 400, frameHeight: 350 });
       this.load.spritesheet('einar_jumping', 'ASSETS/Gameplay/animacion_saltar.png', { frameWidth: 400, frameHeight: 350 });
       this.load.spritesheet('einar_attack', 'ASSETS/Gameplay/animacion_atacar.png', { frameWidth: 400, frameHeight: 350 });
@@ -314,28 +280,29 @@ class PreloadMenu extends Phaser.Scene{
       this.load.image('Poem7_1', './ASSETS/GamePlay/PoemRagnarok.png');
       this.load.image('Poem7_2', './ASSETS/GamePlay/PoemEinar.png');
 
-*/
-      // Música
-      //this.load.audio('music_1', './ASSETS/Music/music_1.mp3');
-      //this.load.audio('music_2', './ASSETS/Music/music_2.mp3');
-      //this.load.audio('music_3', './ASSETS/Music/music_3.mp3');
-      //this.load.audio('musicDialog', './ASSETS/Music/MusicaDialogoFinal.mp3');
-      //this.load.audio('player_death', './ASSETS/Sounds/sound_hit.mp3');
-      //this.load.audio('player_attack', './ASSETS/Sounds/sound_attack.mp3');
-      //this.load.audio('player_jump', './ASSETS/Sounds/sound_jump.mp3');
-      //this.load.audio('enemy_1', './ASSETS/Sounds/166036__vinrax__monster-pain8.wav');
-      //this.load.audio('player_running', './ASSETS/Sounds/107624__stintx__running-02.wav');
-      //this.load.audio('ChangeDifficulty', './ASSETS/Sounds/Dificultad.mp3');
-      //this.load.audio('ClickButtonSound', './ASSETS/Sounds/Click.mp3');
-      //this.load.audio('BuyObject', './ASSETS/Sounds/Compra.mp3');
-      //this.load.audio('Poem', './ASSETS/Sounds/Poema.mp3');
 
-      this.load.on("complete", () => {
-      	percentText.destroy();
-        progressBar.destroy();
-        progressBox.destroy();
-        console.log("Complete");
-	  });
+      // Música
+      this.load.audio('music_1', './ASSETS/Music/music_1.mp3');
+      this.load.audio('music_2', './ASSETS/Music/music_2.mp3');
+      this.load.audio('music_3', './ASSETS/Music/music_3.mp3');
+      this.load.audio('musicDialog', './ASSETS/Music/MusicaDialogoFinal.mp3');
+      this.load.audio('player_death', './ASSETS/Sounds/sound_hit.mp3');
+      this.load.audio('player_attack', './ASSETS/Sounds/sound_attack.mp3');
+      this.load.audio('player_jump', './ASSETS/Sounds/sound_jump.mp3');
+      this.load.audio('enemy_1', './ASSETS/Sounds/166036__vinrax__monster-pain8.wav');
+      this.load.audio('player_running', './ASSETS/Sounds/107624__stintx__running-02.wav');
+      this.load.audio('ChangeDifficulty', './ASSETS/Sounds/Dificultad.mp3');
+      this.load.audio('ClickButtonSound', './ASSETS/Sounds/Click.mp3');
+      this.load.audio('BuyObject', './ASSETS/Sounds/Compra.mp3');
+      this.load.audio('Poem', './ASSETS/Sounds/Poema.mp3');
+
+      /*  this.load.on("complete", () => {
+            console.log("Complete");
+            this.scene.start('MainMenu');
+        });*/
+
+      this.load.image('Logo', './ASSETS/Logo.jpeg');
+
 
   }
 
@@ -386,19 +353,20 @@ class PreloadMenu extends Phaser.Scene{
 
 
     this.logo = this.add.sprite(gameWidth*8/16, gameHeight*8/16, 'Logo');
-    this.logo.setScale(2/3);
+    this.logo.setScale(1/3);
     this.logo.alpha = 0;
 
-    //console.log(this.anims.exists());
     this.tweens.add({
       targets:this.logo,
       duration: 1000,
       alpha: 1,
       yoyo: true,
       hold: 1000,
+      delay: 1000,
       completeDelay: 2000,
       onComplete:()=>this.scene.start('MainMenu')
     })
+
 
   }
 

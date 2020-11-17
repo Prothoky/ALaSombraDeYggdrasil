@@ -16,7 +16,7 @@ class ShopMenu extends Phaser.Scene{
 
     this.bendicionDeHierroSound = this.sound.add('soundBendicionDeHierro',this.EffectsConfig());
     this.FuerzaDeOdinSound = this.sound.add('soundFuerzaDeOdin',this.EffectsConfig());
-    this.RabiaSound = this.sound.add('soundRabia',this.EffectsConfig());
+    this.FuriaSound = this.sound.add('soundFuria',this.EffectsConfig());
     this.PlumaDeValquiriaSound = this.sound.add('soundPlumaDeValquiria',this.EffectsConfig());
     this.ForceOfOdinSound = this.sound.add('soundForceOfOdin',this.EffectsConfig());
     this.IronBlessingSound = this.sound.add('soundIronBlessing',this.EffectsConfig());
@@ -282,7 +282,7 @@ class ShopMenu extends Phaser.Scene{
 
     this.buyObj.play();
     if(userConfig.lang=="es")
-      this.RabiaSound.play();
+      this.FuriaSound.play();
     else
       this.RageSound.play();
 
