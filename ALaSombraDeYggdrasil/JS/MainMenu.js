@@ -28,9 +28,15 @@ class MainMenu extends Phaser.Scene{
       if (musicGameplay != null && musicGameplay.isPlaying) {
         musicGameplay.stop();
       }
+      if (musicGameplayIce != null && musicGameplayIce.isPlaying) {
+        musicGameplayIce.stop();
+      }
     }
     if (musicGameplay == null) {
       musicGameplay = this.sound.add('music_2', config);
+    }
+    if (musicGameplayIce == null) {
+      musicGameplayIce = this.sound.add('musicIce', config);
     }
 
     this.backgroundMM = this.add.image(0, 0, 'backgroundMM');

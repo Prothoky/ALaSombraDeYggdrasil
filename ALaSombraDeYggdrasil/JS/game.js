@@ -146,6 +146,7 @@ function updateLanguage(userLang){
 // Variable música entre escenas
 var musicMenu;  // Controlador de música de menú
 var musicGameplay;  // Controlador de música de gamplay
+var musicGameplayIce;
 
 // Modo arcade
 var arcadeMode = false; // Modo endless runner activado?

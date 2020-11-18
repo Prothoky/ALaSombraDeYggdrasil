@@ -48,6 +48,9 @@ class World1Map extends Phaser.Scene{
     if (musicGameplay != null && musicGameplay.isPlaying) {
       musicGameplay.stop();
     }
+    if (musicGameplayIce != null && musicGameplayIce.isPlaying) {
+      musicGameplayIce.stop();
+    }
     // Ponemos música menú
     if (!musicMenu.isPlaying) {
       musicMenu.play();

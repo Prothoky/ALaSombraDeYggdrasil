@@ -181,12 +181,21 @@ class LevelManager extends Phaser.Scene
             musicMenu.stop();
         }
         // Ponemos música gameplay si no está ya
-        if (!musicGameplay.isPlaying) {
-            musicGameplay.play();
-        }
-        if(musicGameplay.volume <= 0){
-            musicGameplay.setVolume(userConfig.volumeMusic/10);
-        }
+        if (!this.isIceLevel) {
+            if (!musicGameplay.isPlaying) {
+                musicGameplay.play();
+            }
+            if(musicGameplay.volume <= 0){
+                musicGameplay.setVolume(userConfig.volumeMusic/10);
+            }
+        } else {
+            if (!musicGameplayIce.isPlaying) {
+                musicGameplayIce.play();
+            }
+            if(musicGameplayIce.volume <= 0){
+                musicGameplayIce.setVolume(userConfig.volumeMusic/10);
+            }
+        }            
 
 
         // 1.2) Sonidos
@@ -247,7 +256,7 @@ class LevelManager extends Phaser.Scene
         // Dependiendo de la dificultad escogida asignamos nº vidas
         switch (userConfig.difficulty) {
             case 0:
-                this.playerHealth = 75;
+                this.playerHealth = 50;
                 break;
             case 1:
                 this.playerHealth = 3;
@@ -1495,6 +1504,7 @@ class LevelManager extends Phaser.Scene
             this.minTrapDistance = levelSettings[i][l][2];
             this.goldBase = levelSettings[i][l][3];
         }
+        this.playerMovementSpeed = 6000;
     }
 
     // Reinicia el nivel
