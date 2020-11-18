@@ -17,8 +17,14 @@ class MapSelectionMenu extends Phaser.Scene{
 
     if(user.world[1] == false){
       this.backgroundMSM = this.add.image(0, 0, 'backgroundMSM');
+      if(userConfig.lang == "en"){
+        this.backgroundMSM.setTexture('backgroundMSMEn');
+      }
     }else{
       this.backgroundMSM = this.add.image(0, 0, 'backgroundMSMWolrd1Comp');
+      if(userConfig.lang == "en"){
+        this.backgroundMSM.setTexture('backgroundMSMWolrd1CompEn');
+      }
     }
 
     this.backgroundMSM.setPosition(gameWidth/2, gameHeight/2);
@@ -48,12 +54,29 @@ class MapSelectionMenu extends Phaser.Scene{
 
 
 
-    /*//WORLD 2 BUTTON
+    //WORLD 2 BUTTON
     this.botonMundo2 = this.add.image(gameWidth*8.35/16, gameHeight*7.85/16, 'World2Button');
     this.botonMundo2.setScale(2/3);
     this.botonMundo2.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.ActivatePaper(2));
-    this.botonMundo2.alpha = (0.0001);*/
+    this.botonMundo2.alpha = (0.0001);
 
+    this.botonMundo2BOX = this.add.image(gameWidth*8.35/16, gameHeight*7.85/16, 'boxWorld1');
+    this.botonMundo2BOX.setScale(2/3);
+    this.botonMundo2BOX.alpha = 0.001;
+
+    this.nameWorld2 = this.add.image(gameWidth*8.55/16, gameHeight*6.2/16, 'NameWorld1');
+    this.nameWorld2.setScale(1.5/3);
+    this.nameWorld2.setVisible(false);
+
+    if(PC){
+      if(user.world[1] == true){
+        this.botonMundo2.on('pointerover', function (pointer) {this.nameWorld2.setVisible(true);this.timeText.setVisible(true);}, this);
+        this.botonMundo2.on('pointerout', function (pointer) {this.nameWorld2.setVisible(false);this.timeText.setVisible(false);}, this);
+
+      }
+
+      //this.botonMundo2.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.ActivatePaper(1));
+    }
 
     //BOTON ATRAS
     this.backButtonMSM = this.add.image(gameWidth*14.5/16, gameHeight*14.8/16, 'deselectedButtonSmall');
@@ -91,6 +114,9 @@ class MapSelectionMenu extends Phaser.Scene{
 
     //PLAY BUTTON
     this.playButtonMSM = this.add.image(gameWidth*13.7/16, gameHeight*13.83/16, 'playButton');
+    if(userConfig.lang == "en"){
+      this.playButtonMSM.setTexture('playButtonEn');
+    }
     this.playButtonMSM.setScale(2/3);
     this.playButtonMSM.setVisible(false);
 
@@ -99,6 +125,9 @@ class MapSelectionMenu extends Phaser.Scene{
     this.playButtonBOX.alpha = 0;
 
     this.playButtonMSMSel = this.add.image(gameWidth*13.7/16, gameHeight*13.83/16, 'playButtonSel');
+    if(userConfig.lang == "en"){
+      this.playButtonMSMSel.setTexture('playButtonSelEn');
+    }
     this.playButtonMSMSel.setScale(2/3);
     this.playButtonMSMSel.setVisible(false);
     //Acciones Boton
@@ -141,9 +170,7 @@ class MapSelectionMenu extends Phaser.Scene{
   update(){
     this.events.emit("Update Date",this.timeText);
 
-    if(user.world[1] == true){
-      this.timeText.setVisible(true);
-    }
+
   }
 
   ActivatePaper(level){

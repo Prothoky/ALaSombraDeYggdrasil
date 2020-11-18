@@ -92,7 +92,7 @@
 		      "key": "DifficultButtonSelectedEn",
 		      "url": "./ASSETS/Botones/BotonDificilSeleccionadoEng.png"
 		    },
-			{
+				{
 		      "type": "image",
 		      "key": "backgroundMSM",
 		      "url": "./ASSETS/Fondos/MapMenuBackground.jpg"
@@ -100,6 +100,15 @@
 		      "type": "image",
 		      "key": "backgroundMSMWolrd1Comp",
 		      "url": "./ASSETS/Fondos/MapMenuBackgroundMidgardComp.jpg"
+		    },
+			{
+		      "type": "image",
+		      "key": "backgroundMSMEn",
+		      "url": "./ASSETS/Fondos/MapMenuBackgroundEng.jpg"
+		    },{
+		      "type": "image",
+		      "key": "backgroundMSMWolrd1CompEn",
+		      "url": "./ASSETS/Fondos/MapMenuBackgroundMidgardCompEng.jpg"
 		    },{
 		      "type": "image",
 		      "key": "World1Button",
@@ -124,6 +133,14 @@
 		      "type": "image",
 		      "key": "playButtonSel",
 		      "url": "./ASSETS/Botones/JugarSeleccionado.png"
+		    },{
+		      "type": "image",
+		      "key": "playButtonEn",
+		      "url": "./ASSETS/Botones/BotonJugarEn.png"
+		    },{
+		      "type": "image",
+		      "key": "playButtonSelEn",
+		      "url": "./ASSETS/Botones/JugarSeleccionadoEn.png"
 		    },{
 		      "type": "image",
 		      "key": "deselectedButtonSmall",
@@ -270,8 +287,16 @@
 		      "url": "./ASSETS/Gameplay/Hugin.png"
 		    },{
 		      "type": "image",
+		      "key": "ravenMunin",
+		      "url": "./ASSETS/Gameplay/Munin.png"
+		    },{
+		      "type": "image",
 		      "key": "coin_1",
 		      "url": "./ASSETS/Gameplay/coin_1.png"
+		    },{
+		      "type": "image",
+		      "key": "coin_2",
+		      "url": "./ASSETS/Gameplay/coin_2.png"
 		    },{
 		      "type": "image",
 		      "key": "backgroundDialogEinar",
@@ -388,6 +413,10 @@
 		      "type": "image",
 		      "key": "NameWorld1",
 		      "url": "./ASSETS/TitulosNodos/NombreMidgard.png"
+		    },{
+		      "type": "image",
+		      "key": "NameWorld2",
+		      "url": "./ASSETS/TitulosNodos/Muspelheim.png"
 		    },{
 		      "type": "image",
 		      "key": "Level1Name",
@@ -632,6 +661,14 @@
 		      "type": "image",
 		      "key": "BackgroundTutorialEn",
 		      "url": "./ASSETS/Fondos/BackgroundTutorialEng.jpg"
+		    },{
+		      "type": "image",
+		      "key": "PergaminForest",
+		      "url": "./ASSETS/Gameplay/PergaminoBosque.png"
+		    },{
+		      "type": "image",
+		      "key": "PergaminIce",
+		      "url": "./ASSETS/Gameplay/PergaminoHielo.png"
 		    }
 		]
 	},

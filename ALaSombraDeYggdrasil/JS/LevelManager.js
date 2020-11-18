@@ -136,7 +136,7 @@ class LevelManager extends Phaser.Scene
         this.indexText = 0;
         //this.buttonDialog
         this.buttonPause;
-        this.ravenHugin;
+        this.raven;
 
         this.Poem1_1;
         this.Poem2_1;
@@ -258,7 +258,7 @@ class LevelManager extends Phaser.Scene
         // Dependiendo de la dificultad escogida asignamos nº vidas
         switch (userConfig.difficulty) {
             case 0:
-                this.playerHealth = 5;
+                this.playerHealth = 65;
                 break;
             case 1:
                 this.playerHealth = 3;
@@ -451,13 +451,16 @@ class LevelManager extends Phaser.Scene
         }
 
 
-        //RAVEN ravenHugin
-        this.ravenHugin = this.add.image(gameWidth*11.7/16, gameHeight*8.34/16, 'ravenHugin');
-        this.ravenHugin.setScale(2/3);
-        this.ravenHugin.setDepth(5);
-        //this.ravenHugin.setVisible(false);
-        this.ravenHugin.setScrollFactor(0);
-        this.ravenHugin.alpha = 0;
+        //RAVEN raven
+        this.raven = this.add.image(gameWidth*11.7/16, gameHeight*8.34/16, 'ravenMunin');
+        if(levelIndex > 4){
+          this.raven.setTexture('ravenHugin')
+        }
+        this.raven.setScale(2/3);
+        this.raven.setDepth(5);
+        //this.raven.setVisible(false);
+        this.raven.setScrollFactor(0);
+        this.raven.alpha = 0;
 
         //POEMS
 
@@ -1132,7 +1135,8 @@ class LevelManager extends Phaser.Scene
         let hitboxWidth = 70;
         let hitboxHeight = 70;
         if (highValue) {
-            let localCoin = this.coins.create(xPos, yPos, 'coin_1').setScale(scaleFactor).setTint(0xe62272).refreshBody();
+            //let localCoin = this.coins.create(xPos, yPos, 'coin_1').setScale(scaleFactor).setTint(0xe62272).refreshBody();
+            let localCoin = this.coins.create(xPos, yPos, 'coin_2').setScale(scaleFactor).refreshBody();
             localCoin.body.setSize(hitboxWidth, hitboxHeight);
             localCoin.value = 1;
         } else {
@@ -1438,9 +1442,9 @@ class LevelManager extends Phaser.Scene
           this.buttonDialog.setVisible(false);
           this.buttonDialogBOX.alpha = 0;
           this.buttonDialogSel.setVisible(false);
-          //this.ravenHugin.setVisible(false);
+          //this.raven.setVisible(false);
           this.DialogShowing=false;
-          this.ravenHugin.alpha = 0;
+          this.raven.alpha = 0;
           this.DialogBg.alpha = 0;
           this.DialogText.alpha = 0;
         }
@@ -1741,7 +1745,7 @@ class LevelManager extends Phaser.Scene
 
               if(PC){
                 this.tweens.add({
-                  targets:this.ravenHugin,
+                  targets:this.raven,
                   duration: 500,
                   alpha: 1,
                   yoyo: false,
@@ -1750,7 +1754,7 @@ class LevelManager extends Phaser.Scene
                   completeDelay: 2000,
                 })
               }else{
-                this.ravenHugin.alpha = 1;
+                this.raven.alpha = 1;
               }
 
             }
