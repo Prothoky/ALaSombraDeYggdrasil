@@ -721,7 +721,11 @@ class LevelManager extends Phaser.Scene
     playerStartJump() {
         if (this.isPlayerTouchingGround && this.player.body.velocity.y == 0) {
             if (!this.isPlayerAttacking) {
+
+              if(PC){
                 this.player.anims.play('einar_jumping');
+              }
+
             }
             this.soundJump.play(this.getAudioConfig());
             this.soundRunning.stop();
@@ -1736,7 +1740,13 @@ class LevelManager extends Phaser.Scene
                 if (this.isPlayerTouchingGround) {
                     this.player.anims.play('einar_running');
                 }   else {
+
+                  if(PC){
                     this.player.anims.play('einar_jumping');
+                  }else{
+                    this.player.anims.play('einar_running');
+                  }
+
                 }
             }
         }
