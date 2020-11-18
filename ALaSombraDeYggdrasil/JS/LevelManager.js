@@ -720,7 +720,7 @@ class LevelManager extends Phaser.Scene
     // Si termina el timer o se suelta el botón de salto se llamará a playerStopJump()
     playerStartJump() {
         if (this.isPlayerTouchingGround && this.player.body.velocity.y == 0) {
-            if (!this.isPlayerAttacking && PC) {
+            if (!this.isPlayerAttacking) {
                 this.player.anims.play('einar_jumping');
             }
             this.soundJump.play(this.getAudioConfig());
@@ -1736,11 +1736,7 @@ class LevelManager extends Phaser.Scene
                 if (this.isPlayerTouchingGround) {
                     this.player.anims.play('einar_running');
                 }   else {
-                    if (PC) {
-                        this.player.anims.play('einar_jumping');
-                    } else {
-                        this.player.anims.play('einar_running');
-                    }
+                    this.player.anims.play('einar_jumping');
                 }
             }
         }
