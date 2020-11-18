@@ -207,6 +207,8 @@ class LevelManager extends Phaser.Scene
         this.soundJump = this.sound.add('player_jump', config);
         this.soundAttack = this.sound.add('player_attack', config);
         this.soundEnemy = this.sound.add('enemy_1', config);
+        this.soundEagle = this.sound.add('soundEagle', config);
+        this.soundCoin = this.sound.add('soundCoin', config);
         this.clickButtonSound = this.sound.add('ClickButtonSound', config);
         this.poemSound = this.sound.add('Poem', config);
         this.dialogSound = this.sound.add('musicDialog', config);
@@ -1594,6 +1596,7 @@ class LevelManager extends Phaser.Scene
     // Función que ordena al enemigo moverse cuando se encuentra con el jugador
     enemyStartMotion(player, triggers) {
         if (triggers.associatedEnemy.isStill == false) {
+            this.soundEagle.play();
             triggers.associatedEnemy.setVelocityX(this.eagleSpeedX);
             triggers.associatedEnemy.setVelocityY(this.eagleSpeedY);
         } else {
@@ -1630,6 +1633,7 @@ class LevelManager extends Phaser.Scene
 
     // Recoge la moneda
     collectCoin(player, coin) {
+        this.soundCoin.play();
         coin.destroy();
         if (coin.value == 0) {
             switch(userConfig.difficulty) {
