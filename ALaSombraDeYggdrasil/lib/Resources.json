@@ -174,7 +174,13 @@
 		      "type": "image",
 		      "key": "trunk",
 		      "url": "./ASSETS/Gameplay/trunk.png"
-		    },{
+		    },
+		    {
+		      "type": "image",
+		      "key": "button_mobile",
+		      "url": "./ASSETS/Gameplay/button_mobile.png"
+		    },
+		    {
 		      "type": "image",
 		      "key": "cabin_up_1",
 		      "url": "./ASSETS/Gameplay/cabin_up_1.png"

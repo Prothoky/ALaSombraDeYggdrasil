@@ -55,7 +55,7 @@ var world1Completed = false;
 var prevScene = 'MainMenu';
 
 //Movil o PC
-var PC = false;
+var PC = true;
 
 // Tamaño pantalla
 var gameWidth = 1270;
