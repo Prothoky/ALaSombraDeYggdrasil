@@ -107,7 +107,7 @@
 		    },{
 		      "type": "image",
 		      "key": "deselectedButtonSmall",
-		      "url": "./ASSETS/Botones/botonPequenio.png"
+		      "url": "./ASSETS/Botones/BotonPequenio.png"
 		    },{
 		      "type": "image",
 		      "key": "selSmallLeftButton",
