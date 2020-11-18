@@ -258,7 +258,7 @@ class LevelManager extends Phaser.Scene
         // Dependiendo de la dificultad escogida asignamos nº vidas
         switch (userConfig.difficulty) {
             case 0:
-                this.playerHealth = 65;
+                this.playerHealth = 5;
                 break;
             case 1:
                 this.playerHealth = 3;
