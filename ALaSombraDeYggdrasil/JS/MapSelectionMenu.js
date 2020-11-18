@@ -116,7 +116,7 @@ class MapSelectionMenu extends Phaser.Scene{
     //BOTON TIENDA
     this.optionsButtonMSM = this.add.image(gameWidth*14.5/16, gameHeight*1.1/16, 'deselectedButtonSmall');
     this.optionsButtonMSM.setScale(1.5/3);
-    this.optionsButtonMSMSel = this.add.image(gameWidth*14.7/16, gameHeight*1.1/16, 'selSmallRightButton');
+    this.optionsButtonMSMSel = this.add.image(gameWidth*14.3/16, gameHeight*1.1/16, 'selSmallLeftButton');
     this.optionsButtonMSMSel.setScale(1.5/3);
     this.optionsButtonMSMSel.setVisible(false);
     this.optButtonText = this.add.text(gameWidth*14.1/16, gameHeight*0.92/16,  stringsJSON.Buttons.options, {fontFamily: "Acadian_Runes",fontSize: "15px", align: 'center', fill: "#481d18"});

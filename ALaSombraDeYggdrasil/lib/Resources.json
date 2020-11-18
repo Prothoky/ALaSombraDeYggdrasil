@@ -578,27 +578,27 @@
 		      "url": "./ASSETS/Pergaminos/PoemaEinar.png"
 		    },{
 		      "type": "image",
-		      "key": "Poema1_1",
+		      "key": "Poem1_1",
 		      "url": "./ASSETS/Pergaminos/PoemYggdrasil.png"
 		    },{
 		      "type": "image",
-		      "key": "Poema2_1",
+		      "key": "Poem2_1",
 		      "url": "./ASSETS/Pergaminos/PoemValKyres.png"
 		    },{
 		      "type": "image",
-		      "key": "Poema4_1",
+		      "key": "Poem4_1",
 		      "url": "./ASSETS/Pergaminos/PoemValhalla.png"
 		    },{
 		      "type": "image",
-		      "key": "Poema4_2",
+		      "key": "Poem4_2",
 		      "url": "./ASSETS/Pergaminos/PoemBerserker.png"
 		    },{
 		      "type": "image",
-		      "key": "Poema7_1",
+		      "key": "Poem7_1",
 		      "url": "./ASSETS/Pergaminos/PoemRagnarok.png"
 		    },{
 		      "type": "image",
-		      "key": "Poema7_2",
+		      "key": "Poem7_2",
 		      "url": "./ASSETS/Pergaminos/PoemEinar.png"
 		    },{
 		      "type": "image",
@@ -620,6 +620,10 @@
 		      "type": "image",
 		      "key": "WinnerBackgr",
 		      "url": "./ASSETS/Fondos/MenuVictoria.jpg"
+		    },{
+		      "type": "image",
+		      "key": "WinnerBackgrEn",
+		      "url": "./ASSETS/Fondos/MenuVictoriaEng.jpg"
 		    },{
 		      "type": "image",
 		      "key": "BackgroundTutorial",

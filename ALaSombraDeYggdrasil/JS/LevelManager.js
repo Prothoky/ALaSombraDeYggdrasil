@@ -195,7 +195,7 @@ class LevelManager extends Phaser.Scene
             if(musicGameplayIce.volume <= 0){
                 musicGameplayIce.setVolume(userConfig.volumeMusic/10);
             }
-        }            
+        }
 
 
         // 1.2) Sonidos
@@ -256,7 +256,7 @@ class LevelManager extends Phaser.Scene
         // Dependiendo de la dificultad escogida asignamos nº vidas
         switch (userConfig.difficulty) {
             case 0:
-                this.playerHealth = 50;
+                this.playerHealth = 5;
                 break;
             case 1:
                 this.playerHealth = 3;
@@ -537,6 +537,7 @@ class LevelManager extends Phaser.Scene
         this.fullScreenLM.setScrollFactor(0);
         this.fullScreenLM.setDepth(10);
         this.fullScreenLM.setInteractive({ useHandCursor: true}).on('pointerdown', function() { this.scene.scale.toggleFullscreen()});
+
 
 
         // ----CONTROLES----
@@ -1504,7 +1505,7 @@ class LevelManager extends Phaser.Scene
             this.minTrapDistance = levelSettings[i][l][2];
             this.goldBase = levelSettings[i][l][3];
         }
-        this.playerMovementSpeed = 6000;
+        //this.playerMovementSpeed = 6000;
     }
 
     // Reinicia el nivel
@@ -1816,6 +1817,10 @@ class LevelManager extends Phaser.Scene
                 this.Money.x = gameWidth*12.6/16
             }
         }
+    }
+
+    showIcons(){
+
     }
 
 }

@@ -70,36 +70,35 @@ class World1Map extends Phaser.Scene{
     });
 
     //MONEY
-    this.backgroundMoneyW1M = this.add.image(gameWidth*12/16, gameHeight*1.1/16, 'deselectedButtonSmall');
+    this.backgroundMoneyW1M = this.add.image(gameWidth*13.25/16, gameHeight*1.1/16, 'deselectedButtonSmall'); //13.25
     this.backgroundMoneyW1M.setScale(1.5/3);
-    this.MoneyW1M = this.add.text(gameWidth*13/16, gameHeight*0.92/16,  user.money, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
-
+    this.MoneyW1M = this.add.text(gameWidth*13.4/16, gameHeight*0.92/16,  user.money, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
     this.SetTextPos();
 
 
     //BOTON TIENDA
-    this.shopButtonW1M = this.add.image(gameWidth*13.25/16, gameHeight*1.1/16, 'deselectedButtonSmall');
+    this.shopButtonW1M = this.add.image(gameWidth*14.5/16, gameHeight*1.1/16, 'deselectedButtonSmall'); //14.5
     this.shopButtonW1M.setScale(1.5/3);
-    this.shopButtonW1MSel = this.add.image(gameWidth*13.45/16, gameHeight*1.1/16, 'selSmallRightButton');
+    this.shopButtonW1MSel = this.add.image(gameWidth*14.7/16, gameHeight*1.1/16, 'selSmallRightButton');
     this.shopButtonW1MSel.setScale(1.5/3);
     this.shopButtonW1MSel.setVisible(false);
-    this.shopButtonText = this.add.text(gameWidth*12.95/16, gameHeight*0.93/16,  stringsJSON.Buttons.shop, {fontFamily: "Acadian_Runes",fontSize: "15px", align: 'center', fill: "#481d18"});
+    this.shopButtonText = this.add.text(gameWidth*14.2/16, gameHeight*0.93/16,  stringsJSON.Buttons.shop, {fontFamily: "Acadian_Runes",fontSize: "15px", align: 'center', fill: "#481d18"});
     if (userConfig.lang == "en"){
-      this.shopButtonText.setX(gameWidth*13.1/16);
+      this.shopButtonText.setX(gameWidth*14.3/16);
     }
     this.shopButtonW1M.on('pointerover', function (pointer) {this.shopButtonW1MSel.setVisible(true);}, this);
     this.shopButtonW1M.on('pointerout', function (pointer) {this.shopButtonW1MSel.setVisible(false);}, this);
     this.shopButtonW1M.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.ShopMenuW1M());
 
     //OPTIONS
-    this.optionsButtonMSM = this.add.image(gameWidth*10.8/16, gameHeight*1.1/16, 'deselectedButtonSmall');
+    this.optionsButtonMSM = this.add.image(gameWidth*12.05/16, gameHeight*1.1/16, 'deselectedButtonSmall'); //12.05
     this.optionsButtonMSM.setScale(1.5/3);
-    this.optionsButtonMSMSel = this.add.image(gameWidth*10.6/16, gameHeight*1.1/16, 'selSmallLeftButton');
+    this.optionsButtonMSMSel = this.add.image(gameWidth*11.85/16, gameHeight*1.1/16, 'selSmallLeftButton');
     this.optionsButtonMSMSel.setScale(1.5/3);
     this.optionsButtonMSMSel.setVisible(false);
-    this.opButtonText = this.add.text(gameWidth*10.4/16, gameHeight*0.93/16,  stringsJSON.Buttons.options, {fontFamily: "Acadian_Runes",fontSize: "15px", align: 'center', fill: "#481d18"});
+    this.opButtonText = this.add.text(gameWidth*11.65/16, gameHeight*0.93/16,  stringsJSON.Buttons.options, {fontFamily: "Acadian_Runes",fontSize: "15px", align: 'center', fill: "#481d18"});
     if (userConfig.lang == "en"){
-      this.opButtonText.setX(gameWidth*10.45/16);
+      this.opButtonText.setX(gameWidth*11.7/16);
     }
     this.optionsButtonMSM.on('pointerover', function (pointer) {this.optionsButtonMSMSel.setVisible(true);}, this);
     this.optionsButtonMSM.on('pointerout', function (pointer) {this.optionsButtonMSMSel.setVisible(false);}, this);
@@ -1284,15 +1283,15 @@ class World1Map extends Phaser.Scene{
    SetTextPos(){
 
      if((user.money>=0) && (user.money<100)){
-       this.MoneyW1M.x = gameWidth*12/16
+       this.MoneyW1M.x = gameWidth*13.2/16
      }else if((user.money>=100) && (user.money<1000)){
-       this.MoneyW1M.x = gameWidth*11.9/16
+       this.MoneyW1M.x = gameWidth*13.1/16
      }else if ((user.money>1000) && (user.money<10000)){
-       this.MoneyW1M.x = gameWidth*11.8/16
+       this.MoneyW1M.x = gameWidth*13/16
      }else if ((user.money>=10000) && (user.money<100000)){
-       this.MoneyW1M.x = gameWidth*11.7/16
+       this.MoneyW1M.x = gameWidth*12.9/16
      }else{
-       this.MoneyW1M.x = gameWidth*11.6/16
+       this.MoneyW1M.x = gameWidth*12.8/16
      }
    }
 

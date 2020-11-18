@@ -35,14 +35,14 @@ class ShopMenu extends Phaser.Scene{
     this.backgroundSM .setPosition(gameWidth/2, gameHeight/2);
 
     //MONEY
-    this.MoneyShop = this.add.text(gameWidth*14.8/16, gameHeight*1/16,  user.money, {fontFamily: "Acadian_Runes",fontSize: "26px", align: 'center', fill: "#481d18"});
+    this.MoneyShop = this.add.text(gameWidth*14.9/16, gameHeight*0.9/16,  user.money, {fontFamily: "Acadian_Runes",fontSize: "26px", align: 'center', fill: "#481d18"});
     this.SetTextPos();
     //this.Money.setOrigin(0.5,0.5);
 
     //BOTON OBJETO 1
-    this.object1Button = this.add.image(gameWidth*3.96/16, gameHeight*14.08/16, 'deselectedButtonSmall');
+    this.object1Button = this.add.image(gameWidth*3.96/16, gameHeight*14.15/16, 'deselectedButtonSmall');
     this.object1Button.setScale(2/3);
-    this.object1ButtonSel = this.add.image(gameWidth*3.69/16, gameHeight*14.08/16, 'selSmallLeftButton');
+    this.object1ButtonSel = this.add.image(gameWidth*3.69/16, gameHeight*14.15/16, 'selSmallLeftButton');
     this.object1ButtonSel.setScale(2/3);
     this.object1ButtonSel.setVisible(false);
     this.object1Bought = this.add.image(gameWidth*3.96/16, gameHeight*8.75/16, 'object1Bought');
@@ -64,9 +64,9 @@ class ShopMenu extends Phaser.Scene{
     this.object1Button.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AddObject1());
 
     //BOTON OBJETO 2
-    this.object2Button = this.add.image(gameWidth*6.66/16, gameHeight*14.08/16, 'deselectedButtonSmall');
+    this.object2Button = this.add.image(gameWidth*6.66/16, gameHeight*14.15/16, 'deselectedButtonSmall');
     this.object2Button.setScale(2/3);
-    this.object2ButtonSel = this.add.image(gameWidth*6.39/16, gameHeight*14.08/16, 'selSmallLeftButton');
+    this.object2ButtonSel = this.add.image(gameWidth*6.39/16, gameHeight*14.15/16, 'selSmallLeftButton');
     this.object2ButtonSel.setScale(2/3);
     this.object2ButtonSel.setVisible(false);
     this.object2Bought = this.add.image(gameWidth*6.66/16, gameHeight*8.75/16, 'object2Bought');
@@ -92,9 +92,9 @@ class ShopMenu extends Phaser.Scene{
     this.object2Button.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AddObject2());
 
     //BOTON OBJETO 3
-    this.object3Button = this.add.image(gameWidth*9.36/16, gameHeight*14.08/16, 'deselectedButtonSmall');
+    this.object3Button = this.add.image(gameWidth*9.36/16, gameHeight*14.15/16, 'deselectedButtonSmall');
     this.object3Button.setScale(2/3);
-    this.object3ButtonSel = this.add.image(gameWidth*9.09/16, gameHeight*14.08/16, 'selSmallLeftButton');
+    this.object3ButtonSel = this.add.image(gameWidth*9.09/16, gameHeight*14.15/16, 'selSmallLeftButton');
     this.object3ButtonSel.setScale(2/3);
     this.object3ButtonSel.setVisible(false);
     this.object3Bought = this.add.image(gameWidth*9.36/16, gameHeight*8.75/16, 'object3Bought');
@@ -120,9 +120,9 @@ class ShopMenu extends Phaser.Scene{
     this.object3Button.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AddObject3());
 
     //BOTON OBJETO 4
-    this.object4Button = this.add.image(gameWidth*12.05/16, gameHeight*14.08/16, 'deselectedButtonSmall');
+    this.object4Button = this.add.image(gameWidth*12.05/16, gameHeight*14.15/16, 'deselectedButtonSmall');
     this.object4Button.setScale(2/3);
-    this.object4ButtonSel = this.add.image(gameWidth*11.77/16, gameHeight*14.08/16, 'selSmallLeftButton');
+    this.object4ButtonSel = this.add.image(gameWidth*11.77/16, gameHeight*14.15/16, 'selSmallLeftButton');
     this.object4ButtonSel.setScale(2/3);
     this.object4ButtonSel.setVisible(false);
     this.object4Bought = this.add.image(gameWidth*12.04/16, gameHeight*8.75/16, 'object4Bought');
@@ -148,9 +148,9 @@ class ShopMenu extends Phaser.Scene{
     this.object4Button.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AddObject4());
 
     //BOTON ATRAS
-    this.backButtonSM = this.add.image(gameWidth*14.74/16, gameHeight*14.08/16, 'deselectedButtonSmall');
+    this.backButtonSM = this.add.image(gameWidth*14.7/16, gameHeight*14.17/16, 'deselectedButtonSmall');
     this.backButtonSM.setScale(2/3);
-    this.backButtonSMSel = this.add.image(gameWidth*14.45/16, gameHeight*14.08/16, 'selSmallLeftButton');
+    this.backButtonSMSel = this.add.image(gameWidth*14.41/16, gameHeight*14.17/16, 'selSmallLeftButton');
     this.backButtonSMSel.setScale(2/3);
     this.backButtonSMSel.setVisible(false);
     //Texto Boton

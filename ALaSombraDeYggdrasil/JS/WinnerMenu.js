@@ -23,13 +23,13 @@ class WinnerMenu extends Phaser.Scene{
 
     //Volver a Jugar
     //Botones
-    this.continueButtonWM = this.add.image(gameWidth*8/16, gameHeight*11.7/16, 'deselectedButton');
+    this.continueButtonWM = this.add.image(gameWidth*8/16, gameHeight*13.1/16, 'deselectedButton');
     this.continueButtonWM.setScale(2/3);
-    this.continueButtonWMSel = this.add.image(gameWidth*7.65/16, gameHeight*11.7/16, 'selLeftButton');
+    this.continueButtonWMSel = this.add.image(gameWidth*7.65/16, gameHeight*13.1/16, 'selLeftButton');
     this.continueButtonWMSel.setScale(2/3);
     this.continueButtonWMSel.setVisible(false);
     //Texto
-    this.continueText = this.add.text(gameWidth*6.8/16, gameHeight*11.17/16,  stringsJSON.Buttons.continue , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "40px"});
+    this.continueText = this.add.text(gameWidth*6.8/16, gameHeight*12.57/16,  stringsJSON.Buttons.continue , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "40px"});
     if (userConfig.lang == "en"){
       this.continueText.setX(gameWidth*6.95/16);
     }
