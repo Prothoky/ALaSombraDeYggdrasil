@@ -494,9 +494,9 @@ class World1Map extends Phaser.Scene{
     this.buttonNode5Sel.setScale(2/3);
     this.buttonNode5Sel.setVisible(false);
     //Funciones BOTON
-    this.buttonNode5.on('pointerover', function (pointer) {this.buttonNode5SelClick.setVisible(true);}, this);
+    /*this.buttonNode5.on('pointerover', function (pointer) {this.buttonNode5SelClick.setVisible(true);}, this);
     this.buttonNode5.on('pointerout', function (pointer) {this.buttonNode5SelClick.setVisible(false);}, this);
-    this.buttonNode5.setInteractive({ useHandCursor: true}).on('pointerdown', () =>  this.AccessToLevel(5));
+    this.buttonNode5.setInteractive({ useHandCursor: true}).on('pointerdown', () =>  this.AccessToLevel(5));*/
     //Fondo con nombre y boton JUGAR
     if(userConfig.lang == "es"){
       this.level5Name = this.add.image(gameWidth*3.41/16, gameHeight*3.05/16, 'Nivel5Name');

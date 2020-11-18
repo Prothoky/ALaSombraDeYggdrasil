@@ -573,16 +573,16 @@ class LevelManager extends Phaser.Scene
 
         this.input.addPointer(2);
 
-        var pointerJump = this.add.image(100,525, 'button_mobile').setInteractive(); //Hace la imagen interactuable
+        var pointerJump = this.add.image(150,525, 'button_mobile').setInteractive(); //Hace la imagen interactuable
         pointerJump.setOrigin(0.5,0.5);
-        pointerJump.setScale(0.5);
+        pointerJump.setScale(0.65);
         pointerJump.setDepth(15);
         pointerJump.setVisible(true);
 
 
-        var pointerAttack = this.add.image(1100, 525, 'button_mobile').setInteractive();
+        var pointerAttack = this.add.image(1050, 525, 'button_mobile').setInteractive();
         pointerAttack.setDepth(15);
-        pointerAttack.setScale(0.5);
+        pointerAttack.setScale(0.65);
         pointerAttack.setOrigin(0.5,0.5);
         pointerAttack.setVisible(true);
 
@@ -1309,46 +1309,50 @@ class LevelManager extends Phaser.Scene
                 delay: timeFadeOut,
                 callback: function() {
 
-                  if(!PC){
+                /*  if(!PC){
                     pointerJump.setVisible(false);
                     pointerAttack.setVisible(false);
-                  }
+                  }*/
 
                     this.dialogSound.setLoop(true);
                     this.dialogSound.play();
+                    this.DialogShowing=true;
 
                     if((levelIndex < 10) || (levelIndex == 14) ||(levelIndex == 15) ){
                         this.DialogBg.alpha = 0;
                         this.DialogText.alpha = 0;
 
-                        this.DialogShowing=true;
-                        this.tweens.add({
-                          targets:this.DialogBg,
-                          duration: 500,
-                          alpha: 1,
-                          yoyo: false,
-                          hold: 2000,
-                          delay: 1100,
-                          completeDelay: 2000,
-                        });
-                        this.tweens.add({
-                          targets:this.DialogText,
-                          duration: 500,
-                          alpha: 1,
-                          yoyo: false,
-                          hold: 2000,
-                          delay: 1100,
-                          completeDelay: 2000,
-                        });
+                      //  if(PC){
 
-                        this.time.addEvent({
-                          delay: 1100,
-                          callback: function() {
-                            this.buttonDialog.setVisible(true);
-                            this.buttonDialogBOX.alpha = 0.0001;
-                          },
-                        callbackScope: this
-                        }, this);
+                          this.tweens.add({
+                            targets:this.DialogBg,
+                            duration: 500,
+                            alpha: 1,
+                            yoyo: false,
+                            hold: 2000,
+                            delay: 1100,
+                            completeDelay: 2000,
+                          });
+                          this.tweens.add({
+                            targets:this.DialogText,
+                            duration: 500,
+                            alpha: 1,
+                            yoyo: false,
+                            hold: 2000,
+                            delay: 1100,
+                            completeDelay: 2000,
+                          });
+
+                          this.time.addEvent({
+                            delay: 1100,
+                            callback: function() {
+                              this.buttonDialog.setVisible(true);
+                              this.buttonDialogBOX.alpha = 0.0001;
+                            },
+                          callbackScope: this
+                          }, this);
+                      //  }
+
                     }
                     musicGameplay.stop();
                     this.showDialog();
@@ -1706,15 +1710,21 @@ class LevelManager extends Phaser.Scene
             this.following=false;
 
             if((levelIndex < 10) || (levelIndex == 14) ||(levelIndex == 15)){
-              this.tweens.add({
-                targets:this.ravenHugin,
-                duration: 500,
-                alpha: 1,
-                yoyo: false,
-                hold: 2000,
-                delay: 700,
-                completeDelay: 2000,
-              })
+
+              if(PC){
+                this.tweens.add({
+                  targets:this.ravenHugin,
+                  duration: 500,
+                  alpha: 1,
+                  yoyo: false,
+                  hold: 2000,
+                  delay: 700,
+                  completeDelay: 2000,
+                })
+              }else{
+                this.ravenHugin.alpha = 1;
+              }
+
             }
 
 

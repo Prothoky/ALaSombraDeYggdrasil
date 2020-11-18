@@ -378,8 +378,8 @@ class PreloadMenu extends Phaser.Scene{
     this.tweens.add({
       targets:this.logo,
       duration: 2000,
-      alpha: 1,
-      yoyo: true,
+      //alpha: 1,
+    //  yoyo: true,
       hold: 2000,
       completeDelay: 500,
       onComplete:()=>this.scene.start('MainMenu')
