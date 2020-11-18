@@ -742,6 +742,21 @@
 				"type": "audio",
 		      	"key": "soundStart",
 		    	"url": "./ASSETS/SFX/sound_horn.mp3"
+			},
+			{
+				"type": "audio",
+		     "key": "soundEagle",
+		    "url": "./ASSETS/SFX/Aguila.mp3"
+			},
+			{
+				"type": "audio",
+		     "key": "soundCoin",
+		    	"url": "./ASSETS/SFX/Moneda.mp3"
+			},
+			{
+				"type": "audio",
+		    "key": "musicIce",
+		    "url": "./ASSETS/Musica/MusicaCarreraNieve.mp3"
 			}
 		]
 	}

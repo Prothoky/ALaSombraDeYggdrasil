@@ -911,13 +911,13 @@ class LevelManager extends Phaser.Scene
         }
         xPos += 75;
         let newEnemy = this.enemies.create(xPos, yPos, 'draugr').setOrigin(1).setScale(0.56);
-        newEnemy.setSize(collisionHeight, collisionWidth);
-        //newEnemy.body.setOffset(135, 165);
-        newEnemy.body.setOffset(75.6, 92.4);
+        newEnemy.setSize(collisionWidth, collisionHeight);
+        newEnemy.body.setOffset(135, 165);
+        //newEnemy.body.setOffset(75.6, 92.4);
         newEnemy.depth = 3;
         newEnemy.isStill = true;
-        let newTrigger = this.triggers.create(xPos - 250, this.levelGroundHeight, 'dot').setVisible(true).refreshBody();
-        newTrigger.body.setSize(280, 280);
+        let newTrigger = this.triggers.create(xPos - 250, this.levelGroundHeight, 'dot').setVisible(false).refreshBody();
+        newTrigger.body.setSize(500, 500);
         //newTrigger.body.setSize(500, 500);  // Trigger que hará que el enemigo se mueva cuando entre el personaje en contacto
         newTrigger.associatedEnemy = newEnemy;
         return this.minDistStillEnemy;
@@ -930,6 +930,7 @@ class LevelManager extends Phaser.Scene
     // collisionWidth, collisionHeight: tamaño de la hitbox
     // triggerWidth, triggerHeight: tamaño del trigger de movimiento. Si no se pasa toma valor por defecto
     generateMovingEnemy(xPos, yPos = -300, collisionWidth = 90, collisionHeight = 120, triggerWidth = 500, triggerHeight = 500) {
+      if(PC){
         let newEnemy = this.eagles.create(xPos + 1050, yPos, 'eagle_attacking').setOrigin(0).setScale(0.56);
         newEnemy.anims.play('eagle_attacking');
         newEnemy.body.setAllowGravity(false);
@@ -942,6 +943,10 @@ class LevelManager extends Phaser.Scene
         newTrigger.body.setSize(triggerWidth, triggerHeight);   // Trigger que hará que el enemigo se mueva cuando entre el personaje en contacto
         newTrigger.associatedEnemy = newEnemy;
         return this.minDistMovingEnemy;
+      }else{
+        return 0;
+      }
+
     }
 
     // Funcion de creación de plataformas
@@ -1582,7 +1587,11 @@ class LevelManager extends Phaser.Scene
             triggers.associatedEnemy.setVelocityY(this.eagleSpeedY);
         } else {
             if (!triggers.associatedEnemy.anims.isPlaying)
-                    triggers.associatedEnemy.anims.play('draugr_attacking');
+
+            if(PC){
+              triggers.associatedEnemy.anims.play('draugr_attacking');
+            }
+
         }
         this.triggers.remove(triggers, true);
     }
