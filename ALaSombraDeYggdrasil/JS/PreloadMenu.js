@@ -288,8 +288,8 @@ class PreloadMenu extends Phaser.Scene{
       //this.load.audio('ClickButtonSound', './ASSETS/Sounds/Click.mp3');
       //this.load.audio('BuyObject', './ASSETS/Sounds/Compra.mp3');
       //this.load.audio('Poem', './ASSETS/Sounds/Poema.mp3');
-
 */
+
       this.load.spritesheet('einar_running', 'ASSETS/Gameplay/animacion_correr.png', { frameWidth: 400, frameHeight: 350 });
       this.load.spritesheet('einar_jumping', 'ASSETS/Gameplay/animacion_saltar.png', { frameWidth: 400, frameHeight: 350 });
       this.load.spritesheet('einar_attack', 'ASSETS/Gameplay/animacion_atacar.png', { frameWidth: 400, frameHeight: 350 });

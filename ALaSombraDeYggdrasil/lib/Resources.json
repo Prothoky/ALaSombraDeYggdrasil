@@ -83,11 +83,11 @@
 		    },{
 		      "type": "image",
 		      "key": "World1Button",
-		      "url": "./ASSETS/Mundos/BotonMidgard.png"
+		      "url": "./ASSETS/Mundos/botonMidgard.png"
 		    },{
 		      "type": "image",
 		      "key": "World2Button",
-		      "url": "./ASSETS/Mundos/BotonMuspelheim.png"
+		      "url": "./ASSETS/Mundos/botonMuspelheim.png"
 		    },{
 		      "type": "image",
 		      "key": "paperWorld1",
@@ -107,15 +107,15 @@
 		    },{
 		      "type": "image",
 		      "key": "deselectedButtonSmall",
-		      "url": "./ASSETS/Botones/BotonPequenio.png"
+		      "url": "./ASSETS/Botones/botonPequenio.png"
 		    },{
 		      "type": "image",
 		      "key": "selSmallLeftButton",
-		      "url": "./ASSETS/Botones/BotonPequenioSelIzq.png"
+		      "url": "./ASSETS/Botones/botonPequenioSelIzq.png"
 		    },{
 		      "type": "image",
 		      "key": "selSmallRightButton",
-		      "url": "./ASSETS/Botones/BotonPequenioSelDch.png"
+		      "url": "./ASSETS/Botones/botonPequenioSelDch.png"
 		    },{
 		      "type": "image",
 		      "key": "deselectedButton",
