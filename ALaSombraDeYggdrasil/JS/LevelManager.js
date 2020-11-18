@@ -18,8 +18,13 @@ class LevelManager extends Phaser.Scene
         this.playerAttackCounter = 0;   // Contador de tiempo del ataque
         this.playerAttackCooldown = 320;   // Cooldown del ataque
         this.playerAttackWidth = 70;    // Ancho de hitbox del ataque
-        this.playerResizeFactor = 0.56; // Escalado del personaje
-        this.playerAttackHeight = this.playerHitboxHeight * this.playerResizeFactor * 1.4;   // Alto de hitbox del ataque
+        this.playerResizeFactor = 1; // Escalado del personaje
+        this.playerResizeFactorPC = 0.56;
+        if(PC){
+          this.playerAttackHeight = this.playerHitboxHeight * this.playerResizeFactorPC * 1.4;   // Alto de hitbox del ataque
+        }else{
+          this.playerAttackHeight = this.playerHitboxHeight * this.playerResizeFactor * 1.4;   // Alto de hitbox del ataque
+        }
         this.playerHealth = 0;  // Puntos de vida del jugador (ajustar en el switch del create)
         this.playerStartPositionY = 500;    // Posición de inicio del personaje
         // 1.2) Ajustes cámara
@@ -228,9 +233,17 @@ class LevelManager extends Phaser.Scene
         //  ----GAMEPLAY----
         // 1) PERSONAJE
         // Creación personaje: setOrigin(1) IMPORTANTE (calcular colisiones)
-        this.player = this.physics.add.sprite(-200, this.playerStartPositionY, 'einar_running').setOrigin(1).setScale(this.playerResizeFactor).setSize(this.playerHitboxWidth, this.playerHitboxHeight);
+      //  this.player = this.physics.add.sprite(-200, this.playerStartPositionY, 'einar_running').setOrigin(1).setScale(this.playerResizeFactor).setSize(this.playerHitboxWidth, this.playerHitboxHeight);
+      if(PC){
+        this.player = this.physics.add.sprite(-200, this.playerStartPositionY, 'einar_running').setOrigin(1).setScale(this.playerResizeFactorPC).setSize(this.playerHitboxWidth, this.playerHitboxHeight);
         this.player.setOffset(110, 140);    // Offset respecto hitbox
-        this.player.depth = 3;  // Profundidad del sprite
+      }else{//ANIMACIONES MOVIL
+        this.player = this.physics.add.sprite(-200, 300, 'einar_running').setOrigin(1).setScale(this.playerResizeFactor).setSize(this.playerHitboxWidth, this.playerHitboxHeight/2);
+        this.player.setOffset(61.6, 78.4);    // Offset respecto hitbox
+      }
+
+      this.player.depth = 3;  // Profundidad del sprite
+
         // Dependiendo de la dificultad escogida asignamos nº vidas
         switch (userConfig.difficulty) {
             case 0:
@@ -347,6 +360,7 @@ class LevelManager extends Phaser.Scene
         this.buttonPause.setScrollFactor(0);
         this.buttonPauseSel = this.add.image(75, 33, 'selSmallRightButton');
         this.buttonPauseSel.setScale(1.5/3);
+        this.buttonPauseSel.setDepth(11);
         this.buttonPauseSel.setScrollFactor(0);
         this.buttonPauseSel.setVisible(false);
 
@@ -402,6 +416,12 @@ class LevelManager extends Phaser.Scene
         this.buttonDialog.setScrollFactor(0);
         this.buttonDialog.setVisible(false);
 
+        this.buttonDialogBOX = this.add.image(gameWidth*10.7/16, gameHeight*13.34/16, 'boxNextDialog');
+        this.buttonDialogBOX.setScale(2/3);
+        this.buttonDialogBOX.setDepth(12);
+        this.buttonDialogBOX.setScrollFactor(0);
+        this.buttonDialogBOX.alpha = 0;
+
         this.buttonDialogSel = this.add.image(gameWidth*10.7/16, gameHeight*13.34/16, 'buttonDialogSel');
         this.buttonDialogSel.setScale(2/3);
         this.buttonDialogSel.setDepth(12);
@@ -409,9 +429,16 @@ class LevelManager extends Phaser.Scene
         this.buttonDialogSel.setVisible(false);
 
         //this.buttonDialog.setScale(0.5);
-        this.buttonDialog.on('pointerover', function (pointer) {this.buttonDialogSel.setVisible(true);}, this);
-        this.buttonDialog.on('pointerout', function (pointer) {this.buttonDialogSel.setVisible(false);}, this);
-        this.buttonDialog.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.nextDialog());
+        if(PC){
+          this.buttonDialog.on('pointerover', function (pointer) {this.buttonDialogSel.setVisible(true);}, this);
+          this.buttonDialog.on('pointerout', function (pointer) {this.buttonDialogSel.setVisible(false);}, this);
+          this.buttonDialog.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.nextDialog());
+        }else{
+          this.buttonDialogBOX.on('pointerover', function (pointer) {this.buttonDialogSel.setVisible(true);}, this);
+          this.buttonDialogBOX.on('pointerout', function (pointer) {this.buttonDialogSel.setVisible(false);}, this);
+          this.buttonDialogBOX.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.nextDialog());
+        }
+
 
         //RAVEN ravenHugin
         this.ravenHugin = this.add.image(gameWidth*11.7/16, gameHeight*8.34/16, 'ravenHugin');
@@ -550,11 +577,14 @@ class LevelManager extends Phaser.Scene
         pointerJump.setOrigin(0.5,0.5);
         pointerJump.setScale(0.5);
         pointerJump.setDepth(15);
+        pointerJump.setVisible(true);
+
 
         var pointerAttack = this.add.image(1100, 525, 'button_mobile').setInteractive();
         pointerAttack.setDepth(15);
         pointerAttack.setScale(0.5);
         pointerAttack.setOrigin(0.5,0.5);
+        pointerAttack.setVisible(true);
 
         pointerJump.setScrollFactor(0); //Los botones siempre quedan en pantalla
         pointerAttack.setScrollFactor(0);
@@ -853,20 +883,42 @@ class LevelManager extends Phaser.Scene
     // Función de creación de enemigos sin movimiento
     // xPos, yPos: posición en el mapa
     // collisionWidth, collisionHeight: tamaño de la hitbox
-            generateStillEnemy(xPos, yPos = this.levelGroundHeight - 20, collisionWidth = 190, collisionHeight = 110) {
+
+
+    generateStillEnemy(xPos, yPos = this.levelGroundHeight - 20, collisionWidth = 190, collisionHeight = 110) {
+
+      if(PC){
         if (this.hasCicled) {
             yPos += 40;
         }
         xPos += 75;
-        let newEnemy = this.enemies.create(xPos, yPos, 'draugr').setOrigin(1).setScale(this.playerResizeFactor);
-        newEnemy.body.setSize(collisionWidth, collisionHeight);
-        newEnemy.setOffset(135, 165);
+        let newEnemy = this.enemies.create(xPos, yPos, 'draugr').setOrigin(1).setScale(this.playerResizeFactorPC);
+        newEnemy.setSize(collisionWidth, collisionHeight);
+        newEnemy.body.setOffset(135, 165);
         newEnemy.depth = 3;
         newEnemy.isStill = true;
         let newTrigger = this.triggers.create(xPos - 250, this.levelGroundHeight, 'dot').setVisible(false).refreshBody();
-        newTrigger.body.setSize(500, 500);   // Trigger que hará que el enemigo se mueva cuando entre el personaje en contacto
+        newTrigger.body.setSize(500, 500);  // Trigger que hará que el enemigo se mueva cuando entre el personaje en contacto
         newTrigger.associatedEnemy = newEnemy;
         return this.minDistStillEnemy;
+      }else{ //ANIMACIONES MOVIL
+        if (this.hasCicled) {
+            yPos += 40;
+        }
+        xPos += 75;
+        let newEnemy = this.enemies.create(xPos, yPos, 'draugr').setOrigin(1).setScale(0.56);
+        newEnemy.setSize(collisionHeight, collisionWidth);
+        //newEnemy.body.setOffset(135, 165);
+        newEnemy.body.setOffset(75.6, 92.4);
+        newEnemy.depth = 3;
+        newEnemy.isStill = true;
+        let newTrigger = this.triggers.create(xPos - 250, this.levelGroundHeight, 'dot').setVisible(true).refreshBody();
+        newTrigger.body.setSize(280, 280);
+        //newTrigger.body.setSize(500, 500);  // Trigger que hará que el enemigo se mueva cuando entre el personaje en contacto
+        newTrigger.associatedEnemy = newEnemy;
+        return this.minDistStillEnemy;
+      }
+
     }
 
     // Función de creación de enemigos con movimiento al acercarse el jugador EN DESUSO
@@ -1257,6 +1309,11 @@ class LevelManager extends Phaser.Scene
                 delay: timeFadeOut,
                 callback: function() {
 
+                  if(!PC){
+                    pointerJump.setVisible(false);
+                    pointerAttack.setVisible(false);
+                  }
+
                     this.dialogSound.setLoop(true);
                     this.dialogSound.play();
 
@@ -1288,6 +1345,7 @@ class LevelManager extends Phaser.Scene
                           delay: 1100,
                           callback: function() {
                             this.buttonDialog.setVisible(true);
+                            this.buttonDialogBOX.alpha = 0.0001;
                           },
                         callbackScope: this
                         }, this);
@@ -1353,6 +1411,7 @@ class LevelManager extends Phaser.Scene
           //this.DialogText.setVisible(false);
           //this.DialogBg.setVisible(false);
           this.buttonDialog.setVisible(false);
+          this.buttonDialogBOX.alpha = 0;
           this.buttonDialogSel.setVisible(false);
           //this.ravenHugin.setVisible(false);
           this.DialogShowing=false;

@@ -28,8 +28,24 @@ class MapSelectionMenu extends Phaser.Scene{
     //WORLD 1 BUTTON
     this.botonMundo1 = this.add.image(gameWidth*5.85/16, gameHeight*6.95/16, 'World1Button');
     this.botonMundo1.setScale(2/3);
-    this.botonMundo1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.ActivatePaper(1));
     this.botonMundo1.alpha = (0.0001);
+
+    this.botonMundo1BOX = this.add.image(gameWidth*5.85/16, gameHeight*6.95/16, 'boxWorld1');
+    this.botonMundo1BOX.setScale(2/3);
+    this.botonMundo1BOX.alpha = 0.001;
+
+    this.nameWorld1 = this.add.image(gameWidth*5.85/16, gameHeight*5.7/16, 'NameWorld1');
+    this.nameWorld1.setScale(1.5/3);
+    this.nameWorld1.setVisible(false);
+
+    if(PC){
+      this.botonMundo1.on('pointerover', function (pointer) {this.nameWorld1.setVisible(true);}, this);
+      this.botonMundo1.on('pointerout', function (pointer) {this.nameWorld1.setVisible(false);}, this);
+      this.botonMundo1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.ActivatePaper(1));
+    }else{
+      this.botonMundo1BOX.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.ActivatePaper(1));
+    }
+
 
 
     /*//WORLD 2 BUTTON
@@ -73,17 +89,29 @@ class MapSelectionMenu extends Phaser.Scene{
     this.paperDescription1.setScale(2/3);
     this.paperDescription1.setVisible(false);
 
-    //BOTON OPCIONES
-    this.playButtonMSM = this.add.image(gameWidth*13.7/16, gameHeight*13.8/16, 'playButton');
+    //PLAY BUTTON
+    this.playButtonMSM = this.add.image(gameWidth*13.7/16, gameHeight*13.83/16, 'playButton');
     this.playButtonMSM.setScale(2/3);
     this.playButtonMSM.setVisible(false);
-    this.playButtonMSMSel = this.add.image(gameWidth*13.7/16, gameHeight*13.8/16, 'playButtonSel');
+
+    this.playButtonBOX = this.add.image(gameWidth*13.7/16, gameHeight*13.83/16, 'boxPlayArrow');
+    this.playButtonBOX.setScale(2/3);
+    this.playButtonBOX.alpha = 0;
+
+    this.playButtonMSMSel = this.add.image(gameWidth*13.7/16, gameHeight*13.83/16, 'playButtonSel');
     this.playButtonMSMSel.setScale(2/3);
     this.playButtonMSMSel.setVisible(false);
     //Acciones Boton
-    this.playButtonMSM.on('pointerover', function (pointer) {this.playButtonMSMSel.setVisible(true);}, this);
-    this.playButtonMSM.on('pointerout', function (pointer) {this.playButtonMSMSel.setVisible(false);}, this);
-    this.playButtonMSM.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.World1Menu());
+    if(PC){
+      this.playButtonMSM.on('pointerover', function (pointer) {this.playButtonMSMSel.setVisible(true);}, this);
+      this.playButtonMSM.on('pointerout', function (pointer) {this.playButtonMSMSel.setVisible(false);}, this);
+      this.playButtonMSM.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.World1Menu());
+    }else{
+      this.playButtonBOX.on('pointerover', function (pointer) {this.playButtonMSMSel.setVisible(true);}, this);
+      this.playButtonBOX.on('pointerout', function (pointer) {this.playButtonMSMSel.setVisible(false);}, this);
+      this.playButtonBOX.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.World1Menu());
+    }
+
 
     //BOTON TIENDA
     this.optionsButtonMSM = this.add.image(gameWidth*14.5/16, gameHeight*1.1/16, 'deselectedButtonSmall');
@@ -129,6 +157,7 @@ class MapSelectionMenu extends Phaser.Scene{
       this.fullScreenMSM.setVisible(false);
       this.optButtonText.setVisible(false);
       this.optionsButtonMSM.setVisible(false);
+      this.playButtonBOX.alpha = 0.0001;
     }
 
   }
@@ -141,6 +170,7 @@ class MapSelectionMenu extends Phaser.Scene{
     this.optButtonText.setVisible(true);
     this.fullScreenMSM.setVisible(true);
     this.optionsButtonMSM.setVisible(true);
+    this.playButtonBOX.alpha = 0;
   }
 
   BackMainMenu(){

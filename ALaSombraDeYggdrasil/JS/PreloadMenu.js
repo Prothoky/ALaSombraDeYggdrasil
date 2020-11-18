@@ -290,11 +290,23 @@ class PreloadMenu extends Phaser.Scene{
       //this.load.audio('Poem', './ASSETS/Sounds/Poema.mp3');
 */
 
-      this.load.spritesheet('einar_running', 'ASSETS/Gameplay/animacion_correr.png', { frameWidth: 400, frameHeight: 350 });
-      this.load.spritesheet('einar_jumping', 'ASSETS/Gameplay/animacion_saltar.png', { frameWidth: 400, frameHeight: 350 });
-      this.load.spritesheet('einar_attack', 'ASSETS/Gameplay/animacion_atacar.png', { frameWidth: 400, frameHeight: 350 });
-      this.load.spritesheet('eagle_attacking', 'ASSETS/Gameplay/eagle_attacking.png', { frameWidth: 650, frameHeight: 550 });
-      this.load.spritesheet('draugr_attacking', 'ASSETS/Gameplay/animacion_atacar_draugr.png', { frameWidth: 450, frameHeight: 350 });
+  if(PC){
+    this.load.spritesheet('einar_running', 'ASSETS/Gameplay/animacion_correrPC.png', { frameWidth: 400, frameHeight: 350 });
+    this.load.spritesheet('einar_jumping', 'ASSETS/Gameplay/animacion_saltarPC.png', { frameWidth: 400, frameHeight: 350 });
+    this.load.spritesheet('einar_attack', 'ASSETS/Gameplay/animacion_atacarPC.png', { frameWidth: 400, frameHeight: 350 });
+    this.load.spritesheet('eagle_attacking', 'ASSETS/Gameplay/eagle_attacking.png', { frameWidth: 650, frameHeight: 550 });
+    //this.load.spritesheet('eagle_attacking', 'ASSETS/Gameplay/eagle_attacking.png', { frameWidth: 364, frameHeight: 308 }); para escalarlo
+    this.load.spritesheet('draugr_attacking', 'ASSETS/Gameplay/animacion_atacar_draugrPC.png', { frameWidth: 450, frameHeight: 350 });
+  }else{
+    this.load.spritesheet('einar_running', 'ASSETS/Gameplay/animacion_correr.png', { frameWidth: 224, frameHeight: 196 });
+    this.load.spritesheet('einar_jumping', 'ASSETS/Gameplay/animacion_saltar.png', { frameWidth: 224, frameHeight: 196 });
+    this.load.spritesheet('einar_attack', 'ASSETS/Gameplay/animacion_atacar.png', { frameWidth: 224, frameHeight: 196 });
+    this.load.spritesheet('eagle_attacking', 'ASSETS/Gameplay/eagle_attacking.png', { frameWidth: 650, frameHeight: 550 });
+    //this.load.spritesheet('eagle_attacking', 'ASSETS/Gameplay/eagle_attacking.png', { frameWidth: 364, frameHeight: 308 }); para escalarlo
+    this.load.spritesheet('draugr_attacking', 'ASSETS/Gameplay/animacion_atacar_draugr.png', { frameWidth: 252, frameHeight: 196 });
+
+  }
+
 
       this.load.on("complete", () => {
       	percentText.destroy();
@@ -302,10 +314,10 @@ class PreloadMenu extends Phaser.Scene{
         progressBox.destroy();
         console.log("Complete");
 	  });
-    
+
   }
 
-  create(){    
+  create(){
 
     phaserJSON = this.cache.json.get('Data');
 
@@ -320,7 +332,7 @@ class PreloadMenu extends Phaser.Scene{
       detune: 0,
       seek: 0,
       loop: false,
-      delay: 0});    
+      delay: 0});
 
     // Animaciones
     this.anims.create({
@@ -372,7 +384,7 @@ class PreloadMenu extends Phaser.Scene{
       completeDelay: 500,
       onComplete:()=>this.scene.start('MainMenu')
     })
-    
+
     let logosound=0;
     this.logo.setInteractive({ useHandCursor: true});
     this.logo.on('pointerdown', () => {
@@ -382,7 +394,7 @@ class PreloadMenu extends Phaser.Scene{
         context.resume();
         this.soundStart.play();
       }
-      
+
     });
 
   }

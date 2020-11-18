@@ -80,23 +80,23 @@ class World1Map extends Phaser.Scene{
     this.shopButtonW1MSel = this.add.image(gameWidth*13.45/16, gameHeight*1.1/16, 'selSmallRightButton');
     this.shopButtonW1MSel.setScale(1.5/3);
     this.shopButtonW1MSel.setVisible(false);
-    this.shopButtonText = this.add.text(gameWidth*12.85/16, gameHeight*0.92/16,  stringsJSON.Buttons.shop, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
+    this.shopButtonText = this.add.text(gameWidth*12.95/16, gameHeight*0.93/16,  stringsJSON.Buttons.shop, {fontFamily: "Acadian_Runes",fontSize: "15px", align: 'center', fill: "#481d18"});
     if (userConfig.lang == "en"){
-      this.shopButtonText.setX(gameWidth*13 /16);
+      this.shopButtonText.setX(gameWidth*13.1/16);
     }
     this.shopButtonW1M.on('pointerover', function (pointer) {this.shopButtonW1MSel.setVisible(true);}, this);
     this.shopButtonW1M.on('pointerout', function (pointer) {this.shopButtonW1MSel.setVisible(false);}, this);
     this.shopButtonW1M.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.ShopMenuW1M());
 
     //OPTIONS
-    this.optionsButtonMSM = this.add.image(gameWidth*14.5/16, gameHeight*1.1/16, 'deselectedButtonSmall');
+    this.optionsButtonMSM = this.add.image(gameWidth*10.8/16, gameHeight*1.1/16, 'deselectedButtonSmall');
     this.optionsButtonMSM.setScale(1.5/3);
-    this.optionsButtonMSMSel = this.add.image(gameWidth*14.7/16, gameHeight*1.1/16, 'selSmallRightButton');
+    this.optionsButtonMSMSel = this.add.image(gameWidth*10.6/16, gameHeight*1.1/16, 'selSmallLeftButton');
     this.optionsButtonMSMSel.setScale(1.5/3);
     this.optionsButtonMSMSel.setVisible(false);
-    this.opButtonText = this.add.text(gameWidth*14.1/16, gameHeight*0.92/16,  stringsJSON.Buttons.options, {fontFamily: "Acadian_Runes",fontSize: "15px", align: 'center', fill: "#481d18"});
+    this.opButtonText = this.add.text(gameWidth*10.4/16, gameHeight*0.93/16,  stringsJSON.Buttons.options, {fontFamily: "Acadian_Runes",fontSize: "15px", align: 'center', fill: "#481d18"});
     if (userConfig.lang == "en"){
-      this.opButtonText.setX(gameWidth*14.1/16);
+      this.opButtonText.setX(gameWidth*10.45/16);
     }
     this.optionsButtonMSM.on('pointerover', function (pointer) {this.optionsButtonMSMSel.setVisible(true);}, this);
     this.optionsButtonMSM.on('pointerout', function (pointer) {this.optionsButtonMSMSel.setVisible(false);}, this);
@@ -139,9 +139,6 @@ class World1Map extends Phaser.Scene{
     //Boton Desbloqueado
     this.buttonNode0 = this.add.image(gameWidth*14.6/16, gameHeight*10.05/16, 'ButtonNodePrinc');
     this.buttonNode0.setScale(2/3);
-    this.buttonNode0.on('pointerover', function (pointer) {this.buttonNode0SelClick.setVisible(true);}, this);
-    this.buttonNode0.on('pointerout', function (pointer) {this.buttonNode0SelClick.setVisible(false);}, this);
-    this.buttonNode0.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(0));
 
     //Boton Seleccionado
     this.buttonNode0Sel = this.add.image(gameWidth*14.6/16, gameHeight*10.05/16, 'ButtonNodePrincSel');
@@ -157,13 +154,24 @@ class World1Map extends Phaser.Scene{
     this.level0Name.setScale(1.8/3);
     this.level0Name.setVisible(false);
 
+
+    if(PC){
+      this.buttonNode0.on('pointerover', function (pointer) {this.buttonNode0Sel.setVisible(true);this.level0Name.setVisible(true);}, this);
+      this.buttonNode0.on('pointerout', function (pointer) {this.buttonNode0Sel.setVisible(false);this.level0Name.setVisible(false);}, this);
+      this.buttonNode0.setInteractive({ useHandCursor: true}).on('pointerdown', () => (levelIndex= 0, this.StartPlaying()));
+    }else{
+      this.buttonNode0.on('pointerover', function (pointer) {this.buttonNode0SelClick.setVisible(true);}, this);
+      this.buttonNode0.on('pointerout', function (pointer) {this.buttonNode0SelClick.setVisible(false);}, this);
+      this.buttonNode0.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(0));
+    }
+
     //NIVEL 1
     //Iluminacion Boton
     this.buttonNode1SelClick = this.add.image(gameWidth*11.41/16, gameHeight*13.15/16, 'ButtonNodePrincSel');
     this.buttonNode1SelClick.setVisible(false);
     this.buttonNode1SelClick.setScale(2/3);
     //Boton Desbloqueado
-    this.buttonNode1 = this.add.image(gameWidth*11.41/16, gameHeight*13.2/16, 'ButtonNodePrinc');
+    this.buttonNode1 = this.add.image(gameWidth*11.41/16, gameHeight*13.24/16, 'ButtonNodePrinc');
     this.buttonNode1.setScale(2/3);
     this.buttonNode1.setDepth(1);
     this.buttonNode1.setVisible(false);
@@ -173,9 +181,9 @@ class World1Map extends Phaser.Scene{
     this.buttonNode1Sel.setDepth(2);
     this.buttonNode1Sel.setVisible(false);
     //Funciones Boton
-    this.buttonNode1.on('pointerover', function (pointer) {this.buttonNode1SelClick.setVisible(true);}, this);
+    /*this.buttonNode1.on('pointerover', function (pointer) {this.buttonNode1SelClick.setVisible(true);}, this);
     this.buttonNode1.on('pointerout', function (pointer) {this.buttonNode1SelClick.setVisible(false);}, this);
-    this.buttonNode1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(1));
+    this.buttonNode1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(1));*/
     //Fondo con nombre
     if(userConfig.lang == "es"){
       this.level1Name = this.add.image(gameWidth*11.41/16, gameHeight*11.8/16, 'Nivel1Name');
@@ -184,6 +192,16 @@ class World1Map extends Phaser.Scene{
     }
     this.level1Name.setScale(1.8/3);
     this.level1Name.setVisible(false);
+
+    if(PC){
+      this.buttonNode1.on('pointerover', function (pointer) {this.buttonNode1Sel.setVisible(true);this.level1Name.setVisible(true);}, this);
+      this.buttonNode1.on('pointerout', function (pointer) {this.buttonNode1Sel.setVisible(false);this.level1Name.setVisible(false);}, this);
+      this.buttonNode1.setInteractive({ useHandCursor: true}).on('pointerdown', () => (levelIndex= 1, this.StartPlaying()));
+    }else{
+      this.buttonNode1.on('pointerover', function (pointer) {this.buttonNode1SelClick.setVisible(true);}, this);
+      this.buttonNode1.on('pointerout', function (pointer) {this.buttonNode1SelClick.setVisible(false);}, this);
+      this.buttonNode1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(1));
+    }
 
     //SUBNIVEL 1.1
     //Iluminacion Boton
@@ -203,13 +221,23 @@ class World1Map extends Phaser.Scene{
     this.buttonSubnode1_1Sel.setScale(2/3);
     this.buttonSubnode1_1Sel.setVisible(false);
     //Funciones Boton
-    this.buttonSubnode1_1.on('pointerover', function (pointer) {this.buttonSubode11SelClick.setVisible(true);}, this);
+    /*this.buttonSubnode1_1.on('pointerover', function (pointer) {this.buttonSubode11SelClick.setVisible(true);}, this);
     this.buttonSubnode1_1.on('pointerout', function (pointer) {this.buttonSubode11SelClick.setVisible(false);}, this);
-    this.buttonSubnode1_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(10));
+    this.buttonSubnode1_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(10));*/
     //Fondo con nombre
     this.level1_1Name = this.add.image(gameWidth*13.4/16, gameHeight*12.3/16, 'Nivel1_1Name');
     this.level1_1Name.setScale(1.7/3);
     this.level1_1Name.setVisible(false);
+
+    if(PC){
+      this.buttonSubnode1_1.on('pointerover', function (pointer) {this.buttonSubnode1_1Sel.setVisible(true);this.level1_1Name.setVisible(true);}, this);
+      this.buttonSubnode1_1.on('pointerout', function (pointer) {this.buttonSubnode1_1Sel.setVisible(false);this.level1_1Name.setVisible(false);}, this);
+      this.buttonSubnode1_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => (levelIndex= 10, this.StartPlaying()));
+    }else{
+      this.buttonSubnode1_1.on('pointerover', function (pointer) {this.buttonSubode11SelClick.setVisible(true);}, this);
+      this.buttonSubnode1_1.on('pointerout', function (pointer) {this.buttonSubode11SelClick.setVisible(false);}, this);
+      this.buttonSubnode1_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(10));
+    }
 
 
     //NIVEL 2
@@ -226,9 +254,9 @@ class World1Map extends Phaser.Scene{
     this.buttonNode2Sel.setScale(2/3);
     this.buttonNode2Sel.setVisible(false);
     //Funciones Boton
-    this.buttonNode2.on('pointerover', function (pointer) {this.buttonNode2SelClick.setVisible(true);}, this);
+  /*  this.buttonNode2.on('pointerover', function (pointer) {this.buttonNode2SelClick.setVisible(true);}, this);
     this.buttonNode2.on('pointerout', function (pointer) {this.buttonNode2SelClick.setVisible(false);}, this);
-    this.buttonNode2.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(2));
+    this.buttonNode2.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(2));*/
     //Fondo con nombre y boton JUGAR
     if(userConfig.lang == "es"){
       this.level2Name = this.add.image(gameWidth*10.18/16, gameHeight*10.1/16, 'Nivel2Name');
@@ -241,6 +269,16 @@ class World1Map extends Phaser.Scene{
       this.level2Name.setScale(2.1/3);
     }
     this.level2Name.setVisible(false);
+
+    if(PC){
+      this.buttonNode2.on('pointerover', function (pointer) {this.buttonNode2Sel.setVisible(true);this.level2Name.setVisible(true);}, this);
+      this.buttonNode2.on('pointerout', function (pointer) {this.buttonNode2Sel.setVisible(false);this.level2Name.setVisible(false);}, this);
+      this.buttonNode2.setInteractive({ useHandCursor: true}).on('pointerdown', () => (levelIndex= 2, this.StartPlaying()));
+    }else{
+      this.buttonNode2.on('pointerover', function (pointer) {this.buttonNode2SelClick.setVisible(true);}, this);
+      this.buttonNode2.on('pointerout', function (pointer) {this.buttonNode2SelClick.setVisible(false);}, this);
+      this.buttonNode2.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(2));
+    }
 
     //SUBNIVEL 2.1
     //Iluminacion Boton
@@ -260,9 +298,9 @@ class World1Map extends Phaser.Scene{
     this.buttonSubnode2_1Sel.setScale(2/3);
     this.buttonSubnode2_1Sel.setVisible(false);
     //Funciones Boton
-    this.buttonSubnode2_1.on('pointerover', function (pointer) {this.buttonSubode21SelClick.setVisible(true);}, this);
+    /*this.buttonSubnode2_1.on('pointerover', function (pointer) {this.buttonSubode21SelClick.setVisible(true);}, this);
     this.buttonSubnode2_1.on('pointerout', function (pointer) {this.buttonSubode21SelClick.setVisible(false);}, this);
-    this.buttonSubnode2_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(11));
+    this.buttonSubnode2_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(11));*/
     //Fondo con nombre
     if(userConfig.lang == "es"){
       this.level2_1Name = this.add.image(gameWidth*8.3/16, gameHeight*10.5/16, 'Nivel2_1Name');
@@ -271,6 +309,16 @@ class World1Map extends Phaser.Scene{
     }
     this.level2_1Name.setScale(1.8/3);
     this.level2_1Name.setVisible(false);
+
+    if(PC){
+      this.buttonSubnode2_1.on('pointerover', function (pointer) {this.buttonSubnode2_1Sel.setVisible(true);this.level2_1Name.setVisible(true);}, this);
+      this.buttonSubnode2_1.on('pointerout', function (pointer) {this.buttonSubnode2_1Sel.setVisible(false);this.level2_1Name.setVisible(false);}, this);
+      this.buttonSubnode2_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => (levelIndex= 11, this.StartPlaying()));
+    }else{
+      this.buttonSubnode2_1.on('pointerover', function (pointer) {this.buttonSubode21SelClick.setVisible(true);}, this);
+      this.buttonSubnode2_1.on('pointerout', function (pointer) {this.buttonSubode21SelClick.setVisible(false);}, this);
+      this.buttonSubnode2_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(11));
+    }
 
     //NIVEL 3
     //Boton Iluminado
@@ -286,9 +334,9 @@ class World1Map extends Phaser.Scene{
     this.buttonNode3Sel.setScale(2/3);
     this.buttonNode3Sel.setVisible(false);
     //Funciones BOTON
-    this.buttonNode3.on('pointerover', function (pointer) {this.buttonNode3SelClick.setVisible(true);}, this);
+    /*this.buttonNode3.on('pointerover', function (pointer) {this.buttonNode3SelClick.setVisible(true);}, this);
     this.buttonNode3.on('pointerout', function (pointer) {this.buttonNode3SelClick.setVisible(false);}, this);
-    this.buttonNode3.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(3));
+    this.buttonNode3.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(3));*/
     //Fondo con nombre y boton JUGAR
     if(userConfig.lang == "es"){
       this.level3Name = this.add.image(gameWidth*7.4/16, gameHeight*12.7/16, 'Nivel3Name');
@@ -297,6 +345,16 @@ class World1Map extends Phaser.Scene{
     }
     this.level3Name.setScale(1.8/3);
     this.level3Name.setVisible(false);
+
+    if(PC){
+      this.buttonNode3.on('pointerover', function (pointer) {this.buttonNode3Sel.setVisible(true);this.level3Name.setVisible(true);}, this);
+      this.buttonNode3.on('pointerout', function (pointer) {this.buttonNode3Sel.setVisible(false);this.level3Name.setVisible(false);}, this);
+      this.buttonNode3.setInteractive({ useHandCursor: true}).on('pointerdown', () => (levelIndex= 3, this.StartPlaying()));
+    }else{
+      this.buttonNode3.on('pointerover', function (pointer) {this.buttonNode3SelClick.setVisible(true);}, this);
+      this.buttonNode3.on('pointerout', function (pointer) {this.buttonNode3SelClick.setVisible(false);}, this);
+      this.buttonNode3.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(3));
+    }
 
     //NIVEL 4
     //Boton Iluminado
@@ -312,9 +370,9 @@ class World1Map extends Phaser.Scene{
     this.buttonNode4Sel.setScale(2/3);
     this.buttonNode4Sel.setVisible(false);
     //Funciones BOTON
-    this.buttonNode4.on('pointerover', function (pointer) {this.buttonNode4SelClick.setVisible(true);}, this);
+    /*this.buttonNode4.on('pointerover', function (pointer) {this.buttonNode4SelClick.setVisible(true);}, this);
     this.buttonNode4.on('pointerout', function (pointer) {this.buttonNode4SelClick.setVisible(false);}, this);
-    this.buttonNode4.setInteractive({ useHandCursor: true}).on('pointerdown', () =>  this.AccessToLevel(4));
+    this.buttonNode4.setInteractive({ useHandCursor: true}).on('pointerdown', () =>  this.AccessToLevel(4));*/
     //Fondo con nombre y boton JUGAR
     if(userConfig.lang == "es"){
       this.level4Name = this.add.image(gameWidth*3.025/16, gameHeight*9.95/16, 'Nivel4Name');
@@ -324,6 +382,16 @@ class World1Map extends Phaser.Scene{
     this.level4Name.setScale(2/3);
     this.level4Name.setDepth(2);
     this.level4Name.setVisible(false);
+
+    if(PC){
+      this.buttonNode4.on('pointerover', function (pointer) {this.buttonNode4Sel.setVisible(true);this.level4Name.setVisible(true);}, this);
+      this.buttonNode4.on('pointerout', function (pointer) {this.buttonNode4Sel.setVisible(false);this.level4Name.setVisible(false);}, this);
+      this.buttonNode4.setInteractive({ useHandCursor: true}).on('pointerdown', () => (levelIndex= 4, this.StartPlaying()));
+    }else{
+      this.buttonNode4.on('pointerover', function (pointer) {this.buttonNode4SelClick.setVisible(true);}, this);
+      this.buttonNode4.on('pointerout', function (pointer) {this.buttonNode4SelClick.setVisible(false);}, this);
+      this.buttonNode4.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(4));
+    }
 
     //SUBNIVEL 4.1
     //Iluminacion Boton
@@ -346,7 +414,7 @@ class World1Map extends Phaser.Scene{
     this.buttonSubnode4_1Sel.setDepth(1);
     this.buttonSubnode4_1Sel.setVisible(false);
     //Funciones Boton
-    this.buttonSubnode4_1.on('pointerover', function (pointer) {this.buttonSubode41SelClick.setVisible(true);}, this);
+    /*this.buttonSubnode4_1.on('pointerover', function (pointer) {this.buttonSubode41SelClick.setVisible(true);}, this);
     this.buttonSubnode4_1.on('pointerout', function (pointer) {this.buttonSubode41SelClick.setVisible(false);}, this);
     this.buttonSubnode4_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(12));
 
@@ -359,6 +427,16 @@ class World1Map extends Phaser.Scene{
     this.level4_1Name = this.add.image(gameWidth*2.53/16, gameHeight*5.9/16, 'Nivel4_1Name');
     this.level4_1Name.setScale(1.8/3);
     this.level4_1Name.setVisible(false);
+
+    if(PC){
+      this.buttonSubnode4_1.on('pointerover', function (pointer) {this.buttonSubnode4_1Sel.setVisible(true);this.level4_1Name.setVisible(true);}, this);
+      this.buttonSubnode4_1.on('pointerout', function (pointer) {this.buttonSubnode4_1Sel.setVisible(false);this.level4_1Name.setVisible(false);}, this);
+      this.buttonSubnode4_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => (levelIndex= 12, this.StartPlaying()));
+    }else{
+      this.buttonSubnode4_1.on('pointerover', function (pointer) {this.buttonSubode41SelClick.setVisible(true);}, this);
+      this.buttonSubnode4_1.on('pointerout', function (pointer) {this.buttonSubode41SelClick.setVisible(false);}, this);
+      this.buttonSubnode4_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(12));
+    }
 
     //SUBNIVEL 4.2
     //Iluminacion Boton
@@ -378,7 +456,7 @@ class World1Map extends Phaser.Scene{
     this.buttonSubnode4_2Sel.setScale(2/3);
     this.buttonSubnode4_2Sel.setVisible(false);
     //Funciones Boton
-    this.buttonSubnode4_2.on('pointerover', function (pointer) {this.buttonSubode42SelClick.setVisible(true);}, this);
+    /*this.buttonSubnode4_2.on('pointerover', function (pointer) {this.buttonSubode42SelClick.setVisible(true);}, this);
     this.buttonSubnode4_2.on('pointerout', function (pointer) {this.buttonSubode42SelClick.setVisible(false);}, this);
     this.buttonSubnode4_2.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(13));
 
@@ -391,6 +469,16 @@ class World1Map extends Phaser.Scene{
     this.level4_2Name = this.add.image(gameWidth*4.7/16, gameHeight*7.3/16, 'Nivel4_2Name');
     this.level4_2Name.setScale(1.8/3);
     this.level4_2Name.setVisible(false);
+
+    if(PC){
+      this.buttonSubnode4_2.on('pointerover', function (pointer) {this.buttonSubnode4_2Sel.setVisible(true);this.level4_2Name.setVisible(true);}, this);
+      this.buttonSubnode4_2.on('pointerout', function (pointer) {this.buttonSubnode4_2Sel.setVisible(false);this.level4_2Name.setVisible(false);}, this);
+      this.buttonSubnode4_2.setInteractive({ useHandCursor: true}).on('pointerdown', () => (levelIndex= 13, this.StartPlaying()));
+    }else{
+      this.buttonSubnode4_2.on('pointerover', function (pointer) {this.buttonSubode42SelClick.setVisible(true);}, this);
+      this.buttonSubnode4_2.on('pointerout', function (pointer) {this.buttonSubode42SelClick.setVisible(false);}, this);
+      this.buttonSubnode4_2.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(13));
+    }
 
     //NIVEL 5
     //Boton Iluminado
@@ -419,6 +507,16 @@ class World1Map extends Phaser.Scene{
     this.level5Name.setDepth(3);
     this.level5Name.setVisible(false);
 
+    if(PC){
+      this.buttonNode5.on('pointerover', function (pointer) {this.buttonNode5Sel.setVisible(true);this.level5Name.setVisible(true);}, this);
+      this.buttonNode5.on('pointerout', function (pointer) {this.buttonNode5Sel.setVisible(false);this.level5Name.setVisible(false);}, this);
+      this.buttonNode5.setInteractive({ useHandCursor: true}).on('pointerdown', () => (levelIndex= 5, this.StartPlaying()));
+    }else{
+      this.buttonNode5.on('pointerover', function (pointer) {this.buttonNode5SelClick.setVisible(true);}, this);
+      this.buttonNode5.on('pointerout', function (pointer) {this.buttonNode5SelClick.setVisible(false);}, this);
+      this.buttonNode5.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(5));
+    }
+
     //SUBNIVEL 5.1
     //Iluminacion Boton
     this.buttonSubode51SelClick = this.add.image(gameWidth*3.2/16, gameHeight*1.9/16, 'ButtonSubNodeSel');
@@ -440,9 +538,9 @@ class World1Map extends Phaser.Scene{
     this.buttonSubnode5_1Sel.setDepth(2);
     this.buttonSubnode5_1Sel.setVisible(false);
     //Funciones Botones
-    this.buttonSubnode5_1.on('pointerover', function (pointer) {this.buttonSubode51SelClick.setVisible(true);}, this);
+    /*this.buttonSubnode5_1.on('pointerover', function (pointer) {this.buttonSubode51SelClick.setVisible(true);}, this);
     this.buttonSubnode5_1.on('pointerout', function (pointer) {this.buttonSubode51SelClick.setVisible(false);}, this);
-    this.buttonSubnode5_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(14));
+    this.buttonSubnode5_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(14));*/
     //Fondo con nombre
     if(userConfig.lang == "es"){
       this.level5_1Name = this.add.image(gameWidth*3.2/16, gameHeight*0.7/16, 'Nivel5_1Name');
@@ -451,6 +549,16 @@ class World1Map extends Phaser.Scene{
     }
     this.level5_1Name.setScale(1.8/3);
     this.level5_1Name.setVisible(false);
+
+    if(PC){
+      this.buttonSubnode5_1.on('pointerover', function (pointer) {this.buttonSubnode5_1Sel.setVisible(true);this.level5_1Name.setVisible(true);}, this);
+      this.buttonSubnode5_1.on('pointerout', function (pointer) {this.buttonSubnode5_1Sel.setVisible(false);this.level5_1Name.setVisible(false);}, this);
+      this.buttonSubnode5_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => (levelIndex= 14, this.StartPlaying()));
+    }else{
+      this.buttonSubnode5_1.on('pointerover', function (pointer) {this.buttonSubode51SelClick.setVisible(true);}, this);
+      this.buttonSubnode5_1.on('pointerout', function (pointer) {this.buttonSubode51SelClick.setVisible(false);}, this);
+      this.buttonSubnode5_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(14));
+    }
 
     //SUBNIVEL 5.2
     //Iluminacion Boton
@@ -470,9 +578,9 @@ class World1Map extends Phaser.Scene{
     this.buttonSubnode5_2Sel.setScale(2/3);
     this.buttonSubnode5_2Sel.setVisible(false);
     //Funciones Boton
-    this.buttonSubnode5_2.on('pointerover', function (pointer) {this.buttonSubode52SelClick.setVisible(true);}, this);
+  /*  this.buttonSubnode5_2.on('pointerover', function (pointer) {this.buttonSubode52SelClick.setVisible(true);}, this);
     this.buttonSubnode5_2.on('pointerout', function (pointer) {this.buttonSubode52SelClick.setVisible(false);}, this);
-    this.buttonSubnode5_2.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(15));
+    this.buttonSubnode5_2.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(15));*/
 
     //Fondo con nombre
     if(userConfig.lang == "es"){
@@ -482,6 +590,16 @@ class World1Map extends Phaser.Scene{
     }
     this.level5_2Name.setScale(1.8/3);
     this.level5_2Name.setVisible(false);
+
+    if(PC){
+      this.buttonSubnode5_2.on('pointerover', function (pointer) {this.buttonSubnode5_2Sel.setVisible(true);this.level5_2Name.setVisible(true);}, this);
+      this.buttonSubnode5_2.on('pointerout', function (pointer) {this.buttonSubnode5_2Sel.setVisible(false);this.level5_2Name.setVisible(false);}, this);
+      this.buttonSubnode5_2.setInteractive({ useHandCursor: true}).on('pointerdown', () => (levelIndex= 15, this.StartPlaying()));
+    }else{
+      this.buttonSubnode5_2.on('pointerover', function (pointer) {this.buttonSubode52SelClickbuttonSubode52SelClick.setVisible(true);}, this);
+      this.buttonSubnode5_2.on('pointerout', function (pointer) {this.buttonSubode52SelClick.setVisible(false);}, this);
+      this.buttonSubnode5_2.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(15));
+    }
 
     //NIVEL 6
     //Boton Iluminado
@@ -497,9 +615,9 @@ class World1Map extends Phaser.Scene{
     this.buttonNode6Sel.setScale(2/3);
     this.buttonNode6Sel.setVisible(false);
     //Funciones BOTON
-    this.buttonNode6.on('pointerover', function (pointer) {this.buttonNode6SelClick.setVisible(true);}, this);
+    /*this.buttonNode6.on('pointerover', function (pointer) {this.buttonNode6SelClick.setVisible(true);}, this);
     this.buttonNode6.on('pointerout', function (pointer) {this.buttonNode6SelClick.setVisible(false);}, this);
-    this.buttonNode6.setInteractive({ useHandCursor: true}).on('pointerdown', () =>  this.AccessToLevel(6));
+    this.buttonNode6.setInteractive({ useHandCursor: true}).on('pointerdown', () =>  this.AccessToLevel(6));*/
     //Fondo con nombre y boton JUGAR
     if(userConfig.lang == "es"){
       this.level6Name = this.add.image(gameWidth*7.8/16, gameHeight*1.5/16, 'Nivel6Name');
@@ -508,6 +626,16 @@ class World1Map extends Phaser.Scene{
     }
     this.level6Name.setScale(1.8/3);
     this.level6Name.setVisible(false);
+
+    if(PC){
+      this.buttonNode6.on('pointerover', function (pointer) {this.buttonNode6Sel.setVisible(true);this.level6Name.setVisible(true);}, this);
+      this.buttonNode6.on('pointerout', function (pointer) {this.buttonNode6Sel.setVisible(false);this.level6Name.setVisible(false);}, this);
+      this.buttonNode6.setInteractive({ useHandCursor: true}).on('pointerdown', () => (levelIndex= 6, this.StartPlaying()));
+    }else{
+      this.buttonNode6.on('pointerover', function (pointer) {this.buttonNode6SelClick.setVisible(true);}, this);
+      this.buttonNode6.on('pointerout', function (pointer) {this.buttonNode6SelClick.setVisible(false);}, this);
+      this.buttonNode6.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(6));
+    }
 
     //NIVEL 7
     //Boton Iluminado
@@ -523,9 +651,9 @@ class World1Map extends Phaser.Scene{
     this.buttonNode7Sel.setScale(2/3);
     this.buttonNode7Sel.setVisible(false);
     //Funciones BOTON
-    this.buttonNode7.on('pointerover', function (pointer) {this.buttonNode7SelClick.setVisible(true);}, this);
+    /*this.buttonNode7.on('pointerover', function (pointer) {this.buttonNode7SelClick.setVisible(true);}, this);
     this.buttonNode7.on('pointerout', function (pointer) {this.buttonNode7SelClick.setVisible(false);}, this);
-    this.buttonNode7.setInteractive({ useHandCursor: true}).on('pointerdown', () =>  this.AccessToLevel(7));
+    this.buttonNode7.setInteractive({ useHandCursor: true}).on('pointerdown', () =>  this.AccessToLevel(7));*/
     //Fondo con nombre y boton JUGAR
     if(userConfig.lang == "es"){
       this.level7Name = this.add.image(gameWidth*6.79/16, gameHeight*4.21/16, 'Nivel7Name');
@@ -534,6 +662,16 @@ class World1Map extends Phaser.Scene{
     }
     this.level7Name.setScale(1.8/3);
     this.level7Name.setVisible(false);
+
+    if(PC){
+      this.buttonNode7.on('pointerover', function (pointer) {this.buttonNode7Sel.setVisible(true);this.level7Name.setVisible(true);}, this);
+      this.buttonNode7.on('pointerout', function (pointer) {this.buttonNode7Sel.setVisible(false);this.level7Name.setVisible(false);}, this);
+      this.buttonNode7.setInteractive({ useHandCursor: true}).on('pointerdown', () => (levelIndex= 7, this.StartPlaying()));
+    }else{
+      this.buttonNode7.on('pointerover', function (pointer) {this.buttonNode7SelClick.setVisible(true);}, this);
+      this.buttonNode7.on('pointerout', function (pointer) {this.buttonNode7SelClick.setVisible(false);}, this);
+      this.buttonNode7.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(7));
+    }
 
     //SUBNIVEL 7.1
     //Iluminacion Boton
@@ -556,9 +694,9 @@ class World1Map extends Phaser.Scene{
     this.buttonSubnode7_1Sel.setDepth(2);
     this.buttonSubnode7_1Sel.setVisible(false);
     //Funciones boton
-    this.buttonSubnode7_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(16));
+    /*this.buttonSubnode7_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(16));
     this.buttonSubnode7_1.on('pointerover', function (pointer) {this.buttonSubode71SelClick.setVisible(true);}, this);
-    this.buttonSubnode7_1.on('pointerout', function (pointer) {this.buttonSubode71SelClick.setVisible(false);}, this);
+    this.buttonSubnode7_1.on('pointerout', function (pointer) {this.buttonSubode71SelClick.setVisible(false);}, this);*/
 
     //Fondo con nombre
     /*if(userLang == "es"){
@@ -569,6 +707,16 @@ class World1Map extends Phaser.Scene{
     this.level7_1Name = this.add.image(gameWidth*8.3/16, gameHeight*6.7/16, 'Nivel7_1Name');
     this.level7_1Name.setScale(1.8/3);
     this.level7_1Name.setVisible(false);
+
+    if(PC){
+      this.buttonSubnode7_1.on('pointerover', function (pointer) {this.buttonSubnode7_1Sel.setVisible(true);this.level7_1Name.setVisible(true);}, this);
+      this.buttonSubnode7_1.on('pointerout', function (pointer) {this.buttonSubnode7_1Sel.setVisible(false);this.level7_1Name.setVisible(false);}, this);
+      this.buttonSubnode7_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => (levelIndex= 16, this.StartPlaying()));
+    }else{
+      this.buttonSubnode7_1.on('pointerover', function (pointer) {this.buttonSubode71SelClick.setVisible(true);}, this);
+      this.buttonSubnode7_1.on('pointerout', function (pointer) {this.buttonSubode71SelClick.setVisible(false);}, this);
+      this.buttonSubnode7_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(16));
+    }
 
     //SUBNIVEL 7.2
     //Iluminacion Boton
@@ -588,13 +736,23 @@ class World1Map extends Phaser.Scene{
     this.buttonSubnode7_2Sel.setScale(2/3);
     this.buttonSubnode7_2Sel.setVisible(false);
     //Funciones Boton
-    this.buttonSubnode7_2.on('pointerover', function (pointer) {this.buttonSubode72SelClick.setVisible(true);}, this);
+    /*this.buttonSubnode7_2.on('pointerover', function (pointer) {this.buttonSubode72SelClick.setVisible(true);}, this);
     this.buttonSubnode7_2.on('pointerout', function (pointer) {this.buttonSubode72SelClick.setVisible(false);}, this);
-    this.buttonSubnode7_2.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(17));
+    this.buttonSubnode7_2.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(17));*/
 
     this.level7_2Name = this.add.image(gameWidth*9.95/16, gameHeight*6.8/16, 'Nivel7_2Name');
     this.level7_2Name.setScale(1.8/3);
     this.level7_2Name.setVisible(false);
+
+    if(PC){
+      this.buttonSubnode7_2.on('pointerover', function (pointer) {this.buttonSubnode7_2Sel.setVisible(true);this.level7_2Name.setVisible(true);}, this);
+      this.buttonSubnode7_2.on('pointerout', function (pointer) {this.buttonSubnode7_2Sel.setVisible(false);this.level7_2Name.setVisible(false);}, this);
+      this.buttonSubnode7_2.setInteractive({ useHandCursor: true}).on('pointerdown', () => (levelIndex= 17, this.StartPlaying()));
+    }else{
+      this.buttonSubnode7_2.on('pointerover', function (pointer) {this.buttonSubode72SelClick.setVisible(true);}, this);
+      this.buttonSubnode7_2.on('pointerout', function (pointer) {this.buttonSubode72SelClick.setVisible(false);}, this);
+      this.buttonSubnode7_2.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(17));
+    }
 
     //NIVEL 8
     //Boton Iluminado
@@ -610,9 +768,9 @@ class World1Map extends Phaser.Scene{
     this.buttonNode8Sel.setScale(2/3);
     this.buttonNode8Sel.setVisible(false);
     //Funciones BOTON
-    this.buttonNode8.on('pointerover', function (pointer) {this.buttonNode8SelClick.setVisible(true);}, this);
+    /*this.buttonNode8.on('pointerover', function (pointer) {this.buttonNode8SelClick.setVisible(true);}, this);
     this.buttonNode8.on('pointerout', function (pointer) {this.buttonNode8SelClick.setVisible(false);}, this);
-    this.buttonNode8.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(8));
+    this.buttonNode8.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(8));*/
     //Fondo con nombre y boton JUGAR
     if(userConfig.lang == "es"){
       this.level8Name = this.add.image(gameWidth*9.845/16, gameHeight*3.35/16, 'Nivel8Name');
@@ -621,6 +779,16 @@ class World1Map extends Phaser.Scene{
     }
     this.level8Name.setScale(1.8/3);
     this.level8Name.setVisible(false);
+
+    if(PC){
+      this.buttonNode8.on('pointerover', function (pointer) {this.buttonNode8Sel.setVisible(true);this.level8Name.setVisible(true);}, this);
+      this.buttonNode8.on('pointerout', function (pointer) {this.buttonNode8Sel.setVisible(false);this.level8Name.setVisible(false);}, this);
+      this.buttonNode8.setInteractive({ useHandCursor: true}).on('pointerdown', () => (levelIndex= 8, this.StartPlaying()));
+    }else{
+      this.buttonNode8.on('pointerover', function (pointer) {this.buttonNode8SelClick.setVisible(true);}, this);
+      this.buttonNode8.on('pointerout', function (pointer) {this.buttonNode8SelClick.setVisible(false);}, this);
+      this.buttonNode8.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(8));
+    }
 
     //NIVEL 9
     //Boton Iluminado
@@ -636,10 +804,10 @@ class World1Map extends Phaser.Scene{
     this.buttonNode9Sel.setScale(2/3);
     this.buttonNode9Sel.setVisible(false);
     //Funciones BOTON
-    this.buttonNode9.on('pointerover', function (pointer) {this.buttonNode9SelClick.setVisible(true);}, this);
+    /*this.buttonNode9.on('pointerover', function (pointer) {this.buttonNode9SelClick.setVisible(true);}, this);
     this.buttonNode9.on('pointerout', function (pointer) {this.buttonNode9SelClick.setVisible(false);}, this);
     this.buttonNode9.setInteractive({ useHandCursor: true  } )
-    .on('pointerdown', () =>  this.AccessToLevel(9));
+    .on('pointerdown', () =>  this.AccessToLevel(9));*/
     //Fondo con nombre y boton JUGAR
     if(userConfig.lang == "es"){
       this.level9Name = this.add.image(gameWidth*12.6/16, gameHeight*3.7/16, 'Nivel9Name');
@@ -648,6 +816,16 @@ class World1Map extends Phaser.Scene{
     }
     this.level9Name.setScale(1.8/3);
     this.level9Name.setVisible(false);
+
+    if(PC){
+      this.buttonNode9.on('pointerover', function (pointer) {this.buttonNode9Sel.setVisible(true);this.level9Name.setVisible(true);}, this);
+      this.buttonNode9.on('pointerout', function (pointer) {this.buttonNode9Sel.setVisible(false);this.level9Name.setVisible(false);}, this);
+      this.buttonNode9.setInteractive({ useHandCursor: true}).on('pointerdown', () => (levelIndex= 9, this.StartPlaying()));
+    }else{
+      this.buttonNode9.on('pointerover', function (pointer) {this.buttonNode9SelClick.setVisible(true);}, this);
+      this.buttonNode9.on('pointerout', function (pointer) {this.buttonNode9SelClick.setVisible(false);}, this);
+      this.buttonNode9.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AccessToLevel(9));
+    }
   }
 
   update(){
@@ -1084,8 +1262,7 @@ class World1Map extends Phaser.Scene{
         this.numActiveNodes ++;
         this.buttonSubnode7_2Sel.setVisible(true);
         this.level7_2Name.setVisible(true);
-        this.buttonSubnode7_2Sel.setInteractive({ useHandCursor: true  } )
-        .on('pointerdown', () => this.StartPlaying());
+        this.buttonSubnode7_2Sel.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.StartPlaying());
         levelIndex = 17;
         console.log("a jugar el " + level);
       }

@@ -18,6 +18,26 @@
 		    },
 		    {
 		      "type": "image",
+		      "key": "VolumeDownButtonOM",
+		      "url": "./ASSETS/Botones/BotonBajarVolumen.png"
+		    },
+		    {
+		      "type": "image",
+		      "key": "boxNextDialog",
+		      "url": "./ASSETS/Gameplay/CajaFlecha.png"
+		    },
+		    {
+		      "type": "image",
+		      "key": "boxWorld1",
+		      "url": "./ASSETS/Mundos/FondoMidgard.png"
+		    },
+		    {
+		      "type": "image",
+		      "key": "boxPlayArrow",
+		      "url": "./ASSETS/Botones/CajaFlechaJugar.png"
+		    },
+		    {
+		      "type": "image",
 		      "key": "backgroundOM",
 		      "url": "./ASSETS/Fondos/OptionsMenuBackground.jpg"
 		    },
