@@ -16,7 +16,7 @@ class LevelManager extends Phaser.Scene
         this.playerAttackDuration = 333;   // Duración del ataque
         this.playerAttackRefreshRate = 30;  // Tasa de refresco de posición de la hitbox del ataque
         this.playerAttackCounter = 0;   // Contador de tiempo del ataque
-        this.playerAttackCooldown = 450;   // Cooldown del ataque
+        this.playerAttackCooldown = 320;   // Cooldown del ataque
         this.playerAttackWidth = 70;    // Ancho de hitbox del ataque
         this.playerResizeFactor = 0.56; // Escalado del personaje
         this.playerAttackHeight = this.playerHitboxHeight * this.playerResizeFactor * 1.4;   // Alto de hitbox del ataque
@@ -163,7 +163,7 @@ class LevelManager extends Phaser.Scene
         this.cicleIteration = 1;
         this.doubleJumpEnabled = false;
         this.playerInvulnerabilityDuration = 1000;
-        this.playerAttackCooldown = 450;
+        this.playerAttackCooldown = 320;
 
         // ----CARGA DE DATOS----
         this.loadSettings();    // Carga los datos del nivel del archivo LevelConfiguration
@@ -1530,7 +1530,7 @@ class LevelManager extends Phaser.Scene
 
     killEnemyInterval(enemy) {
         if (enemy.alpha > 0) {
-            enemy.alpha -= 0.05;
+            enemy.alpha -= 0.1;
             this.time.addEvent( { delay: 100, callback: this.killEnemyInterval, args: [enemy], callbackScope: this, loop: false } );
         } else {
             if (enemy.isStil == true) {
@@ -1547,13 +1547,13 @@ class LevelManager extends Phaser.Scene
         if (coin.value == 0) {
             switch(userConfig.difficulty) {
                 case 0:
-                    user.money += 100;
+                    user.money += 2;
                     break;
                 case 1:
-                    user.money += 50;
+                    user.money += 4;
                     break;
                 case 2:
-                    user.money += 25;
+                    user.money += 6;
                     break;
                 default:
             }
@@ -1561,13 +1561,13 @@ class LevelManager extends Phaser.Scene
         if (coin.value == 1) {
             switch(userConfig.difficulty) {
                 case 0:
-                    user.money += 200;
+                    user.money += 20;
                     break;
                 case 1:
-                    user.money += 100;
+                    user.money += 40;
                     break;
                 case 2:
-                    user.money += 50;
+                    user.money += 60;
                     break;
                 default:
             }
@@ -1597,14 +1597,14 @@ class LevelManager extends Phaser.Scene
 
             // Reduce el cooldown del ataque
             if (Number(user.buffs[3]) == 1) {
-                this.playerAttackCooldown = 350;
+                this.playerAttackCooldown = 160;
             } else {
-                this.playerAttackCooldown = 450;
+                this.playerAttackCooldown = 320;
             }
         } else {
             this.doubleJumpEnabled = false;
             this.playerInvulnerabilityDuration = 1000;
-            this.playerAttackCooldown = 450;
+            this.playerAttackCooldown = 320;
         }
     }
 
