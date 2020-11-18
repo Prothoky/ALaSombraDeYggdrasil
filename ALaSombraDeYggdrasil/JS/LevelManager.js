@@ -717,7 +717,7 @@ class LevelManager extends Phaser.Scene
     // Genera el array con las trampas disponibles del mapa
     generateTrapArray() {
         let trapFunctionsNames = [ 'this.generateSpikesTrap', 'this.generatePlatformNoEnemy', 'this.generateStillEnemy',
-                                    'this.generatePlatform', /*'this.generateMovingEnemy', */'this.generatePlatformToSpikes',
+                                    'this.generatePlatform', 'this.generateMovingEnemy', 'this.generatePlatformToSpikes',
                                     'this.generateSmallSpikesNoEnemy', 'this.generateSmallSpikes', 'this.generateBarricade',
                                     'this.generateTrunk', 'this.generateCabinUp', 'this.generatePlatformToCoinNoEnemy',
                                     'this.generateDoubleBarricade', 'this.generateCabinUpNoEnemy', 'this.generateCabinDown',
@@ -944,7 +944,7 @@ class LevelManager extends Phaser.Scene
     // xPos, yPos: posición en el mapa
     // collisionWidth, collisionHeight: tamaño de la hitbox
     // triggerWidth, triggerHeight: tamaño del trigger de movimiento. Si no se pasa toma valor por defecto
-    /*generateMovingEnemy(xPos, yPos = -300, collisionWidth = 90, collisionHeight = 120, triggerWidth = 500, triggerHeight = 500) {
+    generateMovingEnemy(xPos, yPos = -300, collisionWidth = 90, collisionHeight = 120, triggerWidth = 500, triggerHeight = 500) {
       if(PC){
         let newEnemy = this.eagles.create(xPos + 1050, yPos, 'eagle_attacking').setOrigin(0).setScale(0.56);
         newEnemy.anims.play('eagle_attacking');
@@ -962,7 +962,7 @@ class LevelManager extends Phaser.Scene
         return 0;
       }
 
-    }*/
+    }
 
     // Funcion de creación de plataformas
     // xPos, yPos = posiciones x e y. Origen del sprite en el límite inferior derecho.
