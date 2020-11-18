@@ -9,10 +9,10 @@ class CreditsMenu extends Phaser.Scene{
     this.clickSound = this.sound.add('ClickButtonSound', this.EffectsConfig());
 
     //1) BACKGROUND
-    this.bg_background = this.add.tileSprite(0, 0, 3772, 605, 'bg_background_ice');
-    this.bg_far = this.add.tileSprite(0,0, 3772, 605, "bg_far_ice");
-    this.bg_medium = this.add.tileSprite(0,0, 3772, 605, "bg_medium_ice");
-    this.bg_near = this.add.tileSprite(0,-25, 3215, 515, "bg_near_ice");
+    this.bg_background = this.add.tileSprite(0, 0, 3772, 605, 'bg_background');
+    this.bg_far = this.add.tileSprite(0,0, 3772, 605, "bg_far");
+    this.bg_medium = this.add.tileSprite(0,0, 3772, 605, "bg_medium");
+    this.bg_near = this.add.tileSprite(0,-25, 3215, 515, "bg_near");
 
     this.bg_near.depth = 2;
 
@@ -85,8 +85,8 @@ class CreditsMenu extends Phaser.Scene{
     this.bg_medium.tilePositionX += 0.75;
     this.bg_near.tilePositionX += 2;
 
-    this.credits.setX(this.cameras.main.x+625);
-    this.logo.setX(this.cameras.main.x+770);
+    this.credits.setX(this.cameras.main.x+550);
+    this.logo.setX(this.credits.x + this.credits.width/2 );
 
     this.credits.setY(this.credits.y - 0.125);
     this.logo.setY(this.credits.y + this.credits.height + 150);
