@@ -160,7 +160,7 @@ La dificultad de esta pantalla fue encontrar unos nombres adecuados para las dis
 La pantalla de selección de mundo es bastante importante dentro de este título, ya que el árbol representado es el mismo que da nombre a nuestro juego.
 En este menú nos encontramos ante Yggdrasil, el árbol de los nueve mundos, el cuál sostenta los nueve reinos por los que pasará nuestro protagonista, estando siete de ellos en las raíces, uno casi en la copa y otro en el centro, Midgard (La Tierra), el primer mundo jugable de esta versión. Quisimos indicar esto haciendo que el tronco árbol emanase luz en las zonas cercanas a los reinos desbloqueados por el momento, estando este reino a su vez iluminado mientras el resto están algo más apagados. Respecto al árbol como tal, hemos querido optar por una representación clásica, de modo que cualquier persona interesada en la mitología nórdica entendiera qué tenía delante cuando entrase a este menú.
 
-![imagen](https://user-images.githubusercontent.com/55508821/99616997-9f019a80-2a1e-11eb-9b02-f83cf0e254fc.png)
+![image](https://user-images.githubusercontent.com/55493193/99725216-0ec26480-2ab5-11eb-9d8d-4109a191ff6f.png)
 
 
 Pantalla de selección de nivel de Midgard
