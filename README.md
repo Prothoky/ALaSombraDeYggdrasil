@@ -33,16 +33,19 @@ Durante el transcurso del juego el protagonista irá narrando su experiencia por
 
 ## Personaje
 
-Einar, la calamidad de MidgarD es un robusto vikingo que lleva muchos siglos perdido en su amnesia. El diseño de nuestro personaje principal está pensado para reforzar el hecho de que es un verdadero vikingo, dotándole de hacha y escudo, una buena vestimenta, un casco con dos cuernos y una barba rojiza, todo esto, acompañado de un cuerpo con unas piernas bastante cortas, hombros muy anchos y brazos gigantes. Este personaje irá dialogando con los cuervos de Odín al final de cada nivel. Durante el camino hará uso de su imponente hacha para librarse de todos los enemigos que le dan caza.
+Einar, la calamidad de Midgard es un robusto vikingo que lleva muchos siglos perdido en su amnesia. El diseño de nuestro personaje principal está pensado para reforzar el hecho de que es un verdadero vikingo, dotándole de hacha y escudo, una buena vestimenta, un casco con dos cuernos y una barba rojiza, todo esto, acompañado de un cuerpo con unas piernas bastante cortas, hombros muy anchos y brazos gigantes. Este personaje irá dialogando con los cuervos de Odín al final de cada nivel. Durante el camino hará uso de su imponente hacha para librarse de todos los enemigos que le dan caza.
+
 ![Einar](https://user-images.githubusercontent.com/55508821/97813399-3b3e4a00-1c88-11eb-80d3-1dbf2db12bf5.jpg)
 
 
 
-
 ## Modos de dificultad y modo arcade
+
 Hemos desarrollado 3 dificultades distintas en función de los distintos tipos de jugador que podemos encontrar. Travesía(Fácil), Cacería (normal) y Frenesí (difícil) con un nivelado de tiempo, distancia entre trampas, dinero recibido y velocidad distintos en función de cada dificultad
 
 Para aumentar el tiempo de juego hemos implementado un modo arcade, siendo este un endless runner clásico donde el jugador probará la destreza obtenida durante la historia. Este no constará de ningún tipo de dificultad opcional, ya que al ir aumentando progresivamente la velocidad. El jugador necesitará mucho tiempo para poder llegar lejos. Al final de la partida se indicará al jugador la distancia recorrida y su mayor recorrido.
+
+
 
 ## Mecánicas de juego
 El juego tiene un sistema de movimiento limitado, el jugador irá por defecto de izquierda a derecha con la única opción de saltar y atacar.
@@ -129,6 +132,7 @@ A partir del sexto nivel principal, sobrepasamos esas montañas mostradas en el 
 ![MAPA HIELO](https://user-images.githubusercontent.com/55508821/98616835-e80a6e00-22fd-11eb-9470-2e7837797009.jpg)
 
 
+
 ## Interfaz y menús
 
 El diseño de la UI debe de ser muy sencilla y ligera para el usuario, no pretendemos distraer con mucha carga de información para atraer a la mayor cantidad de público posible. El diseño del menú principal tiene como premisa crear  atención a Yggdrasil sujetando a los 9 mundos vikingos, estos estarán en gris hasta que se vayan desbloqueando, el jugador seleccionará el mundo y se adentrará en su respectivo mapa de selección de niveles.
@@ -161,6 +165,8 @@ Pantalla de Tienda
 ![imagen](https://user-images.githubusercontent.com/55508821/99617606-f3594a00-2a1f-11eb-96d6-564f8e0de0c0.png)
 Hemos añadido múltiples sonidos para cada utensilio para hacer que el efecto de compra tenga un feedback mayor por parte del usuario.
 
+
+
 ## Flujo de juego
 ![A la sombra de Yggdrasil](https://user-images.githubusercontent.com/55508821/99619135-10434c80-2a23-11eb-894f-02d202865c73.png)
 
@@ -183,6 +189,8 @@ Durante la segunda mitad Einar se encontrará con el cuervo del pensamiento e ir
 
 A la hora de acabar el nivel, el jugador recibe un dinero por el recorrido. Este dinero también se reparte de manera distinta en función del nivel de dificultad que se encuentre el jugador. Hay una economía de juego pensada para que el jugador pueda comprar habilidades antes de llegar a determinados niveles, así puede comprobar su utilidad. Si este avanzara a niveles donde su falta de habilidades especiales le impide continuar, tendrá que volver a niveles pasados o completar todos los subniveles extra para poder obtener el dinero suficiente.
 
+
+
 ## Estilo artístico y música
 Nuestro título cuenta con dos técnicas bastante diferenciadas a la hora de crear todo el arte del juego. Los menús, mapas y obstáculos que podemos ver en el transcurso del juego poseen un estilo semirrealista, el cual, combinado con  personajes y enemigos dibujados a contornos y con colores planos, da un toque algo diferente y atractivo al gameplay.
 Un juego que nos ha servido mucho de referencia a la hora de llevar a cabo este estilo ha sido el famoso Hollow Knight, el cual también contaba con personajes y enemigos dibujados con estos trazados y con fondos en 2D que se combinaban en distintas capas para formar un espacio tridimensional, lo cuál le da una mayor profundidad a los escenarios y al juego en general.
@@ -194,6 +202,8 @@ Para el menú principal la canción escogida debía acompañar al jugador en su 
 Para la canción principal del juego, encargamos a un profesional una canción a medida que pudiera inspirar al jugador la épica suficiente como para querer avanzar por la historia aún con el hándicap del diseño de niveles procedimental. Esta canción es una dosis de adrenalina para el jugador.
 La canción de diálogo es un cambio de ritmo importante en el juego, así mostramos las distintas facetas del juego, tiene su parte frenética de juego en donde el jugador deberá ser muy ágil esquivando cada enemigo y una parte mucho más reflexiva donde se busca aumentar el nivel de empatía con el protagonista.
 
+
+
 ## Experiencia de usuario
 Pensando en la experiencia de usuario, tendremos que dividirla  en función el tipo de jugador que tengamos. 
 
@@ -202,6 +212,7 @@ Pensando en la experiencia de usuario, tendremos que dividirla  en función el t
 **Explorador:** ese jugador va a indagar en todos los aspectos del juego, interesándose por la historia y los distintos cambios que van surgiendo conforme va progresando en el juego.
 
 **Arcade:** ese jugador interesado únicamente en el modo endless runner, este tipo de jugadores huye de todo tipo de historia o explicaciones posibles, va al grano y tiene un entretenimiento muy concreto. Suelen buscar un nivel de dificultad fuerte para poner a prueba su destreza.
+
 
 
 ## Modelo de negocio
@@ -225,6 +236,7 @@ En la tienda se podrán adquirir escudos para las vidas, y nuevas habilidades pa
 
 Modelo de lienzo 
 ![imagen](https://user-images.githubusercontent.com/55508821/99619556-fce4b100-2a23-11eb-9a9b-a79e9d245721.png)
+
 
 
 ## Controles y tutorial
