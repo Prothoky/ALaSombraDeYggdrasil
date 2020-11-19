@@ -3,7 +3,7 @@
     "world": [ true, false, false, false, false, false, false, false, false ],
     "map": [ false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false ],
     "buffs": [ 0, 0, 0, 0 ],
-    "money": 1000,
+    "money": 0,
     "maxDistanceArcade" : 0
   },
 
