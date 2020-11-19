@@ -57,7 +57,7 @@ class ShopMenu extends Phaser.Scene{
     if (userConfig.lang == "en"){
       this.buyObject1.setX(gameWidth*3.7/16);
     }
-    this.textIcon1Button= this.add.text(gameWidth*15.5/16, gameHeight*3.6/16, (" x" + user.buffs[0]), {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "white"});
+    this.textIcon1Button= this.add.text(gameWidth*15.35/16, gameHeight*3.45/16, (" x" + user.buffs[0]), {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "white"});
     this.buyObject1.setVisible(false);
     //Acciones Boton
 
@@ -278,7 +278,7 @@ class ShopMenu extends Phaser.Scene{
             this.RabiaSound.play();
           else
             this.RageSound.play();
-            
+
       user.buffs[3]++;
       user.money-= phaserJSON.Store.cooldown.price;
       this.MoneyShop.setText(user.money);
