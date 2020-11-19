@@ -54,14 +54,14 @@ Leyenda de índices de settings:
 3 - oro base recibido
 */
 var levelSettings = new Array();
-levelSettings[0] = [ [25, 500, 900, 100], [25, 575, 700, 70], [28, 675, 500, 50] ];
-levelSettings[1] = [ [30, 500, 500, 100], [30, 575, 400, 70], [35, 675, 300, 50] ];
-levelSettings[2] = [ [35, 500, 400, 100], [37, 575, 250, 70], [42, 675, 200, 50] ];
-levelSettings[3] = [ [40, 500, 300, 100], [44, 575, 175, 70], [50, 675, 150, 50] ];
-levelSettings[4] = [ [45, 550, 250, 100], [50, 625, 150, 70], [55, 700, 125, 50] ];
-levelSettings[5] = [ [50, 500, 300, 100], [55, 600, 175, 70], [60, 675, 150, 50] ];//Aquí bajan las velocidades un poco por que es la primera vez que aparece el lago
-levelSettings[6] = [ [55, 550, 250, 100], [60, 625, 150, 70], [65, 700, 125, 50] ];//A partir de aquí reduzco en 25 la distancia inter trampa  y la velocidad  de cada dificultad
-levelSettings[7] = [ [55, 550, 250, 100], [60, 625, 150, 70], [65, 700, 125, 50] ];
-levelSettings[8] = [ [55, 550, 250, 100], [60, 625, 150, 70], [65, 700, 125, 50] ];
-levelSettings[9] = [ [60, 600, 250, 150], [65, 650, 150, 100],[70, 750, 125, 100] ];//Para el ultimo nivel aprieto más todavia la velocidad
+levelSettings[0] = [ [25, 500, 900, 50], [25, 575, 700, 30], [28, 675, 500, 20] ];
+levelSettings[1] = [ [30, 500, 500, 50], [30, 575, 400, 30], [35, 675, 300, 20] ];
+levelSettings[2] = [ [35, 500, 400, 50], [37, 575, 250, 30], [42, 675, 200, 20] ];
+levelSettings[3] = [ [40, 500, 300, 50], [44, 575, 175, 30], [50, 675, 150, 20] ];
+levelSettings[4] = [ [45, 550, 250, 50], [50, 625, 150, 30], [55, 700, 125, 20] ];
+levelSettings[5] = [ [50, 500, 300, 50], [55, 600, 175, 30], [60, 675, 150, 20] ];//Aquí bajan las velocidades un poco por que es la primera vez que aparece el lago
+levelSettings[6] = [ [55, 550, 250, 50], [60, 625, 150, 30], [65, 700, 125, 20] ];//A partir de aquí reduzco en 25 la distancia inter trampa  y la velocidad  de cada dificultad
+levelSettings[7] = [ [55, 550, 250, 50], [60, 625, 150, 30], [65, 700, 125, 20] ];
+levelSettings[8] = [ [55, 550, 250, 50], [60, 625, 150, 30], [65, 700, 125, 20] ];
+levelSettings[9] = [ [60, 600, 250, 50], [65, 650, 150, 30],[70, 750, 125, 20] ];//Para el ultimo nivel aprieto más todavia la velocidad
 levelSettings[10] = [ [10, 550, 200, 100] ];
