@@ -135,7 +135,7 @@ A partir del sexto nivel principal, sobrepasamos esas montañas mostradas en el 
 
 ## Interfaz y menús
 
-El diseño de la UI debe de ser muy sencilla y ligera para el usuario, no pretendemos distraer con mucha carga de información para atraer a la mayor cantidad de público posible. El diseño del menú principal tiene como premisa crear  atención a Yggdrasil sujetando a los 9 mundos vikingos, estos estarán en gris hasta que se vayan desbloqueando, el jugador seleccionará el mundo y se adentrará en su respectivo mapa de selección de niveles.
+El diseño de la UI debe de ser muy sencilla y ligera para el usuario, no pretendemos distraer con mucha carga de información para atraer a la mayor cantidad de público posible. 
 
 El elemento esencial de nuestro juego para definir las interfaces es la madera, con el queremos transmitir una sensación rústica que pueda transmitir un poco cual fue uno de los materiales principales de la época, a su vez utilizamos este recurso debido al objeto principal de la pantalla de selección de planeta Yggdrassil.  
 
@@ -154,7 +154,7 @@ Ajustes de dificultad, idioma y borrado de datos
 La dificultad de esta pantalla fue encontrar unos nombres adecuados para las distintas dificultades. Para compensar una posible incomprensión de las dificultades, las acompañamos de colores que aumentan tu tono oscuro conforme la dificultad va aumentando.
 
 La pantalla de selección de mundo es bastante importante dentro de este título, ya que el árbol representado es el mismo que da nombre a nuestro juego.
-En este menú nos encontramos ante Yggdrasil, el árbol de los nueve mundos, el cuál sostenta los nueve reinos por los que pasará nuestro protagonista, estando siete de ellos en las raíces, uno casi en la copa y otro en el centro, Midgard (La Tierra), el primer mundo jugable de esta versión. Quisimos indicar esto haciendo que el tronco árbol emanase luz en las zonas cercanas a los reinos desbloqueados por el momento. Hemos querido optar por una representación clásica, de modo que cualquier persona interesada en la mitología nórdica entendiera qué tenía delante cuando entrase a este menú.
+En este menú nos encontramos ante Yggdrasil, el árbol de los nueve mundos, el cuál sostenta los nueve reinos por los que pasará nuestro protagonista, estando siete de ellos en las raíces, uno casi en la copa y otro en el centro, Midgard (La Tierra), el primer mundo jugable de esta versión. Quisimos indicar esto haciendo que el tronco árbol emanase luz en las zonas cercanas a los reinos desbloqueados por el momento, estando este reino a su vez iluminado mientras el resto están algo más apagados. Respecto al árbol como tal, hemos querido optar por una representación clásica, de modo que cualquier persona interesada en la mitología nórdica entendiera qué tenía delante cuando entrase a este menú.
 ![imagen](https://user-images.githubusercontent.com/55508821/99616997-9f019a80-2a1e-11eb-9b02-f83cf0e254fc.png)
 
 
