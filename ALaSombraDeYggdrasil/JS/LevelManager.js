@@ -384,11 +384,11 @@ class LevelManager extends Phaser.Scene
 
         if (arcadeMode == false){
 
-          this.backgroundMoney = this.add.image(gameWidth*13/16, gameHeight*1.1/16, 'deselectedButtonSmall');
+          this.backgroundMoney = this.add.image(gameWidth*12/16, gameHeight*1.1/16, 'deselectedButtonSmall');
           this.backgroundMoney.setScale(1.5/3);
           this.backgroundMoney.setScrollFactor(0);
 
-          this.Money = this.add.text(gameWidth*12.6/16, gameHeight*0.92/16,  user.money, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
+          this.Money = this.add.text(gameWidth*11.6/16, gameHeight*0.92/16,  user.money, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
           this.Money.setScrollFactor(0);
         }
 
@@ -436,9 +436,10 @@ class LevelManager extends Phaser.Scene
 
 
         //RAVEN raven
-        this.raven = this.add.image(gameWidth*11.7/16, gameHeight*8.34/16, 'ravenMunin');
+        this.raven = this.add.image(gameWidth*11.7/16, gameHeight*8.28/16, 'ravenMunin');
         if(levelIndex > 4){
           this.raven.setTexture('ravenHugin')
+          this.rave.setY(gameHeight*8.34/16);
         }
         this.raven.setScale(2/3);
         this.raven.setDepth(5);
@@ -1671,15 +1672,15 @@ class LevelManager extends Phaser.Scene
     SetTextPos() {
         if (!this.endlessMode) {
             if((user.money>0) && (user.money<100)){
-                this.Money.x = gameWidth*13/16
+                this.Money.x = gameWidth*12/16
             }else if((user.money>=100) && (user.money<1000)){
-                this.Money.x = gameWidth*12.9/16
+                this.Money.x = gameWidth*11.9/16
             }else if ((user.money>=1000) && (user.money<10000)){
-                this.Money.x = gameWidth*12.8/16
+                this.Money.x = gameWidth*11.8/16
             }else if ((user.money>=10000) && (user.money<100000)){
-                this.Money.x = gameWidth*12.7/16
+                this.Money.x = gameWidth*11.7/16
             }else{
-                this.Money.x = gameWidth*12.6/16
+                this.Money.x = gameWidth*11.6/16
             }
         }
     }
