@@ -1200,7 +1200,7 @@ class LevelManager extends Phaser.Scene
                //this.levelCompletedFunc();
           }
       }else{
-
+        this.musicGameplay.stop();
         this.poemSound.play();
         this.Poema.setVisible(true);
         switch (levelIndex){
@@ -1394,7 +1394,7 @@ class LevelManager extends Phaser.Scene
         else{
           this.clickButtonSound.play();
           this.Poema.setVisible(false);
-
+          this.poemSound.stop();
         }
         this.plugins.stop("rexsoundfadeplugin");
         this.cameras.main.fadeOut(2500, 0, 0, 0);
