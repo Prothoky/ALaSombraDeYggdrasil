@@ -123,7 +123,6 @@ class LevelManager extends Phaser.Scene
         this.leftButton;
         this.rightButton;
         this.attackButton;
-        this.testButton;
         this.pauseButton;
 
         //7) Textos
@@ -138,14 +137,7 @@ class LevelManager extends Phaser.Scene
         this.buttonPause;
         this.raven;
 
-        this.Poem1_1;
-        this.Poem2_1;
-        this.Poem4_1;
-        this.Poem4_2;
-        this.Poem7_1;
-        this.Poem7_2;
-        this.PoemVisible;
-
+        this.Poema;
     }
 
     create ()
@@ -268,7 +260,7 @@ class LevelManager extends Phaser.Scene
                 break;
         }
         if (this.endlessMode == true) {
-            this.playerHealth = 3;
+            this.playerHealth = 5;
         }
         // Aplica los efectos de las mejoras
         this.applyBuffs();
@@ -309,7 +301,6 @@ class LevelManager extends Phaser.Scene
         this.ground.create(-400, this.levelGroundHeight, 'ground').setOrigin(0, 0).setVisible(false).refreshBody();
         this.ground.create(-600, this.levelGroundHeight, 'ground').setOrigin(0, 0).setVisible(false).refreshBody();
         this.ground.create(-800, this.levelGroundHeight, 'ground').setOrigin(0, 0).setVisible(false).refreshBody();
-
 
         // 3.2) Declaración de funciones de colision/overlap
         this.physics.add.collider(this.player, this.ground, this.grounded, null, this); // Permitimos colisiones entre suelo y jugador y cuenta como grounded (puede saltar)
@@ -356,12 +347,8 @@ class LevelManager extends Phaser.Scene
             this.levelIntroWidth = 1500;
         }
 
-
         // 5) CÁMARA
         this.cameras.main.setBounds(0, 0, this.levelWidth, this.levelHeight);   // Límites cámara
-        //this.cameras.main.startFollow(this.player, false, 1, 1, this.cameraOffsetX, 0); // Cámar sigue al personaje
-
-
 
         // ----HUD----
         // 1) Botón de pausa
@@ -411,9 +398,7 @@ class LevelManager extends Phaser.Scene
         this.DialogBg.setScale(2/3);
         this.DialogBg.setDepth(11);
         this.DialogBg.setScrollFactor(0);
-        //this.DialogBg.setVisible(false);
         this.DialogBg.alpha = 0;
-        //this.DialogBg.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.nextDialog());
 
         this.DialogText = this.add.text(gameWidth*6/16, gameHeight*11/16,  " ", {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
         this.DialogText.setScrollFactor(0);
@@ -439,7 +424,6 @@ class LevelManager extends Phaser.Scene
         this.buttonDialogSel.setScrollFactor(0);
         this.buttonDialogSel.setVisible(false);
 
-        //this.buttonDialog.setScale(0.5);
         if(PC){
           this.buttonDialog.on('pointerover', function (pointer) {this.buttonDialogSel.setVisible(true);}, this);
           this.buttonDialog.on('pointerout', function (pointer) {this.buttonDialogSel.setVisible(false);}, this);
@@ -458,83 +442,18 @@ class LevelManager extends Phaser.Scene
         }
         this.raven.setScale(2/3);
         this.raven.setDepth(5);
-        //this.raven.setVisible(false);
         this.raven.setScrollFactor(0);
         this.raven.alpha = 0;
 
         //POEMS
 
-        if(userConfig.lang == "es"){
-          this.Poem1_1 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poema1_1');
-        }else{
-          this.Poem1_1 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poem1_1');
-        }
+        this.Poema = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poema1_1');
 
-        if(userConfig.lang == "es"){
-          this.Poem2_1 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poema2_1');
-        }else{
-          this.Poem2_1 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poem2_1');
-        }
-
-        if(userConfig.lang == "es"){
-          this.Poem4_1 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poema4_1');
-        }else{
-          this.Poem4_1 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poem4_1');
-        }
-
-        if(userConfig.lang == "es"){
-          this.Poem4_2 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poema4_2');
-        }else{
-          this.Poem4_2 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poem4_2');
-        }
-
-        if(userConfig.lang == "es"){
-          this.Poem7_1 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poema7_1');
-        }else{
-          this.Poem7_1 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poem7_1');
-        }
-
-        if(userConfig.lang == "es"){
-          this.Poem7_2 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poema7_2');
-        }else{
-          this.Poem7_2 = this.add.image(gameWidth*8/16, gameHeight*8/16, 'Poem7_2');
-        }
-
-        this.Poem1_1.setScale(2/3);
-        this.Poem1_1.setDepth(11);
-        this.Poem1_1.setVisible(false);
-        this.Poem1_1.setScrollFactor(0);
-        this.Poem1_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.levelCompletedFunc());
-
-        this.Poem2_1.setScale(2/3);
-        this.Poem2_1.setDepth(11);
-        this.Poem2_1.setVisible(false);
-        this.Poem2_1.setScrollFactor(0);
-        this.Poem2_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.levelCompletedFunc());
-
-        this.Poem4_1.setScale(2/3);
-        this.Poem4_1.setDepth(11);
-        this.Poem4_1.setVisible(false);
-        this.Poem4_1.setScrollFactor(0);
-        this.Poem4_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.levelCompletedFunc());
-
-        this.Poem4_2.setScale(2/3);
-        this.Poem4_2.setDepth(11);
-        this.Poem4_2.setVisible(false);
-        this.Poem4_2.setScrollFactor(0);
-        this.Poem4_2.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.levelCompletedFunc());
-
-        this.Poem7_1.setScale(2/3);
-        this.Poem7_1.setDepth(11);
-        this.Poem7_1.setVisible(false);
-        this.Poem7_1.setScrollFactor(0);
-        this.Poem7_1.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.levelCompletedFunc());
-
-        this.Poem7_2.setScale(2/3);
-        this.Poem7_2.setDepth(11);
-        this.Poem7_2.setVisible(false);
-        this.Poem7_2.setScrollFactor(0);
-        this.Poem7_2.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.levelCompletedFunc());
+        this.Poema.setScale(2/3);
+        this.Poema.setDepth(11);
+        this.Poema.setVisible(false);
+        this.Poema.setScrollFactor(0);
+        this.Poema.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.levelCompletedFunc());
 
         //FULL SCREEN
         this.fullScreenLM = this.add.image(gameWidth*15.5/16, gameHeight*13/14, 'buttonFullScreen');
@@ -552,14 +471,12 @@ class LevelManager extends Phaser.Scene
         this.leftButton = this.input.keyboard.addKey(controls.left);
         this.rightButton = this.input.keyboard.addKey(controls.right);
         this.attackButton = this.input.keyboard.addKey(controls.attack);
-        this.testButton = this.input.keyboard.addKey(controls.test); // ELIMINAR VERSION FINAL
         this.pauseButton = this.input.keyboard.addKey(controls.pause);
 
         // Reiniciamos eventos
         this.jumpButton.off('down');
         this.jumpButton.off('up');
         this.attackButton.off('down');
-        this.testButton.off('down');  // ELIMINAR VERSION FINAL
         this.pauseButton.off('down');
 
         // 1.1) Modo endless runner
@@ -572,12 +489,11 @@ class LevelManager extends Phaser.Scene
         } else {    // 1.2) Modo control izq/der
             this.jumpButton.on('down', this.playerStartJump, this);
             this.jumpButton.on('up', this.playerStopJump, this);
-            this.leftButton.on('down', this.playerLeft, this);
+            this.leftButton.on('down', () => this.player.setVelocityX(-this.playerMovementSpeed), this);
             this.leftButton.on('up', this.playerStop,this);
             this.attackButton.on('down', this.playerAttack, this);
             this.rightButton.on('down', this.playerRight, this);
             this.rightButton.on('up',  this.playerStop,this);
-            this.testButton.on('down', this.levelCompletedFunc, this);  // ELIMINAR VERSION FINAL
             this.pauseButton.on('down', this.PauseGame, this);
         }
 
@@ -643,8 +559,61 @@ class LevelManager extends Phaser.Scene
             pointerAttack.destroy();
         }
 
+        this.SetTextPos();
+    }
 
-        // ----TESTEO----
+    update (time, delta){
+
+       if(!this.DialogShowing){
+            this.bg_background.tilePositionX = this.cameras.main.scrollX * .05;
+            this.bg_far.tilePositionX = this.cameras.main.scrollX *.25;
+            this.bg_medium.tilePositionX = this.cameras.main.scrollX *1;
+            this.bg_near.tilePositionX = this.cameras.main.scrollX*1.25;
+       }
+       if(this.player.x >=300 && !this.following){
+            this.following=true;
+            this.cameras.main.startFollow(this.player, false, 1, 1, this.cameraOffsetX, 0); // Cámara sigue al personaje
+       }
+       if(this.player.body.velocity.x<=0){
+            this.player.setAccelerationX(0);
+            this.player.body.setVelocityX(0);
+            this.player.anims.stop(); //Sustituir por iddle si existe
+            this.following=false;
+
+            if((levelIndex < 10) || (levelIndex == 14) ||(levelIndex == 15)){
+
+              if(PC){
+                this.tweens.add({
+                  targets:this.raven,
+                  duration: 500,
+                  alpha: 1,
+                  yoyo: false,
+                  hold: 2000,
+                  delay: 700,
+                  completeDelay: 2000,
+                })
+              }else{
+                this.raven.alpha = 1;
+              }
+
+            }
+        }
+
+        if (this.player.anims.getCurrentKey() == 'einar_attacking'){
+            if (this.player.anims.getProgress() >= 1) {
+                if (this.isPlayerTouchingGround) {
+                    this.player.anims.play('einar_running');     
+                }   else {
+
+                  if(PC){
+                    this.player.anims.play('einar_jumping');
+                  }else{
+                    this.player.anims.play('einar_running');
+                  }
+
+                }
+            }
+        }
     }
 
 
@@ -793,11 +762,7 @@ class LevelManager extends Phaser.Scene
         }
     }
 
-    // moverse a la izquierda
-    playerLeft() {
-        this.player.setVelocityX(-this.playerMovementSpeed);
-        //this.player.anims.play('left', true);
-    }
+
 
     // moverse a la derecha
     playerRight() {
@@ -906,38 +871,21 @@ class LevelManager extends Phaser.Scene
 
     generateStillEnemy(xPos, yPos = this.levelGroundHeight - 20, collisionWidth = 190, collisionHeight = 110) {
 
-      if(PC){
-        if (this.hasCicled) {
-            yPos += 40;
-        }
-        xPos += 75;
-        let newEnemy = this.enemies.create(xPos, yPos, 'draugr').setOrigin(1).setScale(this.playerResizeFactorPC);
-        newEnemy.setSize(collisionWidth, collisionHeight);
-        newEnemy.body.setOffset(135, 165);
-        newEnemy.depth = 3;
-        newEnemy.isStill = true;
-        let newTrigger = this.triggers.create(xPos - 250, this.levelGroundHeight, 'dot').setVisible(false).refreshBody();
-        newTrigger.body.setSize(500, 500);  // Trigger que hará que el enemigo se mueva cuando entre el personaje en contacto
-        newTrigger.associatedEnemy = newEnemy;
-        return this.minDistStillEnemy;
-      }else{ //ANIMACIONES MOVIL
         if (this.hasCicled) {
             yPos += 40;
         }
         xPos += 75;
         let newEnemy = this.enemies.create(xPos, yPos, 'draugr').setOrigin(1).setScale(0.56);
-        newEnemy.setSize(collisionWidth, collisionHeight);
-        newEnemy.body.setOffset(135, 165);
-        //newEnemy.body.setOffset(75.6, 92.4);
+        newEnemy.setSize(collisionWidth, collisionHeight*2);
+        newEnemy.body.setOffset(135, 165/2);
         newEnemy.depth = 3;
         newEnemy.isStill = true;
+
         let newTrigger = this.triggers.create(xPos - 250, this.levelGroundHeight, 'dot').setVisible(false).refreshBody();
-        newTrigger.body.setSize(500, 500);
-        //newTrigger.body.setSize(500, 500);  // Trigger que hará que el enemigo se mueva cuando entre el personaje en contacto
+        newTrigger.body.setSize(500, 500);  // Trigger que hará que el enemigo se mueva cuando entre el personaje en contacto
         newTrigger.associatedEnemy = newEnemy;
         return this.minDistStillEnemy;
-      }
-
+        
     }
 
     // Función de creación de enemigos con movimiento al acercarse el jugador EN DESUSO
@@ -963,7 +911,6 @@ class LevelManager extends Phaser.Scene
       }
 
     }
-
     // Funcion de creación de plataformas
     // xPos, yPos = posiciones x e y. Origen del sprite en el límite inferior derecho.
     // enemy = puede haber un enemigo encima?
@@ -977,12 +924,7 @@ class LevelManager extends Phaser.Scene
             platformId = 'platform_halo';
         }
         let localPlatform = this.platforms.create(xPos, yPos, platformId).setScale(scaleFactor).setOrigin(0).setVisible(visible).setSize(170, 10);
-        if (cabinPlatform == true) {
-            localPlatform.setOffset(365, 335);
-        } else {
-            localPlatform.setOffset(365, 335);
-        }
-        //localPlatform.setOffset(235, 200);
+        localPlatform.setOffset(365, 335);
         localPlatform.body.checkCollision.left = false;
         localPlatform.body.checkCollision.right = false;
         localPlatform.body.checkCollision.down = checkCollisionDown;
@@ -1259,36 +1201,50 @@ class LevelManager extends Phaser.Scene
           }
       }else{
 
+        this.poemSound.play();
+        this.Poema.setVisible(true);
         switch (levelIndex){
           case 10:
-            this.poemSound.play();
-            this.Poem1_1.setVisible(true);
-            this.PoemVisible = this.Poem1_1;
+                if(userConfig.lang=="es")
+                    this.Poema.setTexture("Poema1_1");
+                else{
+                    this.Poema.setTexture("Poem1_1");
+                }
             break;
           case 11:
-            this.poemSound.play();
-            this.Poem2_1.setVisible(true);
-            this.PoemVisible = this.Poem2_1;
+            if(userConfig.lang=="es")
+                this.Poema.setTexture("Poema2_1");
+            else{
+                this.Poema.setTexture("Poem2_1");
+            }
             break;
           case 12:
-            this.poemSound.play();
-            this.Poem4_1.setVisible(true);
-            this.PoemVisible = this.Poem4_1;
+            if(userConfig.lang=="es")
+                this.Poema.setTexture("Poema4_1");
+            else{
+                this.Poema.setTexture("Poem4_1");
+            }
             break;
           case 13:
-            this.poemSound.play();
-            this.Poem4_2.setVisible(true);
-            this.PoemVisible = this.Poem4_2;
+            if(userConfig.lang=="es")
+                this.Poema.setTexture("Poema4_2");
+            else{
+                this.Poema.setTexture("Poem4_2");
+            }
             break;
           case 16:
-            this.poemSound.play();
-            this.Poem7_1.setVisible(true);
-            this.PoemVisible = this.Poem7_1;
-            break;
+                if(userConfig.lang=="es")
+                    this.Poema.setTexture("Poema7_1");
+                else{
+                    this.Poema.setTexture("Poem7_1");
+                }
+                break;
           case 17:
-            this.poemSound.play();
-            this.Poem7_2.setVisible(true);
-            this.PoemVisible = this.Poem7_2;
+            if(userConfig.lang=="es")
+                this.Poema.setTexture("Poema7_2");
+            else{
+                this.Poema.setTexture("Poem7_2");
+            }
             break;
 
         }
@@ -1334,11 +1290,6 @@ class LevelManager extends Phaser.Scene
                 delay: timeFadeOut,
                 callback: function() {
 
-                /*  if(!PC){
-                    pointerJump.setVisible(false);
-                    pointerAttack.setVisible(false);
-                  }*/
-
                     this.dialogSound.setLoop(true);
                     this.dialogSound.play();
                     this.DialogShowing=true;
@@ -1346,8 +1297,6 @@ class LevelManager extends Phaser.Scene
                     if((levelIndex < 10) || (levelIndex == 14) ||(levelIndex == 15) ){
                         this.DialogBg.alpha = 0;
                         this.DialogText.alpha = 0;
-
-                      //  if(PC){
 
                           this.tweens.add({
                             targets:this.DialogBg,
@@ -1376,22 +1325,15 @@ class LevelManager extends Phaser.Scene
                             },
                           callbackScope: this
                           }, this);
-                      //  }
 
                     }
                     musicGameplay.stop();
                     this.showDialog();
-                    try{
-                        this.tweens.add({
-                            targets:   this.dialogSound,
-                            volume:   userConfig.volumeMusic/10,
-                            timeFadeOut: 1500
-                        });
-                    }
-                    catch(error){
-                        console.log("Imposible get fadein")
-                        this.dialogSound.play();
-                    }
+                    this.tweens.add({
+                        targets:   this.dialogSound,
+                        volume:   userConfig.volumeMusic/10,
+                        timeFadeOut: 1500
+                    });
                 },
                 callbackScope: this
         }, this);
@@ -1451,7 +1393,7 @@ class LevelManager extends Phaser.Scene
 
         else{
           this.clickButtonSound.play();
-          this.PoemVisible.setVisible(false);
+          this.Poema.setVisible(false);
 
         }
         this.plugins.stop("rexsoundfadeplugin");
@@ -1592,7 +1534,7 @@ class LevelManager extends Phaser.Scene
     // cambiar a la línea comentada para hacerlo invisible
     generateGround(spriteWidth, spriteName) {
         let i = 0;
-        for(i = 0; i < this.levelWidth; i += spriteWidth) {
+        for(i ; i < this.levelWidth; i += spriteWidth) {
             this.ground.create(i + (this.cicleIteration - 1) * this.levelWidth, this.levelGroundHeight, spriteName).setOrigin(0, 0).setVisible(false).refreshBody();
         }
     }
@@ -1604,12 +1546,9 @@ class LevelManager extends Phaser.Scene
             triggers.associatedEnemy.setVelocityX(this.eagleSpeedX);
             triggers.associatedEnemy.setVelocityY(this.eagleSpeedY);
         } else {
-            if (!triggers.associatedEnemy.anims.isPlaying)
-
             if(PC){
               triggers.associatedEnemy.anims.play('draugr_attacking');
             }
-
         }
         this.triggers.remove(triggers, true);
     }
@@ -1720,65 +1659,6 @@ class LevelManager extends Phaser.Scene
     deleteObject(trashrecolector, otherObject) {
         otherObject.destroy();
     }
-    // FIN DE OTRAS FUNCIONES -------------------------------------------
-    // Da movimiento al fondo
-    update (time, delta){
-        this.SetTextPos();
-
-       if(!this.DialogShowing){
-            this.bg_background.tilePositionX = this.cameras.main.scrollX * .05;
-            this.bg_far.tilePositionX = this.cameras.main.scrollX *.25;
-            this.bg_medium.tilePositionX = this.cameras.main.scrollX *1;
-            this.bg_near.tilePositionX = this.cameras.main.scrollX*1.25;
-       }
-       if(this.player.x >=300 && !this.following){
-            this.following=true;
-            this.cameras.main.startFollow(this.player, false, 1, 1, this.cameraOffsetX, 0); // Cámar sigue al personaje
-       }
-       if(this.player.body.velocity.x<=0){
-            this.player.setAccelerationX(0);
-            this.player.body.setVelocityX(0);
-            this.player.anims.stop(); //Sustituir por iddle si existe
-            this.following=false;
-
-            if((levelIndex < 10) || (levelIndex == 14) ||(levelIndex == 15)){
-
-              if(PC){
-                this.tweens.add({
-                  targets:this.raven,
-                  duration: 500,
-                  alpha: 1,
-                  yoyo: false,
-                  hold: 2000,
-                  delay: 700,
-                  completeDelay: 2000,
-                })
-              }else{
-                this.raven.alpha = 1;
-              }
-
-            }
-
-
-            //console.log("!!!ERROR")
-        }
-
-        if (this.player.anims.getCurrentKey() == 'einar_attacking'){
-            if (this.player.anims.getProgress() >= 1) {
-                if (this.isPlayerTouchingGround) {
-                    this.player.anims.play('einar_running');
-                }   else {
-
-                  if(PC){
-                    this.player.anims.play('einar_jumping');
-                  }else{
-                    this.player.anims.play('einar_running');
-                  }
-
-                }
-            }
-        }
-    }
 
     PauseGame() {
         //gamePaused = true;
@@ -1790,25 +1670,12 @@ class LevelManager extends Phaser.Scene
     }
 
     Disable_controls(){
-        //this.input.enabled = false;
         this.jumpButton.enabled = false;
         this.leftButton.enabled = false;
         this.rightButton.enabled =false;
         this.attackButton.enabled = false;
-        this.testButton.enabled = false;
         this.pauseButton.enabled =false;
         this.controls_enable=false;
-    }
-
-    Enable_controls(){
-        //this.input.enabled = true;
-        this.jumpButton.enabled = true;
-        this.leftButton.enabled = true;
-        this.rightButton.enabled =true;
-        this.attackButton.enabled = true;
-        this.testButton.enabled = true;
-        this.pauseButton.enabled =true;
-        this.controls_enable=true;
     }
 
     SetTextPos() {
@@ -1825,10 +1692,6 @@ class LevelManager extends Phaser.Scene
                 this.Money.x = gameWidth*12.6/16
             }
         }
-    }
-
-    showIcons(){
-
     }
 
 }
