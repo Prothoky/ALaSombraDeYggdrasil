@@ -231,7 +231,7 @@
       "continue": "CONTINUE",
       "language": "ENGLISH"
     },
-    "Credits": " ROCKET STUDIOS \n\n Web Games & Social Networks \n\n PROJECT SPONSORS: \n Julio Guillen Garcia \n Daniel Palacios Alonso \n\n PROJECT DIRECTOR: \n Paula Calzada Toledo \n\n PROGRAMERS: \n Paula Calzada Toledo \n Rodrigo Martínez Sánchez \n Manuel Perez Ramil \n\n DESIGN: \n Jesus de Pando Galan \n Diego Perez Perez \n\n NARRATIVE: \n Jesus de Pando Galan \n\n ART: \n Diego Perez Perez \n\n VOICE ACTOR: \n Rodrigo Martínez Sánchez \n\n HONOR MENTION TO: \n Antonio Amaya  \n As external colaborator in: \n SOUNDTRACK \n\n FONTS: \n Javier Ugarte \n\n SOUNDS EFFECTS: \n  DWOBoyle \n CraigSmith \n Hachiman935 \n Cabusta9 \n Mdietz3840 \n JorickHoofd \n\n A LA SOMBRA DE YGGDRASIL(en ingles)",
+    "Credits": " ROCKET STUDIOS \n\n Web Games & Social Networks \n\n PROJECT SPONSORS: \n Julio Guillen Garcia \n Daniel Palacios Alonso \n\n PROJECT DIRECTOR: \n Paula Calzada Toledo \n\n PROGRAMERS: \n Paula Calzada Toledo \n Rodrigo Martínez Sánchez \n Manuel Perez Ramil \n\n DESIGN: \n Jesus de Pando Galan \n Diego Perez Perez \n\n NARRATIVE: \n Jesus de Pando Galan \n\n ART: \n Diego Perez Perez \n\n VOICE ACTOR: \n Rodrigo Martínez Sánchez \n\n HONOR MENTION TO: \n Antonio Amaya  \n As external colaborator in: \n SOUNDTRACK \n\n FONTS: \n Javier Ugarte \n\n SOUNDS EFFECTS: \n  DWOBoyle \n CraigSmith \n Hachiman935 \n Cabusta9 \n Mdietz3840 \n JorickHoofd \n\n A LA SOMBRA DE YGGDRASIL",
     "Dialogs": [
       [
         [ "EINAR", "Einar: It has been a long time since my last combat, \n my arms arent what they used to, \n my legs are tired." ],
@@ -404,15 +404,19 @@
 
   "Store": {
     "shields": {
+      "unitMax" :3,
       "price": 30
     },
     "doublejump": {
+      "unitMax" :1,
       "price": 450
     },
     "invulnerability": {
+      "unitMax" :1,
       "price": 300
     },
     "cooldown": {
+      "unitMax" :1,
       "price": 350
     }
   }

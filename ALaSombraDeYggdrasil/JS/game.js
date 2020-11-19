@@ -27,8 +27,10 @@ window.onload = function(){
     //URL del JUEGO
     //utl: "http://proyectoArmadillo.es",
 
-    scene: [PreloadMenu, MainMenu, MapSelectionMenu, OptionsPauseMenu, OptionsMainMenu, VolumeMenu, SettingsMenu, PauseMenu, ShopMenu, CreditsMenu, TutorialMenu, World1Map, LevelManager, WinnerMenu, GameOverMenu]
-
+    scene: [PreloadMenu, MainMenu, MapSelectionMenu, OptionsPauseMenu, OptionsMainMenu, VolumeMenu, SettingsMenu, PauseMenu, ShopMenu, CreditsMenu, TutorialMenu, World1Map, LevelManager, WinnerMenu, GameOverMenu],
+    audio: {
+      disableWebAudio: true
+    }
   }
 
   var game = new Phaser.Game(config);

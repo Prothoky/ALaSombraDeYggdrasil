@@ -383,6 +383,45 @@
 		      "url": "./ASSETS/Tienda/IconoRabia.png"
 		    },{
 		      "type": "image",
+		      "key": "ShieldNoMoney_esp",
+		      "url": "./ASSETS/Tienda/BendicionHierroNoMoney.png"
+		    },{
+		      "type": "image",
+		      "key": "InvulnerableNoMoney_esp",
+		      "url": "./ASSETS/Tienda/FuerzaOdinNoMoney.png"
+		    },
+			{
+		      "type": "image",
+		      "key": "DobleJumpNoMoney_esp",
+		      "url": "./ASSETS/Tienda/PlumaValquiriaNoMoney.png"
+		    },
+			{
+		      "type": "image",
+		      "key": "CooldownNoMoney_esp",
+		      "url": "./ASSETS/Tienda/RabiaNoMoney.png"
+		    },
+			{
+		      "type": "image",
+		      "key": "InvulnerableNoMoney_eng",
+		      "url": "./ASSETS/Tienda/ForceOdinNoMoney.png"
+		    },
+			{
+		      "type": "image",
+		      "key": "ShieldNoMoney_eng",
+		      "url": "./ASSETS/Tienda/IronBlessingNoMoney.png"
+		    },
+			{
+		      "type": "image",
+		      "key": "CooldownNoMoney_eng",
+		      "url": "./ASSETS/Tienda/RageNoMoney.png"
+		    },
+			{
+		      "type": "image",
+		      "key": "DobleJumpNoMoney_eng",
+		      "url": "./ASSETS/Tienda/ValkirieNoMoney.png"
+		    },
+		    {
+		      "type": "image",
 		      "key": "backgroundWM1M",
 		      "url": "./ASSETS/Fondos/FondoMapaMundo1.jpg"
 		    },{
@@ -677,22 +716,22 @@
 			{
 				"type": "audio",
 		      	"key": "music_1",
-		    	"url": "./ASSETS/Musica/music_1.mp3"
+		    	"url": "./ASSETS/Musica/music_1.ogg"
 			},
 			{
 				"type": "audio",
 		      	"key": "music_2",
-		    	"url": "./ASSETS/Musica/music_2.mp3"
+		    	"url": "./ASSETS/Musica/music_2.ogg"
 			},
 			{
 				"type": "audio",
 		      	"key": "music_3",
-		    	"url": "./ASSETS/Musica/music_3.mp3"
+		    	"url": "./ASSETS/Musica/music_3.ogg"
 			},
 			{
 				"type": "audio",
 		      	"key": "musicDialog",
-		    	"url": "./ASSETS/Musica/MusicaDialogoFinal.mp3"
+		    	"url": "./ASSETS/Musica/MusicaDialogoFinal.ogg"
 			},
 			{
 				"type": "audio",
@@ -722,7 +761,7 @@
 			{
 				"type": "audio",
 		      	"key": "ChangeDifficulty",
-		    	"url": "./ASSETS/SFX/Dificultad.mp3"
+		    	"url": "./ASSETS/SFX/Dificultad.ogg"
 			},
 			{
 				"type": "audio",
@@ -732,7 +771,7 @@
 			{
 				"type": "audio",
 		      	"key": "BuyObject",
-		    	"url": "./ASSETS/SFX/Compra.mp3"
+		    	"url": "./ASSETS/SFX/Compra.ogg"
 			},
 			{
 				"type": "audio",
@@ -797,7 +836,7 @@
 			{
 				"type": "audio",
 		    "key": "musicIce",
-		    "url": "./ASSETS/Musica/MusicaCarreraNieve.mp3"
+		    "url": "./ASSETS/Musica/MusicaCarreraNieve.ogg"
 			}
 		]
 	}

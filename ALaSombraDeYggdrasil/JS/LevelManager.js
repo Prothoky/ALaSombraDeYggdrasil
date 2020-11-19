@@ -561,7 +561,7 @@ class LevelManager extends Phaser.Scene
             this.bg_background.tilePositionX = this.cameras.main.scrollX * .05;
             this.bg_far.tilePositionX = this.cameras.main.scrollX *.25;
             this.bg_medium.tilePositionX = this.cameras.main.scrollX *1;
-            this.bg_near.tilePositionX = this.cameras.main.scrollX*1.25;
+            this.bg_near.tilePositionX = this.cameras.main.scrollX*1.35;
        }
        if(this.player.x >=300 && !this.following){
             this.following=true;
@@ -1609,13 +1609,13 @@ class LevelManager extends Phaser.Scene
         if (coin.value == 0) {
             switch(userConfig.difficulty) {
                 case 0:
-                    user.money += 2;
+                    user.money += 3;
                     break;
                 case 1:
                     user.money += 4;
                     break;
                 case 2:
-                    user.money += 6;
+                    user.money += 5;
                     break;
                 default:
             }
@@ -1623,13 +1623,13 @@ class LevelManager extends Phaser.Scene
         if (coin.value == 1) {
             switch(userConfig.difficulty) {
                 case 0:
-                    user.money += 20;
+                    user.money += 10;
                     break;
                 case 1:
-                    user.money += 40;
+                    user.money += 12;
                     break;
                 case 2:
-                    user.money += 60;
+                    user.money += 15;
                     break;
                 default:
             }

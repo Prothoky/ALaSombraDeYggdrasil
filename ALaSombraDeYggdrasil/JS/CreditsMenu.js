@@ -70,8 +70,8 @@ class CreditsMenu extends Phaser.Scene{
   update(){
 
     this.bg_background.tilePositionX += 0.125;
-    this.bg_far.tilePositionX += 0.25;
-    this.bg_medium.tilePositionX += 0.75;
+    this.bg_far.tilePositionX += 0.5;
+    this.bg_medium.tilePositionX += 1;
     this.bg_near.tilePositionX += 2;
 
     this.credits.setX(this.cameras.main.x+550);
