@@ -136,6 +136,7 @@ class LevelManager extends Phaser.Scene
         //this.buttonDialog
         this.buttonPause;
         this.raven;
+        this.pergamin;
 
         this.Poema;
 
@@ -638,6 +639,15 @@ class LevelManager extends Phaser.Scene
             this.endTrigger.x = this.xPointer - this.arcadeGeneratorOffset;
         } else {
             this.endTrigger.x = this.xPointer + this.endEventOffset;
+        }
+        if (levelIndex > 9 && levelIndex < 14) {
+            this.pergamin = this.physics.add.image(this.endTrigger.x, 300, 'PergaminForest');
+            this.pergamin.body.setAllowGravity(false);
+            this.pergamin.depth = 8;
+        } else if (levelIndex > 15 && levelIndex < 18) {
+            this.pergamin = this.physics.add.image(this.endTrigger.x, 300, 'PergaminIce');
+            this.pergamin.body.setAllowGravity(false);
+            this.pergamin.depth = 8;
         }
         this.xPointerFinalValue = this.xPointer;
     }
@@ -1251,6 +1261,9 @@ class LevelManager extends Phaser.Scene
 
     // Devuelve el jugador al mapa del mundo (al completar el nivel)
     goalArrived() {
+        if (this.pergamin != null) {
+            this.removeElement(this.pergamin);
+        }
         let timeFadeOut=3000;
         this.endLevelCollision.active = false;
         this.player.setAccelerationX(-250);
@@ -1570,11 +1583,20 @@ class LevelManager extends Phaser.Scene
             enemy.alpha -= 0.1;
             this.time.addEvent( { delay: 100, callback: this.killEnemyInterval, args: [enemy], callbackScope: this, loop: false } );
         } else {
-            if (enemy.isStil == true) {
+            if (enemy.isStill == true) {
                     this.enemies.remove(enemy, true);
             } else {
                     this.eagles.remove(enemy, true);
             }
+        }
+    }
+
+    removeElement(element) {
+        if (element.alpha > 0) {
+            element.alpha -= 0.1;
+            this.time.addEvent( { delay: 100, callback: this.removeElement, args: [element], callbackScope: this, loop: false } );
+        } else {
+            element.destroy();
         }
     }
 
