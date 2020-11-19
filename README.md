@@ -165,7 +165,7 @@ En este menú nos encontramos ante Yggdrasil, el árbol de los nueve mundos, el 
 
 Pantalla de selección de nivel de Midgard
 
-![imagen](https://user-images.githubusercontent.com/55508821/99617048-b6d91e80-2a1e-11eb-8f6f-c617cb64a9b0.png)
+![image](https://user-images.githubusercontent.com/55493193/99725355-4a5d2e80-2ab5-11eb-85a1-96303519c96d.png)
 
 Pantalla de Tienda
 Hemos añadido múltiples sonidos para cada utensilio para hacer que el efecto de compra tenga un feedback mayor por parte del usuario.
