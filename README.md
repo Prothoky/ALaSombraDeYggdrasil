@@ -258,6 +258,7 @@ Para el tutorial hemos diseñado una pantalla en la que simplifique el contenido
 
  Tutorial
  
- ![imagen](https://user-images.githubusercontent.com/55508821/99616842-4cc07980-2a1e-11eb-9078-70b43207104c.png)
+![image](https://user-images.githubusercontent.com/55493193/99724672-41b82880-2ab4-11eb-8398-4aa71de8fb15.png)
+
 
 
