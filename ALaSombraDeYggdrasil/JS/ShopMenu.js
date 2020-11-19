@@ -133,7 +133,7 @@ class ShopMenu extends Phaser.Scene{
     if (userConfig.lang == "en"){
       this.object3Bought.setTexture('object3BoughtEn');
     }
-    this.object3Bought.setScale(2/3);      
+    this.object3Bought.setScale(2/3);
   }
 
   createObject4_Bought(){
@@ -150,10 +150,10 @@ class ShopMenu extends Phaser.Scene{
     this.object1ButtonSel = this.add.image(gameWidth*3.69/16, gameHeight*14.15/16, 'selSmallLeftButton');
     this.object1ButtonSel.setScale(2/3);
     this.object1ButtonSel.setVisible(false);
-    
+
     this.icon1Button = this.add.image(gameWidth*15.2/16, gameHeight*3.3/16, 'IconObject1');
     this.icon1Button.setScale(2/3);
-    
+
     //Texto BOTON
     this.buyObject1 = this.add.text(gameWidth*3.45/16, gameHeight*13.9/16,  stringsJSON.Buttons.buy, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
     if (userConfig.lang == "en"){
@@ -161,16 +161,16 @@ class ShopMenu extends Phaser.Scene{
     }
     this.buyObject1.setVisible(true);
 
-    this.textIcon1Button= this.add.text(gameWidth*15.5/16, gameHeight*3.6/16, (" x" + user.buffs[0]), {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "white"});
+    this.textIcon1Button= this.add.text(gameWidth*15.35/16, gameHeight*3.45/16, (" x" + user.buffs[0]), {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "white"});
     this.textIcon1Button.setVisible(true);
     //Acciones Boton
-    
+
     this.object1Button.on('pointerover', function (pointer) {this.object1ButtonSel.setVisible(true);}, this);
     this.object1Button.on('pointerout', function (pointer) {this.object1ButtonSel.setVisible(false);}, this);
-  
+
     this.object1Button.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AddObject1());
   }
-  
+
   createObject2Buyable(){
     this.object2Button = this.add.image(gameWidth*6.66/16, gameHeight*14.15/16, 'deselectedButtonSmall');
     this.object2Button.setScale(2/3);
@@ -187,10 +187,10 @@ class ShopMenu extends Phaser.Scene{
     }
     this.buyObject2.setVisible(true);
     //Acciones Boton
-    
+
     this.object2Button.on('pointerover', function (pointer) {this.object2ButtonSel.setVisible(true);}, this);
     this.object2Button.on('pointerout', function (pointer) {this.object2ButtonSel.setVisible(false);}, this);
-    
+
     this.object2Button.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AddObject2());
   }
 
@@ -200,7 +200,7 @@ class ShopMenu extends Phaser.Scene{
     this.object3ButtonSel = this.add.image(gameWidth*9.09/16, gameHeight*14.15/16, 'selSmallLeftButton');
     this.object3ButtonSel.setScale(2/3);
     this.object3ButtonSel.setVisible(false);
-    
+
     this.icon3Button = this.add.image(gameWidth*15.2/16, gameHeight*6.6/16, 'IconObject3');
     this.icon3Button.setScale(2/3);
     //Texto Boton
@@ -236,7 +236,7 @@ class ShopMenu extends Phaser.Scene{
 
     this.object4Button.on('pointerover', function (pointer) {this.object4ButtonSel.setVisible(true);}, this);
     this.object4Button.on('pointerout', function (pointer) {this.object4ButtonSel.setVisible(false);}, this);
- 
+
     this.object4Button.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.AddObject4());
   }
 
@@ -257,8 +257,8 @@ class ShopMenu extends Phaser.Scene{
     if (userConfig.lang == "en"){
       this.object_3NoMoney.setTexture('DobleJumpNoMoney_eng');
     }
-    this.object_3NoMoney.setScale(2/3); 
-    
+    this.object_3NoMoney.setScale(2/3);
+
     this.object_4NoMoney = this.add.image(gameWidth*12.04/16, gameHeight*8.75/16, 'CooldownNoMoney_esp');
       if (userConfig.lang == "en"){
         this.object_4NoMoney.setTexture('CooldownNoMoney_eng');
@@ -286,7 +286,7 @@ class ShopMenu extends Phaser.Scene{
       this.object_1NoMoney.setVisible(false);
       this.object1Button.setVisible(false);
       this.object1Button.setInteractive(false);
-    }    
+    }
     else{
       if (!this.buyable(this.Shields.price)){
         this.object_1NoMoney.setVisible(true);
@@ -296,7 +296,7 @@ class ShopMenu extends Phaser.Scene{
       }
       else{
         this.object1Button.setVisible(true);
-        
+
         this.object1Button.on('pointerover', function (pointer) {this.object1ButtonSel.setVisible(true);}, this);
         this.object1Button.on('pointerout', function (pointer) {this.object1ButtonSel.setVisible(false);}, this);
 
@@ -309,8 +309,8 @@ class ShopMenu extends Phaser.Scene{
       this.icon1Button.setVisible(true);
       this.textIcon1Button.setText("x"+ user.buffs[0]);
     }
-    
-    
+
+
 
 
     //BOTON OBJETO 2
@@ -321,8 +321,8 @@ class ShopMenu extends Phaser.Scene{
       this.object2Button.setVisible(false);
       this.object2Button.setInteractive(false);
     }
-    
-    
+
+
     else{
       if (!this.buyable(this.Invulnerability.price)){
         this.object_2NoMoney.setVisible(true);
@@ -332,12 +332,12 @@ class ShopMenu extends Phaser.Scene{
       }
       else{
         this.object2Button.setVisible(true);
-        
+
         this.object2Button.on('pointerover', function (pointer) {this.object2ButtonSel.setVisible(true);}, this);
         this.object2Button.on('pointerout', function (pointer) {this.object2ButtonSel.setVisible(false);}, this);
 
         this.object2Bought.setVisible(false);
-        this.object_2NoMoney.setVisible(false);      
+        this.object_2NoMoney.setVisible(false);
       }
     }
 
@@ -365,7 +365,7 @@ class ShopMenu extends Phaser.Scene{
       }
       else{
         this.object3Button.setVisible(true);
-        
+
         this.object3Button.on('pointerover', function (pointer) {this.object3ButtonSel.setVisible(true);}, this);
         this.object3Button.on('pointerout', function (pointer) {this.object3ButtonSel.setVisible(false);}, this);
 
@@ -380,7 +380,7 @@ class ShopMenu extends Phaser.Scene{
       this.icon3Button.setVisible(false);
     }
 
-    
+
     //BOTON OBJETO 4
 
     if(this.itemMax(3,this.Cooldown.unitMax)){
@@ -389,7 +389,7 @@ class ShopMenu extends Phaser.Scene{
       this.object4Button.setVisible(false);
       this.object4Button.setInteractive(false);
     }
-    
+
     else{
       if (!this.buyable(this.Cooldown.price)){
         this.object_4NoMoney.setVisible(true);
@@ -399,7 +399,7 @@ class ShopMenu extends Phaser.Scene{
       }
       else{
         this.object4Button.setVisible(true);
-        
+
         this.object4Button.on('pointerover', function (pointer) {this.object4ButtonSel.setVisible(true);}, this);
         this.object4Button.on('pointerout', function (pointer) {this.object4ButtonSel.setVisible(false);}, this);
 
@@ -414,7 +414,7 @@ class ShopMenu extends Phaser.Scene{
       this.icon4Button.setVisible(false);
     }
 
-    
+
     this.SetTextPos();
   }
 
@@ -431,7 +431,7 @@ class ShopMenu extends Phaser.Scene{
     user.buffs[0]++;
     user.money-= this.Shields.price;
     this.MoneyShop.setText(user.money);
-  
+
     saveUserData();
 
     this.udpateLayout();
@@ -448,7 +448,7 @@ class ShopMenu extends Phaser.Scene{
     user.buffs[1]++;
     user.money-= this.Invulnerability.price;
     this.MoneyShop.setText(user.money);
-   
+
     saveUserData();
 
     this.udpateLayout();
@@ -465,7 +465,7 @@ class ShopMenu extends Phaser.Scene{
     user.buffs[2]++;
     user.money-=this.DoubleJump.price;
     this.MoneyShop.setText(user.money);
-    
+
     saveUserData();
 
     this.udpateLayout();
@@ -478,11 +478,11 @@ class ShopMenu extends Phaser.Scene{
       this.RabiaSound.play();
     else
       this.RageSound.play();
-          
+
     user.buffs[3]++;
     user.money-= this.Cooldown.price;
     this.MoneyShop.setText(user.money);
-    
+
     saveUserData();
 
     this.udpateLayout();
