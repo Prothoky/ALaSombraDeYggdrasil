@@ -113,13 +113,13 @@ class MainMenu extends Phaser.Scene{
 
     //CREDITS MENU
     //Botones
-    this.creditsButton = this.add.image(gameWidth*8.9/16, gameHeight*13.75/16, 'deselectedButton');
+    this.creditsButton = this.add.image(gameWidth*8.9/16, gameHeight*14.05/16, 'deselectedButton');
     this.creditsButton.setScale(2/3);
-    this.creditsButtonSel = this.add.image(gameWidth*8.53/16, gameHeight*13.75/16, 'selLeftButton');
+    this.creditsButtonSel = this.add.image(gameWidth*8.53/16, gameHeight*14.05/16, 'selLeftButton');
     this.creditsButtonSel.setScale(2/3);
     this.creditsButtonSel.setVisible(false);
     //Texto
-    this.creditsButtonText = this.add.text(gameWidth*7.8/16, gameHeight*13.3/16,  stringsJSON.Buttons.credits , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "40px"});
+    this.creditsButtonText = this.add.text(gameWidth*7.8/16, gameHeight*13.6/16,  stringsJSON.Buttons.credits , {fontFamily: "Acadian_Runes", fill: "#481d18", fontSize: "40px"});
     if (userConfig.lang == "en"){
       this.creditsButtonText.setX(gameWidth*8/16)
     }
