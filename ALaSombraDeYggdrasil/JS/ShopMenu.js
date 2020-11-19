@@ -188,8 +188,6 @@ class ShopMenu extends Phaser.Scene{
     }
 
     this.FunctionButtons();
-
-
   }
 
   Update(){
@@ -232,9 +230,9 @@ class ShopMenu extends Phaser.Scene{
     else
       this.ForceOfOdinSound.play();
 
-    if ((user.money >= phaserJSON.Store.doublejump.price)&&(user.buffs[1] == 0)){
+    if ((user.money >= phaserJSON.Store.invulnerability.price)&&(user.buffs[1] == 0)){
       user.buffs[1]++;
-      user.money-= phaserJSON.Store.doublejump.price;
+      user.money-= phaserJSON.Store.invulnerability.price;
       this.MoneyShop.setText(user.money);
       this.object2Bought.setVisible(true);
       this.icon2Button.setVisible(true);
@@ -251,9 +249,10 @@ class ShopMenu extends Phaser.Scene{
     else
       this.ValkirieFeatherSound.play();
 
-    if ((user.money >= phaserJSON.Store.invulnerability.price)&&(user.buffs[2] == 0)){
+    if ((user.money >= phaserJSON.Store.doublejump.price)&&(user.buffs[2] == 0)){
       user.buffs[2]++;
-      user.money-= phaserJSON.Store.invulnerability.price;
+      user.money-= 
+      phaserJSON.Store.doublejump.price;
       this.MoneyShop.setText(user.money);
       this.object3Bought.setVisible(true);
       this.icon3Button.setVisible(true);

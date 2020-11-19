@@ -70,7 +70,7 @@ var user = { //Mapas desbloqueados y dinero del jugador
   world: [true,false,false,false,false,false,false,false,false],
   map: [false, false, false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
   buffs: [0, 0, 0, 0],
-  money: 0,
+  money: 1000,
   maxDistanceArcade: 0
 }
 
@@ -109,7 +109,7 @@ function resetUserData(){
     world: [true,false,false,false,false,false,false,false,false],
     map: [false, false, false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
     buffs: [0, 0, 0, 0],
-    money: 0,
+    money: 1000,
     maxDistanceArcade: 0
   }
   userConfig = {
