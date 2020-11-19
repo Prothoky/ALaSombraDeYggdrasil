@@ -65,12 +65,15 @@ Los 18 niveles están diseñados para generar continuamente un factor sorpresa p
 
 
 Boceto de mapa del bosque "tileable"
+
 ![boceto mapa bosque](https://user-images.githubusercontent.com/55508821/96410498-4b195100-11e7-11eb-9289-1263f45bc08c.jpeg)
 
 Aquí se muestra la continuación del mapa del bosque con un enemigo y un obstáculo
+
 ![mapa fase 2](https://user-images.githubusercontent.com/55508821/96566275-a7eb3900-12c5-11eb-8953-51e343277f71.jpg)
 
-La escena de selección de mapa es en un tablero inspirado en paisajes de Noruega y Suecia donde el jugador va avanzando por los diferentes niveles del mundo.
+La escena de selección de mapa es un tablero inspirado en paisajes de Noruega y Suecia donde el jugador va avanzando por los diferentes niveles del mundo.
+
 ![Midgard final](https://user-images.githubusercontent.com/55508821/98613748-3ff1a680-22f7-11eb-9d1f-bfcb319d769d.jpeg)
 
 
@@ -103,7 +106,6 @@ Durante la partida saldrán varios elementos a esquivar, ya sean enemigos u obst
 
 ## Influencias
 La travesía por Midgrad transcurre por la región de Sigtuna, la ciudad más Antigua de la actual Suecia, situado a una hora de Estocolmo. Esa zona es conocida por la belleza de sus bosques y el gran lago Mälaren que en invierno se hace uno con el hielo.
-[Insertar imágenes del bosque y el lago de verdad y la comparación ]
 
 
 ![imagen](https://user-images.githubusercontent.com/55508821/99160092-ac97e700-26e3-11eb-82e2-9d0158e9e993.png)
@@ -142,27 +144,35 @@ El elemento esencial de nuestro juego para definir las interfaces es la madera, 
 De esta manera hemos creado una interfaz completa y con un diseño coherente con el juego, y los elementos que este tiene.
 
 Menú Principal
+
 ![imagen](https://user-images.githubusercontent.com/55508821/99616783-27cc0680-2a1e-11eb-90f5-33ba4f6335d7.png)
 
 Ajustes de volumen
+
 ![imagen](https://user-images.githubusercontent.com/55508821/99616884-62ce3a00-2a1e-11eb-9dbe-9e53e327c510.png)
+
 En cuestiones de diseño para seguir con una interfaz algo rústica y con elementos acorde a la historia, las flechas serán un recurso muy utilizado en la interfaz para mostrar avances al jugador.
 
 Ajustes de dificultad, idioma y borrado de datos
+
 ![imagen](https://user-images.githubusercontent.com/55508821/99616937-81343580-2a1e-11eb-9d0d-19a663908feb.png)
 
 La dificultad de esta pantalla fue encontrar unos nombres adecuados para las distintas dificultades. Para compensar una posible incomprensión de las dificultades, las acompañamos de colores que aumentan tu tono oscuro conforme la dificultad va aumentando.
 
 La pantalla de selección de mundo es bastante importante dentro de este título, ya que el árbol representado es el mismo que da nombre a nuestro juego.
 En este menú nos encontramos ante Yggdrasil, el árbol de los nueve mundos, el cuál sostenta los nueve reinos por los que pasará nuestro protagonista, estando siete de ellos en las raíces, uno casi en la copa y otro en el centro, Midgard (La Tierra), el primer mundo jugable de esta versión. Quisimos indicar esto haciendo que el tronco árbol emanase luz en las zonas cercanas a los reinos desbloqueados por el momento, estando este reino a su vez iluminado mientras el resto están algo más apagados. Respecto al árbol como tal, hemos querido optar por una representación clásica, de modo que cualquier persona interesada en la mitología nórdica entendiera qué tenía delante cuando entrase a este menú.
+
 ![imagen](https://user-images.githubusercontent.com/55508821/99616997-9f019a80-2a1e-11eb-9b02-f83cf0e254fc.png)
 
 
 Pantalla de selección de nivel de Midgard
+
 ![imagen](https://user-images.githubusercontent.com/55508821/99617048-b6d91e80-2a1e-11eb-8f6f-c617cb64a9b0.png)
 
 Pantalla de Tienda
+
 ![imagen](https://user-images.githubusercontent.com/55508821/99617606-f3594a00-2a1f-11eb-96d6-564f8e0de0c0.png)
+
 Hemos añadido múltiples sonidos para cada utensilio para hacer que el efecto de compra tenga un feedback mayor por parte del usuario.
 
 
@@ -192,6 +202,7 @@ A la hora de acabar el nivel, el jugador recibe un dinero por el recorrido. Este
 
 
 ## Estilo artístico y música
+
 Nuestro título cuenta con dos técnicas bastante diferenciadas a la hora de crear todo el arte del juego. Los menús, mapas y obstáculos que podemos ver en el transcurso del juego poseen un estilo semirrealista, el cual, combinado con  personajes y enemigos dibujados a contornos y con colores planos, da un toque algo diferente y atractivo al gameplay.
 Un juego que nos ha servido mucho de referencia a la hora de llevar a cabo este estilo ha sido el famoso Hollow Knight, el cual también contaba con personajes y enemigos dibujados con estos trazados y con fondos en 2D que se combinaban en distintas capas para formar un espacio tridimensional, lo cuál le da una mayor profundidad a los escenarios y al juego en general.
 
@@ -205,6 +216,7 @@ La canción de diálogo es un cambio de ritmo importante en el juego, así mostr
 
 
 ## Experiencia de usuario
+
 Pensando en la experiencia de usuario, tendremos que dividirla  en función el tipo de jugador que tengamos. 
 
 **Casual:** ese jugador que no tiene un gusto muy específico y juega con pocas pretensiones. Estos se alejan de las dificultades asfixiantes y disfrutan del juego a modo de travesía, no suelen tener un alto nivel de juego.
@@ -216,6 +228,7 @@ Pensando en la experiencia de usuario, tendremos que dividirla  en función el t
 
 
 ## Modelo de negocio
+
 Para sostener este proyecto a dos años vista tenemos desarrollado un sistema de lanzamiento periódico del contenido del juego, de este modo conseguiremos extender el pulso del juego y rentabilizar el trabajo con un mayor beneficio económico.
 
 Al constar de 9 mundos el juego, vamos a sacar el primer mundo nada más empezar y el segundo a las 2/3 semanas del lanzamiento. El resto de mundo se irán lanzando cada mes y medio, así diversificamos el contenido y damos un descanso a los jugadores para que no consuman su interés por el juego de una manera tan rápida.
@@ -235,6 +248,7 @@ En nuestro modelo de negocio no contemplamos que el usuario tenga que gastar din
 En la tienda se podrán adquirir escudos para las vidas, y nuevas habilidades para facilitar el avance del jugador, sobre todo para su recorrido por el modo difícil. 
 
 Modelo de lienzo 
+
 ![imagen](https://user-images.githubusercontent.com/55508821/99619556-fce4b100-2a23-11eb-9a9b-a79e9d245721.png)
 
 
@@ -247,6 +261,7 @@ En dispositivos móviles haces un pleno uso de la pantalla táctil y el salto se
 Para el tutorial hemos diseñado una pantalla en la que simplifique el contenido del juego, utilizando pocas palabras y los propios elementos del juego para explicar al jugador la tienda y su recorrido por el modo historia.
 
  Tutorial
+ 
  ![imagen](https://user-images.githubusercontent.com/55508821/99616842-4cc07980-2a1e-11eb-9078-70b43207104c.png)
 
 
