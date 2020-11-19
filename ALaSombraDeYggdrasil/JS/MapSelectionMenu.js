@@ -64,7 +64,7 @@ class MapSelectionMenu extends Phaser.Scene{
     this.botonMundo2BOX.setScale(2/3);
     this.botonMundo2BOX.alpha = 0.001;
 
-    this.nameWorld2 = this.add.image(gameWidth*8.55/16, gameHeight*6.2/16, 'NameWorld1');
+    this.nameWorld2 = this.add.image(gameWidth*8.55/16, gameHeight*6.2/16, 'NameWorld2');
     this.nameWorld2.setScale(1.5/3);
     this.nameWorld2.setVisible(false);
 
