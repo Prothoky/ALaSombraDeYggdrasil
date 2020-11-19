@@ -145,7 +145,7 @@ De esta manera hemos creado una interfaz completa y con un diseño coherente con
 
 Menú Principal
 
-![imagen](https://user-images.githubusercontent.com/55508821/99616783-27cc0680-2a1e-11eb-90f5-33ba4f6335d7.png)
+![image](https://user-images.githubusercontent.com/55493193/99725057-d753b800-2ab4-11eb-943f-7229d5ac60cb.png)
 
 Ajustes de volumen
 
