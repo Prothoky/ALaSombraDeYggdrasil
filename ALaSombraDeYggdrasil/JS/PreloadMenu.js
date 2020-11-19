@@ -41,7 +41,6 @@ class PreloadMenu extends Phaser.Scene{
       percentText.setOrigin(0.5, 0.5);
       percentText.setDepth(2);
 
-      console.log("Loading");
       this.load.on("progress", function(value){
           percentText.setText(parseInt(value * 100) + ' %');
           progressBar.clear();
@@ -81,7 +80,6 @@ class PreloadMenu extends Phaser.Scene{
       percentText.destroy();
       progressBar.destroy();
       progressBox.destroy();
-      console.log("Complete");
 	  });
 
   }

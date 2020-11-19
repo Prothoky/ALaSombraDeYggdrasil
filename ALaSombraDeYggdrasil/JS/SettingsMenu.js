@@ -265,8 +265,6 @@ class SettingsMenu extends Phaser.Scene{
 
     this.scene.pause('SettingsMenu');
     this.scene.start('OptionsMainMenu');
-
-    console.log ("Nivel " + userConfig.difficulty);
   }
 
   EasyLevel(){
@@ -276,7 +274,6 @@ class SettingsMenu extends Phaser.Scene{
     this.mediumButtonSelSM.setVisible(false);
     this.diffButtonSelSM.setVisible(false);
     userConfig.difficulty = 0;
-    console.log ("Nivel fácil" + userConfig.difficulty);
     saveUserData();
   }
 
@@ -286,7 +283,6 @@ class SettingsMenu extends Phaser.Scene{
     this.easyButtonSelSM.setVisible(false);
     this.mediumButtonSelSM.setVisible(true);
     this.diffButtonSelSM.setVisible(false);
-    userConfig.difficulty = 1;
     userConfig.difficulty = 1;
     saveUserData();
   }
@@ -298,15 +294,12 @@ class SettingsMenu extends Phaser.Scene{
     this.mediumButtonSelSM.setVisible(false);
     this.diffButtonSelSM.setVisible(true);
     userConfig.difficulty= 2;
-    console.log ("Nivel dificil" + userConfig.difficulty);
     saveUserData();
   }
 
   ChangeLanguaje(){
 
     this.clickSound.play();
-
-    console.log("idioma" + userConfig.lang);
 
     let lang = userConfig.lang;
     if(lang=="es")
@@ -341,18 +334,14 @@ class SettingsMenu extends Phaser.Scene{
 
     this.clickSound.play();
     if(erase == true){
-      	console.log("resetiado");
-      	resetUserData();
-	if( this.languageText.text== "ESPAÑOL"){
-		updateLanguage("es")
-	}
-	 else if( this.languageText.text== "ENGLISH"){
-		updateLanguage("en")
-	}
+    	resetUserData();
+    	if( this.languageText.text== "ESPAÑOL"){
+    		updateLanguage("es")
+    	}
+    	else if( this.languageText.text== "ENGLISH"){
+    		updateLanguage("en")
+    	}
       this.cameras.main.flash(600);
-    }
-    else{
-        console.log("no resetiado");
     }
 
     this.confirmButton.setVisible(false);

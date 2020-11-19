@@ -497,11 +497,6 @@ class LevelManager extends Phaser.Scene
             this.pauseButton.on('down', this.PauseGame, this);
         }
 
-        // 2) MÓVIL
-        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-            console.log('Esto es un dispositivo móvil');
-        }
-
         this.input.addPointer(2);
 
         var pointerJump = this.add.image(150,525, 'button_mobile').setInteractive(); //Hace la imagen interactuable
@@ -532,10 +527,6 @@ class LevelManager extends Phaser.Scene
             else if(pointerAttack.getBounds().contains(pointer.downX, pointer.downY)){
                 this.playerAttack();
             }
-
-            else{
-                console.log(pointer);
-            }
         }, this);
 
         this.input.on('gameobjectup',function (pointer) {
@@ -544,11 +535,7 @@ class LevelManager extends Phaser.Scene
                 this.playerStopJump();
             }
             else if(pointerAttack.getBounds().contains(pointer.downX, pointer.downY)){
-                //this.playerStop();
-            }
-
-            else{
-                console.log(pointer);
+                //this.playerStopAttack();
             }
         }, this);
 
@@ -650,7 +637,6 @@ class LevelManager extends Phaser.Scene
             this.endTrigger.x = this.xPointer + this.endEventOffset;
         }
         this.xPointerFinalValue = this.xPointer;
-        //console.log(this.percentagesTest);    // Debug
     }
 
     // Llama a una función aleatoria del array de trampas disponibles y le pasa x e y como parámetros
@@ -795,7 +781,10 @@ class LevelManager extends Phaser.Scene
             localAttackHitbox.setOrigin(0);
             localAttackHitbox.setSize(this.playerAttackWidth, this.playerAttackHeight, false);
             localAttackHitbox.body.setAllowGravity(false);
-            localAttackHitbox.body.velocity.x = this.player.body.velocity.x + 215;
+            if(PC)
+                localAttackHitbox.body.velocity.x = this.player.body.velocity.x + 215;
+            else
+                localAttackHitbox.body.velocity.x = this.player.body.velocity.x + (215*4/3);
             //localAttackHitbox.setVisible(false);  // Volver invisible al importar animacion definitiva
             localAttackHitbox.refreshBody();
             // Crea el timer de actualziación
@@ -833,6 +822,7 @@ class LevelManager extends Phaser.Scene
                     user.buffs[0] = Number(user.buffs[0]) - 1;
             }
             if (this.playerHealth <= 0) {   // Si no le quedan vidas muere
+                this.soundRunning.stop();
                 this.playerDeath();
             } else {
                 this.isPlayerInvulnerable = true;   // lo vuelve invulnerable durante un tiempo

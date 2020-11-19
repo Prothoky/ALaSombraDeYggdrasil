@@ -68,11 +68,11 @@ class GameOverMenu extends Phaser.Scene{
           user.maxDistanceArcade = distanceAchieved;
         }
 
-        this.DialogTextD = this.add.text(gameWidth*7.2/16, gameHeight*5.2/16,  (distanceAchieved ), {fontFamily: "Acadian_Runes",  fontSize: 24, stroke:'#000000', fill: "black", strokeThickness: 2});
+        this.DialogTextD = this.add.text(gameWidth*7.2/16, gameHeight*5.2/16,  (distanceAchieved ), {fontFamily: "Acadian_Runes",  fontSize: 24, stroke:'#450000', fill: "black", strokeThickness: 2});
         if (userConfig.lang == "en"){
           this.DialogTextD.setX(gameWidth*6.8/16);
         }
-        this.DialogTextDM = this.add.text(gameWidth*9.4/16, gameHeight*6.9/16,  (user.maxDistanceArcade) , {fontFamily: "Acadian_Runes",  fontSize: 24, stroke:'#000000', fill: "black", strokeThickness: 2});
+        this.DialogTextDM = this.add.text(gameWidth*9.4/16, gameHeight*6.9/16,  (user.maxDistanceArcade) , {fontFamily: "Acadian_Runes",  fontSize: 24, stroke:'#450000', fill: "black", strokeThickness: 2});
 
 
         distanceAchieved = 0;

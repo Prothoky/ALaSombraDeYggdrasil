@@ -37,8 +37,6 @@ class CreditsMenu extends Phaser.Scene{
     this.credits = this.add.text(0, gameHeight + 5, stringsJSON.Credits , {fontFamily: "Acadian_Runes", fill: "white", fontSize: 18, align: 'center' ,boundsAlignH: "center", boundsAlignV: "middle"});
     this.credits.setOrigin(0,0);
     this.credits.depth=3;
-    console.log(stringsJSON);
-    console.log(stringsJSON.Credits);
     // 4) LOGO
     this.logo = this.add.image(0,500, 'logo');
     this.logo.setScale(0.125);

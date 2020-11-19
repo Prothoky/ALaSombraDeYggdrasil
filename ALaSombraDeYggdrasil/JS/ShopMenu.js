@@ -196,17 +196,9 @@ class ShopMenu extends Phaser.Scene{
 
     this.FunctionButtons();
 
-    /*if(Number(user.buffs[0]) == 3){
-      console.log("escudois vendidos");
-      this.buyObject1.setVisible(true);
-      this.object1Button.on('pointerover', function (pointer) {this.object1ButtonSel.setVisible(false);}, this);
-      this.object1Button.on('pointerout', function (pointer) {this.object1ButtonSel.setVisible(false);}, this);
-    }*/
-
   }
 
   AddObject1(){
-    console.log("antes" + user.buffs[0]);
     this.buyObj.play();
     if(userConfig.lang=="es")
       this.bendicionDeHierroSound.play();
@@ -229,32 +221,27 @@ class ShopMenu extends Phaser.Scene{
       this.object1Bought.setVisible(true);
       this.buyObject1.setVisible(false);
     }
-
-    console.log("despues" + user.buffs[0]);
     saveUserData();
   }
 
   AddObject2(){
 
-      this.buyObj.play();
-      if(userConfig.lang=="es")
-        this.FuerzaDeOdinSound.play();
-      else
-        this.ForceOfOdinSound.play();
+    this.buyObj.play();
+    if(userConfig.lang=="es")
+      this.FuerzaDeOdinSound.play();
+    else
+      this.ForceOfOdinSound.play();
 
-      if ((user.money >= phaserJSON.Store.doublejump.price)&&(user.buffs[1] == 0)){
-        user.buffs[1]++;
-        user.money-= phaserJSON.Store.doublejump.price;
-        this.MoneyShop.setText(user.money);
-        this.object2Bought.setVisible(true);
-        this.icon2Button.setVisible(true);
-        this.buyObject2.setVisible(false);
-        this.object2ButtonSel.alpha = 0;
-
-      }else{
-        console.log("No tienes suficiente dinero");
-      }
+    if ((user.money >= phaserJSON.Store.doublejump.price)&&(user.buffs[1] == 0)){
+      user.buffs[1]++;
+      user.money-= phaserJSON.Store.doublejump.price;
+      this.MoneyShop.setText(user.money);
+      this.object2Bought.setVisible(true);
+      this.icon2Button.setVisible(true);
+      this.buyObject2.setVisible(false);
+      this.object2ButtonSel.alpha = 0;
       saveUserData();
+    }
   }
 
   AddObject3(){
@@ -309,20 +296,19 @@ class ShopMenu extends Phaser.Scene{
   SetTextPos() {
 
           if((user.money>0) && (user.money<100)){
-            console.log("menos 100");
+
               this.MoneyShop.x = gameWidth*14.55/16
           }else if((user.money>=100) && (user.money<1000)){
-            console.log("menos 1.000");
+
               this.MoneyShop.x = gameWidth*14.45/16
           }else if ((user.money>=1000) && (user.money<10000)){
-            console.log("menos 10.000");
+
               this.MoneyShop.x = gameWidth*14.35/16
           }else if ((user.money>=10000) && (user.money<100000)){
-            console.log("menos 100.000");
+
               this.MoneyShop.x = gameWidth*14.25/16
           }else{
-            console.log("lol");
-            console.log(user.money);
+
               this.MoneyShop.x = gameWidth*14.15/16
           }
 
@@ -330,13 +316,11 @@ class ShopMenu extends Phaser.Scene{
 
   FunctionButtons(){
     if(Number(user.buffs[0]) < 3){
-      console.log("quedan");
       this.object1ButtonSel.alpha = 1;
       this.buyObject1.setVisible(true);
       this.object1Button.on('pointerover', function (pointer) {this.object1ButtonSel.setVisible(true);}, this);
       this.object1Button.on('pointerout', function (pointer) {this.object1ButtonSel.setVisible(false);}, this);
     }else{
-      console.log("no quedan");
       this.object1ButtonSel.alpha = 0;
     }
 

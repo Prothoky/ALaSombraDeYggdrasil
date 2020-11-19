@@ -139,8 +139,6 @@ class MainMenu extends Phaser.Scene{
   }
 
   InitGame(){
-    console.log(user.world[0]);
-    console.log(user.world[1]);
     this.clickSound.play();
     this.scene.pause('MainMenu');
     this.scene.start('MapSelectionMenu');
