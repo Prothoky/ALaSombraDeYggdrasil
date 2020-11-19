@@ -76,7 +76,7 @@ Durante la partida saldrán varios elementos a esquivar, ya sean enemigos u obst
 | 1 - plataformas sin enemigos| 
 | 2 - enemigos quietos| 
 | 3 - plataformas con enemigos| 
-| 4 - enemigos con movimiento ¡NO!| 
+| 4 - águila| 
 | 5 - pinchos largos con plataforma para lograr el salto| 
 | 6 - pinchos pequeños seguidos sin enemigo| 
 | 7 - pinchos pequeños seguidos con enemigos| 
