@@ -31,7 +31,7 @@ Durante el transcurso del juego el protagonista irá narrando su experiencia por
 
 
 
-## Personaje
+## Nuestro protagonista, Einar
 
 Einar, la calamidad de Midgard es un robusto vikingo que lleva muchos siglos perdido en su amnesia. El diseño de nuestro personaje principal está pensado para reforzar el hecho de que es un verdadero vikingo, dotándole de hacha y escudo, una buena vestimenta, un casco con dos cuernos y una barba rojiza, todo esto, acompañado de un cuerpo con unas piernas bastante cortas, hombros muy anchos y brazos gigantes. Este personaje irá dialogando con los cuervos de Odín al final de cada nivel. Durante el camino hará uso de su imponente hacha para librarse de todos los enemigos que le dan caza.
 
@@ -69,7 +69,7 @@ El diseño de niveles está desarrollado con una curva de dificultad progresiva 
 
 ![Dificultad final](https://user-images.githubusercontent.com/55508821/98614050-f190d780-22f7-11eb-85d2-1194f2f01c3c.JPG)
 
-Durante la partida saldrán varios elementos a esquivar, ya sean enemigos u obstáculos:
+Durante la partida saldrán varios elementos a esquivar, ya sean enemigos u obstáculos y otros objetos para recoger, como monedas y pergaminos:
 |Obstáculos|
 | -- | 
 | 0 - pinchos estándar| 
@@ -89,28 +89,26 @@ Durante la partida saldrán varios elementos a esquivar, ya sean enemigos u obst
 | 14 - cabaña de pasar por dentro| 
 | 15 - moneda con enemigo| 
 
+Dejamos a continuación el diseño de los dos enemigos incluidos en el juego:
+
+Estas son las dos monedas que podremos recoger a lo largo del gameplay:
 
 
-## Influencias
+## Escenarios 
+
+**Influencias**
 La travesía por Midgrad transcurre por la región de Sigtuna, la ciudad más Antigua de la actual Suecia, situado a una hora de Estocolmo. Esa zona es conocida por la belleza de sus bosques y el gran lago Mälaren que en invierno se hace uno con el hielo.
 
-
 ![imagen](https://user-images.githubusercontent.com/55508821/99160092-ac97e700-26e3-11eb-82e2-9d0158e9e993.png)
-
 
 El bosque cercano a Sigtuna
 
 ![imagen](https://user-images.githubusercontent.com/55508821/99160225-3e542400-26e5-11eb-81c8-8548d941615a.png)
 
-
 El lago de Sigtuna
-
 
 ![imagen](https://user-images.githubusercontent.com/55508821/99160211-f03f2080-26e4-11eb-8d5f-d52a5dd2640a.png)
 
-
-
-## Escenarios 
 Los mapas de nuestro juego se componen de cuatro capas distintas, una primera capa situada delante del espacio jugable y de nuestro personaje, para crear una mayor inmersión en el juego; una segunda capa donde se encuentra el suelo y donde se desarrollará toda la acción; una tercera con un paisaje lejano y, una cuarta y última con un cielo. Todas tileables y con distintas velocidades para dar una mayor sensación de velocidad.
 En los cinco primeros niveles principales del juego nuestro protagonista tendrá que adentrarse por un bosque frondoso con árboles repletos de ramas a modo de estacas que crecen sobre un terreno bastante escabroso donde abunda la vegetación, donde podemos vislumbrar entre tanta maleza unas montañas nevadas, relacionadas con el segundo mapa jugable.
 
