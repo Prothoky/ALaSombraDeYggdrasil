@@ -41,7 +41,7 @@ class CreditsMenu extends Phaser.Scene{
     console.log(stringsJSON.Credits);
     // 4) LOGO
     this.logo = this.add.image(0,500, 'logo');
-    this.logo.setScale(0.25);
+    this.logo.setScale(0.125);
     this.logo.setOrigin(0.5,0.5);
     this.logo.depth=3;
 
@@ -79,7 +79,7 @@ class CreditsMenu extends Phaser.Scene{
     this.credits.setX(this.cameras.main.x+550);
     this.logo.setX(this.credits.x + this.credits.width/2 );
 
-    this.credits.setY(this.credits.y - 0.125);
+    this.credits.setY(this.credits.y - 0.25);
     this.logo.setY(this.credits.y + this.credits.height + 150);
 
     this.backText.setX(this.cameras.main.x+1200);
