@@ -89,20 +89,6 @@ Durante la partida saldrán varios elementos a esquivar, ya sean enemigos u obst
 | 14 - cabaña de pasar por dentro| 
 | 15 - moneda con enemigo| 
 
-Dejamos a continuación el diseño de los dos enemigos incluidos en el juego:
-Draugr:
-![image](https://user-images.githubusercontent.com/55493193/99726562-e5a2d380-2ab6-11eb-9a91-17ab4baa08fa.png)
-
-Águila:
-![image](https://user-images.githubusercontent.com/55493193/99726604-f6ebe000-2ab6-11eb-903e-f1032d051b5b.png)
-
-Estas son las dos monedas que podremos recoger a lo largo del gameplay:
-Moneda oro:
-![image](https://user-images.githubusercontent.com/55493193/99726676-13881800-2ab7-11eb-9713-fe2423c8b9f5.png)
-
-Moneda plata:
-![image](https://user-images.githubusercontent.com/55493193/99726655-079c5600-2ab7-11eb-875f-a17f39ce5b00.png)
-
 ## Escenarios 
 
 **Influencias**
