@@ -440,7 +440,7 @@ class LevelManager extends Phaser.Scene
         this.raven = this.add.image(gameWidth*11.7/16, gameHeight*8.2/16, 'ravenMunin');
         if(levelIndex > 4){
           this.raven.setTexture('ravenHugin')
-          this.rave.setY(gameHeight*8.34/16);
+          this.raven.setY(gameHeight*8.34/16);
         }
         this.raven.setScale(2/3);
         this.raven.setDepth(5);
