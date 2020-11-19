@@ -899,7 +899,7 @@ class LevelManager extends Phaser.Scene
     // triggerWidth, triggerHeight: tamaño del trigger de movimiento. Si no se pasa toma valor por defecto
     generateMovingEnemy(xPos, yPos = -300, collisionWidth = 90, collisionHeight = 120, triggerWidth = 500, triggerHeight = 500) {
       if(PC){
-        let newEnemy = this.eagles.create(xPos + 1050, yPos, 'eagle_attacking').setOrigin(0).setScale(0.56);
+        let newEnemy = this.eagles.create(xPos + 1050, yPos, 'draugr').setOrigin(0).setScale(0.56);
         newEnemy.anims.play('eagle_attacking');
         newEnemy.body.setAllowGravity(false);
         newEnemy.body.setSize(collisionWidth, collisionHeight);
