@@ -138,6 +138,7 @@ class LevelManager extends Phaser.Scene
         this.raven;
 
         this.Poema;
+
     }
 
     create ()
@@ -436,7 +437,7 @@ class LevelManager extends Phaser.Scene
 
 
         //RAVEN raven
-        this.raven = this.add.image(gameWidth*11.7/16, gameHeight*8.28/16, 'ravenMunin');
+        this.raven = this.add.image(gameWidth*11.7/16, gameHeight*8.2/16, 'ravenMunin');
         if(levelIndex > 4){
           this.raven.setTexture('ravenHugin')
           this.rave.setY(gameHeight*8.34/16);
@@ -455,6 +456,7 @@ class LevelManager extends Phaser.Scene
         this.Poema.setVisible(false);
         this.Poema.setScrollFactor(0);
         this.Poema.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.levelCompletedFunc());
+
 
         //FULL SCREEN
         this.fullScreenLM = this.add.image(gameWidth*15.5/16, gameHeight*13/14, 'buttonFullScreen');
