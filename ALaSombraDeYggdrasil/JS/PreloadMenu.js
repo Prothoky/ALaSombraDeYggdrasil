@@ -63,7 +63,8 @@ class PreloadMenu extends Phaser.Scene{
     this.load.spritesheet('einar_jumping', 'ASSETS/Gameplay/animacion_saltarPC.png', { frameWidth: 400, frameHeight: 350 });
     this.load.spritesheet('einar_attack', 'ASSETS/Gameplay/animacion_atacarPC.png', { frameWidth: 400, frameHeight: 350 });
 
-    this.load.spritesheet('eagle_attacking', 'ASSETS/Gameplay/eagle_attackingPC.png', { frameWidth: 650, frameHeight: 550 });
+    //this.load.spritesheet('eagle_attacking', 'ASSETS/Gameplay/eagle_attackingPC.png', { frameWidth: 650, frameHeight: 550 });
+    this.load.spritesheet('eagle_attacking', 'ASSETS/Gameplay/eagle_attacking.png', { frameWidth: 364, frameHeight: 308 });
 
     this.load.spritesheet('draugr_attacking', 'ASSETS/Gameplay/animacion_atacar_draugrPC.png', { frameWidth: 450, frameHeight: 350 });
 
