@@ -867,8 +867,8 @@ class LevelManager extends Phaser.Scene
         }
         xPos += 75;
         let newEnemy = this.enemies.create(xPos, yPos, 'draugr').setOrigin(1).setScale(0.56);
-        newEnemy.setSize(collisionWidth, collisionHeight*2);
-        newEnemy.body.setOffset(135, 165/2);
+        newEnemy.setSize(collisionWidth, collisionHeight);
+        newEnemy.body.setOffset(135, 165);
         newEnemy.depth = 3;
         newEnemy.isStill = true;
 
