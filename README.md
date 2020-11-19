@@ -40,9 +40,9 @@ Einar, la calamidad de Midgar es un robusto vikingo que lleva muchos siglos perd
 
 
 ## Modos de dificultad y modo arcade
-Hemos desarrollado 3 dificultades distintas en función de los distintos tipos de jugador que podemos encontrar. Travesía(Fácil), Cacería (normal) y Frenesí (dificil) con un nivelado de tiempo, distancia entre trampas, dinero recibido y velocidad distintos en función decada dificultad
+Hemos desarrollado 3 dificultades distintas en función de los distintos tipos de jugador que podemos encontrar. Travesía(Fácil), Cacería (normal) y Frenesí (difícil) con un nivelado de tiempo, distancia entre trampas, dinero recibido y velocidad distintos en función de cada dificultad
 
-Para aumentar el tiempo de juego hemos implementado un modo arcade, siendo este un endless runner clásico donde el jugador probará la destreza obtenida durante la historia. Este no constará de ningún tipo de dificuldad opcional, ya que al ir aumentando progresivamente la velocidad. El jugador necesitará mucho tiempo para poder llegar lejos. Al final de la partida se indicará al jugador la distancia recorrida y su mayor recorrido.
+Para aumentar el tiempo de juego hemos implementado un modo arcade, siendo este un endless runner clásico donde el jugador probará la destreza obtenida durante la historia. Este no constará de ningún tipo de dificultad opcional, ya que al ir aumentando progresivamente la velocidad. El jugador necesitará mucho tiempo para poder llegar lejos. Al final de la partida se indicará al jugador la distancia recorrida y su mayor recorrido.
 
 ## Mecánicas de juego
 El juego tiene un sistema de movimiento limitado, el jugador irá por defecto de izquierda a derecha con la única opción de saltar y atacar.
@@ -155,7 +155,7 @@ Pantalla de selección de nivel de Midgard
 
 Pantalla de Tienda
 ![imagen](https://user-images.githubusercontent.com/55508821/99617606-f3594a00-2a1f-11eb-96d6-564f8e0de0c0.png)
-Hemos añadido multiples sonidos para cada utensilio para hacer que el efecto de compra tenga un feedback mayor por parte del usuario.
+Hemos añadido múltiples sonidos para cada utensilio para hacer que el efecto de compra tenga un feedback mayor por parte del usuario.
 
 ## Flujo de juego
 ![A la sombra de Yggdrasil](https://user-images.githubusercontent.com/55508821/99619135-10434c80-2a23-11eb-894f-02d202865c73.png)
@@ -189,7 +189,7 @@ La canción de diálogo es un cambio de ritmo importante en el juego, así mostr
 ## Experiencia de usuario
 Pensando en la experiencia de usuario, tendremos que dividirla  en función el tipo de jugador que tengamos. 
 
-**Casual:** ese jugador que no tiene un gusto muy especifico y juega con pocas pretensiones. Estos se alejan de las dificultades asfixiantes y disfrutan del juego a modo de travesía, no suelen tener un alto nivel de juego.
+**Casual:** ese jugador que no tiene un gusto muy específico y juega con pocas pretensiones. Estos se alejan de las dificultades asfixiantes y disfrutan del juego a modo de travesía, no suelen tener un alto nivel de juego.
 
 **Explorador:** ese jugador va a indagar en todos los aspectos del juego, interesándose por la historia y los distintos cambios que van surgiendo conforme va progresando en el juego.
 
