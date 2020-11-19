@@ -99,46 +99,6 @@ class ShopMenu extends Phaser.Scene{
     }
   }
 
-  FunctionButtons(){
-    if(Number(user.buffs[0]) < 3 && user.money >= phaserJSON.Store.shields.price){
-      this.object1ButtonSel.alpha = 1;
-      this.buyObject1.setVisible(true);
-      this.object1Button.on('pointerover', function (pointer) {this.object1ButtonSel.setVisible(true);}, this);
-      this.object1Button.on('pointerout', function (pointer) {this.object1ButtonSel.setVisible(false);}, this);
-    }else if(this.object1ButtonSel != null){
-      this.object1ButtonSel.alpha = 0;
-    }
-
-    if(Number(user.buffs[1]) < 1 && user.money >= phaserJSON.Store.invulnerability.price){
-      this.buyObject2.setVisible(true);
-      this.object2ButtonSel.alpha = 1;
-      this.object2Button.on('pointerover', function (pointer) {this.object2ButtonSel.setVisible(true);}, this);
-      this.object2Button.on('pointerout', function (pointer) {this.object2ButtonSel.setVisible(false);}, this);
-    }
-    else if(this.object2ButtonSel != null){
-        this.object2ButtonSel.alpha = 0;
-      }
-
-    if(Number(user.buffs[2]) < 1 && user.money >= phaserJSON.Store.doublejump.price){
-      this.object3ButtonSel.alpha = 1;
-      this.buyObject3.setVisible(true);
-      this.object3Button.on('pointerover', function (pointer) {this.object3ButtonSel.setVisible(true);}, this);
-      this.object3Button.on('pointerout', function (pointer) {this.object3ButtonSel.setVisible(false);}, this);
-    }else if(this.object3ButtonSel != null){
-        this.object3ButtonSel.alpha = 0;
-      }
-
-    if(Number(user.buffs[3] < 1 && user.money >= phaserJSON.Store.cooldown.price)){
-      this.object4ButtonSel.alpha = 1;
-      this.buyObject4.setVisible(true);
-      this.object4Button.on('pointerover', function (pointer) {this.object4ButtonSel.setVisible(true);}, this);
-      this.object4Button.on('pointerout', function (pointer) {this.object4ButtonSel.setVisible(false);}, this);
-    }else if(this.object4ButtonSel != null){
-        this.object4ButtonSel.alpha = 0;
-    }
-
-    this.SetTextPos();
-  }
 
   EffectsConfig(){
     return {
@@ -453,6 +413,9 @@ class ShopMenu extends Phaser.Scene{
     }else{
       this.icon4Button.setVisible(false);
     }
+
+    
+    this.SetTextPos();
   }
 
 
