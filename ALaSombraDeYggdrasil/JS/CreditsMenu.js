@@ -12,7 +12,7 @@ class CreditsMenu extends Phaser.Scene{
     this.bg_background = this.add.tileSprite(0, 0, 3772, 605, 'bg_background');
     this.bg_far = this.add.tileSprite(0,0, 3772, 605, "bg_far");
     this.bg_medium = this.add.tileSprite(0,0, 3772, 605, "bg_medium");
-    this.bg_near = this.add.tileSprite(0,-25, 3215, 515, "bg_near");
+    this.bg_near = this.add.tileSprite(0, 0, 3215, 515, "bg_near");
 
     this.bg_near.depth = 2;
 
@@ -41,21 +41,12 @@ class CreditsMenu extends Phaser.Scene{
     console.log(stringsJSON.Credits);
     // 4) LOGO
     this.logo = this.add.image(0,500, 'logo');
-    this.logo.setScale(0.125);
+    this.logo.setScale(0.25);
     this.logo.setOrigin(0.5,0.5);
     this.logo.depth=3;
 
     // 3) CAMERA
     this.cameras.main.startFollow(this.player, false, 1, 1, -250, 200); // Cámar sigue al personaje
-
-    /*//FULL SCREEN
-    this.fullScreen = this.add.image(gameWidth*15.5/16, gameHeight*13/14, 'buttonFullScreen');
-    this.fullScreen.setScale(2/60);
-    this.fullScreen.depth=3;
-    this.fullScreen.setInteractive({ useHandCursor: true})
-    .on('pointerdown', function() {
-      this.scene.scale.toggleFullscreen();
-    });*/
 
     //BACK BUTTON
     this.backButton = this.add.image(gameWidth*13.5/16, gameHeight*14.8/16,  'deselectedButtonSmall');
