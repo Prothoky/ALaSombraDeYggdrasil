@@ -64,19 +64,6 @@ Los 18 niveles están diseñados para generar continuamente un factor sorpresa p
 - Escudos
 
 
-Boceto de mapa del bosque "tileable"
-
-![boceto mapa bosque](https://user-images.githubusercontent.com/55508821/96410498-4b195100-11e7-11eb-9289-1263f45bc08c.jpeg)
-
-Aquí se muestra la continuación del mapa del bosque con un enemigo y un obstáculo
-
-![mapa fase 2](https://user-images.githubusercontent.com/55508821/96566275-a7eb3900-12c5-11eb-8953-51e343277f71.jpg)
-
-La escena de selección de mapa es un tablero inspirado en paisajes de Noruega y Suecia donde el jugador va avanzando por los diferentes niveles del mundo.
-
-![Midgard final](https://user-images.githubusercontent.com/55508821/98613748-3ff1a680-22f7-11eb-9d1f-bfcb319d769d.jpeg)
-
-
 El diseño de niveles está desarrollado con una curva de dificultad progresiva y situacional en función al avance de los distintos niveles del mundo. Una vez se alcance el hielo en el mapa, la dificultad bajará durante el primer nivel para que el usuario se pueda adaptar a los nuevos elementos incorporados en estos.
 
 
@@ -126,6 +113,16 @@ El lago de Sigtuna
 ## Escenarios 
 Los mapas de nuestro juego se componen de cuatro capas distintas, una primera capa situada delante del espacio jugable y de nuestro personaje, para crear una mayor inmersión en el juego; una segunda capa donde se encuentra el suelo y donde se desarrollará toda la acción; una tercera con un paisaje lejano y, una cuarta y última con un cielo. Todas tileables y con distintas velocidades para dar una mayor sensación de velocidad.
 En los cinco primeros niveles principales del juego nuestro protagonista tendrá que adentrarse por un bosque frondoso con árboles repletos de ramas a modo de estacas que crecen sobre un terreno bastante escabroso donde abunda la vegetación, donde podemos vislumbrar entre tanta maleza unas montañas nevadas, relacionadas con el segundo mapa jugable.
+
+Boceto del mapa del bosque:
+
+![boceto mapa bosque](https://user-images.githubusercontent.com/55508821/96410498-4b195100-11e7-11eb-9289-1263f45bc08c.jpeg)
+
+Aquí se muestra la continuación del mapa del bosque con un enemigo y un obstáculo:
+
+![mapa fase 2](https://user-images.githubusercontent.com/55508821/96566275-a7eb3900-12c5-11eb-8953-51e343277f71.jpg)
+
+Diseño final del mapa del bosque:
 
 ![MAPA BOSQUE](https://user-images.githubusercontent.com/55508821/98616851-f22c6c80-22fd-11eb-9cd8-a69b29f06a4a.jpg)
 
