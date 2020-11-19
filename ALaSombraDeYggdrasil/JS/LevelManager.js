@@ -589,7 +589,7 @@ class LevelManager extends Phaser.Scene
         if (this.player.anims.getCurrentKey() == 'einar_attacking'){
             if (this.player.anims.getProgress() >= 1) {
                 if (this.isPlayerTouchingGround) {
-                    this.player.anims.play('einar_running');     
+                    this.player.anims.play('einar_running');
                 }   else {
 
                   if(PC){
@@ -875,7 +875,7 @@ class LevelManager extends Phaser.Scene
         newTrigger.body.setSize(500, 500);  // Trigger que hará que el enemigo se mueva cuando entre el personaje en contacto
         newTrigger.associatedEnemy = newEnemy;
         return this.minDistStillEnemy;
-        
+
     }
 
     // Función de creación de enemigos con movimiento al acercarse el jugador EN DESUSO
@@ -1068,11 +1068,11 @@ class LevelManager extends Phaser.Scene
         let hitboxHeight = 70;
         if (highValue) {
             //let localCoin = this.coins.create(xPos, yPos, 'coin_1').setScale(scaleFactor).setTint(0xe62272).refreshBody();
-            let localCoin = this.coins.create(xPos, yPos, 'coin_2').setScale(scaleFactor).refreshBody();
+            let localCoin = this.coins.create(xPos, yPos, 'coin_1').setScale(scaleFactor).refreshBody();
             localCoin.body.setSize(hitboxWidth, hitboxHeight);
             localCoin.value = 1;
         } else {
-            let localCoin = this.coins.create(xPos, yPos, 'coin_1').setScale(scaleFactor).refreshBody();
+            let localCoin = this.coins.create(xPos, yPos, 'coin_2').setScale(scaleFactor).refreshBody();
             localCoin.body.setSize(hitboxWidth, hitboxHeight);
             localCoin.value = 0;
 
