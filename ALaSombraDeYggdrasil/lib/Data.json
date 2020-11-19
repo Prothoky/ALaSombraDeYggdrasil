@@ -43,7 +43,7 @@
     "Dialogs": [
       [
         ["EINAR", "\nEinar: Hacia tiempo que no salía al \n   combate, mis brazos ya no son lo que eran, \n mis piernas están cansadas."],
-        ["EINAR", "   Einar: Los dioses me bendijeron hace mcuhos \n soles, soy Einar el inmortal, \n la calamidad de mis enemigos \n y el escudo de mi pueblo."],
+        ["EINAR", "   Einar: Los dioses me bendijeron hace mcuhos \n soles. Soy Einar el inmortal, \n la calamidad de mis enemigos \n y el escudo de mi pueblo."],
         ["EINAR","    \n             Einar: Pero llevo demasiado tiempo sin \n nada ni nadie a quien defender."],
         ["EINAR","    \n         Einar: Dime tu Munin, cuervo de la memoria."],
         ["EINAR","    \n             Einar: ¿Qué hice para estar aquí?"],
@@ -235,7 +235,7 @@
     "Dialogs": [
       [
         [ "EINAR", "Einar: It has been a long time since my last combat, \n my arms arent what they used to, \n my legs are tired." ],
-        [ "EINAR", "   Einar: I was blessed by gods so many suns ago, \n I am Einar, the inmortal, \n calamity of my enemies \n and my the shield of my hometown." ],
+        [ "EINAR", "   Einar: I was blessed by gods so many suns ago. \n I am Einar, the inmortal, \n calamity of my enemies \n and my the shield of my hometown." ],
         [ "EINAR", "    \n         Einar: But I have not been a defender  \n for a long time." ],
         [ "EINAR", "    \n         Einar: Tell me, Munin, raven of the memory." ],
         [ "EINAR", "    \n             Einar: ¿What did I do to be here?" ],
