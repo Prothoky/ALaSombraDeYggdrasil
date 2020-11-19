@@ -33,7 +33,7 @@ Durante el transcurso del juego el protagonista irá narrando su experiencia por
 
 ## Personaje
 
-Einar, la calamidad de Midgar es un robusto vikingo que lleva muchos siglos perdido en su amnesia. Está inspirado en los relatos descriptivos de como eran los berserkers. Este personaje irá dialogando con los cuervos de Odín al final de cada nivel. Durante el camino hará uso de su imponente hacha para librarse de todos los enemigos que le dan caza.
+Einar, la calamidad de MidgarD es un robusto vikingo que lleva muchos siglos perdido en su amnesia. El diseño de nuestro personaje principal está pensado para reforzar el hecho de que es un verdadero vikingo, dotándole de hacha y escudo, una buena vestimenta, un casco con dos cuernos y una barba rojiza, todo esto, acompañado de un cuerpo con unas piernas bastante cortas, hombros muy anchos y brazos gigantes. Este personaje irá dialogando con los cuervos de Odín al final de cada nivel. Durante el camino hará uso de su imponente hacha para librarse de todos los enemigos que le dan caza.
 ![Einar](https://user-images.githubusercontent.com/55508821/97813399-3b3e4a00-1c88-11eb-80d3-1dbf2db12bf5.jpg)
 
 
@@ -119,16 +119,19 @@ El lago de Sigtuna
 
 
 ## Escenarios 
+Los mapas de nuestro juego se componen de cuatro capas distintas, una primera capa situada delante del espacio jugable y de nuestro personaje, para crear una mayor inmersión en el juego; una segunda capa donde se encuentra el suelo y donde se desarrollará toda la acción; una tercera con un paisaje lejano y, una cuarta y última con un cielo. Todas tileables y con distintas velocidades para dar una mayor sensación de velocidad.
+En los cinco primeros niveles principales del juego nuestro protagonista tendrá que adentrarse por un bosque frondoso con árboles repletos de ramas a modo de estacas que crecen sobre un terreno bastante escabroso donde abunda la vegetación, donde podemos vislumbrar entre tanta maleza unas montañas nevadas, relacionadas con el segundo mapa jugable.
 
 ![MAPA BOSQUE](https://user-images.githubusercontent.com/55508821/98616851-f22c6c80-22fd-11eb-9cd8-a69b29f06a4a.jpg)
-A partir del sexto nivel principal entramos en el lago Mälaren
+
+A partir del sexto nivel principal, sobrepasamos esas montañas mostradas en el primer mapa para cercarnos al lago Mälaren, un paisaje simple pero bonito, con muy pocos árboles a diferencia del escenario anterior, repleto de dunas de nieve que cubren las grises rocas del suelo.
 
 ![MAPA HIELO](https://user-images.githubusercontent.com/55508821/98616835-e80a6e00-22fd-11eb-9470-2e7837797009.jpg)
 
 
-## Interfaz
+## Interfaz y menús
 
-El diseño de interfaz de usuario debe de ser muy sencilla y ligera para el usuario, no pretendemos distraer con mucha carga de información para atraer a la mayor cantidad de público posible. El diseño del menú principal tiene como premisa crear  atención a Yggdrasil sujetando a los 9 mundos vikingos, estos estarán en gris hasta que se vayan desbloqueando, el jugador seleccionará el mundo y se adentrará en su respectivo mapa de selección de niveles.
+El diseño de la UI debe de ser muy sencilla y ligera para el usuario, no pretendemos distraer con mucha carga de información para atraer a la mayor cantidad de público posible. El diseño del menú principal tiene como premisa crear  atención a Yggdrasil sujetando a los 9 mundos vikingos, estos estarán en gris hasta que se vayan desbloqueando, el jugador seleccionará el mundo y se adentrará en su respectivo mapa de selección de niveles.
 
 El elemento esencial de nuestro juego para definir las interfaces es la madera, con el queremos transmitir una sensación rústica que pueda transmitir un poco cual fue uno de los materiales principales de la época, a su vez utilizamos este recurso debido al objeto principal de la pantalla de selección de planeta Yggdrassil.  
 
@@ -146,7 +149,8 @@ Ajustes de dificultad, idioma y borrado de datos
 
 La dificultad de esta pantalla fue encontrar unos nombres adecuados para las distintas dificultades. Para compensar una posible incomprensión de las dificultades, las acompañamos de colores que aumentan tu tono oscuro conforme la dificultad va aumentando.
 
-A continuación la pantalla en la que aparecerán todos los mundos y la manera de seleccionar mundo
+La pantalla de selección de mundo es bastante importante dentro de este título, ya que el árbol representado es el mismo que da nombre a nuestro juego.
+En este menú nos encontramos ante Yggdrasil, el árbol de los nueve mundos, el cuál sostenta los nueve reinos por los que pasará nuestro protagonista, estando siete de ellos en las raíces, uno casi en la copa y otro en el centro, Midgard (La Tierra), el primer mundo jugable de esta versión. Quisimos indicar esto haciendo que el tronco árbol emanase luz en las zonas cercanas a los reinos desbloqueados por el momento. Hemos querido optar por una representación clásica, de modo que cualquier persona interesada en la mitología nórdica entendiera qué tenía delante cuando entrase a este menú.
 ![imagen](https://user-images.githubusercontent.com/55508821/99616997-9f019a80-2a1e-11eb-9b02-f83cf0e254fc.png)
 
 
