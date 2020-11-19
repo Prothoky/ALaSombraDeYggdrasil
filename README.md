@@ -157,7 +157,7 @@ Pantalla de selección de nivel de Midgard
 
 ![image](https://user-images.githubusercontent.com/55493193/99725355-4a5d2e80-2ab5-11eb-85a1-96303519c96d.png)
 
-Pantalla de Tienda
+Pantalla de tienda.
 Hemos añadido múltiples sonidos para cada utensilio para hacer que el efecto de compra tenga un feedback mayor por parte del usuario.
 
 ![imagen](https://user-images.githubusercontent.com/55508821/99617606-f3594a00-2a1f-11eb-96d6-564f8e0de0c0.png)
