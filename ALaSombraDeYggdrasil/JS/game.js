@@ -45,8 +45,7 @@ var controls = {  // Controles del jugador (teclado)
   left: Phaser.Input.Keyboard.KeyCodes.LEFT,
   right: Phaser.Input.Keyboard.KeyCodes.RIGHT,
   attack: Phaser.Input.Keyboard.KeyCodes.CTRL,
-  test: Phaser.Input.Keyboard.KeyCodes.F,
-  pause: Phaser.Input.Keyboard.KeyCodes.ESC
+  pause: Phaser.Input.Keyboard.KeyCodes.Q
 };
 
 var fpsTarget = 60;
