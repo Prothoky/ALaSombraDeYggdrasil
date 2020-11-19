@@ -130,7 +130,7 @@ class MainMenu extends Phaser.Scene{
 
     //FULL SCREEN
     this.fullScreen = this.add.image(gameWidth*15.5/16, gameHeight*13/14, 'buttonFullScreen');
-    this.fullScreen.setScale(2/60);
+    this.fullScreen.setScale(1.5/3);
     this.fullScreen.setInteractive({ useHandCursor: true})
 		.on('pointerdown', function() {
       this.scene.scale.toggleFullscreen();

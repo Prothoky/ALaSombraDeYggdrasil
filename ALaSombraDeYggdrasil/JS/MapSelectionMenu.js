@@ -95,7 +95,7 @@ class MapSelectionMenu extends Phaser.Scene{
 
     //FULL SCREEN
     this.fullScreenMSM = this.add.image(gameWidth*15.5/16, gameHeight*13/14, 'buttonFullScreen');
-    this.fullScreenMSM.setScale(2/60);
+    this.fullScreenMSM.setScale(1.5/3);
     this.fullScreenMSM.setInteractive({ useHandCursor: true})
 		.on('pointerdown', function() {
       this.scene.scale.toggleFullscreen();

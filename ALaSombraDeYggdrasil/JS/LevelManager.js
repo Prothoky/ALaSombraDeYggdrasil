@@ -463,7 +463,7 @@ class LevelManager extends Phaser.Scene
 
         //FULL SCREEN
         this.fullScreenLM = this.add.image(gameWidth*15.5/16, gameHeight*13/14, 'buttonFullScreen');
-        this.fullScreenLM.setScale(2/60);
+        this.fullScreenLM.setScale(1.5/3);
         this.fullScreenLM.setScrollFactor(0);
         this.fullScreenLM.setDepth(10);
         this.fullScreenLM.setInteractive({ useHandCursor: true}).on('pointerdown', function() { this.scene.scale.toggleFullscreen()});

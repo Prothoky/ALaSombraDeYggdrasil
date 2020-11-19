@@ -126,7 +126,7 @@ class World1Map extends Phaser.Scene{
 
     //FULL SCREEN
     this.fullScreenW1M = this.add.image(gameWidth*15.5/16, gameHeight*13/14, 'buttonFullScreen');
-    this.fullScreenW1M.setScale(2/60);
+    this.fullScreenW1M.setScale(1.5/3);
     this.fullScreenW1M.setInteractive({ useHandCursor: true})
 		.on('pointerdown', function() {
       this.scene.scale.toggleFullscreen();
@@ -909,7 +909,7 @@ class World1Map extends Phaser.Scene{
          this.buttonNode0Sel.setInteractive({ useHandCursor: true  } )
          .on('pointerdown', () => this.StartPlaying());
          levelIndex = level;
-         
+
        }
        else {
          this.nameActiveNode.setVisible(false);
@@ -929,10 +929,10 @@ class World1Map extends Phaser.Scene{
         this.buttonNode1Sel.setInteractive({ useHandCursor: true  } )
         .on('pointerdown', () => this.StartPlaying());
         levelIndex = level;
-        
+
       }
       else{
-        
+
         this.nameActiveNode.setVisible(false);
         this.activeNode.setVisible(false);
         this.numActiveNodes = 0;
@@ -950,10 +950,10 @@ class World1Map extends Phaser.Scene{
         this.buttonNode2Sel.setInteractive({ useHandCursor: true  } )
         .on('pointerdown', () => this.StartPlaying());
         levelIndex = level;
-        
+
       }
       else{
-        
+
         this.nameActiveNode.setVisible(false);
         this.activeNode.setVisible(false);
         this.numActiveNodes = 0;
@@ -971,10 +971,10 @@ class World1Map extends Phaser.Scene{
         this.buttonNode3Sel.setInteractive({ useHandCursor: true  } )
         .on('pointerdown', () => this.StartPlaying());
         levelIndex = level;
-        
+
       }
       else{
-        
+
         this.nameActiveNode.setVisible(false);
         this.activeNode.setVisible(false);
         this.numActiveNodes = 0;
@@ -992,10 +992,10 @@ class World1Map extends Phaser.Scene{
         this.buttonNode4Sel.setInteractive({ useHandCursor: true  } )
         .on('pointerdown', () => this.StartPlaying());
         levelIndex = level;
-        
+
       }
       else{
-        
+
         this.nameActiveNode.setVisible(false);
         this.activeNode.setVisible(false);
         this.numActiveNodes = 0;
@@ -1013,10 +1013,10 @@ class World1Map extends Phaser.Scene{
         this.buttonNode5Sel.setInteractive({ useHandCursor: true  } )
         .on('pointerdown', () => this.StartPlaying());
         levelIndex = level;
-        
+
       }
       else{
-        
+
         this.nameActiveNode.setVisible(false);
         this.activeNode.setVisible(false);
         this.numActiveNodes = 0;
@@ -1034,10 +1034,10 @@ class World1Map extends Phaser.Scene{
         this.buttonNode6Sel.setInteractive({ useHandCursor: true  } )
         .on('pointerdown', () => this.StartPlaying());
         levelIndex = level;
-        
+
       }
       else{
-        
+
         this.nameActiveNode.setVisible(false);
         this.activeNode.setVisible(false);
         this.numActiveNodes = 0;
@@ -1055,10 +1055,10 @@ class World1Map extends Phaser.Scene{
         this.buttonNode7Sel.setInteractive({ useHandCursor: true  } )
         .on('pointerdown', () => this.StartPlaying());
         levelIndex = level;
-        
+
       }
       else{
-        
+
         this.nameActiveNode.setVisible(false);
         this.activeNode.setVisible(false);
         this.numActiveNodes = 0;
@@ -1076,10 +1076,10 @@ class World1Map extends Phaser.Scene{
         this.buttonNode8Sel.setInteractive({ useHandCursor: true  } )
         .on('pointerdown', () => this.StartPlaying());
         levelIndex = level;
-        
+
       }
       else{
-        
+
         this.nameActiveNode.setVisible(false);
         this.activeNode.setVisible(false);
         this.numActiveNodes = 0;
@@ -1097,10 +1097,10 @@ class World1Map extends Phaser.Scene{
         this.buttonNode9Sel.setInteractive({ useHandCursor: true  } )
         .on('pointerdown', () => this.StartPlaying());
         levelIndex = level;
-        
+
       }
       else{
-        
+
         this.nameActiveNode.setVisible(false);
         this.activeNode.setVisible(false);
         this.numActiveNodes = 0;
@@ -1118,10 +1118,10 @@ class World1Map extends Phaser.Scene{
         this.buttonSubnode1_1Sel.setInteractive({ useHandCursor: true  } )
         .on('pointerdown', () => this.StartPlaying());
         levelIndex = 10;
-        
+
       }
       else {
-        
+
         this.nameActiveNode.setVisible(false);
         this.activeNode.setVisible(false);
         this.numActiveNodes = 0;
@@ -1139,10 +1139,10 @@ class World1Map extends Phaser.Scene{
         this.buttonSubnode2_1Sel.setInteractive({ useHandCursor: true  } )
         .on('pointerdown', () => this.StartPlaying());
         levelIndex = 11;
-        
+
       }
       else {
-        
+
         this.nameActiveNode.setVisible(false);
         this.activeNode.setVisible(false);
         this.numActiveNodes = 0;
@@ -1160,10 +1160,10 @@ class World1Map extends Phaser.Scene{
         this.buttonSubnode4_1Sel.setInteractive({ useHandCursor: true  } )
         .on('pointerdown', () => this.StartPlaying());
         levelIndex = 12;
-        
+
       }
       else {
-        
+
         this.nameActiveNode.setVisible(false);
         this.activeNode.setVisible(false);
         this.numActiveNodes = 0;
@@ -1181,10 +1181,10 @@ class World1Map extends Phaser.Scene{
         this.buttonSubnode4_2Sel.setInteractive({ useHandCursor: true  } )
         .on('pointerdown', () => this.StartPlaying());
         levelIndex = 13;
-        
+
       }
       else {
-        
+
         this.nameActiveNode.setVisible(false);
         this.activeNode.setVisible(false);
         this.numActiveNodes = 0;
@@ -1202,10 +1202,10 @@ class World1Map extends Phaser.Scene{
         this.buttonSubnode5_1Sel.setInteractive({ useHandCursor: true  } )
         .on('pointerdown', () => this.StartPlaying());
         levelIndex = 14;
-        
+
       }
       else {
-        
+
         this.nameActiveNode.setVisible(false);
         this.activeNode.setVisible(false);
         this.numActiveNodes = 0;
@@ -1223,10 +1223,10 @@ class World1Map extends Phaser.Scene{
         this.buttonSubnode5_2Sel.setInteractive({ useHandCursor: true  } )
         .on('pointerdown', () => this.StartPlaying());
         levelIndex = 15;
-        
+
       }
       else {
-        
+
         this.nameActiveNode.setVisible(false);
         this.activeNode.setVisible(false);
         this.numActiveNodes = 0;
@@ -1244,10 +1244,10 @@ class World1Map extends Phaser.Scene{
         this.buttonSubnode7_1Sel.setInteractive({ useHandCursor: true  } )
         .on('pointerdown', () => this.StartPlaying());
         levelIndex = 16;
-        
+
       }
       else {
-        
+
         this.nameActiveNode.setVisible(false);
         this.activeNode.setVisible(false);
         this.numActiveNodes = 0;
@@ -1264,10 +1264,10 @@ class World1Map extends Phaser.Scene{
         this.level7_2Name.setVisible(true);
         this.buttonSubnode7_2Sel.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.StartPlaying());
         levelIndex = 17;
-        
+
       }
       else {
-        
+
         this.nameActiveNode.setVisible(false);
         this.activeNode.setVisible(false);
         this.numActiveNodes = 0;
