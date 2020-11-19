@@ -139,9 +139,9 @@ A partir del sexto nivel principal, sobrepasamos esas montañas mostradas en el 
 
 El diseño de la UI debe de ser muy sencilla y ligera para el usuario, no pretendemos distraer con mucha carga de información para atraer a la mayor cantidad de público posible. 
 
-El elemento esencial de nuestro juego para definir las interfaces es la madera, con el queremos transmitir una sensación rústica que pueda transmitir un poco cual fue uno de los materiales principales de la época, a su vez utilizamos este recurso debido al objeto principal de la pantalla de selección de planeta Yggdrassil.  
+El elemento esencial de nuestro juego para definir las interfaces es la madera, con el queremos transmitir una sensación rústica que pueda transmitir un poco cual fue uno de los materiales principales de la época, a su vez utilizamos este recurso debido al principal protagonista de la pantalla de selección de mundo, es decir, Yggdrassil.  
 
-De esta manera hemos creado una interfaz completa y con un diseño coherente con el juego, y los elementos que este tiene.
+De esta manera hemos creado una interfaz completa y con un diseño coherente con el juego y con los elementos que este contiene. Hemos empleando textos con el mismo color y brillo de las luces que emanan de Yggdrasil para indicar información relevante y para los títulos de los menús, además, se ha usado a modo de selección de los distintos botones una flecha con esta misma iluminación para mantener el estilo visual.
 
 Menú Principal
 
@@ -150,8 +150,6 @@ Menú Principal
 Ajustes de volumen
 
 ![imagen](https://user-images.githubusercontent.com/55508821/99616884-62ce3a00-2a1e-11eb-9dbe-9e53e327c510.png)
-
-En cuestiones de diseño para seguir con una interfaz algo rústica y con elementos acorde a la historia, las flechas serán un recurso muy utilizado en la interfaz para mostrar avances al jugador.
 
 Ajustes de dificultad, idioma y borrado de datos
 
@@ -170,11 +168,9 @@ Pantalla de selección de nivel de Midgard
 ![imagen](https://user-images.githubusercontent.com/55508821/99617048-b6d91e80-2a1e-11eb-8f6f-c617cb64a9b0.png)
 
 Pantalla de Tienda
-
-![imagen](https://user-images.githubusercontent.com/55508821/99617606-f3594a00-2a1f-11eb-96d6-564f8e0de0c0.png)
-
 Hemos añadido múltiples sonidos para cada utensilio para hacer que el efecto de compra tenga un feedback mayor por parte del usuario.
 
+![imagen](https://user-images.githubusercontent.com/55508821/99617606-f3594a00-2a1f-11eb-96d6-564f8e0de0c0.png)
 
 
 ## Flujo de juego
