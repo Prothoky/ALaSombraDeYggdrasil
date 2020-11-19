@@ -407,13 +407,13 @@
       "price": 30
     },
     "doublejump": {
-      "price": 300
+      "price": 450
     },
     "invulnerability": {
-      "price": 350
+      "price": 300
     },
     "cooldown": {
-      "price": 450
+      "price": 350
     }
   }
 

@@ -197,13 +197,14 @@ class ShopMenu extends Phaser.Scene{
   }
 
   AddObject1(){
-    this.buyObj.play();
-    if(userConfig.lang=="es")
-      this.bendicionDeHierroSound.play();
-    else
-      this.IronBlessingSound.play();
 
     if ((user.money >= phaserJSON.Store.shields.price)&& (user.buffs[0] < 3)){
+      this.buyObj.play();
+      if(userConfig.lang=="es")
+        this.bendicionDeHierroSound.play();
+      else
+        this.IronBlessingSound.play();
+
       user.buffs[0]++;
       user.money-= phaserJSON.Store.shields.price;
       this.MoneyShop.setText(user.money);
@@ -224,13 +225,14 @@ class ShopMenu extends Phaser.Scene{
 
   AddObject2(){
 
-    this.buyObj.play();
-    if(userConfig.lang=="es")
-      this.FuerzaDeOdinSound.play();
-    else
-      this.ForceOfOdinSound.play();
-
     if ((user.money >= phaserJSON.Store.invulnerability.price)&&(user.buffs[1] == 0)){
+
+      this.buyObj.play();
+      if(userConfig.lang=="es")
+        this.FuerzaDeOdinSound.play();
+      else
+        this.ForceOfOdinSound.play();
+
       user.buffs[1]++;
       user.money-= phaserJSON.Store.invulnerability.price;
       this.MoneyShop.setText(user.money);
@@ -243,15 +245,18 @@ class ShopMenu extends Phaser.Scene{
   }
 
   AddObject3(){
-    this.buyObj.play();
-    if(userConfig.lang=="es")
-      this.PlumaDeValquiriaSound.play();
-    else
-      this.ValkirieFeatherSound.play();
+
 
     if ((user.money >= phaserJSON.Store.doublejump.price)&&(user.buffs[2] == 0)){
+
+      this.buyObj.play();
+      if(userConfig.lang=="es")
+        this.PlumaDeValquiriaSound.play();
+      else
+        this.ValkirieFeatherSound.play();
+
       user.buffs[2]++;
-      user.money-= 
+      user.money-=
       phaserJSON.Store.doublejump.price;
       this.MoneyShop.setText(user.money);
       this.object3Bought.setVisible(true);
@@ -266,13 +271,14 @@ class ShopMenu extends Phaser.Scene{
 
   AddObject4(){
 
-    this.buyObj.play();
-    if(userConfig.lang=="es")
-      this.RabiaSound.play();
-    else
-      this.RageSound.play();
-
     if ((user.money >= phaserJSON.Store.cooldown.price) && (Number(user.buffs[3]) == 0)){
+
+          this.buyObj.play();
+          if(userConfig.lang=="es")
+            this.RabiaSound.play();
+          else
+            this.RageSound.play();
+            
       user.buffs[3]++;
       user.money-= phaserJSON.Store.cooldown.price;
       this.MoneyShop.setText(user.money);
