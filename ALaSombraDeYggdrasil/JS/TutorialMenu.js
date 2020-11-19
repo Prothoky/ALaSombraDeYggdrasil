@@ -43,6 +43,7 @@ class TutorialMenu extends Phaser.Scene{
 
   BackMainMenu(){
     this.clickSound.play();
+    user.tutoriced=true;
     this.scene.pause('TutorialMenu');
     this.scene.start('MainMenu');
   }

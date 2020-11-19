@@ -35,7 +35,6 @@ window.onload = function(){
 
   var game = new Phaser.Game(config);
 
-
 }
 
 // Variables globales
@@ -72,7 +71,8 @@ var user = { //Mapas desbloqueados y dinero del jugador
   map: [false, false, false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
   buffs: [0, 0, 0, 0],
   money: 0,
-  maxDistanceArcade: 0
+  maxDistanceArcade: 0,
+  tutoriced: false
 }
 
 var userConfig = {
@@ -111,7 +111,8 @@ function resetUserData(){
     map: [false, false, false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
     buffs: [0, 0, 0, 0],
     money: 0,
-    maxDistanceArcade: 0
+    maxDistanceArcade: 0,
+    tutoriced: false
   }
   userConfig = {
     volumeMusic: 6,

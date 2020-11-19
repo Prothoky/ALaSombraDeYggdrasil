@@ -333,8 +333,13 @@ class SettingsMenu extends Phaser.Scene{
   ConfirmErase(erase){
 
     this.clickSound.play();
+
     if(erase == true){
+      let tuto=false;
+    if(user.tutoriced == true)
+      tuto=true;
     	resetUserData();
+      user.tutoriced=tuto;
     	if( this.languageText.text== "ESPAÑOL"){
     		updateLanguage("es")
     	}
