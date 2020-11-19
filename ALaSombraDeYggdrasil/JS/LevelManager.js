@@ -1193,7 +1193,12 @@ class LevelManager extends Phaser.Scene
                //this.levelCompletedFunc();
           }
       }else{
-        this.musicGameplay.stop();
+        if (this.musicGameplay != null && this.musicGameplay.isPlaying){
+            this.musicGameplay.stop();
+        }
+        if (this.musicGameplayIce != null && this.musicGameplayIce.isPlaying) {
+            this.musicGameplayIce.stop();
+        }
         this.poemSound.play();
         this.Poema.setVisible(true);
         switch (levelIndex){
@@ -1320,7 +1325,12 @@ class LevelManager extends Phaser.Scene
                           }, this);
 
                     }
-                    musicGameplay.stop();
+                    if (musicGameplay != null && musicGameplay.isPlaying) {
+                        musicGameplay.stop();
+                    }
+                    if (musicGameplayIce != null && musicGameplayIce.isPlaying) {
+                        musicGameplayIce.stop();
+                    }
                     this.showDialog();
                     this.tweens.add({
                         targets:   this.dialogSound,
@@ -1403,8 +1413,9 @@ class LevelManager extends Phaser.Scene
             this.scene.start('World1Map');
           }
         });
-
-
+        if (this.dialogSound != null && this.dialogSound.isPlaying) {
+            this.dialogSound.stop();
+        }
     }
 
     // Actualiza la variable global de mapas pasados
