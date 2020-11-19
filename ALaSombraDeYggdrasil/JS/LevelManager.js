@@ -389,9 +389,11 @@ class LevelManager extends Phaser.Scene
           this.backgroundMoney = this.add.image(gameWidth*12/16, gameHeight*1.1/16, 'deselectedButtonSmall');
           this.backgroundMoney.setScale(1.5/3);
           this.backgroundMoney.setScrollFactor(0);
+          this.backgroundMoney.setDepth(12);
 
           this.Money = this.add.text(gameWidth*11.6/16, gameHeight*0.92/16,  user.money, {fontFamily: "Acadian_Runes",fontSize: "20px", align: 'center', fill: "#481d18"});
           this.Money.setScrollFactor(0);
+          this.Money.setDepth(12);
         }
 
 
