@@ -39,7 +39,7 @@
       "continue": "CONTINUAR",
       "language": "ESPAÑOL"
     },
-    "Credits": " ROCKET STUDIOS \n\n Juegos Web y Redes Sociales \n\n PATROCINADORES DEL PROYECTO: \n Julio Guillen Garcia \n Daniel Palacios Alonso \n\n DIRECTORA DEL PROYECTO: \n Paula Calzada Toledo \n\n PROGRAMACIÓN: \n Paula Calzada Toledo \n Rodrigo Martínez Sánchez \n Manuel Perez Ramil \n\n DISEÑO: \n Jesus de Pando Galan \n Diego Perez Perez \n\n NARRACIÓN: \n Jesus de Pando Galan \n\n ARTE: \n Diego Perez Perez \n\n DOBLADOR: \n Rodrigo Martínez Sánchez \n\n FUENTES: \n *FreeFonts* \n\n EFECTOS DE SONIDO: \n  *MUSICA* \n\n A LA SOMBRA DE YGGDRASIL",
+    "Credits": " ROCKET STUDIOS \n\n Juegos Web y Redes Sociales \n\n PATROCINADORES DEL PROYECTO: \n Julio Guillen Garcia \n Daniel Palacios Alonso \n\n DIRECTORA DEL PROYECTO: \n Paula Calzada Toledo \n\n PROGRAMACIÓN: \n Paula Calzada Toledo \n Rodrigo Martínez Sánchez \n Manuel Perez Ramil \n\n DISEÑO: \n Jesus de Pando Galan \n Diego Perez Perez \n\n NARRACIÓN: \n Jesus de Pando Galan \n\n ARTE: \n Diego Perez Perez \n\n DOBLADOR: \n Rodrigo Martínez Sánchez \n\n MENCION ESPECIAL A: \n Antonio Amaya  \n Por su creación colaborativa de: \n LA BANDA SONORA \n\n FUENTES: \n Javier Ugarte \n\n EFECTOS DE SONIDO: \n  DWOBoyle \n CraigSmith \n Hachiman935 \n Cabusta9 \n Mdietz3840 \n JorickHoofd \n\n A LA SOMBRA DE YGGDRASIL",
     "Dialogs": [
       [
         ["EINAR", "\nEinar: Hacia tiempo que no salía al \n   combate, mis brazos ya no son lo que eran, \n mis piernas están cansadas."],
@@ -231,7 +231,7 @@
       "continue": "CONTINUE",
       "language": "ENGLISH"
     },
-    "Credits": " ROCKET STUDIOS \n\n Web Games & Social Networks \n\n PROJECT SPONSORS: \n Julio Guillen Garcia \n Daniel Palacios Alonso \n\n PROJECT DIRECTOR: \n Paula Calzada Toledo \n\n PROGRAMERS: \n Paula Calzada Toledo \n Rodrigo Martínez Sánchez \n Manuel Perez Ramil \n\n DESIGN: \n Jesus de Pando Galan \n Diego Perez Perez \n\n NARRATIVE: \n Jesus de Pando Galan \n\n ART: \n Diego Perez Perez \n\n VOICE ACTOR: \n Rodrigo Martínez Sánchez \n\n FONTS: \n *FreeFonts* \n\n SOUND EFFECTS: \n  *MUSIC* \n\n A LA SOMBRA DE YGGDRASIL(pero en ingles)",
+    "Credits": " ROCKET STUDIOS \n\n Web Games & Social Networks \n\n PROJECT SPONSORS: \n Julio Guillen Garcia \n Daniel Palacios Alonso \n\n PROJECT DIRECTOR: \n Paula Calzada Toledo \n\n PROGRAMERS: \n Paula Calzada Toledo \n Rodrigo Martínez Sánchez \n Manuel Perez Ramil \n\n DESIGN: \n Jesus de Pando Galan \n Diego Perez Perez \n\n NARRATIVE: \n Jesus de Pando Galan \n\n ART: \n Diego Perez Perez \n\n VOICE ACTOR: \n Rodrigo Martínez Sánchez \n\n HONOR MENTION TO: \n Antonio Amaya  \n As external colaborator in: \n SOUNDTRACK \n\n FONTS: \n Javier Ugarte \n\n SOUNDS EFFECTS: \n  DWOBoyle \n CraigSmith \n Hachiman935 \n Cabusta9 \n Mdietz3840 \n JorickHoofd \n\n A LA SOMBRA DE YGGDRASIL(en ingles)",
     "Dialogs": [
       [
         [ "EINAR", "Einar: It has been a long time since my last combat, \n my arms arent what they used to, \n my legs are tired." ],
