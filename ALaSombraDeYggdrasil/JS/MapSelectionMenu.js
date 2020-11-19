@@ -72,10 +72,9 @@ class MapSelectionMenu extends Phaser.Scene{
       if(user.world[1] == true){
         this.botonMundo2.on('pointerover', function (pointer) {this.nameWorld2.setVisible(true);this.timeText.setVisible(true);}, this);
         this.botonMundo2.on('pointerout', function (pointer) {this.nameWorld2.setVisible(false);this.timeText.setVisible(false);}, this);
-
       }
 
-      //this.botonMundo2.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.ActivatePaper(1));
+      this.botonMundo2.setInteractive({ useHandCursor: true}).on('pointerdown', () => this.DesactivatePaper());
     }
 
     //BOTON ATRAS
