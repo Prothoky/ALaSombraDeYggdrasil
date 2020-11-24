@@ -239,34 +239,34 @@
         [ "EINAR", "   Einar: I was blessed by gods so many suns ago. \n I am Einar, the inmortal, \n calamity of my enemies \n and my the shield of my hometown." ],
         [ "EINAR", "    \n         Einar: But I have not been a defender  \n for a long time." ],
         [ "EINAR", "    \n         Einar: Tell me, Munin, raven of the memory." ],
-        [ "EINAR", "    \n             Einar: ¿What did I do to be here?" ],
-        [ "EINAR", "    \n             Einar: ¿Does anyone remember me?" ],
+        [ "EINAR", "    \n             Einar: What did I do to be here?" ],
+        [ "EINAR", "    \n             Einar: Does anyone remember me?" ],
         [ "MUNIN", "    \n             Munin: ... ... ..." ]
       ],
       [
         [ "EINAR", "     Einar: I have been trying to remember  \n through my way, but I can barely \n see a few moments from my past life." ],
-        [ "EINAR", "    \n          Einar: ¿Did I have a family? " ],
-        [ "EINAR", "    \n     Einar: ¿What did the gods see in me?" ],
+        [ "EINAR", "    \n          Einar: Did I have a family? " ],
+        [ "EINAR", "    \n     Einar: What did the gods see in me?" ],
         [ "EINAR", "     Einar: My memory only says I have been \n too many years running away. My axe \n is rusty and I do not know which blood is mine." ],
         [ "EINAR", "          Einar: I need names and reasons. \n      I cant be inside the shelter of my \n      ignorance anymore. Tell me, what should \n      I do to find my answers?" ],
-        [ "EINAR", "    \n          Einar: ¿Where should I go? " ],
+        [ "EINAR", "    \n          Einar: Where should I go? " ],
         [ "MUNIN", "    \n          Munin:  …  …  … " ]
       ],
       [
         [ "EINAR", " \n     Einar: This forest is full of places to die, \n I should look for the Freyja's lake." ],
-        [ "EINAR", " \n         Einar: Munin di algo que me sirva \n de brújula para seguir." ],
-        [ "MUNIN", "     \n           Munin: ¿Do you remember Greta?" ],
+        [ "EINAR", " \n         Einar: Munin tell me something I can use \n to follow my path." ],
+        [ "MUNIN", "     \n           Munin: Do you remember Greta?" ],
         [ "EINAR", "     \n           Einar: …" ],
         [ "EINAR", "     Einar: My daughter, she was so little. \n Now I can see the color of her eyes, \n she loved riding a horse through that mountains." ],
         [ "EINAR", "          Einar: Kaira, ay Kaira. \n           I've just listened my wife's voice" ],
-        [ "EINAR", "     \n           Einar: ¿How could I forgot who she was? " ],
+        [ "EINAR", "     \n           Einar: How could I forgot who she was? " ],
         [ "MUNIN", "     \n           Munin:  …  …  … " ]
 
       ],
       [
         [ "EINAR", " \n          Einar: I've been all this way thinking \n       about my home, about the wheat fields \n my family took care of." ],
         [ "EINAR", "     \n          Einar: Life there was so beautiful" ],
-        [ "EINAR", "     \n          Einar: ¿How could I end this way? " ],
+        [ "EINAR", "     \n          Einar: How could I end this way? " ],
         [ "EINAR", "     Einar: I spent so much time being one with \n the silence that I gave up thinking. \n I've finally woke up." ],
         [ "EINAR", " Einar: Munin, I need to keep remembering my past, \n  I want to know what happened with me \n and my hometown." ],
         [ "EINAR", "     \n     Einar: ¿What did I do during my life?" ],
