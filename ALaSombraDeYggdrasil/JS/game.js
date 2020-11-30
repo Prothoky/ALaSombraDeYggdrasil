@@ -64,7 +64,7 @@ var gameWidth = 1270;
 var gameHeight = 610;
 
 //Fecha de desbloqueo de nuevo mundo
-unlockDate=new Date(2020,12,1);
+unlockDate=new Date(2021,1,31);
 
 var phaserJSON;
 
